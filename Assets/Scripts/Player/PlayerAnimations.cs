@@ -21,20 +21,30 @@ public class PlayerAnimations : MonoBehaviour
     Transform cursor;
     bool followCursor;
 
+    [Header("Weapon")]
+    [SerializeField] SpriteRenderer weaponSprite;
+    [SerializeField] Transform weapon;
+    [SerializeField] float weaponLerp = 0.5f;
+
+    PlayerShooting shooting;
+
     private void Awake()
     {
         cursor = GameObject.Find("PlayerCursor").transform;
+        shooting = GetComponent<PlayerShooting>();
     }
 
     private void Start()
     {
         PlayerMovement.onDodge += DodgeAnimation;
+        PlayerShooting.onWeaponSwitch += ChangeWeaponSprite;
         PlayerStatus.onPlayerDamage += DamageAnimation;
     }
 
     private void OnDestroy()
     {
         PlayerMovement.onDodge -= DodgeAnimation;
+        PlayerShooting.onWeaponSwitch -= ChangeWeaponSprite;
         PlayerStatus.onPlayerDamage -= DamageAnimation;
     }
 
@@ -58,6 +68,24 @@ public class PlayerAnimations : MonoBehaviour
             currentDir = VectorToDir(dir);
         }
         else currentDir = VectorToDir(input);
+
+        // Orient weapon
+        float angle = 0;
+        if (followCursor)
+        {
+            // Get direction from cursor to player and make the player face it
+            Vector2 mousePos = ((Vector2)transform.position - InputManager.mousePosition).normalized;
+            angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
+        }
+        else
+        {
+            if (currentDir == Directions.up) angle = 90;
+            else if (currentDir == Directions.right) angle = 0;
+            else if (currentDir == Directions.down) angle = -90;
+            else if (currentDir == Directions.left) angle = 180;
+        }
+
+        weapon.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.LerpAngle(weapon.rotation.eulerAngles.z, angle, weaponLerp)));
     } 
 
     private void FixedUpdate()
@@ -110,6 +138,11 @@ public class PlayerAnimations : MonoBehaviour
                     break;
             }
         }
+    }
+
+    void ChangeWeaponSprite()
+    {
+        weaponSprite.sprite = shooting.weaponPool[shooting.currentWeaponIndex].weapon.weaponSprite;
     }
 
     void DodgeAnimation()

@@ -8,7 +8,10 @@ public class AmmoPickup : PickupBase
     {
         particles.startColor = drop.backgroundColor;
         _light.color = drop.backgroundColor;
-        sprite.GetComponent<SpriteRenderer>().color = drop.spriteColor;
+
+        SpriteRenderer spr = sprite.GetComponent<SpriteRenderer>();
+        spr.sprite = drop.sprite;
+        spr.color = drop.spriteColor;
     }
 
     protected override void OnTriggerEnter2D(Collider2D other)
@@ -19,7 +22,7 @@ public class AmmoPickup : PickupBase
         var player = other.GetComponent<PlayerShooting>();
         int ammoToAdd = Random.Range(drop.min, drop.max);
 
-        player.GetWeaponFromInventory(drop.typeToGive).GiveAmmo(ammoToAdd);
+        player.GiveAmmo(player.GetWeaponFromInventory(drop.typeToGive), ammoToAdd);
 
         PlayPickupAnimation();
     }

@@ -43,7 +43,7 @@ public class PlayerShooting : MonoBehaviour
         // Get direction from cursor to player and make the player face it
         Vector2 mousePos = ((Vector2) transform.position - InputManager.mousePosition).normalized;
         float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
-        gunPivot    .rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        gunPivot.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
         // Weapon swapping, Everything unfucked...
         if (InputManager.swapWeapon != 0)
@@ -180,6 +180,13 @@ public class PlayerShooting : MonoBehaviour
 
         return null;
     }
+
+    public void GiveAmmo(inventoryWeapon weapon, int amount)
+    {
+        weapon.pool += amount;
+
+        if (onAmmoUpdate != null) onAmmoUpdate.Invoke();
+    }
 }
 
 [System.Serializable] // Used to store inventory weapon values and ammo
@@ -199,10 +206,5 @@ public class inventoryWeapon
     {
         clip = weapon.clipSize;
         pool = weapon.defaultAmmoCount;
-    }
-
-    public void GiveAmmo(int amount)
-    {
-        pool += amount;
     }
 }

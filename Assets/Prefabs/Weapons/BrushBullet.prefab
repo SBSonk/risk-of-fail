@@ -399,6 +399,10 @@ MonoBehaviour:
   knockback: -1
   stunLength: -1
   pierces: 0
+  bulletShake:
+    duration: 0
+    magnitude: 0
+    shakespeed: 0
 --- !u!70 &1664095409968331097
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -413,7 +417,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.2, y: 0.55}
+  m_Size: {x: 1.2, y: 0.6875}
   m_Direction: 1
 --- !u!114 &-3500656364860349380
 MonoBehaviour:

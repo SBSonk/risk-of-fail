@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class Weapon : ScriptableObject
 {
-    // Weapon metadata
+    [Header("Metadata")]
     public string weaponName = "Untitled Weapon";
     public Sprite hudElement;
     public Sprite crossHair;
+    public Sprite weaponSprite;
 
-    // Weapon stats
+    [Header("Weapon Stats")]
     public float baseDamage;
     public float bulletSpread = 0f;
     public float knockbackAmount = 10f;
@@ -15,7 +16,7 @@ public class Weapon : ScriptableObject
     public int defaultAmmoCount = 100;
     public ScreenshakeValue hitScreenShake;
 
-    // Weapon behavior
+    [Header("Weapon Behavior")]
     public int ammoPerShot = 0;
     public int clipSize = -1; // -1 to disable reloading
     public float reloadLength = 0; // Reload time in seconds   

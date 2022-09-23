@@ -15,11 +15,16 @@ MonoBehaviour:
   weaponName: Pen
   hudElement: {fileID: 710822827, guid: aa32827dd9eab824695f8d290fa10dac, type: 3}
   crossHair: {fileID: 21300000, guid: 1750bb5ded5b30d4db197733c4259edc, type: 3}
+  weaponSprite: {fileID: -509436220, guid: aa706a9513e7ed4499d4445eba6fdf6c, type: 3}
   baseDamage: 25
   bulletSpread: 0.5
   knockbackAmount: 5
   stunLength: 0.15
   defaultAmmoCount: 100
+  hitScreenShake:
+    duration: 0
+    magnitude: 0
+    shakespeed: 0
   ammoPerShot: 1
   clipSize: 12
   reloadLength: 0.6

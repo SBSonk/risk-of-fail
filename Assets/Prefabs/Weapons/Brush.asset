@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8118bb953fa63e9469862453a8fbc52b, type: 3}
+  m_Name: Brush
+  m_EditorClassIdentifier: 
+  weaponName: Brush
+  hudElement: {fileID: -626402378, guid: ac1cb1997c2bb9c47a38e95b1219b296, type: 3}
+  crossHair: {fileID: 21300000, guid: 91a27f21dd1f6844197adda4c80a7828, type: 3}
+  baseDamage: 12
+  bulletSpread: 1.5
+  knockbackAmount: 5
+  stunLength: 0.25
+  defaultAmmoCount: 100
+  hitScreenShake:
+    duration: 0
+    magnitude: 0
+    shakespeed: 0
+  ammoPerShot: 2
+  clipSize: 8
+  reloadLength: 1
+  fireRate: 0.35
+  auto: 0
+  bulletVelocity: 4
+  pierceAmount: 2
+  bullet: {fileID: 9076594935915685230, guid: 3b6a12f0749763a4f9c969724cb14340, type: 3}
+  pelletCount: 3
+  pelletSpread: 2.5

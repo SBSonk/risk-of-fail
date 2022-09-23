@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2ce9d97f3c6db14e9874ba3e6605c0e, type: 3}
+  m_Name: Pen
+  m_EditorClassIdentifier: 
+  weaponName: Pen
+  hudElement: {fileID: 710822827, guid: aa32827dd9eab824695f8d290fa10dac, type: 3}
+  crossHair: {fileID: 21300000, guid: 1750bb5ded5b30d4db197733c4259edc, type: 3}
+  baseDamage: 25
+  bulletSpread: 0.5
+  knockbackAmount: 5
+  stunLength: 0.15
+  defaultAmmoCount: 100
+  ammoPerShot: 1
+  clipSize: 12
+  reloadLength: 0.6
+  fireRate: 0.1
+  auto: 1
+  bulletVelocity: 8
+  pierceAmount: 1
+  bullet: {fileID: 9076594935915685230, guid: 0fa32434bd889f24d9ca3e494f9e8a89, type: 3}

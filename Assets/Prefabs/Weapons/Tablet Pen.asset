@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2ce9d97f3c6db14e9874ba3e6605c0e, type: 3}
+  m_Name: Tablet Pen
+  m_EditorClassIdentifier: 
+  weaponName: Tablet pen
+  hudElement: {fileID: 194852602, guid: aa32827dd9eab824695f8d290fa10dac, type: 3}
+  crossHair: {fileID: 21300000, guid: 198a1eee3590ca1418d7b3a22ba3c8cc, type: 3}
+  baseDamage: 90
+  bulletSpread: 0.25
+  knockbackAmount: 10
+  stunLength: 0.5
+  defaultAmmoCount: 100
+  ammoPerShot: 1
+  clipSize: 6
+  reloadLength: 0.5
+  fireRate: 0.5
+  auto: 0
+  bulletVelocity: 8
+  pierceAmount: 5
+  bullet: {fileID: 9076594935915685230, guid: eec705733f0199d4da8bad19d97b20f8, type: 3}

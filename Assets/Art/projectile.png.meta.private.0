@@ -116,12 +116,54 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pencil
+      name: pencil_full
       rect:
         serializedVersion: 2
         x: 0
-        y: 21
+        y: 53
         width: 32
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32704f7d9a55c56428ae4ef0046bb108
+      internalID: -509436220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pencil_mini
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 27
+        width: 24
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b59220e9949324f4e90214c4783e6d5d
+      internalID: 2087157319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pen_mini
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 18
+        width: 24
         height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -130,8 +172,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32704f7d9a55c56428ae4ef0046bb108
-      internalID: -509436220
+      spriteID: d8cf2093753e5a045a8775fe265674ba
+      internalID: -809118587
       vertices: []
       indices: 
       edges: []
@@ -147,7 +189,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      pencil: -509436220
+      pencil_mini: 2087157319
+      pen_mini: -809118587
+      pencil_full: -509436220
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

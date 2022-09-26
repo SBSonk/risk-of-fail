@@ -7,9 +7,9 @@ public class Weapon : ScriptableObject
     //added for Shop UI
     public string weaponDescription;
     public int weaponCost;
-    public int weaponStrength;
-    public int weaponFireRate;
-    public int weaponPiercing;
+    [Range(0, 4)] public int weaponStrength;
+    [Range(0, 4)] public int weaponFireRate;
+    [Range(0, 4)] public int weaponPiercing;
     public bool isWeaponObtained = false;
     //end
     public Sprite hudElement;
@@ -33,12 +33,6 @@ public class Weapon : ScriptableObject
     
     // Left click attack
     public virtual void ShootWeapon(Transform player)
-    {
-        return;
-    }
-
-    // Right click attack
-    public virtual void AltShoot(Transform player)
     {
         return;
     }

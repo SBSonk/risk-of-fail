@@ -27,6 +27,12 @@ public class HudManager3 : MonoBehaviour
     [SerializeField] Color reloadingColor = Color.cyan;
     Vector3 ammoTargetScale = Vector3.one;
 
+    [Header("Weapon Stats")]
+    [SerializeField] Image strength;
+    [SerializeField] Image fireRate;
+    [SerializeField] Image piercing;
+    [SerializeField] Sprite[] barStates;
+
     Animator animator;
 
     private void Awake()
@@ -95,7 +101,11 @@ public class HudManager3 : MonoBehaviour
         weaponSprite.sprite = currentWep.hudElement;
         weaponSprite.rectTransform.sizeDelta = new Vector2(currentWep.hudElement.rect.width, currentWep.hudElement.rect.height);
 
+        // Update text and weapon stat ui
         gunName.text = currentWep.weaponName;
+        strength.sprite = barStates[currentWep.weaponStrength];
+        fireRate.sprite = barStates[currentWep.weaponFireRate];
+        piercing.sprite = barStates[currentWep.weaponPiercing];
 
         animator.Play("SwapWeapon", 0, 0);
 
@@ -125,5 +135,7 @@ public class HudManager3 : MonoBehaviour
 
         // Revert ammo bar color
         ammobarImage.color = defaultColor;
+
+        UpdateAmmo();
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -21,6 +22,9 @@ public class HudManager3 : MonoBehaviour
     [SerializeField] float ammoBarLerp = 0.5f;
     [SerializeField] Image weaponSprite;
     [SerializeField] TextMeshProUGUI reserveAmount;
+    [SerializeField] Image ammobarImage;
+    [SerializeField] Color defaultColor = Color.white;
+    [SerializeField] Color reloadingColor = Color.cyan;
     Vector3 ammoTargetScale = Vector3.one;
 
     Animator animator;
@@ -38,6 +42,7 @@ public class HudManager3 : MonoBehaviour
         PlayerStatus.onPlayerHeal += UpdateHealth;
         GameManager.onEnemyKilled += UpdatePoints;
         PlayerShooting.onPlayerShoot += UpdateAmmo;
+        PlayerShooting.onReloadStart += StartReloadAnimation;
         PlayerShooting.onAmmoUpdate += UpdateAmmo;
         PlayerShooting.onWeaponSwitch += SwapWeapon;
     }
@@ -48,6 +53,7 @@ public class HudManager3 : MonoBehaviour
         PlayerStatus.onPlayerHeal -= UpdateHealth;
         GameManager.onEnemyKilled -= UpdatePoints;
         PlayerShooting.onPlayerShoot -= UpdateAmmo;
+        PlayerShooting.onReloadStart -= StartReloadAnimation;
         PlayerShooting.onAmmoUpdate -= UpdateAmmo;
         PlayerShooting.onWeaponSwitch -= SwapWeapon;
     }
@@ -68,26 +74,56 @@ public class HudManager3 : MonoBehaviour
         fudgePointsText.text = GameManager.main.score.ToString("D5");
     }
 
+    void StartReloadAnimation()
+    {
+        StartCoroutine(ReloadAnimation());
+    }
+
     void UpdateAmmo()
     {
-        inventoryWeapon current = shooting.weaponPool[shooting.currentWeaponIndex];
+        var inventoryWep = shooting.GetHeldWeapon();
 
-        if (current.weapon.clipSize > 0) ammoTargetScale.x = (float) current.clip / current.weapon.clipSize;
+        if (inventoryWep.weapon.clipSize > 0) ammoTargetScale.x = (float) inventoryWep.clip / inventoryWep.weapon.clipSize;
         else ammoTargetScale.x = 1;
 
-        reserveAmount.text = current.pool.ToString();
+        reserveAmount.text = inventoryWep.pool.ToString();
     }
 
     void SwapWeapon()
     {
-        var weapon = shooting.weaponPool[shooting.currentWeaponIndex].weapon;
-        weaponSprite.sprite = weapon.hudElement;
-        weaponSprite.rectTransform.sizeDelta = new Vector2(weapon.hudElement.rect.width, weapon.hudElement.rect.height);
+        var currentWep = shooting.GetHeldWeapon().weapon;
+        weaponSprite.sprite = currentWep.hudElement;
+        weaponSprite.rectTransform.sizeDelta = new Vector2(currentWep.hudElement.rect.width, currentWep.hudElement.rect.height);
 
-        gunName.text = weapon.weaponName;
+        gunName.text = currentWep.weaponName;
 
         animator.Play("SwapWeapon", 0, 0);
 
         UpdateAmmo();
+    }
+
+    IEnumerator ReloadAnimation()
+    {
+        float startTime = Time.time;
+        float finishTime = shooting.GetHeldWeapon().weapon.reloadLength;
+
+        // Change ammo bar to reloading color
+        ammobarImage.color = reloadingColor;
+
+        ammoTargetScale.x = 0;
+        ammoBar.localScale = ammoTargetScale;
+
+        // Update ammo bar to reload state
+        float currentTime = Time.time - startTime;
+        while (currentTime < finishTime)
+        {
+            ammoTargetScale.x = currentTime / finishTime;
+
+            yield return new WaitForFixedUpdate();
+            currentTime = Time.time - startTime;
+        }
+
+        // Revert ammo bar color
+        ammobarImage.color = defaultColor;
     }
 }

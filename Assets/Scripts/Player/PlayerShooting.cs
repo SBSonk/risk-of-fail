@@ -12,6 +12,14 @@ public class PlayerShooting : MonoBehaviour
     public bool reloading;
     bool canShoot = true;
 
+    [Header("Shoving")]
+    [SerializeField] float shoveStrength;
+    [SerializeField] float shoveStunTime = 1f;
+    [SerializeField] float shoveCooldown = 1f;
+    [SerializeField] float radius;
+    [SerializeField] float distance;
+    [SerializeField] bool canShove = true;
+
     MoveCursor cursor;
 
     // EVENTS
@@ -23,6 +31,12 @@ public class PlayerShooting : MonoBehaviour
 
     public delegate void OnAmmoUpdate();
     public static event OnAmmoUpdate onAmmoUpdate;
+
+    public delegate void OnReloadStart();
+    public static event OnReloadStart onReloadStart;
+
+    public delegate void OnShove();
+    public static event OnShove onShove;
 
     private void Awake()
     {
@@ -45,42 +59,67 @@ public class PlayerShooting : MonoBehaviour
         float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
         gunPivot.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-        // Weapon swapping, Everything unfucked...
-        if (InputManager.swapWeapon != 0)
-        {
-            currentWeaponIndex += InputManager.swapWeapon;
+        WeaponSwitching();
 
-            // Dont allow weapon index to go below or above weapon count
-            currentWeaponIndex %= weaponPool.Count;
-            if (Mathf.Sign(currentWeaponIndex) < 0) currentWeaponIndex = weaponPool.Count - 1;
+        GunBehavior(GetHeldWeapon().weapon as Gun);
 
-            // Change Crosshair
-            cursor.ChangeCrosshair(weaponPool[currentWeaponIndex].weapon.crossHair);
-
-            // Disable reloading
-            canShoot = true;
-            reloading = false;
-
-            if (onWeaponSwitch != null) onWeaponSwitch.Invoke();
-        }
-
-        // Execute weapon specific attacks
-        bool shooting = false;
-        if (weaponPool[currentWeaponIndex].weapon.auto) shooting = InputManager.shootAuto;
-        else shooting = InputManager.shoot;
-
-        if (shooting)
-        {
-            switch (weaponPool[currentWeaponIndex].weapon)
-            {
-                case Gun g:
-                    GunBehavior(g);
-                    break;
-            }
-        }
+        // Shoving // NEED TO REFACTOR
+        Shoving();
 
         // Reloading
         if (weaponPool[currentWeaponIndex].clip < weaponPool[currentWeaponIndex].weapon.clipSize && InputManager.reload) StartCoroutine(Reload());
+    }
+
+    void WeaponSwitching()
+    {
+        if (InputManager.swapWeapon == 0) return;
+
+        // Weapon swapping, Everything unfucked...
+        currentWeaponIndex += InputManager.swapWeapon;
+
+        // Dont allow weapon index to go below or above weapon count
+        currentWeaponIndex %= weaponPool.Count;
+        if (Mathf.Sign(currentWeaponIndex) < 0) currentWeaponIndex = weaponPool.Count - 1;
+
+        // Change Crosshair
+        cursor.ChangeCrosshair(weaponPool[currentWeaponIndex].weapon.crossHair);
+
+        // Disable reloading
+        canShoot = true;
+        reloading = false;
+
+        if (onWeaponSwitch != null) onWeaponSwitch.Invoke();
+    }
+
+    void Shoving()
+    {
+        if (!InputManager.shove || !canShove) return;
+
+        if (onShove != null) onShove.Invoke();
+
+        // Check all objects in radius in front of shootpivot
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, radius, gunBarrel.right, distance);
+        if (hits.Length == 0) return;
+
+        // Check if theyre alive
+        foreach (RaycastHit2D h in hits)
+        {
+            Enemy enemy = h.collider.GetComponent<Enemy>();
+            if (enemy)
+            {
+                print(enemy.gameObject.name);
+
+                // Stun enemy
+                enemy.Stun(shoveStunTime);
+
+                // Knockback
+                enemy.GetComponent<Rigidbody2D>().AddForce(gunBarrel.right.normalized * shoveStrength, ForceMode2D.Impulse);
+            }
+        }
+
+        // Cooldown
+        canShove = false;
+        Invoke("EnableShove", shoveCooldown);
     }
 
     // Handle shooting of GUN type weapons
@@ -88,6 +127,14 @@ public class PlayerShooting : MonoBehaviour
     {
         // Don't let player shoot if reloading
         if (!canShoot) return;
+
+        // Check if firing semi auto or full auto
+        bool shooting = false;
+        if (g.auto) shooting = InputManager.shootAuto;
+        else shooting = InputManager.shoot;
+
+        // Cancel if not shooting
+        if (!shooting) return;
 
         // Shooting and magazines
         if (g.clipSize > 0)
@@ -135,6 +182,8 @@ public class PlayerShooting : MonoBehaviour
         if (weaponPool[currentWeaponIndex].pool == 0) yield break;
 
         // Begin Reload
+        if (onReloadStart != null) onReloadStart.Invoke();
+
         canShoot = false;
         reloading = true;
         yield return new WaitForSeconds(weaponPool[currentWeaponIndex].weapon.reloadLength);
@@ -170,6 +219,11 @@ public class PlayerShooting : MonoBehaviour
         canShoot = true;
     }
 
+    void EnableShove()
+    {
+        canShove = true;
+    }
+
     // Returns the first inventory weapon with type type
     public inventoryWeapon GetWeaponFromInventory(Weapon type)
     {
@@ -186,6 +240,11 @@ public class PlayerShooting : MonoBehaviour
         weapon.pool += amount;
 
         if (onAmmoUpdate != null) onAmmoUpdate.Invoke();
+    }
+
+    public inventoryWeapon GetHeldWeapon()
+    {
+        return weaponPool[currentWeaponIndex];
     }
 }
 

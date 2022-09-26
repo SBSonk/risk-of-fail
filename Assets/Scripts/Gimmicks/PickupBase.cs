@@ -19,6 +19,7 @@ public class PickupBase : MonoBehaviour
         // Return if the player isnt the one who collected
         if (!other.CompareTag("Player")) return;
 
+        transform.position = other.transform.position;
         PlayPickupAnimation();
     }
 

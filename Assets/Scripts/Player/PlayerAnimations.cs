@@ -7,6 +7,7 @@ public class PlayerAnimations : MonoBehaviour
 
     [SerializeField] ParticleSystem dashExp;
     [SerializeField] Animator animator;
+    [SerializeField] Animator weaponAnimator;
 
     [Header("Dodge")]
     [SerializeField] TrailRenderer trail;
@@ -39,6 +40,7 @@ public class PlayerAnimations : MonoBehaviour
         PlayerMovement.onDodge += DodgeAnimation;
         PlayerShooting.onWeaponSwitch += ChangeWeaponSprite;
         PlayerStatus.onPlayerDamage += DamageAnimation;
+        PlayerShooting.onShove += ShoveAnimation;
     }
 
     private void OnDestroy()
@@ -46,13 +48,14 @@ public class PlayerAnimations : MonoBehaviour
         PlayerMovement.onDodge -= DodgeAnimation;
         PlayerShooting.onWeaponSwitch -= ChangeWeaponSprite;
         PlayerStatus.onPlayerDamage -= DamageAnimation;
+        PlayerShooting.onShove -= ShoveAnimation;
     }
 
     private void Update()
     {
         input = InputManager.playerDirection;
 
-        if (InputManager.shootAuto || InputManager.shoot)
+        if (InputManager.shootAuto || InputManager.shoot || InputManager.shove)
         {
             followCursor = true;
             CancelInvoke();
@@ -155,6 +158,11 @@ public class PlayerAnimations : MonoBehaviour
         StopCursorFollow();
 
         CameraFunctions.main.DoScreenShake(dodgeScreenshake);
+    }
+
+    void ShoveAnimation()
+    {
+        weaponAnimator.Play("Shove");
     }
 
     void DamageAnimation()

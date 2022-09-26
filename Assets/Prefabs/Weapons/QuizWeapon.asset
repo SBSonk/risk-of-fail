@@ -15,6 +15,7 @@ MonoBehaviour:
   weaponName: QUIZWEAPON
   hudElement: {fileID: 0}
   crossHair: {fileID: 0}
+  weaponSprite: {fileID: 0}
   baseDamage: 10
   bulletSpread: 1
   knockbackAmount: 10
@@ -27,9 +28,9 @@ MonoBehaviour:
   ammoPerShot: 0
   clipSize: -1
   reloadLength: 0
-  fireRate: 0.8
+  fireRate: 0.75
   auto: 1
-  bulletVelocity: 4
+  bulletVelocity: 3
   pierceAmount: 0
   bullet: {fileID: 6245270692030926925, guid: edbc435772d2add44ac90a03ecdd0cab, type: 3}
   minDamage: 5

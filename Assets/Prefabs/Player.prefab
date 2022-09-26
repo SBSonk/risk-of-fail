@@ -504,7 +504,7 @@ MonoBehaviour:
   trail: {fileID: 2223588944474196827}
   trailLifetime: 0.5
   dodgeScreenshake:
-    duration: 0.3
+    duration: 0.1
     magnitude: 0.5
     shakespeed: 0.05
   sprite: {fileID: 2223588945330593513}
@@ -556,6 +556,12 @@ MonoBehaviour:
     pool: 0
   currentWeaponIndex: 0
   reloading: 0
+  shoveStrength: 8
+  shoveStunTime: 0.3
+  shoveCooldown: 1
+  radius: 2
+  distance: 2.5
+  canShove: 1
 --- !u!95 &980274054001023296
 Animator:
   serializedVersion: 4

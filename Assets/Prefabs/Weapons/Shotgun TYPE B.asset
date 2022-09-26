@@ -13,11 +13,18 @@ MonoBehaviour:
   m_Name: Shotgun TYPE B
   m_EditorClassIdentifier: 
   weaponName: Brush DEBUG
+  hudElement: {fileID: 0}
+  crossHair: {fileID: 0}
+  weaponSprite: {fileID: 0}
   baseDamage: 0
   bulletSpread: 2
   knockbackAmount: 10
   stunLength: 0.25
   defaultAmmoCount: 100
+  hitScreenShake:
+    duration: 0.2
+    magnitude: 0.5
+    shakespeed: 0.05
   ammoPerShot: 1
   clipSize: -1
   reloadLength: 0

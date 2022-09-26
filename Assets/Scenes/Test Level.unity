@@ -6031,6 +6031,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7626087448384684545, guid: 30fb6b92e7109f04dacd8434ea4070fc, type: 3}
+      propertyPath: data.dataString
+      value: UEsDBBQAAAgIAABAIeykKsgxXgIAABUFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzk3HBvLVW0sI6YGECe3k4ssirbEGWfJIcoBk+O9dyTZ26fTE8vbt7tsP+ZNJ7Srk3tiFlWJpBLJvIxZs9mXUO5/wAFuj1/IDO86bFL4IJIicV/DSEJ6GMGdK9Fby73qrAjkhsNYyN7aciy3OjPOO4ByUQ3JZ40O0JuhzxA70c3UfQo5kjW+D9UHWfTI6kclRe7Q9tSN2tIZVa66grFAEyT15nE5beppOIlFTOy0nSOdGKelaLcwfq9jruirQYmhWSKDWYv3k6y0BBcpt4UPqYfRLnjv0rSoLxwdpaUZNWvbDNIMrwe0aae+g6lDoOh1HUU3S5T/+qzS6c2vKp65umoQavpB89wpHDs4PJjuEH3rpaZzQHtQONgrfCtTPZmFNrQU5va1DaO1w/ND/Pbc2K5DveryRegHW1f/3E3o4xe4PMyXLTZzktAHWysSBx+2jpdX8JMHxNlybgtCg4rfDX7AdHlHreJTWeXK1Xeogb2NqG6hsHmcWuqn9zFiNEW5FV6hB+eOK0vjLFV74BmUvPI8QnktbvPV1r+AiJMI9P0kuXCuzPy/LFWa/RFe81F5Jjb3o4HimOc2M1s2FDWfSha1rmwMfhG1rKf4+LcY5TyYC4O6ejycwya8SvEmuN3k6nt4kG7ibsHh7UlOfoFaN0HY8tDXdJ9d0Z91XZLSwUMVrFxb2C/lRmsHIpc7NmltE/dJkOAtHS0XoWYq5kDSgNXovddw3+8yYMnyHIjsnymKn84O3kPVZMlbJd+MDkrFZ/GxkLMDnW15ZfJe4D8W7ZCd2+gNQSwMEFAAACAgAAEAh7Jpo8TltAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tFJycrKBcUpiooVlspFxonGarkGqmYFpUpqhkYmZQVKihbFSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAEAh7KQqyDFeAgAAFQUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAEAh7Jpo8TltAAAAeAAAAAkAJAAAAAAAAAAAAAAAqwIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABjAwAAAAA=
+      objectReference: {fileID: 0}
     - target: {fileID: 7626087448384684550, guid: 30fb6b92e7109f04dacd8434ea4070fc, type: 3}
       propertyPath: m_Name
       value: _A*
@@ -9121,7 +9125,7 @@ Transform:
   m_GameObject: {fileID: 1449110955}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 53.75, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 320211997}
@@ -9156,7 +9160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRespawnWaveTime: 1
   respawnWaveTime: 2.5
-  minSpawnsPerWave: 0
+  minSpawnsPerWave: 1
   maxSpawnsPerWave: 5
   spawnPoints:
   - {fileID: 914697023}
@@ -9168,7 +9172,7 @@ MonoBehaviour:
     prefab: {fileID: 2368033471186396242, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
     spawnChance: 70
     alive: 0
-    maxAlive: 10
+    maxAlive: 15
   - type: 1
     prefab: {fileID: 38039933173011100, guid: 085fc84507e373c43a79206d00c97d8f, type: 3}
     spawnChance: 50

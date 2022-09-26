@@ -4,6 +4,14 @@ public class Weapon : ScriptableObject
 {
     [Header("Metadata")]
     public string weaponName = "Untitled Weapon";
+    //added for Shop UI
+    public string weaponDescription;
+    public int weaponCost;
+    public int weaponStrength;
+    public int weaponFireRate;
+    public int weaponPiercing;
+    public bool isWeaponObtained = false;
+    //end
     public Sprite hudElement;
     public Sprite crossHair;
     public Sprite weaponSprite;

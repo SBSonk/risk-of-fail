@@ -67,7 +67,7 @@ public class PlayerShooting : MonoBehaviour
         Shoving();
 
         // Reloading
-        if (weaponPool[currentWeaponIndex].clip < weaponPool[currentWeaponIndex].weapon.clipSize && InputManager.reload) StartCoroutine(Reload());
+        if (weaponPool[currentWeaponIndex].clip < weaponPool[currentWeaponIndex].weapon.clipSize && InputManager.reload && reloading == false) StartCoroutine(Reload());
     }
 
     void WeaponSwitching()

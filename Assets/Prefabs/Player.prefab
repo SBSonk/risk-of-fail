@@ -501,6 +501,7 @@ MonoBehaviour:
   canSwitchAnimation: 1
   dashExp: {fileID: 8137705393892693741}
   animator: {fileID: 980274054001023296}
+  weaponAnimator: {fileID: 725625596}
   trail: {fileID: 2223588944474196827}
   trailLifetime: 0.5
   dodgeScreenshake:
@@ -558,7 +559,7 @@ MonoBehaviour:
   reloading: 0
   shoveStrength: 8
   shoveStunTime: 0.3
-  shoveCooldown: 1
+  shoveCooldown: 0.9
   radius: 2
   distance: 2.5
   canShove: 1
@@ -727,6 +728,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7556428757749679433}
+  - component: {fileID: 725625596}
   m_Layer: 6
   m_Name: WeaponPivot
   m_TagString: Untagged
@@ -750,6 +752,26 @@ Transform:
   m_Father: {fileID: 2223588945008610397}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &725625596
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3365215481345798000}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c371334cb3a09b24a94b08e9e95e4390, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &9222020493078835991
 GameObject:
   m_ObjectHideFlags: 0

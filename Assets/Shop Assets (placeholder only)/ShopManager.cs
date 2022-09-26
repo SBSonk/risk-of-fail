@@ -25,7 +25,9 @@ public class ShopManager : MonoBehaviour                    //call this class if
     void Start()
     {
         for (int i =  0; i < shopItemsSO.Length; i++)
+        {
             shopPanelsGO[i].SetActive(true);
+        }
 
         totalCoins = GameManager.main.score;
         coinUI.text = "FP: " + totalCoins;

@@ -81,7 +81,7 @@ public class Enemy : Alive
 
         // Give player score
         float lifetime = Time.time - spawnTime;
-        GameManager.main.GiveScore(killScore, lifetime);
+        GameManager.GiveScore(killScore, lifetime);
 
         // Reduce alive enemies for the spawner
         Spawning2.enemyDeath(type);

@@ -29,7 +29,7 @@ public class ShopManager : MonoBehaviour                    //call this class if
             shopPanelsGO[i].SetActive(true);
         }
 
-        totalCoins = GameManager.main.score;
+        totalCoins = GameManager.main.pData.fPoints;
         coinUI.text = "FP: " + totalCoins;
         //Debug.Log("Score: " + GameManager.main.score.ToString());
         //Debug.Log("Coins: " + totalCoins);
@@ -55,11 +55,11 @@ public class ShopManager : MonoBehaviour                    //call this class if
 
     public void PurchaseItem(int btnNo)
     {
-        totalCoins = GameManager.main.score;
+        totalCoins = GameManager.main.pData.fPoints;
         if (totalCoins >= shopItemsSO[btnNo].weaponCost)
         {
-            GameManager.main.score = totalCoins - shopItemsSO[btnNo].weaponCost;   //problematic
-            totalCoins = GameManager.main.score;
+            GameManager.SetScore(totalCoins - shopItemsSO[btnNo].weaponCost);   //problematic
+            totalCoins = GameManager.main.pData.fPoints; // I had to restructure the game manager a bit so i edited this
             coinUI.text = "FP: " + totalCoins;
 
             shopItemsSO[btnNo].isWeaponObtained = true;

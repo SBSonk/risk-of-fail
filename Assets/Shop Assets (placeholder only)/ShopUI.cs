@@ -15,6 +15,12 @@ public class ShopUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
+            isShopOpen = !isShopOpen; // Added toggle to adjust for gamemanager object existing between scenes
+
+            if (isShopOpen) SceneManager.LoadScene(1);
+            else SceneManager.LoadScene(0); 
+
+            /*
             if (isShopOpen == false)
             {
                 Debug.Log("Shop opened");
@@ -25,7 +31,7 @@ public class ShopUI : MonoBehaviour
             {
                 Debug.Log("Shop closed");
                 SceneManager.LoadScene(0);
-            }
+            }*/
         }
     }
 }

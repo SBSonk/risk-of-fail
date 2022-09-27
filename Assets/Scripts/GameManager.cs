@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public bool paused;
+    public GameData pData;
+    public Settings _settings;
+
     public static GameManager main;
-
-    public int score;
-
-    [SerializeField] int targetFPS = 60;
 
     [Header("Kill Bonus Points")]
     [SerializeField] float bonusKillTime = 5f;
@@ -24,56 +24,88 @@ public class GameManager : MonoBehaviour
     public delegate void OnEnemyKill();
     public static event OnEnemyKill onEnemyKilled;
 
-    void Start()
+    void Awake()
     {
-        if (main == null) main = this;
+        // Destroy duplicates
+        if (!main) main = this;
+        else Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
 
         // TODO: Create json file to store settings
 
-        // TODO: Load settings from json file
+        // TODO: Load settings from json file // TODO MAKE SETTINGS FILE
+        _settings = new Settings(75);
 
-        Application.targetFrameRate = targetFPS;
+        LoadSettings(_settings);
+
+        // TODO: Save/load player
     }
 
-    public void GiveScore(int baseAmount, float secondsBeforeDeath)
+    // Calculates score given for enemy deaths
+    public static void GiveScore(int baseAmount, float secondsBeforeDeath)
     {
-        if (onEnemyKilled != null) onEnemyKilled.Invoke();
-
-        score += baseAmount;
+        main.pData.fPoints += baseAmount;
 
         // Bonus points for killing early
-        if (secondsBeforeDeath <= bonusKillTime) score += bonusPoints;
+        if (secondsBeforeDeath <= main.bonusKillTime) main.pData.fPoints += main.bonusPoints;
 
         // Calculate killstreaks
-        float timeSinceLastKill = Time.time - lastKillTime;
-        if (timeSinceLastKill <= killStreakTimer)
+        float timeSinceLastKill = Time.time - main.lastKillTime;
+        if (timeSinceLastKill <= main.killStreakTimer)
         {
-            // Only give score if killstreak is started
-            if (currentStreak >= startStreakAmount)
+            // Only give playerData.fudgePoints if killstreak is started
+            if (main.currentStreak >= main.startStreakAmount)
             {
-                score += streakPoints * (currentStreak - startStreakAmount);
+                main.pData.fPoints += main.streakPoints * (main.currentStreak - main.startStreakAmount);
             }
 
-            if (currentStreak < (maxStreak + startStreakAmount)) currentStreak++;
+            if (main.currentStreak < (main.maxStreak + main.startStreakAmount)) main.currentStreak++;
         }
         else
         {
             // Remove killstreak
-            currentStreak = 0;
+            main.currentStreak = 0;
         }
 
-        lastKillTime = Time.time;
+        main.lastKillTime = Time.time;
+        if (onEnemyKilled != null) onEnemyKilled.Invoke();
+    }
+    // Sets the score
+    public static void SetScore(int amount)
+    {
+        main.pData.fPoints = amount;
+    }
+    // Adds weapon to inventory
+    public static void GiveWeapon(inventoryWeapon weapon)
+    {
+        weapon.Initialize();
+
+        main.pData.weaponsOwned.Add(weapon);
+    }
+    // Returns true if the weapon exists in the inventory
+    public static bool CheckIfWeaponOwned(Weapon type)
+    {
+        foreach (inventoryWeapon w in main.pData.weaponsOwned)
+        {
+            if (w.weapon.weaponName == type.weaponName) return true;
+        }
+        
+        return false;
     }
 
     [ContextMenu("Pause")]
-    public void Pause()
+    public void TogglePause()
     {
-        Time.timeScale = 0;
+        paused = !paused;
+
+        if (paused) Time.timeScale = 0;
+        else Time.timeScale = 1;
     }
 
-    [ContextMenu("Unpause")]
-    public void Unpause()
+    // TODO: 
+    public void LoadSettings(Settings settings)
     {
-        Time.timeScale = 1;
+        Application.targetFrameRate = settings.targetFPS;
     }
 }

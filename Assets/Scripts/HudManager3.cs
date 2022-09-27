@@ -51,6 +51,10 @@ public class HudManager3 : MonoBehaviour
         PlayerShooting.onReloadStart += StartReloadAnimation;
         PlayerShooting.onAmmoUpdate += UpdateAmmo;
         PlayerShooting.onWeaponSwitch += SwapWeapon;
+
+        // Initialize UI
+        UpdatePoints();
+        SwapWeapon();
     }
 
     private void OnDestroy()
@@ -77,7 +81,7 @@ public class HudManager3 : MonoBehaviour
 
     void UpdatePoints()
     {
-        fudgePointsText.text = GameManager.main.score.ToString("D5");
+        fudgePointsText.text = GameManager.main.pData.fPoints.ToString("D5");
     }
 
     void StartReloadAnimation()
@@ -97,6 +101,9 @@ public class HudManager3 : MonoBehaviour
 
     void SwapWeapon()
     {
+        // Cancel reload animation, if started
+        StopAllCoroutines();
+
         var currentWep = shooting.GetHeldWeapon().weapon;
         weaponSprite.sprite = currentWep.hudElement;
         weaponSprite.rectTransform.sizeDelta = new Vector2(currentWep.hudElement.rect.width, currentWep.hudElement.rect.height);
@@ -129,7 +136,7 @@ public class HudManager3 : MonoBehaviour
         {
             ammoTargetScale.x = currentTime / finishTime;
 
-            yield return new WaitForFixedUpdate();
+            yield return new WaitForEndOfFrame();
             currentTime = Time.time - startTime;
         }
 

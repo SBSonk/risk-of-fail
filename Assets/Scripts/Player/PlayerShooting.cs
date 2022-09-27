@@ -6,8 +6,8 @@ public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] Transform gunPivot, gunBarrel;
 
-    public List<inventoryWeapon> weaponPool;
-    public int currentWeaponIndex = 0;
+    List<inventoryWeapon> weaponPool;
+    int currentWeaponIndex = 0;
 
     public bool reloading;
     bool canShoot = true;
@@ -45,6 +45,9 @@ public class PlayerShooting : MonoBehaviour
 
     private void Start()
     {
+        // Grab inventory from playerData
+        weaponPool = GameManager.main.pData.weaponsOwned;
+
         // Initialize inventory
         foreach (inventoryWeapon w in weaponPool)
         {
@@ -59,11 +62,10 @@ public class PlayerShooting : MonoBehaviour
         float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
         gunPivot.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-        WeaponSwitching();
+        if (weaponPool.Count > 1) WeaponSwitching();
 
-        GunBehavior(GetHeldWeapon().weapon as Gun);
+        GunBehavior(GetHeldWeapon().weapon as Gun); // shouldnt be casting every frame
 
-        // Shoving // NEED TO REFACTOR
         Shoving();
 
         // Reloading
@@ -186,15 +188,16 @@ public class PlayerShooting : MonoBehaviour
 
         canShoot = false;
         reloading = true;
+
+        // Put back spare ammo in magazine to pool
+        weaponPool[currentWeaponIndex].pool += weaponPool[currentWeaponIndex].clip;
+        weaponPool[currentWeaponIndex].clip = 0;
+
         yield return new WaitForSeconds(weaponPool[currentWeaponIndex].weapon.reloadLength);
 
         // Cancel if stopped reloading
         if (reloading)
         {
-            // Put back spare ammo in magazine to pool
-            weaponPool[currentWeaponIndex].pool += weaponPool[currentWeaponIndex].clip;
-            weaponPool[currentWeaponIndex].clip = 0;
-
             int amountToReload = weaponPool[currentWeaponIndex].weapon.clipSize;
             if (amountToReload > weaponPool[currentWeaponIndex].pool)
             {
@@ -243,7 +246,7 @@ public class PlayerShooting : MonoBehaviour
     }
 
     public inventoryWeapon GetHeldWeapon()
-    {
+    { 
         return weaponPool[currentWeaponIndex];
     }
 }

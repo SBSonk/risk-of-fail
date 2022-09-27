@@ -145,7 +145,7 @@ public class PlayerAnimations : MonoBehaviour
 
     void ChangeWeaponSprite()
     {
-        weaponSprite.sprite = shooting.weaponPool[shooting.currentWeaponIndex].weapon.weaponSprite;
+        weaponSprite.sprite = shooting.GetHeldWeapon().weapon.weaponSprite;
     }
 
     void DodgeAnimation()

@@ -8,7 +8,7 @@ public class PickupBase : MonoBehaviour
     [SerializeField] protected Light _light;
     [SerializeField] protected GameObject sprite;
 
-    void Start()
+    protected virtual void Start()
     {
         // Destroy if not collected
         Destroy(transform.parent.gameObject, lifetime);

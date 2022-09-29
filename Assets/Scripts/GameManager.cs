@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     public delegate void OnEnemyKill();
     public static event OnEnemyKill onEnemyKilled;
 
+    public delegate void OnWeaponReceive();
+    public static event OnWeaponReceive onWeaponReceive;
+
     void Awake()
     {
         // Destroy duplicates
@@ -77,11 +80,13 @@ public class GameManager : MonoBehaviour
         main.pData.fPoints = amount;
     }
     // Adds weapon to inventory
-    public static void GiveWeapon(inventoryWeapon weapon)
+    public static void GiveWeapon(Weapon weapon)
     {
-        weapon.Initialize();
+        var invWep = new inventoryWeapon(weapon, 0, 0);
+        invWep.Initialize();
 
-        main.pData.weaponsOwned.Add(weapon);
+        main.pData.weaponsOwned.Add(invWep);
+        if (onWeaponReceive != null) onWeaponReceive.Invoke();
     }
     // Returns true if the weapon exists in the inventory
     public static bool CheckIfWeaponOwned(Weapon type)

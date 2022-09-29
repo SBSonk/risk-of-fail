@@ -20,6 +20,7 @@ public class PlayerAnimations : MonoBehaviour
     Directions currentDir = Directions.down;
     Vector2 input, dir;
     Transform cursor;
+    MoveCursor cursorScript;
     bool followCursor;
 
     [Header("Weapon")]
@@ -32,6 +33,7 @@ public class PlayerAnimations : MonoBehaviour
     private void Awake()
     {
         cursor = GameObject.Find("PlayerCursor").transform;
+        cursorScript = cursor.GetComponent<MoveCursor>();
         shooting = GetComponent<PlayerShooting>();
     }
 
@@ -42,6 +44,8 @@ public class PlayerAnimations : MonoBehaviour
         PlayerShooting.onPlayerShoot += ShootAnimation;
         PlayerStatus.onPlayerDamage += DamageAnimation;
         PlayerShooting.onShove += ShoveAnimation;
+
+        ChangeWeaponSprite();
     }
 
     private void OnDestroy()
@@ -152,7 +156,10 @@ public class PlayerAnimations : MonoBehaviour
 
     void ChangeWeaponSprite()
     {
-        weaponSprite.sprite = shooting.GetHeldWeapon().weapon.weaponSprite;
+        var weapon = shooting.GetHeldWeapon();
+        weaponSprite.sprite = weapon.weapon.weaponSprite;
+
+        cursorScript.ChangeCrosshair(weapon.weapon.crossHair);
     }
 
     void DodgeAnimation()

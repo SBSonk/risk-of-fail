@@ -6,6 +6,7 @@ public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] Transform gunPivot, gunBarrel;
 
+    public inventoryWeapon fallbackWep;
     List<inventoryWeapon> weaponPool;
     int currentWeaponIndex = 0;
 
@@ -19,8 +20,6 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] float radius;
     [SerializeField] float distance;
     [SerializeField] bool canShove = true;
-
-    MoveCursor cursor;
 
     // EVENTS
     public delegate void OnWeaponSwitch();
@@ -37,11 +36,6 @@ public class PlayerShooting : MonoBehaviour
 
     public delegate void OnShove();
     public static event OnShove onShove;
-
-    private void Awake()
-    {
-        cursor = GameObject.Find("PlayerCursor").GetComponent<MoveCursor>();
-    }
 
     private void Start()
     {
@@ -63,13 +57,14 @@ public class PlayerShooting : MonoBehaviour
         gunPivot.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
         if (weaponPool.Count > 1) WeaponSwitching();
+        else if (weaponPool.Count == 0) return;
 
         GunBehavior(GetHeldWeapon().weapon as Gun); // shouldnt be casting every frame
 
         Shoving();
 
         // Reloading
-        if (weaponPool[currentWeaponIndex].clip < weaponPool[currentWeaponIndex].weapon.clipSize && InputManager.reload && reloading == false) StartCoroutine(Reload());
+        if (GetHeldWeapon().clip < GetHeldWeapon().weapon.clipSize && InputManager.reload && reloading == false) StartCoroutine(Reload());
     }
 
     void WeaponSwitching()
@@ -82,9 +77,6 @@ public class PlayerShooting : MonoBehaviour
         // Dont allow weapon index to go below or above weapon count
         currentWeaponIndex %= weaponPool.Count;
         if (Mathf.Sign(currentWeaponIndex) < 0) currentWeaponIndex = weaponPool.Count - 1;
-
-        // Change Crosshair
-        cursor.ChangeCrosshair(weaponPool[currentWeaponIndex].weapon.crossHair);
 
         // Disable reloading
         canShoot = true;
@@ -139,30 +131,31 @@ public class PlayerShooting : MonoBehaviour
         if (!shooting) return;
 
         // Shooting and magazines
+        var weapon = GetHeldWeapon();
         if (g.clipSize > 0)
         {
             // Remove ammo in clip if the gun uses clips
-            if (weaponPool[currentWeaponIndex].clip >= g.ammoPerShot)
+            if (weapon.clip >= g.ammoPerShot)
             {
                 ShootGun(g);
 
-                weaponPool[currentWeaponIndex].clip -= g.ammoPerShot;
+                weapon.clip -= g.ammoPerShot;
 
                 if (onAmmoUpdate != null) onAmmoUpdate.Invoke();
             }
 
             // Autoreload if no ammo
-            if (weaponPool[currentWeaponIndex].clip == 0) StartCoroutine(Reload());
+            if (weapon.clip == 0) StartCoroutine(Reload());
         }
         else
         {
-            if (weaponPool[currentWeaponIndex].pool >= g.ammoPerShot)
+            if (weapon.pool >= g.ammoPerShot)
             {
                 ShootGun(g);
 
                 if (onPlayerShoot != null) onPlayerShoot.Invoke();
 
-                weaponPool[currentWeaponIndex].pool -= g.ammoPerShot;
+                weapon.pool -= g.ammoPerShot;
             }
         }
     }
@@ -246,7 +239,8 @@ public class PlayerShooting : MonoBehaviour
     }
 
     public inventoryWeapon GetHeldWeapon()
-    { 
+    {
+        if (weaponPool.Count == 0) return fallbackWep;
         return weaponPool[currentWeaponIndex];
     }
 }

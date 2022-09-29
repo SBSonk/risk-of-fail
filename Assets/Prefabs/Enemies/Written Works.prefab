@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2368033471053587658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2368033471186396239}
@@ -120,7 +120,7 @@ Transform:
   m_GameObject: {fileID: 2368033471186396242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.61, y: 4.42, z: 0}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2368033471053587657}
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 0.75
+  radius: 1
   height: 2
   canMove: 1
   maxSpeed: 15
@@ -245,7 +245,7 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: 15
   rotationSpeed: 360
-  slowdownDistance: 2.5
+  slowdownDistance: 3.125
   pickNextWaypointDist: 2
   endReachedDistance: 1.875
   alwaysDrawGizmos: 0
@@ -378,8 +378,8 @@ MonoBehaviour:
     dropAmount: 3
     minDropAmount: 0
   - obj: {fileID: 2766738602563172787, guid: 199e6106dc5d9ed4ab23b16e75f75fc9, type: 3}
-    dropChance: 40
-    dropAmount: 3
+    dropChance: 50
+    dropAmount: 5
     minDropAmount: 0
 --- !u!1 &6748765206576382295
 GameObject:
@@ -501,7 +501,7 @@ Transform:
   m_GameObject: {fileID: 8264481396096201135}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.05, y: 1.05, z: 1}
+  m_LocalScale: {x: 1.3125, y: 1.3125, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2368033471186396239}

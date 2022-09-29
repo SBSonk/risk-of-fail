@@ -39,6 +39,7 @@ public class PlayerAnimations : MonoBehaviour
     {
         PlayerMovement.onDodge += DodgeAnimation;
         PlayerShooting.onWeaponSwitch += ChangeWeaponSprite;
+        PlayerShooting.onPlayerShoot += ShootAnimation;
         PlayerStatus.onPlayerDamage += DamageAnimation;
         PlayerShooting.onShove += ShoveAnimation;
     }
@@ -47,6 +48,7 @@ public class PlayerAnimations : MonoBehaviour
     {
         PlayerMovement.onDodge -= DodgeAnimation;
         PlayerShooting.onWeaponSwitch -= ChangeWeaponSprite;
+        PlayerShooting.onPlayerShoot -= ShootAnimation;
         PlayerStatus.onPlayerDamage -= DamageAnimation;
         PlayerShooting.onShove -= ShoveAnimation;
     }
@@ -143,6 +145,11 @@ public class PlayerAnimations : MonoBehaviour
         }
     }
 
+    void ShootAnimation()
+    {
+        weaponAnimator.Play("ShootA", 0, 0f);
+    }
+
     void ChangeWeaponSprite()
     {
         weaponSprite.sprite = shooting.GetHeldWeapon().weapon.weaponSprite;
@@ -162,7 +169,7 @@ public class PlayerAnimations : MonoBehaviour
 
     void ShoveAnimation()
     {
-        weaponAnimator.Play("Shove");
+        weaponAnimator.Play("ShoveA");
     }
 
     void DamageAnimation()

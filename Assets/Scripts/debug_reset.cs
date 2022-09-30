@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class debug_reset : MonoBehaviour
 {
+    public KeyCode resetKey;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) SceneManager.LoadScene(0);
+        if (Input.GetKeyDown(resetKey)) SceneManager.LoadScene(0);
     }
 }

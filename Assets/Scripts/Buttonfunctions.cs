@@ -7,11 +7,16 @@ public class Buttonfunctions : MonoBehaviour
 {
     public void EnterShop ()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
     
     public void ExitShop ()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
+    }
+
+    public void Start()
+    {
+        SceneManager.LoadScene(1);
     }
 }

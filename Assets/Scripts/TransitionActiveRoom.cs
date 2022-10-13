@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TransitionActiveRoom : MonoBehaviour
 {
-    CameraFollow _camera;
+    public CameraFollow _camera;
     [SerializeField] float timeToDisappear = 0.5f;
     [SerializeField] Room lastRoom, newRoom;
 
@@ -18,7 +18,7 @@ public class TransitionActiveRoom : MonoBehaviour
         if (!collision.CompareTag("Player")) return;
 
         newRoom.gameObject.SetActive(true);
-        DisableLastRoom();
+        if (lastRoom) DisableLastRoom();
 
         // Convert local room bound to global
         CameraBounds x = ConvertLocalToGlobalBounds(newRoom.camBoundX, newRoom.transform.position.x);

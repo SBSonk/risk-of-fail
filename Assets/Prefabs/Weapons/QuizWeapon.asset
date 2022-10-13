@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: QuizWeapon
   m_EditorClassIdentifier: 
   weaponName: QUIZWEAPON
+  weaponDescription: 
+  weaponCost: 0
+  weaponStrength: 0
+  weaponFireRate: 0
+  weaponPiercing: 0
+  isWeaponObtained: 0
   hudElement: {fileID: 0}
   crossHair: {fileID: 0}
   weaponSprite: {fileID: 0}
@@ -30,7 +36,7 @@ MonoBehaviour:
   reloadLength: 0
   fireRate: 0.75
   auto: 1
-  bulletVelocity: 3
+  bulletVelocity: 2.5
   pierceAmount: 0
   bullet: {fileID: 6245270692030926925, guid: edbc435772d2add44ac90a03ecdd0cab, type: 3}
   minDamage: 5

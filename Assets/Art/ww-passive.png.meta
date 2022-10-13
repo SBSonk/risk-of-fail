@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 17b6a6e0078d8114d9525af59731d6ae
+guid: c18925b3de60cce498b1072b091c46a2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -44,10 +44,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -116,76 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: floor_A
+      name: ww-passive_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 480
-        width: 48
-        height: 47
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c51c04bb504e1bd44adb913416b3d4bd
-      internalID: -1017283300
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: floor_B
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 480
-        width: 48
-        height: 47
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 29000eacff86a00419f3763ae1ff7d7a
-      internalID: 1246256030
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: floor_C
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 480
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2b6bc7a81885e2d4a921116b4d5bc560
-      internalID: -639313339
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tiles
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 672
-        width: 48
-        height: 48
+        x: 37
+        y: 584
+        width: 106
+        height: 66
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,8 +130,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d59cd4e47fc463b4dbc8a7f38f00d993
-      internalID: 1908642359
+      spriteID: be0f9dca70463e2498ea38c2fe1b4617
+      internalID: -66525278
       vertices: []
       indices: 
       edges: []
@@ -210,10 +147,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      floor_B: 1246256030
-      Tiles: 1908642359
-      floor_A: -1017283300
-      floor_C: -639313339
+      ww-passive_0: -66525278
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

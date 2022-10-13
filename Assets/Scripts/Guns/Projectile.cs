@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Projectile : MonoBehaviour
 {
     [SerializeField] ParticleSystem hitmarker;
-    [SerializeField] Light _light;
+    [SerializeField] Light2D     _light;
     public Rigidbody2D rb;
     public GameObject sprite, shooter;
 

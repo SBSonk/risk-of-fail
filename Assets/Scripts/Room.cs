@@ -5,6 +5,7 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     public CameraBounds camBoundX, camBoundY;
+    Spawning2 spawns;
     Animator anim;
 
     private void Awake()
@@ -14,17 +15,12 @@ public class Room : MonoBehaviour
 
     public void DeactivateRoom(float t)
     {
-        anim.Play("RoomFadeout");
-
-        // Deactivate self
+        // Deactivate spawning
         Invoke("Deactivate", t);
     }
 
     void Deactivate()
     {
-        gameObject.SetActive(false);
-
-        // Recalculate AI path
-        AstarPath.active.Scan();
+        spawns.enabled = false;
     }
 }

@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class PickupBase : MonoBehaviour
 {
     [SerializeField] float lifetime = 5;
 
     [SerializeField] protected ParticleSystem particles;
-    [SerializeField] protected Light _light;
+    [SerializeField] protected Light2D _light;
     [SerializeField] protected GameObject sprite;
 
     protected virtual void Start()

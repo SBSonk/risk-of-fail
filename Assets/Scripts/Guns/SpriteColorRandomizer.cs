@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class SpriteColorRandomizer : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class SpriteColorRandomizer : MonoBehaviour
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] TrailRenderer trail;
     [SerializeField] ParticleSystem hitmarker;
-    [SerializeField] Light light;
+    [SerializeField] Light2D light;
 
     private void Start()
     {

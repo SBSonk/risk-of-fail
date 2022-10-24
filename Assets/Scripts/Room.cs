@@ -4,23 +4,16 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    public CameraBounds camBoundX, camBoundY;
-    Spawning2 spawns;
-    Animator anim;
+    [SerializeField] GameObject collision;
+    [SerializeField] Spawning2 spawner;
 
-    private void Awake()
+    public void ToggleRoom(bool val)
     {
-        anim = GetComponent<Animator>();
+        collision.SetActive(val);
     }
 
-    public void DeactivateRoom(float t)
+    public void ToggleSpawns(bool val)
     {
-        // Deactivate spawning
-        Invoke("Deactivate", t);
-    }
-
-    void Deactivate()
-    {
-        spawns.enabled = false;
+        spawner.enabled = val;
     }
 }

@@ -20,9 +20,6 @@ public class CameraFollow : MonoBehaviour
     {
         desiredPos = (Vector3) player.position + offset;
 
-        desiredPos.x = Mathf.Clamp(desiredPos.x, currentBoundsX.min, currentBoundsX.max);
-        desiredPos.y = Mathf.Clamp(desiredPos.y, currentBoundsY.min, currentBoundsY.max);
-
         transform.position = Vector3.Lerp(transform.position, desiredPos, lerpVal);
     }
 

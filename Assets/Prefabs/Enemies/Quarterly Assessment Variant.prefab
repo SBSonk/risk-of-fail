@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 732393027665513984}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8823955925931763797
 SpriteRenderer:
@@ -143,7 +143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2219022232448680281, guid: c4c36b15bc4ca574888bb7f3faf31040, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2219022232448680281, guid: c4c36b15bc4ca574888bb7f3faf31040, type: 3}
       propertyPath: m_LocalPosition.x
@@ -423,27 +423,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2368033471186396242, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
   m_PrefabInstance: {fileID: 3095391800470612559}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3285827685139795155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732393027665514013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b3deb51d6eaf5c4c98759bd61677aa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseDamage: 20
-  stunLength: 0.5
-  knockbackAmount: 52.5
-  reboundLength: 20
-  rushDistance: 9
-  mode: 0
-  EKUSPUROSION: {fileID: 6354757094228815733}
-  dmg: 100
-  stn: 5
 --- !u!95 &1221863226
 Animator:
   serializedVersion: 4
@@ -464,3 +443,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3285827685139795155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732393027665514013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3deb51d6eaf5c4c98759bd61677aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 5
+  stunLength: 0.5
+  knockbackAmount: 52.5
+  reboundLength: 20
+  rushDistance: 9
+  mode: 0
+  EKUSPUROSION: {fileID: 651265893}
+  dmg: 25
+  stn: 5

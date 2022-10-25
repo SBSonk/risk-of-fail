@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Spawning2 : MonoBehaviour
 {
@@ -9,12 +10,15 @@ public class Spawning2 : MonoBehaviour
     [SerializeField] Transform[] spawnPoints;
     [SerializeField] enemySpawn[] enemies;
 
+    int enemiesKilled = 0;
+    public UnityEvent OnEnemyKilled;
+
     // Type Counts
-    static Spawning2 main;
+    public static Spawning2 active;
 
     void Start()
     {
-        if (!main) main = this;
+        if (!active) active = this;
 
         // Repeating spawns
         Invoke("TrySpawn", respawnWaveTime);
@@ -59,11 +63,13 @@ public class Spawning2 : MonoBehaviour
     public static void enemyDeath(EnemyType type)
     {
         // Get types
-        for (int i = 0; i < main.enemies.Length; i++)
+        for (int i = 0; i < active.enemies.Length; i++)
         {
-            if (main.enemies[i].type == type)
+            if (active.enemies[i].type == type)
             {
-                main.enemies[i].alive--;
+                active.enemies[i].alive--;
+                active.enemiesKilled++;
+                active.OnEnemyKilled?.Invoke();
                 return;
             }
         }

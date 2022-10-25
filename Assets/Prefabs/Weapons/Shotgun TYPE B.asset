@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: Shotgun TYPE B
   m_EditorClassIdentifier: 
   weaponName: Brush DEBUG
+  weaponDescription: 
+  weaponCost: 0
+  weaponStrength: 0
+  weaponFireRate: 0
+  weaponPiercing: 0
+  isWeaponObtained: 0
   hudElement: {fileID: 0}
   crossHair: {fileID: 0}
   weaponSprite: {fileID: 0}
@@ -30,7 +36,7 @@ MonoBehaviour:
   reloadLength: 0
   fireRate: 0.2
   auto: 1
-  bulletVelocity: 7
+  bulletVelocity: 4
   pierceAmount: 2
   bullet: {fileID: 9076594935915685230, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
   pelletCount: 3

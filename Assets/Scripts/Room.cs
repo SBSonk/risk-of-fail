@@ -5,7 +5,7 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     [SerializeField] GameObject collision;
-    [SerializeField] Spawning2 spawner;
+    public Spawning2 spawner;
 
     public void ToggleRoom(bool val)
     {

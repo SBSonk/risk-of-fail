@@ -30,10 +30,21 @@ public class Weapon : ScriptableObject
     public float reloadLength = 0; // Reload time in seconds   
     public float fireRate = 1f; // Firerate in seconds
     public bool auto = false; // Determines if you can hold left click
+
+    [Header("Weapon Animations")]
+    public AnimationTypes animType = AnimationTypes.Light;
     
     // Left click attack
     public virtual void ShootWeapon(Transform player)
     {
         return;
     }
+}
+
+[System.Serializable]
+public enum AnimationTypes
+{
+    Light = 'A',
+    Brush = 'B',
+    Heavy = 'C'
 }

@@ -219,7 +219,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1855075295}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4139999, y: 0, z: 0}
+  m_LocalPosition: {x: 1.463, y: -0.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -331,15 +331,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -509436220, guid: aa706a9513e7ed4499d4445eba6fdf6c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 0.4375}
+  m_Size: {x: 1.3, y: 1.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2223588944474196829
@@ -559,7 +559,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.3}
   serializedVersion: 2
   m_Radius: 0.5
 --- !u!114 &2223588945008610395
@@ -602,13 +602,14 @@ MonoBehaviour:
   animator: {fileID: 980274054001023296}
   weaponAnimator: {fileID: 725625596}
   trail: {fileID: 2223588944474196827}
-  trailLifetime: 0.5
+  trailLifetime: 0.25
   dodgeScreenshake:
     duration: 0.1
     magnitude: 0.5
     shakespeed: 0.05
   sprite: {fileID: 2223588945330593513}
   stopCursorFollowTime: 1.5
+  heldWeapon: {fileID: 0}
   weaponSprite: {fileID: 8643637572296311204}
   weapon: {fileID: 7556428757749679433}
   weaponLerp: 0.5
@@ -625,8 +626,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7000
-  dodgeForce: 50
-  dodgeCooldown: 1
+  dodgeForce: 30
+  dodgeCooldown: 0.75
 --- !u!114 &2223588945008610385
 MonoBehaviour:
   m_ObjectHideFlags: 0

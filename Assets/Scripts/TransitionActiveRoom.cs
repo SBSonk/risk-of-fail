@@ -12,5 +12,6 @@ public class TransitionActiveRoom : MonoBehaviour
 
         lastRoom.ToggleRoom(false);
         newRoom.ToggleRoom(true);
+        Spawning2.active = newRoom.spawner;
     }
 }

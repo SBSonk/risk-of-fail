@@ -24,6 +24,8 @@ public class PlayerAnimations : MonoBehaviour
     bool followCursor;
 
     [Header("Weapon")]
+    [SerializeField] Weapon heldWeapon;
+    string animType = "A";
     [SerializeField] SpriteRenderer weaponSprite;
     [SerializeField] Transform weapon;
     [SerializeField] float weaponLerp = 0.5f;
@@ -153,7 +155,11 @@ public class PlayerAnimations : MonoBehaviour
 
     void ShootAnimation()
     {
-        weaponAnimator.Play("ShootA", 0, 0f);
+        weaponAnimator.CrossFade("Shoot" + animType, .25f, 0, 0f);
+    }
+    void ShoveAnimation()
+    {
+        weaponAnimator.CrossFade("Shove" + animType, .25f);
     }
 
     void ChangeWeaponSprite()
@@ -161,6 +167,29 @@ public class PlayerAnimations : MonoBehaviour
         print("swap");
         var weapon = shooting.GetHeldWeapon();
         weaponSprite.sprite = weapon.weapon.weaponSprite;
+
+        heldWeapon = weapon.weapon;
+
+        switch(heldWeapon.animType)
+        {
+            case AnimationTypes.Light:
+                animType = "A";
+                break;
+
+            case AnimationTypes.Brush:
+                animType = "B";
+                break;
+
+            case AnimationTypes.Heavy:
+                animType = "C";
+                break;
+
+            default:
+                animType = "A";
+                break;
+        }
+
+        weaponAnimator.CrossFade("Hold" + animType, .25f);
 
         cursorScript.ChangeCrosshair(weapon.weapon.crossHair);
     }
@@ -173,14 +202,11 @@ public class PlayerAnimations : MonoBehaviour
 
         // Face the direction when dodging
         StopCursorFollow();
+        weaponAnimator.CrossFade("Hold" + animType, .25f);
 
         CameraFunctions.main.DoScreenShake(dodgeScreenshake);
     }
 
-    void ShoveAnimation()
-    {
-        weaponAnimator.Play("ShoveA");
-    }
 
     void DamageAnimation()
     {
@@ -202,10 +228,10 @@ public class PlayerAnimations : MonoBehaviour
     {
         Directions final = currentDir;
 
-        if (input.y > 0.5f) final = Directions.up;
-        else if (input.y < -0.5f) final = Directions.down;
-        else if (input.x > 0.5f) final = Directions.right;
+        if (input.x > 0.5f) final = Directions.right;
         else if (input.x < -0.5f) final = Directions.left;
+        else if (input.y > 0.5f) final = Directions.up;
+        else if (input.y < -0.5f) final = Directions.down;
 
         return final;
     }

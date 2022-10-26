@@ -21,6 +21,8 @@ public class Projectile : MonoBehaviour
     {
         if (!active || objectsHit.Contains(collision.gameObject.GetInstanceID())) return;
 
+        if (collision.CompareTag("CanBePenetrated")) return;
+
         // Stop colliding again with the same object
         objectsHit.Add(collision.gameObject.GetInstanceID());
 
@@ -44,7 +46,7 @@ public class Projectile : MonoBehaviour
         hitmarker.Play();
 
         // Piercing
-        if (pierces == 0 || collision.CompareTag("Environment"))
+        if (pierces == 0 || collision.CompareTag("Wall"))
         {
             rb.velocity = Vector2.zero;
             sprite.SetActive(false);
@@ -58,6 +60,6 @@ public class Projectile : MonoBehaviour
         // Reduce damage every pierce
         damage /= 1.25f;
 
-        pierces--;
+        if (collision.CompareTag("Alive")) pierces--;
     }
 }

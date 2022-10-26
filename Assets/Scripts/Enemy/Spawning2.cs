@@ -56,11 +56,13 @@ public class Spawning2 : MonoBehaviour
     {
         // Choose where to spawn
         int point = Random.Range(0, spawnPoints.Length);
-        Instantiate(enemy.prefab, position: spawnPoints[point].position, Quaternion.identity, transform);
+        var _enemy = Instantiate(enemy.prefab, position: spawnPoints[point].position, Quaternion.identity, transform).GetComponent<Enemy>();
+
+        _enemy.onEnemyDeath.AddListener(enemyDeath);
     }
 
     // Reduce enemy count when an enemy dies
-    public static void enemyDeath(EnemyType type)
+    void enemyDeath(EnemyType type)
     {
         // Get types
         for (int i = 0; i < active.enemies.Length; i++)

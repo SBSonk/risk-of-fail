@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using Pathfinding;
 
 public class Enemy : Alive
@@ -25,6 +26,8 @@ public class Enemy : Alive
     Transform healthBar;
     protected AIPath pathAI;
     protected bool afterStun;
+
+    public UnityEvent<EnemyType> onEnemyDeath;
 
     protected void Start()
     {
@@ -84,7 +87,7 @@ public class Enemy : Alive
         GameManager.GiveScore(killScore, lifetime);
 
         // Reduce alive enemies for the spawner
-        Spawning2.enemyDeath(type);
+        onEnemyDeath?.Invoke(type);
 
         base.OnDeath();
     }

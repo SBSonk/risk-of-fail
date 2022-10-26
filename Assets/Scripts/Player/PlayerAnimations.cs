@@ -234,15 +234,18 @@ public class PlayerAnimations : MonoBehaviour
         else if (input.y < -0.5f) final = Directions.down;
 
         return final;
-    }
+    }   
 
     void StopCursorFollow()
     {
         followCursor = false;
     }
 
-    enum Directions
-    {
-        up, right, down, left
-    }
+
+}
+
+[System.Serializable]
+public enum Directions
+{
+    up, right, down, left
 }

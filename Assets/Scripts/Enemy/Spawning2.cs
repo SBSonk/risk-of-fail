@@ -9,6 +9,7 @@ public class Spawning2 : MonoBehaviour
     [SerializeField] ushort minSpawnsPerWave = 1, maxSpawnsPerWave = 2;
     [SerializeField] Transform[] spawnPoints;
     [SerializeField] enemySpawn[] enemies;
+    [SerializeField] bool spawnOnStart;
 
     int enemiesKilled = 0;
     public UnityEvent OnEnemyKilled, OnEnemySpawn;
@@ -21,7 +22,8 @@ public class Spawning2 : MonoBehaviour
         if (!active) active = this;
 
         // Repeating spawns
-        Invoke("TrySpawn", respawnWaveTime);
+        if (spawnOnStart) TrySpawn();
+        else Invoke("TrySpawn", respawnWaveTime);
     }
 
     void TrySpawn()

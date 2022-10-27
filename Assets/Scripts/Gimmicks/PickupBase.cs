@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Events;
 
 public class PickupBase : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class PickupBase : MonoBehaviour
     [SerializeField] protected ParticleSystem particles;
     [SerializeField] protected Light2D _light;
     [SerializeField] protected GameObject sprite;
+
+    public UnityEvent OnPickupCollect;
 
     protected virtual void Start()
     {
@@ -26,6 +29,8 @@ public class PickupBase : MonoBehaviour
 
     protected void PlayPickupAnimation()
     {
+        OnPickupCollect?.Invoke();
+
         // Disable hitbox to remove double collision
         GetComponent<Collider2D>().enabled = false;
 

@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 656985804303822169, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_Intensity
-      value: 0.5
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 656985804303822169, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 986840169310017381, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_LocalScale.x
@@ -69,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 986840170020990974, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_Name
-      value: WeaponPickuo
+      value: WeaponPickup Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}

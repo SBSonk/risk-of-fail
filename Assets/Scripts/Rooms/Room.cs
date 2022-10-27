@@ -7,15 +7,16 @@ public class Room : MonoBehaviour
     public Spawning2 spawner;
 
     public UnityEvent OnRoomEnter;
+    public bool active = false;
 
     public void ToggleRoom(bool val)
     {
-        if (val && collision.activeInHierarchy == false)
+        if (!active && val)
         {
             OnRoomEnter?.Invoke();
         }
 
-        collision.SetActive(val);
+        active = val;
     }
 
     public void ToggleSpawns(bool val)

@@ -2017,6 +2017,7 @@ GameObject:
   - component: {fileID: 361123970}
   - component: {fileID: 361123969}
   - component: {fileID: 361123971}
+  - component: {fileID: 361123972}
   m_Layer: 0
   m_Name: Classroom
   m_TagString: Untagged
@@ -2085,6 +2086,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnEnemySpawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &361123970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2178,6 +2182,23 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   killsNeeded: 10
+  active: 1
+--- !u!114 &361123972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361123967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6323f09189c2f94f95166fb0d3166f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnCounterComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  spawnsNeeded: 10
   active: 1
 --- !u!1 &368283059
 GameObject:
@@ -2860,6 +2881,9 @@ MonoBehaviour:
   OnEnemyKilled:
     m_PersistentCalls:
       m_Calls: []
+  OnEnemySpawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &466773397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3225,6 +3249,9 @@ MonoBehaviour:
   spawnPoints: []
   enemies: []
   OnEnemyKilled:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEnemySpawn:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &519575590
@@ -6022,19 +6049,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8374135266236517900, guid: 214e957eee610e941b81dd3277b14099, type: 3}
       propertyPath: currentBoundsX.max
-      value: 1.8
+      value: 33.5
       objectReference: {fileID: 0}
     - target: {fileID: 8374135266236517900, guid: 214e957eee610e941b81dd3277b14099, type: 3}
       propertyPath: currentBoundsX.min
-      value: -1.8
+      value: -40.54
       objectReference: {fileID: 0}
     - target: {fileID: 8374135266236517900, guid: 214e957eee610e941b81dd3277b14099, type: 3}
       propertyPath: currentBoundsY.max
-      value: 2
+      value: 22.8
       objectReference: {fileID: 0}
     - target: {fileID: 8374135266236517900, guid: 214e957eee610e941b81dd3277b14099, type: 3}
       propertyPath: currentBoundsY.min
-      value: -2
+      value: -20.75
       objectReference: {fileID: 0}
     - target: {fileID: 8374135266236517901, guid: 214e957eee610e941b81dd3277b14099, type: 3}
       propertyPath: m_Name
@@ -6046,11 +6073,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8374135266236517903, guid: 214e957eee610e941b81dd3277b14099, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -55.25
+      value: 33.57
       objectReference: {fileID: 0}
     - target: {fileID: 8374135266236517903, guid: 214e957eee610e941b81dd3277b14099, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.5
+      value: -7.8
       objectReference: {fileID: 0}
     - target: {fileID: 8374135266236517903, guid: 214e957eee610e941b81dd3277b14099, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6810,6 +6837,9 @@ MonoBehaviour:
   spawnPoints: []
   enemies: []
   OnEnemyKilled:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEnemySpawn:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1046539154
@@ -8208,7 +8238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372596930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.5, y: -30.5, z: 0}
+  m_LocalPosition: {x: 10.214286, y: -30.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9918,7 +9948,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680607505}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.75, y: -30.5, z: 0}
+  m_LocalPosition: {x: -7.202381, y: -16.214285, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9969,6 +9999,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2223588945008610385, guid: bf96d317047eae34cb09ea331085a826, type: 3}
+      propertyPath: radius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223588945008610385, guid: bf96d317047eae34cb09ea331085a826, type: 3}
+      propertyPath: distance
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2223588945008610394, guid: bf96d317047eae34cb09ea331085a826, type: 3}
       propertyPath: m_Offset.y
       value: -0.3
@@ -9987,11 +10025,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2223588945008610397, guid: bf96d317047eae34cb09ea331085a826, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -55.25
+      value: -58
       objectReference: {fileID: 0}
     - target: {fileID: 2223588945008610397, guid: bf96d317047eae34cb09ea331085a826, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.5
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 2223588945008610397, guid: bf96d317047eae34cb09ea331085a826, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10493,6 +10531,9 @@ MonoBehaviour:
   spawnPoints: []
   enemies: []
   OnEnemyKilled:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEnemySpawn:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1778219895
@@ -11691,7 +11732,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2023133048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16, y: -30.5, z: 0}
+  m_LocalPosition: {x: -11.238095, y: -30.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

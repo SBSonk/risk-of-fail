@@ -11,7 +11,7 @@ public class Spawning2 : MonoBehaviour
     [SerializeField] enemySpawn[] enemies;
 
     int enemiesKilled = 0;
-    public UnityEvent OnEnemyKilled;
+    public UnityEvent OnEnemyKilled, OnEnemySpawn;
 
     // Type Counts
     public static Spawning2 active;

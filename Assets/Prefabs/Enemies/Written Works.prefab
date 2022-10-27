@@ -326,8 +326,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa9257c3dbd05174ebea2f33b3ce015b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 80
-  maxHealth: 80
+  health: 60
+  maxHealth: 60
   damageCooldown: 0
   damageReduction: 1
   statusEffectTickrate: 1
@@ -344,6 +344,9 @@ MonoBehaviour:
   speedLerp: 0.125
   attackScript: {fileID: 1996329252}
   rb: {fileID: 0}
+  onEnemyDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1996329252
 MonoBehaviour:
   m_ObjectHideFlags: 0

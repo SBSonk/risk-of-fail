@@ -1,19 +1,19 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class RoomKillCounter : MonoBehaviour
+public class RoomSpawnCounter : MonoBehaviour
 {
     public UnityEvent OnCounterComplete;
-    public int killsNeeded;
+    public int spawnsNeeded = 10;
     public bool active = true;
 
-    public void AddKill()
+    public void AddSpawn()
     {
         if (!active) return;
 
-        killsNeeded--;
+        spawnsNeeded--;
 
-        if (killsNeeded == 0)
+        if (spawnsNeeded == 0)
         {
             OnCounterComplete?.Invoke();
             active = false;

@@ -97,6 +97,7 @@ public class Enemy : Alive
         // Can't get stunned twice
         if (stunned) return;
 
+        onStunned?.Invoke(duration);
         stunned = true;
         pathAI.canMove = false;
         pathAI.maxSpeed = 0;

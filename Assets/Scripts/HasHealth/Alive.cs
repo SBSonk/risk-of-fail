@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 // This script is only meant to be inherited by other objects (players, anything that has health)
 public class Alive : MonoBehaviour
@@ -14,9 +15,11 @@ public class Alive : MonoBehaviour
     public List<StatusEffect> statuses;
     public GameObject damageIndicatorPrefab;
 
-    protected bool stunned;
+    public bool stunned;
     bool canBeDamaged = true;
     bool dead;
+
+    public UnityEvent<float> onStunned;
 
     // Applies damage and returns damage taken
     public float GiveDamage(float amount, float stunLength, StatusEffect effect = null)

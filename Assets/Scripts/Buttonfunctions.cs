@@ -15,7 +15,7 @@ public class Buttonfunctions : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public void Start()
+    public void Play()
     {
         SceneManager.LoadScene(1);
     }

@@ -137,7 +137,7 @@ public class PlayerShooting : MonoBehaviour
             }
 
             // Autoreload if no ammo
-            if (weapon.clip == 0) StartCoroutine(Reload());
+            if (weapon.clip == 0 && reloading == false) StartCoroutine(Reload());
         }
         else
         {
@@ -169,7 +169,7 @@ public class PlayerShooting : MonoBehaviour
         if (weaponPool[currentWeaponIndex].pool == 0) yield break;
 
         // Begin Reload
-        if (onReloadStart != null) onReloadStart.Invoke();
+        onReloadStart?.Invoke();
 
         canShoot = false;
         reloading = true;
@@ -195,10 +195,12 @@ public class PlayerShooting : MonoBehaviour
                 weaponPool[currentWeaponIndex].pool -= amountToReload;
             }
 
+            onAmmoUpdate?.Invoke();
+
+            yield return new WaitForSeconds(0.25f);
+
             reloading = false;
             canShoot = true;
-
-            if (onAmmoUpdate != null) onAmmoUpdate.Invoke();
         }
     }
 

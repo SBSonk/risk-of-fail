@@ -26,6 +26,8 @@ public class HudManager3 : MonoBehaviour
     [SerializeField] Color defaultColor = Color.white;
     [SerializeField] Color reloadingColor = Color.cyan;
     Vector3 ammoTargetScale = Vector3.one;
+    [SerializeField] RectTransform ammoDivisionTransform;
+    [SerializeField] GameObject ammoDivision;
 
     [Header("Weapon Stats")]
     [SerializeField] Image strength;
@@ -117,6 +119,27 @@ public class HudManager3 : MonoBehaviour
         piercing.sprite = barStates[currentWep.weaponPiercing];
 
         animator.Play("SwapWeapon", 0, 0);
+
+        // Clear ammo division children
+        if (ammoDivisionTransform.childCount > 0)
+        {
+            RectTransform[] children = ammoDivisionTransform.GetComponentsInChildren<RectTransform>();
+            for (int i = 1; i < children.Length; i++)
+            {
+                Destroy(children[i].gameObject);
+            }
+        }
+
+        float distance = ammoDivisionTransform.sizeDelta.x;
+        distance /= currentWep.clipSize;
+            
+        // Remake ammo divisions
+        for (int i = 1; i < currentWep.clipSize; i++)
+        {
+            var trans = Instantiate(ammoDivision, ammoDivisionTransform).GetComponent<RectTransform>();
+            trans.position = ammoDivisionTransform.position;
+            trans.localPosition += Vector3.right * i * distance;
+        }
 
         UpdateAmmo();
     }

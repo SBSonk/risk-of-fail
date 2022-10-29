@@ -164,8 +164,8 @@ public class PlayerAnimations : MonoBehaviour
 
     void ChangeWeaponSprite()
     {        
-        print("swap");
         var weapon = shooting.GetHeldWeapon();
+
         weaponSprite.sprite = weapon.weapon.weaponSprite;
 
         heldWeapon = weapon.weapon;

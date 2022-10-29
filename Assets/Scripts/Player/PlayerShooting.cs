@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    [SerializeField] Transform gunPivot, gunBarrel;
+    [SerializeField] Transform gunPivot, gunBarrel, cursor;
 
     public inventoryWeapon fallbackWep;
     List<inventoryWeapon> weaponPool;
@@ -18,7 +18,6 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] float shoveStunTime = 1f;
     [SerializeField] float shoveCooldown = 1f;
     [SerializeField] float radius;
-    [SerializeField] float distance;
     [SerializeField] bool canShove = true;
 
     // EVENTS
@@ -89,21 +88,17 @@ public class PlayerShooting : MonoBehaviour
     {
         if (!InputManager.shove || !canShove) return;
 
-        if (onShove != null) onShove.Invoke();
+        onShove?.Invoke();
 
         // Check all objects in radius in front of shootpivot
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, radius, gunBarrel.right, distance);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position + (cursor.position - transform.position).normalized, radius);
         if (hits.Length == 0) return;
 
-        // Check if theyre alive
-        foreach (RaycastHit2D h in hits)
+        foreach (Collider2D h in hits)
         {
-            Enemy enemy = h.collider.GetComponent<Enemy>();
+            Enemy enemy = h.GetComponent<Enemy>();
             if (enemy)
             {
-                print(enemy.gameObject.name);
-
-                // Stun enemy
                 enemy.Stun(shoveStunTime);
 
                 // Knockback
@@ -111,7 +106,6 @@ public class PlayerShooting : MonoBehaviour
             }
         }
 
-        // Cooldown
         canShove = false;
         Invoke("EnableShove", shoveCooldown);
     }
@@ -119,7 +113,6 @@ public class PlayerShooting : MonoBehaviour
     // Handle shooting of GUN type weapons
     void GunBehavior(Gun g)
     {
-        // Don't let player shoot if reloading
         if (!canShoot) return;
 
         // Check if firing semi auto or full auto
@@ -127,7 +120,6 @@ public class PlayerShooting : MonoBehaviour
         if (g.auto) shooting = InputManager.shootAuto;
         else shooting = InputManager.shoot;
 
-        // Cancel if not shooting
         if (!shooting) return;
 
         // Shooting and magazines

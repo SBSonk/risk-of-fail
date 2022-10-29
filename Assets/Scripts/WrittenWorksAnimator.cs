@@ -11,6 +11,7 @@ public class WrittenWorksAnimator : MonoBehaviour
     Directions dirFacing = Directions.down;
     AIPath pathing;
     Enemy enemy;
+    [SerializeField] ParticleSystem deathParticles;
 
     public bool canSwitchAnimations = true;
 
@@ -95,4 +96,10 @@ public class WrittenWorksAnimator : MonoBehaviour
 
     void EnableAnimations() { canSwitchAnimations = true; }
 
+    public void DeathAnimation()
+    {
+        deathParticles.transform.SetParent(null);
+        Destroy(deathParticles.gameObject, 2f);
+        deathParticles.Play();
+    }
 }

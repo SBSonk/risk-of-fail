@@ -15,9 +15,21 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.015686275
       objectReference: {fileID: 0}
+    - target: {fileID: 986840169310017381, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 986840169310017381, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 986840169310017382, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 124569710, guid: 9c79dfb6b781d504180710b442fa70b5, type: 3}
     - target: {fileID: 986840169310017382, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.6839622
       objectReference: {fileID: 0}
     - target: {fileID: 986840169310017382, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_Color.g
@@ -25,7 +37,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 986840169310017382, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_Color.r
-      value: 0.14631534
+      value: 0.72419447
       objectReference: {fileID: 0}
     - target: {fileID: 986840170020990970, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_RootOrder
@@ -135,8 +147,11 @@ MonoBehaviour:
   particles: {fileID: 245827447789023920}
   _light: {fileID: 7005203734361562042}
   sprite: {fileID: 7320771971184320903}
-  amount: 5
-  minAmount: 1
+  OnPickupCollect:
+    m_PersistentCalls:
+      m_Calls: []
+  amount: 10
+  minAmount: 5
 --- !u!114 &7005203734361562042 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 656985804303822169, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}

@@ -32,40 +32,49 @@ public class WrittenWorksAttack : MonoBehaviour
         switch (mode)
         {
             case AIMode.pathing:
-                // Check if near push threshhold       
                 if (distance <= rushDistance) switchState(AIMode.pushing);
         
-                // Pathfind to where the player will be
                 ai.destination = playerPositionToFollow();
-
                 break;
 
             case AIMode.pushing:
-                // Check if the player is far
                 if (distance > rushDistance) switchState(AIMode.pathing);
 
-                // Pathfind to exactly where the player is
                 ai.destination = player.position;
+                break;
 
+            case AIMode.attacking:
+                // disable movement for a few ms
+
+                // attack
+
+                mode = AIMode.pathing;
                 break;
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        // Return if the player isnt the one colliding
         if (!collision.CompareTag("Player")) return;
 
+        // Stop moving
+
+        mode = AIMode.attacking;
         AttackPlayer(collision);
     }
 
-    // Choose where to target player
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Player")) return;
+
+        mode = AIMode.pathing;
+    }
+
     protected virtual Vector3 playerPositionToFollow()
     {
         return (Vector3)player.position + (followDirection * (player.velocity.magnitude / 2));
     }
 
-    // Attacks player
     protected virtual void AttackPlayer(Collider2D collision)
     {
         Rigidbody2D playerRb = collision.GetComponent<Rigidbody2D>();
@@ -73,7 +82,6 @@ public class WrittenWorksAttack : MonoBehaviour
         // Give player knockback
         playerRb.AddForce(transform.up.normalized * knockbackAmount, ForceMode2D.Impulse);
 
-        // Damage and Stun player
         collision.GetComponent<PlayerStatus>().GiveDamage(baseDamage, stunLength);
 
         // Knock self back

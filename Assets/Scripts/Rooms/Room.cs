@@ -21,6 +21,8 @@ public class Room : MonoBehaviour
 
     public void ToggleSpawns(bool val)
     {
+        if (!spawner) return;
+
         spawner.enabled = val;
 
         if (!val) spawner.CancelInvoke();

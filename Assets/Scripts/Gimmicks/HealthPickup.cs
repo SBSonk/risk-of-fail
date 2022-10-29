@@ -13,10 +13,13 @@ public class HealthPickup : PickupBase
         // Return if the player isnt the one who collected
         if (!other.CompareTag("Player")) return;
 
-        // Decide how much ammo or health to give
-        int finalAmount = Random.Range(minAmount, amount);
+        var player = other.GetComponent<Alive>();
+        if (player.health < player.maxHealth)
+        {
+            int finalAmount = Random.Range(minAmount, amount);
 
-        other.GetComponent<Alive>().GiveHealth(finalAmount);
+            player.GiveHealth(finalAmount);
+        }
 
         PlayPickupAnimation();
     }

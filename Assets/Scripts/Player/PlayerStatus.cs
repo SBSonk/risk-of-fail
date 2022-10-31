@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerStatus : Alive
 {
+    public static PlayerStatus player;
+
     public PlayerMovement pMovement;
     public PlayerShooting pShooting;
     public PlayerAnimations pAnimations;
@@ -17,6 +19,8 @@ public class PlayerStatus : Alive
 
     private void Start()
     {
+        player = this;
+
         pMovement = GetComponent<PlayerMovement>();
         pShooting = GetComponent<PlayerShooting>();
         pAnimations = GetComponent<PlayerAnimations>();
@@ -32,6 +36,17 @@ public class PlayerStatus : Alive
 
         if (onPlayerDamage != null)
             onPlayerDamage.Invoke();
+    }
+
+    protected override void Death()
+    {
+        dead = true;
+
+        pMovement.enabled = false;
+        pShooting.enabled = false;
+        pAnimations.enabled = false;
+
+        onDeath?.Invoke();
     }
 
     public override float GiveHealth(float amount)

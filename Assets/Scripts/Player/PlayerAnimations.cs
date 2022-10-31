@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerAnimations : MonoBehaviour
 {
     public bool canSwitchAnimation = true   ;
+    [SerializeField] SpriteRenderer[] sprites;
 
     [SerializeField] ParticleSystem dashExp;
     [SerializeField] Animator animator;
@@ -13,6 +14,9 @@ public class PlayerAnimations : MonoBehaviour
     [SerializeField] TrailRenderer trail;
     [SerializeField] float trailLifetime = 0.5f;
     [SerializeField] ScreenshakeValue dodgeScreenshake;
+    [SerializeField] GameObject playerGhost;
+    [SerializeField] int copies = 4;
+    [SerializeField] float timeBetweenCopies, ghostLifetime = 0.25f;
 
     [Header("Player Sprite")]
     [SerializeField] SpriteRenderer sprite;
@@ -103,11 +107,11 @@ public class PlayerAnimations : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Flip if going left
-        sprite.flipX = currentDir == Directions.left;
-
         // Choose animations
         if (!canSwitchAnimation) return;
+
+        // Flip if going left
+        sprite.flipX = currentDir == Directions.left;
 
         if (input.magnitude > 0)
         {
@@ -198,6 +202,7 @@ public class PlayerAnimations : MonoBehaviour
     {
         dashExp.Play();
         StartCoroutine(DashTrail());
+        StartCoroutine(DashGhosts());
         // TODO: make it so that the trail only appears if speed is above a threshold
 
         // Face the direction when dodging
@@ -210,7 +215,27 @@ public class PlayerAnimations : MonoBehaviour
 
     void DamageAnimation()
     {
-        animator.Play("PlayerHit");
+        canSwitchAnimation = false;
+        
+        switch (currentDir)
+        {
+            case Directions.up:
+                animator.Play("hurt_u");
+                break;
+
+            case Directions.right:
+                animator.Play("hurt_r");
+                break;
+
+            case Directions.down:
+                animator.Play("hurt_d");
+                break;
+
+            case Directions.left:
+                animator.Play("hurt_r");
+                break;
+        }
+        Invoke("EnableAnimations", 0.5f);
     }
 
     IEnumerator DashTrail()
@@ -222,6 +247,28 @@ public class PlayerAnimations : MonoBehaviour
 
         // Retract trail
         trail.emitting = false;
+    }
+
+    IEnumerator DashGhosts()
+    {
+        int i = 0;
+
+        float t = 0;
+        float tInc = timeBetweenCopies / copies;
+        while (i < copies)
+        {
+            var g = Instantiate(playerGhost, transform.position, Quaternion.identity, null).GetComponent<PlayerGhost>();
+            for (int o = 0; o < sprites.Length; o++)
+            {
+                g.sprites[o].sprite = sprites[o].sprite;
+                g.sprites[o].flipX = sprites[o].flipX;
+            }
+
+            StartCoroutine(g.GhostAnimation(ghostLifetime - (timeBetweenCopies * i - 1)));
+            i++;
+            t += tInc;
+            yield return new WaitForSeconds(t);
+        }
     }
 
     Directions VectorToDir(Vector2 input)
@@ -241,7 +288,7 @@ public class PlayerAnimations : MonoBehaviour
         followCursor = false;
     }
 
-
+    void EnableAnimations() { canSwitchAnimation = true; }
 }
 
 [System.Serializable]

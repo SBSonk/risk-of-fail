@@ -12,10 +12,11 @@ public class RoomKillCounter : MonoBehaviour
         if (!active) return;
 
         killsNeeded--;
+        print("add");
 
         if (killsNeeded == 0)
         {
-            OnCounterComplete?.Invoke();
+            OnCounterComplete?.Invoke();print("fin");
             active = false;
         }
     }

@@ -21,6 +21,7 @@ public class MoveCursor : MonoBehaviour
 
     void Update()
     {
+        float lerpVal = Mathf.Abs(InputManager.mouseMovement.magnitude) > 0 ? 0 : lerpPos;
         mousePos = GetMouseInput();
 
         transform.rotation = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + (rotationDegrees * Time.deltaTime));
@@ -33,8 +34,16 @@ public class MoveCursor : MonoBehaviour
         return InputManager.mousePosition;
     }
 
-    public void ChangeCrosshair(Sprite sprite)
+    public void ChangeCrosshair(Crosshair c)
     {
-        cursor.sprite = sprite;
+        cursor.sprite = c.sprite;
+        rotationDegrees = c.rotationSpeed;
     }
+}
+
+[System.Serializable]
+public struct Crosshair
+{
+    public Sprite sprite;
+    public float rotationSpeed;
 }

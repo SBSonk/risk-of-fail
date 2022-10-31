@@ -14,13 +14,8 @@ public class Spawning2 : MonoBehaviour
     int enemiesKilled = 0;
     public UnityEvent OnEnemyKilled, OnEnemySpawn;
 
-    // Type Counts
-    public static Spawning2 active;
-
-    void Start()
+    public void StartSpawner()
     {
-        if (!active) active = this;
-
         // Repeating spawns
         if (spawnOnStart) TrySpawn();
         else Invoke("TrySpawn", respawnWaveTime);
@@ -67,13 +62,13 @@ public class Spawning2 : MonoBehaviour
     void enemyDeath(EnemyType type)
     {
         // Get types
-        for (int i = 0; i < active.enemies.Length; i++)
+        for (int i = 0; i < enemies.Length; i++)
         {
-            if (active.enemies[i].type == type)
+            if (enemies[i].type == type)
             {
-                active.enemies[i].alive--;
-                active.enemiesKilled++;
-                active.OnEnemyKilled?.Invoke();
+                enemies[i].alive--;
+                enemiesKilled++;
+                OnEnemyKilled?.Invoke();
                 return;
             }
         }

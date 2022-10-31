@@ -38,7 +38,6 @@ public class Projectile : MonoBehaviour
             // Give damage and stun
             collision.GetComponent<Alive>().GiveDamage(damage, stunLength);
 
-            // Give knockback TODO: reduce knockback the longer the bullet is alive
             collision.GetComponent<Rigidbody2D>().AddForceAtPosition(transform.right * knockback, collision.ClosestPoint(transform.position), ForceMode2D.Impulse);
         }
 
@@ -49,7 +48,7 @@ public class Projectile : MonoBehaviour
         if (pierces == 0 || collision.CompareTag("Wall"))
         {
             rb.velocity = Vector2.zero;
-            sprite.SetActive(false);
+            if (!collision.CompareTag("Wall")) sprite.SetActive(false);
             _light.intensity = 0;
 
             // Destroy bullet

@@ -74,12 +74,10 @@ public class GameManager : MonoBehaviour
         main.lastKillTime = Time.time;
         if (onEnemyKilled != null) onEnemyKilled.Invoke();
     }
-    // Sets the score
     public static void SetScore(int amount)
     {
         main.pData.fPoints = amount;
     }
-    // Adds weapon to inventory
     public static void GiveWeapon(Weapon weapon)
     {
         var invWep = new inventoryWeapon(weapon, 0, 0);
@@ -88,7 +86,6 @@ public class GameManager : MonoBehaviour
         main.pData.weaponsOwned.Add(invWep);
         if (onWeaponReceive != null) onWeaponReceive.Invoke();
     }
-    // Returns true if the weapon exists in the inventory
     public static bool CheckIfWeaponOwned(Weapon type)
     {
         foreach (inventoryWeapon w in main.pData.weaponsOwned)

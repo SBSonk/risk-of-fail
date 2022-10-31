@@ -13,7 +13,7 @@ public class Weapon : ScriptableObject
     public bool isWeaponObtained = false;
     //end
     public Sprite hudElement;
-    public Sprite crossHair;
+    public Crosshair crossHair;
     public Sprite weaponSprite;
 
     [Header("Weapon Stats")]

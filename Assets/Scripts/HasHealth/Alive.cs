@@ -17,9 +17,10 @@ public class Alive : MonoBehaviour
 
     public bool stunned;
     bool canBeDamaged = true;
-    bool dead;
+    protected bool dead;
 
-    public UnityEvent<float> onStunned;
+    public UnityEvent<float> onHit, onStunned;
+    public UnityEvent onDeath;
 
     // Applies damage and returns damage taken
     public float GiveDamage(float amount, float stunLength, StatusEffect effect = null)
@@ -41,7 +42,13 @@ public class Alive : MonoBehaviour
         float damage = -amount / damageReduction;
 
         // Give damage
-        if (health + damage <= 0) { OnDamage(damage); OnDeath(); return damage; }
+        if (health + damage <= 0) 
+        { 
+            OnDamage(damage); 
+            Death(); 
+            return damage; 
+        }
+
         health += damage;
 
         // Apply stun
@@ -92,7 +99,12 @@ public class Alive : MonoBehaviour
         }
     }
 
-    protected virtual void OnDeath() { dead = true; Destroy(this.gameObject); }
+    protected virtual void Death() 
+    {
+        dead = true; 
+        onDeath?.Invoke();
+        Destroy(gameObject); 
+    }
 
     // TODO: Make the status tick an event to subscribe in the game manager to optimize
     protected void StatusEffectTick()

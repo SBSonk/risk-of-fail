@@ -106,8 +106,12 @@ public class PlayerShooting : MonoBehaviour
             }
         }
 
+        canShoot = false;
         canShove = false;
+
+        CancelInvoke();
         Invoke("EnableShove", shoveCooldown);
+        Invoke("EnableShooting", shoveCooldown);
     }
 
     // Handle shooting of GUN type weapons

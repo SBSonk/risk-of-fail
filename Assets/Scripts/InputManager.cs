@@ -7,6 +7,7 @@ public class InputManager : MonoBehaviour
     public static bool shoot, shootAuto, dodge, reload;
     public static bool shove;
     public static int swapWeapon;
+    public static bool interact;
 
     private void Update()
     {
@@ -19,6 +20,7 @@ public class InputManager : MonoBehaviour
         shove = Input.GetButtonDown("Shove");
         dodge = Input.GetButtonDown("Dodge");
         reload = Input.GetButtonDown("Reload");
+        interact = Input.GetKeyDown(KeyCode.F);
 
         if (Input.GetButtonDown("SwapLeft")) swapWeapon = -1;
         else if (Input.GetButtonDown("SwapRight")) swapWeapon = 1;

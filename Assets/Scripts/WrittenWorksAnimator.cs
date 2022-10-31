@@ -31,7 +31,15 @@ public class WrittenWorksAnimator : MonoBehaviour
     {
         if (!canSwitchAnimations) return;
         if (spriteRenderer != null)
-        dirFacing = VectorToDir((pathing.destination - transform.position).normalized);
+
+        if (enemy.canSeePlayer)
+        {
+            dirFacing = VectorToDir((pathing.destination - transform.position).normalized);
+        } else
+        {
+            dirFacing = VectorToDir(pathing.velocity.normalized);
+        }
+        
         spriteRenderer.flipX = dirFacing == Directions.left;
 
 

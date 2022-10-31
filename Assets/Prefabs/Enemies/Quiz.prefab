@@ -56,7 +56,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.25
   m_LinearDrag: 11.43
   m_AngularDrag: 1.5
   m_GravityScale: 0
@@ -208,17 +208,25 @@ MonoBehaviour:
   statusEffectTickrate: 1
   statuses: []
   damageIndicatorPrefab: {fileID: 5454792722737808766, guid: ffe96b4ed14b8d74aaa0085dca50470a, type: 3}
+  stunned: 0
+  onStunned:
+    m_PersistentCalls:
+      m_Calls: []
+  canSeePlayer: 0
   type: 1
   killScore: 50
   hBarPrefab: {fileID: 2682529488675642673, guid: b078b5e28f550784191ec80b78e48c6a, type: 3}
   hbarOffset: {x: 0, y: 1.25, z: 0}
-  minSpeed: 10
-  maxSpeed: 10
+  minSpeed: 6
+  maxSpeed: 8
   speed: 10
   hbarLerp: 0.5
   speedLerp: 0.125
   attackScript: {fileID: 2248095380715782336}
-  rb: {fileID: 0}
+  rb: {fileID: 38039933173011077}
+  onEnemyDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2248095380715782336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,9 +244,9 @@ MonoBehaviour:
     m_Bits: 66240
   weapon: {fileID: 11400000, guid: b27a6837b65e8f84ba7988572c057ee9, type: 2}
   dodgeChance: 75
-  dodgeCooldown: 1.5
-  dodgeSpeed: 50
-  dodgeDistance: 4
+  dodgeCooldown: 1
+  dodgeSpeed: 15
+  dodgeDistance: 2.5
   enterShootRadius: 25
   timeToShoot: 1
   losWidth: 0.6
@@ -249,6 +257,7 @@ MonoBehaviour:
   minReposRadius: 0
   maxReposRadius: 6
   bulletSpawn: {fileID: 2945926502218911623}
+  mode: 0
 --- !u!114 &-6832346204760881296
 MonoBehaviour:
   m_ObjectHideFlags: 0

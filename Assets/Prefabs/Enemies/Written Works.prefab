@@ -5052,8 +5052,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.5}
-  m_Size: {x: 0.8, y: 1.3}
+  m_Offset: {x: -0.0141711235, y: 0.5}
+  m_Size: {x: 1.1684484, y: 1.3}
   m_Direction: 0
 --- !u!114 &2368033471186396236
 MonoBehaviour:
@@ -5118,12 +5118,12 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: 15
   rotationSpeed: 480
-  slowdownDistance: 3.125
+  slowdownDistance: 0
   pickNextWaypointDist: 2
   endReachedDistance: 1.875
   alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
+  slowWhenNotFacingTarget: 0
+  whenCloseToDestination: 1
   constrainInsideGraph: 0
 --- !u!114 &153437274076224764
 MonoBehaviour:
@@ -5205,9 +5205,16 @@ MonoBehaviour:
   statuses: []
   damageIndicatorPrefab: {fileID: 5454792722737808766, guid: ffe96b4ed14b8d74aaa0085dca50470a, type: 3}
   stunned: 0
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
   onStunned:
     m_PersistentCalls:
       m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  canSeePlayer: 0
   type: 0
   killScore: 25
   hBarPrefab: {fileID: 2682529488675642673, guid: b078b5e28f550784191ec80b78e48c6a, type: 3}
@@ -5246,7 +5253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebf567fa338ce814e9b84c15ee766d15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 10
+  baseDamage: 15
   stunLength: 0.5
   knockbackAmount: 20
   reboundLength: 0.2

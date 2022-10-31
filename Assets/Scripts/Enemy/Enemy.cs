@@ -1,9 +1,12 @@
 using UnityEngine;
 using UnityEngine.Events;
 using Pathfinding;
+using System.Collections;
 
 public class Enemy : Alive
 {
+    public bool canSeePlayer = false;
+
     [Header("Enemy")]
     [SerializeField] EnemyType type = EnemyType.WrittenWorks;
     [SerializeField] int killScore;
@@ -47,6 +50,8 @@ public class Enemy : Alive
 
     private void Update()
     {
+        canSeePlayer = Physics2D.Linecast(transform.position, PlayerStatus.player.transform.position).collider.CompareTag("Player");    
+
         // Make health bar follow enemy
         healthParent.transform.position = Vector3.Lerp(healthParent.transform.position, transform.position + hbarOffset, hbarLerp);
 
@@ -66,14 +71,46 @@ public class Enemy : Alive
         }
     }
 
+    IEnumerator HealthBarFade(float startOpacity, float finalOpacity, float t)
+    {
+        SpriteRenderer[] healthBarSprites = healthParent.GetComponentsInChildren<SpriteRenderer>();
+
+        float opacity = startOpacity;
+        float time = 0;
+        while (time < t)
+        {
+            opacity = Mathf.Lerp(opacity, finalOpacity, time / t);
+            
+            for (int i = 0; i < healthBarSprites.Length; i++)
+            {
+                Color c = healthBarSprites[i].color;
+                c.a = opacity;
+                healthBarSprites[i].color = c;
+            }
+
+            yield return new WaitForFixedUpdate();
+            time += Time.fixedDeltaTime;
+        }
+    }
+
     protected override void OnDamage(float damage)
     {
         base.OnDamage(damage);
 
+        CancelInvoke("HideHealthBar");
         healthParent.SetActive(true);
+        StartCoroutine(HealthBarFade(0, 1, 0.3f));
+        Invoke("HideHealthBar", 2.5f);
+
+        onHit?.Invoke(damage);
     }
 
-    protected override void OnDeath()
+    void HideHealthBar()
+    {
+        StartCoroutine(HealthBarFade(1, 0, 0.3f));
+    }
+
+    protected override void Death()
     {
         // Destroy health bar
         Destroy(healthParent);
@@ -89,7 +126,7 @@ public class Enemy : Alive
         // Reduce alive enemies for the spawner
         onEnemyDeath?.Invoke(type);
 
-        base.OnDeath();
+        base.Death();
     }
 
     public override void Stun(float duration)

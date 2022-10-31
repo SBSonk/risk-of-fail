@@ -20,7 +20,9 @@ MonoBehaviour:
   weaponPiercing: 1
   isWeaponObtained: 0
   hudElement: {fileID: 710822827, guid: ac1cb1997c2bb9c47a38e95b1219b296, type: 3}
-  crossHair: {fileID: 21300000, guid: 1750bb5ded5b30d4db197733c4259edc, type: 3}
+  crossHair:
+    sprite: {fileID: 21300000, guid: 1750bb5ded5b30d4db197733c4259edc, type: 3}
+    rotationSpeed: 200
   weaponSprite: {fileID: -1480109979, guid: eb94c8d97ad6620409ce3d71c0815470, type: 3}
   baseDamage: 25
   bulletSpread: 0.5

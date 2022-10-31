@@ -26,7 +26,7 @@ public class QuizAI : MonoBehaviour
     AIPath ai;
     [SerializeField] Transform bulletSpawn;
     Rigidbody2D player, rb;
-    AIMode mode = AIMode.pathing;
+    public AIMode mode = AIMode.pathing;
 
     Vector3 followDirection;
 
@@ -39,7 +39,7 @@ public class QuizAI : MonoBehaviour
         PlayerShooting.onPlayerShoot += tryDodge;
 
         // Determine follow direction
-        followDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * followDistanceMultiplier;
+        followDirection = new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f)) * followDistanceMultiplier;
     }
 
     private void OnDestroy()
@@ -188,6 +188,10 @@ public class QuizAI : MonoBehaviour
         {
             rb.AddForce(transform.right * dodgeSpeed, ForceMode2D.Impulse);
         }
+        else
+        {
+            return; // Cancel dodge
+        }
 
         // Dodge cooldown
         canDodge = false;
@@ -235,11 +239,12 @@ public class QuizAI : MonoBehaviour
     // Returns true if theres a straight line between me and the player
     bool playerInLOS()
     {
-        RaycastHit2D left = Physics2D.Linecast(transform.position + (transform.right * losWidth), player.position + (Vector2)(-player.transform.right * losWidth), los);
+        //RaycastHit2D left = Physics2D.Linecast(transform.position + (transform.right * losWidth), player.position + (Vector2)(-player.transform.right * losWidth), los);
         RaycastHit2D center = Physics2D.Linecast(transform.position, player.position, los);
-        RaycastHit2D right = Physics2D.Linecast(transform.position + (-transform.right * losWidth), player.position + (Vector2)(player.transform.right * losWidth), los);
+        //RaycastHit2D right = Physics2D.Linecast(transform.position + (-transform.right * losWidth), player.position + (Vector2)(player.transform.right * losWidth), los);
 
-        return left && center && right && center.collider.CompareTag("Player");
+        print(center.collider.name);
+        return center.collider.CompareTag("Player");
     }
 
     void SwitchToPathing() { switchState(AIMode.pathing); }

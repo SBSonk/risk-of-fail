@@ -7,6 +7,7 @@ public class Attract : MonoBehaviour
     [SerializeField] float attractStrength = 50f;
     Rigidbody2D rb;
     Transform target;
+    public Collider2D _collider;
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class Attract : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             target = collision.transform;
+            _collider.enabled = false;
         }
     }
 }

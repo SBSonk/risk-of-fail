@@ -93,7 +93,7 @@ public class Alive : MonoBehaviour
 
             // Spawn indicator
             DamageIndicator indicator = Instantiate(original: damageIndicatorPrefab,
-                  position: pos, rotation: Quaternion.identity).GetComponent<DamageIndicator>();
+            position: pos, rotation: Quaternion.identity).GetComponent<DamageIndicator>();
 
             indicator.Initialize(damage);
         }

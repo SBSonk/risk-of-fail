@@ -13,9 +13,20 @@ public class LightFlicker : MonoBehaviour
         StartCoroutine(Flicker(maxTimeBetweenFlickers));
     }
 
-    IEnumerator Flicker(float t)
+    IEnumerator Flicker(float max)
     {
-        // theres somewhere to copy paste this
-        yield break;
+        float t = 0.1f;
+        while (true)
+        {
+            print("test");
+            t = Random.Range(0.1f, max);
+            float time = 0;
+            while (time < t)
+            {
+                _light.intensity = Mathf.Lerp(0, defaultIntensity, time / t);
+                time += Time.deltaTime;
+            }
+            // CRASHES double while loop lol
+        } // this looks bad even when it was working so ill pretend this doesnt exist
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using Unity.VisualScripting;
 
 public class WrittenWorksAnimator : MonoBehaviour
 {
@@ -11,26 +12,44 @@ public class WrittenWorksAnimator : MonoBehaviour
     Directions dirFacing = Directions.down;
     AIPath pathing;
     Enemy enemy;
-    [SerializeField] ParticleSystem deathParticles;
+    WrittenWorksAttack enemyAttack;
+    [SerializeField] ParticleSystem deathParticles, dashParticles;
+
+    [SerializeField] SpriteRenderer dashIndicator;
+    [SerializeField] SpriteRenderer[] arrowIndicator;
+
+    static Color CLEAR = new Color(0, 0, 0, 0);
 
     public bool canSwitchAnimations = true;
 
     private void Awake()
     {
         enemy = GetComponent<Enemy>();
+        enemyAttack = GetComponent<WrittenWorksAttack>();
         pathing = GetComponent<AIPath>();
         spriteRenderer = sprite.GetComponent<SpriteRenderer>();
     }
 
     private void Start()
     {
-        enemy.onStunned.AddListener(StunAnimation);
+        enemy.onHit.AddListener(StunAnimation);
+        enemyAttack.OnSwipeAttack.AddListener(SwipeAnimation);
+        //enemyAttack.OnDashAttack.AddListener(DashAnimation);
+        //enemyAttack.OnDashStart.AddListener(DashStart);
+        //enemyAttack.OnDashEnd.AddListener(DashFinish);
+        //enemyAttack.OnDashCancel.AddListener(DashCancel);
     }
 
     private void Update()
     {
+        dashIndicator.transform.position = transform.position + (Vector3.up * 1.5f);
+        dashIndicator.transform.rotation = Quaternion.identity;
+
+
+        // Sprites
+        sprite.rotation = Quaternion.identity;
+
         if (!canSwitchAnimations) return;
-        if (spriteRenderer != null)
 
         if (enemy.canSeePlayer)
         {
@@ -41,9 +60,6 @@ public class WrittenWorksAnimator : MonoBehaviour
         }
         
         spriteRenderer.flipX = dirFacing == Directions.left;
-
-
-        sprite.rotation = Quaternion.identity;
 
         switch (dirFacing)
         {
@@ -98,8 +114,94 @@ public class WrittenWorksAnimator : MonoBehaviour
                 break;
         }
 
+        CancelInvoke("EnableAnimations");
         canSwitchAnimations = false; 
-        Invoke("EnableAnimations", duration + 0.5f); 
+        Invoke("EnableAnimations", 0.5f); 
+    }
+
+    void SwipeAnimation()
+    {
+        switch (dirFacing)
+        {
+            case Directions.up:
+                animator.Play("ww_swipe_u");
+                break;
+
+            case Directions.right:
+                animator.Play("ww_swipe_r");
+                break;
+
+            case Directions.down:
+                animator.Play("ww_swipe_d");
+                break;
+
+            case Directions.left:
+                animator.Play("ww_swipe_r");
+                break;
+        }
+
+        CancelInvoke("EnableAnimations");
+        canSwitchAnimations = false;
+        Invoke("EnableAnimations", 0.5f);
+    }
+
+    void DashAnimation()
+    {
+        StartCoroutine(FadeSprite(dashIndicator, CLEAR, Color.white, 0.1f));
+
+        StartCoroutine(FadeSprite(arrowIndicator[0], CLEAR, Color.white, 0.1f));;
+        StartCoroutine(FadeSprite(arrowIndicator[1], CLEAR, Color.white, 1.5f));
+
+        dashParticles.Play();
+    }
+
+    void DashStart()
+    {
+        StartCoroutine(FadeSprite(dashIndicator, Color.white, CLEAR, 0.1f));
+        foreach (SpriteRenderer s in arrowIndicator)
+        {
+            StartCoroutine(FadeSprite(s, Color.white, CLEAR, 0.1f));
+        }
+    }
+
+    void DashFinish()
+    {
+        dashParticles.Stop();
+    }
+
+    void DashCancel()
+    {
+        StopAllCoroutines();
+
+        StartCoroutine(FadeSprite(dashIndicator, Color.white, CLEAR, 0.1f));
+        foreach (SpriteRenderer s in arrowIndicator)
+        {
+            StartCoroutine(FadeSprite(s, Color.white, CLEAR, 0.1f));
+        }
+
+        dashParticles.Clear();
+        dashParticles.Stop();
+
+        canSwitchAnimations = true;
+    }
+
+    IEnumerator FadeSprite(SpriteRenderer sprite, Color startColor, Color finalColor, float t)
+    {
+        sprite.color = startColor;
+        Color color = startColor;
+        float time = 0;
+        while (time <= t)
+        {
+            Color c = sprite.color;
+            c = color;
+            sprite.color = c;
+            color = Color.Lerp(startColor, finalColor, time / t);
+
+            yield return new WaitForEndOfFrame();
+            time += Time.deltaTime;
+        }
+
+        sprite.color = finalColor;
     }
 
     void EnableAnimations() { canSwitchAnimations = true; }

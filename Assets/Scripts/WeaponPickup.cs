@@ -5,6 +5,8 @@ public class WeaponPickup : PickupBase
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
+        if (!active) return;
+
         // Return if the player isnt the one who collected
         if (!other.CompareTag("Player")) return;
 
@@ -12,5 +14,7 @@ public class WeaponPickup : PickupBase
         if (!GameManager.CheckIfWeaponOwned(weaponToGive)) GameManager.GiveWeapon(weaponToGive);
 
         PlayPickupAnimation();
+
+        active = false;
     }
 }

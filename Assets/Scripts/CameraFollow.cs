@@ -9,26 +9,36 @@ public class CameraFollow : MonoBehaviour
 
     [Header("RoomTransfer")]
     [SerializeField] CameraBounds worldBoundsX, worldBoundsY;
+    public CameraBounds currentBoundsX, currentBoundsY;
 
     public float cameraSize;
     public bool lockToCenter;
-    public Vector3 cameraCenter;
-    Vector3 desiredPos;
+    public Transform cameraCenter;
+    Vector3 desiredPos, lastPlayerVel;
     Rigidbody2D player;
 
     new Camera camera;
     float startCameraSize;
     Vector3 startOffset;
+    CameraBounds startX, startY;
 
     private void Awake()
     {
         cam = this;
         player = GameObject.Find("Player").GetComponent<Rigidbody2D>();
+        camera = Camera.main;  
+    }
 
-        camera = Camera.main;
+    private void Start()
+    {
         cameraSize = camera.orthographicSize;
         startCameraSize = cameraSize;
         startOffset = offset;
+
+        currentBoundsX = worldBoundsX;
+        currentBoundsY = worldBoundsY;
+        startX = worldBoundsX;
+        startY = worldBoundsY;
     }
 
     private void FixedUpdate()
@@ -37,14 +47,19 @@ public class CameraFollow : MonoBehaviour
 
         if (lockToCenter)
         {
-            desiredPos = cameraCenter + offset;
+            desiredPos = cameraCenter.position + cameraCenter.InverseTransformPoint(player.position);
         } else
         {
-            desiredPos = (Vector3)player.position + offset;
-            desiredPos.x = Mathf.Clamp(desiredPos.x, worldBoundsX.min, worldBoundsX.max);
-            desiredPos.y = Mathf.Clamp(desiredPos.y, worldBoundsY.min, worldBoundsY.max);
+            desiredPos = (Vector3)player.position;
         }
-    
+
+        desiredPos += lastPlayerVel;
+        desiredPos.x = Mathf.Clamp(desiredPos.x, worldBoundsX.min, worldBoundsX.max);
+        desiredPos.y = Mathf.Clamp(desiredPos.y, worldBoundsY.min, worldBoundsY.max);
+        desiredPos += offset;
+
+        if (player.velocity.magnitude > 0) lastPlayerVel = Vector3.Lerp(lastPlayerVel, player.velocity.normalized, lValue);
+
         camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, cameraSize, lerpVal);
         transform.position = Vector3.Lerp(transform.position, desiredPos, lValue);
     }
@@ -60,10 +75,10 @@ public class CameraFollow : MonoBehaviour
         cameraSize = startCameraSize;
         offset = startOffset;
     }
-}
 
-[System.Serializable]
-public struct CameraBounds
-{
-    public float min, max;
-}
+    public void ResetCameraBounds()
+    {
+        worldBoundsX = startX;
+        worldBoundsY = startY;
+    }
+}   

@@ -17,7 +17,21 @@ public class Room : MonoBehaviour
     public float camSize = 7;
     public bool centerCameraOnRoom;
     public Vector3 camOffset;
-    
+    public CameraBounds roomXBounds, roomYBounds;
+
+    CameraFollow cam;
+
+    private void Awake()
+    {
+        cam = CameraFollow.cam;
+    }
+
+    private void Start()
+    {
+        roomXBounds = CameraBounds.ConvertLocalToWorldBounds(roomXBounds, transform.position.x);
+        roomYBounds = CameraBounds.ConvertLocalToWorldBounds(roomYBounds, transform.position.y);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
@@ -42,11 +56,12 @@ public class Room : MonoBehaviour
 
         if (centerCameraOnRoom)
         {
-            var c = CameraFollow.cam;
-            c.cameraSize = camSize;
-            c.cameraCenter = transform.position;
-            c.lockToCenter = true;
-            c.offset = camOffset;
+            cam.cameraSize = camSize;
+            cam.cameraCenter = transform;
+            cam.lockToCenter = true;
+            cam.offset = camOffset;
+
+            cam.ChangeRoomBounds(roomXBounds, roomYBounds);
         }
     }
 
@@ -56,9 +71,10 @@ public class Room : MonoBehaviour
 
         ToggleRoom(false);
 
-        CameraFollow.cam.ResetCameraSize();
-        CameraFollow.cam.cameraCenter = Vector3.zero;
-        CameraFollow.cam.lockToCenter = false;
+        cam.ResetCameraSize();
+        cam.ResetCameraBounds();
+        cam.cameraCenter = null;
+        cam.lockToCenter = false;
     }
 
     public void ToggleRoom(bool val)

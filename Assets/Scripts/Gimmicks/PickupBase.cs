@@ -10,6 +10,7 @@ public class PickupBase : MonoBehaviour
     [SerializeField] protected ParticleSystem particles;
     [SerializeField] protected Light2D _light;
     [SerializeField] protected GameObject sprite;
+    protected bool active = true;
 
     public UnityEvent OnPickupCollect;
 
@@ -53,11 +54,14 @@ public class PickupBase : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-        // Return if the player isnt the one who collected
+        if (!active) return;
+
         if (!other.CompareTag("Player")) return;
 
         transform.position = other.transform.position;
         PlayPickupAnimation();
+
+        active = false;
     }
 
     protected void PlayPickupAnimation()

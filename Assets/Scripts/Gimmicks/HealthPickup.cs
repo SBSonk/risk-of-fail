@@ -10,6 +10,8 @@ public class HealthPickup : PickupBase
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
+        if (!active) return;
+
         // Return if the player isnt the one who collected
         if (!other.CompareTag("Player")) return;
 
@@ -22,5 +24,6 @@ public class HealthPickup : PickupBase
         }
 
         PlayPickupAnimation();
+        active = false;
     }
 }

@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CameraFollow : MonoBehaviour
 {
@@ -22,6 +24,8 @@ public class CameraFollow : MonoBehaviour
     Vector3 startOffset;
     CameraBounds startX, startY;
 
+    bool cameraControl = true;
+
     private void Awake()
     {
         cam = this;
@@ -43,6 +47,8 @@ public class CameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!cameraControl) return;
+
         float lValue = lockToCenter ? roomViewLerp : lerpVal;
 
         if (lockToCenter)
@@ -68,6 +74,77 @@ public class CameraFollow : MonoBehaviour
     {
         worldBoundsX = x;
         worldBoundsY = y;
+    }
+
+    public IEnumerator CenterCameraOnPosition(Vector3 position, float time, float holdTime, bool freezeGame)
+    {
+        if (freezeGame) Time.timeScale = 0;
+
+        cameraControl = false;
+        Vector3 startPos = transform.position;
+
+        float t = 0;
+        while (t <= time)
+        {
+            if (freezeGame)
+            {
+                yield return new WaitForSecondsRealtime(0.01f);
+                t += 0.01f;
+            }
+            else
+            {
+                yield return new WaitForEndOfFrame();
+                t += Time.deltaTime;
+            }
+            
+            transform.position = Vector3.Lerp(startPos, position, t / time);
+        }
+
+        if (freezeGame) yield return new WaitForSecondsRealtime(holdTime);
+        else yield return new WaitForSeconds(holdTime);
+
+        cameraControl = true;
+        if (freezeGame) Time.timeScale = 1;
+    }
+
+    public IEnumerator CenterCameraOnMultiplePositions(Vector3[] positions, float time, float holdTime, bool freezeGame = false)
+    {
+        if (freezeGame) Time.timeScale = 0;
+
+        cameraControl = false;
+        Vector3 startPos = transform.position;
+
+        Vector3 position = Vector3.zero;
+        // Get average of positions
+        int i;
+        for (i = 0; i < positions.Length; i++)
+        {
+            position += positions[i];
+        }
+        position /= i;
+
+        float t = 0;
+        while (t <= time)
+        {
+            if (freezeGame)
+            {
+                yield return new WaitForSecondsRealtime(0.01f);
+                t += 0.01f;
+            }
+            else
+            {
+                yield return new WaitForEndOfFrame();
+                t += Time.deltaTime;
+            }
+
+            transform.position = Vector3.Lerp(startPos, position, t / time);
+        }
+
+        if (freezeGame) yield return new WaitForSecondsRealtime(holdTime);
+        else yield return new WaitForSeconds(holdTime);
+
+        cameraControl = true;
+        if (freezeGame) Time.timeScale = 1;
     }
 
     public void ResetCameraSize()

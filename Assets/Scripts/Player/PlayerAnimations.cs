@@ -80,7 +80,7 @@ public class PlayerAnimations : MonoBehaviour
         if (followCursor)
         {
             // Get direction from me to mouse
-            dir = (cursor.position - transform.position).normalized;
+            dir = ((Vector3) InputManager.mousePosition - transform.position).normalized;
 
             currentDir = VectorToDir(dir);
         }

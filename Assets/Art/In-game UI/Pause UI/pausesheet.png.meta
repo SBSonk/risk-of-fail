@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 790643417395170438e379db32ab0570
+guid: e0cb62f20226aec43a95e72722d7af71
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 2
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -112,269 +112,41 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shoppausesettingssheet_0
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 608
-        width: 424
-        height: 110
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f93c27344fccbea4e9dcc4a6a7fade60
-      internalID: -2004870885
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shoppausesettingssheet_1
-      rect:
-        serializedVersion: 2
-        x: 1312
-        y: 622
-        width: 166
-        height: 89
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 47b7910aea011a641aea533f5d27f56c
-      internalID: -1462369966
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shoppausesettingssheet_2
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 483
-        width: 424
-        height: 110
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8939002fb277a9e4ea06c7ebf5a1ac66
-      internalID: -1138158502
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shoppausesettingssheet_3
-      rect:
-        serializedVersion: 2
-        x: 431
-        y: 483
-        width: 424
-        height: 110
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4e545b1bc16d855498b56d3038f23412
-      internalID: 1103229166
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shoppausesettingssheet_4
-      rect:
-        serializedVersion: 2
-        x: 1312
-        y: 522
-        width: 166
-        height: 89
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8d33143dc55f7c34d8a30e2666a72335
-      internalID: 1689079523
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shoppausesettingssheet_5
-      rect:
-        serializedVersion: 2
-        x: 1487
-        y: 522
-        width: 166
-        height: 89
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 46c39c04a734fb943bd9c1d063c2878a
-      internalID: 1605381207
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shoppausesettingssheet_6
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 360
-        width: 424
-        height: 110
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a4f2bc8b74f9a12469e228a508f8226e
-      internalID: -316801813
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shoppausesettingssheet_7
-      rect:
-        serializedVersion: 2
-        x: 431
-        y: 608
-        width: 424
-        height: 110
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 898032d9a9fa49642b2999940419dd9f
-      internalID: -134879448
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shoppausesettingssheet_8
-      rect:
-        serializedVersion: 2
-        x: 1311
-        y: 421
-        width: 166
-        height: 89
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 10a538144fe0e7846b89289db13cef79
-      internalID: -582346132
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shoppausesettingssheet_12
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 235
-        width: 424
-        height: 110
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e573c3cc3b25b3141b69b1b7e0348b62
-      internalID: 797721038
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shoppausesettingssheet_17
-      rect:
-        serializedVersion: 2
-        x: 1314
-        y: 216
-        width: 94
-        height: 87
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2d7d33f6d2e92684289f9aa346713820
-      internalID: -975666719
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shoppausesettingssheet_18
-      rect:
-        serializedVersion: 2
-        x: 1426
-        y: 216
-        width: 94
-        height: 87
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8912d3265125a264dba688c29b8e4c3b
-      internalID: 1210656477
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shoppausesettingssheet_20
+      name: pausesheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 105
-        width: 386
-        height: 99
+        y: 170
+        width: 568
+        height: 908
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -382,20 +154,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b576f44b0fdab424dbe714ca844a03a3
-      internalID: 1103631310
+      spriteID: 42d70df883bd71d48857b44929c192e3
+      internalID: -1538853770
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shoppausesettingssheet_21
+      name: pausesheet_1
       rect:
         serializedVersion: 2
-        x: 392
-        y: 105
-        width: 386
-        height: 99
+        x: 589
+        y: 958
+        width: 429
+        height: 112
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -403,20 +175,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb82ac85963904c45a150c0b6a8db121
-      internalID: 696350226
+      spriteID: b4cdc6b9e8f01aa4fab4ecc02d180233
+      internalID: -959947096
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shoppausesettingssheet_22
+      name: pausesheet_2
       rect:
         serializedVersion: 2
-        x: 782
-        y: 105
-        width: 386
-        height: 99
+        x: 1039
+        y: 405
+        width: 277
+        height: 665
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -424,20 +196,104 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4888ff5ce9887754bb0c9caf1f20d3d4
-      internalID: -672164684
+      spriteID: 463dd4b24c32bf943ab0ce05eebcff81
+      internalID: 2029025529
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shoppausesettingssheet_29
+      name: pausesheet_3
       rect:
         serializedVersion: 2
-        x: 0
+        x: 589
+        y: 832
+        width: 429
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8a3eebd949d57847b4373ee0ab04bc8
+      internalID: -1350335532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pausesheet_4
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 709
+        width: 429
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09197b9f2016caf4290ef596a4030ec6
+      internalID: 1062741266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pausesheet_5
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 585
+        width: 429
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e838f4ef91d1ec04cb212484693c8a36
+      internalID: -1236108091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pausesheet_6
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 390
+        width: 448
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00ffc98b729427c49b886467c7fef034
+      internalID: -516655706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pausesheet_7
+      rect:
+        serializedVersion: 2
+        x: 575
         y: 0
-        width: 386
-        height: 99
+        width: 448
+        height: 375
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -445,20 +301,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 292ebcbe07a114149a8b68c99a887d9f
-      internalID: 31175574
+      spriteID: 0afbe3a1466c9c949981a25ce2d40abf
+      internalID: 1219959975
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shoppausesettingssheet_30
+      name: pausesheet_8
       rect:
         serializedVersion: 2
-        x: 392
-        y: 0
-        width: 386
-        height: 99
+        x: 1039
+        y: 257
+        width: 223
+        height: 129
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -466,20 +322,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90a1edce54b4a6d44a1f7032e9085393
-      internalID: 1932469210
+      spriteID: 82efac3970f962e42b68b0707bcb5709
+      internalID: 5667082
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shoppausesettingssheet_31
+      name: pausesheet_9
       rect:
         serializedVersion: 2
-        x: 782
-        y: 0
-        width: 386
-        height: 99
+        x: 334
+        y: 91
+        width: 46
+        height: 37
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -487,50 +343,239 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79f96a7aca3801c4a9884cfa75e73130
-      internalID: 1292279834
+      spriteID: f2484d55f11d3d941aaa7094335afa91
+      internalID: -2024313030
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shoppausesettingssheet_9
+      name: pausesheet_10
       rect:
         serializedVersion: 2
-        x: 431
-        y: 235
-        width: 424
-        height: 110
+        x: 451
+        y: 40
+        width: 108
+        height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1395e6c36a93d14bb5febf82f117bf5
-      internalID: -886377980
+      spriteID: 3777b92dd0996714b85498827f6084ef
+      internalID: -1062207950
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shoppausesettingssheet_10
+      name: pausesheet_11
       rect:
         serializedVersion: 2
-        x: 431
-        y: 360
-        width: 424
-        height: 110
+        x: 1040
+        y: 127
+        width: 169
+        height: 117
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e329fb4ffb8b2d4aa02ca3629042153
-      internalID: 1363461124
+      spriteID: 863976314978a1b43b33efa73dad7367
+      internalID: -1348612288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pausesheet_12
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 90
+        width: 45
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68fbdf76d8e91204b8435cf36a88b9fc
+      internalID: -1183323430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pausesheet_13
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 58
+        width: 120
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59b60c02b0ffcf5499e3101a0c49e1ab
+      internalID: 713225487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pausesheet_14
+      rect:
+        serializedVersion: 2
+        x: 1186
+        y: 57
+        width: 120
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86f845e81434b6849bc5cb800b83cd57
+      internalID: 1491992940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pausesheet_15
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 38
+        width: 76
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 021bd435db08df34d82b05f188814446
+      internalID: 1174944620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pausesheet_16
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 41
+        width: 40
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d33dd2ace7f81c4e8fceabdbfa14a98
+      internalID: -1376878855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pausesheet_17
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 41
+        width: 35
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3223ab211a7bb64c86b78c5da59a2ea
+      internalID: 1020556031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pausesheet_18
+      rect:
+        serializedVersion: 2
+        x: 1107
+        y: 7
+        width: 56
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1b80dfb89b829f4692f97450da2d7a6
+      internalID: 1706734592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pausesheet_19
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 7
+        width: 57
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af1234d982dbf6d4fad8ebf2fba05245
+      internalID: -80766618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pausesheet_20
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 3
+        width: 304
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc40befcb866d4f42b5305680d0de049
+      internalID: -964613512
       vertices: []
       indices: 
       edges: []
@@ -546,40 +591,27 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      shoppausesettingssheet_33: -1076675974
-      shoppausesettingssheet_0: -2004870885
-      shoppausesettingssheet_16: -1844158446
-      shoppausesettingssheet_28: -670515626
-      shoppausesettingssheet_17: -975666719
-      shoppausesettingssheet_30: 1932469210
-      shoppausesettingssheet_19: 1605530022
-      shoppausesettingssheet_21: 696350226
-      shoppausesettingssheet_11: -942805451
-      shoppausesettingssheet_26: 1910330024
-      shoppausesettingssheet_29: 31175574
-      shoppausesettingssheet_4: 1689079523
-      shoppausesettingssheet_5: 1605381207
-      shoppausesettingssheet_1: -1462369966
-      shoppausesettingssheet_27: 1474536841
-      shoppausesettingssheet_8: -582346132
-      shoppausesettingssheet_10: 1363461124
-      shoppausesettingssheet_12: 797721038
-      shoppausesettingssheet_18: 1210656477
-      shoppausesettingssheet_14: 1045370532
-      shoppausesettingssheet_9: -886377980
-      shoppausesettingssheet_13: -98417456
-      shoppausesettingssheet_15: -1496940507
-      shoppausesettingssheet_20: 1103631310
-      shoppausesettingssheet_31: 1292279834
-      shoppausesettingssheet_25: -1413617346
-      shoppausesettingssheet_6: -316801813
-      shoppausesettingssheet_24: -1864862648
-      shoppausesettingssheet_22: -672164684
-      shoppausesettingssheet_2: -1138158502
-      shoppausesettingssheet_3: 1103229166
-      shoppausesettingssheet_32: 1972149502
-      shoppausesettingssheet_7: -134879448
-      shoppausesettingssheet_23: 541318162
+      pausesheet_8: 5667082
+      pausesheet_6: -516655706
+      pausesheet_13: 713225487
+      pausesheet_4: 1062741266
+      pausesheet_1: -959947096
+      pausesheet_5: -1236108091
+      pausesheet_12: -1183323430
+      pausesheet_2: 2029025529
+      pausesheet_3: -1350335532
+      pausesheet_10: -1062207950
+      pausesheet_0: -1538853770
+      pausesheet_15: 1174944620
+      pausesheet_7: 1219959975
+      pausesheet_9: -2024313030
+      pausesheet_14: 1491992940
+      pausesheet_19: -80766618
+      pausesheet_17: 1020556031
+      pausesheet_16: -1376878855
+      pausesheet_18: 1706734592
+      pausesheet_20: -964613512
+      pausesheet_11: -1348612288
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

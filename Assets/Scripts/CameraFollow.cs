@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
     public static CameraFollow cam;
 
     [SerializeField] public Vector3 offset;
-    [SerializeField] float lerpVal = 0.15f, roomViewLerp = 0.05f;
+    [SerializeField] float lerpVal = 0.15f, roomViewLerp = 0.05f, maxCameraPredict = .5f;
 
     [Header("RoomTransfer")]
     [SerializeField] CameraBounds worldBoundsX, worldBoundsY;
@@ -64,7 +64,15 @@ public class CameraFollow : MonoBehaviour
         desiredPos.y = Mathf.Clamp(desiredPos.y, worldBoundsY.min, worldBoundsY.max);
         desiredPos += offset;
 
-        if (player.velocity.magnitude > 0) lastPlayerVel = Vector3.Lerp(lastPlayerVel, player.velocity.normalized, lValue);
+        /*if (player.velocity.magnitude > 0) lastPlayerVel = Vector3.Lerp(lastPlayerVel, player.velocity.normalized, lValue);*/
+        float xPlayerVel, yPlayerVel;
+        xPlayerVel = InputManager.playerDirection.x != 0 ? player.velocity.x : lastPlayerVel.x;
+        yPlayerVel = InputManager.playerDirection.y != 0 ? player.velocity.y : lastPlayerVel.y;
+
+        lastPlayerVel = Vector3.Lerp(lastPlayerVel, new Vector3(xPlayerVel, yPlayerVel), 0.005f);
+        lastPlayerVel.x = Mathf.Clamp(lastPlayerVel.x, -maxCameraPredict, maxCameraPredict);
+        lastPlayerVel.y = Mathf.Clamp(lastPlayerVel.y, -maxCameraPredict, maxCameraPredict);
+
 
         camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, cameraSize, lerpVal);
         transform.position = Vector3.Lerp(transform.position, desiredPos, lValue);

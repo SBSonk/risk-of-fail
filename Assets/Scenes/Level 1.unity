@@ -10152,11 +10152,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8374135266236517900, guid: 214e957eee610e941b81dd3277b14099, type: 3}
       propertyPath: lerpVal
-      value: 0.15
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8374135266236517900, guid: 214e957eee610e941b81dd3277b14099, type: 3}
       propertyPath: roomViewLerp
-      value: 0.15
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 8374135266236517900, guid: 214e957eee610e941b81dd3277b14099, type: 3}
       propertyPath: worldBoundsX.max
@@ -13883,6 +13883,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1326280369, guid: eb94c8d97ad6620409ce3d71c0815470, type: 3}
+    - target: {fileID: 2219022232220137925, guid: c4c36b15bc4ca574888bb7f3faf31040, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219022232220137925, guid: c4c36b15bc4ca574888bb7f3faf31040, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 2219022232220137926, guid: c4c36b15bc4ca574888bb7f3faf31040, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -16827,6 +16835,10 @@ PrefabInstance:
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2223588945008610396, guid: bf96d317047eae34cb09ea331085a826, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 0643e803b54fafa49b078895ddf681f8, type: 2}
     - target: {fileID: 2223588945008610397, guid: bf96d317047eae34cb09ea331085a826, type: 3}
       propertyPath: m_RootOrder
       value: 3

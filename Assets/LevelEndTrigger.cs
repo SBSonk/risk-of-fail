@@ -11,6 +11,6 @@ public class LevelEndTrigger : MonoBehaviour
     {
         if (!collision.CompareTag("Player")) return;
 
-        OnLevelEnd?.Invoke();
+        OnLevelEnd?.Invoke();   
     }
 }

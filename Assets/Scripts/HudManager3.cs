@@ -35,6 +35,9 @@ public class HudManager3 : MonoBehaviour
     [SerializeField] Image piercing;
     [SerializeField] Sprite[] barStates;
 
+    [Header("Dodge")]
+    [SerializeField] TextMeshProUGUI dodgeText;
+
     Animator animator;
 
     private void Awake()
@@ -55,9 +58,13 @@ public class HudManager3 : MonoBehaviour
         PlayerShooting.onAmmoUpdate += UpdateAmmo;
         PlayerShooting.onWeaponSwitch += SwapWeapon;
 
+        PlayerMovement.onDodge += UpdateDodges;
+        player.pMovement.OnDodgeRecharge.AddListener(UpdateDodges);
+
         // Initialize UI
         UpdatePoints();
         SwapWeapon();
+        UpdateDodges();
     }
 
     private void OnDestroy()
@@ -70,6 +77,8 @@ public class HudManager3 : MonoBehaviour
         PlayerShooting.onReloadStart -= StartReloadAnimation;
         PlayerShooting.onAmmoUpdate -= UpdateAmmo;
         PlayerShooting.onWeaponSwitch -= SwapWeapon;
+
+        PlayerMovement.onDodge -= UpdateDodges;
     }
 
     private void FixedUpdate()
@@ -169,5 +178,10 @@ public class HudManager3 : MonoBehaviour
         ammobarImage.color = defaultColor;
 
         UpdateAmmo();
+    }
+
+    public void UpdateDodges()
+    {
+        dodgeText.text = $"DODGES: {player.pMovement.dodges}";
     }
 }

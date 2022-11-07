@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MoveCursor : MonoBehaviour
 {
-    SpriteRenderer cursor;
+    Image cursor;
     [SerializeField] float rotationDegrees = 1, lerpPos = 0.5f;
     Vector3 mousePos;
 
     private void Awake()
     {
-        cursor = GetComponentInChildren<SpriteRenderer>();
+        cursor = GetComponentInChildren<Image>();
     }
 
     private void Start()
@@ -21,17 +22,15 @@ public class MoveCursor : MonoBehaviour
 
     void Update()
     {
-        float lerpVal = Mathf.Abs(InputManager.mouseMovement.magnitude) > 0 ? 0 : lerpPos;
         mousePos = GetMouseInput();
 
-        transform.rotation = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + (rotationDegrees * Time.deltaTime));
-        transform.position = Vector3.Lerp(transform.position, mousePos, lerpPos);
+        transform.SetPositionAndRotation(Vector3.Lerp(transform.position, mousePos, lerpPos), Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + (rotationDegrees * Time.deltaTime)));
     }
 
     // Returns mouse input for this frame
     Vector3 GetMouseInput()
     {
-        return InputManager.mousePosition;
+        return InputManager.mouseRawPosition;
     }
 
     public void ChangeCrosshair(Crosshair c)

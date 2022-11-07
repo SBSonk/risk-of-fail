@@ -20,6 +20,11 @@ public class ButtonFunctions : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void GoMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void ExitGame()
     {
         // Save game here

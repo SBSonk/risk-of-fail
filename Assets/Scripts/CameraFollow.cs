@@ -1,11 +1,13 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CameraFollow : MonoBehaviour
 {
     public static CameraFollow cam;
 
     [SerializeField] public Vector3 offset;
-    [SerializeField] float lerpVal = 0.15f, roomViewLerp = 0.05f;
+    [SerializeField] float lerpVal = 0.15f, roomViewLerp = 0.05f, maxCameraPredict = .5f;
 
     [Header("RoomTransfer")]
     [SerializeField] CameraBounds worldBoundsX, worldBoundsY;
@@ -21,6 +23,8 @@ public class CameraFollow : MonoBehaviour
     float startCameraSize;
     Vector3 startOffset;
     CameraBounds startX, startY;
+
+    bool cameraControl = true;
 
     private void Awake()
     {
@@ -43,6 +47,8 @@ public class CameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!cameraControl) return;
+
         float lValue = lockToCenter ? roomViewLerp : lerpVal;
 
         if (lockToCenter)
@@ -58,7 +64,15 @@ public class CameraFollow : MonoBehaviour
         desiredPos.y = Mathf.Clamp(desiredPos.y, worldBoundsY.min, worldBoundsY.max);
         desiredPos += offset;
 
-        if (player.velocity.magnitude > 0) lastPlayerVel = Vector3.Lerp(lastPlayerVel, player.velocity.normalized, lValue);
+        /*if (player.velocity.magnitude > 0) lastPlayerVel = Vector3.Lerp(lastPlayerVel, player.velocity.normalized, lValue);*/
+        float xPlayerVel, yPlayerVel;
+        xPlayerVel = InputManager.playerDirection.x != 0 ? player.velocity.x : lastPlayerVel.x;
+        yPlayerVel = InputManager.playerDirection.y != 0 ? player.velocity.y : lastPlayerVel.y;
+
+        lastPlayerVel = Vector3.Lerp(lastPlayerVel, new Vector3(xPlayerVel, yPlayerVel), 0.005f);
+        lastPlayerVel.x = Mathf.Clamp(lastPlayerVel.x, -maxCameraPredict, maxCameraPredict);
+        lastPlayerVel.y = Mathf.Clamp(lastPlayerVel.y, -maxCameraPredict, maxCameraPredict);
+
 
         camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, cameraSize, lerpVal);
         transform.position = Vector3.Lerp(transform.position, desiredPos, lValue);
@@ -68,6 +82,77 @@ public class CameraFollow : MonoBehaviour
     {
         worldBoundsX = x;
         worldBoundsY = y;
+    }
+
+    public IEnumerator CenterCameraOnPosition(Vector3 position, float time, float holdTime, bool freezeGame)
+    {
+        if (freezeGame) Time.timeScale = 0;
+
+        cameraControl = false;
+        Vector3 startPos = transform.position;
+
+        float t = 0;
+        while (t <= time)
+        {
+            if (freezeGame)
+            {
+                yield return new WaitForSecondsRealtime(0.01f);
+                t += 0.01f;
+            }
+            else
+            {
+                yield return new WaitForEndOfFrame();
+                t += Time.deltaTime;
+            }
+            
+            transform.position = Vector3.Lerp(startPos, position, t / time);
+        }
+
+        if (freezeGame) yield return new WaitForSecondsRealtime(holdTime);
+        else yield return new WaitForSeconds(holdTime);
+
+        cameraControl = true;
+        if (freezeGame) Time.timeScale = 1;
+    }
+
+    public IEnumerator CenterCameraOnMultiplePositions(Vector3[] positions, float time, float holdTime, bool freezeGame = false)
+    {
+        if (freezeGame) Time.timeScale = 0;
+
+        cameraControl = false;
+        Vector3 startPos = transform.position;
+
+        Vector3 position = Vector3.zero;
+        // Get average of positions
+        int i;
+        for (i = 0; i < positions.Length; i++)
+        {
+            position += positions[i];
+        }
+        position /= i;
+
+        float t = 0;
+        while (t <= time)
+        {
+            if (freezeGame)
+            {
+                yield return new WaitForSecondsRealtime(0.01f);
+                t += 0.01f;
+            }
+            else
+            {
+                yield return new WaitForEndOfFrame();
+                t += Time.deltaTime;
+            }
+
+            transform.position = Vector3.Lerp(startPos, position, t / time);
+        }
+
+        if (freezeGame) yield return new WaitForSecondsRealtime(holdTime);
+        else yield return new WaitForSeconds(holdTime);
+
+        cameraControl = true;
+        if (freezeGame) Time.timeScale = 1;
     }
 
     public void ResetCameraSize()

@@ -91,7 +91,7 @@ public class PlayerShooting : MonoBehaviour
         onShove?.Invoke();
 
         // Check all objects in radius in front of shootpivot
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position + (cursor.position - transform.position).normalized, radius);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position + ((Vector3) InputManager.mousePosition - transform.position).normalized, radius);
         if (hits.Length == 0) return;
 
         foreach (Collider2D h in hits)

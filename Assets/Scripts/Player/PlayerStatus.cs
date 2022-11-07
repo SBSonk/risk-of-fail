@@ -74,5 +74,6 @@ public class PlayerStatus : Alive
 
         // Reenable animation switching
         pAnimations.canSwitchAnimation = true;
+
     }
 }

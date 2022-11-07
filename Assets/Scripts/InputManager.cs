@@ -3,7 +3,7 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     public static Vector2 playerDirection;
-    public static Vector2 mousePosition, mouseMovement;
+    public static Vector2 mouseRawPosition, mousePosition, mouseMovement;
     public static bool shoot, shootAuto, dodge, reload;
     public static bool shove;
     public static int swapWeapon;
@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
+        mouseRawPosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseMovement = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 

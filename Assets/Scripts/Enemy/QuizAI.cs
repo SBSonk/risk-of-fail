@@ -70,14 +70,17 @@ public class QuizAI : MonoBehaviour
 
             case AIMode.shooting:
                 // Check if player left los to switch back to pathfinding mode
-                if (!playerInLOS())
+                if (!playerInLOS() || playerDistance >= enterShootRadius)
                 {
                     Invoke("SwitchToPathing", timeBeforePathfinding);
                     break;
                 }
 
                 // Reposition every few shots of if player is too close
-                if (shotsTaken < shotsToReposition || playerDistance < 4f) Shooting();
+                if (shotsTaken < shotsToReposition || playerDistance < 4f)
+                {
+                    Shooting();
+                }
                 else switchState(AIMode.repositioning);
                 break;
 

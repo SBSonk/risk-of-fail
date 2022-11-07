@@ -39,7 +39,7 @@ public class Weapon : ScriptableObject
     {
         return;
     }
-}
+}   
 
 [System.Serializable]
 public enum AnimationTypes

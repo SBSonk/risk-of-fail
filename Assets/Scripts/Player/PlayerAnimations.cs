@@ -76,31 +76,14 @@ public class PlayerAnimations : MonoBehaviour
         }
         else if (followCursor) Invoke("StopCursorFollow", stopCursorFollowTime);
 
-        // Get directions (prioritize vertical directions)
-        if (followCursor)
-        {
-            // Get direction from me to mouse
-            dir = ((Vector3) InputManager.mousePosition - transform.position).normalized;
+        // Orient player
+        dir = ((Vector3) InputManager.mousePosition - transform.position).normalized;
 
-            currentDir = VectorToDir(dir);
-        }
-        else currentDir = VectorToDir(input);
+        currentDir = VectorToDir(dir);
 
         // Orient weapon
-        float angle = 0;
-        if (followCursor)
-        {
-            // Get direction from cursor to player and make the player face it
-            Vector2 mousePos = ((Vector2)transform.position - InputManager.mousePosition).normalized;
-            angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
-        }
-        else
-        {
-            if (currentDir == Directions.up) angle = 90;
-            else if (currentDir == Directions.right) angle = 0;
-            else if (currentDir == Directions.down) angle = -90;
-            else if (currentDir == Directions.left) angle = 180;
-        }
+        Vector2 mousePos = ((Vector2)transform.position - InputManager.mousePosition).normalized;
+        float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
 
         weapon.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.LerpAngle(weapon.rotation.eulerAngles.z, angle, weaponLerp)));
     } 

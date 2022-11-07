@@ -58,12 +58,35 @@ public class PlayerShooting : MonoBehaviour
         if (weaponPool.Count > 1) WeaponSwitching();
         else if (weaponPool.Count == 0) return;
 
-        GunBehavior(GetHeldWeapon().weapon as Gun); // shouldnt be casting every frame
+        if (CheckIfPlayerShooting() && canShoot)
+        {
+            var weapon = GetHeldWeapon().weapon;
+            switch (weapon)
+            {
+                case Gun g:
+                    GunBehavior(g);
+                    break;
+
+                case MeleeWeapon m:
+                    m.ShootWeapon(gunBarrel);
+                    break;
+            }
+
+            // Apply firerate
+            canShoot = false;
+            Invoke("EnableShooting", weapon.fireRate);
+        }
 
         Shoving();
 
         // Reloading
         if (GetHeldWeapon().clip < GetHeldWeapon().weapon.clipSize && InputManager.reload && reloading == false) StartCoroutine(Reload());
+    }
+
+    bool CheckIfPlayerShooting()
+    {
+        if (GetHeldWeapon().weapon.auto) return InputManager.shootAuto;
+        else return InputManager.shoot;
     }
 
     void WeaponSwitching()
@@ -117,15 +140,6 @@ public class PlayerShooting : MonoBehaviour
     // Handle shooting of GUN type weapons
     void GunBehavior(Gun g)
     {
-        if (!canShoot) return;
-
-        // Check if firing semi auto or full auto
-        bool shooting = false;
-        if (g.auto) shooting = InputManager.shootAuto;
-        else shooting = InputManager.shoot;
-
-        if (!shooting) return;
-
         // Shooting and magazines
         var weapon = GetHeldWeapon();
         if (g.clipSize > 0)
@@ -159,10 +173,6 @@ public class PlayerShooting : MonoBehaviour
     void ShootGun(Gun g)
     {
         g.ShootWeapon(gunBarrel);
-
-        // Apply firerate cooldown
-        canShoot = false;
-        Invoke("EnableShooting", g.fireRate);
 
         if (onPlayerShoot != null) onPlayerShoot.Invoke();
     }

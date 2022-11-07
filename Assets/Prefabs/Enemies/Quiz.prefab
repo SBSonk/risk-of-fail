@@ -209,7 +209,13 @@ MonoBehaviour:
   statuses: []
   damageIndicatorPrefab: {fileID: 5454792722737808766, guid: ffe96b4ed14b8d74aaa0085dca50470a, type: 3}
   stunned: 0
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
   onStunned:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
     m_PersistentCalls:
       m_Calls: []
   canSeePlayer: 0
@@ -243,8 +249,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 66240
   weapon: {fileID: 11400000, guid: b27a6837b65e8f84ba7988572c057ee9, type: 2}
-  dodgeChance: 75
-  dodgeCooldown: 1
+  dodgeChance: 50
+  dodgeCooldown: 1.25
   dodgeSpeed: 15
   dodgeDistance: 2.5
   enterShootRadius: 25

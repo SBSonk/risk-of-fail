@@ -12,6 +12,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseButtons;
     public GameObject settingsButtons;
 
+    // reset the paused and settings variables since they are static. on start
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

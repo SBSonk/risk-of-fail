@@ -84,8 +84,9 @@ public class CameraFollow : MonoBehaviour
         worldBoundsY = y;
     }
 
-    public IEnumerator CenterCameraOnPosition(Vector3 position, float time, float holdTime, bool freezeGame)
+    public IEnumerator CenterCameraOnPosition(CenterCameraOnObject c, Vector3 position, float time, float holdTime, bool freezeGame)
     {
+        c.OnCenterStart?.Invoke();
         if (freezeGame) Time.timeScale = 0;
 
         cameraControl = false;
@@ -108,15 +109,18 @@ public class CameraFollow : MonoBehaviour
             transform.position = Vector3.Lerp(startPos, position, t / time);
         }
 
+        c.OnCentered?.Invoke();
         if (freezeGame) yield return new WaitForSecondsRealtime(holdTime);
         else yield return new WaitForSeconds(holdTime);
 
         cameraControl = true;
         if (freezeGame) Time.timeScale = 1;
+        c.OnRetract?.Invoke();
     }
 
-    public IEnumerator CenterCameraOnMultiplePositions(Vector3[] positions, float time, float holdTime, bool freezeGame = false)
+    public IEnumerator CenterCameraOnMultiplePositions(CenterCameraOnObject c, Vector3[] positions, float time, float holdTime, bool freezeGame = false)
     {
+        c.OnCenterStart?.Invoke();
         if (freezeGame) Time.timeScale = 0;
 
         cameraControl = false;
@@ -148,11 +152,13 @@ public class CameraFollow : MonoBehaviour
             transform.position = Vector3.Lerp(startPos, position, t / time);
         }
 
+        c.OnCentered?.Invoke();
         if (freezeGame) yield return new WaitForSecondsRealtime(holdTime);
         else yield return new WaitForSeconds(holdTime);
 
         cameraControl = true;
         if (freezeGame) Time.timeScale = 1;
+        c.OnRetract?.Invoke();
     }
 
     public void ResetCameraSize()

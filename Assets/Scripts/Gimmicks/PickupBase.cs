@@ -23,33 +23,7 @@ public class PickupBase : MonoBehaviour
 
     void StartFlicker()
     {
-        StartCoroutine(FlickerAnimation(3));
-    }
-
-    IEnumerator FlickerAnimation(float t)
-    {
-        float flickerInt = .15f;
-        float fastFlickerInt = flickerInt / 1.5f;
-        float reallyFastFlickerInt = flickerInt / 2;
-        float timeRemaining = t;
-        float time20 = t * .4f;
-        float time10 = t * .2f;
-        // Flicker animation
-        bool active = true;
-        while (timeRemaining > 0)
-        {
-            active = !active;
-            sprite.SetActive(active);   
-
-            yield return new WaitForSeconds(flickerInt);
-            timeRemaining -= flickerInt;
-
-            if (timeRemaining <= time10) flickerInt = reallyFastFlickerInt;
-            else if (timeRemaining <= time20) flickerInt = fastFlickerInt;
-
-        }
-
-        sprite.SetActive(true);
+        StartCoroutine(SprFunctions.Flicker(sprite.GetComponent<SpriteRenderer>(), 3));
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)

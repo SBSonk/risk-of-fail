@@ -1,13 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
-
+using UnityEngine.Rendering.Universal;
 
 public class ChooseAmmoDropType : MonoBehaviour
 {
     AmmoPickup pickup;
     [SerializeField] List<AmmoDrops> drops;
 
-    private void Start()
+    public void InitializeAmmo()
     {
         pickup = GetComponent<AmmoPickup>();
 

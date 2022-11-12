@@ -2,13 +2,11 @@ using UnityEngine;
 using Pathfinding;
 using System.Collections;
 using UnityEngine.Events;
+using Unity.VisualScripting;
 
 // I should really make this inherit QuizAI or something... too much work
 public class WrittenWorksAttack : MonoBehaviour
 {
-    static int dashesQueued = 0;
-    const int MAXDASHESQUEUED = 2;
-
     [SerializeField] float baseDamage, stunLength, knockbackAmount, reboundLength;
     [SerializeField] float rushDistance = 5f, attackRange = 5f;
     float defaultSpeed;
@@ -41,7 +39,7 @@ public class WrittenWorksAttack : MonoBehaviour
         followDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         originalDrag = self.rb.drag;
 
-        //self.onHit.AddListener(CancelDash);
+        self.onStunned.AddListener(CancelDash);
     }
 
     protected virtual void FixedUpdate()
@@ -60,10 +58,10 @@ public class WrittenWorksAttack : MonoBehaviour
             case AIMode.pushing:
                 if (distanceToPlayer > rushDistance) switchState(AIMode.pathing);
 
-                /*if (self.canSeePlayer && canDash && distanceToPlayer >= minDashDistance && distanceToPlayer <= maxDashDistance)
+                if (self.canSeePlayer && canDash && distanceToPlayer >= minDashDistance && distanceToPlayer <= maxDashDistance)
                 {
                     StartCoroutine(DashAttack());
-                }*/
+                }
 
                 ai.destination = player.position;
                 break;
@@ -109,10 +107,8 @@ public class WrittenWorksAttack : MonoBehaviour
 
     IEnumerator DashAttack()
     {
-        if (attacking || !canDash || dashesQueued >= MAXDASHESQUEUED) yield break;
-        dashesQueued++;
+        if (attacking || !canDash) yield break;
         OnDashAttack?.Invoke();
-        print(dashesQueued);
         attacking = true;
         canDash = false;
 
@@ -129,9 +125,12 @@ public class WrittenWorksAttack : MonoBehaviour
             yield return new WaitForEndOfFrame();
             t += Time.deltaTime;
             dashDir = ((player.position + ((Vector3) PlayerStatus.player.GetComponent<Rigidbody2D>().velocity * 0.2f)) - transform.position).normalized;
-            transform.up = Vector3.Lerp(transform.up, dashDir, 0.5f);
+            transform.up = Vector3.Lerp(transform.up, dashDir, Mathf.Lerp(0.5f, 0, t / 1.25f));
 
-            if (!self.canSeePlayer || distanceToPlayer > maxDashDistance) CancelDash(0);
+            if (!self.canSeePlayer)
+            {
+                CancelDash(0);
+            }
         }
 
         // target player for a few seconds
@@ -144,8 +143,8 @@ public class WrittenWorksAttack : MonoBehaviour
         print("dash");
 
         // Dash into player
-        self.rb.drag = originalDrag * 0.5f;
-        self.rb.AddForce(dashDir * 25f, ForceMode2D.Impulse);
+        self.rb.drag = originalDrag * 0.4f;
+        self.rb.AddForce(transform.up * 20f, ForceMode2D.Impulse);
 
         OnDashStart?.Invoke();
 
@@ -161,8 +160,6 @@ public class WrittenWorksAttack : MonoBehaviour
 
         // Enable collision with enemies
         gameObject.layer = LayerMask.NameToLayer("WrittenWorks");
-        dashesQueued--;
-        if (dashesQueued < 0) dashesQueued = 0;
         OnDashEnd?.Invoke();
 
         Invoke("EnableDash", Random.Range(minDashCooldown, maxDashCooldown));
@@ -171,8 +168,8 @@ public class WrittenWorksAttack : MonoBehaviour
     void CancelDash(float damage)
     {
         // Only allow cancel if still casting 
-        if (dashing || attacking) return;
-        CancelInvoke();
+        if (dashing) return;
+        CancelInvoke("EnableDash");
         print("canceld");
         
         attacking = false;
@@ -183,11 +180,8 @@ public class WrittenWorksAttack : MonoBehaviour
         StopAllCoroutines();
         OnDashCancel?.Invoke();
 
-        Invoke("EnableDash", 2);
-
-        
-        dashesQueued--;
-        if (dashesQueued < 0) dashesQueued = 0;
+        canDash = false;
+        Invoke("EnableDash", 3); 
     }
 
     IEnumerator SwipeAttack()

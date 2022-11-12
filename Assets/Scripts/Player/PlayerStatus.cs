@@ -17,7 +17,7 @@ public class PlayerStatus : Alive
     public delegate void OnPlayerHeal();
     public static event OnPlayerDamage onPlayerHeal;
 
-    private void Start()
+    private void Awake()
     {
         player = this;
 

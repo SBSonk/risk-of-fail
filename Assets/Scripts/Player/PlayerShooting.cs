@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -30,11 +31,13 @@ public class PlayerShooting : MonoBehaviour
     public delegate void OnAmmoUpdate();
     public static event OnAmmoUpdate onAmmoUpdate;
 
-    public delegate void OnReloadStart();
+    public delegate void OnReloadStart();   
     public static event OnReloadStart onReloadStart;
 
     public delegate void OnShove();
     public static event OnShove onShove;
+
+    public UnityEvent OnPlayerMelee;
 
     private void Start()
     {
@@ -58,12 +61,36 @@ public class PlayerShooting : MonoBehaviour
         if (weaponPool.Count > 1) WeaponSwitching();
         else if (weaponPool.Count == 0) return;
 
-        GunBehavior(GetHeldWeapon().weapon as Gun); // shouldnt be casting every frame
+        if (CheckIfPlayerShooting() && canShoot)
+        {
+            var weapon = GetHeldWeapon().weapon;
+            switch (weapon)
+            {
+                case Gun g:
+                    GunBehavior(g);
+                    break;
+
+                case MeleeWeapon m:
+                    m.ShootWeapon(gunBarrel);
+                    OnPlayerMelee?.Invoke();
+                    break;
+            }
+
+            // Apply firerate
+            canShoot = false;
+            Invoke("EnableShooting", weapon.fireRate);
+        }
 
         Shoving();
 
         // Reloading
         if (GetHeldWeapon().clip < GetHeldWeapon().weapon.clipSize && InputManager.reload && reloading == false) StartCoroutine(Reload());
+    }
+
+    bool CheckIfPlayerShooting()
+    {
+        if (GetHeldWeapon().weapon.auto) return InputManager.shootAuto;
+        else return InputManager.shoot;
     }
 
     void WeaponSwitching()
@@ -91,18 +118,33 @@ public class PlayerShooting : MonoBehaviour
         onShove?.Invoke();
 
         // Check all objects in radius in front of shootpivot
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position + ((Vector3) InputManager.mousePosition - transform.position).normalized, radius);
+        Vector3 shoveDir = ((Vector3)InputManager.mousePosition - transform.position).normalized;
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position + shoveDir, radius);
+        print(hits.Length);
         if (hits.Length == 0) return;
 
         foreach (Collider2D h in hits)
         {
-            Enemy enemy = h.GetComponent<Enemy>();
-            if (enemy)
+            if (h.TryGetComponent(out Enemy enemy))
             {
                 enemy.Stun(shoveStunTime);
 
                 // Knockback
-                enemy.GetComponent<Rigidbody2D>().AddForce(gunBarrel.right.normalized * shoveStrength, ForceMode2D.Impulse);
+                enemy.GetComponent<Rigidbody2D>().AddForce(shoveDir * shoveStrength, ForceMode2D.Impulse);
+            } else if (h.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
+            {
+                if (h.TryGetComponent(out Rigidbody2D _rb) && h.TryGetComponent(out Projectile p) && p.active)
+                {
+                    _rb.velocity = Vector2.zero;
+                    _rb.AddForce(shoveDir * 3, ForceMode2D.Impulse);
+
+                    h.GetComponentInChildren<TrailRenderer>().startColor = Color.cyan;
+
+                    // Convert to playerBullet
+                    h.gameObject.layer = LayerMask.NameToLayer("Bullet");
+                    p.GetComponent<Projectile>().damage = 60;
+                }
+                
             }
         }
 
@@ -117,15 +159,6 @@ public class PlayerShooting : MonoBehaviour
     // Handle shooting of GUN type weapons
     void GunBehavior(Gun g)
     {
-        if (!canShoot) return;
-
-        // Check if firing semi auto or full auto
-        bool shooting = false;
-        if (g.auto) shooting = InputManager.shootAuto;
-        else shooting = InputManager.shoot;
-
-        if (!shooting) return;
-
         // Shooting and magazines
         var weapon = GetHeldWeapon();
         if (g.clipSize > 0)
@@ -159,10 +192,6 @@ public class PlayerShooting : MonoBehaviour
     void ShootGun(Gun g)
     {
         g.ShootWeapon(gunBarrel);
-
-        // Apply firerate cooldown
-        canShoot = false;
-        Invoke("EnableShooting", g.fireRate);
 
         if (onPlayerShoot != null) onPlayerShoot.Invoke();
     }

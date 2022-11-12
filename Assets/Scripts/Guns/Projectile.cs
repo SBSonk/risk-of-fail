@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour
     public int pierces = 0;
     public ScreenshakeValue bulletShake;
 
-    bool active = true;
+    public bool active = true;
     List<int> objectsHit = new List<int>();
 
     private void OnTriggerEnter2D(Collider2D collision)

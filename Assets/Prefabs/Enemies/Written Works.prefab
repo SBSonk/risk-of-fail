@@ -10319,8 +10319,8 @@ MonoBehaviour:
   killScore: 25
   hBarPrefab: {fileID: 2682529488675642673, guid: b078b5e28f550784191ec80b78e48c6a, type: 3}
   hbarOffset: {x: 0, y: 1.25, z: 0}
-  minSpeed: 6
-  maxSpeed: 9
+  minSpeed: 5
+  maxSpeed: 7
   speed: 10
   hbarLerp: 0.5
   speedLerp: 0.125
@@ -10360,8 +10360,8 @@ MonoBehaviour:
   rushDistance: 6
   attackRange: 5
   mode: 0
-  minDashDistance: 3
-  maxDashDistance: 5
+  minDashDistance: 2
+  maxDashDistance: 10
   minDashCooldown: 2
   maxDashCooldown: 6
   OnSwipeAttack:
@@ -10398,7 +10398,7 @@ MonoBehaviour:
     dropAmount: 3
     minDropAmount: 0
   - obj: {fileID: 2766738602563172787, guid: 199e6106dc5d9ed4ab23b16e75f75fc9, type: 3}
-    dropChance: 70
+    dropChance: 50
     dropAmount: 3
     minDropAmount: 0
 --- !u!114 &347650722

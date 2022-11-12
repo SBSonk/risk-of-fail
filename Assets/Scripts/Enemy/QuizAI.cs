@@ -70,14 +70,17 @@ public class QuizAI : MonoBehaviour
 
             case AIMode.shooting:
                 // Check if player left los to switch back to pathfinding mode
-                if (!playerInLOS())
+                if (!playerInLOS() || playerDistance >= enterShootRadius)
                 {
                     Invoke("SwitchToPathing", timeBeforePathfinding);
                     break;
                 }
 
                 // Reposition every few shots of if player is too close
-                if (shotsTaken < shotsToReposition || playerDistance < 4f) Shooting();
+                if (shotsTaken < shotsToReposition || playerDistance < 4f)
+                {
+                    Shooting();
+                }
                 else switchState(AIMode.repositioning);
                 break;
 
@@ -127,7 +130,7 @@ public class QuizAI : MonoBehaviour
         float travelTime = distance / (weapon.bulletVelocity * Time.fixedDeltaTime);
 
         predictedPlayerPos = (predictedPlayerPos - transform.position) * travelTime;
-        transform.up = Vector3.Slerp(transform.up, predictedPlayerPos, .5f); // predict movement
+        transform.up = Vector3.Slerp(transform.up, predictedPlayerPos, .1f); // predict movement
 
         Debug.DrawLine(transform.position + transform.up, transform.position + (transform.up * 10), Color.red);
 

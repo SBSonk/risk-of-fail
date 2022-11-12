@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CenterCameraOnObject : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class CenterCameraOnObject : MonoBehaviour
     [SerializeField] bool freezeGame = false;
 
     CameraFollow cam;
+
+    public UnityEvent OnCenterStart, OnCentered, OnRetract;
 
     private void Start()
     {
@@ -19,7 +22,7 @@ public class CenterCameraOnObject : MonoBehaviour
     {
         if (transforms.Length == 1)
         {
-            cam.StartCoroutine(cam.CenterCameraOnPosition(transforms[0].position, time, holdTime, freezeGame));
+            cam.StartCoroutine(cam.CenterCameraOnPosition(this, transforms[0].position, time, holdTime, freezeGame));
         }
         else
         {
@@ -29,7 +32,7 @@ public class CenterCameraOnObject : MonoBehaviour
                 positions[i] = transforms[i].position;
             }
 
-            cam.StartCoroutine(cam.CenterCameraOnMultiplePositions(positions, time, holdTime, freezeGame));
+            cam.StartCoroutine(cam.CenterCameraOnMultiplePositions(this, positions, time, holdTime, freezeGame));
         }
     }
 }

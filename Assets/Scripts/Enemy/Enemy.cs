@@ -50,7 +50,8 @@ public class Enemy : Alive
 
     private void Update()
     {
-        canSeePlayer = Physics2D.Linecast(transform.position, PlayerStatus.player.transform.position).collider.CompareTag("Player");    
+        // Check if there is environment collision in the way
+        canSeePlayer = !Physics2D.Linecast(transform.position, PlayerStatus.player.transform.position, LayerMask.NameToLayer("Environment"));    
 
         // Make health bar follow enemy
         healthParent.transform.position = Vector3.Lerp(healthParent.transform.position, transform.position + hbarOffset, hbarLerp);
@@ -131,6 +132,7 @@ public class Enemy : Alive
 
     public override void Stun(float duration)
     {
+        print("stunn");
         // Can't get stunned twice
         if (stunned) return;
 

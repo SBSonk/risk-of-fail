@@ -20,10 +20,12 @@ MonoBehaviour:
   weaponPiercing: 0
   isWeaponObtained: 0
   hudElement: {fileID: 0}
-  crossHair: {fileID: 0}
+  crossHair:
+    sprite: {fileID: 0}
+    rotationSpeed: 0
   weaponSprite: {fileID: 0}
   baseDamage: 10
-  bulletSpread: 1
+  bulletSpread: 2
   knockbackAmount: 10
   stunLength: 0.1
   defaultAmmoCount: 100
@@ -36,6 +38,7 @@ MonoBehaviour:
   reloadLength: 0
   fireRate: 0.75
   auto: 1
+  animType: 65
   bulletVelocity: 2.5
   pierceAmount: 0
   bullet: {fileID: 6245270692030926925, guid: edbc435772d2add44ac90a03ecdd0cab, type: 3}

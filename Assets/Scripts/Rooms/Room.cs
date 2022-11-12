@@ -94,8 +94,6 @@ public class Room : MonoBehaviour
     {
         if (!spawner) return;
 
-        spawner.enabled = val;
-
         if (!val) spawner.CancelInvoke();
         else spawner.StartSpawner();
     }

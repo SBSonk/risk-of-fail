@@ -21,13 +21,13 @@ MonoBehaviour:
   isWeaponObtained: 0
   hudElement: {fileID: 21300000, guid: e60a4504754350a4c8dd2b6f50f0826f, type: 3}
   crossHair:
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 3138f055e0d56db47be8c5ff349b224c, type: 3}
     rotationSpeed: 0
-  weaponSprite: {fileID: 0}
-  baseDamage: 40
+  weaponSprite: {fileID: -1326280369, guid: eb94c8d97ad6620409ce3d71c0815470, type: 3}
+  baseDamage: 30
   bulletSpread: 0
-  knockbackAmount: 10
-  stunLength: 0.25
+  knockbackAmount: 15
+  stunLength: 0.2
   defaultAmmoCount: 100
   hitScreenShake:
     duration: 0
@@ -36,7 +36,7 @@ MonoBehaviour:
   ammoPerShot: 0
   clipSize: -1
   reloadLength: 0
-  fireRate: 0.5
+  fireRate: 0.6
   auto: 0
   animType: 65
-  hitArea: 2.5
+  hitArea: 2

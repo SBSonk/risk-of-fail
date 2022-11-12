@@ -18,8 +18,6 @@ public class WrittenWorksAnimator : MonoBehaviour
     [SerializeField] SpriteRenderer dashIndicator;
     [SerializeField] SpriteRenderer[] arrowIndicator;
 
-    static Color CLEAR = new Color(0, 0, 0, 0);
-
     public bool canSwitchAnimations = true;
 
     private void Awake()
@@ -34,10 +32,10 @@ public class WrittenWorksAnimator : MonoBehaviour
     {
         enemy.onHit.AddListener(StunAnimation);
         enemyAttack.OnSwipeAttack.AddListener(SwipeAnimation);
-        //enemyAttack.OnDashAttack.AddListener(DashAnimation);
-        //enemyAttack.OnDashStart.AddListener(DashStart);
-        //enemyAttack.OnDashEnd.AddListener(DashFinish);
-        //enemyAttack.OnDashCancel.AddListener(DashCancel);
+        enemyAttack.OnDashAttack.AddListener(DashAnimation);
+        enemyAttack.OnDashStart.AddListener(DashStart);
+        enemyAttack.OnDashEnd.AddListener(DashFinish);
+        enemyAttack.OnDashCancel.AddListener(DashCancel);
     }
 
     private void Update()
@@ -147,20 +145,20 @@ public class WrittenWorksAnimator : MonoBehaviour
 
     void DashAnimation()
     {
-        StartCoroutine(FadeSprite(dashIndicator, CLEAR, Color.white, 0.1f));
+        StartCoroutine(SprFunctions.Fade(dashIndicator, Color.clear, Color.white, 0.1f));
 
-        StartCoroutine(FadeSprite(arrowIndicator[0], CLEAR, Color.white, 0.1f));;
-        StartCoroutine(FadeSprite(arrowIndicator[1], CLEAR, Color.white, 1.5f));
+        StartCoroutine(SprFunctions.Fade(arrowIndicator[0], Color.clear, Color.white, 0.1f));;
+        StartCoroutine(SprFunctions.Fade(arrowIndicator[1], Color.clear, Color.white, 1.5f));
 
         dashParticles.Play();
     }
 
     void DashStart()
     {
-        StartCoroutine(FadeSprite(dashIndicator, Color.white, CLEAR, 0.1f));
+        StartCoroutine(SprFunctions.Fade(dashIndicator, Color.white, Color.clear, 0.1f));
         foreach (SpriteRenderer s in arrowIndicator)
         {
-            StartCoroutine(FadeSprite(s, Color.white, CLEAR, 0.1f));
+            StartCoroutine(SprFunctions.Fade(s, Color.white, Color.clear, 0.1f));
         }
     }
 
@@ -173,35 +171,19 @@ public class WrittenWorksAnimator : MonoBehaviour
     {
         StopAllCoroutines();
 
-        StartCoroutine(FadeSprite(dashIndicator, Color.white, CLEAR, 0.1f));
-        foreach (SpriteRenderer s in arrowIndicator)
+        if (dashIndicator.color != Color.clear)
         {
-            StartCoroutine(FadeSprite(s, Color.white, CLEAR, 0.1f));
+            StartCoroutine(SprFunctions.Fade(dashIndicator, Color.white, Color.clear, 0.1f));
+            foreach (SpriteRenderer s in arrowIndicator)
+            {
+                StartCoroutine(SprFunctions.Fade(s, Color.white, Color.clear, 0.1f));
+            }
         }
 
         dashParticles.Clear();
         dashParticles.Stop();
 
         canSwitchAnimations = true;
-    }
-
-    IEnumerator FadeSprite(SpriteRenderer sprite, Color startColor, Color finalColor, float t)
-    {
-        sprite.color = startColor;
-        Color color = startColor;
-        float time = 0;
-        while (time <= t)
-        {
-            Color c = sprite.color;
-            c = color;
-            sprite.color = c;
-            color = Color.Lerp(startColor, finalColor, time / t);
-
-            yield return new WaitForEndOfFrame();
-            time += Time.deltaTime;
-        }
-
-        sprite.color = finalColor;
     }
 
     void EnableAnimations() { canSwitchAnimations = true; }

@@ -52,6 +52,8 @@ public class PlayerAnimations : MonoBehaviour
         PlayerStatus.onPlayerDamage += DamageAnimation;
         PlayerShooting.onShove += ShoveAnimation;
 
+        PlayerStatus.player.pShooting.OnPlayerMelee.AddListener(MeleeAnimation);
+
         ChangeWeaponSprite();
     }
 
@@ -138,6 +140,11 @@ public class PlayerAnimations : MonoBehaviour
                     break;
             }
         }
+    }
+
+    void MeleeAnimation()
+    {
+        weaponAnimator.CrossFade("Swing", .25f, 0, 0f);
     }
 
     void ShootAnimation()

@@ -17,16 +17,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 986840169310017381, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 986840169310017381, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 986840169310017381, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 986840169310017382, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1358143171, guid: aa706a9513e7ed4499d4445eba6fdf6c, type: 3}
+      objectReference: {fileID: -1326280369, guid: eb94c8d97ad6620409ce3d71c0815470, type: 3}
     - target: {fileID: 986840170020990970, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -114,6 +118,9 @@ MonoBehaviour:
   particles: {fileID: 8663321935322442480}
   _light: {fileID: 1901763736652432378}
   sprite: {fileID: 2219022232220137927}
+  OnPickupCollect:
+    m_PersistentCalls:
+      m_Calls: []
   weaponToGive: {fileID: 11400000, guid: ba52992984cbc2c4abebd70eb1f8c38f, type: 2}
 --- !u!198 &8663321935322442480 stripped
 ParticleSystem:

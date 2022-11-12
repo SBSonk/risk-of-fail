@@ -130,7 +130,7 @@ public class QuizAI : MonoBehaviour
         float travelTime = distance / (weapon.bulletVelocity * Time.fixedDeltaTime);
 
         predictedPlayerPos = (predictedPlayerPos - transform.position) * travelTime;
-        transform.up = Vector3.Slerp(transform.up, predictedPlayerPos, .5f); // predict movement
+        transform.up = Vector3.Slerp(transform.up, predictedPlayerPos, .1f); // predict movement
 
         Debug.DrawLine(transform.position + transform.up, transform.position + (transform.up * 10), Color.red);
 

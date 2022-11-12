@@ -12,7 +12,7 @@ public class DropObject : MonoBehaviour
         foreach (Drops d in drops)
         {
             // Ignore if drop chance fails
-            if ((d.dropChance / 100f) < Random.value) return;
+            if ((d.dropChance / 100f) > Random.value) return;
 
             // Decide how much to drop
             int amountToDrop = Random.Range(d.minDropAmount, d.dropAmount);

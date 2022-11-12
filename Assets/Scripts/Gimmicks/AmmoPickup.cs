@@ -6,6 +6,14 @@ public class AmmoPickup : PickupBase
 
     private void Start()
     {
+        if (GameManager.main.pData.weaponsOwned.Count == 1)
+        {
+            Destroy(transform.parent.gameObject);
+            return;
+        }
+
+        GetComponent<ChooseAmmoDropType>().InitializeAmmo();
+
         particles.startColor = drop.backgroundColor;
         _light.color = drop.backgroundColor;
 

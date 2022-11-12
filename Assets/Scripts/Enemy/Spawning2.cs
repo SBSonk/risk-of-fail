@@ -64,7 +64,6 @@ public class Spawning2 : MonoBehaviour
     {
         // Decide how much enemies to spawn
         List<int> possibleNumbers = Enumerable.Range(0, enemies.Length).ToList();
-        int chosen;
 
         spawnPoints.Sort((x, y) => x.DistanceToPlayer.CompareTo(y.DistanceToPlayer));
         SetValidSpawns();
@@ -72,7 +71,7 @@ public class Spawning2 : MonoBehaviour
         for (int i = 0; i < Random.Range(minSpawnsPerWave, maxSpawnsPerWave + 1); i++)
         {
             // Choose enemy to spawn
-            chosen = Random.Range(0, possibleNumbers.Count);
+            int chosen = Random.Range(0, possibleNumbers.Count);
 
             // Skip if over spawn limit or failed spawn rng
             if (enemies[chosen].alive >= enemies[chosen].maxAlive || (enemies[chosen].spawnChance / 100f) < Random.value)

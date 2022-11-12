@@ -12,11 +12,6 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseButtons;
     public GameObject settingsButtons;
 
-    void Start()
-    {
-        pauseMenuUI.SetActive(false);
-        settingsButtons.SetActive(false);
-    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

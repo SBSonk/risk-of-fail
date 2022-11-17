@@ -36,15 +36,10 @@ public class QuizAI : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<Rigidbody2D>();
         rb = GetComponent<Rigidbody2D>();
 
-        PlayerShooting.onPlayerShoot += tryDodge;
+        PlayerStatus.player.pShooting.OnShoot.AddListener(tryDodge);
 
         // Determine follow direction
         followDirection = new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f)) * followDistanceMultiplier;
-    }
-
-    private void OnDestroy()
-    {
-        PlayerShooting.onPlayerShoot -= tryDodge;
     }
 
     private void FixedUpdate()

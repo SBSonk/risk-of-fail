@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8526067335399440035}
   - component: {fileID: 8526067335399440034}
   - component: {fileID: 8526067335399440032}
-  - component: {fileID: 777324958}
+  - component: {fileID: 219214357}
   m_Layer: 0
   m_Name: _Game Controller
   m_TagString: Untagged
@@ -58,15 +58,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae99e2688ccece479aec7a48e1df99b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
-  targetFPS: 75
+  paused: 0
+  pData:
+    fPoints: 500
+    weaponsOwned:
+    - weapon: {fileID: 11400000, guid: 124a9b1f205ce7e4c986a97c4682f93e, type: 2}
+      clip: 0
+      pool: 0
   bonusKillTime: 5
   bonusPoints: 50
   streakPoints: 25
   startStreakAmount: 3
   maxStreak: 3
   killStreakTimer: 1.75
---- !u!114 &777324958
+--- !u!114 &219214357
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,6 +80,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8526067335399440061}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b58c44738583faa408cb1ba68df8a5bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 584c22887f83a3e40924253cc858d7b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isShopOpen: 0

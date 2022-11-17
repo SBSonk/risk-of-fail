@@ -4,7 +4,7 @@ public class AmmoPickup : PickupBase
 {
     public AmmoDrops drop;
 
-    private void Start()
+    protected override void Start()
     {
         if (GameManager.main.pData.weaponsOwned.Count == 1)
         {
@@ -20,6 +20,8 @@ public class AmmoPickup : PickupBase
         SpriteRenderer spr = sprite.GetComponent<SpriteRenderer>();
         spr.sprite = drop.sprite;
         spr.color = drop.spriteColor;
+
+        base.Start();
     }
 
     protected override void OnTriggerEnter2D(Collider2D other)

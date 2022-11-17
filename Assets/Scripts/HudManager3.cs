@@ -53,10 +53,10 @@ public class HudManager3 : MonoBehaviour
         PlayerStatus.onPlayerHeal += UpdateHealth;
         GameManager.onEnemyKilled += UpdatePoints;
         GameManager.onWeaponReceive += SwapWeapon;
-        PlayerShooting.onPlayerShoot += UpdateAmmo;
+        /*PlayerShooting.onPlayerShoot += UpdateAmmo;
         PlayerShooting.onReloadStart += StartReloadAnimation;
         PlayerShooting.onAmmoUpdate += UpdateAmmo;
-        PlayerShooting.onWeaponSwitch += SwapWeapon;
+        PlayerShooting.onWeaponSwitch += SwapWeapon;*/
 
         PlayerMovement.onDodge += UpdateDodges;
         player.pMovement.OnDodgeRecharge.AddListener(UpdateDodges);
@@ -73,10 +73,10 @@ public class HudManager3 : MonoBehaviour
         PlayerStatus.onPlayerHeal -= UpdateHealth;
         GameManager.onEnemyKilled -= UpdatePoints;
         GameManager.onWeaponReceive -= SwapWeapon;
-        PlayerShooting.onPlayerShoot -= UpdateAmmo;
+        /*PlayerShooting.onPlayerShoot -= UpdateAmmo;
         PlayerShooting.onReloadStart -= StartReloadAnimation;
         PlayerShooting.onAmmoUpdate -= UpdateAmmo;
-        PlayerShooting.onWeaponSwitch -= SwapWeapon;
+        PlayerShooting.onWeaponSwitch -= SwapWeapon;*/
 
         PlayerMovement.onDodge -= UpdateDodges;
     }

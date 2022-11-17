@@ -32,10 +32,10 @@ public class WrittenWorksAnimator : MonoBehaviour
     {
         enemy.onHit.AddListener(StunAnimation);
         enemyAttack.OnSwipeAttack.AddListener(SwipeAnimation);
-        enemyAttack.OnDashAttack.AddListener(DashAnimation);
-        enemyAttack.OnDashStart.AddListener(DashStart);
-        enemyAttack.OnDashEnd.AddListener(DashFinish);
-        enemyAttack.OnDashCancel.AddListener(DashCancel);
+        //enemyAttack.OnDashAttack.AddListener(DashAnimation);
+        //enemyAttack.OnDashStart.AddListener(DashStart);
+        //enemyAttack.OnDashEnd.AddListener(DashFinish);
+        //enemyAttack.OnDashCancel.AddListener(DashCancel);
     }
 
     private void Update()
@@ -148,7 +148,7 @@ public class WrittenWorksAnimator : MonoBehaviour
         StartCoroutine(SprFunctions.Fade(dashIndicator, Color.clear, Color.white, 0.1f));
 
         StartCoroutine(SprFunctions.Fade(arrowIndicator[0], Color.clear, Color.white, 0.1f));;
-        StartCoroutine(SprFunctions.Fade(arrowIndicator[1], Color.clear, Color.white, 1.5f));
+        StartCoroutine(SprFunctions.Fade(arrowIndicator[1], Color.clear, Color.white, 1.05f));
 
         dashParticles.Play();
     }

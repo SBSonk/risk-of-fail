@@ -5,5 +5,6 @@ public enum AIMode
     shooting = 1,
     repositioning = 2,
     pushing = 3,
-    attacking
+    attacking = 4,
+    idle = 5
 }

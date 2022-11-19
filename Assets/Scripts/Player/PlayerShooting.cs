@@ -253,7 +253,8 @@ public class PlayerShooting : MonoBehaviour
 
     public InventoryWeapon GetHeldWeapon()
     {
-        if (weaponPool.Count == 0) return fallbackWep;
+        if (weaponPool == null || weaponPool.Count == 0) return fallbackWep;
+
         return weaponPool[currentWeaponIndex];
     }
 }

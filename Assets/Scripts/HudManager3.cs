@@ -59,7 +59,6 @@ public class HudManager3 : MonoBehaviour
         PlayerShooting.onWeaponSwitch += SwapWeapon;*/
 
         PlayerMovement.onDodge += UpdateDodges;
-        player.pMovement.OnDodgeRecharge.AddListener(UpdateDodges);
 
         // Initialize UI
         UpdatePoints();
@@ -118,8 +117,8 @@ public class HudManager3 : MonoBehaviour
         StopAllCoroutines();
 
         var currentWep = shooting.GetHeldWeapon().weapon;
-        weaponSprite.sprite = currentWep.hudElement;
-        weaponSprite.rectTransform.sizeDelta = new Vector2(currentWep.hudElement.rect.width, currentWep.hudElement.rect.height);
+        weaponSprite.sprite = currentWep.hud.sprite;
+        weaponSprite.rectTransform.sizeDelta = new Vector2(currentWep.hud.sprite.rect.width, currentWep.hud.sprite.rect.height);
 
         // Update text and weapon stat ui
         gunName.text = currentWep.weaponName;

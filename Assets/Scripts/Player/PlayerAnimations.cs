@@ -184,7 +184,7 @@ public class PlayerAnimations : MonoBehaviour
 
         weaponAnimator.CrossFade("Hold" + animType, .25f);
 
-        cursorScript.ChangeCrosshair(weapon.weapon.crossHair);
+        cursorScript.ChangeCrosshair(weapon.weapon.hud.crossHair);
     }
 
     void DodgeAnimation()

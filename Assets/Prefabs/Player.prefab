@@ -250,14 +250,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1384270248951266461}
-  m_LocalRotation: {x: 0, y: 0, z: 0.06975647, w: 0.9975641}
+  m_LocalRotation: {x: 0, y: 0, z: -0.656059, w: 0.75470966}
   m_LocalPosition: {x: 0, y: -0.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7556428757749679433}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 8}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -82}
 --- !u!212 &8643637572296311204
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -299,7 +299,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1326280369, guid: eb94c8d97ad6620409ce3d71c0815470, type: 3}
+  m_Sprite: {fileID: 654405961, guid: 029748d8b485815449e86ac764a554b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -624,11 +624,9 @@ MonoBehaviour:
   moveSpeed: 6000
   dodgeForce: 25
   dodgeCooldown: 1
+  dodgeResetStartTime: 0.25
   maxDodges: 2
-  dodges: 0
-  OnDodgeRecharge:
-    m_PersistentCalls:
-      m_Calls: []
+  dodges: 2
 --- !u!114 &2223588945008610385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,7 +643,7 @@ MonoBehaviour:
   gunBarrel: {fileID: 1855075296}
   cursor: {fileID: 0}
   fallbackWep:
-    weapon: {fileID: 11400000, guid: 4f060479ee51b7a408132951125d6504, type: 2}
+    weapon: {fileID: 11400000, guid: 124a9b1f205ce7e4c986a97c4682f93e, type: 2}
     clip: 0
     pool: 0
   reloading: 0
@@ -864,7 +862,7 @@ MonoBehaviour:
   - {x: 0.3089852, y: -0.77732307, z: 0}
   m_ShapePathHash: 1906521851
   m_Mesh: {fileID: 0}
-  m_InstanceId: 35270
+  m_InstanceId: -1690
 --- !u!1 &3365215481345798000
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ public class Weapon : ScriptableObject
 {
     [Header("Metadata")]
     public string weaponName = "Untitled Weapon";
+
     //added for Shop UI
     public string weaponDescription;
     public int weaponCost;
@@ -12,8 +13,9 @@ public class Weapon : ScriptableObject
     [Range(0, 4)] public int weaponPiercing;
     public bool isWeaponObtained = false;
     //end
-    public Sprite hudElement;
-    public Crosshair crossHair;
+
+    public HUDElement hud;
+
     public Sprite weaponSprite;
 
     [Header("Weapon Stats")]
@@ -47,4 +49,13 @@ public enum AnimationTypes
     Light = 'A',
     Brush = 'B',
     Heavy = 'C'
+}
+
+[System.Serializable]
+public struct HUDElement
+{
+    public Sprite sprite;
+    public Vector2 offset;
+
+    public Crosshair crossHair;
 }

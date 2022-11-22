@@ -8,7 +8,10 @@ public class HudManager4 : MonoBehaviour
     public PlayerStatus player;
 
     [SerializeField] float barLerp = 0.25f;
-    
+
+    [SerializeField] Image avatarImage;
+    [SerializeField] AvatarState[] AvatarImages;
+
     [SerializeField] Image healthBar;
 
     [SerializeField] float AMMOPADDING = 20;
@@ -21,6 +24,24 @@ public class HudManager4 : MonoBehaviour
     [SerializeField] Image dodgeBar;
 
     // Handle Player Avatar
+    void PlayerAvatarAnimation(float amount)
+    {
+        // Update player avatar to damage state
+        // Choose image to display
+        for (int i = 0; i < AvatarImages.Length; i++)
+        {
+            if (player.health > AvatarImages[i].healthGreaterThan)
+            {
+                // Display image
+                avatarImage.sprite = AvatarImages[i].image;
+            }
+        }
+
+        // Make avatar jump if changing state
+        // SCALES TO DAMAGE AMOUNT
+
+        // Apply damaged color animation
+    }
 
     // Handle Weapon Swap
     void UpdateWeaponIcon()
@@ -85,6 +106,8 @@ public class HudManager4 : MonoBehaviour
         shooting.OnAmmoUpdate.AddListener(UpdateAmmoDisplay);
         shooting.OnWeaponSwitch.AddListener(UpdateAmmoDisplay);
 
+        player.onHit.AddListener(PlayerAvatarAnimation);
+
         UpdateWeaponIcon();
     }
 
@@ -93,4 +116,11 @@ public class HudManager4 : MonoBehaviour
         UpdateHealth();
         UpdateDodge();
     }
+}
+
+[System.Serializable]
+struct AvatarState
+{
+    public int healthGreaterThan;
+    public Sprite image;
 }

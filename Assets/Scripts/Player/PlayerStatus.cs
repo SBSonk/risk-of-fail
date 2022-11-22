@@ -28,7 +28,7 @@ public class PlayerStatus : Alive
     }
 
     protected override void OnDamage(float damage)
-    {
+    { 
         // Play indicators
         base.OnDamage(damage);
 

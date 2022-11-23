@@ -21,7 +21,6 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] float radius;
     [SerializeField] bool canShove = true;
 
-    // EVENTS TODO CODE REFACTOR
     public UnityEvent OnWeaponSwitch;
     public UnityEvent OnShoot, OnReloadStart, OnAmmoUpdate;
     public UnityEvent OnMelee, OnShove, OnParry;
@@ -32,9 +31,9 @@ public class PlayerShooting : MonoBehaviour
         weaponPool = GameManager.main.pData.weaponsOwned;
 
         // Initialize inventory
-        foreach (InventoryWeapon w in weaponPool)
+        for (int i = 0; i < weaponPool.Count; i++)
         {
-            w.Initialize();
+            weaponPool[i].Initialize();
         }
     }
 
@@ -118,18 +117,22 @@ public class PlayerShooting : MonoBehaviour
 
                 // Knockback
                 enemy.GetComponent<Rigidbody2D>().AddForce(shoveDir * shoveStrength, ForceMode2D.Impulse);
-            } else if (h.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
+            } else if (GetHeldWeapon().weapon is MeleeWeapon && h.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
             {
-                if (h.TryGetComponent(out Rigidbody2D _rb) && h.TryGetComponent(out Projectile p) && p.active)
+                foreach (Collider2D c in hits)
                 {
-                    _rb.velocity = Vector2.zero;
-                    _rb.AddForce(shoveDir * 3, ForceMode2D.Impulse);
+                    if (c.TryGetComponent(out Rigidbody2D _rb) && c.TryGetComponent(out Projectile p) && p.active)
+                    {
+                        _rb.velocity = Vector2.zero;
+                        _rb.AddForce(shoveDir * 3, ForceMode2D.Impulse);
 
-                    h.GetComponentInChildren<TrailRenderer>().startColor = Color.cyan;
+                        c.GetComponentInChildren<TrailRenderer>().startColor = Color.cyan;
 
-                    // Convert to playerBullet
-                    h.gameObject.layer = LayerMask.NameToLayer("Bullet");
-                    p.GetComponent<Projectile>().damage = 60;
+                        // Convert to playerBullet
+                        c.gameObject.layer = LayerMask.NameToLayer("Bullet");
+                        p.GetComponent<Projectile>().damage = 60;
+                    }
+
                 }
 
                 OnParry?.Invoke();
@@ -141,7 +144,7 @@ public class PlayerShooting : MonoBehaviour
 
         CancelInvoke();
         Invoke("EnableShove", shoveCooldown);
-        Invoke("EnableShooting", shoveCooldown);
+        Invoke("EnableShooting", shoveCooldown + GetHeldWeapon().weapon.reloadLength);
     }
 
     // Handle shooting of GUN type weapons
@@ -216,7 +219,7 @@ public class PlayerShooting : MonoBehaviour
 
             OnAmmoUpdate?.Invoke();
 
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.5f);
 
             reloading = false;
             canShoot = true;

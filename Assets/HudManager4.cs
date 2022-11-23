@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using System.Collections;
 
 public class HudManager4 : MonoBehaviour
 {
@@ -14,14 +15,17 @@ public class HudManager4 : MonoBehaviour
 
     [SerializeField] Image healthBar;
 
-    [SerializeField] float AMMOPADDING = 20;
+    [SerializeField] float AMMOPADDING = 20, AMMOAPPEARTIME = .1f;
     [SerializeField] GameObject ammoPrefab;
     [SerializeField] Transform ammoParent, ammoBar;
     [SerializeField] TextMeshProUGUI poolCount;
     [SerializeField] Image weaponSprite;
     [SerializeField] RectTransform weaponTransform;
+    Coroutine ammoAnimation;
 
     [SerializeField] Image dodgeBar;
+
+    Vector3 defaultAvatarPos;
 
     // Handle Player Avatar
     void PlayerAvatarAnimation(float amount)
@@ -38,9 +42,22 @@ public class HudManager4 : MonoBehaviour
         }
 
         // Make avatar jump if changing state
+        StartCoroutine(AvatarJump(amount));
         // SCALES TO DAMAGE AMOUNT
 
         // Apply damaged color animation
+    }
+
+    IEnumerator AvatarJump(float damage)
+    {
+        var avatarPos = avatarImage.GetComponent<RectTransform>();
+        Vector3 startPos = avatarPos.localPosition;
+        // wait .2s
+        Vector3 desiredPos = startPos + (Vector3.up * damage);
+        yield return new WaitForEndOfFrame();
+        // i cannot be bothered with this
+        // reset
+        avatarPos.localPosition = defaultAvatarPos;
     }
 
     // Handle Weapon Swap
@@ -70,12 +87,8 @@ public class HudManager4 : MonoBehaviour
 
         if (ammoParent.childCount < cCount)
         {
-            // Add Ammo
-            for (int i = ammoParent.childCount; i < cCount; i++)
-            {
-                Instantiate(ammoPrefab, ammoParent).GetComponent<RectTransform>().localPosition =
-                    new Vector3(i * AMMOPADDING, 0, 0);
-            }
+            if (ammoAnimation != null) StopCoroutine(ammoAnimation);
+            ammoAnimation = StartCoroutine(SpawnAmmo(ammoParent.childCount, cCount, AMMOAPPEARTIME));
         } else
         {
             // Subtract Ammo
@@ -86,6 +99,18 @@ public class HudManager4 : MonoBehaviour
         }
 
         poolCount.SetText(pCount.ToString());
+    }
+
+    IEnumerator SpawnAmmo(int childCount, int ammoCount, float timePerBullet)
+    {
+        // Add Ammo
+        for (int i = childCount; i < ammoCount; i++)
+        {
+            Instantiate(ammoPrefab, ammoParent).GetComponent<RectTransform>().localPosition =
+                new Vector3(i * AMMOPADDING, 0, 0);
+
+            yield return new WaitForSeconds(timePerBullet);
+        }
     }
 
     void UpdateHealth()
@@ -105,10 +130,12 @@ public class HudManager4 : MonoBehaviour
         shooting.OnWeaponSwitch.AddListener(UpdateWeaponIcon);
         shooting.OnAmmoUpdate.AddListener(UpdateAmmoDisplay);
         shooting.OnWeaponSwitch.AddListener(UpdateAmmoDisplay);
-
+        
         player.onHit.AddListener(PlayerAvatarAnimation);
 
         UpdateWeaponIcon();
+
+        defaultAvatarPos = avatarImage.GetComponent<RectTransform>().localPosition;
     }
 
     private void Update()

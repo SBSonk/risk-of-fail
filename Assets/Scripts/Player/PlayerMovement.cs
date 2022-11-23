@@ -37,37 +37,38 @@ public class PlayerMovement : MonoBehaviour
 
         // Replenishes dodges
         if (dodges < maxDodges && startCooldown) dodges += Time.deltaTime / dodgeCooldown;
-
         canDodge = dodges >= 1;
 
         // Queue dodge if player can dodge and is moving.
         if (canDodge && InputManager.dodge && moveDirection.magnitude > 0) dodgeQueued = true;
+        if (dodgeQueued) Dodge(moveDirection);
     }
 
-    // player movement with movespeed value
     void FixedUpdate()
     {
-        moveCharacter(moveDirection);
+        MoveCharacter(moveDirection);
     }
 
-    void moveCharacter(Vector2 direction)
+    void MoveCharacter(Vector2 dir)
     {
-        rb.AddForce(direction * moveSpeed * Time.fixedDeltaTime);
+        rb.AddForce(dir * moveSpeed * Time.fixedDeltaTime);
 
-        // Scuffed dodge implementation
-        if (dodgeQueued)
-        {
-            rb.AddForce(direction * dodgeForce, ForceMode2D.Impulse);
-            dodgeQueued = false;
+        if (dir.magnitude == 0) rb.drag = 15;
+        else rb.drag = 11;
+    }
 
-            // Dodge cooldown
-            CancelInvoke("StartDodgeCooldown");
-            startCooldown = false;
-            Invoke("StartDodgeCooldown", dodgeResetStartTime);
+    void Dodge(Vector2 direction)
+    {
+        rb.AddForce(direction * dodgeForce, ForceMode2D.Impulse);
+        dodgeQueued = false;
 
-            dodges--;
-            onDodge.Invoke();
-        }
+        // Dodge cooldown
+        CancelInvoke("StartDodgeCooldown");
+        startCooldown = false;
+        Invoke("StartDodgeCooldown", dodgeResetStartTime);
+
+        dodges--;
+        onDodge.Invoke();
     }
 
     void StartDodgeCooldown()

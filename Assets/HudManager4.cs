@@ -23,6 +23,8 @@ public class HudManager4 : MonoBehaviour
     [SerializeField] RectTransform weaponTransform;
     Coroutine ammoAnimation;
 
+    [SerializeField] TextMeshProUGUI fudgePointsText;
+
     [SerializeField] Image dodgeBar;
 
     Vector3 defaultAvatarPos;
@@ -124,6 +126,11 @@ public class HudManager4 : MonoBehaviour
         dodgeBar.fillAmount = Mathf.Lerp(dodgeBar.fillAmount, player.pMovement.dodges / player.pMovement.maxDodges, barLerp);
     }
 
+    void SetFudgePoints()
+    {
+        fudgePointsText.SetText(GameManager.main.pData.fPoints.ToString("00000"));
+    }
+
     private void Start()
     {
         var shooting = player.pShooting;
@@ -142,6 +149,7 @@ public class HudManager4 : MonoBehaviour
     {
         UpdateHealth();
         UpdateDodge();
+        SetFudgePoints();
     }
 }
 

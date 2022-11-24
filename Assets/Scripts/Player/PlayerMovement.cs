@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.AddForce(dir * moveSpeed * Time.fixedDeltaTime);
 
-        if (dir.magnitude == 0) rb.drag = 15;
+        if (dir.magnitude == 0) rb.drag = 20;
         else rb.drag = 11;
     }
 

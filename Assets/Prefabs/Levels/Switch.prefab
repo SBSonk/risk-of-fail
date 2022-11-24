@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 469789454341008581}
   - component: {fileID: 2280077792748342930}
+  - component: {fileID: 911748256}
   m_Layer: 9
   m_Name: InteractIcon
   m_TagString: Untagged
@@ -52,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 20
   m_Sprite: {fileID: -784500409, guid: 1b3c2db7bf296f54cbcc882e2bbd01ec, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -84,6 +85,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &911748256
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243250095471703054}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5572b9b70fc1b7b43b75fccbca1ee611, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8797721433751111409
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8797721433751111415}
   - component: {fileID: 8797721433751111414}
+  - component: {fileID: 601925452030405801}
   - component: {fileID: 8797721433751111412}
   m_Layer: 9
   m_Name: Switch
@@ -133,8 +155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 8797721433816689901}
-  outline: {fileID: 8797721434079926527}
-  interactIcon: {fileID: 2280077792748342930}
   active: {r: 0, g: 1, b: 0, a: 1}
   disabled: {r: 1, g: 0, b: 0, a: 1}
   isActive: 0
@@ -173,6 +193,21 @@ MonoBehaviour:
   OnSwitchOff:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &601925452030405801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8797721433751111409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05aa4109756762d4183f33d146c23e41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 0.1
+  outline: {fileID: 8797721434079926527}
+  interactIcon: {fileID: 2280077792748342930}
 --- !u!58 &8797721433751111412
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -10,9 +10,16 @@ public class PickupBase : MonoBehaviour
     [SerializeField] protected ParticleSystem particles;
     [SerializeField] protected Light2D _light;
     [SerializeField] protected GameObject sprite;
-    protected bool active = true;
+    public bool active = true;
 
     public UnityEvent OnPickupCollect;
+
+    Attract attract;
+
+    private void Awake()
+    {
+        attract = GetComponentInParent<Attract>();
+    }
 
     protected virtual void Start()
     {
@@ -53,5 +60,18 @@ public class PickupBase : MonoBehaviour
 
         // Destroy pickup
         Destroy(transform.parent.gameObject, 1f);
+    }
+
+    public void ActivateInSeconds(float seconds)
+    {
+        StartCoroutine(Activate(seconds));
+    }
+
+    IEnumerator Activate(float s)
+    { 
+        active = false;
+        attract._collider.enabled = false;
+        yield return new WaitForSeconds(s);
+        active = true;
     }
 }

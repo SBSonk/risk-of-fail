@@ -2,16 +2,15 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
 
-public class Room : MonoBehaviour
+public class Room : MonoBehaviour 
 {
-    [SerializeField] GameObject collision;
     public Spawning2 spawner;
 
     public UnityEvent OnFirstEnter, OnRoomEnter, OnRoomLeave;
     public bool active = false;
     bool unEntered = true;
 
-    public float timeToRegisterInside = 1f;
+    public float timeToRegisterInside = .5f;
     float timeInside;
 
     public float camSize = 7;

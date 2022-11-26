@@ -9,9 +9,12 @@ public class Attract : MonoBehaviour
     Transform target;
     public Collider2D _collider;
 
+    PickupBase pickup;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        pickup = GetComponentInChildren<PickupBase>();
     }
 
     private void FixedUpdate()
@@ -19,9 +22,9 @@ public class Attract : MonoBehaviour
         if (target) rb.AddForce((target.position - transform.position).normalized * attractStrength * Time.fixedDeltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && pickup.active)
         {
             target = collision.transform;
             _collider.enabled = false;

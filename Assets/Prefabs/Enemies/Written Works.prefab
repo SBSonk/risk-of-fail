@@ -9977,6 +9977,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2368033471053587657}
   - component: {fileID: 2368033471053587656}
+  - component: {fileID: 4974655080494410671}
   m_Layer: 15
   m_Name: Sprite
   m_TagString: Untagged
@@ -10051,6 +10052,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4974655080494410671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368033471053587658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -1.06, y: -0.68000007, z: 0}
+  - {x: -1.06, y: 0.6799998, z: 0}
+  - {x: 1.06, y: 0.6799998, z: 0}
+  - {x: 1.06, y: -0.68000007, z: 0}
+  m_ShapePathHash: 0
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -46350
 --- !u!1 &2368033471186396242
 GameObject:
   m_ObjectHideFlags: 0
@@ -10353,6 +10381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebf567fa338ce814e9b84c15ee766d15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wakeDistance: 10
   baseDamage: 15
   stunLength: 0.5
   knockbackAmount: 10
@@ -10503,8 +10532,8 @@ MonoBehaviour:
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
-  m_ShadowIntensityEnabled: 0
-  m_ShadowIntensity: 0
+  m_ShadowIntensityEnabled: 1
+  m_ShadowIntensity: 1
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_Vertices:

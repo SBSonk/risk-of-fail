@@ -15,6 +15,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.015686275
       objectReference: {fileID: 0}
+    - target: {fileID: 656985804303822169, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_ShadowIntensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 656985804303822169, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_ShadowIntensityEnabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 986840169310017381, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.25
@@ -147,6 +155,7 @@ MonoBehaviour:
   particles: {fileID: 245827447789023920}
   _light: {fileID: 7005203734361562042}
   sprite: {fileID: 7320771971184320903}
+  active: 1
   OnPickupCollect:
     m_PersistentCalls:
       m_Calls: []

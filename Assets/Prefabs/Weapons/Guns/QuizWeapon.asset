@@ -19,12 +19,14 @@ MonoBehaviour:
   weaponFireRate: 0
   weaponPiercing: 0
   isWeaponObtained: 0
-  hudElement: {fileID: 0}
-  crossHair:
+  hud:
     sprite: {fileID: 0}
-    rotationSpeed: 0
+    offset: {x: 0, y: 0}
+    crossHair:
+      sprite: {fileID: 0}
+      rotationSpeed: 0
   weaponSprite: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 8
   bulletSpread: 2
   knockbackAmount: 10
   stunLength: 0.1
@@ -36,12 +38,12 @@ MonoBehaviour:
   ammoPerShot: 0
   clipSize: -1
   reloadLength: 0
-  fireRate: 0.75
+  fireRate: 1
   auto: 1
   animType: 65
   bulletVelocity: 2.5
   pierceAmount: 0
   bullet: {fileID: 6245270692030926925, guid: edbc435772d2add44ac90a03ecdd0cab, type: 3}
-  minDamage: 5
+  minDamage: 2
   lowColor: {r: 0.00126791, g: 1, b: 0, a: 1}
   highColor: {r: 1, g: 0, b: 0, a: 1}

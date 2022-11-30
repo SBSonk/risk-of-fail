@@ -132,7 +132,6 @@ public class Enemy : Alive
 
     public override void Stun(float duration)
     {
-        print("stunn");
         // Can't get stunned twice
         if (stunned) return;
 

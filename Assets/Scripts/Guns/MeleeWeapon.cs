@@ -11,10 +11,10 @@ public class MeleeWeapon : Weapon
 
     public override void ShootWeapon(Transform player)
     {
-        // Check for enemies in area
         Vector3 hitVector = ((Vector3)InputManager.mousePosition - player.position).normalized;
-        Collider2D[] col = Physics2D.OverlapCapsuleAll(player.position + (hitVector * .5f), new Vector2(2.5f, 1.75f), CapsuleDirection2D.Horizontal, Vector2.Angle(player.position, InputManager.mousePosition));
 
+        // Attack check
+        Collider2D[] col = Physics2D.OverlapCapsuleAll(player.position + (hitVector * .5f), new Vector2(2.5f, 1.75f), CapsuleDirection2D.Horizontal, Vector2.Angle(player.position, InputManager.mousePosition));
 
         List<Alive> hit = new List<Alive>();
         foreach(Collider2D c in col)
@@ -29,11 +29,6 @@ public class MeleeWeapon : Weapon
 
                 hit.Add(a);
             }
-
-             // collides twice with written works since they have 2 colliders
-
         }
-
-        base.ShootWeapon(player);
     }
 }

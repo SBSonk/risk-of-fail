@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class GameData
 {
     public int fPoints = 0;
-    public List<inventoryWeapon> weaponsOwned;
+    public List<InventoryWeapon> weaponsOwned;
 
     public GameData(int fudgePoints = 0)
     {

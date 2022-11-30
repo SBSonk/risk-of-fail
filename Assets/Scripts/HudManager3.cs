@@ -53,13 +53,12 @@ public class HudManager3 : MonoBehaviour
         PlayerStatus.onPlayerHeal += UpdateHealth;
         GameManager.onEnemyKilled += UpdatePoints;
         GameManager.onWeaponReceive += SwapWeapon;
-        PlayerShooting.onPlayerShoot += UpdateAmmo;
+        /*PlayerShooting.onPlayerShoot += UpdateAmmo;
         PlayerShooting.onReloadStart += StartReloadAnimation;
         PlayerShooting.onAmmoUpdate += UpdateAmmo;
-        PlayerShooting.onWeaponSwitch += SwapWeapon;
+        PlayerShooting.onWeaponSwitch += SwapWeapon;*/
 
         PlayerMovement.onDodge += UpdateDodges;
-        player.pMovement.OnDodgeRecharge.AddListener(UpdateDodges);
 
         // Initialize UI
         UpdatePoints();
@@ -73,10 +72,10 @@ public class HudManager3 : MonoBehaviour
         PlayerStatus.onPlayerHeal -= UpdateHealth;
         GameManager.onEnemyKilled -= UpdatePoints;
         GameManager.onWeaponReceive -= SwapWeapon;
-        PlayerShooting.onPlayerShoot -= UpdateAmmo;
+        /*PlayerShooting.onPlayerShoot -= UpdateAmmo;
         PlayerShooting.onReloadStart -= StartReloadAnimation;
         PlayerShooting.onAmmoUpdate -= UpdateAmmo;
-        PlayerShooting.onWeaponSwitch -= SwapWeapon;
+        PlayerShooting.onWeaponSwitch -= SwapWeapon;*/
 
         PlayerMovement.onDodge -= UpdateDodges;
     }
@@ -118,8 +117,8 @@ public class HudManager3 : MonoBehaviour
         StopAllCoroutines();
 
         var currentWep = shooting.GetHeldWeapon().weapon;
-        weaponSprite.sprite = currentWep.hudElement;
-        weaponSprite.rectTransform.sizeDelta = new Vector2(currentWep.hudElement.rect.width, currentWep.hudElement.rect.height);
+        weaponSprite.sprite = currentWep.hud.sprite;
+        weaponSprite.rectTransform.sizeDelta = new Vector2(currentWep.hud.sprite.rect.width, currentWep.hud.sprite.rect.height);
 
         // Update text and weapon stat ui
         gunName.text = currentWep.weaponName;

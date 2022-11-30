@@ -17,3 +17,4 @@ public class LevelFade : MonoBehaviour
         StartCoroutine(SprFunctions.Fade(img, Color.black, Color.clear, 0.5f));   
     }
 }
+                

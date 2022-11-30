@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 // I should really make this inherit QuizAI or something... too much work
 public class WrittenWorksAttack : MonoBehaviour
 {
+    [SerializeField] float wakeDistance = 10;
     [SerializeField] float baseDamage, stunLength, knockbackAmount, reboundLength;
     [SerializeField] float rushDistance = 5f, attackRange = 5f;
     float defaultSpeed;
@@ -20,26 +21,29 @@ public class WrittenWorksAttack : MonoBehaviour
 
     float originalDrag;
     public float minDashDistance = 5f, maxDashDistance = 6f, minDashCooldown = 5f, maxDashCooldown = 10f;
-    bool attacking, dashing, canDash = true;
+    bool attacking, dashing, canDash = true, dashQueued;
     public UnityEvent OnSwipeAttack, OnDashAttack, OnDashStart, OnDashEnd, OnDashCancel;
 
     public Transform dashIndicator;
 
     float distanceToPlayer = 0;
 
-    protected virtual void Start()
+    protected void Awake()
     {
         ai = GetComponent<AIPath>();
         self = GetComponent<Enemy>();
         player = GameObject.Find("Player").GetComponent<Rigidbody2D>();
+    }
 
+    protected virtual void Start()
+    {
         defaultSpeed = ai.maxSpeed;
 
         // Determine follow direction
         followDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         originalDrag = self.rb.drag;
 
-        self.onStunned.AddListener(CancelDash);
+        //self.onStunned.AddListener(CancelDash);
     }
 
     protected virtual void FixedUpdate()
@@ -49,6 +53,11 @@ public class WrittenWorksAttack : MonoBehaviour
 
         switch (mode)
         {
+            case AIMode.idle:
+                ai.canMove = false;
+                if (distanceToPlayer <= wakeDistance) switchState(AIMode.pathing);
+                break;
+
             case AIMode.pathing:
                 if (distanceToPlayer <= rushDistance) switchState(AIMode.pushing);
         
@@ -58,10 +67,14 @@ public class WrittenWorksAttack : MonoBehaviour
             case AIMode.pushing:
                 if (distanceToPlayer > rushDistance) switchState(AIMode.pathing);
 
-                if (self.canSeePlayer && canDash && distanceToPlayer >= minDashDistance && distanceToPlayer <= maxDashDistance)
+                /*if (self.canSeePlayer && canDash && distanceToPlayer >= minDashDistance && distanceToPlayer <= maxDashDistance)
                 {
-                    StartCoroutine(DashAttack());
-                }
+                    if (!dashQueued)
+                    {
+                        Invoke("TryDashAttack", Random.Range(0, 2));
+                        dashQueued = true;
+                    }
+                }*/
 
                 ai.destination = player.position;
                 break;
@@ -86,7 +99,7 @@ public class WrittenWorksAttack : MonoBehaviour
         // Stop moving
         if (dashing)
         {
-            AttackPlayer(collision);
+            AttackPlayer(collision, baseDamage * 1.5f);
         } else
         {
             mode = AIMode.attacking;
@@ -105,6 +118,13 @@ public class WrittenWorksAttack : MonoBehaviour
         return (Vector3)player.position + (followDirection * (player.velocity.magnitude / 2));
     }
 
+    void TryDashAttack()
+    {
+        float val = Random.value;
+        if (val > .9f) StartCoroutine(DashAttack());
+        dashQueued = false;
+    }
+
     IEnumerator DashAttack()
     {
         if (attacking || !canDash) yield break;
@@ -120,12 +140,12 @@ public class WrittenWorksAttack : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("WrittenWorksDash");
 
         float t = 0;
-        while (t < 1.25f)
+        while (t < 0.8f)
         {
             yield return new WaitForEndOfFrame();
             t += Time.deltaTime;
             dashDir = ((player.position + ((Vector3) PlayerStatus.player.GetComponent<Rigidbody2D>().velocity * 0.2f)) - transform.position).normalized;
-            transform.up = Vector3.Lerp(transform.up, dashDir, Mathf.Lerp(0.5f, 0, t / 1.25f));
+            transform.up = Vector3.Lerp(transform.up, dashDir, Mathf.Lerp(0.5f, 0, t / 0.8f));
 
             if (!self.canSeePlayer)
             {
@@ -136,20 +156,21 @@ public class WrittenWorksAttack : MonoBehaviour
         // target player for a few seconds
      
         print("locked on");
-        
+
 
         // lock on
+        dashing = true;
         yield return new WaitForSeconds(0.25f);
         print("dash");
 
         // Dash into player
         self.rb.drag = originalDrag * 0.4f;
-        self.rb.AddForce(transform.up * 20f, ForceMode2D.Impulse);
+        self.rb.AddForce(transform.up * 25f, ForceMode2D.Impulse);
 
         OnDashStart?.Invoke();
 
         // Onhit
-        dashing = true;
+        
 
 
         yield return new WaitForSeconds(0.5f);
@@ -201,7 +222,7 @@ public class WrittenWorksAttack : MonoBehaviour
                 float distance = Vector3.Distance(transform.position, col.transform.position); // TODO: use overlap to account for direction
                 if (distance <= attackRange)
                 {
-                    AttackPlayer(col);
+                    AttackPlayer(col, baseDamage);
                 }
 
                 mode = AIMode.pathing;
@@ -213,7 +234,7 @@ public class WrittenWorksAttack : MonoBehaviour
         ai.maxSpeed = defaultSpeed;
     }
 
-    protected virtual void AttackPlayer(Collider2D collision)
+    protected virtual void AttackPlayer(Collider2D collision, float damage)
     {
         Rigidbody2D playerRb = collision.GetComponent<Rigidbody2D>();
 
@@ -221,7 +242,7 @@ public class WrittenWorksAttack : MonoBehaviour
         float kb = dashing ? knockbackAmount * 2.5f : knockbackAmount;
         playerRb.AddForce(transform.up.normalized * kb, ForceMode2D.Impulse);
 
-        collision.GetComponent<PlayerStatus>().GiveDamage(baseDamage, stunLength);
+        collision.GetComponent<PlayerStatus>().GiveDamage(damage, stunLength);
 
         // Knock self back
         self.rb.AddForce(-transform.up.normalized * (knockbackAmount / 3), ForceMode2D.Impulse);
@@ -235,10 +256,19 @@ public class WrittenWorksAttack : MonoBehaviour
         canDash = true;
     }
 
-    protected void switchState(AIMode state)
+    public void switchState(AIMode state)
     {
         //CancelInvoke();
 
         mode = state;
+        if (mode == AIMode.pathing) ai.canMove = true;
+    }
+
+    public void switchState(int state)
+    {
+        //CancelInvoke();
+
+        mode = (AIMode) state;
+        if (mode == AIMode.pathing) ai.canMove = true;
     }
 }

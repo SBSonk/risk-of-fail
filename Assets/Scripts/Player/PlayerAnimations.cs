@@ -38,21 +38,23 @@ public class PlayerAnimations : MonoBehaviour
 
     private void Awake()
     {
-        cursor = GameObject.Find("PlayerCursor").transform;
+        cursor = GameObject.Find("PlayerCursor").transform; 
         cursorScript = cursor.GetComponent<MoveCursor>();
         shooting = GetComponent<PlayerShooting>();
     }
 
     private void Start()
     {
-        PlayerMovement.onDodge += DodgeAnimation;
-        PlayerShooting.onWeaponSwitch += ChangeWeaponSprite;
-        GameManager.onWeaponReceive += ChangeWeaponSprite;
-        PlayerShooting.onPlayerShoot += ShootAnimation;
-        PlayerStatus.onPlayerDamage += DamageAnimation;
-        PlayerShooting.onShove += ShoveAnimation;
+        var shooting = PlayerStatus.player.pShooting;
 
-        PlayerStatus.player.pShooting.OnPlayerMelee.AddListener(MeleeAnimation);
+        shooting.OnShoot.AddListener(ShootAnimation);
+        shooting.OnWeaponSwitch.AddListener(ChangeWeaponSprite);
+        shooting.OnShove.AddListener(ShoveAnimation);
+        shooting.OnMelee.AddListener(MeleeAnimation);
+
+        PlayerMovement.onDodge += DodgeAnimation;
+        GameManager.onWeaponReceive += ChangeWeaponSprite;
+        PlayerStatus.onPlayerDamage += DamageAnimation;
 
         ChangeWeaponSprite();
     }
@@ -60,11 +62,8 @@ public class PlayerAnimations : MonoBehaviour
     private void OnDestroy()
     {
         PlayerMovement.onDodge -= DodgeAnimation;
-        PlayerShooting.onWeaponSwitch -= ChangeWeaponSprite;
         GameManager.onWeaponReceive -= ChangeWeaponSprite;
-        PlayerShooting.onPlayerShoot -= ShootAnimation;
         PlayerStatus.onPlayerDamage -= DamageAnimation;
-        PlayerShooting.onShove -= ShoveAnimation;
     }
 
     private void Update()
@@ -185,7 +184,7 @@ public class PlayerAnimations : MonoBehaviour
 
         weaponAnimator.CrossFade("Hold" + animType, .25f);
 
-        cursorScript.ChangeCrosshair(weapon.weapon.crossHair);
+        cursorScript.ChangeCrosshair(weapon.weapon.hud.crossHair);
     }
 
     void DodgeAnimation()

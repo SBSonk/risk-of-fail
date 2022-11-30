@@ -25,6 +25,8 @@ public class Alive : MonoBehaviour
     // Applies damage and returns damage taken
     public float GiveDamage(float amount, float stunLength, StatusEffect effect = null)
     {
+        onHit?.Invoke(amount);
+
         // Return if can't be damaged
         if (!canBeDamaged || dead) return 0;
 

@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class Switch : MonoBehaviour
 {
-    public SpriteRenderer sprite, outline;
+    public SpriteRenderer sprite;
     public Color active = Color.green, disabled = Color.red;
 
     public bool isActive, interactable = true, playerInRadius = false;
@@ -14,16 +14,13 @@ public class Switch : MonoBehaviour
     {
         if (!collision.CompareTag("Player") || !interactable) return;
 
-        playerInRadius = true;
-        outline.gameObject.SetActive(true);
+        playerInRadius = true;     
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player") || !interactable) return;
-
-        playerInRadius = false;
-        outline.gameObject.SetActive(false);
+        playerInRadius = false;      
     }
 
     private void Update()

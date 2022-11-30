@@ -32,7 +32,7 @@ public class CenterCameraOnObject : MonoBehaviour
                 positions[i] = transforms[i].position;
             }
 
-            cam.StartCoroutine(cam.CenterCameraOnMultiplePositions(this, positions, time, holdTime, freezeGame));
+            cam.StartCoroutine(cam.CenterCameraOnPosition(this, positions, time, holdTime, freezeGame));
         }
     }
 }

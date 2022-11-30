@@ -118,7 +118,7 @@ public class CameraFollow : MonoBehaviour
         c.OnRetract?.Invoke();
     }
 
-    public IEnumerator CenterCameraOnMultiplePositions(CenterCameraOnObject c, Vector3[] positions, float time, float holdTime, bool freezeGame = false)
+    public IEnumerator CenterCameraOnPosition(CenterCameraOnObject c, Vector3[] positions, float time, float holdTime, bool freezeGame = false)
     {
         c.OnCenterStart?.Invoke();
         if (freezeGame) Time.timeScale = 0;

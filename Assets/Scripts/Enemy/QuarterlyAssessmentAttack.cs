@@ -9,10 +9,10 @@ public class QuarterlyAssessmentAttack : WrittenWorksAttack
     // TODO: attacks
     // trigger explosion when killed, stuck, or hit the player
 
-    protected override void AttackPlayer(Collider2D collision)
+    protected override void AttackPlayer(Collider2D collision, float damage)
     {
         // Normal Writtenwork Attack
-        base.AttackPlayer(collision);
+        base.AttackPlayer(collision, damage);
 
         // Explosion
         StartCoroutine(explode(collision));

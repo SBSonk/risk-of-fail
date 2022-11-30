@@ -30,10 +30,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         // Destroy duplicates
-        if (!main) main = this;
-        else Destroy(gameObject);
-
-        DontDestroyOnLoad(gameObject);
+        main = this;
 
         // TODO: Create json file to store settings
 
@@ -59,7 +56,7 @@ public class GameManager : MonoBehaviour
         {
             // Only give playerData.fudgePoints if killstreak is started
             if (main.currentStreak >= main.startStreakAmount)
-            {
+            {   
                 main.pData.fPoints += main.streakPoints * (main.currentStreak - main.startStreakAmount);
             }
 
@@ -80,7 +77,7 @@ public class GameManager : MonoBehaviour
     }
     public static void GiveWeapon(Weapon weapon)
     {
-        var invWep = new inventoryWeapon(weapon, 0, 0);
+        var invWep = new InventoryWeapon(weapon, 0, 0);
         invWep.Initialize();
 
         main.pData.weaponsOwned.Add(invWep);
@@ -88,7 +85,7 @@ public class GameManager : MonoBehaviour
     }
     public static bool CheckIfWeaponOwned(Weapon type)
     {
-        foreach (inventoryWeapon w in main.pData.weaponsOwned)
+        foreach (InventoryWeapon w in main.pData.weaponsOwned)
         {
             if (w.weapon.weaponName == type.weaponName) return true;
         }

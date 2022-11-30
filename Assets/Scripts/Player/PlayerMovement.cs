@@ -9,11 +9,11 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 10f;
 
-    bool dodgeQueued, canDodge = true;
+    bool dodgeQueued, startCooldown, canDodge = true;
     public float dodgeForce = 100f;
-    public float dodgeCooldown = 0.25f;
+    public float dodgeCooldown = 0.25f, dodgeResetStartTime = 0.1f;
     public int maxDodges = 2;
-    public int dodges;
+    public float dodges;
 
     Rigidbody2D rb;
     Vector2 moveDirection;
@@ -21,8 +21,6 @@ public class PlayerMovement : MonoBehaviour
     // EVENTS
     public delegate void OnDodge();
     public static event OnDodge onDodge;
-
-    public UnityEvent OnDodgeRecharge;
 
     private void Start()
     {
@@ -36,54 +34,45 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         moveDirection = InputManager.playerDirection;
-        canDodge = dodges > 0;
+
+        // Replenishes dodges
+        if (dodges < maxDodges && startCooldown) dodges += Time.deltaTime / dodgeCooldown;
+        canDodge = dodges >= 1;
 
         // Queue dodge if player can dodge and is moving.
-        if (canDodge && InputManager.dodge && moveDirection.magnitude > 0 && dodges > 0) dodgeQueued = true;
+        if (canDodge && InputManager.dodge && moveDirection.magnitude > 0) dodgeQueued = true;
+        if (dodgeQueued) Dodge(moveDirection);
     }
 
-    // player movement with movespeed value
     void FixedUpdate()
     {
-        moveCharacter(moveDirection);
+        MoveCharacter(moveDirection);
     }
 
-    void moveCharacter(Vector2 direction)
+    void MoveCharacter(Vector2 dir)
     {
-        rb.AddForce(direction * moveSpeed * Time.fixedDeltaTime);
+        rb.AddForce(dir * moveSpeed * Time.fixedDeltaTime);
 
-        // Scuffed dodge implementation
-        if (dodgeQueued)
-        {
-            rb.AddForce(direction * dodgeForce, ForceMode2D.Impulse);
-            dodgeQueued = false;
-
-            // Dodge cooldown
-            removeDodge(dodgeCooldown);
-            onDodge.Invoke();
-        }
+        if (dir.magnitude == 0) rb.drag = 20;
+        else rb.drag = 11;
     }
 
-    public void removeDodge(float length)
+    void Dodge(Vector2 direction)
     {
-        if (dodges > 0)
-            dodges--;
+        rb.AddForce(direction * dodgeForce, ForceMode2D.Impulse);
+        dodgeQueued = false;
 
-        // Increase dodge cooldown if player used up all dodges
-        length = dodges == 0 ? length * 1.5f : length;
+        // Dodge cooldown
+        CancelInvoke("StartDodgeCooldown");
+        startCooldown = false;
+        Invoke("StartDodgeCooldown", dodgeResetStartTime);
 
-        CancelInvoke();
-        Invoke("resetDodge", length);
+        dodges--;
+        onDodge.Invoke();
     }
 
-    void resetDodge() 
+    void StartDodgeCooldown()
     {
-        if (dodges < maxDodges)
-        {
-            dodges++;
-            Invoke("resetDodge", dodgeCooldown);
-
-            OnDodgeRecharge?.Invoke();
-        }
-    } // Only exists so i can make an invoke call lol
+        startCooldown = true;
+    }
 }

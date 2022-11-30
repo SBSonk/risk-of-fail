@@ -11,9 +11,10 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
+        mouseRawPosition = Input.mousePosition;
+
         if (PauseMenu.paused) return;
 
-        mouseRawPosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseMovement = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 

@@ -19,11 +19,13 @@ MonoBehaviour:
   weaponFireRate: 2
   weaponPiercing: 0
   isWeaponObtained: 0
-  hudElement: {fileID: -1569379430, guid: ac1cb1997c2bb9c47a38e95b1219b296, type: 3}
-  crossHair:
-    sprite: {fileID: 21300000, guid: 356967556be0e904c8c4e72af6a40310, type: 3}
-    rotationSpeed: 200
-  weaponSprite: {fileID: -1326280369, guid: eb94c8d97ad6620409ce3d71c0815470, type: 3}
+  hud:
+    sprite: {fileID: 1909206577, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
+    offset: {x: 0, y: 0}
+    crossHair:
+      sprite: {fileID: 21300000, guid: 356967556be0e904c8c4e72af6a40310, type: 3}
+      rotationSpeed: 0
+  weaponSprite: {fileID: 654405961, guid: 029748d8b485815449e86ac764a554b6, type: 3}
   baseDamage: 25
   bulletSpread: 0.5
   knockbackAmount: 3

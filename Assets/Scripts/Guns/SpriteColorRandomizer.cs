@@ -9,7 +9,7 @@ public class SpriteColorRandomizer : MonoBehaviour
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] TrailRenderer trail;
     [SerializeField] ParticleSystem hitmarker;
-    [SerializeField] Light2D light;
+    [SerializeField] Light2D _light;
 
     private void Start()
     {
@@ -17,6 +17,6 @@ public class SpriteColorRandomizer : MonoBehaviour
         sprite.color = colors[color];
         trail.startColor = colors[color];
         hitmarker.startColor = colors[color]; // Deprecated but I can't be bothered reading the docs to find the new way
-        light.color = colors[color];
+        _light.color = colors[color];
     }
 }

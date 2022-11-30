@@ -7,8 +7,8 @@ public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] Transform gunPivot, gunBarrel, cursor;
 
-    public inventoryWeapon fallbackWep;
-    List<inventoryWeapon> weaponPool;
+    public InventoryWeapon fallbackWep;
+    List<InventoryWeapon> weaponPool;
     int currentWeaponIndex = 0;
 
     public bool reloading;
@@ -21,23 +21,9 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] float radius;
     [SerializeField] bool canShove = true;
 
-    // EVENTS
-    public delegate void OnWeaponSwitch();
-    public static event OnWeaponSwitch onWeaponSwitch;
-
-    public delegate void OnPlayerShoot();
-    public static event OnPlayerShoot onPlayerShoot;
-
-    public delegate void OnAmmoUpdate();
-    public static event OnAmmoUpdate onAmmoUpdate;
-
-    public delegate void OnReloadStart();   
-    public static event OnReloadStart onReloadStart;
-
-    public delegate void OnShove();
-    public static event OnShove onShove;
-
-    public UnityEvent OnPlayerMelee;
+    public UnityEvent OnWeaponSwitch;
+    public UnityEvent OnShoot, OnReloadStart, OnAmmoUpdate;
+    public UnityEvent OnMelee, OnShove, OnParry;
 
     private void Start()
     {
@@ -45,9 +31,9 @@ public class PlayerShooting : MonoBehaviour
         weaponPool = GameManager.main.pData.weaponsOwned;
 
         // Initialize inventory
-        foreach (inventoryWeapon w in weaponPool)
+        for (int i = 0; i < weaponPool.Count; i++)
         {
-            w.Initialize();
+            weaponPool[i].Initialize();
         }
     }
 
@@ -72,7 +58,7 @@ public class PlayerShooting : MonoBehaviour
 
                 case MeleeWeapon m:
                     m.ShootWeapon(gunBarrel);
-                    OnPlayerMelee?.Invoke();
+                    OnMelee?.Invoke();
                     break;
             }
 
@@ -108,14 +94,14 @@ public class PlayerShooting : MonoBehaviour
         canShoot = true;
         reloading = false;
 
-        if (onWeaponSwitch != null) onWeaponSwitch.Invoke();
+        OnWeaponSwitch?.Invoke();
     }
 
     void Shoving()
     {
         if (!InputManager.shove || !canShove) return;
 
-        onShove?.Invoke();
+        OnShove?.Invoke();
 
         // Check all objects in radius in front of shootpivot
         Vector3 shoveDir = ((Vector3)InputManager.mousePosition - transform.position).normalized;
@@ -131,20 +117,25 @@ public class PlayerShooting : MonoBehaviour
 
                 // Knockback
                 enemy.GetComponent<Rigidbody2D>().AddForce(shoveDir * shoveStrength, ForceMode2D.Impulse);
-            } else if (h.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
+            } else if (GetHeldWeapon().weapon is MeleeWeapon && h.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
             {
-                if (h.TryGetComponent(out Rigidbody2D _rb) && h.TryGetComponent(out Projectile p) && p.active)
+                foreach (Collider2D c in hits)
                 {
-                    _rb.velocity = Vector2.zero;
-                    _rb.AddForce(shoveDir * 3, ForceMode2D.Impulse);
+                    if (c.TryGetComponent(out Rigidbody2D _rb) && c.TryGetComponent(out Projectile p) && p.active)
+                    {
+                        _rb.velocity = Vector2.zero;
+                        _rb.AddForce(shoveDir * 3, ForceMode2D.Impulse);
 
-                    h.GetComponentInChildren<TrailRenderer>().startColor = Color.cyan;
+                        c.GetComponentInChildren<TrailRenderer>().startColor = Color.cyan;
 
-                    // Convert to playerBullet
-                    h.gameObject.layer = LayerMask.NameToLayer("Bullet");
-                    p.GetComponent<Projectile>().damage = 60;
+                        // Convert to playerBullet
+                        c.gameObject.layer = LayerMask.NameToLayer("Bullet");
+                        p.GetComponent<Projectile>().damage = 60;
+                    }
+
                 }
-                
+
+                OnParry?.Invoke();
             }
         }
 
@@ -153,7 +144,7 @@ public class PlayerShooting : MonoBehaviour
 
         CancelInvoke();
         Invoke("EnableShove", shoveCooldown);
-        Invoke("EnableShooting", shoveCooldown);
+        Invoke("EnableShooting", shoveCooldown + GetHeldWeapon().weapon.reloadLength);
     }
 
     // Handle shooting of GUN type weapons
@@ -169,8 +160,7 @@ public class PlayerShooting : MonoBehaviour
                 ShootGun(g);
 
                 weapon.clip -= g.ammoPerShot;
-
-                if (onAmmoUpdate != null) onAmmoUpdate.Invoke();
+                OnAmmoUpdate?.Invoke();
             }
 
             // Autoreload if no ammo
@@ -182,9 +172,8 @@ public class PlayerShooting : MonoBehaviour
             {
                 ShootGun(g);
 
-                if (onPlayerShoot != null) onPlayerShoot.Invoke();
-
                 weapon.pool -= g.ammoPerShot;
+                OnAmmoUpdate?.Invoke();
             }
         }
     }
@@ -193,7 +182,7 @@ public class PlayerShooting : MonoBehaviour
     {
         g.ShootWeapon(gunBarrel);
 
-        if (onPlayerShoot != null) onPlayerShoot.Invoke();
+        OnShoot?.Invoke();
     }
 
     IEnumerator Reload()
@@ -202,7 +191,7 @@ public class PlayerShooting : MonoBehaviour
         if (weaponPool[currentWeaponIndex].pool == 0) yield break;
 
         // Begin Reload
-        onReloadStart?.Invoke();
+        OnReloadStart?.Invoke();
 
         canShoot = false;
         reloading = true;
@@ -228,9 +217,9 @@ public class PlayerShooting : MonoBehaviour
                 weaponPool[currentWeaponIndex].pool -= amountToReload;
             }
 
-            onAmmoUpdate?.Invoke();
+            OnAmmoUpdate?.Invoke();
 
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.5f);
 
             reloading = false;
             canShoot = true;
@@ -248,9 +237,9 @@ public class PlayerShooting : MonoBehaviour
     }
 
     // Returns the first inventory weapon with type type
-    public inventoryWeapon GetWeaponFromInventory(Weapon type)
+    public InventoryWeapon GetWeaponFromInventory(Weapon type)
     {
-        foreach (inventoryWeapon w in weaponPool)
+        foreach (InventoryWeapon w in weaponPool)
         {
             if (w.weapon.weaponName == type.weaponName) return w;
         }
@@ -258,36 +247,17 @@ public class PlayerShooting : MonoBehaviour
         return null;
     }
 
-    public void GiveAmmo(inventoryWeapon weapon, int amount)
+    public void GiveAmmo(InventoryWeapon weapon, int amount)
     {
         weapon.pool += amount;
 
-        if (onAmmoUpdate != null) onAmmoUpdate.Invoke();
+        OnAmmoUpdate?.Invoke();
     }
 
-    public inventoryWeapon GetHeldWeapon()
+    public InventoryWeapon GetHeldWeapon()
     {
-        if (weaponPool.Count == 0) return fallbackWep;
+        if (weaponPool == null || weaponPool.Count == 0) return fallbackWep;
+
         return weaponPool[currentWeaponIndex];
-    }
-}
-
-[System.Serializable] // Used to store inventory weapon values and ammo
-public class inventoryWeapon
-{
-    public Weapon weapon;
-    public int clip, pool;
-
-    public inventoryWeapon(Weapon nweapon, int nclip, int npool)
-    {
-        weapon = nweapon;
-        clip = nclip;
-        pool = npool;
-    }
-
-    public void Initialize()
-    {
-        clip = weapon.clipSize;
-        pool = weapon.defaultAmmoCount;
     }
 }

@@ -28,7 +28,7 @@ public class PlayerStatus : Alive
     }
 
     protected override void OnDamage(float damage)
-    {
+    { 
         // Play indicators
         base.OnDamage(damage);
 
@@ -63,7 +63,6 @@ public class PlayerStatus : Alive
     IEnumerator TakeStun(float duration)
     {
         pMovement.moveSpeed = defaultSpeed / 2;
-        pMovement.removeDodge(duration);
 
         // Disable switching animations
         pAnimations.canSwitchAnimation = false;

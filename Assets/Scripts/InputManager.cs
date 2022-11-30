@@ -28,5 +28,7 @@ public class InputManager : MonoBehaviour
         if (Input.GetButtonDown("SwapLeft")) swapWeapon = -1;
         else if (Input.GetButtonDown("SwapRight")) swapWeapon = 1;
         else swapWeapon = 0;
+
+        swapWeapon += (int) Input.GetAxisRaw("Mouse ScrollWheel");
     }
 }

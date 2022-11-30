@@ -14,6 +14,13 @@ public class PauseMenu : MonoBehaviour
 
     // reset the paused and settings variables since they are static. on start
 
+    
+    void Start ()
+    {
+        paused = false;
+        Time.timeScale = 1f;
+    }
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

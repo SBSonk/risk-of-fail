@@ -6,7 +6,7 @@ public class PlayerAnimations : MonoBehaviour
     public bool canSwitchAnimation = true   ;
     [SerializeField] SpriteRenderer[] sprites;
 
-    [SerializeField] ParticleSystem dashExp;
+    [SerializeField] ParticleSystem dashExp, dash2;
     [SerializeField] Animator animator;
     [SerializeField] Animator weaponAnimator;
 
@@ -17,6 +17,7 @@ public class PlayerAnimations : MonoBehaviour
     [SerializeField] GameObject playerGhost;
     [SerializeField] int copies = 4;
     [SerializeField] float timeBetweenCopies, ghostLifetime = 0.25f;
+    float trailTime;
 
     [Header("Player Sprite")]
     [SerializeField] SpriteRenderer sprite;
@@ -57,6 +58,9 @@ public class PlayerAnimations : MonoBehaviour
         PlayerStatus.onPlayerDamage += DamageAnimation;
 
         ChangeWeaponSprite();
+
+        trailTime = trail.time;
+        trail.time = 0;
     }
 
     private void OnDestroy()
@@ -189,7 +193,30 @@ public class PlayerAnimations : MonoBehaviour
 
     void DodgeAnimation()
     {
+        print("test2");
+        switch (VectorToDir(input))
+        {
+            case Directions.up:
+                dashExp.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                break;
+
+            case Directions.right:
+                dashExp.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+                break;
+
+            case Directions.down:
+                dashExp.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
+                break;
+
+            case Directions.left:
+                print("test");
+                dashExp.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 270));
+                break;
+        }
+
+
         dashExp.Play();
+        StopCoroutine("DashTrail");
         StartCoroutine(DashTrail());
         StartCoroutine(DashGhosts());
         // TODO: make it so that the trail only appears if speed is above a threshold
@@ -230,12 +257,21 @@ public class PlayerAnimations : MonoBehaviour
     IEnumerator DashTrail()
     {
         // Enable trail
-        trail.emitting = true;
+        trail.time = trailTime;
+        //trail.emitting = true;
 
-        yield return new WaitForSeconds(trailLifetime);
+        float t = 0;
+        while (t < trailLifetime)
+        {
+            print(t);
+            trail.time = Mathf.Lerp(trail.time, Mathf.Lerp(trailTime, 0, t / trailLifetime), 0.25f);
+            yield return new WaitForEndOfFrame();
+            t += Time.deltaTime / 4;
+        }
+   //     yield return new WaitForSeconds(trailLifetime);
 
         // Retract trail
-        trail.emitting = false;
+        //trail.emitting = false;
     }
 
     IEnumerator DashGhosts()

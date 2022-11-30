@@ -1,32 +1,22 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UIElements;
 
 public class Door : MonoBehaviour
 {
     public float openDelay = 0.5f;
     public float closeDelay = 0f;
+    public float lerpVal = 0.25f;
 
-    Collider2D col;
-    SpriteRenderer sprite;
-    Color startCol;
+    float desiredRot = 0;
+    float baseRot;
 
-    private void Awake()
-    {
-        sprite = GetComponent<SpriteRenderer>();
-        col = GetComponent<Collider2D>();
-    }
+    public float openRot = 90;
+    public bool opened;
 
     private void Start()
     {
-        startCol = sprite.color;
-        startCol.a = 1;
-
-        InitializeDoor();
-    }
-
-    void InitializeDoor()
-    {
-        sprite.color = col.enabled ? startCol : Color.clear;
+        baseRot = transform.rotation.eulerAngles.z;
     }
 
     public void ToggleDoor(bool val)
@@ -34,16 +24,21 @@ public class Door : MonoBehaviour
         float delay = val ? closeDelay : openDelay;
         if (closeDelay < 0.1f) delay = 0.1f;
 
-        Color endCol = val ? startCol : Color.clear;
-
-        StartCoroutine(SprFunctions.Fade(sprite, sprite.color, endCol, delay + 0.1f));
         StartCoroutine(Toggle(val, delay));
     }
 
+    public void Update()
+    {
+        desiredRot = opened ? 0 : openRot;
+
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.LerpAngle(transform.rotation.eulerAngles.z, baseRot + desiredRot, lerpVal)));
+    }
+
+    
     IEnumerator Toggle(bool val, float delay)
     {
         yield return new WaitForSecondsRealtime(delay);
 
-        col.enabled = val;
+        opened = val;
     }
 }

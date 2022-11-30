@@ -84,7 +84,7 @@ public class CameraFollow : MonoBehaviour
         worldBoundsY = y;
     }
 
-    public IEnumerator CenterCameraOnPosition(CenterCameraOnObject c, Vector3 position, float time, float holdTime, bool freezeGame)
+    public IEnumerator CenterCameraOnPosition(CenterCameraOnObject c, Vector3 position, float time, float holdTime, Vector3 offset, bool freezeGame)
     {
         c.OnCenterStart?.Invoke();
         if (freezeGame) Time.timeScale = 0;
@@ -106,7 +106,7 @@ public class CameraFollow : MonoBehaviour
                 t += Time.deltaTime;
             }
             
-            transform.position = Vector3.Lerp(startPos, position, t / time);
+            transform.position = Vector3.Lerp(startPos, position + offset, t / time);
         }
 
         c.OnCentered?.Invoke();
@@ -118,7 +118,7 @@ public class CameraFollow : MonoBehaviour
         c.OnRetract?.Invoke();
     }
 
-    public IEnumerator CenterCameraOnPosition(CenterCameraOnObject c, Vector3[] positions, float time, float holdTime, bool freezeGame = false)
+    public IEnumerator CenterCameraOnPosition(CenterCameraOnObject c, Vector3[] positions, float time, float holdTime, Vector3 offset, bool freezeGame = false)
     {
         c.OnCenterStart?.Invoke();
         if (freezeGame) Time.timeScale = 0;
@@ -149,7 +149,7 @@ public class CameraFollow : MonoBehaviour
                 t += Time.deltaTime;
             }
 
-            transform.position = Vector3.Lerp(startPos, position, t / time);
+            transform.position = Vector3.Lerp(startPos, position + offset, t / time);
         }
 
         c.OnCentered?.Invoke();

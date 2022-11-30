@@ -91,9 +91,13 @@ public class Room : MonoBehaviour
 
     public void ToggleSpawns(bool val)
     {
-        if (!spawner) return;
+        if (!spawner)
+        {
+            print("No Spawner Assigned.");
+            return;
+        }
 
-        if (!val) spawner.CancelInvoke();
+            if (!val) spawner.CancelInvoke();
         else spawner.StartSpawner();
     }
 }

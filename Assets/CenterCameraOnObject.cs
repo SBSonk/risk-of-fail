@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class CenterCameraOnObject : MonoBehaviour
 {
+    [SerializeField] Vector3 offset;
     [SerializeField] Transform[] transforms;
     [SerializeField] float time = 1, holdTime = 1;
     [SerializeField] bool freezeGame = false;
@@ -22,7 +23,7 @@ public class CenterCameraOnObject : MonoBehaviour
     {
         if (transforms.Length == 1)
         {
-            cam.StartCoroutine(cam.CenterCameraOnPosition(this, transforms[0].position, time, holdTime, freezeGame));
+            cam.StartCoroutine(cam.CenterCameraOnPosition(this, transforms[0].position, time, holdTime, offset, freezeGame));
         }
         else
         {
@@ -32,7 +33,7 @@ public class CenterCameraOnObject : MonoBehaviour
                 positions[i] = transforms[i].position;
             }
 
-            cam.StartCoroutine(cam.CenterCameraOnPosition(this, positions, time, holdTime, freezeGame));
+            cam.StartCoroutine(cam.CenterCameraOnPosition(this, positions, time, holdTime, offset, freezeGame));
         }
     }
 }

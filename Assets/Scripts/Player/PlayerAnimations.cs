@@ -152,11 +152,11 @@ public class PlayerAnimations : MonoBehaviour
 
     void ShootAnimation()
     {
-        weaponAnimator.CrossFade("Shoot" + animType, .25f, 0, 0f);
+        weaponAnimator.CrossFade("Shoot" + animType, .1f, 0, 0f);
     }
     void ShoveAnimation()
     {
-        weaponAnimator.CrossFade("Shove" + animType, .25f);
+        weaponAnimator.CrossFade("Shove" + animType, .1f);
     }
 
     void ChangeWeaponSprite()

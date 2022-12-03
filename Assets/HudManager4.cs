@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System.Collections;
+using Pathfinding.Util;
 
 public class HudManager4 : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class HudManager4 : MonoBehaviour
 
     [SerializeField] Image dodgeBar;
 
+    [SerializeField] Animator weaponAnim, avatarAnim;
     Vector3 defaultAvatarPos;
 
     // Handle Player Avatar
@@ -43,23 +45,7 @@ public class HudManager4 : MonoBehaviour
             }
         }
 
-        // Make avatar jump if changing state
-        StartCoroutine(AvatarJump(amount));
-        // SCALES TO DAMAGE AMOUNT
-
-        // Apply damaged color animation
-    }
-
-    IEnumerator AvatarJump(float damage)
-    {
-        var avatarPos = avatarImage.GetComponent<RectTransform>();
-        Vector3 startPos = avatarPos.localPosition;
-        // wait .2s
-        Vector3 desiredPos = startPos + (Vector3.up * damage);
-        yield return new WaitForEndOfFrame();
-        // i cannot be bothered with this
-        // reset
-        avatarPos.localPosition = defaultAvatarPos;
+        //avatarAnim.CrossFade("AvatarJump", 0.1f, 0, 0);
     }
 
     // Handle Weapon Swap
@@ -69,8 +55,9 @@ public class HudManager4 : MonoBehaviour
 
         // Swap sprite
         weaponSprite.sprite = weapon.weapon.hud.sprite;
-        weaponTransform.sizeDelta = weaponSprite.sprite.rect.size;
         weaponTransform.localPosition = weapon.weapon.hud.offset;
+        weaponTransform.sizeDelta = weaponSprite.sprite.rect.size;
+        weaponAnim.Play("SwapWeapon2", 0, 0);
 
         // Hide ammo if melee
         ammoBar.gameObject.SetActive(!(weapon.weapon is MeleeWeapon));
@@ -137,7 +124,8 @@ public class HudManager4 : MonoBehaviour
         shooting.OnWeaponSwitch.AddListener(UpdateWeaponIcon);
         shooting.OnAmmoUpdate.AddListener(UpdateAmmoDisplay);
         shooting.OnWeaponSwitch.AddListener(UpdateAmmoDisplay);
-        
+
+        player.onHeal.AddListener(PlayerAvatarAnimation);
         player.onHit.AddListener(PlayerAvatarAnimation);
 
         UpdateWeaponIcon();

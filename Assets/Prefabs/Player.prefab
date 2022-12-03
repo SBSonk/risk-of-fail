@@ -61,8 +61,8 @@ MonoBehaviour:
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
-  m_ShadowIntensityEnabled: 0
-  m_ShadowIntensity: 0
+  m_ShadowIntensityEnabled: 1
+  m_ShadowIntensity: 1
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_Vertices:
@@ -591,6 +591,7 @@ MonoBehaviour:
   - {fileID: 2223588945330593513}
   - {fileID: 1760125408}
   dashExp: {fileID: 8137705393892693741}
+  dash2: {fileID: 0}
   animator: {fileID: 980274054001023296}
   weaponAnimator: {fileID: 725625596}
   trail: {fileID: 2223588944474196827}
@@ -862,7 +863,7 @@ MonoBehaviour:
   - {x: 0.3089852, y: -0.77732307, z: 0}
   m_ShapePathHash: 1906521851
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1690
+  m_InstanceId: 45080
 --- !u!1 &3365215481345798000
 GameObject:
   m_ObjectHideFlags: 0

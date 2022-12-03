@@ -19,7 +19,6 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] float shoveStunTime = 1f;
     [SerializeField] float shoveCooldown = 1f;
     [SerializeField] float radius;
-    [SerializeField] bool canShove = true;
 
     public UnityEvent OnWeaponSwitch;
     public UnityEvent OnShoot, OnReloadStart, OnAmmoUpdate;
@@ -99,7 +98,7 @@ public class PlayerShooting : MonoBehaviour
 
     void Shoving()
     {
-        if (!InputManager.shove || !canShove) return;
+        if (!InputManager.shove || !canShoot) return;
 
         OnShove?.Invoke();
 
@@ -140,10 +139,8 @@ public class PlayerShooting : MonoBehaviour
         }
 
         canShoot = false;
-        canShove = false;
 
         CancelInvoke();
-        Invoke("EnableShove", shoveCooldown);
         Invoke("EnableShooting", shoveCooldown + GetHeldWeapon().weapon.reloadLength);
     }
 
@@ -229,11 +226,6 @@ public class PlayerShooting : MonoBehaviour
     void EnableShooting()
     {
         canShoot = true;
-    }
-
-    void EnableShove()
-    {
-        canShove = true;
     }
 
     // Returns the first inventory weapon with type type

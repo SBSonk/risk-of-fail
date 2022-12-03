@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class ButtonFunctions : MonoBehaviour
 {
+    public static RectTransform rect;
+
+    private void Awake()
+    {
+        rect = GetComponent<RectTransform>();
+    }
+
     public void EnterShop()
     {
         SceneManager.LoadScene(2);

@@ -19,7 +19,7 @@ public class Alive : MonoBehaviour
     bool canBeDamaged = true;
     protected bool dead;
 
-    public UnityEvent<float> onHit, onStunned;
+    public UnityEvent<float> onHit, onStunned, onHeal;
     public UnityEvent onDeath;
 
     // Applies damage and returns damage taken
@@ -78,6 +78,7 @@ public class Alive : MonoBehaviour
         health = Mathf.Clamp(health, 0, maxHealth);
 
         OnDamage(amount);
+        onHeal?.Invoke(health);
         return amount;
     }
 
@@ -95,7 +96,7 @@ public class Alive : MonoBehaviour
 
             // Spawn indicator
             DamageIndicator indicator = Instantiate(original: damageIndicatorPrefab,
-            position: pos, rotation: Quaternion.identity).GetComponent<DamageIndicator>();
+            position: Camera.main.WorldToScreenPoint(pos), rotation: Quaternion.identity, ButtonFunctions.rect).GetComponent<DamageIndicator>();
 
             indicator.Initialize(damage);
         }

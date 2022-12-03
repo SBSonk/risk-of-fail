@@ -170,7 +170,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 24
-      minScalar: 12
+      minScalar: 15
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -661,14 +661,14 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 10
+    type: 2
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 0
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 0, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 114.9}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -748,8 +748,8 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.0001
-      mode: 0
+      value: 0.1
+      mode: 3
       spread: 0
       speed:
         serializedVersion: 2
@@ -805,8 +805,8 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 359.06
-      mode: 0
+      value: 130
+      mode: 3
       spread: 0
       speed:
         serializedVersion: 2
@@ -977,7 +977,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 20
+        scalar: 15
         minScalar: 30
         maxCurve:
           serializedVersion: 2

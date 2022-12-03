@@ -23,6 +23,12 @@ public class Room : MonoBehaviour
     private void Awake()
     {
         cam = CameraFollow.cam;
+
+        if (!spawner)
+        {
+            print("Assigning to local spawner.");
+            spawner = GetComponent<Spawning2>();
+        }
     }
 
     private void Start()

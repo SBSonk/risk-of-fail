@@ -58,7 +58,7 @@ public class ShopManager : MonoBehaviour                    //call this class if
         totalCoins = GameManager.main.pData.fPoints;
         if (totalCoins >= shopItemsSO[btnNo].weaponCost)
         {
-            GameManager.SetScore(totalCoins - shopItemsSO[btnNo].weaponCost);   //problematic
+            //GameManager.SetScore(totalCoins - shopItemsSO[btnNo].weaponCost);   //problematic
             totalCoins = GameManager.main.pData.fPoints; // I had to restructure the game manager a bit so i edited this
             coinUI.text = "FP: " + totalCoins;
 

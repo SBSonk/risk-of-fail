@@ -115,7 +115,7 @@ public class HudManager4 : MonoBehaviour
 
     void SetFudgePoints()
     {
-        fudgePointsText.SetText(GameManager.main.pData.fPoints.ToString("00000"));
+        fudgePointsText.SetText(LevelStats.main.points.ToString("00000"));
     }
 
     private void Start()

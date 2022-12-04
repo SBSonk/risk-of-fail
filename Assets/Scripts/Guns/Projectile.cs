@@ -14,6 +14,9 @@ public class Projectile : MonoBehaviour
     public int pierces = 0;
     public ScreenshakeValue bulletShake;
 
+    public Sprite[] paintSprites;
+    public PaintSplatter paintPrefab;
+
     public bool active = true;
     List<int> objectsHit = new List<int>();
 
@@ -32,6 +35,8 @@ public class Projectile : MonoBehaviour
         // Hit something that isnt the one who shot
         if (collision.GetComponent<Alive>())
         {
+            LevelStats.main.BulletHit(); // Should prolly use an event instead  
+
             // Screenshake
             CameraFunctions.main.DoScreenShake(bulletShake);
 
@@ -60,5 +65,8 @@ public class Projectile : MonoBehaviour
         damage /= 1.25f;
 
         if (collision.CompareTag("Alive")) pierces--;
+
+        // Paint splatters
+        Instantiate(paintPrefab, transform.position, paintPrefab.transform.rotation).Initialize(paintSprites);
     }
 }

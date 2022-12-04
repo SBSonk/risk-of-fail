@@ -122,10 +122,12 @@ public class Enemy : Alive
 
         // Give player score
         float lifetime = Time.time - spawnTime;
-        GameManager.GiveScore(killScore, lifetime);
+        LevelStats.main.GiveScore(killScore, lifetime);
 
         // Reduce alive enemies for the spawner
         onEnemyDeath?.Invoke(type);
+
+        LevelStats.main.EnemyKilled(); // Should use an event probably
 
         base.Death();
     }

@@ -48,7 +48,8 @@ public enum AnimationTypes
 {
     Light = 'A',
     Brush = 'B',
-    Heavy = 'C'
+    Heavy = 'C',
+    Melee
 }
 
 [System.Serializable]

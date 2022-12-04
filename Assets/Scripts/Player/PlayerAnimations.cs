@@ -147,7 +147,7 @@ public class PlayerAnimations : MonoBehaviour
 
     void MeleeAnimation()
     {
-        weaponAnimator.CrossFade("Swing", .25f, 0, 0f);
+        weaponAnimator.CrossFade("Swing", .1f, 0, 0f);
     }
 
     void ShootAnimation()
@@ -179,6 +179,10 @@ public class PlayerAnimations : MonoBehaviour
 
             case AnimationTypes.Heavy:
                 animType = "C";
+                break;
+
+            case AnimationTypes.Melee:
+                animType = "Melee";
                 break;
 
             default:
@@ -227,7 +231,6 @@ public class PlayerAnimations : MonoBehaviour
 
         CameraFunctions.main.DoScreenShake(dodgeScreenshake);
     }
-
 
     void DamageAnimation()
     {

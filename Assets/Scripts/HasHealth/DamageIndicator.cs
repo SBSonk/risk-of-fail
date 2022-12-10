@@ -5,7 +5,7 @@ public class DamageIndicator : MonoBehaviour
 {
     [SerializeField] Color negative, positive;
     [SerializeField] float lifetime = 1; // How long before it gets destroyed
-    [SerializeField] TextMeshProUGUI damageNumber;
+    [SerializeField] TextMeshPro damageNumber;
     [SerializeField] Animator animator;
 
     public void Initialize(float damageAmount)

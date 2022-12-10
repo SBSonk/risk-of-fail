@@ -7,8 +7,10 @@ using Unity.VisualScripting;
 // I should really make this inherit QuizAI or something... too much work
 public class WrittenWorksAttack : MonoBehaviour
 {
+    [SerializeField] DamageSource damage;
+
     [SerializeField] float wakeDistance = 10;
-    [SerializeField] float baseDamage, stunLength, knockbackAmount, reboundLength;
+    [SerializeField] float stunLength, knockbackAmount, reboundLength;
     [SerializeField] float rushDistance = 5f, attackRange = 5f;
     float defaultSpeed;
 
@@ -21,7 +23,7 @@ public class WrittenWorksAttack : MonoBehaviour
 
     float originalDrag;
     public float minDashDistance = 5f, maxDashDistance = 6f, minDashCooldown = 5f, maxDashCooldown = 10f;
-    bool attacking, dashing, canDash = true, dashQueued;
+    bool attacking, dashing, canDash = true, dashQueued, canAttack = true;
     public UnityEvent OnSwipeAttack, OnDashAttack, OnDashStart, OnDashEnd, OnDashCancel;
 
     public Transform dashIndicator;
@@ -44,6 +46,7 @@ public class WrittenWorksAttack : MonoBehaviour
         originalDrag = self.rb.drag;
 
         //self.onStunned.AddListener(CancelDash);
+        self.onStunned.AddListener(DisableAttack);
     }
 
     protected virtual void FixedUpdate()
@@ -84,7 +87,7 @@ public class WrittenWorksAttack : MonoBehaviour
 
                 // attack
                 // check if player is near
-                StartCoroutine(SwipeAttack());
+                if (canAttack) StartCoroutine(SwipeAttack());
  
 
                 //if (distance > rushDistance) switchState(AIMode.pathing);
@@ -99,10 +102,10 @@ public class WrittenWorksAttack : MonoBehaviour
         // Stop moving
         if (dashing)
         {
-            AttackPlayer(collision, baseDamage * 1.5f);
+            AttackPlayer(collision, damage.damage * 1.5f);
         } else
         {
-            mode = AIMode.attacking;
+            switchState(AIMode.attacking);
         }
     }
 
@@ -110,7 +113,7 @@ public class WrittenWorksAttack : MonoBehaviour
     {
         if (!collision.CompareTag("Player")) return;
 
-        mode = AIMode.pathing;
+        switchState(AIMode.pathing);
     }
 
     protected virtual Vector3 playerPositionToFollow()
@@ -222,7 +225,7 @@ public class WrittenWorksAttack : MonoBehaviour
                 float distance = Vector3.Distance(transform.position, col.transform.position); // TODO: use overlap to account for direction
                 if (distance <= attackRange)
                 {
-                    AttackPlayer(col, baseDamage);
+                    AttackPlayer(col, damage.damage);
                 }
 
                 mode = AIMode.pathing;
@@ -271,4 +274,12 @@ public class WrittenWorksAttack : MonoBehaviour
         mode = (AIMode) state;
         if (mode == AIMode.pathing) ai.canMove = true;
     }
+
+    void DisableAttack(float t) {
+        switchState(AIMode.pathing);
+
+        canAttack = false;
+        Invoke("EnableAttack", 1);
+    }
+    void EnableAttack() { canAttack = true; }
 }

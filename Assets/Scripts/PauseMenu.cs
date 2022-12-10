@@ -13,8 +13,6 @@ public class PauseMenu : MonoBehaviour
     public GameObject settingsButtons;
 
     // reset the paused and settings variables since they are static. on start
-
-    
     void Start ()
     {
         paused = false;
@@ -33,10 +31,14 @@ public class PauseMenu : MonoBehaviour
             else if (paused)
             {
                 Resume();
+
+                MoveCursor.main.LeaveMenu();
             }
             else
             {
                 Pause();
+
+                MoveCursor.main.EnterMenu();
             }
         }
     }
@@ -53,17 +55,6 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         paused = true;
-    }
-
-    public void Restart()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1f;
-    }
-    public void MainMenu()
-    {
-        SceneManager.LoadScene(0);
-        Time.timeScale = 1f;
     }
 
     public void Settings()

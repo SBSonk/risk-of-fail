@@ -4,7 +4,7 @@ using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-[CreateAssetMenu(fileName = "New Melee", menuName = "Melee")]
+[CreateAssetMenu(fileName = "New Melee", menuName = "Weapons/Melee")]
 public class MeleeWeapon : Weapon
 {
     public float hitArea = 2;
@@ -14,7 +14,7 @@ public class MeleeWeapon : Weapon
         Vector3 hitVector = ((Vector3)InputManager.mousePosition - player.position).normalized;
 
         // Attack check
-        Collider2D[] col = Physics2D.OverlapCapsuleAll(player.position + (hitVector * .5f), new Vector2(2.5f, 1.75f), CapsuleDirection2D.Horizontal, Vector2.Angle(player.position, InputManager.mousePosition));
+        Collider2D[] col = Physics2D.OverlapCapsuleAll(player.position, new Vector2(2.5f, 1.75f * hitArea), CapsuleDirection2D.Horizontal, Vector2.Angle(player.position, InputManager.mousePosition));
 
         List<Alive> hit = new List<Alive>();
         foreach(Collider2D c in col)
@@ -29,6 +29,12 @@ public class MeleeWeapon : Weapon
 
                 hit.Add(a);
             }
+        }
+
+        if (hit.Count > 0)
+        {
+            // Screenshake
+            CameraFunctions.main.DoScreenShake(hitScreenShake);
         }
     }
 }

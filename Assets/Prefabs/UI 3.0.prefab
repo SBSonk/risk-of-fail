@@ -352,6 +352,7 @@ GameObject:
   - component: {fileID: 2603249502355321443}
   - component: {fileID: 2603249502355321469}
   - component: {fileID: 2603249502355321442}
+  - component: {fileID: 80848096}
   m_Layer: 0
   m_Name: PlayerAvatar
   m_TagString: Untagged
@@ -417,6 +418,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &80848096
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2603249502355321440}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7d79517c53bea8e4e89b945ec88fb153, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2603249502505913895
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,6 +1184,8 @@ MonoBehaviour:
   weaponTransform: {fileID: 2603249502236919299}
   fudgePointsText: {fileID: 2603249502846185468}
   dodgeBar: {fileID: 2603249502890294337}
+  weaponAnim: {fileID: 1503463959}
+  avatarAnim: {fileID: 80848096}
 --- !u!95 &1503463959
 Animator:
   serializedVersion: 4

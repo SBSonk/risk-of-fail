@@ -19,7 +19,7 @@ public class Enemy : Alive
     [SerializeField] float minSpeed = 10;
     [SerializeField] float maxSpeed = 15;
     [SerializeField] float speed = 10;
-    [SerializeField] float hbarLerp = 0.5f, speedLerp = 0.125f;
+    [SerializeField] float hbarLerp = 0.5f, StunRecoverTime = 0.125f;
     float spawnTime;
 
     public MonoBehaviour attackScript;
@@ -28,7 +28,6 @@ public class Enemy : Alive
     GameObject healthParent;
     Transform healthBar;
     protected AIPath pathAI;
-    protected bool afterStun;
 
     public UnityEvent<EnemyType> onEnemyDeath;
 
@@ -58,18 +57,21 @@ public class Enemy : Alive
 
         // Healthbar animation  
         healthBar.transform.localScale = Vector3.Lerp(healthBar.transform.lossyScale, new Vector3(1 * (health / maxHealth), 1, 1), hbarLerp);
+    }
 
-        // Reset speed after stun
-        if (afterStun)
+    IEnumerator StunRecover(float time)
+    {
+        float startSpeed = pathAI.maxSpeed;
+
+        float t = 0;
+        while (t < time)
         {
-            pathAI.maxSpeed = Mathf.Lerp(pathAI.maxSpeed, speed, Mathf.SmoothStep(0, 1, speedLerp));
-
-            if (pathAI.maxSpeed >= 0.95f)
-            {
-                pathAI.maxSpeed = speed;
-                afterStun = false;
-            }
+            pathAI.maxSpeed = Mathf.Lerp(startSpeed, speed, t / time);
+            t += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
         }
+
+        pathAI.maxSpeed = speed;
     }
 
     IEnumerator HealthBarFade(float startOpacity, float finalOpacity, float t)
@@ -149,12 +151,13 @@ public class Enemy : Alive
     protected virtual void clearStun()
     {
         pathAI.canMove = true;
-        afterStun = true;
         stunned = false;
         attackScript.enabled = true;
 
         // Reset rigidbody velocities
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0;
+
+        StartCoroutine(StunRecover(StunRecoverTime));
     }
 }

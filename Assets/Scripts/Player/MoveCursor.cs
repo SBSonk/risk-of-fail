@@ -3,12 +3,18 @@ using UnityEngine.UI;
 
 public class MoveCursor : MonoBehaviour
 {
+    public static MoveCursor main;
+
     Image cursor;
     [SerializeField] float rotationDegrees = 1, lerpPos = 0.5f;
     Vector3 mousePos;
 
+    [SerializeField] Crosshair menuCrosshair;
+    Crosshair lastCrosshair;
+
     private void Awake()
     {
+        main = this;
         cursor = GetComponentInChildren<Image>();
     }
 
@@ -35,12 +41,19 @@ public class MoveCursor : MonoBehaviour
     {
         cursor.sprite = c.sprite;
         rotationDegrees = c.rotationSpeed;
+
+        lastCrosshair = c;
+    }
+
+    public void EnterMenu()
+    {
+        cursor.sprite = menuCrosshair.sprite;
+        rotationDegrees = menuCrosshair.rotationSpeed;
+    }
+
+    public void LeaveMenu()
+    {
+        ChangeCrosshair(lastCrosshair);
     }
 }
 
-[System.Serializable]
-public struct Crosshair
-{
-    public Sprite sprite;
-    public float rotationSpeed;
-}

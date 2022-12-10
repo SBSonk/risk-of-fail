@@ -10196,7 +10196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 1
+  radius: 0.6
   height: 2
   canMove: 1
   maxSpeed: 15
@@ -10260,8 +10260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  penalty: 500
-  randomStep: 3
+  penalty: 1000
+  randomStep: 2
 --- !u!114 &5885461334392968935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10326,7 +10326,7 @@ MonoBehaviour:
   maxSpeed: 9
   speed: 6
   hbarLerp: 0.5
-  speedLerp: 0.125
+  StunRecoverTime: 0.3
   attackScript: {fileID: 1996329252}
   rb: {fileID: 0}
   onEnemyDeath:
@@ -10356,8 +10356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebf567fa338ce814e9b84c15ee766d15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: {fileID: 11400000, guid: af5b38fdcc579d04597f00813f40ce75, type: 2}
   wakeDistance: 10
-  baseDamage: 15
   stunLength: 0.5
   knockbackAmount: 10
   reboundLength: 0.2
@@ -10397,14 +10397,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drops:
-  - obj: {fileID: 7320771971551287581, guid: 8c4c0eeaa6b88654190d6079f806941d, type: 3}
-    dropChance: 50
-    dropAmount: 3
-    minDropAmount: 0
-  - obj: {fileID: 2766738602563172787, guid: 199e6106dc5d9ed4ab23b16e75f75fc9, type: 3}
-    dropChance: 50
-    dropAmount: 3
-    minDropAmount: 0
+  - {fileID: 11400000, guid: 75d5d56cd57261c45b4434d95d2221fd, type: 2}
+  - {fileID: 11400000, guid: fb2535e6ba6eb324e9c1d1da51b4f8a6, type: 2}
 --- !u!114 &347650722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10492,10 +10486,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
   m_LightType: 3
-  m_BlendStyleIndex: 1
-  m_FalloffIntensity: 0.8
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 0.1
+  m_BlendStyleIndex: 3
+  m_FalloffIntensity: 0.75
+  m_Color: {r: 1, g: 0.03875816, b: 0, a: 1}
+  m_Intensity: 0.025
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -10508,7 +10502,7 @@ MonoBehaviour:
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
   m_ShadowIntensityEnabled: 1
-  m_ShadowIntensity: 1
+  m_ShadowIntensity: 0.5
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_Vertices:

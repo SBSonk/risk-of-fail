@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-[CreateAssetMenu(fileName = "QuizWeapon", menuName = "QuizWeapon")]
+[CreateAssetMenu(fileName = "QuizWeapon", menuName = "Weapons/QuizWeapon")]
 public class QuizWeapon : Gun
 {
     public int minDamage;

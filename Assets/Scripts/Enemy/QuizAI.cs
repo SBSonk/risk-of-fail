@@ -72,7 +72,7 @@ public class QuizAI : MonoBehaviour
                 }
 
                 // Reposition every few shots of if player is too close
-                if (shotsTaken < shotsToReposition || playerDistance < 4f)
+                if (shotsTaken < shotsToReposition || playerDistance > 4f)
                 {
                     Shooting();
                 }
@@ -93,7 +93,7 @@ public class QuizAI : MonoBehaviour
 
                     // Look for a nearby place to reposition
                     Vector3 newPos = transform.position;
-                    float distance = Random.Range(minReposRadius, maxReposRadius) * Random.Range(-1, 1);
+                    float distance = Random.Range(minReposRadius, maxReposRadius) * Random.Range(-1, 1.0f);
                     newPos += transform.right * distance;
 
                     // Look for nearest node thats walkable
@@ -240,9 +240,8 @@ public class QuizAI : MonoBehaviour
         //RaycastHit2D left = Physics2D.Linecast(transform.position + (transform.right * losWidth), player.position + (Vector2)(-player.transform.right * losWidth), los);
         RaycastHit2D center = Physics2D.Linecast(transform.position, player.position, los);
         //RaycastHit2D right = Physics2D.Linecast(transform.position + (-transform.right * losWidth), player.position + (Vector2)(player.transform.right * losWidth), los);
-
-        print(center.collider.name);
-        return center.collider.CompareTag("Player");
+        
+        return center ? center.collider.CompareTag("Player") : false;
     }
 
     void SwitchToPathing() { switchState(AIMode.pathing); }

@@ -12,27 +12,34 @@ public class ButtonFunctions : MonoBehaviour
         rect = GetComponent<RectTransform>();
     }
 
-    public void EnterShop()
+    public static void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
+    }
+
+    public static void EnterShop()
     {
         SceneManager.LoadScene(2);
     }
     
-    public void ExitShop()
+    public static void ExitShop()
     {
         SceneManager.LoadScene(1);
     }
 
-    public void Play()
+    public static void Play()
     {
         SceneManager.LoadScene(1);
     }
 
-    public void GoMainMenu()
+    public static void MainMenu()
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 
-    public void ExitGame()
+    public static void ExitGame()
     {
         // Save game here
 

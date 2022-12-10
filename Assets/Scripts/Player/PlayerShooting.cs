@@ -104,7 +104,7 @@ public class PlayerShooting : MonoBehaviour
 
         // Check all objects in radius in front of shootpivot
         Vector3 shoveDir = ((Vector3)InputManager.mousePosition - transform.position).normalized;
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position + shoveDir, radius);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position + shoveDir * 0.5f, radius);
         
         if (hits.Length == 0) return;
 
@@ -113,9 +113,11 @@ public class PlayerShooting : MonoBehaviour
             if (h.TryGetComponent(out Enemy enemy))
             {
                 enemy.Stun(shoveStunTime);
+                if (enemy.TryGetComponent(out Rigidbody2D rb))
+                {
+                    rb.AddForce(shoveDir * shoveStrength, ForceMode2D.Impulse);
+                }
 
-                // Knockback
-                enemy.GetComponent<Rigidbody2D>().AddForce(shoveDir * shoveStrength, ForceMode2D.Impulse);
             } else if (GetHeldWeapon().weapon is MeleeWeapon && h.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
             {
                 foreach (Collider2D c in hits)

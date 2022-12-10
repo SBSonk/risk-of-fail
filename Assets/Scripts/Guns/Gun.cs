@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Gun", menuName = "Gun")]
+[CreateAssetMenu(fileName = "New Gun", menuName = "Weapons/Gun")]
 public class Gun : Weapon
 {
     public float bulletVelocity;

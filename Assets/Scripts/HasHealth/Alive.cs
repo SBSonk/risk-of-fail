@@ -91,12 +91,12 @@ public class Alive : MonoBehaviour
         {
             // Offset position
             Vector3 pos = transform.position;
-            pos += Vector3.up * Random.Range(1f, 3f);
+            pos += Vector3.up * Random.Range(-2f, 2f);
             pos += Vector3.right * (Random.Range(-3f, 3f) * Mathf.PerlinNoise(transform.position.x * Time.time, transform.position.y * Time.time));
 
             // Spawn indicator
             DamageIndicator indicator = Instantiate(original: damageIndicatorPrefab,
-            position: Camera.main.WorldToScreenPoint(pos), rotation: Quaternion.identity, ButtonFunctions.rect).GetComponent<DamageIndicator>();
+            position: pos, rotation: Quaternion.identity    ).GetComponent<DamageIndicator>();
 
             indicator.Initialize(damage);
         }

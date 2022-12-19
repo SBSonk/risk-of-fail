@@ -23,7 +23,7 @@ public class Alive : MonoBehaviour
     public UnityEvent onDeath;
 
     // Applies damage and returns damage taken
-    public float GiveDamage(float amount, float stunLength, StatusEffect effect = null)
+    public float GiveDamage(float amount, float stunLength, StatusEffect effect = null, bool giveRawDamage = false)
     {
         onHit?.Invoke(amount);
 
@@ -41,7 +41,7 @@ public class Alive : MonoBehaviour
         }
 
         // Calculate damage
-        float damage = -amount / damageReduction;
+        float damage = giveRawDamage ? -amount : -amount / damageReduction;
 
         // Give damage
         if (health + damage <= 0) 

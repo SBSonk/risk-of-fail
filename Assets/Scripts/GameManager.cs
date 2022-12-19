@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (InventoryWeapon w in main.pData.weaponsOwned)
         {
-            if (w.weapon.weaponName == type.weaponName) return true;
+            if (w.weapon.name == type.name) return true;
         }
         
         return false;

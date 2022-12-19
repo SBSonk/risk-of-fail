@@ -121,10 +121,10 @@ public class HudManager3 : MonoBehaviour
         weaponSprite.rectTransform.sizeDelta = new Vector2(currentWep.hud.sprite.rect.width, currentWep.hud.sprite.rect.height);
 
         // Update text and weapon stat ui
-        gunName.text = currentWep.weaponName;
-        strength.sprite = barStates[currentWep.weaponStrength];
-        fireRate.sprite = barStates[currentWep.weaponFireRate];
-        piercing.sprite = barStates[currentWep.weaponPiercing];
+        gunName.text = currentWep.name;
+        strength.sprite = barStates[currentWep.shopData.weaponStrength];
+        fireRate.sprite = barStates[currentWep.shopData.weaponFireRate];
+        piercing.sprite = barStates[currentWep.shopData.weaponPiercing];
 
         animator.Play("SwapWeapon", 0, 0);
 

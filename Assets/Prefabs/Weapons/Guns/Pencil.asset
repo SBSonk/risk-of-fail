@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ce9d97f3c6db14e9874ba3e6605c0e, type: 3}
   m_Name: Pencil
   m_EditorClassIdentifier: 
-  weaponName: Pencil
-  weaponDescription: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  weaponCost: 30
-  weaponStrength: 1
-  weaponFireRate: 2
-  weaponPiercing: 0
-  isWeaponObtained: 0
+  shopData:
+    weaponDescription: 
+    weaponCost: 0
+    weaponStrength: 0
+    weaponFireRate: 0
+    weaponPiercing: 0
   hud:
     sprite: {fileID: 1909206577, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
     offset: {x: 0, y: 0}
@@ -36,8 +35,8 @@ MonoBehaviour:
     magnitude: 0.25
     shakespeed: 0.05
   ammoPerShot: 1
-  clipSize: 6
-  reloadLength: 0.3
+  clipSize: 8
+  reloadLength: 1
   fireRate: 0.15
   auto: 0
   animType: 65

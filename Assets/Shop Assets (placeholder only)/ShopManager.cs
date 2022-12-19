@@ -43,7 +43,7 @@ public class ShopManager : MonoBehaviour                    //call this class if
         //Debug.Log("CheckPurchasable passed");
         for (int i = 0; i < shopItemsSO.Length; i++)
         {
-            if (totalCoins >= shopItemsSO[i].weaponCost && shopItemsSO[i].isWeaponObtained == false)
+            if (totalCoins >= shopItemsSO[i].shopData.weaponCost/* && shopItemsSO[i].isWeaponObtained == false*/)
                 myPurchaseBins[i].interactable = true;
             else
                 myPurchaseBins[i].interactable = false;
@@ -56,13 +56,13 @@ public class ShopManager : MonoBehaviour                    //call this class if
     public void PurchaseItem(int btnNo)
     {
         totalCoins = GameManager.main.pData.fPoints;
-        if (totalCoins >= shopItemsSO[btnNo].weaponCost)
+        if (totalCoins >= shopItemsSO[btnNo].shopData.weaponCost)
         {
             //GameManager.SetScore(totalCoins - shopItemsSO[btnNo].weaponCost);   //problematic
             totalCoins = GameManager.main.pData.fPoints; // I had to restructure the game manager a bit so i edited this
             coinUI.text = "FP: " + totalCoins;
 
-            shopItemsSO[btnNo].isWeaponObtained = true;
+            /*shopItemsSO[btnNo].isWeaponObtained = true;*/
             shopPanels[btnNo].itemCostTxt.text = "";
             shopPanels[btnNo].itemPurchaseTxt.text = "Obtained";
 
@@ -79,10 +79,10 @@ public class ShopManager : MonoBehaviour                    //call this class if
     {
         for (int i = 0; i < shopItemsSO.Length; i++)
         {
-            shopItemsSO[i].isWeaponObtained = false;
-            shopPanels[i].itemNameTxt.text = shopItemsSO[i].weaponName;
-            shopPanels[i].itemDescriptionTxt.text = shopItemsSO[i].weaponDescription;
-            shopPanels[i].itemCostTxt.text = shopItemsSO[i].weaponCost.ToString() + " FP";
+            /*shopItemsSO[i].isWeaponObtained = false;*/
+            shopPanels[i].itemNameTxt.text = shopItemsSO[i].name;
+            shopPanels[i].itemDescriptionTxt.text = shopItemsSO[i].shopData.weaponDescription;
+            shopPanels[i].itemCostTxt.text = shopItemsSO[i].shopData.weaponCost.ToString() + " FP";
         }
     }
 }

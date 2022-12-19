@@ -2,17 +2,7 @@ using UnityEngine;
 
 public class Weapon : ScriptableObject
 {
-    [Header("Metadata")]
-    public string weaponName = "Untitled Weapon";
-
-    //added for Shop UI
-    public string weaponDescription;
-    public int weaponCost;
-    [Range(0, 4)] public int weaponStrength;
-    [Range(0, 4)] public int weaponFireRate;
-    [Range(0, 4)] public int weaponPiercing;
-    public bool isWeaponObtained = false;
-    //end
+    public ShopMetadata shopData;
 
     public HUDElement hud;
 
@@ -59,4 +49,14 @@ public struct HUDElement
     public Vector2 offset;
 
     public Crosshair crossHair;
+}
+
+[System.Serializable]
+public struct ShopMetadata
+{
+    public string weaponDescription;
+    public int weaponCost;
+    [Range(0, 4)] public int weaponStrength;
+    [Range(0, 4)] public int weaponFireRate;
+    [Range(0, 4)] public int weaponPiercing;
 }

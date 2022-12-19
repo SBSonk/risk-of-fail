@@ -6,4 +6,5 @@ public class DamageSource : ScriptableObject
 {
     public bool useRawDamage;
     public float damage;
+    public float stunTime;
 }

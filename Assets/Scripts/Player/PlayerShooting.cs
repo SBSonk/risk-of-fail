@@ -1,3 +1,4 @@
+using GameAudioScriptingEssentials;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,8 @@ public class PlayerShooting : MonoBehaviour
     public UnityEvent OnWeaponSwitch;
     public UnityEvent OnShoot, OnReloadStart, OnAmmoUpdate;
     public UnityEvent OnMelee, OnShove, OnParry;
+
+    public AudioClipRandomizer reloadingRandomizer;
 
     private void Start()
     {
@@ -192,6 +195,10 @@ public class PlayerShooting : MonoBehaviour
         // Begin Reload
         OnReloadStart?.Invoke();
 
+        // Reload sound 
+        //reloadingRandomizer.SFXVolume = .5f;
+        reloadingRandomizer.PlaySFX();
+
         canShoot = false;
         reloading = true;
 
@@ -235,7 +242,7 @@ public class PlayerShooting : MonoBehaviour
     {
         foreach (InventoryWeapon w in weaponPool)
         {
-            if (w.weapon.weaponName == type.weaponName) return w;
+            if (w.weapon.name == type.name) return w;
         }
 
         return null;

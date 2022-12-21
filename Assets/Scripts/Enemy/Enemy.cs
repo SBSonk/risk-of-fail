@@ -31,6 +31,8 @@ public class Enemy : Alive
 
     public UnityEvent<EnemyType> onEnemyDeath;
 
+    SpriteRenderer[] healthBarSprites;
+
     protected void Start()
     {
         // Initialize AI
@@ -45,6 +47,8 @@ public class Enemy : Alive
 
         // Keep track of lifetime
         spawnTime = Time.time;
+
+        healthBarSprites = healthParent.GetComponentsInChildren<SpriteRenderer>();
     }
 
     private void Update()
@@ -76,8 +80,6 @@ public class Enemy : Alive
 
     IEnumerator HealthBarFade(float startOpacity, float finalOpacity, float t)
     {
-        SpriteRenderer[] healthBarSprites = healthParent.GetComponentsInChildren<SpriteRenderer>();
-
         float opacity = startOpacity;
         float time = 0;
         while (time < t)

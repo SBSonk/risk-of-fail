@@ -166,6 +166,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 986840169310017380, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
   m_PrefabInstance: {fileID: 3158320755260560973}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4611195445293647050 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1453213720257499783, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+  m_PrefabInstance: {fileID: 3158320755260560973}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d582541dd1aa69c459a6a8f1cae8ff08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &4653537319541887518 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7728234647084975187, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
@@ -193,6 +204,7 @@ MonoBehaviour:
   particles: {fileID: 4653537319541887518}
   _light: {fileID: 2506973260542671636}
   sprite: {fileID: 2766738602389127465}
+  collectAudio: {fileID: 4611195445293647050}
   active: 1
   OnPickupCollect:
     m_PersistentCalls:

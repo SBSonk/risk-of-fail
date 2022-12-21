@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8526067335399440034}
   - component: {fileID: 8526067335399440032}
   - component: {fileID: 219214357}
+  - component: {fileID: 1745457710}
   m_Layer: 0
   m_Name: _Game Controller
   m_TagString: Untagged
@@ -58,19 +59,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae99e2688ccece479aec7a48e1df99b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paused: 0
   pData:
     fPoints: 500
     weaponsOwned:
     - weapon: {fileID: 11400000, guid: 124a9b1f205ce7e4c986a97c4682f93e, type: 2}
       clip: 0
       pool: 0
-  bonusKillTime: 5
-  bonusPoints: 50
-  streakPoints: 25
-  startStreakAmount: 3
-  maxStreak: 3
-  killStreakTimer: 1.75
 --- !u!114 &219214357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,3 +78,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isShopOpen: 0
+--- !u!114 &1745457710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8526067335399440061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaa74ee6c6683bf46ab2bbfc0cc57c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grades: {fileID: 11400000, guid: 47f758e98e49df94588bcdc2541e0a69, type: 2}
+  bonusKillTime: 3
+  bonusPoints: 300
+  streakPoints: 0
+  startStreakAmount: 3
+  maxStreak: 3
+  killStreakTimer: 3
+  time: 0
+  points: 0
+  enemiesKilled: 0
+  bulletsShot: 0
+  bulletsHit: 0
+  damageTaken: 0
+  sharpShooterBonus: 2000
+  noHitBonus: 5000

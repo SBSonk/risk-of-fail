@@ -49,26 +49,23 @@ public class HudManager4 : MonoBehaviour
     }
 
     // Handle Weapon Swap
-    void UpdateWeaponIcon()
+    void UpdateWeaponIcon(InventoryWeapon w)
     {
-        var weapon = player.pShooting.GetHeldWeapon();
-
         // Swap sprite
-        weaponSprite.sprite = weapon.weapon.hud.sprite;
-        weaponTransform.localPosition = weapon.weapon.hud.offset;
+        weaponSprite.sprite = w.weapon.hud.sprite;
+        weaponTransform.localPosition = w.weapon.hud.offset;
         weaponTransform.sizeDelta = weaponSprite.sprite.rect.size;
         weaponAnim.Play("SwapWeapon2", 0, 0);
 
         // Hide ammo if melee
-        ammoBar.gameObject.SetActive(!(weapon.weapon is MeleeWeapon));
+        ammoBar.gameObject.SetActive(!(w.weapon is MeleeWeapon));
 
-        UpdateAmmoDisplay();
+        UpdateAmmoDisplay(w);
     }
 
     // Update Ammo Display
-    void UpdateAmmoDisplay()
+    void UpdateAmmoDisplay(InventoryWeapon weapon)
     {
-        var weapon = player.pShooting.GetHeldWeapon();
         int pCount = weapon.pool;
         int cCount = weapon.clip;
 
@@ -128,7 +125,7 @@ public class HudManager4 : MonoBehaviour
         player.onHeal.AddListener(PlayerAvatarAnimation);
         player.onHit.AddListener(PlayerAvatarAnimation);
 
-        UpdateWeaponIcon();
+        UpdateWeaponIcon(shooting.GetHeldWeapon());
 
         defaultAvatarPos = avatarImage.GetComponent<RectTransform>().localPosition;
     }

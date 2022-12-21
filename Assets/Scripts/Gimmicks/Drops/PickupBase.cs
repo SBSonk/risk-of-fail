@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Events;
 using System.Collections;
+using GameAudioScriptingEssentials;
 
 public class PickupBase : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PickupBase : MonoBehaviour
     [SerializeField] protected ParticleSystem particles;
     [SerializeField] protected Light2D _light;
     [SerializeField] protected GameObject sprite;
+    [SerializeField] protected AudioClipRandomizer collectAudio;
     public bool active = true;
 
     public UnityEvent OnPickupCollect;
@@ -61,6 +63,9 @@ public class PickupBase : MonoBehaviour
         _light.intensity = 0;
         sprite.SetActive(false);
         particles.Play();
+
+        // Sound
+        collectAudio.PlaySFX();
 
         // Destroy pickup
         Destroy(transform.parent.gameObject, 1f);

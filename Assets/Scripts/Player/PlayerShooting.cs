@@ -21,13 +21,14 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] float shoveCooldown = 1f;
     [SerializeField] float radius;
 
-    public UnityEvent OnWeaponSwitch;
-    public UnityEvent OnShoot, OnReloadStart, OnAmmoUpdate;
+    public UnityEvent<InventoryWeapon> OnWeaponSwitch, OnAmmoUpdate;
+    public UnityEvent OnShoot;
+    public UnityEvent<float> OnReloadStart;
     public UnityEvent OnMelee, OnShove, OnParry;
 
     public AudioClipRandomizer reloadingRandomizer;
 
-    private void Start()
+    public void Initialize()
     {
         // Grab inventory from playerData
         weaponPool = GameManager.main.pData.weaponsOwned;
@@ -59,8 +60,8 @@ public class PlayerShooting : MonoBehaviour
                     break;
 
                 case MeleeWeapon m:
-                    m.ShootWeapon(gunBarrel);
-                    OnMelee?.Invoke();
+                    // Add reload to melee
+                    MeleeBehavior(m);
                     break;
             }
 
@@ -96,7 +97,7 @@ public class PlayerShooting : MonoBehaviour
         canShoot = true;
         reloading = false;
 
-        OnWeaponSwitch?.Invoke();
+        OnWeaponSwitch?.Invoke(GetHeldWeapon());
     }
 
     void Shoving()
@@ -162,7 +163,7 @@ public class PlayerShooting : MonoBehaviour
                 ShootGun(g);
 
                 weapon.clip -= g.ammoPerShot;
-                OnAmmoUpdate?.Invoke();
+                OnAmmoUpdate?.Invoke(weapon);
             }
 
             // Autoreload if no ammo
@@ -175,8 +176,28 @@ public class PlayerShooting : MonoBehaviour
                 ShootGun(g);
 
                 weapon.pool -= g.ammoPerShot;
-                OnAmmoUpdate?.Invoke();
+                OnAmmoUpdate?.Invoke(weapon);
             }
+        }
+    }
+
+    void MeleeBehavior(MeleeWeapon m)
+    {
+        // Shooting and magazines
+        var weapon = GetHeldWeapon();
+        if (m.clipSize > 0)
+        {
+            // Remove ammo in clip if the gun uses clips
+            if (weapon.clip >= m.ammoPerShot)
+            {
+                StartCoroutine(m.SwingWeapon(transform));
+
+                weapon.clip -= m.ammoPerShot;
+                OnMelee?.Invoke();
+            }
+
+            // Autoreload if no ammo
+            if (weapon.clip == 0 && reloading == false) StartCoroutine(Reload());
         }
     }
 
@@ -189,46 +210,62 @@ public class PlayerShooting : MonoBehaviour
 
     IEnumerator Reload()
     {
-        // Cancel reload if no ammo in pool left
-        if (weaponPool[currentWeaponIndex].pool == 0) yield break;
+        var heldWep = GetHeldWeapon();
 
-        // Begin Reload
-        OnReloadStart?.Invoke();
-
-        // Reload sound 
-        //reloadingRandomizer.SFXVolume = .5f;
-        reloadingRandomizer.PlaySFX();
-
-        canShoot = false;
-        reloading = true;
-
-        // Put back spare ammo in magazine to pool
-        weaponPool[currentWeaponIndex].pool += weaponPool[currentWeaponIndex].clip;
-        weaponPool[currentWeaponIndex].clip = 0;
-
-        yield return new WaitForSeconds(weaponPool[currentWeaponIndex].weapon.reloadLength);
-
-        // Cancel if stopped reloading
-        if (reloading)
+        if (heldWep.weapon is MeleeWeapon)
         {
-            int amountToReload = weaponPool[currentWeaponIndex].weapon.clipSize;
-            if (amountToReload > weaponPool[currentWeaponIndex].pool)
-            {
-                weaponPool[currentWeaponIndex].clip = weaponPool[currentWeaponIndex].pool;
-                weaponPool[currentWeaponIndex].pool = 0;
-            }
-            else
-            {
-                weaponPool[currentWeaponIndex].clip = amountToReload;
-                weaponPool[currentWeaponIndex].pool -= amountToReload;
-            }
+            // Begin Reload
+            OnReloadStart?.Invoke(heldWep.weapon.reloadLength);
 
-            OnAmmoUpdate?.Invoke();
+            canShoot = false;
+            reloading = true;
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(heldWep.weapon.reloadLength);
+
+            heldWep.clip = heldWep.weapon.clipSize; 
 
             reloading = false;
             canShoot = true;
+        }
+        else
+        {
+            // Cancel reload if no ammo in pool left
+            if (heldWep.pool == 0) yield break;
+
+            // Begin Reload
+            OnReloadStart?.Invoke(heldWep.weapon.reloadLength);
+
+            canShoot = false;
+            reloading = true;
+
+            // Put back spare ammo in magazine to pool
+            weaponPool[currentWeaponIndex].pool += weaponPool[currentWeaponIndex].clip;
+            weaponPool[currentWeaponIndex].clip = 0;
+
+            yield return new WaitForSeconds(heldWep.weapon.reloadLength);
+
+            // Cancel if stopped reloading
+            if (reloading)
+            {
+                int amountToReload = heldWep.weapon.clipSize;
+                if (amountToReload > heldWep.pool)
+                {
+                    heldWep.clip = heldWep.pool;
+                    heldWep.pool = 0;
+                }
+                else
+                {
+                    heldWep.clip = amountToReload;
+                    heldWep.pool -= amountToReload;
+                }
+
+                OnAmmoUpdate?.Invoke(heldWep);
+
+                yield return new WaitForSeconds(0.5f);
+
+                reloading = false;
+                canShoot = true;
+            }
         }
     }
 
@@ -252,7 +289,7 @@ public class PlayerShooting : MonoBehaviour
     {
         weapon.pool += amount;
 
-        OnAmmoUpdate?.Invoke();
+        OnAmmoUpdate?.Invoke(weapon);
     }
 
     public InventoryWeapon GetHeldWeapon()

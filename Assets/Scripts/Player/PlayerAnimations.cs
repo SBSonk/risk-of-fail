@@ -35,39 +35,24 @@ public class PlayerAnimations : MonoBehaviour
     [SerializeField] Transform weapon;
     [SerializeField] float weaponLerp = 0.5f;
 
-    PlayerShooting shooting;
-
-    private void Awake()
+    public void Initialize(PlayerShooting shooting, PlayerMovement movement, PlayerStatus status)
     {
-        cursor = GameObject.Find("PlayerCursor").transform; 
+        cursor = GameObject.Find("PlayerCursor").transform;
         cursorScript = cursor.GetComponent<MoveCursor>();
-        shooting = GetComponent<PlayerShooting>();
-    }
-
-    private void Start()
-    {
-        var shooting = PlayerStatus.player.pShooting;
-
+ 
         shooting.OnShoot.AddListener(ShootAnimation);
         shooting.OnWeaponSwitch.AddListener(ChangeWeaponSprite);
         shooting.OnShove.AddListener(ShoveAnimation);
         shooting.OnMelee.AddListener(MeleeAnimation);
 
-        PlayerMovement.onDodge += DodgeAnimation;
-        GameManager.onWeaponReceive += ChangeWeaponSprite;
-        PlayerStatus.onPlayerDamage += DamageAnimation;
+        movement.OnDodge.AddListener(DodgeAnimation);
 
-        ChangeWeaponSprite();
+        status.OnPlayerDamage.AddListener(DamageAnimation);
+
+        ChangeWeaponSprite(shooting.GetHeldWeapon());
 
         trailTime = trail.time;
         trail.time = 0;
-    }
-
-    private void OnDestroy()
-    {
-        PlayerMovement.onDodge -= DodgeAnimation;
-        GameManager.onWeaponReceive -= ChangeWeaponSprite;
-        PlayerStatus.onPlayerDamage -= DamageAnimation;
     }
 
     private void Update()
@@ -159,15 +144,13 @@ public class PlayerAnimations : MonoBehaviour
         weaponAnimator.CrossFade("Shove" + animType, .1f);
     }
 
-    void ChangeWeaponSprite()
+    void ChangeWeaponSprite(InventoryWeapon w)
     {        
-        var weapon = shooting.GetHeldWeapon();
+        weaponSprite.sprite = w.weapon.weaponSprite;
 
-        weaponSprite.sprite = weapon.weapon.weaponSprite;
+        heldWeapon = w.weapon;
 
-        heldWeapon = weapon.weapon;
-
-        switch(heldWeapon.animType)
+        switch(heldWeapon.effects.animType)
         {
             case AnimationTypes.Light:
                 animType = "A";
@@ -192,12 +175,11 @@ public class PlayerAnimations : MonoBehaviour
 
         weaponAnimator.CrossFade("Hold" + animType, .25f);
 
-        cursorScript.ChangeCrosshair(weapon.weapon.hud.crossHair);
+        cursorScript.ChangeCrosshair(w.weapon.hud.crossHair);
     }
 
     void DodgeAnimation()
     {
-        print("test2");
         switch (VectorToDir(input))
         {
             case Directions.up:
@@ -266,7 +248,6 @@ public class PlayerAnimations : MonoBehaviour
         float t = 0;
         while (t < trailLifetime)
         {
-            print(t);
             trail.time = Mathf.Lerp(trail.time, Mathf.Lerp(trailTime, 0, t / trailLifetime), 0.25f);
             yield return new WaitForEndOfFrame();
             t += Time.deltaTime / 4;

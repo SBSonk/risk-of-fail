@@ -19,8 +19,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 moveDirection;
 
     // EVENTS
-    public delegate void OnDodge();
-    public static event OnDodge onDodge;
+    public UnityEvent OnDodge;
 
     private void Start()
     {
@@ -68,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         Invoke("StartDodgeCooldown", dodgeResetStartTime);
 
         dodges--;
-        onDodge.Invoke();
+        OnDodge.Invoke();
     }
 
     void StartDodgeCooldown()

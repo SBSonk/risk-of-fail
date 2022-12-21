@@ -31,7 +31,9 @@ public class QuizWeapon : Gun
         // TODO: Change bullet color from red to green depending on its final damage percentage compared to baseDamage
         Color color = Color.Lerp(lowColor, highColor, (float) System.Math.Round(damage / baseDamage, 2));
         text.color = color;
-        
+
+        // Pass HitAudio
+        bulletShot.GetComponent<Projectile>().Initialize(effects.enemyHitSounds, effects.wallHitSounds);
 
         return bulletShot;
     }

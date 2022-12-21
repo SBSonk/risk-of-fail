@@ -35,6 +35,9 @@ public class Gun : Weapon
         projectile.pierces = pierceAmount;
         projectile.bulletShake = hitScreenShake;
 
+        // Pass HitAudio
+        bulletShot.GetComponent<Projectile>().Initialize(effects.enemyHitSounds, effects.wallHitSounds);
+
         return bulletShot;
     }
 }

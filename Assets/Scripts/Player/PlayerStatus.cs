@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerStatus : Alive
 {
@@ -8,14 +9,11 @@ public class PlayerStatus : Alive
     public PlayerMovement pMovement;
     public PlayerShooting pShooting;
     public PlayerAnimations pAnimations;
+    public PlayerSFXManager pSFXManager;
 
     public float defaultSpeed = 10;
 
-    public delegate void OnPlayerDamage();
-    public static event OnPlayerDamage onPlayerDamage;
-
-    public delegate void OnPlayerHeal();
-    public static event OnPlayerDamage onPlayerHeal;
+    public UnityEvent OnPlayerDamage, OnPlayerHeal;
 
     private void Awake()
     {
@@ -24,7 +22,14 @@ public class PlayerStatus : Alive
         pMovement = GetComponent<PlayerMovement>();
         pShooting = GetComponent<PlayerShooting>();
         pAnimations = GetComponent<PlayerAnimations>();
+        pSFXManager = GetComponent<PlayerSFXManager>();
+
         pMovement.moveSpeed = defaultSpeed;
+
+        pShooting.Initialize();
+        pAnimations.Initialize(pShooting, pMovement, this);
+        pSFXManager.Initialize(pShooting, pMovement);
+
     }
 
     protected override void OnDamage(float damage)
@@ -34,8 +39,7 @@ public class PlayerStatus : Alive
 
         if (Mathf.Sign(damage) == 1) return;
 
-        if (onPlayerDamage != null)
-            onPlayerDamage.Invoke();
+        OnPlayerDamage?.Invoke();
     }
 
     protected override void Death()
@@ -51,7 +55,7 @@ public class PlayerStatus : Alive
 
     public override float GiveHealth(float amount)
     {
-        if (onPlayerHeal != null) onPlayerHeal.Invoke();
+        OnPlayerHeal?.Invoke();
         return base.GiveHealth(amount);
     }
 

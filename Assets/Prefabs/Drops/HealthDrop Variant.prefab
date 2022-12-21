@@ -97,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 986840170020990974, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_Name
-      value: HealthDrop Variant (1)
+      value: HealthDrop Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6378241298640530792, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_Color.b
@@ -252,6 +252,7 @@ MonoBehaviour:
   particles: {fileID: 245827447789023920}
   _light: {fileID: 7005203734361562042}
   sprite: {fileID: 7320771971184320903}
+  collectAudio: {fileID: 8936184650820265060}
   active: 1
   OnPickupCollect:
     m_PersistentCalls:
@@ -274,3 +275,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 986840169310017380, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
   m_PrefabInstance: {fileID: 7505651981245789923}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8936184650820265060 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1453213720257499783, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+  m_PrefabInstance: {fileID: 7505651981245789923}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d582541dd1aa69c459a6a8f1cae8ff08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

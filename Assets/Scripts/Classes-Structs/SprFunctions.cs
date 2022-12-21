@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
+using Color = UnityEngine.Color;
 
 // Tiny class I made for simple sprite animations
-public class SprFunctions : MonoBehaviour
+public class SprFunctions
 {
     ///=====================FADE=========================\\\
 
@@ -24,6 +26,33 @@ public class SprFunctions : MonoBehaviour
         }
 
         sprite.color = finalColor;
+    }
+
+    public static IEnumerator Fade(SpriteRenderer[] sprites, Color startColor, Color finalColor, float t)
+    {
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            sprites[i].color = startColor;
+        }
+
+        Color color = startColor;
+        float time = 0;
+        while (time <= t)
+        {
+            for (int i = 0; i < sprites.Length; i++)
+            {
+                sprites[i].color = color;
+                color = Color.Lerp(startColor, finalColor, time / t);
+            }
+
+            yield return new WaitForEndOfFrame();
+            time += Time.unscaledDeltaTime;
+        }
+
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            sprites[i].color = finalColor;
+        }
     }
 
     public static IEnumerator Fade(Image sprite, Color startColor, Color finalColor, float t)

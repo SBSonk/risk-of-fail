@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520a509457374ad4e84309512ed392b6, type: 3}
   m_Name: Eraser
   m_EditorClassIdentifier: 
-  weaponName: Eraser
-  weaponDescription: 
-  weaponCost: 0
-  weaponStrength: 0
-  weaponFireRate: 0
-  weaponPiercing: 0
-  isWeaponObtained: 0
+  shopData:
+    weaponDescription: 
+    weaponCost: 0
+    weaponStrength: 0
+    weaponFireRate: 0
+    weaponPiercing: 0
   hud:
     sprite: {fileID: -896163793, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
     offset: {x: 60, y: 0}
@@ -31,14 +30,24 @@ MonoBehaviour:
   knockbackAmount: 15
   stunLength: 0.2
   defaultAmmoCount: 100
+  ammoPerShot: 1
+  clipSize: 1
+  reloadLength: 0.7
+  fireRate: 0
+  auto: 0
   hitScreenShake:
     duration: 0.1
-    magnitude: 0.3
-    shakespeed: 0.05
-  ammoPerShot: 0
-  clipSize: -1
-  reloadLength: 0
-  fireRate: 0.7
-  auto: 0
-  animType: 68
+    magnitude: 1
+  effects:
+    animType: 68
+    shootSounds:
+    - {fileID: 8300000, guid: 9b3e9a67de983a249a9d2991f067c8ae, type: 3}
+    - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
+    - {fileID: 8300000, guid: a966d22bc9b693943bbe2b87359c1550, type: 3}
+    - {fileID: 8300000, guid: 631e48f507d9c9d49a5cc81238e4b8f3, type: 3}
+    reloadSounds: []
+    shoveSounds: []
+    enemyHitSounds: []
+    wallHitSounds: []
+  swingDelay: 0.1
   hitArea: 2

@@ -49,8 +49,8 @@ public class HudManager3 : MonoBehaviour
 
     private void Start()
     {
-        PlayerStatus.onPlayerDamage += UpdateHealth;
-        PlayerStatus.onPlayerHeal += UpdateHealth;
+        //PlayerStatus.onPlayerDamage += UpdateHealth;
+        //PlayerStatus.onPlayerHeal += UpdateHealth;
         //GameManager.onEnemyKilled += UpdatePoints;
         GameManager.onWeaponReceive += SwapWeapon;
         /*PlayerShooting.onPlayerShoot += UpdateAmmo;
@@ -58,7 +58,7 @@ public class HudManager3 : MonoBehaviour
         PlayerShooting.onAmmoUpdate += UpdateAmmo;
         PlayerShooting.onWeaponSwitch += SwapWeapon;*/
 
-        PlayerMovement.onDodge += UpdateDodges;
+        //PlayerMovement.onDodge += UpdateDodges;
 
         // Initialize UI
         UpdatePoints();
@@ -68,8 +68,8 @@ public class HudManager3 : MonoBehaviour
 
     private void OnDestroy()
     {
-        PlayerStatus.onPlayerDamage -= UpdateHealth;
-        PlayerStatus.onPlayerHeal -= UpdateHealth;
+        //PlayerStatus.onPlayerDamage -= UpdateHealth;
+        //PlayerStatus.onPlayerHeal -= UpdateHealth;
         //GameManager.onEnemyKilled -= UpdatePoints;
         GameManager.onWeaponReceive -= SwapWeapon;
         /*PlayerShooting.onPlayerShoot -= UpdateAmmo;
@@ -77,7 +77,7 @@ public class HudManager3 : MonoBehaviour
         PlayerShooting.onAmmoUpdate -= UpdateAmmo;
         PlayerShooting.onWeaponSwitch -= SwapWeapon;*/
 
-        PlayerMovement.onDodge -= UpdateDodges;
+        //PlayerMovement.onDodge -= UpdateDodges;
     }
 
     private void FixedUpdate()

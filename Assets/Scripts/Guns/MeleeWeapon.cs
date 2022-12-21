@@ -7,10 +7,13 @@ using UnityEngine.Rendering;
 [CreateAssetMenu(fileName = "New Melee", menuName = "Weapons/Melee")]
 public class MeleeWeapon : Weapon
 {
+    public float swingDelay = 0.1f;
     public float hitArea = 2;
 
-    public override void ShootWeapon(Transform player)
+    public IEnumerator SwingWeapon(Transform player)
     {
+        yield return new WaitForSeconds(swingDelay);
+
         Vector3 hitVector = ((Vector3)InputManager.mousePosition - player.position).normalized;
 
         // Attack check

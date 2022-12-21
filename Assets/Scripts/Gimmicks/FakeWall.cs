@@ -18,6 +18,6 @@ public class FakeWall : MonoBehaviour
 
     public void OnDisable()
     {
-        AstarPath.active.UpdateGraphs(col.bounds, 0.5f);
+        AstarPath.active.UpdateGraphs(col.bounds, 0.5f);    
     }
 }

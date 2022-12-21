@@ -1,9 +1,8 @@
 using UnityEngine;
 
-public class Weapon : ScriptableObject
+public abstract class Weapon : ScriptableObject
 {
     public ShopMetadata shopData;
-
     public HUDElement hud;
 
     public Sprite weaponSprite;
@@ -14,7 +13,6 @@ public class Weapon : ScriptableObject
     public float knockbackAmount = 10f;
     public float stunLength = 0.25f; // In seconds
     public int defaultAmmoCount = 100;
-    public ScreenshakeValue hitScreenShake;
 
     [Header("Weapon Behavior")]
     public int ammoPerShot = 0;
@@ -22,9 +20,10 @@ public class Weapon : ScriptableObject
     public float reloadLength = 0; // Reload time in seconds   
     public float fireRate = 1f; // Firerate in seconds
     public bool auto = false; // Determines if you can hold left click
+    public ScreenshakeValue hitScreenShake;
 
     [Header("Weapon Animations")]
-    public AnimationTypes animType = AnimationTypes.Light;
+    public WeaponFX effects;
     
     // Left click attack
     public virtual void ShootWeapon(Transform player)
@@ -60,3 +59,14 @@ public struct ShopMetadata
     [Range(0, 4)] public int weaponFireRate;
     [Range(0, 4)] public int weaponPiercing;
 }
+
+[System.Serializable]
+public struct WeaponFX
+{
+    public AnimationTypes animType;
+
+    public AudioClip[] shootSounds, reloadSounds, shoveSounds;
+    public AudioClip[] enemyHitSounds, wallHitSounds;
+}
+
+// think im using too many structs

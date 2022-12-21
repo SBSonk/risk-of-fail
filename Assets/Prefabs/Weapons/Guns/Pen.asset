@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ce9d97f3c6db14e9874ba3e6605c0e, type: 3}
   m_Name: Pen
   m_EditorClassIdentifier: 
-  weaponName: Pen
-  weaponDescription: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  weaponCost: 60
-  weaponStrength: 1
-  weaponFireRate: 4
-  weaponPiercing: 1
-  isWeaponObtained: 0
+  shopData:
+    weaponDescription: 
+    weaponCost: 0
+    weaponStrength: 0
+    weaponFireRate: 0
+    weaponPiercing: 0
   hud:
     sprite: {fileID: -797842033, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
     offset: {x: 0, y: 0}
@@ -31,16 +30,21 @@ MonoBehaviour:
   knockbackAmount: 5
   stunLength: 0.15
   defaultAmmoCount: 100
-  hitScreenShake:
-    duration: 0.1
-    magnitude: 0.2
-    shakespeed: 0.05
   ammoPerShot: 1
   clipSize: 12
   reloadLength: 0.6
   fireRate: 0.1
   auto: 1
-  animType: 65
+  hitScreenShake:
+    duration: 0.1
+    magnitude: 0.5
+  effects:
+    animType: 0
+    shootSounds: []
+    reloadSounds: []
+    shoveSounds: []
+    enemyHitSounds: []
+    wallHitSounds: []
   bulletVelocity: 6
   pierceAmount: 0
   bullet: {fileID: 9076594935915685230, guid: 0fa32434bd889f24d9ca3e494f9e8a89, type: 3}

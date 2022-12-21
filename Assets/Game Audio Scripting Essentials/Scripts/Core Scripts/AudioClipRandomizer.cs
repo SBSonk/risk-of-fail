@@ -276,6 +276,12 @@ namespace GameAudioScriptingEssentials
             _audioClips = _clips;
             _arcObjExists = false;
         }
+
+        public bool HasAudioClips()
+        {
+            return _audioClips.Length > 0;
+        }
+
         public string GetSFXName()
         {
             AudioSource _current = GetComponent<AudioSource>();

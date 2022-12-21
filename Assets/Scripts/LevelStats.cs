@@ -26,7 +26,8 @@ public class LevelStats : MonoBehaviour
     public float damageTaken;
 
     [Header("Bonuses")]
-    public int sharpShooterBonus = 2000, noHitBonus = 5000;
+    public int sharpShooterBonus = 2000;
+    public int noHitBonus = 5000;
 
     private void Awake()
     {

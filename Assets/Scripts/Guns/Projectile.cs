@@ -1,3 +1,4 @@
+using GameAudioScriptingEssentials;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,16 @@ public class Projectile : MonoBehaviour
 
     public bool active = true;
     List<int> objectsHit = new List<int>();
+
+    public AudioClipRandomizer audioRandomizer;
+
+    AudioClip[] _enemyHit, _wallHit;
+
+    public void Initialize(AudioClip[] enemyHit, AudioClip[] wallHit)
+    {
+        _enemyHit = enemyHit;
+        _wallHit = wallHit;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -68,5 +79,9 @@ public class Projectile : MonoBehaviour
 
         // Paint splatters
         Instantiate(paintPrefab, transform.position, paintPrefab.transform.rotation).Initialize(paintSprites);
+
+        // Play sound
+        audioRandomizer.SetAudioClips(collision.CompareTag("Wall") ? _wallHit : _enemyHit);
+        audioRandomizer.PlaySFX();
     }
 }

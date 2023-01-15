@@ -1,3 +1,4 @@
+using FirstGearGames.SmoothCameraShaker;
 using System.Collections;
 using UnityEngine;
 
@@ -6,17 +7,14 @@ public class PlayerAnimations : MonoBehaviour
     public bool canSwitchAnimation = true   ;
     [SerializeField] SpriteRenderer[] sprites;
 
-    [SerializeField] ParticleSystem dashExp, dash2;
+    [SerializeField] ParticleSystem dashExp;
     [SerializeField] Animator animator;
     [SerializeField] Animator weaponAnimator;
 
     [Header("Dodge")]
     [SerializeField] TrailRenderer trail;
     [SerializeField] float trailLifetime = 0.5f;
-    [SerializeField] ScreenshakeValue dodgeScreenshake;
-    [SerializeField] GameObject playerGhost;
-    [SerializeField] int copies = 4;
-    [SerializeField] float timeBetweenCopies, ghostLifetime = 0.25f;
+    [SerializeField] ShakeData dodgeScreenshake;
     float trailTime;
 
     [Header("Player Sprite")]
@@ -204,14 +202,11 @@ public class PlayerAnimations : MonoBehaviour
         dashExp.Play();
         StopCoroutine("DashTrail");
         StartCoroutine(DashTrail());
-        StartCoroutine(DashGhosts());
-        // TODO: make it so that the trail only appears if speed is above a threshold
 
-        // Face the direction when dodging
         StopCursorFollow();
         weaponAnimator.CrossFade("Hold" + animType, .25f);
 
-        CameraFunctions.main.DoScreenShake(dodgeScreenshake);
+        CameraShakerHandler.Shake(dodgeScreenshake);
     }
 
     void DamageAnimation()
@@ -256,28 +251,6 @@ public class PlayerAnimations : MonoBehaviour
 
         // Retract trail
         //trail.emitting = false;
-    }
-
-    IEnumerator DashGhosts()
-    {
-        int i = 0;
-
-        float t = 0;
-        float tInc = timeBetweenCopies / copies;
-        while (i < copies)
-        {
-            var g = Instantiate(playerGhost, transform.position, Quaternion.identity, null).GetComponent<PlayerGhost>();
-            for (int o = 0; o < sprites.Length; o++)
-            {
-                g.sprites[o].sprite = sprites[o].sprite;
-                g.sprites[o].flipX = sprites[o].flipX;
-            }
-
-            StartCoroutine(g.GhostAnimation(ghostLifetime - (timeBetweenCopies * i - 1)));
-            i++;
-            t += tInc;
-            yield return new WaitForSeconds(t);
-        }
     }
 
     Directions VectorToDir(Vector2 input)

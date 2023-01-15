@@ -51,6 +51,8 @@ public class WrittenWorksAttack : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
+        if (!PlayerStatus.IsAlive) return;
+
         // Get distance to player
         distanceToPlayer = Vector2.Distance(transform.position, player.position);
 

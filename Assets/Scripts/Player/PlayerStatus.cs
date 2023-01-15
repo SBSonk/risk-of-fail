@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class PlayerStatus : Alive
 {
     public static PlayerStatus player;
+    public static bool IsAlive { get; private set; }
 
     public PlayerMovement pMovement;
     public PlayerShooting pShooting;
@@ -12,12 +13,14 @@ public class PlayerStatus : Alive
     public PlayerSFXManager pSFXManager;
 
     public float defaultSpeed = 10;
+    public ParticleSystem deathParticles;
 
     public UnityEvent OnPlayerDamage, OnPlayerHeal;
 
     private void Awake()
     {
         player = this;
+        IsAlive = true;
 
         pMovement = GetComponent<PlayerMovement>();
         pShooting = GetComponent<PlayerShooting>();
@@ -45,12 +48,16 @@ public class PlayerStatus : Alive
     protected override void Death()
     {
         dead = true;
+        IsAlive = false;
 
         pMovement.enabled = false;
         pShooting.enabled = false;
         pAnimations.enabled = false;
 
         onDeath?.Invoke();
+        deathParticles.transform.parent = null;
+        deathParticles.Play();
+        Destroy(gameObject);
     }
 
     public override float GiveHealth(float amount)

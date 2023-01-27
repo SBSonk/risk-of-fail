@@ -1,8 +1,11 @@
+using FirstGearGames.SmoothCameraShaker;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Gun", menuName = "Weapons/Gun")]
 public class Gun : Weapon
 {
+    public ShakeData hitScreenShake;
+
     public float bulletVelocity;
     public int pierceAmount = 0; // Amount of surfaces it can pass through before ending
     public GameObject bullet;
@@ -11,6 +14,8 @@ public class Gun : Weapon
 
     public override void ShootWeapon(Transform player)
     {
+        base.ShootWeapon(player);
+
         // Spawn projectile
         lastBulletShot = SpawnBullet(player);
         Rigidbody2D bulletShot = lastBulletShot.GetComponent<Rigidbody2D>();

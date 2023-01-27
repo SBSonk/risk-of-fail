@@ -1,3 +1,4 @@
+using FirstGearGames.SmoothCameraShaker;
 using UnityEngine;
 
 public abstract class Weapon : ScriptableObject
@@ -20,7 +21,7 @@ public abstract class Weapon : ScriptableObject
     public float reloadLength = 0; // Reload time in seconds   
     public float fireRate = 1f; // Firerate in seconds
     public bool auto = false; // Determines if you can hold left click
-    public ScreenshakeValue hitScreenShake;
+    public ShakeData shootShake;
 
     [Header("Weapon Animations")]
     public WeaponFX effects;
@@ -28,7 +29,16 @@ public abstract class Weapon : ScriptableObject
     // Left click attack
     public virtual void ShootWeapon(Transform player)
     {
+        //ShootShake();
         return;
+    }
+
+    protected void ShootShake()
+    {
+        if (shootShake != null)
+        {
+            CameraShakerHandler.Shake(shootShake);
+        }
     }
 }   
 

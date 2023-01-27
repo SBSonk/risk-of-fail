@@ -35,12 +35,11 @@ MonoBehaviour:
   reloadLength: 0.5
   fireRate: 0.15
   auto: 0
-  hitScreenShake:
-    duration: 0.1
-    magnitude: 0.25
+  shootShake: {fileID: 11400000, guid: 0690044d00011f740bffb0b3be825967, type: 2}
   effects:
     animType: 65
-    shootSounds: []
+    shootSounds:
+    - {fileID: 8300000, guid: 4f5bc895b5cf9644aa8ba8f25f6e9bcc, type: 3}
     reloadSounds:
     - {fileID: 8300000, guid: 646687c4d383fad4c8bc60758f6be90d, type: 3}
     - {fileID: 8300000, guid: 314a338dcb78c0744bb574b4723d96c3, type: 3}
@@ -49,6 +48,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 4f5bc895b5cf9644aa8ba8f25f6e9bcc, type: 3}
     wallHitSounds:
     - {fileID: 8300000, guid: 4f5bc895b5cf9644aa8ba8f25f6e9bcc, type: 3}
+  hitScreenShake: {fileID: 11400000, guid: 0690044d00011f740bffb0b3be825967, type: 2}
   bulletVelocity: 4
   pierceAmount: 0
   bullet: {fileID: 9076594935915685230, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}

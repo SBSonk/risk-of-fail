@@ -35,16 +35,15 @@ MonoBehaviour:
   reloadLength: 0.6
   fireRate: 0.1
   auto: 1
-  hitScreenShake:
-    duration: 0.1
-    magnitude: 0.5
+  shootShake: {fileID: 0}
   effects:
-    animType: 0
+    animType: 65
     shootSounds: []
     reloadSounds: []
     shoveSounds: []
     enemyHitSounds: []
     wallHitSounds: []
+  hitScreenShake: {fileID: 0}
   bulletVelocity: 6
   pierceAmount: 0
   bullet: {fileID: 9076594935915685230, guid: 0fa32434bd889f24d9ca3e494f9e8a89, type: 3}

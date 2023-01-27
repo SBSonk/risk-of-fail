@@ -47,6 +47,7 @@ public class CameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!PlayerStatus.IsAlive) return;
         if (!cameraControl) return;
 
         float lValue = lockToCenter ? roomViewLerp : lerpVal;

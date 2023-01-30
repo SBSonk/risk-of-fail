@@ -53,6 +53,8 @@ public class Enemy : Alive
 
     private void Update()
     {
+        if (!PlayerStatus.IsAlive) return;
+
         // Check if there is environment collision in the way
         canSeePlayer = !Physics2D.Linecast(transform.position, PlayerStatus.player.transform.position, LayerMask.NameToLayer("Environment"));    
 

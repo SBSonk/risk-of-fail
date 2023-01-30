@@ -10,10 +10,9 @@ public class QuizWeapon : Gun
     protected override GameObject SpawnBullet(Transform player)
     {
         // Spawn projectile
-        GameObject bulletShot = Instantiate(bullet, position: player.position, rotation: player.rotation);
+        var projectile = Instantiate(bullet, position: player.position, rotation: player.rotation);
 
         // Pass on bullet stats
-        Projectile projectile = bulletShot.GetComponent<Projectile>();
         projectile.knockback = knockbackAmount;
         projectile.stunLength = stunLength;
         projectile.shooter = player.gameObject;
@@ -25,7 +24,7 @@ public class QuizWeapon : Gun
         projectile.damage = damage;
 
         // Apply damage count to bullet
-        TextMeshPro text = bulletShot.GetComponentInChildren<TextMeshPro>();
+        TextMeshPro text = projectile.GetComponentInChildren<TextMeshPro>();
         text.text = damage.ToString();
 
         // TODO: Change bullet color from red to green depending on its final damage percentage compared to baseDamage
@@ -33,8 +32,8 @@ public class QuizWeapon : Gun
         text.color = color;
 
         // Pass HitAudio
-        bulletShot.GetComponent<Projectile>().Initialize(effects.enemyHitSounds, effects.wallHitSounds);
+        projectile.Initialize(effects.enemyHitSounds, effects.wallHitSounds);
 
-        return bulletShot;
+        return projectile.gameObject;
     }
 }

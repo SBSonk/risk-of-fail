@@ -1,13 +1,13 @@
 using GameAudioScriptingEssentials;
 using System.Collections;
 using System.Collections.Generic;
+using FirstGearGames.SmoothCameraShaker;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class PlayerShooting : MonoBehaviour
 {
-    [SerializeField] Transform gunPivot, gunBarrel, cursor;
-
+    [SerializeField] Transform gunPivot, gunBarrel;
     public InventoryWeapon fallbackWep;
     List<InventoryWeapon> weaponPool;
     int currentWeaponIndex = 0;
@@ -67,10 +67,10 @@ public class PlayerShooting : MonoBehaviour
 
             // Apply firerate
             canShoot = false;
-            Invoke("EnableShooting", weapon.fireRate);
+            StartCoroutine(EnableShooting(weapon.fireRate));
         }
 
-        Shoving();
+        if (InputManager.shove) Shoving();
 
         // Reloading
         if (GetHeldWeapon().clip < GetHeldWeapon().weapon.clipSize && InputManager.reload && reloading == false) StartCoroutine(Reload());
@@ -102,7 +102,7 @@ public class PlayerShooting : MonoBehaviour
 
     void Shoving()
     {
-        if (!InputManager.shove || !canShoot) return;
+        if (!canShoot) return;
 
         OnShove?.Invoke();
 
@@ -145,9 +145,9 @@ public class PlayerShooting : MonoBehaviour
         }
 
         canShoot = false;
-
-        CancelInvoke();
-        Invoke("EnableShooting", shoveCooldown + GetHeldWeapon().weapon.reloadLength);
+        
+        StopCoroutine(nameof(EnableShooting));
+        StartCoroutine(EnableShooting(shoveCooldown + GetHeldWeapon().weapon.reloadLength / 2));
     }
 
     // Handle shooting of GUN type weapons
@@ -269,8 +269,10 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
-    void EnableShooting()
+    IEnumerator EnableShooting(float t)
     {
+        yield return new WaitForSeconds(t);
+        
         canShoot = true;
     }
 

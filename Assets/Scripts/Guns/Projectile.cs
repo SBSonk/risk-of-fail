@@ -1,3 +1,4 @@
+using FirstGearGames.SmoothCameraShaker;
 using GameAudioScriptingEssentials;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ public class Projectile : MonoBehaviour
 
     public float damage = 100, knockback = 10f, stunLength; // Should be set by the shooter script once instantiated
     public int pierces = 0;
-    public ScreenshakeValue bulletShake;
+    public ShakeData bulletShake;
 
     public Sprite[] paintSprites;
     public PaintSplatter paintPrefab;
@@ -49,7 +50,7 @@ public class Projectile : MonoBehaviour
             LevelStats.main.BulletHit(); // Should prolly use an event instead  
 
             // Screenshake
-            CameraFunctions.main.DoScreenShake(bulletShake);
+            if (bulletShake) CameraShakerHandler.Shake(bulletShake);
 
             // Give damage and stun
             collision.GetComponent<Alive>().GiveDamage(damage, stunLength);

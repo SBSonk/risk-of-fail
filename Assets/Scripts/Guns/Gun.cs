@@ -1,3 +1,4 @@
+using FirstGearGames.SmoothCameraShaker;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Gun", menuName = "Weapons/Gun")]
@@ -5,7 +6,7 @@ public class Gun : Weapon
 {
     public float bulletVelocity;
     public int pierceAmount = 0; // Amount of surfaces it can pass through before ending
-    public GameObject bullet;
+    public Projectile bullet;
 
     public static GameObject lastBulletShot;
 
@@ -18,16 +19,17 @@ public class Gun : Weapon
         // Apply velocity to bullet
         bulletShot.AddForce(bulletShot.transform.right.normalized * bulletVelocity, ForceMode2D.Impulse);
         bulletShot.AddForce(bulletShot.transform.up * ((Mathf.PerlinNoise(player.position.x * Time.time, player.position.y * Time.time) - .5f) * bulletSpread), ForceMode2D.Impulse);
+
+        if (shootShake) CameraShakerHandler.Shake(shootShake);
     }
 
     // Spawns and returns the bullet gameobject
     protected virtual GameObject SpawnBullet(Transform player)
     {
         // Spawn projectile
-        GameObject bulletShot = Instantiate(bullet, position: player.position, rotation: player.rotation);
+        var projectile = Instantiate(bullet, position: player.position, rotation: player.rotation);
 
         // Pass on bullet damage
-        Projectile projectile = bulletShot.GetComponent<Projectile>();
         projectile.damage = baseDamage;
         projectile.knockback = knockbackAmount;
         projectile.stunLength = stunLength;
@@ -36,8 +38,8 @@ public class Gun : Weapon
         projectile.bulletShake = hitScreenShake;
 
         // Pass HitAudio
-        bulletShot.GetComponent<Projectile>().Initialize(effects.enemyHitSounds, effects.wallHitSounds);
+        projectile.Initialize(effects.enemyHitSounds, effects.wallHitSounds);
 
-        return bulletShot;
+        return projectile.gameObject;
     }
 }

@@ -12,7 +12,9 @@ public class HudManager4 : MonoBehaviour
     [SerializeField] float barLerp = 0.25f;
 
     [SerializeField] Image avatarImage;
+    public Sprite hurtSprite;
     [SerializeField] AvatarState[] AvatarImages;
+    public float avatarHurtTime = 0.5f;
 
     [SerializeField] Image healthBar;
 
@@ -29,7 +31,6 @@ public class HudManager4 : MonoBehaviour
     [SerializeField] Image dodgeBar;
 
     [SerializeField] Animator weaponAnim, avatarAnim;
-    Vector3 defaultAvatarPos;
 
     // Handle Player Avatar
     void PlayerAvatarAnimation(float amount)
@@ -45,7 +46,20 @@ public class HudManager4 : MonoBehaviour
             }
         }
 
-        //avatarAnim.CrossFade("AvatarJump", 0.1f, 0, 0);
+        avatarAnim.CrossFade("AvatarJump", 0.1f, 0, 0);
+
+        StopCoroutine(nameof(AvatarHurtAnimation));
+        StartCoroutine(AvatarHurtAnimation());
+    }
+
+    IEnumerator AvatarHurtAnimation()
+    {
+        Sprite lastSprite = avatarImage.sprite;
+        avatarImage.sprite = hurtSprite;
+        
+        yield return new WaitForSeconds(avatarHurtTime);
+
+        avatarImage.sprite = lastSprite;
     }
 
     // Handle Weapon Swap
@@ -126,8 +140,6 @@ public class HudManager4 : MonoBehaviour
         player.onHit.AddListener(PlayerAvatarAnimation);
 
         UpdateWeaponIcon(shooting.GetHeldWeapon());
-
-        defaultAvatarPos = avatarImage.GetComponent<RectTransform>().localPosition;
     }
 
     private void Update()

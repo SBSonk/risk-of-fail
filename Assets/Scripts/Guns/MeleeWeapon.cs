@@ -1,3 +1,4 @@
+using FirstGearGames.SmoothCameraShaker;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
@@ -34,10 +35,11 @@ public class MeleeWeapon : Weapon
             }
         }
 
+        if (shootShake) CameraShakerHandler.Shake(shootShake);
         if (hit.Count > 0)
         {
             // Screenshake
-            CameraFunctions.main.DoScreenShake(hitScreenShake);
+            if (hitScreenShake) CameraShakerHandler.Shake(hitScreenShake);
         }
     }
 }

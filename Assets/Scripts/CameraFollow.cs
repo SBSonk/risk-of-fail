@@ -63,12 +63,11 @@ public class CameraFollow : MonoBehaviour
         desiredPos += lastPlayerVel;
         desiredPos.x = Mathf.Clamp(desiredPos.x, worldBoundsX.min, worldBoundsX.max);
         desiredPos.y = Mathf.Clamp(desiredPos.y, worldBoundsY.min, worldBoundsY.max);
-        desiredPos += offset;
+        desiredPos += offset + Vector3.back;
 
         /*if (player.velocity.magnitude > 0) lastPlayerVel = Vector3.Lerp(lastPlayerVel, player.velocity.normalized, lValue);*/
-        float xPlayerVel, yPlayerVel;
-        xPlayerVel = InputManager.playerDirection.x != 0 ? player.velocity.x : lastPlayerVel.x;
-        yPlayerVel = InputManager.playerDirection.y != 0 ? player.velocity.y : lastPlayerVel.y;
+        var xPlayerVel = InputManager.playerDirection.x != 0 ? player.velocity.x : lastPlayerVel.x;
+        var yPlayerVel = InputManager.playerDirection.y != 0 ? player.velocity.y : lastPlayerVel.y;
 
         lastPlayerVel = Vector3.Lerp(lastPlayerVel, new Vector3(xPlayerVel, yPlayerVel), 0.005f);
         lastPlayerVel.x = Mathf.Clamp(lastPlayerVel.x, -maxCameraPredict, maxCameraPredict);
@@ -107,7 +106,7 @@ public class CameraFollow : MonoBehaviour
                 t += Time.deltaTime;
             }
             
-            transform.position = Vector3.Lerp(startPos, position + offset, t / time);
+            transform.position = Vector3.Lerp(startPos, position + offset + Vector3.back, t / time);
         }
 
         c.OnCentered?.Invoke();
@@ -150,7 +149,7 @@ public class CameraFollow : MonoBehaviour
                 t += Time.deltaTime;
             }
 
-            transform.position = Vector3.Lerp(startPos, position + offset, t / time);
+            transform.position = Vector3.Lerp(startPos, position + offset + Vector3.back, t / time);
         }
 
         c.OnCentered?.Invoke();

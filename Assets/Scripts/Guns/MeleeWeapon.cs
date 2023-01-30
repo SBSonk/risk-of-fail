@@ -18,8 +18,7 @@ public class MeleeWeapon : Weapon
         Vector3 hitVector = ((Vector3)InputManager.mousePosition - player.position).normalized;
 
         // Attack check
-        Collider2D[] col = Physics2D.OverlapCapsuleAll(player.position, new Vector2(2.5f, 1.75f * hitArea), CapsuleDirection2D.Horizontal, Vector2.Angle(player.position, InputManager.mousePosition));
-
+        Collider2D[] col = Physics2D.OverlapCircleAll(player.position + hitVector * hitArea , hitArea);
         List<Alive> hit = new List<Alive>();
         foreach(Collider2D c in col)
         {

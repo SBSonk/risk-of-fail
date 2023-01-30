@@ -112,7 +112,7 @@ public class PlayerShooting : MonoBehaviour
     {
         // Check all objects in radius in front of shootpivot
         Vector3 shoveDir = ((Vector3)InputManager.mousePosition - transform.position).normalized;
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position + shoveDir * 0.5f, radius);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position + shoveDir * radius, radius);
         
         if (hits.Length == 0) return;
 

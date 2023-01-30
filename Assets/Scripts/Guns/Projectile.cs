@@ -83,6 +83,7 @@ public class Projectile : MonoBehaviour
 
         // Play sound
         audioRandomizer.SetAudioClips(collision.CompareTag("Wall") ? _wallHit : _enemyHit);
-        audioRandomizer.PlaySFX();
+        
+        if (audioRandomizer.HasAudioClips()) audioRandomizer.PlaySFX();
     }
 }

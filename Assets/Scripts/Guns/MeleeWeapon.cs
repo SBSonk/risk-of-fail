@@ -1,4 +1,3 @@
-using FirstGearGames.SmoothCameraShaker;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
@@ -13,8 +12,6 @@ public class MeleeWeapon : Weapon
 
     public IEnumerator SwingWeapon(Transform player)
     {
-        ShootShake();
-
         yield return new WaitForSeconds(swingDelay);
 
         Vector3 hitVector = ((Vector3)InputManager.mousePosition - player.position).normalized;
@@ -40,7 +37,7 @@ public class MeleeWeapon : Weapon
         if (hit.Count > 0)
         {
             // Screenshake
-            ShootShake();  
+            CameraFunctions.main.DoScreenShake(hitScreenShake);
         }
     }
 }

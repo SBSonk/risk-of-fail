@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class PlayerShooting : MonoBehaviour
 {
-    [SerializeField] Transform gunPivot, gunBarrel;
+    [SerializeField] Transform gunPivot, gunBarrel, cursor;
 
     public InventoryWeapon fallbackWep;
     List<InventoryWeapon> weaponPool;
@@ -25,6 +25,8 @@ public class PlayerShooting : MonoBehaviour
     public UnityEvent OnShoot;
     public UnityEvent<float> OnReloadStart;
     public UnityEvent OnMelee, OnShove, OnParry;
+
+    public AudioClipRandomizer reloadingRandomizer;
 
     public void Initialize()
     {
@@ -65,7 +67,7 @@ public class PlayerShooting : MonoBehaviour
 
             // Apply firerate
             canShoot = false;
-            StartCoroutine(EnableShooting(weapon.fireRate));
+            Invoke("EnableShooting", weapon.fireRate);
         }
 
         Shoving();
@@ -144,8 +146,8 @@ public class PlayerShooting : MonoBehaviour
 
         canShoot = false;
 
-        StopAllCoroutines();
-        StartCoroutine(EnableShooting(shoveCooldown + GetHeldWeapon().weapon.reloadLength));
+        CancelInvoke();
+        Invoke("EnableShooting", shoveCooldown + GetHeldWeapon().weapon.reloadLength);
     }
 
     // Handle shooting of GUN type weapons
@@ -267,9 +269,8 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
-    IEnumerator EnableShooting(float time)
+    void EnableShooting()
     {
-        yield return new WaitForSeconds(time);
         canShoot = true;
     }
 

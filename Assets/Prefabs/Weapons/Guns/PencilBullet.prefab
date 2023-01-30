@@ -5089,7 +5089,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7580254655124039528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5384,7 +5384,9 @@ MonoBehaviour:
   knockback: -1
   stunLength: -1
   pierces: 0
-  bulletShake: {fileID: 0}
+  bulletShake:
+    duration: 0
+    magnitude: 0
   paintSprites:
   - {fileID: -1064843907, guid: 746a6c31f0b34b64f81a689acbb86eb3, type: 3}
   - {fileID: -1539092658, guid: 746a6c31f0b34b64f81a689acbb86eb3, type: 3}

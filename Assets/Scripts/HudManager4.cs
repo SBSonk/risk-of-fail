@@ -12,7 +12,6 @@ public class HudManager4 : MonoBehaviour
     [SerializeField] float barLerp = 0.25f;
 
     [SerializeField] Image avatarImage;
-    [SerializeField] Sprite hurtImage;
     [SerializeField] AvatarState[] AvatarImages;
 
     [SerializeField] Image healthBar;
@@ -46,18 +45,7 @@ public class HudManager4 : MonoBehaviour
             }
         }
 
-        avatarAnim.CrossFade("AvatarJump", 0.1f, 0, 0);
-        StartCoroutine(HurtAvatarAnimation());
-    }
-
-    IEnumerator HurtAvatarAnimation()
-    {
-        Sprite lastSprite = avatarImage.sprite;
-        avatarImage.sprite = hurtImage;
-
-        yield return new WaitForSeconds(0.4f);
-
-        avatarImage.sprite = lastSprite;
+        //avatarAnim.CrossFade("AvatarJump", 0.1f, 0, 0);
     }
 
     // Handle Weapon Swap

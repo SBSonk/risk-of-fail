@@ -1,4 +1,3 @@
-using FirstGearGames.SmoothCameraShaker;
 using System.Collections;
 using UnityEngine;
 
@@ -14,11 +13,12 @@ public class PlayerAnimations : MonoBehaviour
     [Header("Dodge")]
     [SerializeField] TrailRenderer trail;
     [SerializeField] float trailLifetime = 0.5f;
-    [SerializeField] ShakeData dodgeScreenshake;
+    [SerializeField] ScreenshakeValue dodgeScreenshake;
+    [SerializeField] GameObject playerGhost;
     [SerializeField] int copies = 4;
     [SerializeField] float timeBetweenCopies, ghostLifetime = 0.25f;
     float trailTime;
-    
+
     [Header("Player Sprite")]
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] float stopCursorFollowTime = 3f;
@@ -204,13 +204,14 @@ public class PlayerAnimations : MonoBehaviour
         dashExp.Play();
         StopCoroutine("DashTrail");
         StartCoroutine(DashTrail());
+        StartCoroutine(DashGhosts());
         // TODO: make it so that the trail only appears if speed is above a threshold
 
         // Face the direction when dodging
         StopCursorFollow();
         weaponAnimator.CrossFade("Hold" + animType, .25f);
 
-        CameraShakerHandler.Shake(dodgeScreenshake);
+        CameraFunctions.main.DoScreenShake(dodgeScreenshake);
     }
 
     void DamageAnimation()
@@ -240,7 +241,9 @@ public class PlayerAnimations : MonoBehaviour
 
     IEnumerator DashTrail()
     {
+        // Enable trail
         trail.time = trailTime;
+        //trail.emitting = true;
 
         float t = 0;
         while (t < trailLifetime)
@@ -248,6 +251,32 @@ public class PlayerAnimations : MonoBehaviour
             trail.time = Mathf.Lerp(trail.time, Mathf.Lerp(trailTime, 0, t / trailLifetime), 0.25f);
             yield return new WaitForEndOfFrame();
             t += Time.deltaTime / 4;
+        }
+   //     yield return new WaitForSeconds(trailLifetime);
+
+        // Retract trail
+        //trail.emitting = false;
+    }
+
+    IEnumerator DashGhosts()
+    {
+        int i = 0;
+
+        float t = 0;
+        float tInc = timeBetweenCopies / copies;
+        while (i < copies)
+        {
+            var g = Instantiate(playerGhost, transform.position, Quaternion.identity, null).GetComponent<PlayerGhost>();
+            for (int o = 0; o < sprites.Length; o++)
+            {
+                g.sprites[o].sprite = sprites[o].sprite;
+                g.sprites[o].flipX = sprites[o].flipX;
+            }
+
+            StartCoroutine(g.GhostAnimation(ghostLifetime - (timeBetweenCopies * i - 1)));
+            i++;
+            t += tInc;
+            yield return new WaitForSeconds(t);
         }
     }
 

@@ -1,4 +1,3 @@
-using FirstGearGames.SmoothCameraShaker;
 using GameAudioScriptingEssentials;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,13 +7,13 @@ using UnityEngine.Rendering.Universal;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] ParticleSystem hitmarker;
-    [SerializeField] Light2D _light;
+    [SerializeField] Light2D     _light;
     public Rigidbody2D rb;
     public GameObject sprite, shooter;
 
     public float damage = 100, knockback = 10f, stunLength; // Should be set by the shooter script once instantiated
     public int pierces = 0;
-    public ShakeData bulletShake;
+    public ScreenshakeValue bulletShake;
 
     public Sprite[] paintSprites;
     public PaintSplatter paintPrefab;
@@ -49,11 +48,8 @@ public class Projectile : MonoBehaviour
         {
             LevelStats.main.BulletHit(); // Should prolly use an event instead  
 
-            /*// Screenshake
-            if (bulletShake)
-            {
-                CameraShakerHandler.Shake(bulletShake);
-            }*/
+            // Screenshake
+            CameraFunctions.main.DoScreenShake(bulletShake);
 
             // Give damage and stun
             collision.GetComponent<Alive>().GiveDamage(damage, stunLength);

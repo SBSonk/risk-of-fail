@@ -35,7 +35,9 @@ MonoBehaviour:
   reloadLength: 0.7
   fireRate: 0
   auto: 0
-  shootShake: {fileID: 11400000, guid: b2b643485089486459bb1c39ae7707c7, type: 2}
+  hitScreenShake:
+    duration: 0.1
+    magnitude: 1
   effects:
     animType: 68
     shootSounds:

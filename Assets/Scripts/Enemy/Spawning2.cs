@@ -32,8 +32,6 @@ public class Spawning2 : MonoBehaviour
 
     private void Update()
     {
-        if (!PlayerStatus.IsAlive) return;
-
         UpdateSpawnerDistances();
     }
 

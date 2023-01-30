@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Buttonfunctions : MonoBehaviour
+public class ButtonFunctions : MonoBehaviour
 {
     public static RectTransform rect;
 

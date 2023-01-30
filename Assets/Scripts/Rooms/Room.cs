@@ -64,9 +64,7 @@ public class Room : MonoBehaviour
             cam.cameraSize = camSize;
             cam.cameraCenter = transform;
             cam.lockToCenter = true;
-
-            cam.offset.x = camOffset.x;
-            cam.offset.y = camOffset.y;
+            cam.offset = camOffset;
 
             cam.ChangeRoomBounds(roomXBounds, roomYBounds);
         }

@@ -44,8 +44,6 @@ public class QuizAI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!PlayerStatus.IsAlive) return;
-
         // Set destination to player
         if (mode != AIMode.repositioning)
             ai.destination = (Vector3) player.position + (followDirection * (player.velocity.magnitude / 2));

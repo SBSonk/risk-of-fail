@@ -18,7 +18,7 @@ public class PlayerShooting : MonoBehaviour
     [Header("Shoving")]
     [SerializeField] float shoveStrength;
     [SerializeField] float shoveStunTime = 1f;
-    [SerializeField] float shoveCooldown = 1f;
+    [SerializeField] float shoveCooldown = 1f, shoveHitDelay = 0.25f;
     [SerializeField] float radius;
 
     public UnityEvent<InventoryWeapon> OnWeaponSwitch, OnAmmoUpdate;
@@ -70,7 +70,7 @@ public class PlayerShooting : MonoBehaviour
             StartCoroutine(EnableShooting(weapon.fireRate));
         }
 
-        if (InputManager.shove) Shoving();
+        if (InputManager.shove && canShoot) StartCoroutine(Shove());
 
         // Reloading
         if (GetHeldWeapon().clip < GetHeldWeapon().weapon.clipSize && InputManager.reload && reloading == false) StartCoroutine(Reload());
@@ -100,12 +100,16 @@ public class PlayerShooting : MonoBehaviour
         OnWeaponSwitch?.Invoke(GetHeldWeapon());
     }
 
+    IEnumerator Shove()
+    {
+        OnShove?.Invoke();
+        
+        yield return new WaitForSeconds(shoveHitDelay);
+        
+        Shoving();
+    }
     void Shoving()
     {
-        if (!canShoot) return;
-
-        OnShove?.Invoke();
-
         // Check all objects in radius in front of shootpivot
         Vector3 shoveDir = ((Vector3)InputManager.mousePosition - transform.position).normalized;
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position + shoveDir * 0.5f, radius);
@@ -146,8 +150,10 @@ public class PlayerShooting : MonoBehaviour
 
         canShoot = false;
         
+        float cooldownTime = shoveCooldown + GetHeldWeapon().weapon.reloadLength / 2;
+        OnReloadStart?.Invoke(cooldownTime);
         StopCoroutine(nameof(EnableShooting));
-        StartCoroutine(EnableShooting(shoveCooldown + GetHeldWeapon().weapon.reloadLength / 2));
+        StartCoroutine(EnableShooting(cooldownTime));
     }
 
     // Handle shooting of GUN type weapons

@@ -35,7 +35,6 @@ public class HudManager4 : MonoBehaviour
     // Handle Player Avatar
     void PlayerAvatarAnimation(float amount)
     {
-        // Update player avatar to damage state
         // Choose image to display
         for (int i = 0; i < AvatarImages.Length; i++)
         {
@@ -45,7 +44,10 @@ public class HudManager4 : MonoBehaviour
                 avatarImage.sprite = AvatarImages[i].image;
             }
         }
+    }
 
+    void PlayerAvatarJump(float _)
+    {
         avatarAnim.CrossFade("AvatarJump", 0.1f, 0, 0);
 
         StopCoroutine(nameof(AvatarHurtAnimation));
@@ -138,6 +140,7 @@ public class HudManager4 : MonoBehaviour
 
         player.onHeal.AddListener(PlayerAvatarAnimation);
         player.onHit.AddListener(PlayerAvatarAnimation);
+        player.onHit.AddListener(PlayerAvatarJump);
 
         UpdateWeaponIcon(shooting.GetHeldWeapon());
     }

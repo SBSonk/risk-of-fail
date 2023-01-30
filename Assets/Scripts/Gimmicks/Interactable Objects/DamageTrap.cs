@@ -6,7 +6,8 @@ using UnityEngine.Events;
 
 public class DamageTrap : WalkableTrap
 {
-    public UnityEvent<Alive[]> OnTrapDamage;
+    public UnityEvent<List<Alive>> OnTrapDamage;
+    public UnityEvent TrapDamage;
 
     protected override void DoTrapDamage()
     {
@@ -15,5 +16,8 @@ public class DamageTrap : WalkableTrap
         {
             entitiesInsideArea[i].GiveDamage(dmg.damage, dmg.stunTime, null, dmg.useRawDamage);
         }
+        
+        TrapDamage?.Invoke();
+        OnTrapDamage?.Invoke(entitiesInsideArea);
     }
 }

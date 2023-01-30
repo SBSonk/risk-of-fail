@@ -1166,13 +1166,17 @@ MonoBehaviour:
   player: {fileID: 0}
   barLerp: 0.25
   avatarImage: {fileID: 2603249502355321442}
+  hurtSprite: {fileID: 21300000, guid: 60511778b67f9e3419c6d31d8f046be6, type: 3}
   AvatarImages:
   - healthGreaterThan: 0
     image: {fileID: 21300000, guid: 3951429b12a9c71499c3d9636c032868, type: 3}
   - healthGreaterThan: 20
+    image: {fileID: 21300000, guid: 3951429b12a9c71499c3d9636c032868, type: 3}
+  - healthGreaterThan: 30
     image: {fileID: 21300000, guid: 9389ea4f5f0780748827ca35700d0597, type: 3}
   - healthGreaterThan: 50
     image: {fileID: 21300000, guid: 2d89d5482c3bd394a9317a7a84708bcd, type: 3}
+  avatarHurtTime: 0.5
   healthBar: {fileID: 2603249502505913889}
   AMMOPADDING: 20
   AMMOAPPEARTIME: 0.025

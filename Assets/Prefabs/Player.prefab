@@ -10551,9 +10551,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingLayerID: -852091719
+  m_SortingLayer: 3
+  m_SortingOrder: -2
   m_Sprite: {fileID: 1864009430, guid: 2cd095b7d2ee9dd4f8f23f72c5e4e153, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -10667,9 +10667,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -852091719
+  m_SortingLayer: 3
+  m_SortingOrder: -1
   m_Sprite: {fileID: 318569028, guid: 029748d8b485815449e86ac764a554b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -10988,7 +10988,7 @@ MonoBehaviour:
   animator: {fileID: 980274054001023296}
   weaponAnimator: {fileID: 725625596}
   trail: {fileID: 2223588944474196827}
-  trailLifetime: 0.25
+  trailLifetime: 0.75
   dodgeScreenshake: {fileID: 11400000, guid: 8751c99bb03fa494a9af2153de950fc8, type: 2}
   sprite: {fileID: 2223588945330593513}
   stopCursorFollowTime: 1.5
@@ -11037,11 +11037,11 @@ MonoBehaviour:
     clip: 0
     pool: 0
   reloading: 0
-  shoveStrength: 6
+  shoveStrength: 8
   shoveStunTime: 0.25
-  shoveCooldown: 0.5
+  shoveCooldown: 0.3
   shoveHitDelay: 0.1
-  radius: 3
+  radius: 1.5
   OnWeaponSwitch:
     m_PersistentCalls:
       m_Calls: []
@@ -11243,9 +11243,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: -852091719
+  m_SortingLayer: 3
+  m_SortingOrder: 0
   m_Sprite: {fileID: 198072087, guid: 2cd095b7d2ee9dd4f8f23f72c5e4e153, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GameAudioScriptingEssentials;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,6 +7,8 @@ public abstract class WalkableTrap : MonoBehaviour
 {
     [SerializeField] protected DamageSource dmg;
     [SerializeField] protected float timeTillDamage;
+    [SerializeField] protected float speedMultiplier = 1;
+    [SerializeField] protected AudioClipRandomizer triggerSound, damageSound;
 
     protected List<Alive> entitiesInsideArea;
     public UnityEvent OnTrapTriggered;
@@ -21,8 +24,6 @@ public abstract class WalkableTrap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // TODO: Implement animation    
-
         if (collision.TryGetComponent<Alive>(out var alive))
         {
             entitiesInsideArea.Add(alive);
@@ -31,8 +32,10 @@ public abstract class WalkableTrap : MonoBehaviour
         if (!collision.CompareTag("Player") || !active) return;
 
         active = false; 
+        
         OnTrapTriggered?.Invoke();
-        Invoke("DoTrapDamage", timeTillDamage);
+        Invoke("DoTrapDamage", timeTillDamage / speedMultiplier);
+        if (triggerSound) triggerSound.PlaySFX();
     }
 
     private void OnTriggerExit2D(Collider2D collision)

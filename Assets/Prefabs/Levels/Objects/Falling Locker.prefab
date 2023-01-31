@@ -115,9 +115,9 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 2
-      minScalar: 5
+      minMaxState: 3
+      scalar: 0.75
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -169,8 +169,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 10
-      minScalar: 5
+      scalar: 6
+      minScalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -284,9 +284,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
-      minScalar: 1
+      minScalar: 0.25
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -337,7 +337,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -390,7 +390,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -661,15 +661,15 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 4
+    type: 10
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: 0, y: 0, z: 0}
+    m_Position: {x: 0, y: -0.5, z: 0}
     m_Rotation: {x: 0, y: 0, z: 180}
-    m_Scale: {x: 3, y: 1, z: 1}
+    m_Scale: {x: 1, y: 2, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -2242,7 +2242,7 @@ ParticleSystem:
         m_RotationOrder: 4
     m_Range: {x: 0, y: 1}
   ForceModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -2299,7 +2299,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 10
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4897,7 +4897,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3256755510498208901}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.79048234}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4924,7 +4924,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4942,9 +4942,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: -1134956085
+  m_SortingLayer: 4
+  m_SortingOrder: 0
   m_Sprite: {fileID: -1385430248, guid: dc3c3c812aefc054aac08bad710bb45a, type: 3}
   m_Color: {r: 0, g: 0.5566038, b: 0.0038135345, a: 1}
   m_FlipX: 0
@@ -4969,7 +4969,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 2.05}
+  m_Offset: {x: 0, y: 1.7241623}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -4980,7 +4980,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 4.1}
+  m_Size: {x: 1.5, y: 4.751675}
   m_EdgeRadius: 0
 --- !u!95 &369752598
 Animator:
@@ -5014,7 +5014,7 @@ GameObject:
   - component: {fileID: 6318659893219392350}
   - component: {fileID: 6908021882811348406}
   m_Layer: 0
-  m_Name: Locker
+  m_Name: Falling Locker
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5061,7 +5061,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5543387, y: 2.9325266}
+  m_Size: {x: 1.7260398, y: 2.9325266}
   m_EdgeRadius: 0
 --- !u!114 &6908021882811348406
 MonoBehaviour:
@@ -5076,22 +5076,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: {fileID: 11400000, guid: 78fc2fb1bd4029a4a898bcad4ee8393a, type: 2}
-  timeTillDamage: 1
+  timeTillDamage: 0.95
+  speedMultiplier: 2
+  triggerSound: {fileID: 0}
+  damageSound: {fileID: 0}
   OnTrapTriggered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 369752598}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: Play
-        m_Mode: 5
+      - m_Target: {fileID: 6908021882811348406}
+        m_TargetAssemblyTypeName: DamageTrap, Assembly-CSharp
+        m_MethodName: PlayAnimation
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: LockerFall
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  triggerShake: {fileID: 11400000, guid: 00182005e0d4abe46b329cb6b128950a, type: 2}
+  animationName: LockerFall
+  animator: {fileID: 369752598}
   OnTrapDamage:
     m_PersistentCalls:
       m_Calls: []

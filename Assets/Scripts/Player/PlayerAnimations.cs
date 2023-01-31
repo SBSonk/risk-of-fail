@@ -240,19 +240,14 @@ public class PlayerAnimations : MonoBehaviour
     {
         // Enable trail
         trail.time = trailTime;
-        //trail.emitting = true;
-
+        
         float t = 0;
         while (t < trailLifetime)
         {
             trail.time = Mathf.Lerp(trail.time, Mathf.Lerp(trailTime, 0, t / trailLifetime), 0.25f);
             yield return new WaitForEndOfFrame();
-            t += Time.deltaTime / 4;
+            t += Time.deltaTime;
         }
-   //     yield return new WaitForSeconds(trailLifetime);
-
-        // Retract trail
-        //trail.emitting = false;
     }
 
     Directions VectorToDir(Vector2 input)

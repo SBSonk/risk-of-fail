@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Color = UnityEngine.Color;
@@ -70,6 +71,23 @@ public class SprFunctions
         }
 
         sprite.color = finalColor;
+    }
+    
+    public static IEnumerator Fade(TextMeshProUGUI text, Color startColor, Color finalColor, float t)
+    {
+        text.color = startColor;
+        Color color = startColor;
+        float time = 0;
+        while (time <= t)
+        {
+            text.color = color;
+            color = Color.Lerp(startColor, finalColor, time / t);
+
+            yield return new WaitForEndOfFrame();
+            time += Time.unscaledDeltaTime;
+        }
+
+        text.color = finalColor;
     }
 
     ///=====================FLICKER=========================\\\

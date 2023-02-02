@@ -10,7 +10,7 @@ public class Room : MonoBehaviour
     public bool active = false;
     bool unEntered = true;
 
-    public float timeToRegisterInside = .5f;
+    public float timeToRegisterInside = 1;
     float timeInside;
 
     public float camSize = 7;
@@ -75,7 +75,7 @@ public class Room : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
-
+        
         ToggleRoom(false);
 
         cam.ResetCameraSize();
@@ -89,7 +89,7 @@ public class Room : MonoBehaviour
         if (!active && val)
         {
             OnRoomEnter?.Invoke();
-        } else
+        } else if (active && !val)
         {
             OnRoomLeave?.Invoke();
         }

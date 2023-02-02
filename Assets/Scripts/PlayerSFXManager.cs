@@ -12,10 +12,6 @@ public class PlayerSFXManager : MonoBehaviour
 
     public void Initialize(PlayerShooting shooting, PlayerMovement movement)
     {
-        shooting.OnShoot.AddListener(PlayShootSound);
-        shooting.OnMelee.AddListener(PlayShootSound);
-        shooting.OnShove.AddListener(PlayShoveSound);
-        shooting.OnReloadStart.AddListener(PlayReloadSound);
         shooting.OnWeaponSwitch.AddListener(ChangeSFXProfile);
 
         movement.OnDodge.AddListener(PlayDashSound);
@@ -23,7 +19,7 @@ public class PlayerSFXManager : MonoBehaviour
         ChangeSFXProfile(shooting.GetHeldWeapon());
     }
 
-    void PlayShootSound()
+    public void PlayShootSound()
     {
         if (!shoot.HasAudioClips())
         {
@@ -31,11 +27,11 @@ public class PlayerSFXManager : MonoBehaviour
             return;
         }
 
-        shoot.SFXVolume = volume; // TODO: Hookup to volume variable when that exists + Add sound mixing
+        shoot.SFXVolume = volume;
         shoot.PlaySFX();
     }
 
-    void PlayShoveSound()
+    public void PlayShoveSound()
     {
         if (!shove.HasAudioClips())
         {
@@ -47,7 +43,7 @@ public class PlayerSFXManager : MonoBehaviour
         shove.PlaySFX();
     }
 
-    void PlayReloadSound(float _)
+    public void PlayReloadSound()
     {
         if (!reload.HasAudioClips())
         {
@@ -59,7 +55,7 @@ public class PlayerSFXManager : MonoBehaviour
         reload.PlaySFX();
     }
 
-    void PlayDashSound()
+    public void PlayDashSound()
     {
         if (!dash.HasAudioClips())
         {

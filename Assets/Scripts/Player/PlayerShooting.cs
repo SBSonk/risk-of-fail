@@ -26,7 +26,7 @@ public class PlayerShooting : MonoBehaviour
     public UnityEvent<float> OnReloadStart;
     public UnityEvent OnMelee, OnShove, OnParry;
 
-    public AudioClipRandomizer reloadingRandomizer;
+    public PlayerSFXManager sfxManager;
 
     public void Initialize()
     {
@@ -102,6 +102,7 @@ public class PlayerShooting : MonoBehaviour
 
     IEnumerator Shove()
     {
+        sfxManager.PlayShoveSound();
         OnShove?.Invoke();
         
         yield return new WaitForSeconds(shoveHitDelay);
@@ -169,6 +170,7 @@ public class PlayerShooting : MonoBehaviour
                 ShootGun(g);
 
                 weapon.clip -= g.ammoPerShot;
+                sfxManager.PlayShootSound();
                 OnAmmoUpdate?.Invoke(weapon);
             }
 
@@ -182,6 +184,7 @@ public class PlayerShooting : MonoBehaviour
                 ShootGun(g);
 
                 weapon.pool -= g.ammoPerShot;
+                sfxManager.PlayShootSound();
                 OnAmmoUpdate?.Invoke(weapon);
             }
         }
@@ -199,6 +202,7 @@ public class PlayerShooting : MonoBehaviour
                 StartCoroutine(m.SwingWeapon(transform));
 
                 weapon.clip -= m.ammoPerShot;
+                sfxManager.PlayShootSound();
                 OnMelee?.Invoke();
             }
 
@@ -239,6 +243,7 @@ public class PlayerShooting : MonoBehaviour
             if (heldWep.pool == 0) yield break;
 
             // Begin Reload
+            sfxManager.PlayReloadSound();
             OnReloadStart?.Invoke(heldWep.weapon.reloadLength);
 
             canShoot = false;

@@ -1,7 +1,11 @@
+using System;
 using System.Collections;
+using GameAudioScriptingEssentials;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class DialogueFX : MonoBehaviour
 {
@@ -13,10 +17,20 @@ public class DialogueFX : MonoBehaviour
 	[SerializeField] float timeBtwChars = 0.1f;
 	[SerializeField] string leadingChar = "";
 	[SerializeField] bool leadingCharBeforeDelay = false;
+	[SerializeField] bool PlayOnStart = false;
+
+	public UnityEvent FinishedText;
+
+	private void Start()
+	{
+		if (PlayOnStart) PlayText();
+	}
 
 	// Use this for initialization
-	void Start()
+	public void PlayText()
 	{
+		StopAllCoroutines();
+		
 		_text = GetComponent<Text>()!;
 		_tmpProText = GetComponent<TMP_Text>()!;
 
@@ -36,7 +50,7 @@ public class DialogueFX : MonoBehaviour
 			StartCoroutine("TypeWriterTMP");
 		}
 	}
-
+	
 	IEnumerator TypeWriterText()
 	{
 		_text.text = leadingCharBeforeDelay ? leadingChar : "";
@@ -51,6 +65,7 @@ public class DialogueFX : MonoBehaviour
 			}
 			_text.text += c;
 			_text.text += leadingChar;
+			
 			yield return new WaitForSeconds(timeBtwChars);
 		}
 
@@ -58,6 +73,8 @@ public class DialogueFX : MonoBehaviour
 		{
 			_text.text = _text.text.Substring(0, _text.text.Length - leadingChar.Length);
 		}
+
+		FinishedText?.Invoke();
 	}
 
 	IEnumerator TypeWriterTMP()
@@ -74,6 +91,7 @@ public class DialogueFX : MonoBehaviour
 			}
 			_tmpProText.text += c;
 			_tmpProText.text += leadingChar;
+			
 			yield return new WaitForSeconds(timeBtwChars);
 		}
 
@@ -81,5 +99,7 @@ public class DialogueFX : MonoBehaviour
 		{
 			_tmpProText.text = _tmpProText.text.Substring(0, _tmpProText.text.Length - leadingChar.Length);
 		}
+		
+		FinishedText?.Invoke();
 	}
 }

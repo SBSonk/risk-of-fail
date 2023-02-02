@@ -6,7 +6,7 @@ public class Switch : MonoBehaviour
     public SpriteRenderer sprite;
     public Color active = Color.green, disabled = Color.red;
 
-    public bool isActive, interactable = true, playerInRadius = false;
+    public bool isActive, interactable = true, playerInRadius = false, disableOnUse;
 
     public UnityEvent OnSwitchOn, OnSwitchToggled, OnSwitchOff;
 
@@ -28,6 +28,8 @@ public class Switch : MonoBehaviour
         if (InputManager.interact && playerInRadius)
         {
             Toggle();
+
+            if (disableOnUse) isActive = false;
         }
     }
 

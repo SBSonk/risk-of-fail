@@ -25,7 +25,7 @@ public class Door : MonoBehaviour
     {
         baseRot = transform.rotation.eulerAngles.z;
 
-        AstarPath.active.UpdateGraphs(col.bounds, 0.75f);
+        AstarPath.active.UpdateGraphs(col.bounds, 1);
     }
 
     public void ToggleDoor(bool val)
@@ -50,6 +50,6 @@ public class Door : MonoBehaviour
 
         opened = val;
 
-        AstarPath.active.UpdateGraphs(col.bounds, 0.75f);
+        AstarPath.active.UpdateGraphs(col.bounds, 1);
     }
 }

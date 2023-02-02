@@ -15,8 +15,13 @@ public class RoomKillCounter : MonoBehaviour
 
         if (killsNeeded == 0)
         {
-            OnCounterComplete?.Invoke();
-            active = false;
+            FinishCounter();
         }
+    }
+
+    public void FinishCounter()
+    {
+        OnCounterComplete?.Invoke();
+        active = false;
     }
 }

@@ -279,7 +279,7 @@ namespace GameAudioScriptingEssentials
 
         public bool HasAudioClips()
         {
-            return _audioClips.Length > 0;
+            return _audioClips == null || _audioClips.Length > 0;
         }
 
         public string GetSFXName()

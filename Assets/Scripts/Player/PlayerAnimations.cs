@@ -141,6 +141,13 @@ public class PlayerAnimations : MonoBehaviour
     void ShoveAnimation()
     {
         weaponAnimator.CrossFade("Shove" + animType, .1f);
+
+        StartCoroutine(ShoveShake(.1f));
+    }
+
+    IEnumerator ShoveShake(float t)
+    {
+        yield return new WaitForSeconds(t);
         if (shoveShake) CameraShakerHandler.Shake(shoveShake);
     }
 

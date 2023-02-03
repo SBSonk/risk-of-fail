@@ -129,6 +129,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 118843629, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 313543551, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 656592301, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 741439907660801846, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1050790986060347319, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: drops.Array.data[0].dropAmount
       value: 7
@@ -317,6 +333,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 5551186372043030719, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6919678366855843198, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: m_Range
       value: 8
@@ -386,12 +406,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3deb51d6eaf5c4c98759bd61677aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 5
+  damage: {fileID: 11400000, guid: af5b38fdcc579d04597f00813f40ce75, type: 2}
+  wakeDistance: 10
   stunLength: 0.5
   knockbackAmount: 52.5
   reboundLength: 20
   rushDistance: 9
+  attackRange: 5
   mode: 0
+  minDashDistance: 5
+  maxDashDistance: 6
+  minDashCooldown: 5
+  maxDashCooldown: 10
+  OnSwipeAttack:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDashAttack:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDashStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDashEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDashCancel:
+    m_PersistentCalls:
+      m_Calls: []
+  dashIndicator: {fileID: 0}
   EKUSPUROSION: {fileID: 651265893}
   dmg: 25
   stn: 5

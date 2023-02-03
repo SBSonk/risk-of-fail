@@ -7,6 +7,7 @@ public class AreaTrigger : MonoBehaviour
 {
     public UnityEvent OnFirstEnter, OnRoomEnter, OnRoomLeave;
     public bool active = false;
+    public bool interactable = true, disableOnUse = true;
     bool unEntered = true;
     
     public float timeToRegisterInside = 1;
@@ -20,7 +21,7 @@ public class AreaTrigger : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Player")) return;
+        if (!collision.CompareTag("Player") || !interactable) return;
 
         timeInside += Time.deltaTime;
         if (timeInside >= timeToRegisterInside)
@@ -29,7 +30,11 @@ public class AreaTrigger : MonoBehaviour
             {
                 OnFirstEnter?.Invoke();
                 unEntered = false;
+
+                if (disableOnUse) interactable = false;
             }
+            
+            ToggleArea(true);
         }
     }
 

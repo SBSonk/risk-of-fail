@@ -9,16 +9,23 @@ public class QuarterlyAssessmentAttack : WrittenWorksAttack
     // TODO: attacks
     // trigger explosion when killed, stuck, or hit the player
 
+    protected override void Start()
+    {
+        base.Start();
+        
+        GetComponent<Alive>().onDeath.AddListener(() => StartCoroutine(Explode()));
+    }
+
     protected override void AttackPlayer(Collider2D collision, float damage)
     {
         // Normal Writtenwork Attack
         base.AttackPlayer(collision, damage);
 
         // Explosion
-        StartCoroutine(explode(collision));
+        StartCoroutine(Explode());
     }
 
-    IEnumerator explode(Collider2D collision)
+    IEnumerator Explode()
     {
         //gameObject.GetComponent<Indicator>().play();
         EKUSPUROSION.GetComponent<Animator>().Play("Explosion Indicator");

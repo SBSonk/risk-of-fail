@@ -1,3 +1,4 @@
+using FirstGearGames.SmoothCameraShaker;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,6 +10,7 @@ public class Switch : MonoBehaviour
     public bool isActive, interactable = true, playerInRadius = false, disableOnUse;
 
     public UnityEvent OnSwitchOn, OnSwitchToggled, OnSwitchOff;
+    [SerializeField] private ShakeData useShake;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -43,5 +45,6 @@ public class Switch : MonoBehaviour
         else OnSwitchOff?.Invoke();
 
         sprite.color = isActive ? active : disabled;
+        if (useShake) CameraShakerHandler.Shake(useShake);
     }
 }

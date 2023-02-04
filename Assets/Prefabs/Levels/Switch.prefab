@@ -155,11 +155,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 8797721433816689901}
-  active: {r: 0, g: 1, b: 0, a: 1}
-  disabled: {r: 1, g: 0, b: 0, a: 1}
+  active: {fileID: 1384346273, guid: 51d9dd8fb34e8ff4787e71bd996cb817, type: 3}
+  disabled: {fileID: -412104095, guid: 51d9dd8fb34e8ff4787e71bd996cb817, type: 3}
   isActive: 0
   interactable: 1
   playerInRadius: 0
+  disableOnUse: 0
   OnSwitchOn:
     m_PersistentCalls:
       m_Calls:
@@ -181,6 +182,7 @@ MonoBehaviour:
   OnSwitchOff:
     m_PersistentCalls:
       m_Calls: []
+  useShake: {fileID: 0}
 --- !u!114 &601925452030405801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +211,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.94}
+  m_Offset: {x: 0, y: -1}
   serializedVersion: 2
   m_Radius: 2.043308
 --- !u!1 &8797721433816689903
@@ -286,8 +288,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: -412104095, guid: 51d9dd8fb34e8ff4787e71bd996cb817, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -323,7 +325,7 @@ MonoBehaviour:
   - {x: 0.4999962, y: -0.50000095, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 47512
+  m_InstanceId: 80250
 --- !u!1 &8797721434079926521
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +399,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -412104095, guid: 51d9dd8fb34e8ff4787e71bd996cb817, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0

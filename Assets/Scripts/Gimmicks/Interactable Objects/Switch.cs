@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class Switch : MonoBehaviour
 {
     public SpriteRenderer sprite;
-    public Color active = Color.green, disabled = Color.red;
+    public Sprite active, disabled;
 
     public bool isActive, interactable = true, playerInRadius = false, disableOnUse;
 
@@ -44,7 +44,7 @@ public class Switch : MonoBehaviour
         if (isActive) OnSwitchOn?.Invoke();
         else OnSwitchOff?.Invoke();
 
-        sprite.color = isActive ? active : disabled;
+        sprite.sprite = isActive ? active : disabled;
         if (useShake) CameraShakerHandler.Shake(useShake);
     }
 }

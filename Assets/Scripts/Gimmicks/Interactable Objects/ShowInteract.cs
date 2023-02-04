@@ -10,6 +10,8 @@ public class ShowInteract : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
+
+        outline.sprite = interactIcon.sprite;
         StopAllCoroutines();
         StartCoroutine(SprFunctions.Fade(outline, outline.color, Color.white, fadeTime));
         StartCoroutine(SprFunctions.Fade(interactIcon, interactIcon.color, Color.white, fadeTime));

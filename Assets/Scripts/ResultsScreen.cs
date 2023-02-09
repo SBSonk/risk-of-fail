@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class ResultsScreen : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI score, bulletsShot, bulletsHit, accuracy, time, dmg;
+    [SerializeField] private TextMeshProUGUI score, bulletsShot, bulletsHit, accuracy, time, dmg, passedText;
     [SerializeField] Image grade;
 
-    public void ShowResults()
+    public void ShowResults(bool passed = false)
     {
+        gameObject.SetActive(true);
+        
         var stats = LevelStats.main;
         stats.CalculateFinalScore();
 
@@ -25,5 +27,7 @@ public class ResultsScreen : MonoBehaviour
         dmg.text = stats.damageTaken.ToString("00000");
 
         grade.sprite = stats.GetLevelScore();
+
+        passedText.text = passed ? "PASSED" : "FAILED";
     }
 }

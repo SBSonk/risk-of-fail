@@ -34,6 +34,8 @@ public class PlayerAnimations : MonoBehaviour
     [SerializeField] float weaponLerp = 0.5f;
     public ShakeData shoveShake;
 
+    [SerializeField] ResultsScreen results;
+
     public void Initialize(PlayerShooting shooting, PlayerMovement movement, PlayerStatus status)
     {
         cursor = GameObject.Find("PlayerCursor").transform;
@@ -47,6 +49,7 @@ public class PlayerAnimations : MonoBehaviour
         movement.OnDodge.AddListener(DodgeAnimation);
 
         status.OnPlayerDamage.AddListener(DamageAnimation);
+        status.onDeath.AddListener(DeathAnimation);
 
         ChangeWeaponSprite(shooting.GetHeldWeapon());
 
@@ -83,7 +86,7 @@ public class PlayerAnimations : MonoBehaviour
         if (!canSwitchAnimation) return;
 
         // Flip if going left
-        sprite.flipX = currentDir == Directions.left;
+        sprite.flipX = currentDir == Directions.left || currentDir == Directions.upperLeft || currentDir == Directions.bottomLeft;
 
         if (input.magnitude > 0)
         {
@@ -93,8 +96,24 @@ public class PlayerAnimations : MonoBehaviour
                     animator.Play("walk_u");
                     break;
 
+                case Directions.upperRight:
+                    animator.Play("walk_ur");
+                    break;
+
+                case Directions.upperLeft:
+                    animator.Play("walk_ur");
+                    break;
+
                 case Directions.right:
                     animator.Play("walk_r");
+                    break;
+
+                case Directions.bottomRight:
+                    animator.Play("walk_dr");
+                    break;
+
+                case Directions.bottomLeft:
+                    animator.Play("walk_dr");
                     break;
 
                 case Directions.down:
@@ -114,8 +133,24 @@ public class PlayerAnimations : MonoBehaviour
                     animator.Play("stand_u");
                     break;
 
+                case Directions.upperRight:
+                    animator.Play("stand_ur");
+                    break;
+
+                case Directions.upperLeft:
+                    animator.Play("stand_ur");
+                    break;
+
                 case Directions.right:
                     animator.Play("stand_r");
+                    break;
+
+                case Directions.bottomRight:
+                    animator.Play("stand_dr");
+                    break;
+
+                case Directions.bottomLeft:
+                    animator.Play("stand_dr");
                     break;
 
                 case Directions.down:
@@ -127,6 +162,38 @@ public class PlayerAnimations : MonoBehaviour
                     break;
             }
         }
+    }
+
+    [ContextMenu("kYS")]
+    void DeathAnimation()
+    {
+        GetComponent<PlayerMovement>().enabled = false;
+        GetComponent<PlayerShooting>().enabled = false;
+        canSwitchAnimation = false;
+        StartCoroutine(DeathAnim());
+    }
+
+    IEnumerator DeathAnim()
+    {
+        animator.Play("player_death");
+
+        // Disable collision
+        // Fling player
+
+        GetComponent<Collider2D>().enabled = false;
+
+        var rb = GetComponent<Rigidbody2D>();
+        rb.drag = 0.01f;
+        rb.gravityScale = 3;
+        rb.AddForce(new Vector3(-10, 20), ForceMode2D.Impulse);
+
+        Time.timeScale = 0.5f;
+
+        yield return new WaitForSeconds(1f);
+
+        results.ShowResults();
+
+        Time.timeScale = 1;
     }
 
     void MeleeAnimation()
@@ -260,11 +327,54 @@ public class PlayerAnimations : MonoBehaviour
     Directions VectorToDir(Vector2 input)
     {
         Directions final = currentDir;
-
-        if (input.x > 0.5f) final = Directions.right;
+        /*
+        if (input.x > 0.5f && input.y > 0.5f) final = Directions.upperRight;
+        else if (input.x > 0.5f && input.y < -0.5f) final = Directions.bottomLeft;
+        else if (input.x < 0.5f && input.y > 0.5f) final = Directions.upperRight;
+        else if (input.x < 0.5f && input.y < -0.5f) final = Directions.bottomLeft;
+        else if (input.x > 0.5f) final = Directions.right;
         else if (input.x < -0.5f) final = Directions.left;
         else if (input.y > 0.5f) final = Directions.up;
         else if (input.y < -0.5f) final = Directions.down;
+        */
+        float angle = Mathf.Atan2(input.y, input.x) * Mathf.Rad2Deg; // angle in degrees
+        int direction = Mathf.RoundToInt(angle / 45.0f) % 8; // direction as integer from 0 to 7
+        print(direction);
+
+        switch(direction)
+        {
+            case 0:
+                final = Directions.right;
+                break;
+
+            case 1:
+                final = Directions.upperRight;
+                break;
+
+            case -1:
+                final = Directions.bottomRight;
+                break;
+
+            case 2:
+                final = Directions.up;
+                break;
+
+            case -2:
+                final = Directions.down;
+                break;
+
+            case 3:
+                final = Directions.upperLeft;
+                break;
+
+            case -3:
+                final = Directions.bottomLeft;
+                break;
+
+            case 4:
+                final = Directions.left;
+                break;
+        }    
 
         return final;
     }   
@@ -280,5 +390,5 @@ public class PlayerAnimations : MonoBehaviour
 [System.Serializable]
 public enum Directions
 {
-    up, right, down, left
+    up, right, down, left, bottomRight, bottomLeft, upperRight, upperLeft
 }

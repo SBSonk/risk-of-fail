@@ -60,7 +60,6 @@ public class PlayerStatus : Alive
         onDeath?.Invoke();
         deathParticles.transform.parent = null;
         deathParticles.Play();
-        Destroy(gameObject);
     }
 
     public override float GiveHealth(float amount)

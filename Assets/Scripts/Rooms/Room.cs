@@ -109,7 +109,7 @@ public class Room : MonoBehaviour
             t += Time.deltaTime;
         }
 
-        light.intensity = 0;
+        light.intensity = closeLightIntensity;
     }
 
     public void ToggleSpawns(bool val)

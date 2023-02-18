@@ -1,10 +1,17 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Serialization;
 
 public class Room : MonoBehaviour 
 {
     public Spawning2 spawner;
+    public Light2D light;
+    public float openLightIntensity = 0.8f, closeLightIntensity = 0.2f, lightSwitchTime = 0.2f;
+    public bool openLightsPermanently = true;
 
     public UnityEvent OnFirstEnter, OnRoomEnter, OnRoomLeave;
     public bool active = false;
@@ -13,17 +20,8 @@ public class Room : MonoBehaviour
     public float timeToRegisterInside = 1;
     float timeInside;
 
-    public float camSize = 7;
-    public bool centerCameraOnRoom;
-    public Vector3 camOffset;
-    public CameraBounds roomXBounds, roomYBounds;
-
-    CameraFollow cam;
-
     private void Awake()
     {
-        cam = CameraFollow.cam;
-
         if (!spawner)
         {
             print("Assigning to local spawner.");
@@ -31,16 +29,13 @@ public class Room : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        roomXBounds = CameraBounds.ConvertLocalToWorldBounds(roomXBounds, transform.position.x);
-        roomYBounds = CameraBounds.ConvertLocalToWorldBounds(roomYBounds, transform.position.y);
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
         timeInside = 0;
+        
+        StopCoroutine("LeaveTimer");
+        if (light) StartCoroutine(OpenLights());
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -58,30 +53,20 @@ public class Room : MonoBehaviour
                 
             ToggleRoom(true);
         }
-
-        if (centerCameraOnRoom)
-        {
-            cam.cameraSize = camSize;
-            cam.cameraCenter = transform;
-            cam.lockToCenter = true;
-
-            cam.offset.x = camOffset.x;
-            cam.offset.y = camOffset.y;
-
-            cam.ChangeRoomBounds(roomXBounds, roomYBounds);
-        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
+
+        StartCoroutine(LeaveTimer());
+    }
+
+    IEnumerator LeaveTimer()
+    {
+        yield return new WaitForSeconds(timeToRegisterInside);
         
         ToggleRoom(false);
-
-        cam.ResetCameraSize();
-        cam.ResetCameraBounds();
-        cam.cameraCenter = null;
-        cam.lockToCenter = false;
     }
 
     public void ToggleRoom(bool val)
@@ -92,9 +77,39 @@ public class Room : MonoBehaviour
         } else if (active && !val)
         {
             OnRoomLeave?.Invoke();
+            if (light && !openLightsPermanently) StartCoroutine(CloseLights());
         }
 
         active = val;
+    }
+
+    IEnumerator OpenLights()
+    {
+        
+        float t = 0;
+        while (t < lightSwitchTime)
+        {
+            light.intensity = Mathf.Lerp(closeLightIntensity, openLightIntensity, t / lightSwitchTime);
+            
+            yield return new WaitForEndOfFrame();
+            t += Time.deltaTime;
+        }
+
+        light.intensity = openLightIntensity;
+    }
+    IEnumerator CloseLights()
+    {
+        
+        float t = 0;
+        while (t < lightSwitchTime)
+        {
+            light.intensity = Mathf.Lerp(openLightIntensity, closeLightIntensity, t / lightSwitchTime);
+            
+            yield return new WaitForEndOfFrame();
+            t += Time.deltaTime;
+        }
+
+        light.intensity = 0;
     }
 
     public void ToggleSpawns(bool val)
@@ -105,7 +120,7 @@ public class Room : MonoBehaviour
             return;
         }
 
-            if (!val) spawner.CancelInvoke();
+        if (!val) spawner.CancelInvoke();
         else spawner.StartSpawner();
     }
 }

@@ -6,12 +6,9 @@ public class Door : MonoBehaviour
 {
     public float openDelay = 0.5f;
     public float closeDelay = 0f;
-    public float lerpVal = 0.25f;
+    public Sprite openedSprite, closedSprite;
+    private SpriteRenderer sprite;
 
-    float desiredRot = 0;
-    float baseRot;
-
-    public float openRot = 90;
     public bool opened;
 
     Collider2D col;
@@ -19,13 +16,12 @@ public class Door : MonoBehaviour
     private void Awake()
     {
         col = GetComponent<Collider2D>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Start()
     {
-        baseRot = transform.rotation.eulerAngles.z;
-
-        AstarPath.active.UpdateGraphs(col.bounds, 1);
+        ToggleDoor(opened);
     }
 
     public void ToggleDoor(bool val)
@@ -35,20 +31,26 @@ public class Door : MonoBehaviour
 
         StartCoroutine(Toggle(val, delay));
     }
-
-    public void Update()
+    
+    [ContextMenu("ToggleDoor")]
+    public void ToggleDoor()
     {
-        desiredRot = opened ? 0 : openRot;
+        bool val = !opened;
+        
+        float delay = val ? closeDelay : openDelay;
+        if (closeDelay < 0.1f) delay = 0.1f;
 
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.LerpAngle(transform.rotation.eulerAngles.z, baseRot + desiredRot, lerpVal)));
+        StartCoroutine(Toggle(val, delay));
     }
 
-    
     IEnumerator Toggle(bool val, float delay)
     {
         yield return new WaitForSecondsRealtime(delay);
 
         opened = val;
+
+        sprite.sprite = opened ? openedSprite : closedSprite;
+        col.enabled = !opened;
 
         AstarPath.active.UpdateGraphs(col.bounds, 1);
     }

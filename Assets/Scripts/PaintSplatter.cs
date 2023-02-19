@@ -5,9 +5,11 @@ using UnityEngine;
 public class PaintSplatter : MonoBehaviour
 {
     SpriteRenderer spr;
+    public Sprite[] possibleSprites;
 
     // Start is called before the first frame update
-    public void Initialize(Sprite[] possibleSprites)
+    void Start() => Initialize(); 
+    public void Initialize()
     {
         spr = GetComponent<SpriteRenderer>();
 

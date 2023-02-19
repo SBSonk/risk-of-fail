@@ -7,7 +7,7 @@ using Pathfinding.Util;
 
 public class HudManager4 : MonoBehaviour
 {
-    public PlayerStatus player;
+    PlayerStatus player;
 
     [SerializeField] float barLerp = 0.25f;
 
@@ -31,6 +31,12 @@ public class HudManager4 : MonoBehaviour
     [SerializeField] Image dodgeBar;
 
     [SerializeField] Animator weaponAnim, avatarAnim;
+
+
+    private void Awake()
+    {
+        player = PlayerStatus.player;
+    }
 
     // Handle Player Avatar
     void PlayerAvatarAnimation(float amount)

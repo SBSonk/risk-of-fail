@@ -4,24 +4,31 @@ using UnityEngine;
 
 public class ObjectFade : MonoBehaviour
 {
+    [SerializeField] Transform anchor;
     [SerializeField] private float fullFadeOpacity = 0.25f;
     float targetOpacity = 1;
 
     SpriteRenderer sprite;
     Transform player;
-    [SerializeField] float yPos;
 
     private void Start()
     {
         sprite = GetComponentInChildren<SpriteRenderer>();
         player = PlayerStatus.player.transform;
-
-        yPos = sprite.bounds.min.y + .5f;
     }
     
     private void FixedUpdate()
     {
-        targetOpacity = player.position.y > yPos ? fullFadeOpacity : 1;
+        if (player.position.y > anchor.position.y)
+        {
+            targetOpacity = fullFadeOpacity;
+            sprite.sortingOrder = 3;
+        }
+        else
+        {
+            targetOpacity = 1;
+            sprite.sortingOrder = 0;
+        }
 
         Color c = sprite.color;
         c.a = Mathf.Lerp(c.a, targetOpacity, .25f);

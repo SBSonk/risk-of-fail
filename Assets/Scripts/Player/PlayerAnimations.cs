@@ -77,6 +77,10 @@ public class PlayerAnimations : MonoBehaviour
         Vector2 mousePos = ((Vector2)transform.position - InputManager.mousePosition).normalized;
         float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
 
+        // Change weapon sorting order depending on if its in front or behind
+        if (currentDir == Directions.down || currentDir == Directions.bottomRight || currentDir == Directions.bottomLeft) weaponSprite.sortingOrder = 1;
+        else weaponSprite.sortingOrder = 0;
+
         weapon.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.LerpAngle(weapon.rotation.eulerAngles.z, angle, weaponLerp)));
     } 
 
@@ -165,35 +169,44 @@ public class PlayerAnimations : MonoBehaviour
     }
 
     [ContextMenu("kYS")]
-    void DeathAnimation()
-    {
-        GetComponent<PlayerMovement>().enabled = false;
-        GetComponent<PlayerShooting>().enabled = false;
-        canSwitchAnimation = false;
-        StartCoroutine(DeathAnim());
-    }
+    void DeathAnimation() => StartCoroutine(DeathAnim());
 
     IEnumerator DeathAnim()
     {
+        canSwitchAnimation = false;
+        sprite.sortingOrder = 100;
+        weaponSprite.enabled = false;
         animator.Play("player_death");
-
-        // Disable collision
-        // Fling player
 
         GetComponent<Collider2D>().enabled = false;
 
         var rb = GetComponent<Rigidbody2D>();
         rb.drag = 0.01f;
         rb.gravityScale = 3;
-        rb.AddForce(new Vector3(-10, 20), ForceMode2D.Impulse);
+        rb.AddForce(new Vector3(Mathf.Sign(rb.velocity.x) * 10, 20), ForceMode2D.Impulse);
 
+
+        float t = 0;
+        while (t < 0.25f)
+        {
+            Time.timeScale = Mathf.Lerp(1, .5f, t / .25f);
+            yield return new WaitForEndOfFrame();
+            t += Time.deltaTime;
+        }
         Time.timeScale = 0.5f;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
+
+        t = 0;
+        while (t < 0.25f)
+        {
+            Time.timeScale = Mathf.Lerp(.5f, 1, t / .25f);
+            yield return new WaitForEndOfFrame();
+            t += Time.deltaTime;
+        }
+        Time.timeScale = 1;
 
         results.ShowResults();
-
-        Time.timeScale = 1;
     }
 
     void MeleeAnimation()
@@ -269,7 +282,6 @@ public class PlayerAnimations : MonoBehaviour
                 break;
 
             case Directions.left:
-                print("test");
                 dashExp.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 270));
                 break;
         }
@@ -280,7 +292,6 @@ public class PlayerAnimations : MonoBehaviour
         StartCoroutine(DashTrail());
 
         StopCursorFollow();
-        weaponAnimator.CrossFade("Hold" + animType, .25f);
 
         CameraShakerHandler.Shake(dodgeScreenshake);
     }
@@ -338,8 +349,7 @@ public class PlayerAnimations : MonoBehaviour
         else if (input.y < -0.5f) final = Directions.down;
         */
         float angle = Mathf.Atan2(input.y, input.x) * Mathf.Rad2Deg; // angle in degrees
-        int direction = Mathf.RoundToInt(angle / 45.0f) % 8; // direction as integer from 0 to 7
-        print(direction);
+        int direction = Mathf.RoundToInt(angle / 45.0f) % 8; // direction as integer from 0 to 7 // this is cap, chatgpt lied, it uses negative ints for up and down
 
         switch(direction)
         {

@@ -59,6 +59,7 @@ public class Room : MonoBehaviour
     {
         if (!collision.CompareTag("Player")) return;
 
+        if (light && !openLightsPermanently) StartCoroutine(CloseLights());
         StartCoroutine(LeaveTimer());
     }
 
@@ -77,7 +78,6 @@ public class Room : MonoBehaviour
         } else if (active && !val)
         {
             OnRoomLeave?.Invoke();
-            if (light && !openLightsPermanently) StartCoroutine(CloseLights());
         }
 
         active = val;

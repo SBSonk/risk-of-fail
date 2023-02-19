@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2795926449995363967}
   - component: {fileID: 2795926449995363964}
   - component: {fileID: 3287707082623298206}
+  - component: {fileID: 8739630200567976037}
   m_Layer: 9
   m_Name: Plant
   m_TagString: CanBePenetrated
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2795926449995363966}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 24.045322, y: 11.93588, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -47,7 +48,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00000047683716, y: -0.5843601}
+  m_Offset: {x: -0.00000047683716, y: -0.6488557}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -58,7 +59,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.149075, y: 0.8421459}
+  m_Size: {x: 1.149075, y: 0.7131548}
   m_EdgeRadius: 0
 --- !u!114 &3287707082623298206
 MonoBehaviour:
@@ -77,6 +78,20 @@ MonoBehaviour:
   - {fileID: 2145968971, guid: e0de8608e44fc234cbcd044c10c21cdf, type: 3}
   - {fileID: 1690544454, guid: e0de8608e44fc234cbcd044c10c21cdf, type: 3}
   spriteRenderer: {fileID: 2805035103419664998}
+--- !u!114 &8739630200567976037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2795926449995363966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b1c667efc21a04b876bd9e68511478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anchor: {fileID: 0}
+  fullFadeOpacity: 0.3
 --- !u!1 &7201766927567866230
 GameObject:
   m_ObjectHideFlags: 0

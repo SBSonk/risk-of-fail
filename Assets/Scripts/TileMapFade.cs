@@ -10,12 +10,14 @@ public class TileMapFade : MonoBehaviour
     float targetOpacity = 1;
 
     Tilemap sprite;
+    TilemapRenderer spriteRenderer;
     Transform player;
     [SerializeField] float yPos;
 
     private void Start()
     {
         sprite = GetComponent<Tilemap>();
+        spriteRenderer = GetComponent<TilemapRenderer>();
         player = PlayerStatus.player.transform;
 
         yPos = transform.TransformPoint(0, yPos, 0).y;
@@ -23,7 +25,16 @@ public class TileMapFade : MonoBehaviour
     
     private void FixedUpdate()
     {
-        targetOpacity = player.position.y > yPos ? fullFadeOpacity : 1;
+        if (player.position.y > yPos)
+        {
+            targetOpacity = fullFadeOpacity;
+            spriteRenderer.sortingOrder = 2;
+        }
+        else
+        {
+            targetOpacity = 1;
+            spriteRenderer.sortingOrder = 0;
+        }
 
         Color c = sprite.color;
         c.a = Mathf.Lerp(c.a, targetOpacity, .25f);
@@ -32,6 +43,5 @@ public class TileMapFade : MonoBehaviour
 
 
         sprite.color = Color.Lerp(sprite.color, c, 0.5f);
-
     }
 }

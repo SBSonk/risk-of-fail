@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -32,10 +33,9 @@ public class HudManager4 : MonoBehaviour
 
     [SerializeField] Animator weaponAnim, avatarAnim;
 
-
     private void Awake()
     {
-        player = PlayerStatus.player;
+        player = GameObject.Find("Player").GetComponent<PlayerStatus>();
     }
 
     // Handle Player Avatar
@@ -149,6 +149,7 @@ public class HudManager4 : MonoBehaviour
         player.onHit.AddListener(PlayerAvatarJump);
 
         UpdateWeaponIcon(shooting.GetHeldWeapon());
+        
     }
 
     private void Update()

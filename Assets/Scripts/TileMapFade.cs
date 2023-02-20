@@ -7,6 +7,7 @@ using UnityEngine.Tilemaps;
 public class TileMapFade : MonoBehaviour
 {
     [SerializeField] private float fullFadeOpacity = 0.25f;
+    [SerializeField] private int fullSort = 2, normalSort = 0;
     float targetOpacity = 1;
 
     Tilemap sprite;
@@ -28,12 +29,12 @@ public class TileMapFade : MonoBehaviour
         if (player.position.y > yPos)
         {
             targetOpacity = fullFadeOpacity;
-            spriteRenderer.sortingOrder = 2;
+            spriteRenderer.sortingOrder = fullSort;
         }
         else
         {
             targetOpacity = 1;
-            spriteRenderer.sortingOrder = 0;
+            spriteRenderer.sortingOrder = normalSort;
         }
 
         Color c = sprite.color;

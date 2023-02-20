@@ -35,6 +35,7 @@ public class PlayerAnimations : MonoBehaviour
     public ShakeData shoveShake;
 
     [SerializeField] ResultsScreen results;
+    private Rigidbody2D rb;
 
     public void Initialize(PlayerShooting shooting, PlayerMovement movement, PlayerStatus status)
     {
@@ -55,6 +56,8 @@ public class PlayerAnimations : MonoBehaviour
 
         trailTime = trail.time;
         trail.time = 0;
+
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -92,7 +95,7 @@ public class PlayerAnimations : MonoBehaviour
         // Flip if going left
         sprite.flipX = currentDir == Directions.left || currentDir == Directions.upperLeft || currentDir == Directions.bottomLeft;
 
-        if (input.magnitude > 0)
+        if (input.magnitude > 0 && rb.velocity.magnitude > 0)
         {
             switch (currentDir)
             {

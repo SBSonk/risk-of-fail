@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObjectFade : MonoBehaviour
 {
     [SerializeField] Transform anchor;
+    [SerializeField] private int fullSort = 3, normalSort = 0;
     [SerializeField] private float fullFadeOpacity = 0.25f;
     float targetOpacity = 1;
 
@@ -19,15 +20,17 @@ public class ObjectFade : MonoBehaviour
     
     private void FixedUpdate()
     {
+        if (!anchor) return;
+        
         if (player.position.y > anchor.position.y)
         {
             targetOpacity = fullFadeOpacity;
-            sprite.sortingOrder = 3;
+            sprite.sortingOrder = fullSort;
         }
         else
         {
             targetOpacity = 1;
-            sprite.sortingOrder = 0;
+            sprite.sortingOrder = normalSort;
         }
 
         Color c = sprite.color;

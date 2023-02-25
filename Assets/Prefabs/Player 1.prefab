@@ -211,14 +211,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 944821670489408419}
-  m_LocalRotation: {x: -0, y: -0, z: 0.06975647, w: 0.9975641}
-  m_LocalPosition: {x: 1.321, y: -0.735, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8595313808324617705}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 8}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &944821670840488771
 GameObject:
   m_ObjectHideFlags: 0
@@ -10648,7 +10648,6 @@ MonoBehaviour:
   canSwitchAnimation: 1
   sprites:
   - {fileID: 1425222227697381013}
-  - {fileID: 0}
   dashExp: {fileID: 9075388481170040465}
   animator: {fileID: 37731129591966012}
   weaponAnimator: {fileID: 944821671474158208}
@@ -11064,7 +11063,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6bbe2596c56e96944b2d023917c51258, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11436,7 +11435,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5074490128049060846}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

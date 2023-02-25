@@ -6,17 +6,16 @@ public class Door : MonoBehaviour
 {
     public float openDelay = 0.5f;
     public float closeDelay = 0f;
-    public Sprite openedSprite, closedSprite;
-    private SpriteRenderer sprite;
 
     public bool opened;
+    private Animator anim;
 
     Collider2D col;
 
     private void Awake()
     {
         col = GetComponent<Collider2D>();
-        sprite = GetComponentInChildren<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
 
     private void Start()
@@ -49,7 +48,9 @@ public class Door : MonoBehaviour
 
         opened = val;
 
-        sprite.sprite = opened ? openedSprite : closedSprite;
+        if (opened) anim.Play("OpenDoor", 0, 0);
+        else anim.Play("CloseDoor", 0, 0);
+        
         col.enabled = !opened;
 
         AstarPath.active.UpdateGraphs(col.bounds, 1);

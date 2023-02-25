@@ -299,10 +299,10 @@ TextureImporter:
       name: ClassroomDoor
       rect:
         serializedVersion: 2
-        x: 120
+        x: 128
         y: 56
-        width: 32
-        height: 48
+        width: 16
+        height: 33
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2362,7 +2362,7 @@ TextureImporter:
         width: 11
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2383,7 +2383,7 @@ TextureImporter:
         width: 14
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2391,6 +2391,27 @@ TextureImporter:
       bones: []
       spriteID: 1ddb83371e90d7d42be109a471f0ca2f
       internalID: -510162831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Window
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 209
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 9, y: 9, z: 9, w: 9}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96955cc556af3c741a627b300c0af2f7
+      internalID: 1364000861
       vertices: []
       indices: 
       edges: []
@@ -2451,6 +2472,7 @@ TextureImporter:
       classroomandhallwaysprites_96: 1724833859
       classroomandhallwaysprites_20: 708238398
       classroomandhallwaysprites_129: 162383273
+      Window: 1364000861
       IndustrialDoorOpen: -1273377570
       ChairS: 276809000
       BlueBook2: 51513512

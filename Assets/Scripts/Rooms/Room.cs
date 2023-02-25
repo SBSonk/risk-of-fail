@@ -85,11 +85,11 @@ public class Room : MonoBehaviour
 
     IEnumerator OpenLights()
     {
-        
         float t = 0;
+        float startIntensity = light.intensity;
         while (t < lightSwitchTime)
         {
-            light.intensity = Mathf.Lerp(closeLightIntensity, openLightIntensity, t / lightSwitchTime);
+            light.intensity = Mathf.Lerp(startIntensity, openLightIntensity, t / lightSwitchTime);
             
             yield return new WaitForEndOfFrame();
             t += Time.deltaTime;
@@ -99,11 +99,11 @@ public class Room : MonoBehaviour
     }
     IEnumerator CloseLights()
     {
-        
         float t = 0;
+        float startIntensity = light.intensity;
         while (t < lightSwitchTime)
         {
-            light.intensity = Mathf.Lerp(openLightIntensity, closeLightIntensity, t / lightSwitchTime);
+            light.intensity = Mathf.Lerp(startIntensity, closeLightIntensity, t / lightSwitchTime);
             
             yield return new WaitForEndOfFrame();
             t += Time.deltaTime;
@@ -123,4 +123,10 @@ public class Room : MonoBehaviour
         if (!val) spawner.CancelInvoke();
         else spawner.StartSpawner();
     }
+
+    public void SetOpenLightIntensity(float intensity) => openLightIntensity = intensity;
+    public void SetCloseLightIntensity(float intensity) => closeLightIntensity = intensity;
+    public void SetOpenLightsPermanently(bool val) => openLightsPermanently = val;
+    public void OpenLightsExt() => StartCoroutine(OpenLights()); // Bad function names
+    public void CloseLightsExt() => StartCoroutine(CloseLights());
 }

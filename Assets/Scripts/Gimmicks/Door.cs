@@ -10,11 +10,11 @@ public class Door : MonoBehaviour
     public bool opened;
     private Animator anim;
 
-    Collider2D col;
+    //Collider2D col;
 
     private void Awake()
     {
-        col = GetComponent<Collider2D>();
+        //col = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
     }
 
@@ -42,7 +42,7 @@ public class Door : MonoBehaviour
         StartCoroutine(Toggle(val, delay));
     }
 
-    IEnumerator Toggle(bool val, float delay)
+    protected virtual IEnumerator Toggle(bool val, float delay)
     {
         yield return new WaitForSecondsRealtime(delay);
 
@@ -51,8 +51,8 @@ public class Door : MonoBehaviour
         if (opened) anim.Play("OpenDoor", 0, 0);
         else anim.Play("CloseDoor", 0, 0);
         
-        col.enabled = !opened;
+        //col.enabled = !opened;
 
-        AstarPath.active.UpdateGraphs(col.bounds, 1);
+        //AstarPath.active.UpdateGraphs(col.bounds, 1);
     }
 }

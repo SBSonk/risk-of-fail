@@ -264,6 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1655006073}
   - component: {fileID: 1655006074}
+  - component: {fileID: 5156434087913626387}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -338,6 +339,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!61 &5156434087913626387
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655006072}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.00000047683716, y: 0.13424015}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1, y: 2.0625}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.0052011, y: 0.25743294}
+  m_EdgeRadius: 0
 --- !u!1 &6748336955732884982
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,7 +374,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6748336955732884981}
-  - component: {fileID: 6748336955732884980}
   - component: {fileID: 6748336955732884986}
   - component: {fileID: 2102334177}
   - component: {fileID: 1660989661}
@@ -375,32 +401,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &6748336955732884980
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6748336955732884982}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.00000047683716, y: -1.2076149}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.5062723, y: 0.8701477}
-  m_EdgeRadius: 0
 --- !u!114 &6748336955732884986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,8 +415,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openDelay: 0.5
   closeDelay: 0
-  openedSprite: {fileID: 1415289245, guid: e0de8608e44fc234cbcd044c10c21cdf, type: 3}
-  closedSprite: {fileID: 79551042, guid: e0de8608e44fc234cbcd044c10c21cdf, type: 3}
   opened: 1
 --- !u!114 &2102334177
 MonoBehaviour:
@@ -436,7 +434,7 @@ MonoBehaviour:
   fullFadeOpacity: 0.2
 --- !u!95 &1660989661
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -453,4 +451,4 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0

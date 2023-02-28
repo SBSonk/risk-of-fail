@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520a509457374ad4e84309512ed392b6, type: 3}
+  m_Name: Giita
+  m_EditorClassIdentifier: 
+  shopData:
+    weaponDescription: 
+    weaponCost: 0
+    weaponStrength: 0
+    weaponFireRate: 0
+    weaponPiercing: 0
+  hud:
+    sprite: {fileID: -819839473, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
+    offset: {x: 60, y: 0}
+    crossHair:
+      sprite: {fileID: 21300000, guid: c044f041ba1579d46af06ec60c6ee0be, type: 3}
+      rotationSpeed: 0
+  weaponSprite: {fileID: -1930132459, guid: 029748d8b485815449e86ac764a554b6, type: 3}
+  baseDamage: 55
+  bulletSpread: 0
+  knockbackAmount: 15
+  stunLength: 0.2
+  defaultAmmoCount: 100
+  ammoPerShot: 1
+  clipSize: 1
+  reloadLength: 1.3
+  fireRate: 0
+  auto: 0
+  shootShake: {fileID: 11400000, guid: c182fb5cc6ba4cf43b41ad856b62f48f, type: 2}
+  hitScreenShake: {fileID: 0}
+  effects:
+    animType: 68
+    shootSounds:
+    - {fileID: 8300000, guid: 9b3e9a67de983a249a9d2991f067c8ae, type: 3}
+    - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
+    - {fileID: 8300000, guid: a966d22bc9b693943bbe2b87359c1550, type: 3}
+    - {fileID: 8300000, guid: 631e48f507d9c9d49a5cc81238e4b8f3, type: 3}
+    reloadSounds: []
+    shoveSounds:
+    - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
+    - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
+    enemyHitSounds: []
+    wallHitSounds: []
+  swingDelay: 0.1
+  hitArea: 2.25

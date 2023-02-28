@@ -100,6 +100,8 @@ public class Spawning2 : MonoBehaviour
             Quaternion.identity, transform).GetComponent<Enemy>();
 
         _enemy.onEnemyDeath.AddListener(enemyDeath);
+        OnEnemySpawn?.Invoke();
+        
     }
 
     // Reduce enemy count when an enemy dies

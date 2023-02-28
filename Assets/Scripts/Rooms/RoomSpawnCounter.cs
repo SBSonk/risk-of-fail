@@ -17,6 +17,6 @@ public class RoomSpawnCounter : MonoBehaviour
         {
             OnCounterComplete?.Invoke();
             active = false;
+            }
         }
-    }
 }

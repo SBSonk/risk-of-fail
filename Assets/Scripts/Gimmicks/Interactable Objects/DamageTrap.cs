@@ -10,6 +10,7 @@ public class DamageTrap : WalkableTrap
     public ShakeData triggerShake;
     public string animationName;
     public Animator animator;
+    public Collider2D collider;
     
     public UnityEvent<List<Alive>> OnTrapDamage;
     public UnityEvent TrapDamage;
@@ -33,5 +34,7 @@ public class DamageTrap : WalkableTrap
         
         if (damageSound) damageSound.PlaySFX();
         if (triggerShake) CameraShakerHandler.Shake(triggerShake);
+        
+        AstarPath.active.UpdateGraphs(collider.bounds, 0.5f);  
     }
 }    

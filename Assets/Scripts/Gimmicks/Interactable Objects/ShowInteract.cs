@@ -7,7 +7,7 @@ public class ShowInteract : MonoBehaviour
     public float fadeTime = 0.1f;
     public SpriteRenderer outline, interactIcon;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
 
@@ -17,7 +17,7 @@ public class ShowInteract : MonoBehaviour
         StartCoroutine(SprFunctions.Fade(interactIcon, interactIcon.color, Color.white, fadeTime));
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    protected virtual void OnTriggerExit2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
         StopAllCoroutines();

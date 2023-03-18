@@ -73,7 +73,7 @@ public class SprFunctions
         sprite.color = finalColor;
     }
     
-    public static IEnumerator Fade(TextMeshProUGUI text, Color startColor, Color finalColor, float t)
+    public static IEnumerator Fade(TMP_Text text, Color startColor, Color finalColor, float t)
     {
         text.color = startColor;
         Color color = startColor;

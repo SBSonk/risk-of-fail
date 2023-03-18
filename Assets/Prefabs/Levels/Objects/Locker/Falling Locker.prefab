@@ -4946,7 +4946,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -1385430248, guid: dc3c3c812aefc054aac08bad710bb45a, type: 3}
-  m_Color: {r: 0, g: 0.5566038, b: 0.0038135345, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4973,7 +4973,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.5, y: 4.1}
+    oldSize: {x: 1.5, y: 4}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5141,7 +5141,8 @@ GameObject:
   - component: {fileID: 1111552539038829506}
   - component: {fileID: 6318659893219392350}
   - component: {fileID: 6908021882811348406}
-  m_Layer: 0
+  - component: {fileID: 888013645}
+  m_Layer: 9
   m_Name: Falling Locker
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -5227,6 +5228,7 @@ MonoBehaviour:
   triggerShake: {fileID: 11400000, guid: 00182005e0d4abe46b329cb6b128950a, type: 2}
   animationName: LockerFall
   animator: {fileID: 369752598}
+  collider: {fileID: 6318659893219392350}
   OnTrapDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -5257,3 +5259,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6318659893219392350}
+        m_TargetAssemblyTypeName: UnityEngine.Collider2D, UnityEngine
+        m_MethodName: set_isTrigger
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &888013645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8340104992148651709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183748dd497aa473a98ff0cd8cb67fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 6382102221331017502
+  updateError: 1
+  checkTime: 0.2

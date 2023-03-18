@@ -59,19 +59,21 @@ public class WrittenWorksAttack : MonoBehaviour
         switch (mode)
         {
             case AIMode.idle:
-                ai.canMove = false;
                 if (distanceToPlayer <= wakeDistance) switchState(AIMode.pathing);
+
+                Idle();
                 break;
 
             case AIMode.pathing:
                 if (distanceToPlayer <= rushDistance) switchState(AIMode.pushing);
-        
-                ai.destination = playerPositionToFollow();
+
+                Pathing();
                 break;
 
             case AIMode.pushing:
                 if (distanceToPlayer > rushDistance) switchState(AIMode.pathing);
 
+                Pushing();
                 /*if (self.canSeePlayer && canDash && distanceToPlayer >= minDashDistance && distanceToPlayer <= maxDashDistance)
                 {
                     if (!dashQueued)
@@ -86,15 +88,32 @@ public class WrittenWorksAttack : MonoBehaviour
 
             case AIMode.attacking:
                 // disable movement for a few ms
-
                 // attack
                 // check if player is near
-                if (canAttack) StartCoroutine(SwipeAttack());
- 
-
                 //if (distance > rushDistance) switchState(AIMode.pathing);
+
+                Attacking();
                 break;
         }
+    }
+
+    protected virtual void Idle() {
+        ai.canMove = false;
+    }
+    
+    protected virtual void Pathing()
+    {
+        ai.destination = playerPositionToFollow();
+    }
+
+    protected virtual void Pushing()
+    {
+        if (distanceToPlayer > rushDistance) switchState(AIMode.pathing);
+    }
+    
+    protected virtual void Attacking()
+    {
+        if (canAttack) StartCoroutine(SwipeAttack());
     }
 
     void OnTriggerEnter2D(Collider2D collision)

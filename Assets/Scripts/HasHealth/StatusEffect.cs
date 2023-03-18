@@ -11,6 +11,6 @@ public class StatusEffect : ScriptableObject
 
     public virtual void OnStatusTick(Alive target)
     {
-
+        
     }
 }

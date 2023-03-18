@@ -10,14 +10,14 @@ public class QuizAnimator : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private ParticleSystem deathParticles;
     
-    private Animator animator;
-    Enemy enemy;
-    AIPath pathing;
-    Directions dirFacing = Directions.down;
+    protected Animator animator;
+    protected Enemy enemy;
+    protected AIPath pathing;
+    protected Directions dirFacing = Directions.down;
 
     public bool canSwitchAnimations = true;
     
-    private void Start()
+    protected virtual void Start()
     {
         animator = GetComponent<Animator>();
         enemy = GetComponent<Enemy>();
@@ -42,9 +42,16 @@ public class QuizAnimator : MonoBehaviour
         {
             dirFacing = VectorToDir(pathing.velocity.normalized);
         }
+
+        WalkAnimation();
+    }
+
+    protected virtual void WalkAnimation()
+    {
+        if (!canSwitchAnimations) return;
         
         spriteRenderer.flipX = dirFacing == Directions.left;
-
+        
         switch (dirFacing)
         {
             case Directions.up:
@@ -65,8 +72,10 @@ public class QuizAnimator : MonoBehaviour
         }
     }
 
-    public void ShootAnimation()
+    public virtual void ShootAnimation()
     {
+        if (!canSwitchAnimations) return;
+        
         switch (dirFacing)
         {
             case Directions.up:
@@ -100,6 +109,8 @@ public class QuizAnimator : MonoBehaviour
     
     void StunAnimation(float duration) 
     {
+        if (!canSwitchAnimations) return;
+        
         switch (dirFacing)
         {
             case Directions.up:

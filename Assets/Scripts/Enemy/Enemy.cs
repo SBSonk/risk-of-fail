@@ -8,8 +8,8 @@ public class Enemy : Alive
     public bool canSeePlayer = false;
 
     [Header("Enemy")]
-    [SerializeField] EnemyType type = EnemyType.WrittenWorks;
-    [SerializeField] int killScore;
+    [SerializeField] protected EnemyType type = EnemyType.WrittenWorks;
+    [SerializeField] protected int killScore;
 
     [Header("Health Bar")]
     [SerializeField] GameObject hBarPrefab;
@@ -20,12 +20,12 @@ public class Enemy : Alive
     [SerializeField] float maxSpeed = 15;
     [SerializeField] float speed = 10;
     [SerializeField] float hbarLerp = 0.5f, StunRecoverTime = 0.125f;
-    float spawnTime;
+    protected float spawnTime;
 
     public MonoBehaviour attackScript;
     public Rigidbody2D rb;
 
-    GameObject healthParent;
+    protected GameObject healthParent;
     Transform healthBar;
     protected AIPath pathAI;
 

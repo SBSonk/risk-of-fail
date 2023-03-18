@@ -1,36 +1,55 @@
 using UnityEngine;
 using System.Collections;
 using Pathfinding;
+using UnityEngine.Events;
 
 public class QuarterlyAssessmentAttack : WrittenWorksAttack
 {
     public Animator EKUSPUROSION;
     public float dmg, stn;
+    private Alive self;
+
+    private float baseSpeed;
     // TODO: attacks
     // trigger explosion when killed, stuck, or hit the player
 
+    public UnityEvent ExplosionStart;
+    
     protected override void Start()
     {
         base.Start();
         
-        GetComponent<Alive>().onDeath.AddListener(() => StartCoroutine(Explode()));
+        self = GetComponent<Alive>();
+        self.onDeath.AddListener(() =>
+        {
+            ExplosionStart?.Invoke();
+            StartCoroutine(Explode());
+        });
+        baseSpeed = ai.maxSpeed;
     }
 
     protected override void AttackPlayer(Collider2D collision, float damage)
     {
-        // Normal Writtenwork Attack
-        base.AttackPlayer(collision, damage);
-
         // Explosion
-        StartCoroutine(Explode());
+        self.onDeath?.Invoke();
+    }
+
+    protected override void Pushing()
+    {
+        ai.maxSpeed = baseSpeed * 1.5f;
+        base.Pushing();
+    }
+
+    protected override void Pathing()
+    {
+        ai.maxSpeed = baseSpeed;
+        base.Pathing();
     }
 
     IEnumerator Explode()
     {
-        //gameObject.GetComponent<Indicator>().play();
-        EKUSPUROSION.GetComponent<Animator>().Play("Explosion Indicator");
+        ai.enabled = false;
         yield return new WaitForSeconds(2);
-        print("boom");
         Collider2D[] raycastHit = Physics2D.OverlapCircleAll(transform.position, 5);
         foreach (Collider2D r in raycastHit)
         {
@@ -41,8 +60,8 @@ public class QuarterlyAssessmentAttack : WrittenWorksAttack
                 alive.GiveDamage(dmg, stn);
             }
         }
-        yield break;
-
+        
+        Destroy(gameObject);
     }
     // TODO: Determine if the enemy is stuck
     // Explode

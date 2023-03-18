@@ -5088,14 +5088,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7580254655124039528}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 174331811955817907}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &3023861404400901020
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5137,7 +5137,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1001
-  m_Sprite: {fileID: -1326280369, guid: eb94c8d97ad6620409ce3d71c0815470, type: 3}
+  m_Sprite: {fileID: -1336718240, guid: e3c15e47d68fcd541b90052911096172, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5385,10 +5385,6 @@ MonoBehaviour:
   stunLength: -1
   pierces: 0
   bulletShake: {fileID: 0}
-  paintSprites:
-  - {fileID: -1064843907, guid: 746a6c31f0b34b64f81a689acbb86eb3, type: 3}
-  - {fileID: -1539092658, guid: 746a6c31f0b34b64f81a689acbb86eb3, type: 3}
-  - {fileID: -1566121145, guid: 746a6c31f0b34b64f81a689acbb86eb3, type: 3}
   paintPrefab: {fileID: 7882462747251512256, guid: 22f84720da771c44c88b02e7cc6836cd, type: 3}
   active: 1
   audioRandomizer: {fileID: 857425902714887575}

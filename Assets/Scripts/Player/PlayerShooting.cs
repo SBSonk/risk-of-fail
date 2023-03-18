@@ -20,6 +20,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] float shoveStunTime = 1f;
     [SerializeField] float shoveCooldown = 1f, shoveHitDelay = 0.25f;
     [SerializeField] float radius;
+    [SerializeField] private Projectile friendlyQuizBullet;
 
     public UnityEvent<InventoryWeapon> OnWeaponSwitch, OnAmmoUpdate;
     public UnityEvent OnShoot;
@@ -127,20 +128,19 @@ public class PlayerShooting : MonoBehaviour
                     rb.AddForce(shoveDir * shoveStrength, ForceMode2D.Impulse);
                 }
 
-            } else if (GetHeldWeapon().weapon is MeleeWeapon && h.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
+            } else if (h.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
             {
                 foreach (Collider2D c in hits)
                 {
                     if (c.TryGetComponent(out Rigidbody2D _rb) && c.TryGetComponent(out Projectile p) && p.active)
                     {
-                        _rb.velocity = Vector2.zero;
-                        _rb.AddForce(shoveDir * 3, ForceMode2D.Impulse);
+                        // Spawn Bullet
+                        Projectile bullet = Instantiate(friendlyQuizBullet, gunBarrel.position, gunBarrel.rotation);
 
-                        c.GetComponentInChildren<TrailRenderer>().startColor = Color.cyan;
+                        bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.right.normalized * 3, ForceMode2D.Impulse);
 
-                        // Convert to playerBullet
-                        c.gameObject.layer = LayerMask.NameToLayer("Bullet");
-                        p.GetComponent<Projectile>().damage = 60;
+                        // Delete Bullet
+                        Destroy(_rb.gameObject);
                     }
 
                 }

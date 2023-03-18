@@ -1,9 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using UnityEngine.Events;
 
 public class QuizAI : MonoBehaviour
 {
-    [Header("Shooting")]
+    [Header("Shooting")] [SerializeField] private Transform bulletPivot;
     [SerializeField] LayerMask los;
     [SerializeField] Gun weapon;
 
@@ -29,6 +32,8 @@ public class QuizAI : MonoBehaviour
     public AIMode mode = AIMode.pathing;
 
     Vector3 followDirection;
+
+    public UnityEvent OnShootStart;
 
     private void Start()
     {
@@ -127,7 +132,7 @@ public class QuizAI : MonoBehaviour
         float travelTime = distance / (weapon.bulletVelocity * Time.fixedDeltaTime);
 
         predictedPlayerPos = (predictedPlayerPos - transform.position) * travelTime;
-        transform.up = Vector3.Slerp(transform.up, predictedPlayerPos, .1f); // predict movement
+        bulletPivot.up = Vector3.Slerp(bulletPivot.up, predictedPlayerPos, .1f); // predict movement
 
         Debug.DrawLine(transform.position + transform.up, transform.position + (transform.up * 10), Color.red);
 
@@ -136,13 +141,21 @@ public class QuizAI : MonoBehaviour
             // Shoot at player
             if (canShoot)
             {
-                weapon.ShootWeapon(bulletSpawn);
-                shotsTaken++;
-
-                // Apply firerate cooldown
-                enableGunCooldown();
+                OnShootStart?.Invoke();
+                StartCoroutine(ShootWithDelay());
             }
         }
+    }
+
+    IEnumerator ShootWithDelay()
+    {
+        // Apply firerate cooldown
+        enableGunCooldown();
+        
+        yield return new WaitForSeconds(0.6f);
+        
+        weapon.ShootWeapon(bulletSpawn);
+        shotsTaken++;
     }
 
     void tryDodge()

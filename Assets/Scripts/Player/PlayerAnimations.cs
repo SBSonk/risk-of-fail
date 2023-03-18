@@ -97,31 +97,33 @@ public class PlayerAnimations : MonoBehaviour
 
         if (input.magnitude > 0 && rb.velocity.magnitude > 0)
         {
+            var inputDir = VectorToDir(InputManager.playerDirection);
+            
             switch (currentDir)
             {
                 case Directions.up:
                     animator.Play("walk_u");
                     break;
 
-                case Directions.upperRight:
+                /*case Directions.upperRight:
                     animator.Play("walk_ur");
                     break;
 
                 case Directions.upperLeft:
                     animator.Play("walk_ur");
-                    break;
+                    break;*/
 
                 case Directions.right:
                     animator.Play("walk_r");
                     break;
 
-                case Directions.bottomRight:
+                /*case Directions.bottomRight:
                     animator.Play("walk_dr");
                     break;
 
                 case Directions.bottomLeft:
                     animator.Play("walk_dr");
-                    break;
+                    break;*/
 
                 case Directions.down:
                     animator.Play("walk_d");
@@ -341,17 +343,12 @@ public class PlayerAnimations : MonoBehaviour
     Directions VectorToDir(Vector2 input)
     {
         Directions final = currentDir;
-        /*
-        if (input.x > 0.5f && input.y > 0.5f) final = Directions.upperRight;
-        else if (input.x > 0.5f && input.y < -0.5f) final = Directions.bottomLeft;
-        else if (input.x < 0.5f && input.y > 0.5f) final = Directions.upperRight;
-        else if (input.x < 0.5f && input.y < -0.5f) final = Directions.bottomLeft;
-        else if (input.x > 0.5f) final = Directions.right;
+        if (input.x > 0.5f) final = Directions.right;
         else if (input.x < -0.5f) final = Directions.left;
         else if (input.y > 0.5f) final = Directions.up;
         else if (input.y < -0.5f) final = Directions.down;
-        */
-        float angle = Mathf.Atan2(input.y, input.x) * Mathf.Rad2Deg; // angle in degrees
+        
+        /*float angle = Mathf.Atan2(input.y, input.x) * Mathf.Rad2Deg; // angle in degrees
         int direction = Mathf.RoundToInt(angle / 45.0f) % 8; // direction as integer from 0 to 7 // this is cap, chatgpt lied, it uses negative ints for up and down
 
         switch(direction)
@@ -387,7 +384,7 @@ public class PlayerAnimations : MonoBehaviour
             case 4:
                 final = Directions.left;
                 break;
-        }    
+        }    */
 
         return final;
     }   

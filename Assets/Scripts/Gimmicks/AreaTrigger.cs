@@ -44,7 +44,9 @@ public class AreaTrigger : MonoBehaviour
         
         ToggleArea(false);
     }
-    
+
+    public void SetInteractive(bool val) => interactable = val;
+
     public void ToggleArea(bool val)
     {
         if (!active && val)

@@ -13,10 +13,10 @@ public class RoomSpawnCounter : MonoBehaviour
 
         spawnsNeeded--;
 
-        if (spawnsNeeded == 0)
+        if (spawnsNeeded <= 0)
         {
             OnCounterComplete?.Invoke();
             active = false;
-            }
         }
+    }
 }

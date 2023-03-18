@@ -26,10 +26,13 @@ public class PickupBase : MonoBehaviour
 
     protected virtual void Start()
     {
-        // Destroy if not collected
-        Invoke("StartFlicker", lifetime - 3);
-        Destroy(transform.parent.gameObject, lifetime);
-
+        if (lifetime > 0)
+        {
+            // Destroy if not collected
+            Invoke("StartFlicker", lifetime - 3);
+            Destroy(transform.parent.gameObject, lifetime);
+        }
+        
         ActivateInSeconds(0.5f);
     }
 

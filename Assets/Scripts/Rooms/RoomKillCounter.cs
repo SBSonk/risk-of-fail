@@ -23,5 +23,7 @@ public class RoomKillCounter : MonoBehaviour
     {
         OnCounterComplete?.Invoke();
         active = false;
+        
+        print("f");
     }
 }

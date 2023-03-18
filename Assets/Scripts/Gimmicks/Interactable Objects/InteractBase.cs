@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,12 @@ public abstract class InteractBase : MonoBehaviour
 {
     public bool interactable = true, playerInRadius = false;
     public UnityEvent OnPlayerEnter, OnPlayerLeave;
+    private Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,6 +21,7 @@ public abstract class InteractBase : MonoBehaviour
         playerInRadius = true;
 
         OnPlayerEnter?.Invoke();
+        anim.Play("InRange");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -22,6 +30,7 @@ public abstract class InteractBase : MonoBehaviour
         playerInRadius = false;
 
         OnPlayerLeave?.Invoke();
+        anim.Play("OutRange");
     }
 
     private void Update()

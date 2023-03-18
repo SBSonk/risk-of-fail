@@ -1,7 +1,9 @@
+using System;
 using FirstGearGames.SmoothCameraShaker;
 using GameAudioScriptingEssentials;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -11,7 +13,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] Light2D _light;
     public Rigidbody2D rb;
     public GameObject sprite, shooter;
-
+    public bool keepAligned = false;
+    
     public float damage = 100, knockback = 10f, stunLength; // Should be set by the shooter script once instantiated
     public int pierces = 0;
     public ShakeData bulletShake;
@@ -29,6 +32,13 @@ public class Projectile : MonoBehaviour
     {
         _enemyHit = enemyHit;
         _wallHit = wallHit;
+    }
+
+    private void Update()
+    {
+        if (!keepAligned) return;
+        
+        sprite.transform.rotation = quaternion.identity;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

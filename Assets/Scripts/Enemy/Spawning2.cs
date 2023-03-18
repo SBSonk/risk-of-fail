@@ -62,8 +62,21 @@ public class Spawning2 : MonoBehaviour
         else Invoke("TrySpawn", respawnWaveTime);
     }
 
-    public void StopSpawner() => CancelInvoke();
+    public void StopSpawner()
+    {
+        CancelInvoke();
+    }
 
+    public void TrySpawn(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            TrySpawn();
+        }
+        
+        CancelInvoke();
+    }
+    
     void TrySpawn()
     {
         // Decide how much enemies to spawn

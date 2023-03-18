@@ -24,12 +24,12 @@ public class QuizWeapon : Gun
         projectile.damage = damage;
 
         // Apply damage count to bullet
-        TextMeshPro text = projectile.GetComponentInChildren<TextMeshPro>();
-        text.text = damage.ToString();
+        //TextMeshPro text = projectile.GetComponentInChildren<TextMeshPro>();
+        //text.text = damage.ToString();
 
         // TODO: Change bullet color from red to green depending on its final damage percentage compared to baseDamage
-        Color color = Color.Lerp(lowColor, highColor, (float) System.Math.Round(damage / baseDamage, 2));
-        text.color = color;
+        //Color color = Color.Lerp(lowColor, highColor, (float) System.Math.Round(damage / baseDamage, 2));
+        //text.color = color;
 
         // Pass HitAudio
         projectile.Initialize(effects.enemyHitSounds, effects.wallHitSounds);

@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ce9d97f3c6db14e9874ba3e6605c0e, type: 3}
   m_Name: Stylus
   m_EditorClassIdentifier: 
-  weaponName: Stylus
-  weaponDescription: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  weaponCost: 500
-  weaponStrength: 4
-  weaponFireRate: 2
-  weaponPiercing: 4
-  isWeaponObtained: 0
+  shopData:
+    weaponDescription: 
+    weaponCost: 0
+    weaponStrength: 0
+    weaponFireRate: 0
+    weaponPiercing: 0
   hud:
     sprite: {fileID: -203641607, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
     offset: {x: 0, y: 0}
@@ -26,21 +25,25 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: 198a1eee3590ca1418d7b3a22ba3c8cc, type: 3}
       rotationSpeed: 0
   weaponSprite: {fileID: -928998870, guid: aa706a9513e7ed4499d4445eba6fdf6c, type: 3}
-  baseDamage: 90
+  baseDamage: 50
   bulletSpread: 0.25
   knockbackAmount: 10
   stunLength: 0.5
   defaultAmmoCount: 100
-  hitScreenShake:
-    duration: 0.2
-    magnitude: 1
-    shakespeed: 0.05
-  ammoPerShot: 1
+  ammoPerShot: 2
   clipSize: 6
-  reloadLength: 0.5
+  reloadLength: 1
   fireRate: 0.5
   auto: 0
-  animType: 65
+  shootShake: {fileID: 11400000, guid: 6caba7f04f154e947b688247456a3713, type: 2}
+  hitScreenShake: {fileID: 0}
+  effects:
+    animType: 65
+    shootSounds: []
+    reloadSounds: []
+    shoveSounds: []
+    enemyHitSounds: []
+    wallHitSounds: []
   bulletVelocity: 6
   pierceAmount: 5
-  bullet: {fileID: 9076594935915685230, guid: eec705733f0199d4da8bad19d97b20f8, type: 3}
+  bullet: {fileID: 6573221642871026670, guid: eec705733f0199d4da8bad19d97b20f8, type: 3}

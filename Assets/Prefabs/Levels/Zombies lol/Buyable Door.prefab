@@ -278,6 +278,120 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 363232023}
   m_maskType: 0
+--- !u!1 &390856134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 390856135}
+  - component: {fileID: 390856137}
+  - component: {fileID: 390856136}
+  - component: {fileID: 5557844575904060398}
+  m_Layer: 9
+  m_Name: Buyable
+  m_TagString: CanBePenetrated
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &390856135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390856134}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4085214406198382074}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &390856137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390856134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b115fd4d9af9e64b89e53217c1ee875, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: 1
+  playerInRadius: 0
+  OnPlayerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerLeave:
+    m_PersistentCalls:
+      m_Calls: []
+  price: 250
+  OnPurchase:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4085214406198382069}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: ToggleDoor
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 309067650}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!70 &390856136
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390856134}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -1.4}
+  m_Size: {x: 4.731101, y: 4.731101}
+  m_Direction: 0
+--- !u!114 &5557844575904060398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390856134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a55e1158b64c7fa4db8cb3d0f9cde92a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 0.1
+  outline: {fileID: 309067653}
+  interactIcon: {fileID: 309067653}
+  priceText: {fileID: 363232022}
 --- !u!1 &4085214406198382073
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,9 +404,6 @@ GameObject:
   - component: {fileID: 4085214406198382069}
   - component: {fileID: 7284414545053164270}
   - component: {fileID: 7284414545225482450}
-  - component: {fileID: 6748336953836624541}
-  - component: {fileID: 6748336953836624540}
-  - component: {fileID: 355506469}
   m_Layer: 9
   m_Name: Buyable Door
   m_TagString: Untagged
@@ -315,6 +426,7 @@ Transform:
   - {fileID: 7284414546051661095}
   - {fileID: 7284414545760099223}
   - {fileID: 309067651}
+  - {fileID: 390856135}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -369,86 +481,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!70 &6748336953836624541
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4085214406198382073}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.4}
-  m_Size: {x: 4.731101, y: 4.731101}
-  m_Direction: 0
---- !u!114 &6748336953836624540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4085214406198382073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b115fd4d9af9e64b89e53217c1ee875, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactable: 1
-  playerInRadius: 0
-  OnPlayerEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  OnPlayerLeave:
-    m_PersistentCalls:
-      m_Calls: []
-  price: 250
-  OnPurchase:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4085214406198382069}
-        m_TargetAssemblyTypeName: Door, Assembly-CSharp
-        m_MethodName: ToggleDoor
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 309067650}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &355506469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4085214406198382073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a55e1158b64c7fa4db8cb3d0f9cde92a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeTime: 0.1
-  outline: {fileID: 309067653}
-  interactIcon: {fileID: 309067653}
-  priceText: {fileID: 363232022}
 --- !u!1 &7284414544794134775
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,7 +689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 4647221457684143573
+  uniqueID: 4733648797136229260
   updateError: 1
   checkTime: 0.2
 --- !u!1 &7284414545760099224

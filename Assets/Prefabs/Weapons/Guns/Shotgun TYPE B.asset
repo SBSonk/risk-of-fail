@@ -12,30 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8118bb953fa63e9469862453a8fbc52b, type: 3}
   m_Name: Shotgun TYPE B
   m_EditorClassIdentifier: 
-  weaponName: Brush DEBUG
-  weaponDescription: 
-  weaponCost: 0
-  weaponStrength: 0
-  weaponFireRate: 0
-  weaponPiercing: 0
-  isWeaponObtained: 0
-  hudElement: {fileID: 0}
-  crossHair: {fileID: 0}
+  shopData:
+    weaponDescription: 
+    weaponCost: 0
+    weaponStrength: 0
+    weaponFireRate: 0
+    weaponPiercing: 0
+  hud:
+    sprite: {fileID: 0}
+    offset: {x: 0, y: 0}
+    crossHair:
+      sprite: {fileID: 0}
+      rotationSpeed: 0
   weaponSprite: {fileID: 0}
   baseDamage: 0
   bulletSpread: 2
   knockbackAmount: 10
   stunLength: 0.25
   defaultAmmoCount: 100
-  hitScreenShake:
-    duration: 0.2
-    magnitude: 0.5
-    shakespeed: 0.05
   ammoPerShot: 1
   clipSize: -1
   reloadLength: 0
   fireRate: 0.2
   auto: 1
+  shootShake: {fileID: 0}
+  hitScreenShake: {fileID: 0}
+  effects:
+    animType: 65
+    shootSounds: []
+    reloadSounds: []
+    shoveSounds: []
+    enemyHitSounds: []
+    wallHitSounds: []
   bulletVelocity: 4
   pierceAmount: 2
   bullet: {fileID: 9076594935915685230, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}

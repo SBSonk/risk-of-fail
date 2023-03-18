@@ -299,11 +299,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2368033471186396237, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: slowdownDistance
-      value: 3.90625
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2368033471186396237, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: endReachedDistance
-      value: 2.34375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2368033471186396239, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: m_RootOrder
@@ -432,6 +432,14 @@ PrefabInstance:
     - target: {fileID: 4569185689618396685, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: m_Offset.y
       value: 1.1762686
+      objectReference: {fileID: 0}
+    - target: {fileID: 4800357687762280674, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6666625
+      objectReference: {fileID: 0}
+    - target: {fileID: 4800357687762280674, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8333375
       objectReference: {fileID: 0}
     - target: {fileID: 4800357687762280674, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: m_LocalPosition.y
@@ -666,7 +674,7 @@ MonoBehaviour:
       m_Calls: []
   dashIndicator: {fileID: 0}
   EKUSPUROSION: {fileID: 651265893}
-  dmg: 25
+  dmg: 35
   stn: 1
   ExplosionStart:
     m_PersistentCalls:

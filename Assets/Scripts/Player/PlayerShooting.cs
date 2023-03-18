@@ -12,6 +12,7 @@ public class PlayerShooting : MonoBehaviour
     List<InventoryWeapon> weaponPool;
     int currentWeaponIndex = 0;
 
+    public float reloadMultiplier = 1;
     public bool reloading;
     bool canShoot = true;
 
@@ -222,15 +223,17 @@ public class PlayerShooting : MonoBehaviour
     {
         var heldWep = GetHeldWeapon();
 
+        float reloadTime = heldWep.weapon.reloadLength / reloadMultiplier;
+
         if (heldWep.weapon is MeleeWeapon)
         {
             // Begin Reload
-            OnReloadStart?.Invoke(heldWep.weapon.reloadLength);
+            OnReloadStart?.Invoke(reloadTime);
 
             canShoot = false;
             reloading = true;
 
-            yield return new WaitForSeconds(heldWep.weapon.reloadLength);
+            yield return new WaitForSeconds(reloadTime);
 
             heldWep.clip = heldWep.weapon.clipSize; 
 
@@ -244,7 +247,7 @@ public class PlayerShooting : MonoBehaviour
 
             // Begin Reload
             sfxManager.PlayReloadSound();
-            OnReloadStart?.Invoke(heldWep.weapon.reloadLength);
+            OnReloadStart?.Invoke(reloadTime);
 
             canShoot = false;
             reloading = true;
@@ -253,7 +256,7 @@ public class PlayerShooting : MonoBehaviour
             weaponPool[currentWeaponIndex].pool += weaponPool[currentWeaponIndex].clip;
             weaponPool[currentWeaponIndex].clip = 0;
 
-            yield return new WaitForSeconds(heldWep.weapon.reloadLength);
+            yield return new WaitForSeconds(reloadTime);
 
             // Cancel if stopped reloading
             if (reloading)

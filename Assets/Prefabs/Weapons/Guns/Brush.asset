@@ -12,37 +12,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8118bb953fa63e9469862453a8fbc52b, type: 3}
   m_Name: Brush
   m_EditorClassIdentifier: 
-  weaponName: Brush
-  weaponDescription: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  weaponCost: 80
-  weaponStrength: 3
-  weaponFireRate: 1
-  weaponPiercing: 2
-  isWeaponObtained: 0
+  shopData:
+    weaponDescription: 
+    weaponCost: 0
+    weaponStrength: 0
+    weaponFireRate: 0
+    weaponPiercing: 0
   hud:
     sprite: {fileID: -819839473, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
     offset: {x: 0, y: 0}
     crossHair:
       sprite: {fileID: 21300000, guid: 91a27f21dd1f6844197adda4c80a7828, type: 3}
       rotationSpeed: 0
-  weaponSprite: {fileID: -1930132459, guid: 029748d8b485815449e86ac764a554b6, type: 3}
-  baseDamage: 12.5
+  weaponSprite: {fileID: -2059183097, guid: e3c15e47d68fcd541b90052911096172, type: 3}
+  baseDamage: 9
   bulletSpread: 1.5
   knockbackAmount: 5
   stunLength: 0.25
   defaultAmmoCount: 100
-  hitScreenShake:
-    duration: 0.2
-    magnitude: 0.75
-    shakespeed: 0.1
   ammoPerShot: 2
   clipSize: 8
   reloadLength: 1
   fireRate: 0.35
   auto: 0
-  animType: 66
-  bulletVelocity: 2.5
-  pierceAmount: 1
-  bullet: {fileID: 9076594935915685230, guid: 3b6a12f0749763a4f9c969724cb14340, type: 3}
+  shootShake: {fileID: 11400000, guid: 6caba7f04f154e947b688247456a3713, type: 2}
+  hitScreenShake: {fileID: 0}
+  effects:
+    animType: 65
+    shootSounds: []
+    reloadSounds: []
+    shoveSounds: []
+    enemyHitSounds: []
+    wallHitSounds: []
+  bulletVelocity: 3
+  pierceAmount: 0
+  bullet: {fileID: 6573221642871026670, guid: 3b6a12f0749763a4f9c969724cb14340, type: 3}
   pelletCount: 3
-  pelletSpread: 2.5
+  pelletSpread: 3

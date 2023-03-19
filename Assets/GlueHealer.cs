@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
+using UnityEngine.Events;
+
 
 public class GlueHealer : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class GlueHealer : MonoBehaviour
 
     public float healRadius = 10f;
     public float healFactor = 2;
+
+    public UnityEvent OnHeal;
 
     private void Awake()
     {
@@ -41,19 +45,19 @@ public class GlueHealer : MonoBehaviour
                 {
                     if (e.TryGetComponent<Enemy>(out var enemy))
                     {
-                        nearby.Add(enemy);
+                        if (enemy != self) nearby.Add(enemy);
                     }
                 }
 
                 if (!target)
                 {
-                    if (nearby.Count > 1)
+                    if (nearby.Count > 0)
                     {
-                        ai.destination = nearby[1].transform.position;
+                        ai.destination = nearby[0].transform.position;
                         // find enemy with lowest health
-                        float lowestHealth = nearby[1].health;
-
-                        for (int i = 1; i < nearby.Count; i++)
+                        float lowestHealth = nearby[0].health;
+                        target = nearby[0];
+                        for (int i = 0; i < nearby.Count; i++)
                         {
                             if (nearby[i].health < lowestHealth) target = nearby[i];
                         }
@@ -66,12 +70,6 @@ public class GlueHealer : MonoBehaviour
                 else
                 {
                     ai.destination = target.transform.position;
-
-                    // Finish healing
-                    if (Mathf.RoundToInt(target.health) == Mathf.RoundToInt(target.maxHealth))
-                    {
-                        target = null;
-                    }
                 }
                 break;
         }
@@ -81,12 +79,17 @@ public class GlueHealer : MonoBehaviour
     {
         while (true)
         {
-            if (target && target.health < target.maxHealth)
+            if (target && target.health < target.maxHealth && ai.reachedDestination)
+            {
+                OnHeal?.Invoke();
+            }
+
+            yield return new WaitForSeconds(.5f);
+            
+            if (target && target.health < target.maxHealth && ai.reachedDestination)
             {
                 target.GiveHealth(healFactor);
             }
-
-            yield return new WaitForSeconds(.25f);
         }
     }
 

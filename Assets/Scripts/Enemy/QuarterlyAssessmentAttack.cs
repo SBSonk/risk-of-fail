@@ -11,6 +11,7 @@ public class QuarterlyAssessmentAttack : WrittenWorksAttack
 
     private float baseSpeed;
 
+    public Transform explosionParticles;
     public UnityEvent ExplosionStart;
     
     protected override void Start()
@@ -60,6 +61,7 @@ public class QuarterlyAssessmentAttack : WrittenWorksAttack
             }
         }
         
+        Instantiate(explosionParticles, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
     // TODO: Determine if the enemy is stuck

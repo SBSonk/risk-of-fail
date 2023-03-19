@@ -137,7 +137,7 @@ public class QuizAnimator : MonoBehaviour
     
     void EnableAnimations() { canSwitchAnimations = true; }
     
-    Directions VectorToDir(Vector2 input)
+    protected Directions VectorToDir(Vector2 input)
     {
         Directions final = dirFacing;
 

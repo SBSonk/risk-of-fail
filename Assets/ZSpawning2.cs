@@ -95,6 +95,10 @@ public class ZSpawning2 : MonoBehaviour
                 enemies[2].spawnWeight = 1;
                 break;
             
+            case 10: // unlock healer
+                enemies[3].spawnWeight = 1;
+                break;
+            
             case 13: // increase max count
                 maxEnemiesSpawnedIn = 18;
                 break;

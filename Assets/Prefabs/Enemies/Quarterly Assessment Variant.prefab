@@ -319,11 +319,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2368033471186396239, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.9843724
+      value: 5.209528
       objectReference: {fileID: 0}
     - target: {fileID: 2368033471186396239, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.0375156
+      value: -6.833168
       objectReference: {fileID: 0}
     - target: {fileID: 2368033471186396239, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: m_LocalPosition.z
@@ -549,7 +549,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &1221863226
 Animator:
   serializedVersion: 5
@@ -676,6 +676,7 @@ MonoBehaviour:
   EKUSPUROSION: {fileID: 651265893}
   dmg: 35
   stn: 1
+  explosionParticles: {fileID: 8191692283635366481, guid: 8e35612058f77b047999b0cec2ffa089, type: 3}
   ExplosionStart:
     m_PersistentCalls:
       m_Calls:

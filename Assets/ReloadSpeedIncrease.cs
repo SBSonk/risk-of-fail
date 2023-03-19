@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReloadSpeedIncrease : MonoBehaviour
+public class ReloadSpeedIncrease : HealthIncrease
 {
-    public void Purchase()
+    protected override void Effect()
     {
         PlayerStatus.player.pShooting.reloadMultiplier = 1.5f;
     }

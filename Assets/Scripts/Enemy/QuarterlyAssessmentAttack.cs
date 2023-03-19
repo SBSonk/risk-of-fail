@@ -10,8 +10,6 @@ public class QuarterlyAssessmentAttack : WrittenWorksAttack
     private Alive self;
 
     private float baseSpeed;
-    // TODO: attacks
-    // trigger explosion when killed, stuck, or hit the player
 
     public UnityEvent ExplosionStart;
     

@@ -17,11 +17,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1655909933527385782, guid: eb7bce4b02b4b79499baa1e92d535b4b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 48.967274
+      value: 48.13689
       objectReference: {fileID: 0}
     - target: {fileID: 1655909933527385782, guid: eb7bce4b02b4b79499baa1e92d535b4b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.9472613
+      value: 3.696432
       objectReference: {fileID: 0}
     - target: {fileID: 1655909933527385782, guid: eb7bce4b02b4b79499baa1e92d535b4b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -56,8 +56,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1655909934086636873, guid: eb7bce4b02b4b79499baa1e92d535b4b, type: 3}
+      propertyPath: price
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655909934086636873, guid: eb7bce4b02b4b79499baa1e92d535b4b, type: 3}
       propertyPath: OnPurchase.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: -7724684188788578566}
+    - target: {fileID: 1655909934086636873, guid: eb7bce4b02b4b79499baa1e92d535b4b, type: 3}
+      propertyPath: OnPurchase.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SpeedIncrease, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1869450556, guid: eb7bce4b02b4b79499baa1e92d535b4b, type: 3}
@@ -79,3 +87,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7545581c81003d2408619233627b4e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  perkIcon: {fileID: -1599220513, guid: c78b7c69bd6b3ad4a8fa9dbf90192f12, type: 3}

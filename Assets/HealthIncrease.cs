@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class HealthIncrease : MonoBehaviour
 {
+    public Sprite perkIcon;
+    
     public void Purchase()
+    {
+        Effect();
+        
+        PerkSlots.main.AddIcon(perkIcon);
+    }
+
+    protected virtual void Effect()
     {
         PlayerStatus.player.health = 100;
         PlayerStatus.player.maxHealth = 100;

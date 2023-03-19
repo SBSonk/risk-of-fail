@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageIncrease : MonoBehaviour
+public class DamageIncrease : HealthIncrease
 {
-    public void Purchase()
+    protected override void Effect()
     {
         PlayerStatus.player.pShooting.damageMultiplier = 2;
     }

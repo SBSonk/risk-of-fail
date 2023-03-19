@@ -27,7 +27,7 @@ public class QuizAnimator : MonoBehaviour
         enemy.onEnemyDeath.AddListener(DeathAnimation);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         // Sprites
         sprite.position = transform.position + new Vector3(0, -0.75f);
@@ -42,7 +42,7 @@ public class QuizAnimator : MonoBehaviour
         {
             dirFacing = VectorToDir(pathing.velocity.normalized);
         }
-
+    
         WalkAnimation();
     }
 

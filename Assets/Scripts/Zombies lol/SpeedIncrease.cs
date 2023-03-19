@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedIncrease : MonoBehaviour
+public class SpeedIncrease : HealthIncrease
 {
-    public void Purchase()
+    protected override void Effect()
     {
         PlayerStatus.player.pMovement.moveSpeed = 5500;
     }

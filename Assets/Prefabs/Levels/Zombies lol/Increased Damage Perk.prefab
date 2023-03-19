@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2696536597213143658
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5106794771661871252, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106794771661871252, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 40.217274
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106794771661871252, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.9472613
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106794771661871252, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106794771661871252, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106794771661871252, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106794771661871252, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106794771661871252, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106794771661871252, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106794771661871252, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106794771661871252, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106794771661871253, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106794771661871275, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
+      propertyPath: m_Name
+      value: Increased Damage Perk
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106794772422253419, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
+      propertyPath: OnPurchase.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5106794771661871255, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
+--- !u!1 &7184085238434282177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5106794771661871275, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
+  m_PrefabInstance: {fileID: 2696536597213143658}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2152736416792503814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7184085238434282177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea38359f8bf1d54497536daf3c87f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

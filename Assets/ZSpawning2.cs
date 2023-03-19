@@ -30,6 +30,8 @@ public class ZSpawning2 : MonoBehaviour
 
     IEnumerator SpawnLoop()
     {
+        Enemy.globalEnemyHealthScale = 1;
+        
         while (true)
         {
             yield return new WaitForSeconds(roundBufferTime);
@@ -75,32 +77,32 @@ public class ZSpawning2 : MonoBehaviour
         if (round % 3 == 0)
         {
             // Scale enemy health
+            Enemy.globalEnemyHealthScale *= 1.1f;
         }
         
         // Unlock types
         switch(round)
         {
-            case 3: // Unlock tank
-                
+            case 3: // Unlock quiz
+                enemies[1].spawnWeight = 2;
+                break;
+            
+            case 5: // make spawns more dense
+                maxSpawnsPerWave = 3;
                 break;
 
-            case 6: // Increase tanks
+            case 8: // unlock fudgee bar
+                enemies[2].spawnWeight = 1;
                 break;
-
-            case 9: // Spawn Heli
-                
+            
+            case 13: // increase max count
+                maxEnemiesSpawnedIn = 18;
                 break;
-
-            case 12: // Increase Heli
+            
+            case 15: // make spawns faster
+                minRespawnWaveTime = .75f;
+                maxRespawnWaveTime = 1.5f;
                 break;
-
-            case 15: // Spawn Mech
-                
-                break;
-
-            case 18: // Increase Mech
-                break;
-
         }
         
         // Scale enemy amounts

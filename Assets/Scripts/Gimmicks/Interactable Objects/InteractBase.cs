@@ -21,7 +21,9 @@ public abstract class InteractBase : MonoBehaviour
         playerInRadius = true;
 
         OnPlayerEnter?.Invoke();
-        anim.Play("InRange");
+        
+        if (anim)
+            anim.Play("InRange");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -30,7 +32,9 @@ public abstract class InteractBase : MonoBehaviour
         playerInRadius = false;
 
         OnPlayerLeave?.Invoke();
-        anim.Play("OutRange");
+        
+        if (anim)
+            anim.Play("OutRange");
     }
 
     private void Update()

@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Buyable : InteractBase
 {
     public int price = 250;
+    public bool repeatable = true;
     public UnityEvent OnPurchase;
     
     protected override void PlayerInteract()
@@ -15,6 +16,8 @@ public class Buyable : InteractBase
         {
             LevelStats.main.GiveScore(-price);
             OnPurchase?.Invoke();
+
+            if (!repeatable) interactable = false;
         }
     }
 }

@@ -5,6 +5,8 @@ using System.Collections;
 
 public class Enemy : Alive
 {
+    public static float globalEnemyHealthScale = 1;
+    
     public bool canSeePlayer = false;
 
     [Header("Enemy")]
@@ -35,6 +37,9 @@ public class Enemy : Alive
 
     protected void Awake()
     {
+        health *= globalEnemyHealthScale;
+        maxHealth *= globalEnemyHealthScale;
+        
         // Initialize AI
         pathAI = GetComponent<AIPath>();
         healthParent = Instantiate(hBarPrefab);

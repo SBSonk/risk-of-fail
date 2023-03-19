@@ -27,7 +27,7 @@ public abstract class Weapon : ScriptableObject
     public WeaponFX effects;
     
     // Left click attack
-    public virtual void ShootWeapon(Transform player)
+    public virtual void ShootWeapon(Transform player, float multiplier = 1)
     {
         return;
     }

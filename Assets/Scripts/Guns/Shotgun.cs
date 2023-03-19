@@ -6,12 +6,12 @@ public class Shotgun : Gun
     public int pelletCount = 3;
     public float pelletSpread = 25; // Pellet angle in degrees
 
-    public override void ShootWeapon(Transform player)
+    public override void ShootWeapon(Transform player, float multiplier = 1)
     {
         for (int i = -pelletCount; i < pelletCount; i++)
         {
             // Spawn projectile
-            GameObject bulletShot = SpawnBullet(player);
+            GameObject bulletShot = SpawnBullet(player, multiplier);
             Rigidbody2D rb = bulletShot.GetComponent<Rigidbody2D>();
 
             // Iterate spawn position

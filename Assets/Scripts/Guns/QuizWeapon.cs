@@ -7,7 +7,7 @@ public class QuizWeapon : Gun
     public int minDamage;
     public Color lowColor = Color.red, highColor = Color.green;
 
-    protected override GameObject SpawnBullet(Transform player)
+    protected override GameObject SpawnBullet(Transform player, float multiplier = 1)
     {
         // Spawn projectile
         var projectile = Instantiate(bullet, position: player.position, rotation: player.rotation);
@@ -21,7 +21,7 @@ public class QuizWeapon : Gun
 
         // Decide damage count
         float damage = Mathf.RoundToInt(Random.Range(minDamage, baseDamage));
-        projectile.damage = damage;
+        projectile.damage = damage * multiplier;
 
         // Apply damage count to bullet
         //TextMeshPro text = projectile.GetComponentInChildren<TextMeshPro>();

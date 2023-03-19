@@ -10,10 +10,10 @@ public class Gun : Weapon
 
     public static GameObject lastBulletShot;
 
-    public override void ShootWeapon(Transform player)
+    public override void ShootWeapon(Transform player, float multiplier = 1)
     {
         // Spawn projectile
-        lastBulletShot = SpawnBullet(player);
+        lastBulletShot = SpawnBullet(player, multiplier);
         Rigidbody2D bulletShot = lastBulletShot.GetComponent<Rigidbody2D>();
 
         // Apply velocity to bullet
@@ -24,13 +24,13 @@ public class Gun : Weapon
     }
 
     // Spawns and returns the bullet gameobject
-    protected virtual GameObject SpawnBullet(Transform player)
+    protected virtual GameObject SpawnBullet(Transform player, float multiplier = 1)
     {
         // Spawn projectile
         var projectile = Instantiate(bullet, position: player.position, rotation: player.rotation);
 
         // Pass on bullet damage
-        projectile.damage = baseDamage;
+        projectile.damage = baseDamage * multiplier;
         projectile.knockback = knockbackAmount;
         projectile.stunLength = stunLength;
         projectile.shooter = player.gameObject;

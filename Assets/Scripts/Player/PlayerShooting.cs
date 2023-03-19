@@ -15,6 +15,7 @@ public class PlayerShooting : MonoBehaviour
     public float reloadMultiplier = 1;
     public bool reloading;
     bool canShoot = true;
+    public float damageMultiplier = 1;
 
     [Header("Shoving")]
     [SerializeField] float shoveStrength;
@@ -214,7 +215,7 @@ public class PlayerShooting : MonoBehaviour
 
     void ShootGun(Gun g)
     {
-        g.ShootWeapon(gunBarrel);
+        g.ShootWeapon(gunBarrel, damageMultiplier);
 
         OnShoot?.Invoke();
     }

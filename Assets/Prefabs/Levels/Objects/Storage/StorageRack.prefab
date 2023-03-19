@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5977376598671815124}
   - component: {fileID: 5977376598671815125}
   - component: {fileID: 5977376598671815122}
-  - component: {fileID: 1815977150306060208}
   m_Layer: 0
   m_Name: StorageRack
   m_TagString: Untagged
@@ -102,20 +101,3 @@ MonoBehaviour:
   fullSort: 3
   normalSort: 0
   fullFadeOpacity: 0.25
---- !u!114 &1815977150306060208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5977376598671815123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73ead1c0bc7937a47be1fcdc6a13978d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: -1121721615, guid: e0de8608e44fc234cbcd044c10c21cdf, type: 3}
-  - {fileID: 145645612, guid: e0de8608e44fc234cbcd044c10c21cdf, type: 3}
-  - {fileID: -210787748, guid: e0de8608e44fc234cbcd044c10c21cdf, type: 3}
-  spriteRenderer: {fileID: 5977376598671815125}

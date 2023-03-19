@@ -50,6 +50,7 @@ public class QuarterlyAssessmentAttack : WrittenWorksAttack
     {
         ai.enabled = false;
         yield return new WaitForSeconds(2);
+        
         Collider2D[] raycastHit = Physics2D.OverlapCircleAll(transform.position, 5);
         foreach (Collider2D r in raycastHit)
         {

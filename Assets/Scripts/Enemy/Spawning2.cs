@@ -11,7 +11,7 @@ public class Spawning2 : MonoBehaviour
     [SerializeField] ushort minSpawnsPerWave = 1, maxSpawnsPerWave = 2;
     [SerializeField] float spawnPadding = 5f;
     [SerializeField] Transform[] spawnTransforms;
-    [SerializeField] enemySpawn[] enemies;
+    [SerializeField] EnemySpawn[] enemies;
     [SerializeField] bool spawnOnStart;
 
     int enemiesKilled = 0;
@@ -105,7 +105,7 @@ public class Spawning2 : MonoBehaviour
         Invoke("TrySpawn", Random.Range(minRespawnWaveTime, respawnWaveTime));
     }
 
-    void SpawnEnemy(enemySpawn enemy)
+    void SpawnEnemy(EnemySpawn enemy)
     {
         // Choose where to spawn
         int point = Random.Range(0, enabledSpawns.Count);
@@ -132,16 +132,16 @@ public class Spawning2 : MonoBehaviour
             }
         }
     }
+}
 
-    [System.Serializable]
-    public struct enemySpawn
-    {
-        public EnemyType type;
-        public GameObject prefab;
-        [Range(0, 100)]
-        public int spawnChance; // Spawn chance percentage
-        public ushort alive, maxAlive;
-    }
+[System.Serializable]
+public struct EnemySpawn
+{
+    public EnemyType type;
+    public GameObject prefab;
+    [Range(0, 100)]
+    public int spawnChance; // Spawn chance percentage
+    public ushort alive, maxAlive;
 }
 
 [System.Serializable]

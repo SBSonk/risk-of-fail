@@ -33,7 +33,7 @@ public class Enemy : Alive
 
     SpriteRenderer[] healthBarSprites;
 
-    protected void Start()
+    protected void Awake()
     {
         // Initialize AI
         pathAI = GetComponent<AIPath>();

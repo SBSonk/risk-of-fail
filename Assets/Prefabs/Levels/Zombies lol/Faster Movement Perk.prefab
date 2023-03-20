@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1655909933527385736, guid: eb7bce4b02b4b79499baa1e92d535b4b, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655909933527385736, guid: eb7bce4b02b4b79499baa1e92d535b4b, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655909933527385736, guid: eb7bce4b02b4b79499baa1e92d535b4b, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655909933527385736, guid: eb7bce4b02b4b79499baa1e92d535b4b, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 4.75
+      objectReference: {fileID: 0}
     - target: {fileID: 1655909933527385737, guid: eb7bce4b02b4b79499baa1e92d535b4b, type: 3}
       propertyPath: m_Name
       value: Faster Movement Perk
@@ -17,11 +33,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1655909933527385782, guid: eb7bce4b02b4b79499baa1e92d535b4b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 48.13689
+      value: 45.88689
       objectReference: {fileID: 0}
     - target: {fileID: 1655909933527385782, guid: eb7bce4b02b4b79499baa1e92d535b4b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.696432
+      value: 40.446434
       objectReference: {fileID: 0}
     - target: {fileID: 1655909933527385782, guid: eb7bce4b02b4b79499baa1e92d535b4b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -55,6 +71,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1655909933527385783, guid: eb7bce4b02b4b79499baa1e92d535b4b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -464815433, guid: f2aeee2c007b6384fa1d3e537045befa, type: 3}
     - target: {fileID: 1655909934086636873, guid: eb7bce4b02b4b79499baa1e92d535b4b, type: 3}
       propertyPath: price
       value: 2000
@@ -67,6 +87,10 @@ PrefabInstance:
       propertyPath: OnPurchase.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SpeedIncrease, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 5774744497598873407, guid: eb7bce4b02b4b79499baa1e92d535b4b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 075130f3b2ac03446853d1560c4e7ff0, type: 2}
     m_RemovedComponents:
     - {fileID: 1869450556, guid: eb7bce4b02b4b79499baa1e92d535b4b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: eb7bce4b02b4b79499baa1e92d535b4b, type: 3}

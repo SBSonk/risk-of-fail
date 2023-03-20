@@ -28,9 +28,9 @@ public class Buttonfunctions : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public static void Play()
+    public static void Play(int sceneNum)
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(sceneNum);
     }
 
     public static void MainMenu()

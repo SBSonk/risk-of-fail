@@ -3,7 +3,7 @@ guid: dc9eca566f2670546a98196b185ccd0b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,6 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -122,9 +123,9 @@ TextureImporter:
         x: 2
         y: 158
         width: 20
-        height: 47
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 51
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -143,9 +144,9 @@ TextureImporter:
         x: 24
         y: 179
         width: 46
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,8 +166,8 @@ TextureImporter:
         y: 172
         width: 23
         height: 41
-      alignment: 9
-      pivot: {x: 0.5, y: 0.17073171}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -186,8 +187,8 @@ TextureImporter:
         y: 172
         width: 10
         height: 41
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -207,8 +208,8 @@ TextureImporter:
         y: 173
         width: 24
         height: 25
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -228,8 +229,8 @@ TextureImporter:
         y: 165
         width: 17
         height: 33
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -268,10 +269,10 @@ TextureImporter:
         serializedVersion: 2
         x: 24
         y: 119
-        width: 64
-        height: 48
-      alignment: 6
-      pivot: {x: 0, y: 0}
+        width: 72
+        height: 41
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -291,8 +292,8 @@ TextureImporter:
         y: 153
         width: 10
         height: 17
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -309,11 +310,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 24
-        y: 69
-        width: 35
-        height: 48
-      alignment: 6
-      pivot: {x: 0, y: 0}
+        y: 75
+        width: 42
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -334,7 +335,7 @@ TextureImporter:
         width: 9
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -342,6 +343,27 @@ TextureImporter:
       bones: []
       spriteID: 8de983f1a79c23c4aabb0c8eb47bfea9
       internalID: -529672133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clinic test_0
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 215
+        width: 17
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e79d98617e21d3458a2dc2e7b023520
+      internalID: -907608478
       vertices: []
       indices: 
       edges: []
@@ -357,21 +379,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      FoldableCurtainsTemp: 1980531351
-      MedicineCupboardTempS: 617357089
-      clinic test_1: -990807863
-      MedicineCupboardTemp: -2106703203
-      FoldableCurtainsTempS: -400658404
       BedTemp: -1949789357
+      BedTempS: -2030556709
       CounterTemp: -1185407533
-      clinic test_4: -1609030219
-      SpinnyChairTemp: -371840856
-      clinic test_3: 463187484
-      clinic test_2: -103715479
       CounterTempS: -1288465406
       FaucetTemp: -2032293616
-      BedTempS: -2030556709
       FaucetTempS: 1384943276
+      FoldableCurtainsTemp: 1980531351
+      FoldableCurtainsTempS: -400658404
+      MedicineCupboardTemp: -2106703203
+      MedicineCupboardTempS: 617357089
+      SpinnyChairTemp: -371840856
+      clinic test_0: -907608478
+      clinic test_1: -990807863
+      clinic test_2: -103715479
+      clinic test_3: 463187484
+      clinic test_4: -1609030219
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

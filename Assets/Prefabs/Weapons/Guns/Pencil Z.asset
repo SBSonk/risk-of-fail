@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2ce9d97f3c6db14e9874ba3e6605c0e, type: 3}
-  m_Name: Pen
+  m_Name: Pencil Z
   m_EditorClassIdentifier: 
   shopData:
     weaponDescription: 
@@ -19,22 +19,22 @@ MonoBehaviour:
     weaponFireRate: 0
     weaponPiercing: 0
   hud:
-    sprite: {fileID: -797842033, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
+    sprite: {fileID: 1909206577, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
     offset: {x: 0, y: 0}
     crossHair:
-      sprite: {fileID: 21300000, guid: 1750bb5ded5b30d4db197733c4259edc, type: 3}
+      sprite: {fileID: 21300000, guid: 356967556be0e904c8c4e72af6a40310, type: 3}
       rotationSpeed: 0
-  weaponSprite: {fileID: 715719437, guid: e3c15e47d68fcd541b90052911096172, type: 3}
-  baseDamage: 20
+  weaponSprite: {fileID: -1336718240, guid: e3c15e47d68fcd541b90052911096172, type: 3}
+  baseDamage: 25
   bulletSpread: 0.5
-  knockbackAmount: 5
-  stunLength: 0.15
-  defaultAmmoCount: 96
+  knockbackAmount: 3
+  stunLength: 0.1
+  defaultAmmoCount: 64
   ammoPerShot: 1
-  clipSize: 12
-  reloadLength: 0.9
-  fireRate: 0.125
-  auto: 1
+  clipSize: 8
+  reloadLength: 0.75
+  fireRate: 0.15
+  auto: 0
   shootShake: {fileID: 11400000, guid: 6caba7f04f154e947b688247456a3713, type: 2}
   hitScreenShake: {fileID: 0}
   effects:
@@ -42,7 +42,9 @@ MonoBehaviour:
     shootSounds:
     - {fileID: 8300000, guid: 3686c0fbeeb9ff146b41d1344aae942a, type: 3}
     - {fileID: 8300000, guid: 3686c0fbeeb9ff146b41d1344aae942a, type: 3}
-    reloadSounds: []
+    reloadSounds:
+    - {fileID: 8300000, guid: e8fb72ae3d354be40840114c4ba47210, type: 3}
+    - {fileID: 8300000, guid: e8fb72ae3d354be40840114c4ba47210, type: 3}
     shoveSounds:
     - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
     - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
@@ -54,6 +56,6 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 3cb087bc9a806ac4a947713641f8badb, type: 3}
   weaponScale: {x: 1, y: 1, z: 1}
   weaponOffset: {x: 0, y: 0, z: 0}
-  bulletVelocity: 6
+  bulletVelocity: 4
   pierceAmount: 0
-  bullet: {fileID: 6573221642871026670, guid: 0fa32434bd889f24d9ca3e494f9e8a89, type: 3}
+  bullet: {fileID: 4519855712770121969, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}

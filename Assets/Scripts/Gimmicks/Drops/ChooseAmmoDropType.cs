@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Rendering.Universal;
+using Random = UnityEngine.Random;
 
 public class ChooseAmmoDropType : MonoBehaviour
 {
     AmmoPickup pickup;
+    public DropObject drop;
     [SerializeField] List<AmmoDrops> drops;
 
     public void InitializeAmmo()
@@ -24,8 +27,17 @@ public class ChooseAmmoDropType : MonoBehaviour
         }
 
         // Choose drop to drop
-        int rand = Random.Range(0, drops.Count);
+        try
+        {
+            int rand = Random.Range(0, drops.Count);
+            pickup.drop = drops[rand];
+        }
+        catch (Exception e)
+        {
+            Destroy(transform.parent.gameObject);
+        }
+        
 
-        pickup.drop = drops[rand];
+        
     }
 }

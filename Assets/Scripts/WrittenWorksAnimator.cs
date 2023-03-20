@@ -190,8 +190,7 @@ public class WrittenWorksAnimator : MonoBehaviour
 
     public void DeathAnimation()
     {
-        deathParticles.transform.SetParent(null);
-        Destroy(deathParticles.gameObject, 2f);
+        //deathParticles.transform.SetParent(null);
         deathParticles.Play();
     }
 }

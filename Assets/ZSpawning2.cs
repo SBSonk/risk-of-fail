@@ -112,7 +112,7 @@ public class ZSpawning2 : MonoBehaviour
     void RoundComplete()
     {
         // Every 3 rounds
-        if (round % 5 == 0)
+        if (round % 4 == 0)
         {
             // Scale enemy health
             Enemy.globalEnemyHealthScale *= 1.1f;

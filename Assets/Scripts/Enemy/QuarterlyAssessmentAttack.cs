@@ -7,7 +7,6 @@ public class QuarterlyAssessmentAttack : WrittenWorksAttack
 {
     public Animator EKUSPUROSION;
     public float dmg, stn;
-    private Alive self;
 
     private float baseSpeed;
 
@@ -18,7 +17,7 @@ public class QuarterlyAssessmentAttack : WrittenWorksAttack
     {
         base.Start();
         
-        self = GetComponent<Alive>();
+        self = GetComponent<Enemy>();
         self.onDeath.AddListener(() =>
         {
             ExplosionStart?.Invoke();

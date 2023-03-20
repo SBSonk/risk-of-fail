@@ -5199,9 +5199,9 @@ MonoBehaviour:
   _overrideArcSettings: 1
   _noRepeats: 1
   _randomPitch: 1
-  _minPitch: 0.75
+  _minPitch: 1
   _maxPitch: 1.25
-  _volume: 1
+  _volume: 0.75
   _loop: 0
   _priority: 128
   _stereoPan: 0
@@ -5380,6 +5380,7 @@ MonoBehaviour:
   rb: {fileID: 3875927629597518374}
   sprite: {fileID: 7580254655124039528}
   shooter: {fileID: 0}
+  keepAligned: 0
   damage: -1
   knockback: -1
   stunLength: -1
@@ -5388,6 +5389,8 @@ MonoBehaviour:
   paintPrefab: {fileID: 7882462747251512256, guid: 22f84720da771c44c88b02e7cc6836cd, type: 3}
   active: 1
   audioRandomizer: {fileID: 857425902714887575}
+  _enemyHit: []
+  _wallHit: []
 --- !u!70 &1664095409968331097
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

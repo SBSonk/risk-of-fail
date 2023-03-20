@@ -319,11 +319,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2368033471186396239, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.209528
+      value: 4.0682745
       objectReference: {fileID: 0}
     - target: {fileID: 2368033471186396239, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.833168
+      value: -4.111142
       objectReference: {fileID: 0}
     - target: {fileID: 2368033471186396239, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: m_LocalPosition.z
@@ -618,6 +618,7 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
+  deathSound: {fileID: 2700227365419083299, guid: 461172d6e2450ca4c8ca45efc6af47f5, type: 3}
   canSeePlayer: 0
   type: 2
   killScore: 50

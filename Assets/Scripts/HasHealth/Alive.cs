@@ -21,7 +21,8 @@ public abstract class Alive : MonoBehaviour
 
     public UnityEvent<float> onHit, onStunned, onHeal;
     public UnityEvent onDeath;
-
+    public AudioSource deathSound;
+    
     // Applies damage and returns damage taken
     public float GiveDamage(float amount, float stunLength, StatusEffect effect = null, bool giveRawDamage = false)
     {
@@ -106,6 +107,8 @@ public abstract class Alive : MonoBehaviour
     {
         dead = true; 
         onDeath?.Invoke();
+        
+        if (deathSound) Instantiate(deathSound);
         Destroy(gameObject); 
     }
 

@@ -32,7 +32,7 @@ MonoBehaviour:
   defaultAmmoCount: 32
   ammoPerShot: 1
   clipSize: 8
-  reloadLength: 0.5
+  reloadLength: 0.75
   fireRate: 0.15
   auto: 0
   shootShake: {fileID: 11400000, guid: 6caba7f04f154e947b688247456a3713, type: 2}
@@ -43,17 +43,19 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 3686c0fbeeb9ff146b41d1344aae942a, type: 3}
     - {fileID: 8300000, guid: 3686c0fbeeb9ff146b41d1344aae942a, type: 3}
     reloadSounds:
-    - {fileID: 8300000, guid: 646687c4d383fad4c8bc60758f6be90d, type: 3}
-    - {fileID: 8300000, guid: 314a338dcb78c0744bb574b4723d96c3, type: 3}
+    - {fileID: 8300000, guid: e8fb72ae3d354be40840114c4ba47210, type: 3}
+    - {fileID: 8300000, guid: e8fb72ae3d354be40840114c4ba47210, type: 3}
     shoveSounds:
     - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
     - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
     enemyHitSounds:
-    - {fileID: 8300000, guid: 4f5bc895b5cf9644aa8ba8f25f6e9bcc, type: 3}
-    - {fileID: 8300000, guid: 4f5bc895b5cf9644aa8ba8f25f6e9bcc, type: 3}
+    - {fileID: 8300000, guid: 094e9f8f5f44384499ecb24c89440042, type: 3}
+    - {fileID: 8300000, guid: 094e9f8f5f44384499ecb24c89440042, type: 3}
     wallHitSounds:
-    - {fileID: 8300000, guid: 4f5bc895b5cf9644aa8ba8f25f6e9bcc, type: 3}
-    - {fileID: 8300000, guid: 4f5bc895b5cf9644aa8ba8f25f6e9bcc, type: 3}
+    - {fileID: 8300000, guid: 3cb087bc9a806ac4a947713641f8badb, type: 3}
+    - {fileID: 8300000, guid: 3cb087bc9a806ac4a947713641f8badb, type: 3}
+  weaponScale: {x: 1, y: 1, z: 1}
+  weaponOffset: {x: 0, y: 0, z: 0}
   bulletVelocity: 4
   pierceAmount: 0
   bullet: {fileID: 4519855712770121969, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}

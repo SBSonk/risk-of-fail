@@ -239,6 +239,8 @@ public class PlayerAnimations : MonoBehaviour
     void ChangeWeaponSprite(InventoryWeapon w)
     {        
         weaponSprite.sprite = w.weapon.weaponSprite;
+        weaponSprite.transform.localPosition = w.weapon.weaponOffset;
+        weaponSprite.transform.localScale = w.weapon.weaponScale;
 
         heldWeapon = w.weapon;
 

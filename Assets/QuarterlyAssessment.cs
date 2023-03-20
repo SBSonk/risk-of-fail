@@ -23,6 +23,12 @@ public class QuarterlyAssessment : Enemy
         dead = true; 
         onDeath?.Invoke();
         
+        Instantiate(deathSound);
         Destroy(healthParent);
+    }
+
+    public void TriggerDeath()
+    {
+        Death();
     }
 }

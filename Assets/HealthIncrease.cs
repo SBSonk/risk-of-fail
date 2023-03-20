@@ -9,8 +9,12 @@ public class HealthIncrease : MonoBehaviour
     public void Purchase()
     {
         Effect();
+
+        if (TryGetComponent<Animator>(out var anim))
+        {   
+            anim.Play("Bought");
+        }
         
-        GetComponent<Animator>().Play("Bought");
         PerkSlots.main.AddIcon(perkIcon);
     }
 

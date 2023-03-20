@@ -134,10 +134,10 @@ MonoBehaviour:
   _mixerGroup: {fileID: 0}
   _overrideArcSettings: 1
   _noRepeats: 1
-  _randomPitch: 1
-  _minPitch: 0.75
-  _maxPitch: 1.25
-  _volume: 1
+  _randomPitch: 0
+  _minPitch: 1
+  _maxPitch: 1
+  _volume: 0.8
   _loop: 0
   _priority: 128
   _stereoPan: 0
@@ -468,7 +468,7 @@ MonoBehaviour:
   _randomPitch: 1
   _minPitch: 0.75
   _maxPitch: 1.25
-  _volume: 1
+  _volume: 0.7
   _loop: 0
   _priority: 128
   _stereoPan: 0
@@ -10495,7 +10495,7 @@ MonoBehaviour:
   _randomPitch: 1
   _minPitch: 0.75
   _maxPitch: 1.25
-  _volume: 1
+  _volume: 0.5
   _loop: 0
   _priority: 128
   _stereoPan: 0
@@ -10694,6 +10694,7 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
+  deathSound: {fileID: 2700227365419083299, guid: 8681d48ae7bf9be4fb3d6cdfae781137, type: 3}
   pMovement: {fileID: 0}
   pShooting: {fileID: 0}
   pAnimations: {fileID: 0}
@@ -10774,7 +10775,9 @@ MonoBehaviour:
     weapon: {fileID: 11400000, guid: 124a9b1f205ce7e4c986a97c4682f93e, type: 2}
     clip: 0
     pool: 0
+  reloadMultiplier: 1
   reloading: 0
+  damageMultiplier: 1
   shoveStrength: 8
   shoveStunTime: 0.25
   shoveCooldown: 0.3

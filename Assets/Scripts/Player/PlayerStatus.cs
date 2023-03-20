@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using GameAudioScriptingEssentials;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,7 +16,7 @@ public class PlayerStatus : Alive
 
     public float defaultSpeed = 10;
     public ParticleSystem deathParticles;
-
+    
     public UnityEvent OnPlayerDamage, OnPlayerHeal;
 
     private void Awake()
@@ -60,6 +61,8 @@ public class PlayerStatus : Alive
         onDeath?.Invoke();
         deathParticles.transform.parent = null;
         deathParticles.Play();
+
+        Instantiate(deathSound);
     }
 
     public override float GiveHealth(float amount)

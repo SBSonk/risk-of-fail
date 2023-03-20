@@ -7,10 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 986840169310017381, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 986840169310017381, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 986840169310017382, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 05a2d7a1da017dc41b7de3384df11837, type: 3}
+      objectReference: {fileID: 1608637504, guid: 2e7e1f34c0bb5234e82e2a0d5058566b, type: 3}
     - target: {fileID: 986840170020990968, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_Radius
       value: 2
@@ -25,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 986840170020990970, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -32.37448
+      value: -31.874481
       objectReference: {fileID: 0}
     - target: {fileID: 986840170020990970, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -33,19 +41,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 986840170020990970, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 986840170020990970, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 986840170020990970, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 986840170020990970, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 986840170020990970, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -57,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 986840170020990970, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 986840170020990974, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_Name
@@ -107,7 +115,19 @@ MonoBehaviour:
   active: 1
   OnPickupCollect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1131439224}
+        m_TargetAssemblyTypeName: HealthIncrease, Assembly-CSharp
+        m_MethodName: Purchase
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!198 &2315525172783144950 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7728234647084975187, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
@@ -129,6 +149,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 986840169310017380, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
   m_PrefabInstance: {fileID: 5431993810893347749}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5103603606507287643 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 986840170020990974, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+  m_PrefabInstance: {fileID: 5431993810893347749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1131439224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5103603606507287643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aaeebab64e551941b9988e89b5e5dc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  perkIcon: {fileID: 1608637504, guid: 2e7e1f34c0bb5234e82e2a0d5058566b, type: 3}
 --- !u!114 &6865891265234798882 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1453213720257499783, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}

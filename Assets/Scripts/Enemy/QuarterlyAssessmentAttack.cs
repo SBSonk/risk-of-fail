@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections;
+using FirstGearGames.SmoothCameraShaker;
 using Pathfinding;
 using UnityEngine.Events;
 
 public class QuarterlyAssessmentAttack : WrittenWorksAttack
 {
+    public bool exploding = false;
     public Animator EKUSPUROSION;
     public float dmg, stn;
 
@@ -12,6 +14,9 @@ public class QuarterlyAssessmentAttack : WrittenWorksAttack
 
     public Transform explosionParticles;
     public UnityEvent ExplosionStart;
+
+    public ShakeData explosionShake;
+    public AudioSource explosionSound;
     
     protected override void Start()
     {
@@ -28,8 +33,12 @@ public class QuarterlyAssessmentAttack : WrittenWorksAttack
 
     protected override void AttackPlayer(Collider2D collision, float damage)
     {
+        if (exploding) return;
+        
         // Explosion
-        self.onDeath?.Invoke();
+        var qa = self as QuarterlyAssessment;
+        qa.TriggerDeath();
+        exploding = true;
     }
 
     protected override void Pushing()
@@ -61,6 +70,8 @@ public class QuarterlyAssessmentAttack : WrittenWorksAttack
         }
         
         Instantiate(explosionParticles, transform.position, Quaternion.identity);
+        Instantiate(explosionSound);
+        CameraShakerHandler.Shake(explosionShake);
         Destroy(gameObject);
     }
     // TODO: Determine if the enemy is stuck

@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour
 
     public AudioClipRandomizer audioRandomizer;
 
-    AudioClip[] _enemyHit, _wallHit;
+    public AudioClip[] _enemyHit, _wallHit;
 
     public void Initialize(AudioClip[] enemyHit, AudioClip[] wallHit)
     {

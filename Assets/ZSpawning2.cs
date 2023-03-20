@@ -13,7 +13,8 @@ public class ZSpawning2 : MonoBehaviour
     [SerializeField] float spawnPadding = 5f;
     [SerializeField] Transform[] spawnTransforms;
     [SerializeField] EnemySpawnType[] enemies;
-    
+
+    private List<ZSpawnPoint> spawns;
     public UnityEvent OnEnemyKilled, OnEnemySpawn, OnRoundStart;
 
     public float roundBufferTime = 5;
@@ -22,9 +23,22 @@ public class ZSpawning2 : MonoBehaviour
     public int maxEnemiesSpawnedIn = 24;
     public int enemiesKilled = 0;
     public int round = 0;
+    public float spawnEnableDistance = 25f;
+
+    private Transform player;
     
     private void Start()
     {
+        player = GameObject.Find("Player").transform;
+        
+        spawns = new List<ZSpawnPoint>();
+
+        // Initialize Spawns
+        foreach (var spawnTransform in spawnTransforms)
+        {
+            spawns.Add(new ZSpawnPoint() {position = spawnTransform.position});
+        }
+        
         StartCoroutine(SpawnLoop());
     }
 
@@ -37,6 +51,7 @@ public class ZSpawning2 : MonoBehaviour
             yield return new WaitForSeconds(roundBufferTime);
             OnRoundStart?.Invoke();
             
+            DetermineActiveSpawns();
             int enemiesSpawned = 0;
             while (enemiesSpawned < enemiesInRound)
             {
@@ -71,6 +86,26 @@ public class ZSpawning2 : MonoBehaviour
         }
     }
 
+    public void AddSpawn(Vector3 spawnLocation)
+    {
+        spawns.Add(new ZSpawnPoint() {position = spawnLocation});
+    }
+
+    void DetermineActiveSpawns()
+    {
+        for (int i = 0; i < spawns.Count; i++)
+        {
+            if (Vector3.Distance(spawns[i].position, player.position) > spawnEnableDistance)
+            {
+                spawns[i].active = false;
+            }
+            else
+            {
+                spawns[i].active = true;
+            }
+        }
+    }
+    
     void RoundComplete()
     {
         // Every 3 rounds
@@ -119,7 +154,14 @@ public class ZSpawning2 : MonoBehaviour
         Enemy enemy = ChooseEnemy();
                 
         // Choose Spawnpoint
-        Vector3 point = spawnTransforms[Random.Range(0, spawnTransforms.Length)].position;
+        
+        List<ZSpawnPoint> activeSpawns = new List<ZSpawnPoint>();
+        foreach (var spawn in spawns)
+        {
+            if (spawn.active) activeSpawns.Add(spawn);
+        }
+        
+        Vector3 point = spawns[Random.Range(0, spawns.Count)].position;
         // Spawn enemy
                 
         var _enemy = Instantiate(enemy, position: point, 
@@ -128,7 +170,7 @@ public class ZSpawning2 : MonoBehaviour
         _enemy.onEnemyDeath.AddListener(enemyDeath);
         OnEnemySpawn?.Invoke();
         
-        enemiesAlive++;
+        enemiesAlive++; 
     }
     
     Enemy ChooseEnemy()
@@ -154,6 +196,13 @@ public class ZSpawning2 : MonoBehaviour
         enemiesKilled++;
         enemiesAlive--;
         OnEnemyKilled?.Invoke();
+    }
+    
+    [System.Serializable]
+    public class ZSpawnPoint
+    {
+        public Vector3 position;
+        public bool active;
     }
 }
 

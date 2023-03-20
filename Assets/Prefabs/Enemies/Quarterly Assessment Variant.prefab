@@ -245,6 +245,10 @@ PrefabInstance:
       propertyPath: drops.Array.data[1].dropChance
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 1410400856192913616, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2368033471053587656, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -674,6 +678,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   dashIndicator: {fileID: 0}
+  exploding: 0
   EKUSPUROSION: {fileID: 651265893}
   dmg: 35
   stn: 1
@@ -693,6 +698,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  explosionShake: {fileID: 11400000, guid: cfb5721468f522e4984b6e517151f6d8, type: 2}
+  explosionSound: {fileID: 2700227365419083299, guid: 52952e275de67cd4eb017ca072383348, type: 3}
 --- !u!198 &4722370045574269080 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7745119301078835927, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}

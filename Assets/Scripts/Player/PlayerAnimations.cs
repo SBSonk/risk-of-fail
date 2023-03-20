@@ -236,7 +236,7 @@ public class PlayerAnimations : MonoBehaviour
         if (shoveShake) CameraShakerHandler.Shake(shoveShake);
     }
 
-    void ChangeWeaponSprite(InventoryWeapon w)
+    public void ChangeWeaponSprite(InventoryWeapon w)
     {        
         weaponSprite.sprite = w.weapon.weaponSprite;
         weaponSprite.transform.localPosition = w.weapon.weaponOffset;

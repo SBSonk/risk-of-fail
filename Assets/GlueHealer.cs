@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameAudioScriptingEssentials;
 using Pathfinding;
 using UnityEngine;
 using UnityEngine.Events;
@@ -16,6 +17,7 @@ public class GlueHealer : MonoBehaviour
 
     public float healRadius = 10f;
     public float healFactor = 2;
+    public AudioClipRandomizer healSound;
 
     public UnityEvent OnHeal;
 
@@ -82,6 +84,7 @@ public class GlueHealer : MonoBehaviour
             if (target && target.health < target.maxHealth && ai.reachedDestination)
             {
                 OnHeal?.Invoke();
+                healSound.PlaySFX();
             }
 
             yield return new WaitForSeconds(.5f);

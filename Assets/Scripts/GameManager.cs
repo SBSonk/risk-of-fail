@@ -36,6 +36,25 @@ public class GameManager : MonoBehaviour
         main.pData.weaponsOwned.Add(invWep);
         if (onWeaponReceive != null) onWeaponReceive.Invoke();
     }
+
+    public static void GiveWeaponZombies(Weapon weapon)
+    {
+        var invWep = new InventoryWeapon(weapon, 0, 0);
+        invWep.Initialize();
+
+        if (main.pData.weaponsOwned.Count == 1)
+        {
+            main.pData.weaponsOwned.Add(invWep);
+        }
+        else
+        {
+            main.pData.weaponsOwned.Remove(PlayerStatus.player.pShooting.GetHeldWeapon());
+            main.pData.weaponsOwned.Add(invWep);
+        }
+        
+        if (onWeaponReceive != null) onWeaponReceive.Invoke();
+    }
+    
     public static bool CheckIfWeaponOwned(Weapon type)
     {
         foreach (InventoryWeapon w in main.pData.weaponsOwned)

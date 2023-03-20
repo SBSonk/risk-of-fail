@@ -10,6 +10,7 @@ public class Door : MonoBehaviour
     public bool opened;
     private Animator anim;
 
+    public AudioSource openSFX, closeSFX;
     //Collider2D col;
 
     private void Awake()
@@ -20,7 +21,14 @@ public class Door : MonoBehaviour
 
     private void Start()
     {
-        ToggleDoor(opened);
+        if (opened)
+        {
+            anim.Play("OpenDoor", 0, 0);
+        }
+        else
+        {
+            anim.Play("CloseDoor", 0, 0);
+        }
     }
 
     public void ToggleDoor(bool val)
@@ -48,8 +56,17 @@ public class Door : MonoBehaviour
 
         opened = val;
 
-        if (opened) anim.Play("OpenDoor", 0, 0);
-        else anim.Play("CloseDoor", 0, 0);
+        if (opened)
+        {
+            anim.Play("OpenDoor", 0, 0);
+            openSFX.Play();
+        }
+        else
+        {
+            anim.Play("CloseDoor", 0, 0);
+            yield return new WaitForSeconds(.3f);
+            closeSFX.Play();
+        }
         
         //col.enabled = !opened;
 

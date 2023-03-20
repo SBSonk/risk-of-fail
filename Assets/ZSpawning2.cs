@@ -7,6 +7,7 @@ using UnityEngine.Serialization;
 
 public class ZSpawning2 : MonoBehaviour
 {
+    [SerializeField] private AudioSource roundStart;
     [SerializeField] float minRespawnWaveTime = 1f;
     [SerializeField] float maxRespawnWaveTime = 5f;
     [SerializeField] ushort minSpawnsPerWave = 1, maxSpawnsPerWave = 2;
@@ -24,6 +25,7 @@ public class ZSpawning2 : MonoBehaviour
     public int enemiesKilled = 0;
     public int round = 0;
     public float spawnEnableDistance = 25f;
+    public float spawnDisableDistance = 10f;
 
     private Transform player;
     
@@ -80,9 +82,10 @@ public class ZSpawning2 : MonoBehaviour
                 yield return new WaitForSeconds(3);
             }
             
-            round++;
             // Scale Rounds
             RoundComplete();
+            roundStart.Play();
+            round++;
         }
     }
 
@@ -95,7 +98,7 @@ public class ZSpawning2 : MonoBehaviour
     {
         for (int i = 0; i < spawns.Count; i++)
         {
-            if (Vector3.Distance(spawns[i].position, player.position) > spawnEnableDistance)
+            if (Vector3.Distance(spawns[i].position, player.position) > spawnEnableDistance && Vector3.Distance(spawns[i].position, player.position) < spawnDisableDistance)
             {
                 spawns[i].active = false;
             }
@@ -109,7 +112,7 @@ public class ZSpawning2 : MonoBehaviour
     void RoundComplete()
     {
         // Every 3 rounds
-        if (round % 3 == 0)
+        if (round % 5 == 0)
         {
             // Scale enemy health
             Enemy.globalEnemyHealthScale *= 1.1f;
@@ -119,11 +122,11 @@ public class ZSpawning2 : MonoBehaviour
         switch(round)
         {
             case 3: // Unlock quiz
-                enemies[1].spawnWeight = 2;
+                enemies[1].spawnWeight = 1;
                 break;
             
             case 5: // make spawns more dense
-                maxSpawnsPerWave = 3;
+                maxSpawnsPerWave = 2;
                 break;
 
             case 8: // unlock fudgee bar
@@ -136,6 +139,7 @@ public class ZSpawning2 : MonoBehaviour
             
             case 13: // increase max count
                 maxEnemiesSpawnedIn = 18;
+                maxSpawnsPerWave = 3;
                 break;
             
             case 15: // make spawns faster

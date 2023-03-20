@@ -8,6 +8,7 @@ using Pathfinding.Util;
 
 public class HudManager4 : MonoBehaviour
 {
+    public static HudManager4 hud;
     PlayerStatus player;
 
     [SerializeField] float barLerp = 0.25f;
@@ -35,6 +36,7 @@ public class HudManager4 : MonoBehaviour
 
     private void Awake()
     {
+        hud = this;
         player = GameObject.Find("Player").GetComponent<PlayerStatus>();
     }
 
@@ -71,7 +73,7 @@ public class HudManager4 : MonoBehaviour
     }
 
     // Handle Weapon Swap
-    void UpdateWeaponIcon(InventoryWeapon w)
+    public void UpdateWeaponIcon(InventoryWeapon w)
     {
         // Swap sprite
         weaponSprite.sprite = w.weapon.hud.sprite;

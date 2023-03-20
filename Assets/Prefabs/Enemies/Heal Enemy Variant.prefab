@@ -248,9 +248,13 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 2368033471186396241, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 2700227365419083299, guid: d56aa7c90a3698d4197bd062064a821b, type: 3}
     - target: {fileID: 2368033471186396242, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: m_Name
-      value: Heal Enemy
+      value: Heal Enemy Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4800357687762280674, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: m_LocalPosition.y
@@ -338,6 +342,7 @@ MonoBehaviour:
   target: {fileID: 0}
   healRadius: 15
   healFactor: 5
+  healSound: {fileID: 6285450061963893755}
   OnHeal:
     m_PersistentCalls:
       m_Calls:
@@ -369,6 +374,32 @@ MonoBehaviour:
   spriteRenderer: {fileID: 228771267852519948}
   deathParticles: {fileID: 5227556964407135251}
   canSwitchAnimations: 1
+--- !u!114 &6285450061963893755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228771267715844758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d582541dd1aa69c459a6a8f1cae8ff08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _arcObj: {fileID: 0}
+  _audioClips:
+  - {fileID: 8300000, guid: 3f0bd02f3a683d541a2591fc9062c7e5, type: 3}
+  _mixerGroup: {fileID: 0}
+  _overrideArcSettings: 1
+  _noRepeats: 1
+  _randomPitch: 1
+  _minPitch: 0.75
+  _maxPitch: 1.25
+  _volume: 0.3
+  _loop: 0
+  _priority: 128
+  _stereoPan: 0
+  _spatialBlend: 0
 --- !u!212 &228771267852519948 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2368033471053587656, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}

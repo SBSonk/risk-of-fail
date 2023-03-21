@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class ZSpawning2 : MonoBehaviour
 {
@@ -47,6 +49,15 @@ public class ZSpawning2 : MonoBehaviour
         Enemy.globalEnemyHealthScale = 0.5f;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F12))
+        {
+            //RoundComplete();
+            //OnRoundStart?.Invoke();
+        }
+    }
+
     IEnumerator SpawnLoop()
     {
         Enemy.globalEnemyHealthScale = 1;
@@ -88,7 +99,6 @@ public class ZSpawning2 : MonoBehaviour
             // Scale Rounds
             RoundComplete();
             roundStart.Play();
-            round++;
         }
     }
 
@@ -146,14 +156,16 @@ public class ZSpawning2 : MonoBehaviour
                 maxSpawnsPerWave = 3;
                 break;
             
-            case 15: // make spawns faster
-                minRespawnWaveTime = .75f;
+            case 18: // make spawns faster
+                minRespawnWaveTime = 1f;
                 maxRespawnWaveTime = 1.5f;
                 break;
         }
         
         // Scale enemy amounts
         enemiesInRound = Mathf.RoundToInt(enemiesInRound * 1.2f);
+
+        round++;
     }
     
     void SpawnEnemy()

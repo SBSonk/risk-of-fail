@@ -14,7 +14,7 @@ public class AmmoPickup : PickupBase
 
         GetComponent<ChooseAmmoDropType>().InitializeAmmo();
 
-        particles.startColor = drop.backgroundColor;
+        if (particles) particles.startColor = drop.backgroundColor;
         _light.color = drop.backgroundColor;
 
         SpriteRenderer spr = sprite.GetComponent<SpriteRenderer>();

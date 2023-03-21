@@ -26,6 +26,7 @@ public class ZSpawning2 : MonoBehaviour
     public int round = 0;
     public float spawnEnableDistance = 25f;
     public float spawnDisableDistance = 10f;
+    public float healthIncreaseScale = 1.1f;
 
     private Transform player;
     
@@ -42,6 +43,8 @@ public class ZSpawning2 : MonoBehaviour
         }
         
         StartCoroutine(SpawnLoop());
+
+        Enemy.globalEnemyHealthScale = 0.5f;
     }
 
     IEnumerator SpawnLoop()
@@ -112,10 +115,10 @@ public class ZSpawning2 : MonoBehaviour
     void RoundComplete()
     {
         // Every 3 rounds
-        if (round % 4 == 0)
+        if (round % 3 == 0)
         {
             // Scale enemy health
-            Enemy.globalEnemyHealthScale *= 1.1f;
+            Enemy.globalEnemyHealthScale *= healthIncreaseScale;
         }
         
         // Unlock types
@@ -131,6 +134,7 @@ public class ZSpawning2 : MonoBehaviour
 
             case 8: // unlock fudgee bar
                 enemies[2].spawnWeight = 1;
+                healthIncreaseScale = 1.2f;
                 break;
             
             case 10: // unlock healer

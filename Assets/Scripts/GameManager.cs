@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
         LoadSettings(_settings);
 
         // TODO: Save/load player
+
+        Enemy.globalEnemyHealthScale = 1;
     }
 
     public static void GiveWeapon(Weapon weapon)

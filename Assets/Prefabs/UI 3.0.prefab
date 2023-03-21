@@ -1222,11 +1222,11 @@ MonoBehaviour:
   avatarImage: {fileID: 2603249502355321442}
   hurtSprite: {fileID: 21300000, guid: 507d597db986a08459908d8f1f1057c1, type: 3}
   AvatarImages:
-  - healthGreaterThan: 0
+  - healthGreaterThanRatio: 0
     image: {fileID: 21300000, guid: 949f6fd5db5cd3746b254abcc3014aa8, type: 3}
-  - healthGreaterThan: 20
+  - healthGreaterThanRatio: 0.2
     image: {fileID: 21300000, guid: 529b898b70d94a54c9180fb5d823504c, type: 3}
-  - healthGreaterThan: 50
+  - healthGreaterThanRatio: 0.5
     image: {fileID: 21300000, guid: 04b7fe94b0e30a34e8aa32dae1cb6603, type: 3}
   avatarHurtTime: 0.5
   healthBar: {fileID: 2603249502505913889}

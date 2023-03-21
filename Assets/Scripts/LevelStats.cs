@@ -7,6 +7,8 @@ public class LevelStats : MonoBehaviour
 
     public LevelGrades grades;
 
+    public float pointsMultiplier = 1;
+    
     [Header("Kill Bonus Points")]
     [SerializeField] float bonusKillTime = 5f;
     [SerializeField] int bonusPoints = 500;
@@ -81,7 +83,7 @@ public class LevelStats : MonoBehaviour
 
     public void GiveScore(int baseAmount, float secondsBeforeDeath)
     {
-        points += baseAmount;
+        points += Mathf.RoundToInt( baseAmount * pointsMultiplier);
 
         // Bonus points for killing early
         if (secondsBeforeDeath <= bonusKillTime) points += bonusPoints;
@@ -109,7 +111,7 @@ public class LevelStats : MonoBehaviour
 
     public void GiveScore(int baseAmount)
     {
-        points += baseAmount;
+        points += Mathf.RoundToInt( baseAmount * pointsMultiplier);
     } // Raw points
 
     public void SetScore(int amount)

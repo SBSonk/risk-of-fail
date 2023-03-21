@@ -17,7 +17,7 @@ public class ShowInteractBuyable : ShowInteract
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
-
+        if (!collision.CompareTag("Player")) return;
         priceText.text = buyable.price.ToString();
         StartCoroutine(SprFunctions.Fade(priceText, priceText.color, Color.white, fadeTime));
     }
@@ -25,7 +25,7 @@ public class ShowInteractBuyable : ShowInteract
     protected override void OnTriggerExit2D(Collider2D collision)
     {
         base.OnTriggerExit2D(collision);
-        
+        if (!collision.CompareTag("Player")) return;
         StartCoroutine(SprFunctions.Fade(priceText, priceText.color, Color.clear, fadeTime));
     }
 }

@@ -5,6 +5,7 @@ using TMPro;
 using System.Collections.Generic;
 using System.Collections;
 using Pathfinding.Util;
+using UnityEngine.Serialization;
 
 public class HudManager4 : MonoBehaviour
 {
@@ -46,7 +47,7 @@ public class HudManager4 : MonoBehaviour
         // Choose image to display
         for (int i = 0; i < AvatarImages.Length; i++)
         {
-            if (player.health > AvatarImages[i].healthGreaterThan)
+            if (player.health > player.maxHealth * AvatarImages[i].healthGreaterThanRatio)
             {
                 // Display image
                 avatarImage.sprite = AvatarImages[i].image;
@@ -125,7 +126,14 @@ public class HudManager4 : MonoBehaviour
 
     void UpdateHealth()
     {
-        healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, player.health / player.maxHealth, barLerp);
+        if (PlayerStatus.IsAlive)
+        {
+            healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, player.health / player.maxHealth, barLerp);
+        }
+        else
+        {
+            healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, 0, barLerp);
+        }
     }
 
     // Handle Dodge Cooldown
@@ -165,6 +173,6 @@ public class HudManager4 : MonoBehaviour
 [System.Serializable]
 struct AvatarState
 {
-    public int healthGreaterThan;
+    [FormerlySerializedAs("healthGreaterThan")] public float healthGreaterThanRatio;
     public Sprite image;
 }

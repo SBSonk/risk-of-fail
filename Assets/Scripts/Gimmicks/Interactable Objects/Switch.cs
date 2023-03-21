@@ -31,7 +31,11 @@ public class Switch : MonoBehaviour
         {
             Toggle();
 
-            if (disableOnUse) isActive = false;
+            if (disableOnUse)
+            {
+                interactable = false;
+                playerInRadius = false;
+            }
         }
     }
 

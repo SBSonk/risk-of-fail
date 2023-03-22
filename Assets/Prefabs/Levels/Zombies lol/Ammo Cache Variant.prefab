@@ -126,14 +126,14 @@ PrefabInstance:
     - target: {fileID: 5106794772422253419, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
       propertyPath: OnPurchase.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 12018402}
+      objectReference: {fileID: 0}
     - target: {fileID: 5106794772422253419, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
       propertyPath: OnPurchase.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: startDrop
+      value: Purchase
       objectReference: {fileID: 0}
     - target: {fileID: 5106794772422253419, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
       propertyPath: OnPurchase.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: DropObject, Assembly-CSharp
+      value: AmmoStore, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5106794772422253422, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -141,23 +141,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5106794771661871255, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
+    - {fileID: 5106794772422253419, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
---- !u!1 &3459302843602025773 stripped
+--- !u!1 &3459302844045410025 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 5106794771661871275, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5106794772422253423, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
   m_PrefabInstance: {fileID: 8565586259641099654}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &12018402
+--- !u!114 &659177361304990598
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3459302843602025773}
+  m_GameObject: {fileID: 3459302844045410025}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed835c9a2fbf20f48b5b373a4b0876c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 26d099a796a5c2e4d9be9e5ecdc307a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drops:
-  - {fileID: 11400000, guid: f339b5f0607dce44d93113527b1d52a0, type: 2}
+  interactable: 1
+  playerInRadius: 0
+  OnPlayerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerLeave:
+    m_PersistentCalls:
+      m_Calls: []
+  price: 1000
+  repeatable: 1
+  OnPurchase:
+    m_PersistentCalls:
+      m_Calls: []

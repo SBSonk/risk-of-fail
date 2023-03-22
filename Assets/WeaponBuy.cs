@@ -20,7 +20,10 @@ public class WeaponBuy : Buyable
     {
         if (GameManager.CheckIfWeaponOwned(weapon))
         {
-            CancelPurchase?.Invoke();
+            if (weapon is Gun)
+            { PlayerStatus.player.pShooting.GiveAmmo(PlayerStatus.player.pShooting.GetWeaponFromInventory(weapon), PlayerStatus.player.pShooting.GetHeldWeapon().weapon.defaultAmmoCount);
+            }
+            
             return;
             // give ammo
         }

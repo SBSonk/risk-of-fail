@@ -7,37 +7,32 @@ using Random = UnityEngine.Random;
 public class ChooseAmmoDropType : MonoBehaviour
 {
     AmmoPickup pickup;
-    public DropObject drop;
-    [SerializeField] List<AmmoDrops> drops;
+    //public DropObject drop;
+    [SerializeField] List<Gun> drops;
 
     public void InitializeAmmo()
     {
         pickup = GetComponent<AmmoPickup>();
 
         // Remove drops that the player doesn't own
-        List<AmmoDrops> dropsToRemove = new List<AmmoDrops>();
-        foreach(AmmoDrops d in drops)
+        List<Gun> gunsOwned = new List<Gun>();
+        foreach(Gun d in drops)
         {
-            if (!GameManager.CheckIfWeaponOwned(d.typeToGive)) dropsToRemove.Add(d);
+            if (GameManager.CheckIfWeaponOwned(d)) gunsOwned.Add(d);
         }
-
-        foreach(AmmoDrops d in dropsToRemove)
-        {
-            drops.Remove(d);
-        }
-
+        
         // Choose drop to drop
-        try
+        if (gunsOwned.Count == 1)
         {
-            int rand = Random.Range(0, drops.Count);
-            pickup.drop = drops[rand];
+            pickup.drop = gunsOwned[0].ammoDrop;
         }
-        catch (Exception e)
+        else if (gunsOwned.Count > 1)
+        {
+            pickup.drop = gunsOwned[Random.Range(0, gunsOwned.Count)].ammoDrop;
+        }
+        else
         {
             Destroy(transform.parent.gameObject);
         }
-        
-
-        
     }
 }

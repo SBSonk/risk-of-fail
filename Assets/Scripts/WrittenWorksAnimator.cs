@@ -32,6 +32,7 @@ public class WrittenWorksAnimator : MonoBehaviour
     {
         enemy.onHit.AddListener(StunAnimation);
         enemyAttack.OnSwipeAttack.AddListener(SwipeAnimation);
+        enemy.onEnemyDeath.AddListener(DeathAnimation);
         //enemyAttack.OnDashAttack.AddListener(DashAnimation);
         //enemyAttack.OnDashStart.AddListener(DashStart);
         //enemyAttack.OnDashEnd.AddListener(DashFinish);
@@ -188,9 +189,10 @@ public class WrittenWorksAnimator : MonoBehaviour
 
     void EnableAnimations() { canSwitchAnimations = true; }
 
-    public void DeathAnimation()
+    public void DeathAnimation(EnemyType _)
     {
-        //deathParticles.transform.SetParent(null);
+        deathParticles.transform.SetParent(null);
+        Destroy(deathParticles.gameObject, 2f);
         deathParticles.Play();
     }
 }

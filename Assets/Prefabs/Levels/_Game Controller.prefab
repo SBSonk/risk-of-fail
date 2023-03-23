@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8526067335399440035}
   - component: {fileID: 8526067335399440034}
   - component: {fileID: 8526067335399440032}
-  - component: {fileID: 219214357}
   - component: {fileID: 1745457710}
   - component: {fileID: 1745457715}
   m_Layer: 0
@@ -66,19 +65,6 @@ MonoBehaviour:
     - weapon: {fileID: 11400000, guid: 124a9b1f205ce7e4c986a97c4682f93e, type: 2}
       clip: 0
       pool: 0
---- !u!114 &219214357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8526067335399440061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 584c22887f83a3e40924253cc858d7b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isShopOpen: 0
 --- !u!114 &1745457710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,6 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grades: {fileID: 11400000, guid: 47f758e98e49df94588bcdc2541e0a69, type: 2}
+  pointsMultiplier: 1
   bonusKillTime: 3
   bonusPoints: 300
   streakPoints: 0

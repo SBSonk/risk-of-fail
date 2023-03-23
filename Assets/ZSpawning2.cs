@@ -53,8 +53,18 @@ public class ZSpawning2 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F12))
         {
-            //RoundComplete();
-            //OnRoundStart?.Invoke();
+            RoundComplete();
+            OnRoundStart?.Invoke();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.F11))
+        {
+            LevelStats.main.GiveScore(1000);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.F10))
+        {
+            PlayerStatus.player.health += 1000;
         }
     }
 
@@ -81,7 +91,15 @@ public class ZSpawning2 : MonoBehaviour
 
                 for (int o = 0; o < amountToSpawn; o++)
                 {
-                    SpawnEnemy();
+                    try
+                    {
+                        SpawnEnemy();
+                    }
+                    catch
+                    {
+                        continue;
+                    }
+                    
                 
                     enemiesSpawned++;
                 }
@@ -181,7 +199,7 @@ public class ZSpawning2 : MonoBehaviour
             if (spawn.active) activeSpawns.Add(spawn);
         }
         
-        Vector3 point = spawns[Random.Range(0, spawns.Count)].position;
+        Vector3 point = activeSpawns[Random.Range(0, spawns.Count)].position;
         // Spawn enemy
                 
         var _enemy = Instantiate(enemy, position: point, 

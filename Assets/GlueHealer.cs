@@ -47,7 +47,7 @@ public class GlueHealer : MonoBehaviour
                 {
                     if (e.TryGetComponent<Enemy>(out var enemy))
                     {
-                        if (enemy != self) nearby.Add(enemy);
+                        if (enemy != self && !enemy.TryGetComponent<GlueHealer>(out _)) nearby.Add(enemy);
                     }
                 }
 

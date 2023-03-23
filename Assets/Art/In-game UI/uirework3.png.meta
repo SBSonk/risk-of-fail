@@ -3,7 +3,7 @@ guid: ca975c0df5d4b0c48b290d42f0babeaf
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,6 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -120,7 +121,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 184
-        y: 743
+        y: 893
         width: 189
         height: 91
       alignment: 0
@@ -141,7 +142,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 673
+        y: 824
         width: 590
         height: 62
       alignment: 9
@@ -161,8 +162,8 @@ TextureImporter:
       name: uirework3_2
       rect:
         serializedVersion: 2
-        x: 1
-        y: 581
+        x: 0
+        y: 731
         width: 589
         height: 84
       alignment: 9
@@ -183,7 +184,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 447
+        y: 596
         width: 590
         height: 123
       alignment: 0
@@ -204,7 +205,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 368
+        y: 523
         width: 590
         height: 70
       alignment: 0
@@ -224,10 +225,10 @@ TextureImporter:
       name: uirework3_5
       rect:
         serializedVersion: 2
-        x: 17
-        y: 282
-        width: 110
-        height: 55
+        x: 18
+        y: 244
+        width: 128
+        height: 59
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -245,10 +246,10 @@ TextureImporter:
       name: uirework3_6
       rect:
         serializedVersion: 2
-        x: 148
-        y: 289
-        width: 18
-        height: 41
+        x: 165
+        y: 243
+        width: 24
+        height: 61
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -266,9 +267,9 @@ TextureImporter:
       name: uirework3_16
       rect:
         serializedVersion: 2
-        x: 17
-        y: 195
-        width: 269
+        x: 23
+        y: 163
+        width: 283
         height: 68
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -284,36 +285,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: uirework3_17
-      rect:
-        serializedVersion: 2
-        x: 397
-        y: 244
-        width: 121
-        height: 41
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7970ba209cb3a7145862a4756f4ccbc3
-      internalID: -2128985723
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: uirework3_18
       rect:
         serializedVersion: 2
-        x: 73
-        y: 126
-        width: 209
-        height: 58
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 55
+        y: 110
+        width: 246
+        height: 46
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -326,36 +306,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: uirework3_19
-      rect:
-        serializedVersion: 2
-        x: 388
-        y: 21
-        width: 135
-        height: 212
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 360225a44f3dc2045bbefe23bcd7349d
-      internalID: -395760463
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: uirework3_20
       rect:
         serializedVersion: 2
-        x: 22
-        y: 60
-        width: 260
-        height: 58
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 55
+        y: 53
+        width: 245
+        height: 46
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -371,12 +330,12 @@ TextureImporter:
       name: uirework3_21
       rect:
         serializedVersion: 2
-        x: 68
-        y: 31
-        width: 211
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 78
+        y: 26
+        width: 224
+        height: 15
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -392,12 +351,12 @@ TextureImporter:
       name: uirework3_22
       rect:
         serializedVersion: 2
-        x: 68
+        x: 77
         y: 0
-        width: 211
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 222
+        height: 14
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -405,6 +364,27 @@ TextureImporter:
       bones: []
       spriteID: 94562bc026beaac4b977eea06322280c
       internalID: 466942854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uirework3_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 311
+        width: 577
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7dfddea253d0834782c96bac03a26ac
+      internalID: 704890927
       vertices: []
       indices: 
       edges: []
@@ -420,29 +400,29 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      uirework3_11: 1347433119
-      uirework3_7: 704890927
+      uirework3_0: -896163793
+      uirework3_1: 1909206577
       uirework3_10: 180104018
-      uirework3_22: 466942854
-      uirework3_14: 1844910325
-      uirework3_2: -797842033
+      uirework3_11: 1347433119
       uirework3_12: -210977669
-      uirework3_5: -368702376
+      uirework3_13: -1201411355
+      uirework3_14: 1844910325
       uirework3_15: -780862419
+      uirework3_16: -1711263972
       uirework3_17: -2128985723
       uirework3_18: -436026151
-      uirework3_3: -819839473
-      uirework3_6: 904234964
       uirework3_19: -395760463
-      uirework3_13: -1201411355
-      uirework3_1: 1909206577
-      uirework3_9: -2002729787
-      uirework3_16: -1711263972
-      uirework3_8: -786985261
-      uirework3_21: -513521675
-      uirework3_0: -896163793
-      uirework3_4: -203641607
+      uirework3_2: -797842033
       uirework3_20: -771762444
+      uirework3_21: -513521675
+      uirework3_22: 466942854
+      uirework3_3: -819839473
+      uirework3_4: -203641607
+      uirework3_5: -368702376
+      uirework3_6: 904234964
+      uirework3_7: 704890927
+      uirework3_8: -786985261
+      uirework3_9: -2002729787
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

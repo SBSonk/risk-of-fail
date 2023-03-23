@@ -14,7 +14,8 @@ public class PlayerShooting : MonoBehaviour
 
     public float reloadMultiplier = 1;
     public bool reloading;
-    bool canShoot = true;
+    private float shootEnableTime;
+    public bool canShoot = true;
     public float damageMultiplier = 1;
 
     [Header("Shoving")]
@@ -53,7 +54,7 @@ public class PlayerShooting : MonoBehaviour
         if (weaponPool.Count > 1) WeaponSwitching();
         else if (weaponPool.Count == 0) return;
 
-        if (CheckIfPlayerShooting() && canShoot)
+        if (CheckIfPlayerShooting() && CanShoot())
         {
             var weapon = GetHeldWeapon().weapon;
             switch (weapon)
@@ -69,16 +70,17 @@ public class PlayerShooting : MonoBehaviour
             }
 
             // Apply firerate
-            canShoot = false;
-            StartCoroutine(EnableShooting(weapon.fireRate));
+            shootEnableTime = Time.time + weapon.fireRate;
         }
 
-        if (InputManager.shove && canShoot) StartCoroutine(Shove());
+        if (InputManager.shove && CanShoot()) StartCoroutine(Shove());
 
         // Reloading
         if (GetHeldWeapon().clip < GetHeldWeapon().weapon.clipSize && InputManager.reload && reloading == false) StartCoroutine(Reload());
     }
 
+    bool CanShoot() => Time.time >= shootEnableTime && canShoot;
+    
     bool CheckIfPlayerShooting()
     {
         if (GetHeldWeapon().weapon.auto) return InputManager.shootAuto;
@@ -151,12 +153,13 @@ public class PlayerShooting : MonoBehaviour
             }
         }
 
-        canShoot = false;
+        float cooldownTime = shoveCooldown + GetHeldWeapon().weapon.reloadLength / 4;
+        shootEnableTime = Time.time + cooldownTime;
         
-        float cooldownTime = shoveCooldown + GetHeldWeapon().weapon.reloadLength / 2;
+        
         OnReloadStart?.Invoke(cooldownTime);
-        StopCoroutine(nameof(EnableShooting));
-        StartCoroutine(EnableShooting(cooldownTime));
+        /*StopCoroutine(nameof(EnableShooting));
+        StartCoroutine(EnableShooting(cooldownTime));*/
     }
 
     // Handle shooting of GUN type weapons
@@ -283,14 +286,7 @@ public class PlayerShooting : MonoBehaviour
             }
         }
     }
-
-    IEnumerator EnableShooting(float t)
-    {
-        yield return new WaitForSeconds(t);
-        
-        canShoot = true;
-    }
-
+    
     // Returns the first inventory weapon with type type
     public InventoryWeapon GetWeaponFromInventory(Weapon type)
     {

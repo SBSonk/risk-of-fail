@@ -29,11 +29,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5106794771661871252, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -31.900002
+      value: -33.65
       objectReference: {fileID: 0}
     - target: {fileID: 5106794771661871252, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 22.95
+      value: 43.95
       objectReference: {fileID: 0}
     - target: {fileID: 5106794771661871252, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -105,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5106794771661871275, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
       propertyPath: m_Name
-      value: Ammo Cache Variant
+      value: Ammo Cache
       objectReference: {fileID: 0}
     - target: {fileID: 5106794772422253416, guid: 85944614f6661b34a8008791d8e302cb, type: 3}
       propertyPath: m_Offset.y
@@ -168,8 +168,9 @@ MonoBehaviour:
   OnPlayerLeave:
     m_PersistentCalls:
       m_Calls: []
-  price: 1000
+  price: 1500
   repeatable: 1
   OnPurchase:
     m_PersistentCalls:
       m_Calls: []
+  interactIcon: {fileID: 0}

@@ -11,11 +11,15 @@ public class AmmoMachine : Buyable
         if (LevelStats.main.points >= price && PlayerStatus.player.pShooting.GetHeldWeapon().weapon is Gun)
         {
             PlayerStatus.player.pShooting.GiveAmmo(PlayerStatus.player.pShooting.GetHeldWeapon(),
-                Mathf.RoundToInt(PlayerStatus.player.pShooting.GetHeldWeapon().weapon.defaultAmmoCount / 2));
+                Mathf.RoundToInt(PlayerStatus.player.pShooting.GetHeldWeapon().weapon.defaultAmmoCount / 1.5f));
             LevelStats.main.GiveScore(-price);
             OnPurchase?.Invoke();
 
-            if (!repeatable) interactable = false;
+            if (!repeatable)
+            {
+                interactable = false;
+                interactIcon.enabled = false;
+            }
         }
     }
 }

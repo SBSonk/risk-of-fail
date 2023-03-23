@@ -25,6 +25,7 @@ public class QuarterlyAssessment : Enemy
         
         Instantiate(deathSound);
         Destroy(healthParent);
+        StopAllCoroutines();
     }
 
     public void TriggerDeath()

@@ -64,10 +64,13 @@ public class Enemy : Alive
         canSeePlayer = !Physics2D.Linecast(transform.position, PlayerStatus.player.transform.position, LayerMask.NameToLayer("Environment"));    
 
         // Make health bar follow enemy
-        healthParent.transform.position = Vector3.Lerp(healthParent.transform.position, transform.position + hbarOffset, hbarLerp);
+        if (healthParent)
+        {
+            healthParent.transform.position = Vector3.Lerp(healthParent.transform.position, transform.position + hbarOffset, hbarLerp);
 
-        // Healthbar animation  
-        healthBar.transform.localScale = Vector3.Lerp(healthBar.transform.lossyScale, new Vector3(1 * (health / maxHealth), 1, 1), hbarLerp);
+            // Healthbar animation  
+            healthBar.transform.localScale = Vector3.Lerp(healthBar.transform.lossyScale, new Vector3(1 * (health / maxHealth), 1, 1), hbarLerp);
+        }
     }
 
     IEnumerator StunRecover(float time)

@@ -7,6 +7,7 @@ public class Gun : Weapon
     public float bulletVelocity;
     public int pierceAmount = 0; // Amount of surfaces it can pass through before ending
     public Projectile bullet;
+    public AmmoDrops ammoDrop;
 
     public static GameObject lastBulletShot;
 

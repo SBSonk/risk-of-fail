@@ -21,7 +21,8 @@ public class WeaponBuy : Buyable
         if (GameManager.CheckIfWeaponOwned(weapon))
         {
             if (weapon is Gun)
-            { PlayerStatus.player.pShooting.GiveAmmo(PlayerStatus.player.pShooting.GetWeaponFromInventory(weapon), PlayerStatus.player.pShooting.GetHeldWeapon().weapon.defaultAmmoCount);
+            { 
+                PlayerStatus.player.pShooting.GiveAmmo(PlayerStatus.player.pShooting.GetWeaponFromInventory(weapon), PlayerStatus.player.pShooting.GetHeldWeapon().weapon.defaultAmmoCount);
             }
             
             return;
@@ -35,7 +36,7 @@ public class WeaponBuy : Buyable
     protected override void PlayerInteract()
     {
         // Check for points
-        if (GameManager.CheckIfWeaponOwned(weapon))
+        if (GameManager.CheckIfWeaponOwned(weapon) && weapon is MeleeWeapon)
         {
             CancelPurchase?.Invoke();
             return;
@@ -48,7 +49,11 @@ public class WeaponBuy : Buyable
             OnPurchase?.Invoke();
 
             Purchase();
-            if (!repeatable) interactable = false;
+            if (!repeatable)
+            {
+                interactable = false;
+                interactIcon.enabled = false;
+            }
         }
     }
 }

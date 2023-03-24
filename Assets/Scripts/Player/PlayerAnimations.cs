@@ -63,6 +63,8 @@ public class PlayerAnimations : NetworkBehaviour
 
     private void Update()
     {
+        if (!IsOwner) return;
+        
         input = InputManager.playerDirection;
 
         if (InputManager.shootAuto || InputManager.shoot || InputManager.shove)
@@ -91,7 +93,7 @@ public class PlayerAnimations : NetworkBehaviour
     private void FixedUpdate()
     {
         // Choose animations
-        if (!canSwitchAnimation/* || !IsOwner*/) return;
+        if (!canSwitchAnimation || !IsOwner) return;
 
         // Flip if going left
         sprite.flipX = currentDir == Directions.left || currentDir == Directions.upperLeft || currentDir == Directions.bottomLeft;

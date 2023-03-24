@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -41,10 +42,20 @@ public class LevelStats : MonoBehaviour
 
     private void Start()
     {
+        try
+        {
+            DiscordRPCManager.singleton.ChangeDiscordState(details, state);
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning("Discord not detected.");
+        }
+    }
+
+    public void Initialize()
+    {
         PlayerStatus.player.pShooting.OnShoot.AddListener(BulletShot);
         PlayerStatus.player.onHit.AddListener(GiveDamage);
-        
-        DiscordRPCManager.singleton.ChangeDiscordState(details, state);
     }
 
     private void FixedUpdate()

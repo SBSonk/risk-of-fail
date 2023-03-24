@@ -4,6 +4,7 @@ using GameAudioScriptingEssentials;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -74,6 +75,7 @@ public class Projectile : MonoBehaviour
 
             // Destroy bullet
             active = false;
+            GetComponent<NetworkObject>().Despawn();
             Destroy(gameObject, 1f);
         }
 

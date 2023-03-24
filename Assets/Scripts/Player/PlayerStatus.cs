@@ -37,6 +37,16 @@ public class PlayerStatus : Alive
         pShooting.Initialize();
         pAnimations.Initialize(pShooting, pMovement, this);
         pSFXManager.Initialize(pShooting, pMovement);
+
+        ObjectFade.player = transform;
+        HudManager4.hud.SetPlayer(this);
+        CameraFollow.cam.SetPlayer(GetComponent<Rigidbody2D>());
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        HudManager4.hud.SetPlayer(this);
+        CameraFollow.cam.SetPlayer(GetComponent<Rigidbody2D>());
     }
 
     protected override void OnDamage(float damage)

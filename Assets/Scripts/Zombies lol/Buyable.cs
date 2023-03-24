@@ -10,7 +10,14 @@ public class Buyable : InteractBase
     public bool repeatable = true;
     public UnityEvent OnPurchase;
     public ShowInteractBuyable interactIcon;
-    
+
+    protected override void Start()
+    {
+        base.Start();
+
+        interactIcon = GetComponent<ShowInteractBuyable>();
+    }
+
     protected override void PlayerInteract()
     {
         // Check for points
@@ -22,7 +29,7 @@ public class Buyable : InteractBase
             if (!repeatable)
             {
                 interactable = false;
-                interactIcon.enabled = false;
+                interactIcon.Hide();
             }
         }
     }

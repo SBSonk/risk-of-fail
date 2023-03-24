@@ -150,6 +150,7 @@ public enum EnemyType
     WrittenWorks,
     Quiz,
     QuarterlyAssessment,
+    Healer,
     Boss
 }
 

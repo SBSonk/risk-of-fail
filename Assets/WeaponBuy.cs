@@ -52,7 +52,7 @@ public class WeaponBuy : Buyable
             if (!repeatable)
             {
                 interactable = false;
-                interactIcon.enabled = false;
+                interactIcon.Hide();
             }
         }
     }

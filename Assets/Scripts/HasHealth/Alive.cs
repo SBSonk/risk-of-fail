@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Events;
 
 // This script is only meant to be inherited by other objects (players, anything that has health)
-public abstract class Alive : MonoBehaviour
+public abstract class Alive : NetworkBehaviour
 {
     [Header("Stats")]
     public float health = 100;

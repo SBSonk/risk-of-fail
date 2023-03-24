@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        Debug.LogError("s");
+        //Debug.LogError("s");
         // Destroy duplicates
         main = this;
 

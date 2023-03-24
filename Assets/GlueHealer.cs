@@ -91,7 +91,7 @@ public class GlueHealer : MonoBehaviour
             
             if (target && target.health < target.maxHealth && ai.reachedDestination)
             {
-                target.GiveHealth(healFactor);
+                target.GiveHealth(target.maxHealth * healFactor);
             }
         }
     }

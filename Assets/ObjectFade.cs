@@ -10,17 +10,16 @@ public class ObjectFade : MonoBehaviour
     float targetOpacity = 1;
 
     SpriteRenderer sprite;
-    Transform player;
+    public static Transform player;
 
     private void Start()
     {
         sprite = GetComponentInChildren<SpriteRenderer>();
-        player = PlayerStatus.player.transform;
     }
     
     private void FixedUpdate()
     {
-        if (!anchor) return;
+        if (!anchor || !player) return;
         
         if (player.position.y > anchor.position.y)
         {
@@ -37,8 +36,6 @@ public class ObjectFade : MonoBehaviour
         c.a = Mathf.Lerp(c.a, targetOpacity, .25f);
 
         //c.a = Mathf.Lerp(0, targetOpacity, Mathf.Abs(vertDistanceToPlayer) / fullFadeDistance);
-
-
         sprite.color = Color.Lerp(sprite.color, c, 0.5f);
 
     }

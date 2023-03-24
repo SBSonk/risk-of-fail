@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -29,7 +30,6 @@ public class CameraFollow : MonoBehaviour
     private void Awake()
     {
         cam = this;
-        player = GameObject.Find("Player").GetComponent<Rigidbody2D>();
         camera = Camera.main;  
     }
 
@@ -49,6 +49,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (!PlayerStatus.IsAlive) return;
         if (!cameraControl) return;
+        if (!player) return;
 
         float lValue = lockToCenter ? roomViewLerp : lerpVal;
 
@@ -78,6 +79,11 @@ public class CameraFollow : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, desiredPos, lValue);
     }
 
+    public void SetPlayer(Rigidbody2D _player)
+    {
+        player = _player;
+    }
+    
     public void ChangeRoomBounds(CameraBounds x, CameraBounds y)
     {
         worldBoundsX = x;

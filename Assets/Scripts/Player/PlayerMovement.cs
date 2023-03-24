@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using UnityEngine.Events;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     public float moveSpeed = 10f;
 
@@ -32,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
     // movement input
     void Update()
     {
+        //if (!IsOwner) return;
+
         moveDirection = InputManager.playerDirection;
 
         // Replenishes dodges

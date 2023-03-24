@@ -142,6 +142,15 @@ public class ZSpawning2 : MonoBehaviour
     
     void RoundComplete()
     {
+        try
+        {
+            DiscordRPCManager.singleton.ChangeDiscordState("Horde Mode - Round " + round, "Solo");
+        }
+        catch 
+        {
+            Debug.LogWarning("Discord not connected.");
+        }
+        
         // Every 3 rounds
         if (round % 3 == 0)
         {

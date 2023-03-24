@@ -18,7 +18,7 @@ public class AmmoMachine : Buyable
             if (!repeatable)
             {
                 interactable = false;
-                interactIcon.enabled = false;
+                interactIcon.Hide();
             }
         }
     }

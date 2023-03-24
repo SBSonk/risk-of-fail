@@ -38,7 +38,6 @@ public class HudManager4 : MonoBehaviour
     private void Awake()
     {
         hud = this;
-        player = GameObject.Find("Player").GetComponent<PlayerStatus>();
     }
 
     // Handle Player Avatar
@@ -147,8 +146,10 @@ public class HudManager4 : MonoBehaviour
         fudgePointsText.SetText(LevelStats.main.points.ToString("00000"));
     }
 
-    private void Start()
+    public void SetPlayer(PlayerStatus _player)
     {
+        player = _player;
+    
         var shooting = player.pShooting;
         shooting.OnWeaponSwitch.AddListener(UpdateWeaponIcon);
         shooting.OnAmmoUpdate.AddListener(UpdateAmmoDisplay);
@@ -159,11 +160,12 @@ public class HudManager4 : MonoBehaviour
         player.onHit.AddListener(PlayerAvatarJump);
 
         UpdateWeaponIcon(shooting.GetHeldWeapon());
-        
     }
-
+    
     private void Update()
     {
+        if (!player) return;
+        
         UpdateHealth();
         UpdateDodge();
         SetFudgePoints();

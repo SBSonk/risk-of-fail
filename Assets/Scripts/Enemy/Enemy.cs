@@ -35,7 +35,7 @@ public class Enemy : Alive
 
     SpriteRenderer[] healthBarSprites;
 
-    protected void Awake()
+    protected void Start()
     {
         health *= globalEnemyHealthScale;
         maxHealth *= globalEnemyHealthScale;
@@ -54,6 +54,7 @@ public class Enemy : Alive
         spawnTime = Time.time;
 
         healthBarSprites = healthParent.GetComponentsInChildren<SpriteRenderer>();
+        attackScript.enabled = true;
     }
 
     private void Update()
@@ -157,11 +158,13 @@ public class Enemy : Alive
         pathAI.maxSpeed = 0;
         attackScript.enabled = false;
 
-        Invoke("clearStun", duration);
+        StartCoroutine(clearStun(duration));
     }
 
-    protected virtual void clearStun()
+    protected IEnumerator clearStun(float time)
     {
+        yield return new WaitForSeconds(time);
+        
         pathAI.canMove = true;
         stunned = false;
         attackScript.enabled = true;

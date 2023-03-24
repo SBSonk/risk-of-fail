@@ -59,7 +59,7 @@ public class WrittenWorksAnimator : MonoBehaviour
         }
         
         spriteRenderer.flipX = dirFacing == Directions.left;
-
+        
         switch (dirFacing)
         {
             case Directions.up:

@@ -31,6 +31,9 @@ public class LevelStats : MonoBehaviour
     public int sharpShooterBonus = 2000;
     public int noHitBonus = 5000;
 
+    [Header("Discord RPC")] public string details;
+    public string state = "Solo";
+
     private void Awake()
     {
         if (!main) main = this;
@@ -40,6 +43,8 @@ public class LevelStats : MonoBehaviour
     {
         PlayerStatus.player.pShooting.OnShoot.AddListener(BulletShot);
         PlayerStatus.player.onHit.AddListener(GiveDamage);
+        
+        DiscordRPCManager.singleton.ChangeDiscordState(details, state);
     }
 
     private void FixedUpdate()

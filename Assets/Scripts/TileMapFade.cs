@@ -12,21 +12,21 @@ public class TileMapFade : MonoBehaviour
 
     Tilemap sprite;
     TilemapRenderer spriteRenderer;
-    Transform player;
     [SerializeField] float yPos;
 
     private void Start()
     {
         sprite = GetComponent<Tilemap>();
         spriteRenderer = GetComponent<TilemapRenderer>();
-        player = PlayerStatus.player.transform;
 
         yPos = transform.TransformPoint(0, yPos, 0).y;
     }
     
     private void FixedUpdate()
     {
-        if (player.position.y > yPos)
+        if (!ObjectFade.player) return;
+        
+        if (ObjectFade.player.position.y > yPos)
         {
             targetOpacity = fullFadeOpacity;
             spriteRenderer.sortingOrder = fullSort;

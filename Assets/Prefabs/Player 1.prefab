@@ -350,7 +350,7 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_LightType: 3
   m_BlendStyleIndex: 1
-  m_FalloffIntensity: 0.75
+  m_FalloffIntensity: 0.396
   m_Color: {r: 0, g: 1, b: 1, a: 1}
   m_Intensity: 0.05
   m_LightVolumeIntensity: 1
@@ -402,7 +402,7 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 1
+  m_PointLightInnerRadius: 2
   m_PointLightOuterRadius: 5
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
@@ -10777,6 +10777,7 @@ MonoBehaviour:
     pool: 0
   reloadMultiplier: 1
   reloading: 0
+  canShoot: 1
   damageMultiplier: 1
   shoveStrength: 8
   shoveStunTime: 0.25

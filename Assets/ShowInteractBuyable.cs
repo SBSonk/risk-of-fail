@@ -8,7 +8,8 @@ public class ShowInteractBuyable : ShowInteract
 {
     public TMP_Text priceText;
     private Buyable buyable;
-
+    private bool active = true;
+    
     private void Start()
     {
         buyable = GetComponent<Buyable>();
@@ -16,6 +17,8 @@ public class ShowInteractBuyable : ShowInteract
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!active) return;
+        
         base.OnTriggerEnter2D(collision);
         if (!collision.CompareTag("Player")) return;
         priceText.text = buyable.price.ToString();
@@ -27,5 +30,14 @@ public class ShowInteractBuyable : ShowInteract
         base.OnTriggerExit2D(collision);
         if (!collision.CompareTag("Player")) return;
         StartCoroutine(SprFunctions.Fade(priceText, priceText.color, Color.clear, fadeTime));
+    }
+
+    public void Hide()
+    {
+        StopAllCoroutines();
+        StartCoroutine(SprFunctions.Fade(priceText, priceText.color, Color.clear, fadeTime));
+        StartCoroutine(SprFunctions.Fade(interactIcon, interactIcon.color, Color.clear, fadeTime));
+
+        active = false;
     }
 }

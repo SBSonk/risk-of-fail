@@ -10,7 +10,7 @@ public abstract class InteractBase : MonoBehaviour
     public UnityEvent OnPlayerEnter, OnPlayerLeave;
     private Animator anim;
 
-    private void Start()
+    protected virtual void Start()
     {
         anim = GetComponent<Animator>();
     }

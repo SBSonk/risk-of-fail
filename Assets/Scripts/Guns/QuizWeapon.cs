@@ -1,4 +1,5 @@
 using UnityEngine;
+using Unity.Netcode;    
 using TMPro;
 
 [CreateAssetMenu(fileName = "QuizWeapon", menuName = "Weapons/QuizWeapon")]
@@ -34,6 +35,9 @@ public class QuizWeapon : Gun
         // Pass HitAudio
         projectile.Initialize(effects.enemyHitSounds, effects.wallHitSounds);
 
+        // Spawn on Object
+        projectile.GetComponent<NetworkObject>().Spawn();
+        
         return projectile.gameObject;
     }
 }

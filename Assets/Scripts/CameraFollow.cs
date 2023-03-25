@@ -3,7 +3,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class CameraFollow : MonoBehaviour
+public class CameraFollow : NetworkBehaviour
 {
     public static CameraFollow cam;
 
@@ -35,6 +35,8 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
+        print(OwnerClientId);
+        
         cameraSize = camera.orthographicSize;
         startCameraSize = cameraSize;
         startOffset = offset;

@@ -31,7 +31,7 @@ public class ReloadBar : MonoBehaviour
         StartCoroutine(ReloadBarAnim(time));
     }
 
-    void HideBar(InventoryWeapon _)
+    void HideBar()
     {
         reloadParent.SetActive(false);
     }

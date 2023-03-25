@@ -29,8 +29,8 @@ public class WeaponBuy : Buyable
             // give ammo
         }
         GameManager.GiveWeaponZombies(weapon);
-        PlayerStatus.player.pAnimations.ChangeWeaponSprite(PlayerStatus.player.pShooting.GetHeldWeapon());
-        HudManager4.hud.UpdateWeaponIcon(PlayerStatus.player.pShooting.GetHeldWeapon());
+        PlayerStatus.player.pAnimations.UpdateWeaponSpriteClientRpc();
+        HudManager4.hud.UpdateWeaponIcon();
     }
 
     protected override void PlayerInteract()

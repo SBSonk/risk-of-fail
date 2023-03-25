@@ -37,6 +37,8 @@ public class PlayerMovement : NetworkBehaviour
 
         moveDirection = InputManager.playerDirection;
 
+        print(moveDirection);
+        
         // Replenishes dodges
         if (dodges < maxDodges && startCooldown) dodges += Time.deltaTime / dodgeCooldown;
         canDodge = dodges >= 1;

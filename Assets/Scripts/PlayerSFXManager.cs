@@ -11,13 +11,17 @@ public class PlayerSFXManager : NetworkBehaviour
 
     public int volume = 1;
 
+    private PlayerStatus player;
+
     public void Initialize(PlayerShooting shooting, PlayerMovement movement)
     {
+        player = GetComponent<PlayerStatus>();
+        
         shooting.OnWeaponSwitch.AddListener(ChangeSFXProfile);
 
         movement.OnDodge.AddListener(PlayDashSound);
 
-        ChangeSFXProfile(shooting.GetHeldWeapon());
+        ChangeSFXProfile();
     }
 
     public void PlayShootSound()
@@ -76,8 +80,10 @@ public class PlayerSFXManager : NetworkBehaviour
         dash.PlaySFX();
     }
 
-    public void ChangeSFXProfile(InventoryWeapon w)
+    public void ChangeSFXProfile()
     {
+        var w = player.pShooting.GetHeldWeapon();
+        
         shoot.SetAudioClips(w.weapon.effects.shootSounds);
         shove.SetAudioClips(w.weapon.effects.shoveSounds);
         reload.SetAudioClips(w.weapon.effects.reloadSounds);

@@ -73,8 +73,10 @@ public class HudManager4 : MonoBehaviour
     }
 
     // Handle Weapon Swap
-    public void UpdateWeaponIcon(InventoryWeapon w)
+    public void UpdateWeaponIcon()
     {
+        var w = player.pShooting.GetHeldWeapon();
+        
         // Swap sprite
         weaponSprite.sprite = w.weapon.hud.sprite;
         weaponTransform.localPosition = w.weapon.hud.offset;
@@ -84,12 +86,14 @@ public class HudManager4 : MonoBehaviour
         // Hide ammo if melee
         ammoBar.gameObject.SetActive(!(w.weapon is MeleeWeapon));
 
-        UpdateAmmoDisplay(w);
+        UpdateAmmoDisplay();
     }
 
     // Update Ammo Display
-    void UpdateAmmoDisplay(InventoryWeapon weapon)
+    void UpdateAmmoDisplay()
     {
+        var weapon = player.pShooting.GetHeldWeapon();
+        
         int pCount = weapon.pool;
         int cCount = weapon.clip;
 
@@ -159,7 +163,7 @@ public class HudManager4 : MonoBehaviour
         player.onHit.AddListener(PlayerAvatarAnimation);
         player.onHit.AddListener(PlayerAvatarJump);
 
-        UpdateWeaponIcon(shooting.GetHeldWeapon());
+        UpdateWeaponIcon();
     }
     
     private void Update()

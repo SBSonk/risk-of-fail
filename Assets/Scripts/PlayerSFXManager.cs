@@ -1,10 +1,9 @@
 using GameAudioScriptingEssentials;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerSFXManager : NetworkBehaviour
+public class PlayerSFXManager : MonoBehaviour
 {
     public AudioClipRandomizer shoot, shove, reload;
     public AudioClipRandomizer dash;
@@ -22,8 +21,6 @@ public class PlayerSFXManager : NetworkBehaviour
 
     public void PlayShootSound()
     {
-        if (!IsOwner) return;
-        
         if (!shoot.HasAudioClips())
         {
             print("No shooting audio found...");
@@ -36,8 +33,6 @@ public class PlayerSFXManager : NetworkBehaviour
 
     public void PlayShoveSound()
     {
-        if (!IsOwner) return;
-        
         if (!shove.HasAudioClips())
         {
             print("No shoving audio found...");
@@ -50,8 +45,6 @@ public class PlayerSFXManager : NetworkBehaviour
 
     public void PlayReloadSound()
     {
-        if (!IsOwner) return;
-        
         if (!reload.HasAudioClips())
         {
             print("No reloading audio found...");
@@ -64,8 +57,6 @@ public class PlayerSFXManager : NetworkBehaviour
 
     public void PlayDashSound()
     {
-        if (!IsOwner) return;
-        
         if (!dash.HasAudioClips())
         {
             print("No dash audio found...");

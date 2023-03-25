@@ -33,7 +33,7 @@ public class PlayerMovement : NetworkBehaviour
     // movement input
     void Update()
     {
-        if (!IsOwner) return;
+        //if (!IsOwner) return;
 
         moveDirection = InputManager.playerDirection;
 

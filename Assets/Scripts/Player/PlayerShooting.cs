@@ -47,7 +47,7 @@ public class PlayerShooting : NetworkBehaviour
 
     private void Update()
     {
-        if (!IsOwner) return;
+        //if (!IsOwner) return;
         
         // Get direction from cursor to player and make the player face it
         Vector2 mousePos = ((Vector2) transform.position - InputManager.mousePosition).normalized;

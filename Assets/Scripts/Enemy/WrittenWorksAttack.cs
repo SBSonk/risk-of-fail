@@ -34,7 +34,7 @@ public class WrittenWorksAttack : MonoBehaviour
     {
         ai = GetComponent<AIPath>();
         self = GetComponent<Enemy>();
-        player = PlayerStatus.player.GetComponent<Rigidbody2D>();
+        player = GameObject.Find("Player").GetComponent<Rigidbody2D>();
     }
 
     protected virtual void Start()

@@ -32,9 +32,9 @@ public class ZSpawning2 : MonoBehaviour
 
     private Transform player;
     
-    public void Initialize()
+    private void Start()
     {
-        player = PlayerStatus.player.transform;
+        player = GameObject.Find("Player").transform;
         
         spawns = new List<ZSpawnPoint>();
 

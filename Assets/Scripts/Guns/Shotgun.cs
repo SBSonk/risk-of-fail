@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Shotgun", menuName = "Weapons/Shotgun")]
@@ -5,10 +6,19 @@ public class Shotgun : Gun
 {
     public int pelletCount = 3;
     public float pelletSpread = 25; // Pellet angle in degrees
+    public float perBulletDelay = 0;
+    public float shootDelay = 0;
 
     public override void ShootWeapon(Transform player, float multiplier = 1)
     {
-        for (int i = -pelletCount; i < pelletCount; i++)
+        PlayerStatus.player.pShooting.StartCoroutine(ShootPerBullet(player, multiplier));
+    }
+
+    IEnumerator ShootPerBullet(Transform player, float multiplier = 1)
+    {
+        yield return new WaitForSeconds(shootDelay);
+        
+        for (int i = pelletCount; i > -pelletCount; i--)
         {
             // Spawn projectile
             GameObject bulletShot = SpawnBullet(player, multiplier);
@@ -25,8 +35,7 @@ public class Shotgun : Gun
             // Apply velocity to bullet
             rb.AddForce(bulletShot.transform.right.normalized * bulletVelocity, ForceMode2D.Impulse);
             rb.AddForce(bulletShot.transform.up * ((Mathf.PerlinNoise(player.position.x * Time.time, player.position.y * Time.time) - .5f) * bulletSpread), ForceMode2D.Impulse);
+            yield return new WaitForSeconds(perBulletDelay);
         }
-
-        base.ShootWeapon(player);
     }
 }

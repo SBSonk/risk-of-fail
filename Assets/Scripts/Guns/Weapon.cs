@@ -27,7 +27,7 @@ public abstract class Weapon : ScriptableObject
     public WeaponSFX effects;
     public Vector3 weaponScale = Vector3.one;
     public Vector3 weaponOffset;
-    public RuntimeAnimatorController animatorController;
+    public WeaponAnimator animatorController;
 
     // Left click attack
     public virtual void ShootWeapon(Transform player, float multiplier = 1)

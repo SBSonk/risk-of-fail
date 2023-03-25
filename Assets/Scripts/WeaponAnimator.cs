@@ -1,18 +1,34 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponAnimator : MonoBehaviour
 {
-    [SerializeField] ParticleSystem weaponParticles;
+    [SerializeField] public SpriteRenderer sprite { get; private set; }
+    [SerializeField] private Animator anim;
 
-    public void EnableParticles()
+    private void Start()
     {
-        weaponParticles.Play();
+        sprite = GetComponentInChildren<SpriteRenderer>();    
+        anim = GetComponent<Animator>();
+        
+        PlayHoldAnimation();
+    }
+    
+    public virtual void PlayShootAnimation()
+    {
+        anim.CrossFade("Shoot", .1f, 0, 0f);
     }
 
-    public void DisableParticles()
+    public virtual void PlayShoveAnimation()
     {
-        weaponParticles.Stop();
+        anim.CrossFade("Shove", .1f, 0, 0);
     }
+
+    public virtual void PlayHoldAnimation()
+    {
+        anim.CrossFade("Hold", .1f, 0, 0f);
+    }
+    
 }

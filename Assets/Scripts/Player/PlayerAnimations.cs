@@ -1,5 +1,6 @@
 using FirstGearGames.SmoothCameraShaker;
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour
@@ -25,10 +26,7 @@ public class PlayerAnimations : MonoBehaviour
     MoveCursor cursorScript;
     bool followCursor;
 
-    [Header("Weapon")] [SerializeField] private Animator weaponAnimator;
-    [SerializeField] Weapon heldWeapon;
-    [SerializeField] SpriteRenderer weaponSprite;
-    [SerializeField] Transform weapon;
+    [Header("Weapon")] [SerializeField] private WeaponAnimator weaponAnimator;
     [SerializeField] float weaponLerp = 0.5f;
     public ShakeData shoveShake;
 
@@ -70,7 +68,7 @@ public class PlayerAnimations : MonoBehaviour
         else if (followCursor) Invoke("StopCursorFollow", stopCursorFollowTime);
 
         // Orient player
-        dir = ((Vector3) InputManager.mousePosition - transform.position).normalized;
+        dir = ((Vector3)InputManager.mousePosition - transform.position).normalized;
 
         currentDir = VectorToDir(dir);
 
@@ -79,11 +77,15 @@ public class PlayerAnimations : MonoBehaviour
         float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
 
         // Change weapon sorting order depending on if its in front or behind
-        if (currentDir == Directions.down || currentDir == Directions.bottomRight || currentDir == Directions.bottomLeft) weaponSprite.sortingOrder = 1;
-        else weaponSprite.sortingOrder = 0;
-
-        weapon.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.LerpAngle(weapon.rotation.eulerAngles.z, angle, weaponLerp)));
-    } 
+        if (weaponAnimator.sprite)
+        {
+            if (currentDir == Directions.down) weaponAnimator.sprite.sortingOrder = 1;
+            else weaponAnimator.sprite.sortingOrder = 0;
+            
+            weaponAnimator.transform.rotation = Quaternion.Euler(new Vector3(0, 0,
+                Mathf.LerpAngle(weaponAnimator.transform.rotation.eulerAngles.z, angle, weaponLerp)));
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -178,8 +180,9 @@ public class PlayerAnimations : MonoBehaviour
     {
         canSwitchAnimation = false;
         sprite.sortingOrder = 100;
-        weaponSprite.enabled = false;
         animator.Play("player_death");
+        
+        // Todo: fling weapon in the other direction;
 
         GetComponent<Collider2D>().enabled = false;
 
@@ -214,12 +217,12 @@ public class PlayerAnimations : MonoBehaviour
     
     void ShootAnimation()
     {
-        weaponAnimator.CrossFade("Shoot", .1f, 0, 0f);
+        weaponAnimator.PlayShootAnimation();
     }
     void ShoveAnimation()
     {
-        weaponAnimator.CrossFade("Shove", .1f, 0, 0);
-
+        weaponAnimator.PlayShoveAnimation();
+        
         StartCoroutine(ShoveShake(.1f));
     }
 
@@ -230,18 +233,13 @@ public class PlayerAnimations : MonoBehaviour
     }
 
     public void ChangeWeaponSprite(InventoryWeapon w)
-    {        
-        weaponSprite.sprite = w.weapon.weaponSprite;
-        weaponSprite.transform.localPosition = w.weapon.weaponOffset;
-        weaponSprite.transform.localScale = w.weapon.weaponScale;
-
-        heldWeapon = w.weapon;
-        
-        weaponAnimator.CrossFade("Hold", .25f);
-
+    {
         cursorScript.ChangeCrosshair(w.weapon.hud.crossHair);
 
-        weaponAnimator.runtimeAnimatorController = w.weapon.animatorController;
+        // Replace weapon object
+        Destroy(weaponAnimator.gameObject);
+        weaponAnimator = Instantiate(w.weapon.animatorController, transform.position + new Vector3(0, 1.25f) + w.weapon.weaponOffset, Quaternion.identity, sprite.transform);
+        weaponAnimator.transform.localScale = w.weapon.weaponScale;
     }
 
     void DodgeAnimation()

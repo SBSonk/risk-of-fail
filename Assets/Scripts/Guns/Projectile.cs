@@ -75,6 +75,7 @@ public class Projectile : MonoBehaviour
 
             // Destroy bullet
             active = false;
+            GetComponent<NetworkObject>().Despawn();
             Destroy(gameObject, 1f);
         }
 
@@ -83,17 +84,8 @@ public class Projectile : MonoBehaviour
 
         if (collision.CompareTag("Alive")) pierces--;
 
-        if (paintPrefab) 
-        {
-            var paintSpawned = Instantiate(paintPrefab, transform.position, Quaternion.identity);
-            paintSpawned.GetComponent<NetworkObject>().Spawn();
-        }
+        if (paintPrefab) Instantiate(paintPrefab, transform.position, Quaternion.identity);
         audioRandomizer.SetAudioClips(collision.CompareTag("Wall") ? _wallHit : _enemyHit);
         if (audioRandomizer.HasAudioClips()) audioRandomizer.PlaySFX();
-    }
-
-    private void OnDestroy()
-    {
-        GetComponent<NetworkObject>().Despawn();
     }
 }

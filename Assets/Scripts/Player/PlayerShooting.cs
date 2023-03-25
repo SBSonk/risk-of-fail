@@ -26,7 +26,7 @@ public class PlayerShooting : NetworkBehaviour
     [SerializeField] float radius;
     [SerializeField] private Projectile friendlyQuizBullet;
 
-    public UnityEvent OnWeaponSwitch, OnAmmoUpdate;
+    public UnityEvent<InventoryWeapon> OnWeaponSwitch, OnAmmoUpdate;
     public UnityEvent OnShoot;
     public UnityEvent<float> OnReloadStart;
     public UnityEvent OnMelee, OnShove, OnParry;
@@ -59,7 +59,21 @@ public class PlayerShooting : NetworkBehaviour
 
         if (CheckIfPlayerShooting() && CanShoot())
         {
-            ShootActionServerRpc();
+            var weapon = GetHeldWeapon().weapon;
+            switch (weapon)
+            {
+                case Gun g:
+                    GunBehavior(g);
+                    break;
+
+                case MeleeWeapon m:
+                    // Add reload to melee
+                    MeleeBehavior(m);
+                    break;
+            }
+
+            // Apply firerate
+            shootEnableTime = Time.time + weapon.fireRate;
         }
 
         if (InputManager.shove && CanShoot()) StartCoroutine(Shove());
@@ -68,26 +82,6 @@ public class PlayerShooting : NetworkBehaviour
         if (GetHeldWeapon().clip < GetHeldWeapon().weapon.clipSize && InputManager.reload && reloading == false) StartCoroutine(Reload());
     }
 
-    [ServerRpc]
-    void ShootActionServerRpc()
-    {
-        var weapon = GetHeldWeapon().weapon;
-        switch (weapon)
-        {
-            case Gun g:
-                GunBehavior(g);
-                break;
-
-            case MeleeWeapon m:
-                // Add reload to melee
-                MeleeBehavior(m);
-                break;
-        }
-        
-        // Apply firerate
-        shootEnableTime = Time.time + weapon.fireRate;
-    }
-    
     bool CanShoot() => Time.time >= shootEnableTime && canShoot;
     
     bool CheckIfPlayerShooting()
@@ -111,7 +105,7 @@ public class PlayerShooting : NetworkBehaviour
         canShoot = true;
         reloading = false;
 
-        OnWeaponSwitch?.Invoke();
+        OnWeaponSwitch?.Invoke(GetHeldWeapon());
     }
 
     IEnumerator Shove()
@@ -185,7 +179,7 @@ public class PlayerShooting : NetworkBehaviour
 
                 weapon.clip -= g.ammoPerShot;
                 sfxManager.PlayShootSound();
-                OnAmmoUpdate?.Invoke();
+                OnAmmoUpdate?.Invoke(weapon);
             }
 
             // Autoreload if no ammo
@@ -199,7 +193,7 @@ public class PlayerShooting : NetworkBehaviour
 
                 weapon.pool -= g.ammoPerShot;
                 sfxManager.PlayShootSound();
-                OnAmmoUpdate?.Invoke();
+                OnAmmoUpdate?.Invoke(weapon);
             }
         }
     }
@@ -286,7 +280,7 @@ public class PlayerShooting : NetworkBehaviour
                     heldWep.pool -= amountToReload;
                 }
 
-                OnAmmoUpdate?.Invoke();
+                OnAmmoUpdate?.Invoke(heldWep);
 
                 yield return new WaitForSeconds(0.5f);
 
@@ -311,7 +305,7 @@ public class PlayerShooting : NetworkBehaviour
     {
         weapon.pool += amount;
 
-        OnAmmoUpdate?.Invoke();
+        OnAmmoUpdate?.Invoke(weapon);
     }
 
     public InventoryWeapon GetHeldWeapon()

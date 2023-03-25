@@ -38,26 +38,22 @@ public class PlayerAnimations : NetworkBehaviour
     [SerializeField] ResultsScreen results;
     private Rigidbody2D rb;
 
-    private PlayerStatus player;
-
     public void Initialize(PlayerShooting shooting, PlayerMovement movement, PlayerStatus status)
     {
-        player = status;
-        
         cursor = GameObject.Find("PlayerCursor").transform;
         cursorScript = cursor.GetComponent<MoveCursor>();
  
         shooting.OnShoot.AddListener(ShootAnimation);
-        shooting.OnWeaponSwitch.AddListener(UpdateWeaponSpriteClientRpc);
+        shooting.OnWeaponSwitch.AddListener(ChangeWeaponSprite);
         shooting.OnShove.AddListener(ShoveAnimation);
         shooting.OnMelee.AddListener(MeleeAnimation);
 
-        movement.OnDodge.AddListener(DodgeAnimationClientRpc);
+        movement.OnDodge.AddListener(DodgeAnimation);
 
         status.OnPlayerDamage.AddListener(DamageAnimation);
         status.onDeath.AddListener(DeathAnimation);
 
-        UpdateWeaponSpriteClientRpc();
+        ChangeWeaponSprite(shooting.GetHeldWeapon());
 
         trailTime = trail.time;
         trail.time = 0;
@@ -84,38 +80,24 @@ public class PlayerAnimations : NetworkBehaviour
         currentDir = VectorToDir(dir);
 
         // Orient weapon
-        OrientWeapon();
+        Vector2 mousePos = ((Vector2)transform.position - InputManager.mousePosition).normalized;
+        float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
+
+        // Change weapon sorting order depending on if its in front or behind
+        if (currentDir == Directions.down || currentDir == Directions.bottomRight || currentDir == Directions.bottomLeft) weaponSprite.sortingOrder = 1;
+        else weaponSprite.sortingOrder = 0;
+
+        weapon.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.LerpAngle(weapon.rotation.eulerAngles.z, angle, weaponLerp)));
     } 
 
     private void FixedUpdate()
     {
         // Choose animations
         if (!canSwitchAnimation || !IsOwner) return;
-        
-        FaceDirection();
-    }
-    
-    void OrientWeapon()
-    {
-        Vector2 mousePos = ((Vector2)transform.position - InputManager.mousePosition).normalized;
-        float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
-        
-        UpdateWeaponSortingClientRpc();
 
-        weapon.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.LerpAngle(weapon.rotation.eulerAngles.z, angle, weaponLerp)));
-    }
+        // Flip if going left
+        sprite.flipX = currentDir == Directions.left || currentDir == Directions.upperLeft || currentDir == Directions.bottomLeft;
 
-    [ClientRpc]
-    void UpdateWeaponSortingClientRpc()
-    {
-        // Change weapon sorting order depending on if its in front or behind
-        if (currentDir == Directions.down || currentDir == Directions.bottomRight || currentDir == Directions.bottomLeft) weaponSprite.sortingOrder = 1;
-        else weaponSprite.sortingOrder = 0;
-    }
-    
-    
-    void FaceDirection()
-    {
         if (input.magnitude > 0 && rb.velocity.magnitude > 0)
         {
             var inputDir = VectorToDir(InputManager.playerDirection);
@@ -126,16 +108,32 @@ public class PlayerAnimations : NetworkBehaviour
                     animator.Play("walk_u");
                     break;
 
+                /*case Directions.upperRight:
+                    animator.Play("walk_ur");
+                    break;
+
+                case Directions.upperLeft:
+                    animator.Play("walk_ur");
+                    break;*/
+
                 case Directions.right:
                     animator.Play("walk_r");
                     break;
-                
+
+                /*case Directions.bottomRight:
+                    animator.Play("walk_dr");
+                    break;
+
+                case Directions.bottomLeft:
+                    animator.Play("walk_dr");
+                    break;*/
+
                 case Directions.down:
                     animator.Play("walk_d");
                     break;
 
                 case Directions.left:
-                    animator.Play("walk_l");
+                    animator.Play("walk_r");
                     break;
             }
         }
@@ -146,9 +144,25 @@ public class PlayerAnimations : NetworkBehaviour
                 case Directions.up:
                     animator.Play("stand_u");
                     break;
-                
+
+                case Directions.upperRight:
+                    animator.Play("stand_ur");
+                    break;
+
+                case Directions.upperLeft:
+                    animator.Play("stand_ur");
+                    break;
+
                 case Directions.right:
                     animator.Play("stand_r");
+                    break;
+
+                case Directions.bottomRight:
+                    animator.Play("stand_dr");
+                    break;
+
+                case Directions.bottomLeft:
+                    animator.Play("stand_dr");
                     break;
 
                 case Directions.down:
@@ -156,11 +170,13 @@ public class PlayerAnimations : NetworkBehaviour
                     break;
 
                 case Directions.left:
-                    animator.Play("stand_l");
+                    animator.Play("stand_r");
                     break;
             }
-        }}
-    
+        }
+    }
+
+    [ContextMenu("kYS")]
     void DeathAnimation() => StartCoroutine(DeathAnim());
 
     IEnumerator DeathAnim()
@@ -200,38 +216,31 @@ public class PlayerAnimations : NetworkBehaviour
 
         results.ShowResults();
     }
-    
+
     void MeleeAnimation()
     {
         weaponAnimator.CrossFade("Swing", .1f, 0, 0f);
     }
-    
+
     void ShootAnimation()
     {
         weaponAnimator.CrossFade("Shoot" + animType, .1f, 0, 0f);
     }
-    
     void ShoveAnimation()
     {
         weaponAnimator.CrossFade("Shove" + animType, .1f);
 
-        if (IsOwner)
-        {
-            StartCoroutine(ShoveShake(.1f));
-        }
+        StartCoroutine(ShoveShake(.1f));
     }
-    
+
     IEnumerator ShoveShake(float t)
     {
         yield return new WaitForSeconds(t);
         if (shoveShake) CameraShakerHandler.Shake(shoveShake);
     }
 
-    [ClientRpc]
-    public void UpdateWeaponSpriteClientRpc()
-    {
-        var w = player.pShooting.GetHeldWeapon();
-        
+    public void ChangeWeaponSprite(InventoryWeapon w)
+    {        
         weaponSprite.sprite = w.weapon.weaponSprite;
         weaponSprite.transform.localPosition = w.weapon.weaponOffset;
         weaponSprite.transform.localScale = w.weapon.weaponScale;
@@ -266,8 +275,7 @@ public class PlayerAnimations : NetworkBehaviour
         cursorScript.ChangeCrosshair(w.weapon.hud.crossHair);
     }
 
-    [ClientRpc]
-    void DodgeAnimationClientRpc()
+    void DodgeAnimation()
     {
         switch (VectorToDir(input))
         {
@@ -297,7 +305,7 @@ public class PlayerAnimations : NetworkBehaviour
 
         CameraShakerHandler.Shake(dodgeScreenshake);
     }
-    
+
     void DamageAnimation()
     {
         canSwitchAnimation = false;
@@ -317,7 +325,7 @@ public class PlayerAnimations : NetworkBehaviour
                 break;
 
             case Directions.left:
-                animator.Play("hurt_l");
+                animator.Play("hurt_r");
                 break;
         }
         Invoke("EnableAnimations", 0.5f);

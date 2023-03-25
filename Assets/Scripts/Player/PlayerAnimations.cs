@@ -1,9 +1,8 @@
 using FirstGearGames.SmoothCameraShaker;
 using System.Collections;
-using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerAnimations : NetworkBehaviour        
+public class PlayerAnimations : MonoBehaviour
 {
     public bool canSwitchAnimation = true   ;
     [SerializeField] SpriteRenderer[] sprites;
@@ -91,7 +90,7 @@ public class PlayerAnimations : NetworkBehaviour
     private void FixedUpdate()
     {
         // Choose animations
-        if (!canSwitchAnimation/* || !IsOwner*/) return;
+        if (!canSwitchAnimation) return;
 
         // Flip if going left
         sprite.flipX = currentDir == Directions.left || currentDir == Directions.upperLeft || currentDir == Directions.bottomLeft;

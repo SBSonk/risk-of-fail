@@ -1,5 +1,4 @@
 using FirstGearGames.SmoothCameraShaker;
-using Unity.Netcode;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Gun", menuName = "Weapons/Gun")]
@@ -42,9 +41,6 @@ public class Gun : Weapon
         // Pass HitAudio
         projectile.Initialize(effects.enemyHitSounds, effects.wallHitSounds);
 
-        // Spawn on server
-        projectile.GetComponent<NetworkObject>().Spawn();
-        
         return projectile.gameObject;
     }
 }

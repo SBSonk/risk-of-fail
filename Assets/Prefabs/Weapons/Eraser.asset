@@ -38,7 +38,6 @@ MonoBehaviour:
   shootShake: {fileID: 11400000, guid: c182fb5cc6ba4cf43b41ad856b62f48f, type: 2}
   hitScreenShake: {fileID: 0}
   effects:
-    animType: 68
     shootSounds:
     - {fileID: 8300000, guid: 9b3e9a67de983a249a9d2991f067c8ae, type: 3}
     - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
@@ -50,5 +49,8 @@ MonoBehaviour:
     - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
     enemyHitSounds: []
     wallHitSounds: []
+  weaponScale: {x: 1, y: 1, z: 1}
+  weaponOffset: {x: 0, y: 0, z: 0}
+  animatorController: {fileID: 9100000, guid: ea22c6e0171c2a047a3911885aad6ee9, type: 2}
   swingDelay: 0.1
   hitArea: 1.75

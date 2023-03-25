@@ -2,11 +2,10 @@ using GameAudioScriptingEssentials;
 using System.Collections;
 using System.Collections.Generic;
 using FirstGearGames.SmoothCameraShaker;
-using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerShooting : NetworkBehaviour
+public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] Transform gunPivot, gunBarrel;
     public InventoryWeapon fallbackWep;
@@ -47,8 +46,6 @@ public class PlayerShooting : NetworkBehaviour
 
     private void Update()
     {
-        //if (!IsOwner) return;
-        
         // Get direction from cursor to player and make the player face it
         Vector2 mousePos = ((Vector2) transform.position - InputManager.mousePosition).normalized;
         float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;

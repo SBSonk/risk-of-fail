@@ -24,25 +24,17 @@ public abstract class Weapon : ScriptableObject
     public ShakeData shootShake, hitScreenShake;
 
     [Header("Weapon Animations")]
-    public WeaponFX effects;
+    public WeaponSFX effects;
     public Vector3 weaponScale = Vector3.one;
     public Vector3 weaponOffset;
-    
+    public RuntimeAnimatorController animatorController;
+
     // Left click attack
     public virtual void ShootWeapon(Transform player, float multiplier = 1)
     {
         return;
     }
 }   
-
-[System.Serializable]
-public enum AnimationTypes
-{
-    Light = 'A',
-    Brush = 'B',
-    Heavy = 'C',
-    Melee
-}
 
 [System.Serializable]
 public struct HUDElement
@@ -64,10 +56,8 @@ public struct ShopMetadata
 }
 
 [System.Serializable]
-public struct WeaponFX
+public struct WeaponSFX
 {
-    public AnimationTypes animType;
-
     public AudioClip[] shootSounds, reloadSounds, shoveSounds;
     public AudioClip[] enemyHitSounds, wallHitSounds;
 }

@@ -9,7 +9,6 @@ public class PlayerAnimations : MonoBehaviour
 
     [SerializeField] ParticleSystem dashExp;
     [SerializeField] Animator animator;
-    [SerializeField] Animator weaponAnimator;
 
     [Header("Dodge")]
     [SerializeField] TrailRenderer trail;
@@ -26,9 +25,8 @@ public class PlayerAnimations : MonoBehaviour
     MoveCursor cursorScript;
     bool followCursor;
 
-    [Header("Weapon")]
+    [Header("Weapon")] [SerializeField] private Animator weaponAnimator;
     [SerializeField] Weapon heldWeapon;
-    string animType = "A";
     [SerializeField] SpriteRenderer weaponSprite;
     [SerializeField] Transform weapon;
     [SerializeField] float weaponLerp = 0.5f;
@@ -45,7 +43,7 @@ public class PlayerAnimations : MonoBehaviour
         shooting.OnShoot.AddListener(ShootAnimation);
         shooting.OnWeaponSwitch.AddListener(ChangeWeaponSprite);
         shooting.OnShove.AddListener(ShoveAnimation);
-        shooting.OnMelee.AddListener(MeleeAnimation);
+        shooting.OnMelee.AddListener(ShootAnimation);
 
         movement.OnDodge.AddListener(DodgeAnimation);
 
@@ -213,19 +211,14 @@ public class PlayerAnimations : MonoBehaviour
 
         results.ShowResults();
     }
-
-    void MeleeAnimation()
-    {
-        weaponAnimator.CrossFade("Swing", .1f, 0, 0f);
-    }
-
+    
     void ShootAnimation()
     {
-        weaponAnimator.CrossFade("Shoot" + animType, .1f, 0, 0f);
+        weaponAnimator.CrossFade("Shoot", .1f, 0, 0f);
     }
     void ShoveAnimation()
     {
-        weaponAnimator.CrossFade("Shove" + animType, .1f);
+        weaponAnimator.CrossFade("Shove", .1f, 0, 0);
 
         StartCoroutine(ShoveShake(.1f));
     }
@@ -243,33 +236,12 @@ public class PlayerAnimations : MonoBehaviour
         weaponSprite.transform.localScale = w.weapon.weaponScale;
 
         heldWeapon = w.weapon;
-
-        switch(heldWeapon.effects.animType)
-        {
-            case AnimationTypes.Light:
-                animType = "A";
-                break;
-
-            case AnimationTypes.Brush:
-                animType = "B";
-                break;
-
-            case AnimationTypes.Heavy:
-                animType = "C";
-                break;
-
-            case AnimationTypes.Melee:
-                animType = "Melee";
-                break;
-
-            default:
-                animType = "A";
-                break;
-        }
-
-        weaponAnimator.CrossFade("Hold" + animType, .25f);
+        
+        weaponAnimator.CrossFade("Hold", .25f);
 
         cursorScript.ChangeCrosshair(w.weapon.hud.crossHair);
+
+        weaponAnimator.runtimeAnimatorController = w.weapon.animatorController;
     }
 
     void DodgeAnimation()

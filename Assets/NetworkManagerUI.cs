@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Unity.Netcode;
 
 public class NetworkManagerUI : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class NetworkManagerUI : MonoBehaviour
 
     private void Awake()
     {
-        host.onClick.AddListener(() => { NetworkManager.Singleton.StartHost();});
-        client.onClick.AddListener(() => { NetworkManager.Singleton.StartClient();});
+        //host.onClick.AddListener(() => { NetworkManager.Singleton.StartHost();});
+        //client.onClick.AddListener(() => { NetworkManager.Singleton.StartClient();});
     }
 }

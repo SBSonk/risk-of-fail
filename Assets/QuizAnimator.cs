@@ -42,14 +42,13 @@ public class QuizAnimator : MonoBehaviour
         {
             dirFacing = VectorToDir(pathing.velocity.normalized);
         }
-    
-        WalkAnimation();
+
+        if (pathing.velocity.magnitude > 0) WalkAnimation();
+        else StandAnimation();
     }
 
     protected virtual void WalkAnimation()
     {
-        if (!canSwitchAnimations) return;
-        
         spriteRenderer.flipX = dirFacing == Directions.left;
         
         switch (dirFacing)
@@ -72,6 +71,30 @@ public class QuizAnimator : MonoBehaviour
         }
     }
 
+    protected virtual void StandAnimation()
+    {
+        spriteRenderer.flipX = dirFacing == Directions.left;
+        
+        switch (dirFacing)
+        {
+            case Directions.up:
+                animator.Play("stand_u");
+                break;
+
+            case Directions.right:
+                animator.Play("stand_r");
+                break;
+
+            case Directions.down:
+                animator.Play("stand_d");
+                break;
+
+            case Directions.left:
+                animator.Play("stand_r");
+                break;
+        }
+    }
+    
     public virtual void ShootAnimation()
     {
         if (!canSwitchAnimations) return;

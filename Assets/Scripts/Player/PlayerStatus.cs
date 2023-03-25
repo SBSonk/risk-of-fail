@@ -43,12 +43,6 @@ public class PlayerStatus : Alive
         CameraFollow.cam.SetPlayer(GetComponent<Rigidbody2D>());
     }
 
-    public override void OnNetworkSpawn()
-    {
-        HudManager4.hud.SetPlayer(this);
-        CameraFollow.cam.SetPlayer(GetComponent<Rigidbody2D>());
-    }
-
     protected override void OnDamage(float damage)
     { 
         // Play indicators

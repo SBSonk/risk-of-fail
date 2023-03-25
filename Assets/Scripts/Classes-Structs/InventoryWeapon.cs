@@ -7,7 +7,7 @@ public class InventoryWeapon
 {
     public Weapon weapon;
     public int clip, pool;
-
+    
     public InventoryWeapon(Weapon nweapon, int nclip, int npool)
     {
         weapon = nweapon;

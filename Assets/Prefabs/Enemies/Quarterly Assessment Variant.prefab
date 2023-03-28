@@ -363,7 +363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2368033471186396240, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: m_Radius
-      value: 0.9717312
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2368033471186396240, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: m_Offset.y
@@ -657,6 +657,20 @@ MonoBehaviour:
   reboundLength: 20
   rushDistance: 7
   attackRange: 5
+  hitFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 512
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
   mode: 0
   minDashDistance: 5
   maxDashDistance: 6

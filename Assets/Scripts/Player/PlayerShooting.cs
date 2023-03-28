@@ -67,6 +67,10 @@ public class PlayerShooting : MonoBehaviour
                     // Add reload to melee
                     MeleeBehavior(m);
                     break;
+                
+                case Highlighter h:
+                    HighlighterBehavior(h);
+                    break;
             }
 
             // Apply firerate
@@ -187,6 +191,42 @@ public class PlayerShooting : MonoBehaviour
             if (weapon.pool >= g.ammoPerShot)
             {
                 ShootGun(g);
+
+                weapon.pool -= g.ammoPerShot;
+                sfxManager.PlayShootSound();
+                OnAmmoUpdate?.Invoke(weapon);
+            }
+        }
+    }
+    
+    void HighlighterBehavior(Highlighter g)
+    {
+        // Shooting and magazines
+        var weapon = GetHeldWeapon();
+        if (g.clipSize > 0)
+        {
+            // Remove ammo in clip if the gun uses clips
+            if (weapon.clip >= g.ammoPerShot)
+            {
+                g.ShootWeapon(gunBarrel, this, damageMultiplier);
+
+                OnShoot?.Invoke();
+
+                weapon.clip -= g.ammoPerShot;
+                sfxManager.PlayShootSound();
+                OnAmmoUpdate?.Invoke(weapon);
+            }
+
+            // Autoreload if no ammo
+            if (weapon.clip == 0 && reloading == false) StartCoroutine(Reload());
+        }
+        else
+        {
+            if (weapon.pool >= g.ammoPerShot)
+            {
+                g.ShootWeapon(gunBarrel, damageMultiplier);
+
+                OnShoot?.Invoke();
 
                 weapon.pool -= g.ammoPerShot;
                 sfxManager.PlayShootSound();

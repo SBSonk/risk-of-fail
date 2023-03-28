@@ -10319,6 +10319,20 @@ MonoBehaviour:
   reboundLength: 0.2
   rushDistance: 6
   attackRange: 5
+  hitFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 512
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
   mode: 0
   minDashDistance: 2
   maxDashDistance: 10

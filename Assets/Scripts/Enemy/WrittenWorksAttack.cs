@@ -14,6 +14,7 @@ public class WrittenWorksAttack : MonoBehaviour
     [SerializeField] float rushDistance = 5f, attackRange = 5f;
     float defaultSpeed;
 
+    public ContactFilter2D hitFilter;
     public AIMode mode = AIMode.pathing;
     protected AIPath ai;
     protected Enemy self;
@@ -244,14 +245,18 @@ public class WrittenWorksAttack : MonoBehaviour
 
                 // check if player is still in range
                 float distance = Vector3.Distance(transform.position, col.transform.position); // TODO: use overlap to account for direction
+                var objectHit = Physics2D.Linecast(transform.position, col.transform.position, hitFilter.layerMask);
+                if (objectHit && objectHit.collider.CompareTag("Wall")) continue;
+                
                 if (distance <= attackRange)
                 {
                     AttackPlayer(col, damage.damage);
                 }
+                
+                
 
                 mode = AIMode.pathing;
                 attacking = false;
-                
             }
         }
 

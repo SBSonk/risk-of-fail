@@ -349,6 +349,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  interactIcon: {fileID: 0}
 --- !u!70 &3437071363393199914
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -388,6 +389,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1442309480, guid: 6a9cd552731e53b49beeae781c9e6e11, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 647075939307261815, guid: 6a9cd552731e53b49beeae781c9e6e11, type: 3}
       propertyPath: opened
       value: 0
@@ -438,7 +443,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 647075939307261819, guid: 6a9cd552731e53b49beeae781c9e6e11, type: 3}
       propertyPath: m_Name
-      value: Sideways Door Variant Variant
+      value: Buyable Sideways Door Variant Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150800638931845034, guid: 6a9cd552731e53b49beeae781c9e6e11, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150800639684284917, guid: 6a9cd552731e53b49beeae781c9e6e11, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a9cd552731e53b49beeae781c9e6e11, type: 3}

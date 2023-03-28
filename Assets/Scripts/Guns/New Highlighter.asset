@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 583afe4bd1a5af5429bee5e4bd82eaaf, type: 3}
+  m_Name: New Highlighter
+  m_EditorClassIdentifier: 
+  shopData:
+    weaponDescription: 
+    weaponCost: 0
+    weaponStrength: 0
+    weaponFireRate: 0
+    weaponPiercing: 0
+  hud:
+    sprite: {fileID: 780896013, guid: e9b86cc3c0d92df44ad794000e2d0cfe, type: 3}
+    offset: {x: 0, y: 0}
+    crossHair:
+      sprite: {fileID: 0}
+      rotationSpeed: 0
+  weaponSprite: {fileID: 0}
+  baseDamage: 2.5
+  bulletSpread: 0
+  knockbackAmount: 0
+  stunLength: 0
+  defaultAmmoCount: 100
+  ammoPerShot: 1
+  clipSize: 50
+  reloadLength: 0.5
+  fireRate: 0.05
+  auto: 0
+  shootShake: {fileID: 0}
+  hitScreenShake: {fileID: 0}
+  effects:
+    shootSounds: []
+    reloadSounds: []
+    shoveSounds: []
+    enemyHitSounds: []
+    wallHitSounds: []
+  weaponScale: {x: 1, y: 1, z: 1}
+  weaponOffset: {x: 0, y: 0, z: 0}
+  animatorController: {fileID: 7312737264399528485, guid: 59bfd5b894edeee49a82764f0f062a13, type: 3}
+  contactFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 229888
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0

@@ -10,6 +10,7 @@ public class MeleeWeapon : Weapon
 {
     public float swingDelay = 0.1f;
     public float hitArea = 2;
+    public ContactFilter2D hitFilter;
 
     public IEnumerator SwingWeapon(Transform player)
     {
@@ -24,6 +25,9 @@ public class MeleeWeapon : Weapon
         {
             if (c.TryGetComponent(out Alive a) && !c.CompareTag("Player") && !hit.Contains(a))
             {
+                var objectHit = Physics2D.Linecast(player.position, a.transform.position, hitFilter.layerMask);
+                if (objectHit && objectHit.collider.CompareTag("Wall")) continue;
+                
                 a.GiveDamage(baseDamage, stunLength);
                 if (a.TryGetComponent(out Rigidbody2D rb))
                 {

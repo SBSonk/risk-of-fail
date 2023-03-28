@@ -61,7 +61,9 @@ public class QuarterlyAssessmentAttack : WrittenWorksAttack
         Collider2D[] raycastHit = Physics2D.OverlapCircleAll(transform.position, 5);
         foreach (Collider2D r in raycastHit)
         {
-            print(r.name);
+            var objectHit = Physics2D.Linecast(transform.position, r.transform.position, hitFilter.layerMask);
+            if (objectHit && objectHit.collider.CompareTag("Wall")) continue;
+            
             var alive = r.GetComponent<Alive>();
             if (alive)
             {

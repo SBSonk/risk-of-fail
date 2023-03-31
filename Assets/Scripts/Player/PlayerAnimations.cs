@@ -240,7 +240,20 @@ public class PlayerAnimations : MonoBehaviour
         Destroy(weaponAnimator.gameObject);
         weaponAnimator = Instantiate(w.weapon.animatorController, transform.position + new Vector3(0, 1.25f) + w.weapon.weaponOffset, Quaternion.identity, sprite.transform);
         weaponAnimator.transform.localScale = w.weapon.weaponScale;
+        
+        Vector2 mousePos = (InputManager.mousePosition - (Vector2)transform.position).normalized;
+        float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
+
+        // Change weapon sorting order depending on if its in front or behind
+        if (weaponAnimator.sprite)
+        {
+            if (currentDir == Directions.down) weaponAnimator.sprite.sortingOrder = 1;
+            else weaponAnimator.sprite.sortingOrder = 0;
+            
+            weaponAnimator.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -angle));
+        }
     }
+    
 
     void DodgeAnimation()
     {

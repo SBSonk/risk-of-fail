@@ -25,7 +25,7 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: c044f041ba1579d46af06ec60c6ee0be, type: 3}
       rotationSpeed: 0
   weaponSprite: {fileID: 21300000, guid: ea033bfef0546a644b6af3923f58fdc9, type: 3}
-  baseDamage: 70
+  baseDamage: 60
   bulletSpread: 0
   knockbackAmount: 15
   stunLength: 0.2
@@ -55,3 +55,17 @@ MonoBehaviour:
   animatorController: {fileID: 8251640371039142693, guid: 6b9d2bd575e23d44b9ad705165194525, type: 3}
   swingDelay: 0.1
   hitArea: 2.25
+  hitFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0

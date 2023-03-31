@@ -171,7 +171,7 @@ public class ZSpawning2 : MonoBehaviour
 
             case 8: // unlock fudgee bar
                 enemies[2].spawnWeight = 1;
-                healthIncreaseScale = 1.2f;
+                healthIncreaseScale += .13f;
                 break;
             
             case 10: // unlock healer

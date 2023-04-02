@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class QuarterlyAssessment : Enemy
 {
-    protected override void Death()
+    protected override void Death(KillFlag flag)
     {
         // Drop drops
         DropObject drop = GetComponent<DropObject>();
@@ -13,15 +13,15 @@ public class QuarterlyAssessment : Enemy
 
         // Give player score
         float lifetime = Time.time - spawnTime;
-        LevelStats.main.GiveScore(killScore, lifetime);
+        LevelStats.main.GiveScore(killScore, lifetime, flag);
 
         // Reduce alive enemies for the spawner`
         onEnemyDeath?.Invoke(type);
 
-        LevelStats.main.EnemyKilled(); // Should use an event probably
+        LevelStats.main.EnemyKilled(flag); // Should use an event probably
         
         dead = true; 
-        onDeath?.Invoke();
+        onDeath?.Invoke(flag);
         
         Instantiate(deathSound);
         Destroy(healthParent);
@@ -30,6 +30,6 @@ public class QuarterlyAssessment : Enemy
 
     public void TriggerDeath()
     {
-        Death();
+        Death(KillFlag.Self);
     }
 }

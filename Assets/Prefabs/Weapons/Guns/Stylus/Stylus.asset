@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8118bb953fa63e9469862453a8fbc52b, type: 3}
-  m_Name: Brush
+  m_Script: {fileID: 11500000, guid: b2ce9d97f3c6db14e9874ba3e6605c0e, type: 3}
+  m_Name: Stylus
   m_EditorClassIdentifier: 
   shopData:
     weaponDescription: 
@@ -19,21 +19,21 @@ MonoBehaviour:
     weaponFireRate: 0
     weaponPiercing: 0
   hud:
-    sprite: {fileID: -819839473, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
+    sprite: {fileID: -203641607, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
     offset: {x: 0, y: 0}
     crossHair:
-      sprite: {fileID: 21300000, guid: 91a27f21dd1f6844197adda4c80a7828, type: 3}
+      sprite: {fileID: 21300000, guid: 198a1eee3590ca1418d7b3a22ba3c8cc, type: 3}
       rotationSpeed: 0
-  weaponSprite: {fileID: -2059183097, guid: e3c15e47d68fcd541b90052911096172, type: 3}
-  baseDamage: 14
-  bulletSpread: 1.5
-  knockbackAmount: 5
-  stunLength: 0.25
-  defaultAmmoCount: 48
+  weaponSprite: {fileID: 1004503787, guid: e3c15e47d68fcd541b90052911096172, type: 3}
+  baseDamage: 45
+  bulletSpread: 0.25
+  knockbackAmount: 10
+  stunLength: 0.5
+  defaultAmmoCount: 40
   ammoPerShot: 2
-  clipSize: 8
-  reloadLength: 1.15
-  fireRate: 0.35
+  clipSize: 6
+  reloadLength: 1.25
+  fireRate: 0.5
   auto: 0
   shootShake: {fileID: 11400000, guid: 6caba7f04f154e947b688247456a3713, type: 2}
   hitScreenShake: {fileID: 0}
@@ -51,12 +51,9 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 3cb087bc9a806ac4a947713641f8badb, type: 3}
   weaponScale: {x: 1, y: 1, z: 1}
   weaponOffset: {x: 0, y: 0, z: 0}
-  animatorController: {fileID: 2440456455680981631, guid: 36da119b84a762a4c9583dab9a2a1f51, type: 3}
-  bulletVelocity: 3
-  pierceAmount: 0
-  bullet: {fileID: 6573221642871026670, guid: 3b6a12f0749763a4f9c969724cb14340, type: 3}
-  ammoDrop: {fileID: 11400000, guid: 1454c324b063cca40bfc9a6fa8673cea, type: 2}
-  pelletCount: 3
-  pelletSpread: 3
-  perBulletDelay: 0.01
-  shootDelay: 0.1
+  animatorController: {fileID: 4563617399410214751, guid: b616e96b04fe16843a0af6ad2e17e3f1, type: 3}
+  rigidbodyVariant: {fileID: 6623705119678778423, guid: 5cb041f749d60ce4680ffe9ced4b59ba, type: 3}
+  bulletVelocity: 6
+  pierceAmount: 5
+  bullet: {fileID: 6573221642871026670, guid: eec705733f0199d4da8bad19d97b20f8, type: 3}
+  ammoDrop: {fileID: 11400000, guid: cb3c497bd63bbd147b3a2915039630c1, type: 2}

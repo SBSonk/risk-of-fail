@@ -19,7 +19,7 @@ public class Drops : ScriptableObject
         drops = new GameObject[Random.Range(minDropAmount, maxDropAmount+1)];
         for (int i = 0; i < drops.Length; i++)
         {
-            drops[i] = Object.Instantiate(obj);
+            drops[i] = Instantiate(obj);
             drops[i].transform.position = pos;
 
             Vector3 randDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f));

@@ -126,7 +126,7 @@ public class Enemy : Alive
         StartCoroutine(HealthBarFade(1, 0, 0.3f));
     }
 
-    protected override void Death()
+    protected override void Death(KillFlag flag)
     {
         // Destroy health bar
         Destroy(healthParent);
@@ -137,14 +137,14 @@ public class Enemy : Alive
 
         // Give player score
         float lifetime = Time.time - spawnTime;
-        LevelStats.main.GiveScore(killScore, lifetime);
+        LevelStats.main.GiveScore(killScore, lifetime, flag);
 
         // Reduce alive enemies for the spawner
         onEnemyDeath?.Invoke(type);
 
-        LevelStats.main.EnemyKilled(); // Should use an event probably
+        LevelStats.main.EnemyKilled(flag); // Should use an event probably
 
-        base.Death();
+        base.Death(flag);
     }
 
     public override void Stun(float duration)

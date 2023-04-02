@@ -13,6 +13,7 @@ public class LevelStats : MonoBehaviour
     [Header("Kill Bonus Points")]
     [SerializeField] float bonusKillTime = 5f;
     [SerializeField] int bonusPoints = 500;
+    [SerializeField] private float meleeBonusPoints = 150f;
 
     [Header("Kill Streak Points")]
     [SerializeField] int streakPoints;
@@ -21,13 +22,14 @@ public class LevelStats : MonoBehaviour
     int currentStreak = 0;
     float lastKillTime;
 
-    [Header("Stats")]
-    public float time;
-    public int points, enemiesKilled;
+    [Header("Stats")] public int points;
+    public int enemiesKilled;
 
     public int bulletsShot, bulletsHit;
-    public float damageTaken;
+    public float damageTaken, damageGiven, healthRestored;
 
+    private float startTimeStamp;
+    
     [Header("Bonuses")]
     public int sharpShooterBonus = 2000;
     public int noHitBonus = 5000;
@@ -43,7 +45,8 @@ public class LevelStats : MonoBehaviour
     private void Start()
     {
         PlayerStatus.player.pShooting.OnShoot.AddListener(BulletShot);
-        PlayerStatus.player.onHit.AddListener(GiveDamage);
+        PlayerStatus.player.onHit.AddListener(ReceiveDamage);
+        PlayerStatus.player.onHeal.AddListener(GiveHealth);
 
         try
         {
@@ -53,30 +56,33 @@ public class LevelStats : MonoBehaviour
         {
             Debug.LogWarning("Discord not detected...");
         }
-    }
 
-    private void FixedUpdate()
-    {
-        time += Time.fixedDeltaTime;
+        startTimeStamp = Time.time;
     }
 
     public float GetAccuracy()
     {
         return ((float)bulletsHit / bulletsShot) * 100;
     }
-    public Sprite GetLevelScore()
+    
+    public Sprite GetLevelScore(int score)
     {
         Sprite sprite = null;
 
         foreach (Grades g in grades.grades)
         {
-            if (points >= g.scoreNeeded)
+            if (score >= g.scoreNeeded)
             {
                 sprite = g.sprite;
             }
         }
 
         return sprite;
+    }
+
+    public float GetTimeCompleted()
+    {
+        return Time.time - startTimeStamp;
     }
     
     public void CalculateFinalScore() // Calculate point bonuses
@@ -94,9 +100,10 @@ public class LevelStats : MonoBehaviour
         }
     }
 
-    public void GiveScore(int baseAmount, float secondsBeforeDeath)
+    public void GiveScore(int baseAmount, float secondsBeforeDeath, KillFlag flag)
     {
         points += Mathf.RoundToInt( baseAmount * pointsMultiplier);
+        if (flag == KillFlag.Melee) points += Mathf.RoundToInt(meleeBonusPoints);
 
         // Bonus points for killing early
         if (secondsBeforeDeath <= bonusKillTime) points += bonusPoints;
@@ -122,23 +129,18 @@ public class LevelStats : MonoBehaviour
         lastKillTime = Time.time;
     } // Applies killstreak bonuses
 
-    public void GiveScore(int baseAmount)
-    {
-        points += Mathf.RoundToInt( baseAmount * pointsMultiplier);
-    } // Raw points
+    public void GiveScore(int baseAmount) => points += Mathf.RoundToInt( baseAmount * pointsMultiplier); // Raw points
 
-    public void SetScore(int amount)
-    {
-        points = amount;
-    }
+    public void SetScore(int amount) => points = amount;
 
-    public void GiveDamage(float damage)
-    {
-        damageTaken += damage;
-    }
+    private void ReceiveDamage(float damage) => damageTaken += damage;
+
+    public void GiveDamage(float damage) => damageGiven += damage;
+    
+    public void GiveHealth(float health) => healthRestored += health;
 
     // Stat counter functions
-    public void BulletShot()
+    private void BulletShot()
     {
         bulletsShot++;
     }
@@ -146,8 +148,18 @@ public class LevelStats : MonoBehaviour
     {
         bulletsHit++;
     }
-    public void EnemyKilled()
+    public void EnemyKilled(KillFlag flag)
     {
         enemiesKilled++;
+
+        switch (flag)
+        {
+            
+        }
     }
+}
+
+public enum KillFlag
+{
+    Melee, Ranged, Self, AreaOfEffect, LevelPassed
 }

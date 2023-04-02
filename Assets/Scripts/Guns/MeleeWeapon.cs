@@ -31,13 +31,15 @@ public class MeleeWeapon : Weapon
                 var objectHit = Physics2D.Linecast(player.position, a.transform.position, hitFilter.layerMask);
                 if (objectHit && objectHit.collider.CompareTag("Wall")) continue;
                 
-                a.GiveDamage(baseDamage, stunLength);
+                a.GiveDamage(baseDamage, stunLength, KillFlag.Melee);
                 if (a.TryGetComponent(out Rigidbody2D rb))
                 {
                     rb.AddForce(hitVector * knockbackAmount, ForceMode2D.Impulse);
                 }
 
                 hit.Add(a);
+                
+                LevelStats.main.GiveDamage(baseDamage);
             }
         }
 

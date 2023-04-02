@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2ce9d97f3c6db14e9874ba3e6605c0e, type: 3}
-  m_Name: Stylus
+  m_Name: Pen
   m_EditorClassIdentifier: 
   shopData:
     weaponDescription: 
@@ -19,26 +19,28 @@ MonoBehaviour:
     weaponFireRate: 0
     weaponPiercing: 0
   hud:
-    sprite: {fileID: -203641607, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
+    sprite: {fileID: -797842033, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
     offset: {x: 0, y: 0}
     crossHair:
-      sprite: {fileID: 21300000, guid: 198a1eee3590ca1418d7b3a22ba3c8cc, type: 3}
+      sprite: {fileID: 21300000, guid: 1750bb5ded5b30d4db197733c4259edc, type: 3}
       rotationSpeed: 0
-  weaponSprite: {fileID: 1004503787, guid: e3c15e47d68fcd541b90052911096172, type: 3}
-  baseDamage: 45
-  bulletSpread: 0.25
-  knockbackAmount: 10
-  stunLength: 0.5
-  defaultAmmoCount: 40
-  ammoPerShot: 2
-  clipSize: 6
-  reloadLength: 1.25
-  fireRate: 0.5
-  auto: 0
+  weaponSprite: {fileID: 715719437, guid: e3c15e47d68fcd541b90052911096172, type: 3}
+  baseDamage: 20
+  bulletSpread: 0.5
+  knockbackAmount: 5
+  stunLength: 0.15
+  defaultAmmoCount: 96
+  ammoPerShot: 1
+  clipSize: 12
+  reloadLength: 0.9
+  fireRate: 0.125
+  auto: 1
   shootShake: {fileID: 11400000, guid: 6caba7f04f154e947b688247456a3713, type: 2}
   hitScreenShake: {fileID: 0}
   effects:
-    shootSounds: []
+    shootSounds:
+    - {fileID: 8300000, guid: 3686c0fbeeb9ff146b41d1344aae942a, type: 3}
+    - {fileID: 8300000, guid: 3686c0fbeeb9ff146b41d1344aae942a, type: 3}
     reloadSounds: []
     shoveSounds:
     - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
@@ -51,8 +53,9 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 3cb087bc9a806ac4a947713641f8badb, type: 3}
   weaponScale: {x: 1, y: 1, z: 1}
   weaponOffset: {x: 0, y: 0, z: 0}
-  animatorController: {fileID: 4563617399410214751, guid: b616e96b04fe16843a0af6ad2e17e3f1, type: 3}
+  animatorController: {fileID: 8136817709219153506, guid: 9cd5c0c7cf2435442b64390306b00625, type: 3}
+  rigidbodyVariant: {fileID: 1777522489078121146, guid: 21999d65ee372964187ed35d81db3645, type: 3}
   bulletVelocity: 6
-  pierceAmount: 5
-  bullet: {fileID: 6573221642871026670, guid: eec705733f0199d4da8bad19d97b20f8, type: 3}
-  ammoDrop: {fileID: 11400000, guid: cb3c497bd63bbd147b3a2915039630c1, type: 2}
+  pierceAmount: 0
+  bullet: {fileID: 6573221642871026670, guid: 0fa32434bd889f24d9ca3e494f9e8a89, type: 3}
+  ammoDrop: {fileID: 11400000, guid: fed42fdc493184149a94f1bd14a3446c, type: 2}

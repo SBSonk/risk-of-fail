@@ -45,7 +45,7 @@ public class PlayerAnimations : MonoBehaviour
 
         movement.OnDodge.AddListener(DodgeAnimation);
 
-        status.OnPlayerDamage.AddListener(DamageAnimation);
+        status.onHit.AddListener(DamageAnimation);
         status.onDeath.AddListener(DeathAnimation);
 
         ChangeWeaponSprite(shooting.GetHeldWeapon());
@@ -174,9 +174,9 @@ public class PlayerAnimations : MonoBehaviour
     }
 
     [ContextMenu("kYS")]
-    void DeathAnimation() => StartCoroutine(DeathAnim());
+    void DeathAnimation(KillFlag deathType) => StartCoroutine(DeathAnim(deathType));
 
-    IEnumerator DeathAnim()
+    IEnumerator DeathAnim(KillFlag deathType)
     {
         canSwitchAnimation = false;
         sprite.sortingOrder = 100;
@@ -185,12 +185,20 @@ public class PlayerAnimations : MonoBehaviour
         // Todo: fling weapon in the other direction;
 
         GetComponent<Collider2D>().enabled = false;
-
-        var rb = GetComponent<Rigidbody2D>();
+        
         rb.drag = 0.01f;
         rb.gravityScale = 3;
         rb.AddForce(new Vector3(Mathf.Sign(rb.velocity.x) * 10, 20), ForceMode2D.Impulse);
 
+        if (weaponAnimator)
+        {
+            weaponAnimator.gameObject.SetActive(false);
+
+            var weaponRb = Instantiate(PlayerStatus.player.pShooting.GetHeldWeapon().weapon.rigidbodyVariant,
+                transform.position, transform.rotation);
+            weaponRb.AddForce(new Vector3(-Mathf.Sign(rb.velocity.x) * 10, 20), ForceMode2D.Impulse);
+            weaponRb.AddTorque(-Mathf.Sign(rb.velocity.x) * 10f, ForceMode2D.Impulse);
+        }
 
         float t = 0;
         while (t < 0.25f)
@@ -212,7 +220,7 @@ public class PlayerAnimations : MonoBehaviour
         }
         Time.timeScale = 1;
 
-        results.ShowResults();
+        results.ShowResults(deathType);
     }
     
     void ShootAnimation()
@@ -286,7 +294,7 @@ public class PlayerAnimations : MonoBehaviour
         CameraShakerHandler.Shake(dodgeScreenshake);
     }
 
-    void DamageAnimation()
+    void DamageAnimation(float _)
     {
         canSwitchAnimation = false;
         

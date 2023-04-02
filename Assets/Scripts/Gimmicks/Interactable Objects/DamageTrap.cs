@@ -26,7 +26,7 @@ public class DamageTrap : WalkableTrap
         // Check if entities are still inside the trap
         for (int i = 0; i < entitiesInsideArea.Count; i++)
         {
-            entitiesInsideArea[i].GiveDamage(dmg.damage, dmg.stunTime, null, dmg.useRawDamage);
+            entitiesInsideArea[i].GiveDamage(dmg.damage, dmg.stunTime, KillFlag.AreaOfEffect, null, dmg.useRawDamage);
         }
         
         TrapDamage?.Invoke();

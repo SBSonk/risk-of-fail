@@ -16,8 +16,6 @@ public class PlayerStatus : Alive
 
     public float defaultSpeed = 10;
     public ParticleSystem deathParticles;
-    
-    public UnityEvent OnPlayerDamage, OnPlayerHeal;
 
     private void Awake()
     {
@@ -42,18 +40,8 @@ public class PlayerStatus : Alive
         HudManager4.hud.SetPlayer(this);
         CameraFollow.cam.SetPlayer(GetComponent<Rigidbody2D>());
     }
-
-    protected override void OnDamage(float damage)
-    { 
-        // Play indicators
-        base.OnDamage(damage);
-
-        if (Mathf.Sign(damage) == 1) return;
-
-        OnPlayerDamage?.Invoke();
-    }
-
-    protected override void Death()
+    
+    protected override void Death(KillFlag flag)
     {
         dead = true;
         IsAlive = false;
@@ -62,19 +50,13 @@ public class PlayerStatus : Alive
         pShooting.enabled = false;
         pAnimations.enabled = false;
 
-        onDeath?.Invoke();
+        onDeath?.Invoke(flag);
         deathParticles.transform.parent = null;
         deathParticles.Play();
 
         Instantiate(deathSound);
     }
-
-    public override float GiveHealth(float amount)
-    {
-        OnPlayerHeal?.Invoke();
-        return base.GiveHealth(amount);
-    }
-
+    
     public override void Stun(float duration)
     {
         StartCoroutine(TakeStun(duration));

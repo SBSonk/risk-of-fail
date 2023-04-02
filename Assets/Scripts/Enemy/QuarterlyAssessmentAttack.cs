@@ -23,7 +23,7 @@ public class QuarterlyAssessmentAttack : WrittenWorksAttack
         base.Start();
         
         self = GetComponent<Enemy>();
-        self.onDeath.AddListener(() =>
+        self.onDeath.AddListener((_) =>
         {
             ExplosionStart?.Invoke();
             StartCoroutine(Explode());
@@ -67,7 +67,7 @@ public class QuarterlyAssessmentAttack : WrittenWorksAttack
             var alive = r.GetComponent<Alive>();
             if (alive)
             {
-                alive.GiveDamage(dmg, stn);
+                alive.GiveDamage(dmg, stn, KillFlag.AreaOfEffect);
             }
         }
         

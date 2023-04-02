@@ -20,11 +20,11 @@ public abstract class Alive : MonoBehaviour
     protected bool dead;
 
     public UnityEvent<float> onHit, onStunned, onHeal;
-    public UnityEvent onDeath;
+    public UnityEvent<KillFlag> onDeath;
     public AudioSource deathSound;
     
     // Applies damage and returns damage taken
-    public float GiveDamage(float amount, float stunLength, StatusEffect effect = null, bool giveRawDamage = false)
+    public float GiveDamage(float amount, float stunLength, KillFlag flag, StatusEffect effect = null, bool giveRawDamage = false)
     {
         onHit?.Invoke(amount);
 
@@ -48,7 +48,7 @@ public abstract class Alive : MonoBehaviour
         if (health + damage <= 0) 
         { 
             OnDamage(damage); 
-            Death(); 
+            Death(flag); 
             return damage; 
         }
 
@@ -103,10 +103,10 @@ public abstract class Alive : MonoBehaviour
         }
     }
 
-    protected virtual void Death() 
+    protected virtual void Death(KillFlag flag) 
     {
         dead = true; 
-        onDeath?.Invoke();
+        onDeath?.Invoke(flag);
         
         if (deathSound) Instantiate(deathSound);
         Destroy(gameObject); 

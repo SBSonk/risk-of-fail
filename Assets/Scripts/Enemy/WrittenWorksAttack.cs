@@ -271,7 +271,7 @@ public class WrittenWorksAttack : MonoBehaviour
         float kb = dashing ? knockbackAmount * 2.5f : knockbackAmount;
         playerRb.AddForce(transform.up.normalized * kb, ForceMode2D.Impulse);
 
-        collision.GetComponent<PlayerStatus>().GiveDamage(damage, stunLength);
+        collision.GetComponent<PlayerStatus>().GiveDamage(damage, stunLength, KillFlag.Melee);
 
         // Knock self back
         self.rb.AddForce(-transform.up.normalized * (knockbackAmount / 3), ForceMode2D.Impulse);

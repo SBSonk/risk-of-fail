@@ -25,7 +25,7 @@ public class Highlighter : Weapon
                 // if enemy, damage
                 if (hit.collider.TryGetComponent<Enemy>(out var enemy))
                 {
-                    enemy.GiveDamage(baseDamage * multiplier, stunLength);
+                    enemy.GiveDamage(baseDamage * multiplier, stunLength, KillFlag.Ranged);
                 }
             }
 

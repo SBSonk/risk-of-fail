@@ -9,6 +9,7 @@ using UnityEngine.Rendering.Universal;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] private bool isPlayerBullet = false;
     [SerializeField] ParticleSystem hitmarker;
     [SerializeField] Light2D _light;
     public Rigidbody2D rb;
@@ -58,9 +59,11 @@ public class Projectile : MonoBehaviour
             if (bulletShake) CameraShakerHandler.Shake(bulletShake);
 
             // Give damage and stun
-            collision.GetComponent<Alive>().GiveDamage(damage, stunLength);
+            collision.GetComponent<Alive>().GiveDamage(damage, stunLength, KillFlag.Ranged);
 
             collision.GetComponent<Rigidbody2D>().AddForceAtPosition(transform.right * knockback, collision.ClosestPoint(transform.position), ForceMode2D.Impulse);
+            
+            if (isPlayerBullet) LevelStats.main.GiveDamage(damage);
         }
 
         hitmarker.Play();

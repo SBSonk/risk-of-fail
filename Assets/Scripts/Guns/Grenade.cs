@@ -14,7 +14,7 @@ public class Grenade : Throwable
         {
             if (r.TryGetComponent<Enemy>(out var enemy))
             {
-                enemy.GiveDamage(baseDamage, stunTime);
+                enemy.GiveDamage(baseDamage, stunTime, KillFlag.AreaOfEffect);
             }
         }
     }

@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2ce9d97f3c6db14e9874ba3e6605c0e, type: 3}
-  m_Name: Pen
+  m_Script: {fileID: 11500000, guid: 8118bb953fa63e9469862453a8fbc52b, type: 3}
+  m_Name: Brush
   m_EditorClassIdentifier: 
   shopData:
     weaponDescription: 
@@ -19,28 +19,26 @@ MonoBehaviour:
     weaponFireRate: 0
     weaponPiercing: 0
   hud:
-    sprite: {fileID: -797842033, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
+    sprite: {fileID: -819839473, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
     offset: {x: 0, y: 0}
     crossHair:
-      sprite: {fileID: 21300000, guid: 1750bb5ded5b30d4db197733c4259edc, type: 3}
+      sprite: {fileID: 21300000, guid: 91a27f21dd1f6844197adda4c80a7828, type: 3}
       rotationSpeed: 0
-  weaponSprite: {fileID: 715719437, guid: e3c15e47d68fcd541b90052911096172, type: 3}
-  baseDamage: 20
-  bulletSpread: 0.5
+  weaponSprite: {fileID: -2059183097, guid: e3c15e47d68fcd541b90052911096172, type: 3}
+  baseDamage: 14
+  bulletSpread: 1.5
   knockbackAmount: 5
-  stunLength: 0.15
-  defaultAmmoCount: 96
-  ammoPerShot: 1
-  clipSize: 12
-  reloadLength: 0.9
-  fireRate: 0.125
-  auto: 1
+  stunLength: 0.25
+  defaultAmmoCount: 48
+  ammoPerShot: 2
+  clipSize: 8
+  reloadLength: 1.15
+  fireRate: 0.35
+  auto: 0
   shootShake: {fileID: 11400000, guid: 6caba7f04f154e947b688247456a3713, type: 2}
   hitScreenShake: {fileID: 0}
   effects:
-    shootSounds:
-    - {fileID: 8300000, guid: 3686c0fbeeb9ff146b41d1344aae942a, type: 3}
-    - {fileID: 8300000, guid: 3686c0fbeeb9ff146b41d1344aae942a, type: 3}
+    shootSounds: []
     reloadSounds: []
     shoveSounds:
     - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
@@ -53,8 +51,13 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 3cb087bc9a806ac4a947713641f8badb, type: 3}
   weaponScale: {x: 1, y: 1, z: 1}
   weaponOffset: {x: 0, y: 0, z: 0}
-  animatorController: {fileID: 8136817709219153506, guid: 9cd5c0c7cf2435442b64390306b00625, type: 3}
-  bulletVelocity: 6
+  animatorController: {fileID: 2440456455680981631, guid: 36da119b84a762a4c9583dab9a2a1f51, type: 3}
+  rigidbodyVariant: {fileID: 32006434334070318, guid: 7b510c8b4bbb384419904f42681dc971, type: 3}
+  bulletVelocity: 3
   pierceAmount: 0
-  bullet: {fileID: 6573221642871026670, guid: 0fa32434bd889f24d9ca3e494f9e8a89, type: 3}
-  ammoDrop: {fileID: 11400000, guid: fed42fdc493184149a94f1bd14a3446c, type: 2}
+  bullet: {fileID: 6573221642871026670, guid: 3b6a12f0749763a4f9c969724cb14340, type: 3}
+  ammoDrop: {fileID: 11400000, guid: 1454c324b063cca40bfc9a6fa8673cea, type: 2}
+  pelletCount: 3
+  pelletSpread: 3
+  perBulletDelay: 0.01
+  shootDelay: 0.1

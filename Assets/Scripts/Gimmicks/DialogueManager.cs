@@ -9,8 +9,8 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager main;
     [SerializeField] private DialogueFX dialogueFx;
-    [SerializeField] Image panel;
-    [SerializeField] private TextMeshProUGUI tmp;
+    [SerializeField] private Animator anim;
+    [SerializeField] private TextMeshPro tmp;
     Color defaultPanelColor, defaultTextColor;
 
     private float hideTime = 0.5f;
@@ -18,17 +18,25 @@ public class DialogueManager : MonoBehaviour
     private void Awake()
     {
         main = this;
-        defaultPanelColor = panel.color;
         defaultTextColor = tmp.color;
-        
-        panel.color = Color.clear;
     }
 
     public void ShowText(string text, float disappearTime = 0.5f)
     {
         StopAllCoroutines();
-        StartCoroutine(SprFunctions.Fade(panel, Color.clear, defaultPanelColor, 0.5f));
 
+        StartCoroutine(PanelAnimation(text, disappearTime));
+    }
+
+    IEnumerator PanelAnimation(string text, float disappearTime = 0.5f)
+    {
+        anim.Play("DialogueOpen");
+        tmp.text = "";
+
+        yield return new WaitForSeconds(0.5f);
+        
+        // TODO: calculate size based on text length
+        
         tmp.text = text;
         tmp.color = defaultTextColor;
         dialogueFx.PlayText();
@@ -43,7 +51,8 @@ public class DialogueManager : MonoBehaviour
     IEnumerator HideTextDelay()
     {
         yield return new WaitForSeconds(hideTime);
-        StartCoroutine(SprFunctions.Fade(panel, panel.color, Color.clear, 1f));
         StartCoroutine(SprFunctions.Fade(tmp, tmp.color, Color.clear, 0.25f));
+        
+        anim.Play("DialogueClose");
     }
 }

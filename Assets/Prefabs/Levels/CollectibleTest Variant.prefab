@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 986840170020990974, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_Name
-      value: Locker Collectable
+      value: CollectibleTest Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7728234647084975187, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
@@ -87,7 +87,10 @@ PrefabInstance:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
       value: 20
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4457631718284635906, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+    - {fileID: 7390816378070057440, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+    - {fileID: 1346883671706680403, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
 --- !u!1 &2026887349552727747 stripped
 GameObject:

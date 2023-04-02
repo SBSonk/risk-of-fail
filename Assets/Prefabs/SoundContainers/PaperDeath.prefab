@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5980286474517575810}
   - component: {fileID: 2700227365419083299}
+  - component: {fileID: -5795236332042309094}
   m_Layer: 6
-  m_Name: GlueDeath
+  m_Name: PaperDeath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,9 +43,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 98a6084f22431d947afe77860b58523e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f8a9f79207520af49ba5b958da645743, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -128,3 +129,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-5795236332042309094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24686523468245884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ef2ca6adbab4a44919bee7f0720fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

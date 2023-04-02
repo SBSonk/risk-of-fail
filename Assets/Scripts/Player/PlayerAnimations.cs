@@ -315,6 +315,7 @@ public class PlayerAnimations : MonoBehaviour
     {
         // Enable trail
         trail.time = trailTime;
+        trail.emitting = true;
         
         float t = 0;
         while (t < trailLifetime)
@@ -323,6 +324,8 @@ public class PlayerAnimations : MonoBehaviour
             yield return new WaitForEndOfFrame();
             t += Time.deltaTime;
         }
+
+        trail.emitting = false;
     }
 
     Directions VectorToDir(Vector2 input)

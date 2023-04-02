@@ -1,6 +1,7 @@
 using FirstGearGames.SmoothCameraShaker;
 using System.Collections;
 using System.Collections.Generic;
+using GameAudioScriptingEssentials;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -11,6 +12,8 @@ public class MeleeWeapon : Weapon
     public float swingDelay = 0.1f;
     public float hitArea = 2;
     public ContactFilter2D hitFilter;
+
+    public AudioClipRandomizer soundPrefab;
 
     public IEnumerator SwingWeapon(Transform player)
     {
@@ -43,6 +46,15 @@ public class MeleeWeapon : Weapon
         {
             // Screenshake
             if (hitScreenShake) CameraShakerHandler.Shake(hitScreenShake);
+            
+            // Sound
+            if (effects.enemyHitSounds.Length != 0 && soundPrefab)
+            {
+                var hitSound = Instantiate(soundPrefab);
+                hitSound.SetAudioClips(effects.enemyHitSounds);
+                
+                if (hitSound.HasAudioClips()) hitSound.PlaySFX();
+            }
         }
     }
 }

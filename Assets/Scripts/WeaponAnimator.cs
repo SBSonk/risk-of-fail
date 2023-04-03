@@ -8,7 +8,7 @@ public class WeaponAnimator : MonoBehaviour
     [SerializeField] public SpriteRenderer sprite { get; private set; }
     [SerializeField] private Animator anim;
 
-    private void Start()
+    private void Awake()
     {
         sprite = GetComponentInChildren<SpriteRenderer>();    
         anim = GetComponent<Animator>();

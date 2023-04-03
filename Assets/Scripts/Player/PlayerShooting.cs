@@ -106,6 +106,9 @@ public class PlayerShooting : MonoBehaviour
         canShoot = true;
         reloading = false;
 
+        // Switch cooldown
+        shootEnableTime = Time.time + 0.1f;
+        
         OnWeaponSwitch?.Invoke(GetHeldWeapon());
     }
 

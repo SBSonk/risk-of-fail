@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 6947563198420509529
+  uniqueID: 669186601327623758
   updateError: 1
   checkTime: 0.2
 --- !u!1 &4479935253280929049
@@ -180,7 +180,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -264,7 +264,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -315,6 +315,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 809366909, guid: e0de8608e44fc234cbcd044c10c21cdf, type: 3}
+    - target: {fileID: 1442309482, guid: 6a9cd552731e53b49beeae781c9e6e11, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 647075939307261815, guid: 6a9cd552731e53b49beeae781c9e6e11, type: 3}
       propertyPath: opened
       value: 0
@@ -373,7 +377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 647075939307261819, guid: 6a9cd552731e53b49beeae781c9e6e11, type: 3}
       propertyPath: m_Name
-      value: Gym Door
+      value: Sideways DoubleDoor Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5929763235486219927, guid: 6a9cd552731e53b49beeae781c9e6e11, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
@@ -403,6 +407,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 809366909, guid: e0de8608e44fc234cbcd044c10c21cdf, type: 3}
+    - target: {fileID: 6150800638931845028, guid: 6a9cd552731e53b49beeae781c9e6e11, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 6150800638931845029, guid: 6a9cd552731e53b49beeae781c9e6e11, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.76
@@ -449,7 +457,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: badd9e30b9a053d44b96d55fbf1a6b72, type: 2}
     - target: {fileID: 6605708582579393296, guid: 6a9cd552731e53b49beeae781c9e6e11, type: 3}
       propertyPath: uniqueID
-      value: 1553422005827512477
+      value: 5192141207887868130
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a9cd552731e53b49beeae781c9e6e11, type: 3}

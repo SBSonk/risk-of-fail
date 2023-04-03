@@ -182,8 +182,6 @@ public class PlayerAnimations : MonoBehaviour
         sprite.sortingOrder = 100;
         animator.Play("player_death");
         
-        // Todo: fling weapon in the other direction;
-
         GetComponent<Collider2D>().enabled = false;
         
         rb.drag = 0.01f;
@@ -257,9 +255,9 @@ public class PlayerAnimations : MonoBehaviour
         {
             if (currentDir == Directions.down) weaponAnimator.sprite.sortingOrder = 1;
             else weaponAnimator.sprite.sortingOrder = 0;
-            
-            weaponAnimator.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -angle));
         }
+        
+        weaponAnimator.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -angle));
     }
     
 

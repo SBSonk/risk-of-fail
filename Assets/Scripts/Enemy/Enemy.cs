@@ -113,10 +113,13 @@ public class Enemy : Alive
     {
         base.OnDamage(damage);
 
-        CancelInvoke("HideHealthBar");
-        healthParent.SetActive(true);
-        StartCoroutine(HealthBarFade(0, 1, 0.3f));
-        Invoke("HideHealthBar", 2.5f);
+        if (healthParent && healthBar)
+        {
+            CancelInvoke("HideHealthBar");
+            healthParent.SetActive(true);
+            StartCoroutine(HealthBarFade(0, 1, 0.3f));
+            Invoke("HideHealthBar", 2.5f);
+        }
 
         onHit?.Invoke(damage);
     }

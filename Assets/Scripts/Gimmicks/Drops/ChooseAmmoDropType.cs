@@ -30,9 +30,5 @@ public class ChooseAmmoDropType : MonoBehaviour
         {
             pickup.drop = gunsOwned[Random.Range(0, gunsOwned.Count)].ammoDrop;
         }
-        else
-        {
-            Destroy(transform.parent.gameObject);
-        }
     }
 }

@@ -12,16 +12,23 @@ public class AmmoPickup : PickupBase
             return;
         }
 
-        GetComponent<ChooseAmmoDropType>().InitializeAmmo();
+        try
+        {
+            GetComponent<ChooseAmmoDropType>().InitializeAmmo();
+            
+            if (particles) particles.startColor = drop.backgroundColor;
+            _light.color = drop.backgroundColor;
 
-        if (particles) particles.startColor = drop.backgroundColor;
-        _light.color = drop.backgroundColor;
+            SpriteRenderer spr = sprite.GetComponent<SpriteRenderer>();
+            spr.sprite = drop.sprite;
+            spr.color = drop.spriteColor;
 
-        SpriteRenderer spr = sprite.GetComponent<SpriteRenderer>();
-        spr.sprite = drop.sprite;
-        spr.color = drop.spriteColor;
-
-        base.Start();
+            base.Start();
+        }
+        catch
+        {
+            Destroy(transform.parent.gameObject);
+        }
     }
 
     protected override void OnTriggerStay2D(Collider2D other)

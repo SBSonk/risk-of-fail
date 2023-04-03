@@ -35,6 +35,8 @@ public class Shotgun : Gun
             // Apply velocity to bullet
             rb.AddForce(bulletShot.transform.right.normalized * bulletVelocity, ForceMode2D.Impulse);
             rb.AddForce(bulletShot.transform.up * ((Mathf.PerlinNoise(player.position.x * Time.time, player.position.y * Time.time) - .5f) * bulletSpread), ForceMode2D.Impulse);
+
+            lastBulletShot = bulletShot;
             yield return new WaitForSeconds(perBulletDelay);
         }
     }

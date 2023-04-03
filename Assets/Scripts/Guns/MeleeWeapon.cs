@@ -40,6 +40,9 @@ public class MeleeWeapon : Weapon
                 hit.Add(a);
                 
                 LevelStats.main.GiveDamage(baseDamage);
+            } else if (c.TryGetComponent(out Ball b))
+            {
+                b.GetComponent<Rigidbody2D>().AddForce(hitVector * 15, ForceMode2D.Impulse);
             }
         }
 

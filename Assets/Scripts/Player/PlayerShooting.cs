@@ -157,6 +157,9 @@ public class PlayerShooting : MonoBehaviour
                 }
 
                 OnParry?.Invoke();
+            } else if (h.TryGetComponent(out Ball b))
+            {
+                b.GetComponent<Rigidbody2D>().AddForce(shoveDir * 8, ForceMode2D.Impulse);
             }
         }
 

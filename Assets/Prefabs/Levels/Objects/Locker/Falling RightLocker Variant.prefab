@@ -9,19 +9,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 369752599, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_Size.x
-      value: 2.0523415
+      value: 1.4055405
       objectReference: {fileID: 0}
     - target: {fileID: 369752599, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_Size.y
-      value: 2.73276
+      value: 0.7235451
       objectReference: {fileID: 0}
     - target: {fileID: 369752599, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_Offset.x
-      value: -1.01898
+      value: -0.6955795
       objectReference: {fileID: 0}
     - target: {fileID: 369752599, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_Offset.y
-      value: 0.6575663
+      value: 0.35480785
       objectReference: {fileID: 0}
     - target: {fileID: 369752599, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 369752599, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.5
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 654080164, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: ShapeModule.m_Position.x
@@ -43,17 +43,21 @@ PrefabInstance:
       propertyPath: ShapeModule.m_Rotation.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 888013645, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
+      propertyPath: uniqueID
+      value: 6450891139989431479
+      objectReference: {fileID: 0}
     - target: {fileID: 1111552539038829506, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1111552539038829506, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -62.108063
       objectReference: {fileID: 0}
     - target: {fileID: 1111552539038829506, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.5
+      value: -15.664511
       objectReference: {fileID: 0}
     - target: {fileID: 1111552539038829506, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_LocalPosition.z
@@ -90,26 +94,26 @@ PrefabInstance:
     - target: {fileID: 1342763744842882263, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2001100626, guid: dc3c3c812aefc054aac08bad710bb45a, type: 3}
+      objectReference: {fileID: -634487106, guid: 4eb6a00bd09ec474a9a0ad1764ff7151, type: 3}
     - target: {fileID: 1342763744842882263, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_SortingOrder
-      value: -3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6318659893219392350, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_Size.x
-      value: 3.9397278
+      value: 3.2048645
       objectReference: {fileID: 0}
     - target: {fileID: 6318659893219392350, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_Size.y
-      value: 2.0800638
+      value: 1.2246923
       objectReference: {fileID: 0}
     - target: {fileID: 6318659893219392350, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_Offset.x
-      value: 1.106844
+      value: 1.5748787
       objectReference: {fileID: 0}
     - target: {fileID: 6318659893219392350, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_Offset.y
-      value: 0.66359496
+      value: 0.3398509
       objectReference: {fileID: 0}
     - target: {fileID: 6908021882811348406, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: animator
@@ -121,7 +125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8340104992148651709, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_Name
-      value: Falling RightLocker (3)
+      value: Falling RightLocker Variant
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 369752598, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
@@ -133,7 +137,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1648976491
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -150,4 +154,4 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0

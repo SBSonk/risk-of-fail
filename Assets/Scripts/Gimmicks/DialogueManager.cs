@@ -12,7 +12,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private TextMeshPro tmp;
     Color defaultPanelColor, defaultTextColor;
-
+    
     private float hideTime = 0.5f;
     
     private void Awake()

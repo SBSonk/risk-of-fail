@@ -7,13 +7,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 369752598, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 654080161, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 888013645, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: uniqueID
-      value: 8417645210505283947
+      value: 7598628211135146069
       objectReference: {fileID: 0}
     - target: {fileID: 1111552539038829506, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_RootOrder
@@ -59,6 +63,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5102842192553627314, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
+      propertyPath: sprites.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5102842192553627314, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
+      propertyPath: sprites.Array.data[4]
+      value: 
+      objectReference: {fileID: -1094854727, guid: 0e6c96f001956ca41ada3824b26f2a39, type: 3}
+    - target: {fileID: 5102842192553627314, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
+      propertyPath: sprites.Array.data[5]
+      value: 
+      objectReference: {fileID: -1094854727, guid: 0e6c96f001956ca41ada3824b26f2a39, type: 3}
+    - target: {fileID: 5102842192553627314, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
+      propertyPath: sprites.Array.data[6]
+      value: 
+      objectReference: {fileID: -1094854727, guid: 0e6c96f001956ca41ada3824b26f2a39, type: 3}
     - target: {fileID: 6318659893219392350, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_Size.y
       value: 4.518347
@@ -93,7 +113,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8340104992148651709, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
       propertyPath: m_Name
-      value: Locker Variant (1)
+      value: Locker Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6908021882811348406, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
+    - {fileID: 888013645, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2d472968047e4a04f89e5457b98086ab, type: 3}

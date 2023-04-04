@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -164,7 +164,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -279,7 +279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 647075939307261819, guid: 6a9cd552731e53b49beeae781c9e6e11, type: 3}
       propertyPath: m_Name
-      value: Clinic Door
+      value: Clinic Door Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5929763235486219927, guid: 6a9cd552731e53b49beeae781c9e6e11, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
@@ -293,6 +293,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1397098940, guid: e0de8608e44fc234cbcd044c10c21cdf, type: 3}
+    - target: {fileID: 6605708582579393296, guid: 6a9cd552731e53b49beeae781c9e6e11, type: 3}
+      propertyPath: uniqueID
+      value: 352251073235625083
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a9cd552731e53b49beeae781c9e6e11, type: 3}
 --- !u!4 &2429498930295557673 stripped

@@ -9,5 +9,4 @@ public class DestroyAfterSeconds : MonoBehaviour
     {
         Destroy(gameObject, timeToDestroy);
     }
-
 }

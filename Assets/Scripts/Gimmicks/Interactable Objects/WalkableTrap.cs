@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using GameAudioScriptingEssentials;
 using UnityEngine;
@@ -5,13 +6,10 @@ using UnityEngine.Events;
 
 public abstract class WalkableTrap : MonoBehaviour
 {
-    [SerializeField] protected DamageSource dmg;
-    [SerializeField] protected float timeTillDamage;
-    [SerializeField] protected float speedMultiplier = 1;
     [SerializeField] protected AudioClipRandomizer triggerSound, damageSound;
 
     protected List<Alive> entitiesInsideArea;
-    public UnityEvent OnTrapTriggered;
+    public UnityEvent OnTrapTriggered, OnTrapLeft, OnTrapStay;
 
     bool active = true;
 
@@ -19,10 +17,13 @@ public abstract class WalkableTrap : MonoBehaviour
     {
         entitiesInsideArea = new List<Alive>();
     }
+    
+    protected virtual void DoTrapDamage() {}
+    protected virtual void TrapStayUpdate() {}
+    protected virtual void TrapExit() {}
+    
 
-    protected abstract void DoTrapDamage();
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<Alive>(out var alive))
         {
@@ -34,16 +35,24 @@ public abstract class WalkableTrap : MonoBehaviour
         active = false; 
         
         OnTrapTriggered?.Invoke();
-        Invoke("DoTrapDamage", timeTillDamage / speedMultiplier);
         if (triggerSound) triggerSound.PlaySFX();
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    protected virtual void OnTriggerStay2D(Collider2D other)
+    {
+        TrapStayUpdate();
+        OnTrapStay?.Invoke();
+    }
+
+    protected virtual void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.TryGetComponent<Alive>(out var alive) && entitiesInsideArea.Contains(alive))
         {
             entitiesInsideArea.Remove(alive);
         }
+
+        TrapExit();
+        OnTrapLeft?.Invoke();
     }
 
     // Wait for player to enter

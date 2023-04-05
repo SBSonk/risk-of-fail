@@ -7,5 +7,6 @@ public class SpeedIncrease : HealthIncrease
     protected override void Effect()
     {
         PlayerStatus.player.pMovement.moveSpeed = 5500;
+        PlayerStatus.player.pMovement.baseSpeed = 5500;
     }
 }

@@ -7,6 +7,10 @@ using UnityEngine.Events;
 
 public class DamageTrap : WalkableTrap
 {
+    [SerializeField] protected DamageSource dmg;
+    [SerializeField] protected float timeTillDamage;
+    [SerializeField] protected float speedMultiplier = 1;
+    
     public ShakeData triggerShake;
     public string animationName;
     public Animator animator;
@@ -14,6 +18,13 @@ public class DamageTrap : WalkableTrap
     
     public UnityEvent<List<Alive>> OnTrapDamage;
     public UnityEvent TrapDamage;
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        base.OnTriggerEnter2D(collision);
+        
+        Invoke("DoTrapDamage", timeTillDamage / speedMultiplier);
+    }
 
     public void PlayAnimation()
     {

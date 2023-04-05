@@ -74,6 +74,14 @@ public class Enemy : Alive
         }
     }
 
+    public void SetSpeedMultiplier(float multiplier)
+    {
+        pathAI.maxSpeed = speed * multiplier;
+    }
+
+    public void ResetSpeed() => pathAI.maxSpeed = speed;
+
+    
     IEnumerator StunRecover(float time)
     {
         float startSpeed = pathAI.maxSpeed;

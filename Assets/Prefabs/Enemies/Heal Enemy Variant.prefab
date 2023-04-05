@@ -260,9 +260,49 @@ PrefabInstance:
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 2700227365419083299, guid: d56aa7c90a3698d4197bd062064a821b, type: 3}
+    - target: {fileID: 2368033471186396241, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+      propertyPath: attackScript
+      value: 
+      objectReference: {fileID: 227123877}
+    - target: {fileID: 2368033471186396241, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368033471186396241, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368033471186396241, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368033471186396241, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+      propertyPath: onEnemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368033471186396241, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+      propertyPath: onEnemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4170540473027220960}
+    - target: {fileID: 2368033471186396241, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+      propertyPath: onEnemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SpawnPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368033471186396241, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+      propertyPath: onEnemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DropPrefab, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2368033471186396242, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: m_Name
       value: Heal Enemy Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4800357687762280674, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.13333
+      objectReference: {fileID: 0}
+    - target: {fileID: 4800357687762280674, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.46667
       objectReference: {fileID: 0}
     - target: {fileID: 4800357687762280674, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: m_LocalPosition.y
@@ -366,7 +406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   healRadius: 15
-  healFactor: 0.1
+  healFactor: 0.2
   healSound: {fileID: 6285450061963893755}
   OnHeal:
     m_PersistentCalls:
@@ -399,6 +439,27 @@ MonoBehaviour:
   spriteRenderer: {fileID: 228771267852519948}
   deathParticles: {fileID: 5227556964407135251}
   canSwitchAnimations: 1
+--- !u!114 &4170540473027220960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228771267715844758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04105106d0aaaeb4ab85f2a4a5f061a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4644096249653464151, guid: f987930296273b74f985d5319dfa342f, type: 3}
+  minAmountToSpawn: 1
+  maxAmountToSpawn: 1
+  minOffset: {x: 0.25, y: 0.25}
+  maxOffset: {x: -0.25, y: -0.25}
+  minSpawnScale: {x: 0.75, y: 0.75}
+  maxSpawnScale: {x: 1.25, y: 1.25}
+  minAngle: 0
+  maxAngle: 0
 --- !u!114 &6285450061963893755
 MonoBehaviour:
   m_ObjectHideFlags: 0

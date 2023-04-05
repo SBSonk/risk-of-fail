@@ -28,6 +28,7 @@ public class PlayerStatus : Alive
         pSFXManager = GetComponent<PlayerSFXManager>();
 
         pMovement.moveSpeed = defaultSpeed;
+        pMovement.baseSpeed = defaultSpeed;
     }
 
     private void Start()

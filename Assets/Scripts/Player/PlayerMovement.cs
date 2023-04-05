@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 10f;
+    public float baseSpeed;
 
     bool dodgeQueued, startCooldown, canDodge = true;
     public float dodgeForce = 100f;
@@ -47,6 +48,13 @@ public class PlayerMovement : MonoBehaviour
     {
         MoveCharacter(moveDirection);
     }
+
+    public void SetSpeedMultiplier(float multiplier)
+    {
+        moveSpeed = baseSpeed * multiplier;
+    }
+
+    public void ResetSpeed() => moveSpeed = baseSpeed;
 
     void MoveCharacter(Vector2 dir)
     {

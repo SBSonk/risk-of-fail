@@ -140,7 +140,7 @@ public class WrittenWorksAttack : MonoBehaviour
 
     protected virtual Vector3 playerPositionToFollow()
     {
-        return (Vector3)player.position + (followDirection * (player.velocity.magnitude / 2));
+        return (Vector3)player.position /*+ (followDirection * (player.velocity.magnitude / 2))*/;
     }
 
     void TryDashAttack()

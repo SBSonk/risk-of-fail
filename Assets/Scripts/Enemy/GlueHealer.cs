@@ -17,6 +17,7 @@ public class GlueHealer : MonoBehaviour
 
     public float healRadius = 10f;
     public float healFactor = 2;
+    public float healCap = 15;
     public AudioClipRandomizer healSound;
 
     public UnityEvent OnHeal;
@@ -91,7 +92,7 @@ public class GlueHealer : MonoBehaviour
             
             if (target && target.health < target.maxHealth && ai.reachedDestination)
             {
-                target.GiveHealth(target.maxHealth * healFactor);
+                target.GiveHealth(Math.Max(target.maxHealth * healFactor, healCap));
             }
         }
     }

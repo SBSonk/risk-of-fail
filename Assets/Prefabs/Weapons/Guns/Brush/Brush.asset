@@ -25,15 +25,15 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: 91a27f21dd1f6844197adda4c80a7828, type: 3}
       rotationSpeed: 0
   weaponSprite: {fileID: -2059183097, guid: e3c15e47d68fcd541b90052911096172, type: 3}
-  baseDamage: 14
-  bulletSpread: 1.5
+  baseDamage: 12
+  bulletSpread: 1.25
   knockbackAmount: 5
   stunLength: 0.25
   defaultAmmoCount: 48
   ammoPerShot: 2
   clipSize: 8
   reloadLength: 1.15
-  fireRate: 0.35
+  fireRate: 0.4
   auto: 0
   shootShake: {fileID: 11400000, guid: 6caba7f04f154e947b688247456a3713, type: 2}
   hitScreenShake: {fileID: 0}
@@ -60,4 +60,4 @@ MonoBehaviour:
   pelletCount: 3
   pelletSpread: 3
   perBulletDelay: 0.01
-  shootDelay: 0.1
+  shootDelay: 0.075

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class DialogueManager : MonoBehaviour
     
     private float hideTime = 0.5f;
     
+    public UnityEvent OnDialogueTrigger;
+    public UnityEvent OnDialogueFinish;
+    
     private void Awake()
     {
         main = this;
@@ -24,7 +28,8 @@ public class DialogueManager : MonoBehaviour
     public void ShowText(string text, float disappearTime = 0.5f)
     {
         StopAllCoroutines();
-
+        
+        OnDialogueTrigger?.Invoke();
         StartCoroutine(PanelAnimation(text, disappearTime));
     }
 
@@ -52,7 +57,8 @@ public class DialogueManager : MonoBehaviour
     {
         yield return new WaitForSeconds(hideTime);
         StartCoroutine(SprFunctions.Fade(tmp, tmp.color, Color.clear, 0.25f));
-        
+
+        OnDialogueFinish?.Invoke();
         anim.Play("DialogueClose");
     }
 }

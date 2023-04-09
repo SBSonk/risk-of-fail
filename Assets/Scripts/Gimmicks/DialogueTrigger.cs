@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 public class DialogueTrigger : MonoBehaviour
@@ -13,7 +14,16 @@ public class DialogueTrigger : MonoBehaviour
 
     [SerializeField] private bool active = true;
     [SerializeField] private bool disableOnTrigger = true;
-    
+
+    public UnityEvent OnDialogueTrigger;
+    public UnityEvent OnDialogueFinish;
+
+    private void Start()
+    {
+        DialogueManager.main.OnDialogueTrigger.AddListener(() => this.OnDialogueTrigger?.Invoke());
+        DialogueManager.main.OnDialogueFinish.AddListener(() => this.OnDialogueFinish?.Invoke());
+    }
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (!col.CompareTag("Player") || !active) return;

@@ -15,7 +15,7 @@ public class MeleeWeapon : Weapon
 
     public AudioClipRandomizer soundPrefab;
 
-    public IEnumerator SwingWeapon(Transform player)
+    public IEnumerator SwingWeapon(Transform player, float multiplier = 1)
     {
         yield return new WaitForSeconds(swingDelay);
 
@@ -31,7 +31,7 @@ public class MeleeWeapon : Weapon
                 var objectHit = Physics2D.Linecast(player.position, a.transform.position, hitFilter.layerMask);
                 if (objectHit && objectHit.collider.CompareTag("Wall")) continue;
                 
-                a.GiveDamage(baseDamage, stunLength, KillFlag.Melee);
+                a.GiveDamage(baseDamage * multiplier, stunLength, KillFlag.Melee);
                 if (a.TryGetComponent(out Rigidbody2D rb))
                 {
                     rb.AddForce(hitVector * knockbackAmount, ForceMode2D.Impulse);
@@ -39,7 +39,7 @@ public class MeleeWeapon : Weapon
 
                 hit.Add(a);
                 
-                LevelStats.main.GiveDamage(baseDamage);
+                LevelStats.main.GiveDamage(baseDamage * multiplier);
             } else if (c.TryGetComponent(out Ball b))
             {
                 b.GetComponent<Rigidbody2D>().AddForce(hitVector * 15, ForceMode2D.Impulse);

@@ -29,6 +29,8 @@ public class ZSpawning2 : MonoBehaviour
     public float spawnEnableDistance = 25f;
     public float spawnDisableDistance = 10f;
     public float healthIncreaseScale = 1.1f;
+    public float maxHealthScale = 4;
+    public int maxEnemiesInRound = 255;
 
     private Transform player;
     
@@ -156,6 +158,8 @@ public class ZSpawning2 : MonoBehaviour
         {
             // Scale enemy health
             Enemy.globalEnemyHealthScale *= healthIncreaseScale;
+            
+            Enemy.globalEnemyHealthScale = Enemy.globalEnemyHealthScale > maxHealthScale ? maxHealthScale : Enemy.globalEnemyHealthScale;
         }
         
         // Unlock types
@@ -190,7 +194,7 @@ public class ZSpawning2 : MonoBehaviour
         }
         
         // Scale enemy amounts
-        enemiesInRound = Mathf.RoundToInt(enemiesInRound * 1.2f);
+        enemiesInRound = enemiesInRound < maxEnemiesInRound ? Mathf.RoundToInt(enemiesInRound * 1.1f) : maxEnemiesInRound;
 
         round++;
     }
@@ -222,8 +226,6 @@ public class ZSpawning2 : MonoBehaviour
     
     Enemy ChooseEnemy()
     {
-        Enemy enemyChosen;
-
         List<Enemy> list = new List<Enemy>();
         for (int i = 0; i < enemies.Length; i++)
         {
@@ -233,7 +235,7 @@ public class ZSpawning2 : MonoBehaviour
             }
         }
 
-        enemyChosen = list[Random.Range(0, list.Count)];
+        Enemy enemyChosen = list[Random.Range(0, list.Count)];
 
         return enemyChosen;
     }

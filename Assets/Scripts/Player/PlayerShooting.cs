@@ -250,7 +250,7 @@ public class PlayerShooting : MonoBehaviour
             // Remove ammo in clip if the gun uses clips
             if (weapon.clip >= m.ammoPerShot)
             {
-                StartCoroutine(m.SwingWeapon(transform));
+                StartCoroutine(m.SwingWeapon(transform, damageMultiplier));
 
                 weapon.clip -= m.ammoPerShot;
                 sfxManager.PlayShootSound();

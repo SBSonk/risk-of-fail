@@ -39,7 +39,7 @@ public class PlayerStatus : Alive
 
         ObjectFade.player = transform;
         HudManager4.hud.SetPlayer(this);
-        CameraFollow.cam.SetPlayer(GetComponent<Rigidbody2D>());
+        //CameraFollow.cam.SetPlayer(GetComponent<Rigidbody2D>());
     }
     
     protected override void Death(KillFlag flag)

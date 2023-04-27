@@ -326,7 +326,7 @@ public class PlayerAnimations : MonoBehaviour
         float t = 0;
         while (t < trailLifetime)
         {
-            trail.time = Mathf.Lerp(trail.time, Mathf.Lerp(trailTime, 0, t / trailLifetime), 0.25f);
+            trail.time = Mathf.Lerp(trail.time, Mathf.Lerp(trailTime, 0, t / trailLifetime), 0.5f);
             yield return new WaitForEndOfFrame();
             t += Time.deltaTime;
         }

@@ -2,38 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Cinemachine;
 
 public class CenterCameraOnObject : MonoBehaviour
 {
-    [SerializeField] Vector3 offset;
-    [SerializeField] Transform[] transforms;
-    [SerializeField] float time = 1, holdTime = 1;
-    [SerializeField] bool freezeGame = false;
-
-    CameraFollow cam;
-
+    [SerializeField] private CinemachineVirtualCamera objectCamera;
+    [SerializeField] float holdTime = 1;
+    
     public UnityEvent OnCenterStart, OnCentered, OnRetract;
-
-    private void Start()
-    {
-        cam = CameraFollow.cam;
-    }
 
     public void CenterCamera()
     {
-        if (transforms.Length == 1)
-        {
-            cam.StartCoroutine(cam.CenterCameraOnPosition(this, transforms[0].position, time, holdTime, offset, freezeGame));
-        }
-        else
-        {
-            Vector3[] positions = new Vector3[transforms.Length];
-            for (int i = 0; i < transforms.Length; i++)
-            {
-                positions[i] = transforms[i].position;
-            }
+        StopAllCoroutines();
+        StartCoroutine(CenterAnimation());
+    }
 
-            cam.StartCoroutine(cam.CenterCameraOnPosition(this, positions, time, holdTime, offset, freezeGame));
-        }
+    IEnumerator CenterAnimation()
+    {
+        // switch to camera
+        OnCenterStart?.Invoke();
+        objectCamera.enabled = true;
+
+        Time.timeScale = 0;
+
+        yield return new WaitForSecondsRealtime(1.5f);
+        OnCentered?.Invoke();
+        
+        yield return new WaitForSecondsRealtime(holdTime);
+        
+        
+        // return to camera
+        objectCamera.enabled = false;
+
+        yield return new WaitForSecondsRealtime(1.5f);
+        
+        OnRetract?.Invoke();
+        Time.timeScale = 1;
     }
 }

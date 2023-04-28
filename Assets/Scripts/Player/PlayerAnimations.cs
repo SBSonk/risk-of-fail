@@ -341,44 +341,6 @@ public class PlayerAnimations : MonoBehaviour
         else if (input.x < -0.5f) final = Directions.left;
         else if (input.y > 0.5f) final = Directions.up;
         else if (input.y < -0.5f) final = Directions.down;
-        
-        /*float angle = Mathf.Atan2(input.y, input.x) * Mathf.Rad2Deg; // angle in degrees
-        int direction = Mathf.RoundToInt(angle / 45.0f) % 8; // direction as integer from 0 to 7 // this is cap, chatgpt lied, it uses negative ints for up and down
-
-        switch(direction)
-        {
-            case 0:
-                final = Directions.right;
-                break;
-
-            case 1:
-                final = Directions.upperRight;
-                break;
-
-            case -1:
-                final = Directions.bottomRight;
-                break;
-
-            case 2:
-                final = Directions.up;
-                break;
-
-            case -2:
-                final = Directions.down;
-                break;
-
-            case 3:
-                final = Directions.upperLeft;
-                break;
-
-            case -3:
-                final = Directions.bottomLeft;
-                break;
-
-            case 4:
-                final = Directions.left;
-                break;
-        }    */
 
         return final;
     }   

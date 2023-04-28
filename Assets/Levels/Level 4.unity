@@ -7410,6 +7410,29 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
+--- !u!1 &297136015 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 986840170020990974, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+  m_PrefabInstance: {fileID: 1687766996}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &297136020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297136015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2679171d70905bf4fb6210a7e96f660c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 6351469507247768528}
+  directionOffset: {x: 0, y: 0, z: 0}
+  playerOffset: {x: 0, y: 1, z: 0}
+  offsetMultiplier: 1.5
+  lerpVal: 0.5
+  rotateVal: 0.1
 --- !u!1 &297722720
 GameObject:
   m_ObjectHideFlags: 0
@@ -28705,11 +28728,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6748336955732884981, guid: 231c7f9677a5ddf4381496353ffd097d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.1500015
+      value: 6.1500015
       objectReference: {fileID: 0}
     - target: {fileID: 6748336955732884981, guid: 231c7f9677a5ddf4381496353ffd097d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.55
+      value: 29.3
       objectReference: {fileID: 0}
     - target: {fileID: 6748336955732884981, guid: 231c7f9677a5ddf4381496353ffd097d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -48815,17 +48838,65 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 986840169310017381, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 986840169310017381, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 986840169310017381, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 986840169310017381, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 986840169310017381, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 986840169310017382, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1731358240, guid: 9c79dfb6b781d504180710b442fa70b5, type: 3}
+    - target: {fileID: 986840169310017382, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_Color.b
+      value: 0.63576895
+      objectReference: {fileID: 0}
+    - target: {fileID: 986840169310017382, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_Color.g
+      value: 0.63576895
+      objectReference: {fileID: 0}
+    - target: {fileID: 986840169310017382, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8584906
+      objectReference: {fileID: 0}
+    - target: {fileID: 986840169310017382, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 986840169310017382, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 986840169310017382, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 986840170020990970, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 986840170020990970, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.7096357
+      value: 6.49
       objectReference: {fileID: 0}
     - target: {fileID: 986840170020990970, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 19.198294
+      value: 46.8
       objectReference: {fileID: 0}
     - target: {fileID: 986840170020990970, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -48863,7 +48934,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Key
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1511730420113408986, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 986840170020990975, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+    - {fileID: 3265671701864110259, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
 --- !u!1 &1687766997 stripped
 GameObject:
@@ -48883,7 +48960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupPoints: 25
-  lifetime: 5
+  lifetime: -1
   particles: {fileID: 0}
   _light: {fileID: 0}
   sprite: {fileID: 0}
@@ -58090,6 +58167,11 @@ PrefabInstance:
 --- !u!4 &6351469507247768520 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1425222227342113825, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
+  m_PrefabInstance: {fileID: 6351469507247768519}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &6351469507247768528 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 1425222227342113824, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
   m_PrefabInstance: {fileID: 6351469507247768519}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6869182811601415242

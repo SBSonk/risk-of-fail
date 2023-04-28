@@ -25,6 +25,7 @@ public class CenterCameraOnObject : MonoBehaviour
 
         Time.timeScale = 0;
 
+        // wait to arrive destination
         yield return new WaitForSecondsRealtime(1.5f);
         OnCentered?.Invoke();
         

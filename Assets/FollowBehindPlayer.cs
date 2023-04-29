@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 public class FollowBehindPlayer : MonoBehaviour
@@ -10,8 +11,20 @@ public class FollowBehindPlayer : MonoBehaviour
     [SerializeField] private Vector3 directionOffset, playerOffset;
     [SerializeField] private float offsetMultiplier = 2f, lerpVal = 0.25f, rotateVal = 0.1f;
 
+    public UnityEvent ItemPickedUp;
+    
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (!col.CompareTag("Player")) return;
+
+        ItemPickedUp?.Invoke();
+        player = col.GetComponent<Rigidbody2D>();
+    }
+
     private void FixedUpdate()
     {
+        if (!player) return;
+        
         if (player.velocity.magnitude > 0.5f)
         {
             switch (VectorToDir(player.velocity))

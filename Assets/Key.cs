@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Key : PickupBase
+public class Key : MonoBehaviour
 {
-    [SerializeField] private Door doorToOpen;
+    public Door doorToOpen;
 }

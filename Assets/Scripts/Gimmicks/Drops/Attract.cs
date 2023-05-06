@@ -27,7 +27,7 @@ public class Attract : MonoBehaviour
         if (collision.CompareTag("Player") && pickup.active)
         {
             target = collision.transform;
-            _collider.enabled = false;
+            if (_collider) _collider.enabled = false;
         }
     }
 }

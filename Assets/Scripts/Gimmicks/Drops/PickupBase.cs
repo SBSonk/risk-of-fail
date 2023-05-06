@@ -82,7 +82,7 @@ public class PickupBase : MonoBehaviour
     IEnumerator Activate(float s)
     { 
         active = false;
-        attract._collider.enabled = false;
+        if (attract._collider) attract._collider.enabled = false;
         yield return new WaitForSeconds(s);
         active = true;
     }

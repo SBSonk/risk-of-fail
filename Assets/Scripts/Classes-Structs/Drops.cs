@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-[CreateAssetMenu(fileName ="New Drop", menuName = "Drop")]
+[CreateAssetMenu(fileName ="New Drop", menuName = "Drops/Drop")]
 public class Drops : ScriptableObject
 {
     public GameObject obj;

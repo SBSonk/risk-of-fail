@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[System.Serializable][CreateAssetMenu(fileName="New Level Grade", menuName="LevelGrade")]
+[System.Serializable][CreateAssetMenu(fileName="New Level Grade", menuName="Levels/LevelGrade")]
 public class LevelGrades : ScriptableObject
 {
     public Grades[] grades;

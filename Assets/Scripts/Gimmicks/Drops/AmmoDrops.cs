@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "New Ammo Drop", fileName = "Ammo Drop")] [System.Serializable]
+[CreateAssetMenu(menuName = "Drops/Ammo Drop", fileName = "New Ammo Drop")] [System.Serializable]
 public class AmmoDrops : ScriptableObject
 {
     public Weapon typeToGive;

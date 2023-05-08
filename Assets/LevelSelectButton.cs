@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -18,7 +19,11 @@ public class LevelSelectButton : MonoBehaviour
         
         GetComponent<Button>().onClick.AddListener(() =>
         {
-            SceneManager.LoadScene(level.buildIndex);
+            LevelFade.FadeIn(() =>
+            {
+                SceneManager.LoadScene(level.buildIndex);
+                LevelFade.FadeOut();
+            });
         });
     }
 

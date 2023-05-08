@@ -160,6 +160,11 @@ public class LevelStats : MonoBehaviour
             
         }
     }
+
+    public static int GetHighScore(int buildIndex) => PlayerPrefs.GetInt(buildIndex + "Score", 0);
+    public static void SetHighScore(int buildIndex, int score) => PlayerPrefs.SetInt(buildIndex + "Score", score);
+    public static float GetBestTime(int buildIndex) => PlayerPrefs.GetFloat(buildIndex + "Time", 0);
+    public static void SetBestTime(int buildIndex, float time) => PlayerPrefs.SetFloat(buildIndex + "Time", time);  
 }
 
 public enum KillFlag

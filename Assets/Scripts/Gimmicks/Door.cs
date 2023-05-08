@@ -24,15 +24,15 @@ public class Door : MonoBehaviour
     {
         if (opened)
         {
-            anim.Play("OpenDoor", 0, 0);
+            anim.Play("OpenDoor", 0, 1);
         }
         else
         {
-            anim.Play("CloseDoor", 0, 0);
+            anim.Play("CloseDoor", 0, 1);
         }
     }
 
-    public void ToggleDoor(bool val)
+    public virtual void ToggleDoor(bool val)
     {
         float delay = val ? closeDelay : openDelay;
         if (closeDelay < 0.1f) delay = 0.1f;

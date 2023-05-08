@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -51,15 +52,26 @@ public class ResultsScreen : MonoBehaviour
         
         enemiesKilled.text = stats.enemiesKilled.ToString();
 
-        TimeSpan t = TimeSpan.FromSeconds(stats.GetTimeCompleted());
+        float timeCompleted = stats.GetTimeCompleted();
+        TimeSpan t = TimeSpan.FromSeconds(timeCompleted);
         time.text = $"{t.Minutes.ToString("00")}:{t.Seconds.ToString("00")}";
 
         damageTaken.text = stats.damageTaken.ToString();
         damageGiven.text = stats.damageGiven.ToString();
         healthRestored.text = stats.healthRestored.ToString();
-
         
-
         passedText.text = flag == KillFlag.LevelPassed ? "PASSED" : "FAILED";
+        
+        // Set High Scores
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (stats.points > LevelStats.GetHighScore(sceneIndex))
+        {
+            LevelStats.SetHighScore(sceneIndex, stats.points);
+        }
+        
+        if (timeCompleted > LevelStats.GetBestTime(sceneIndex))
+        {
+            LevelStats.SetBestTime(sceneIndex, timeCompleted);
+        }
     }
 }

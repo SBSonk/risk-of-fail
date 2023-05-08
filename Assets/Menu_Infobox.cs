@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,11 @@ public class Menu_Infobox : MonoBehaviour
     {
         levelDescription.SetText(level.description);
         levelPreview.sprite = level.preview;
+        
+        highScore.SetText(LevelStats.GetHighScore(level.buildIndex).ToString("00000"));
+        
+        TimeSpan t = TimeSpan.FromSeconds(LevelStats.GetBestTime(level.buildIndex));
+        bestTime.SetText($"{t.Minutes.ToString("00")}:{t.Seconds.ToString("00")}");
     }
 
     public void ShowLevel()

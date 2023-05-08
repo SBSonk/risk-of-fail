@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,7 +13,7 @@ public class SprFunctions
     ///=====================FADE=========================\\\
 
     // Fades a sprite between two colors within a time period
-    public static IEnumerator Fade(SpriteRenderer sprite, Color startColor, Color finalColor, float t)
+    public static IEnumerator Fade(SpriteRenderer sprite, Color startColor, Color finalColor, float t, Action onFinished = null)
     {
         sprite.color = startColor;
         Color color = startColor;
@@ -27,9 +28,11 @@ public class SprFunctions
         }
 
         sprite.color = finalColor;
+        
+        onFinished?.Invoke();
     }
 
-    public static IEnumerator Fade(SpriteRenderer[] sprites, Color startColor, Color finalColor, float t)
+    public static IEnumerator Fade(SpriteRenderer[] sprites, Color startColor, Color finalColor, float t, Action onFinished = null)
     {
         for (int i = 0; i < sprites.Length; i++)
         {
@@ -54,9 +57,11 @@ public class SprFunctions
         {
             sprites[i].color = finalColor;
         }
+        
+        onFinished?.Invoke();
     }
 
-    public static IEnumerator Fade(Image sprite, Color startColor, Color finalColor, float t)
+    public static IEnumerator Fade(Image sprite, Color startColor, Color finalColor, float t, Action onFinished = null)
     {
         sprite.color = startColor;
         Color color = startColor;
@@ -71,9 +76,11 @@ public class SprFunctions
         }
 
         sprite.color = finalColor;
+        
+        onFinished?.Invoke();
     }
     
-    public static IEnumerator Fade(TMP_Text text, Color startColor, Color finalColor, float t)
+    public static IEnumerator Fade(TMP_Text text, Color startColor, Color finalColor, float t, Action onFinished = null)
     {
         text.color = startColor;
         Color color = startColor;
@@ -88,12 +95,14 @@ public class SprFunctions
         }
 
         text.color = finalColor;
+        
+        onFinished?.Invoke();
     }
 
     ///=====================FLICKER=========================\\\
 
     // Flickers a sprite and picks up speed the closer to the end of the timeframe
-    public static IEnumerator Flicker(SpriteRenderer sprite, float t)
+    public static IEnumerator Flicker(SpriteRenderer sprite, float t, Action onFinished = null)
     {
         float flickerInt = .15f;
         float fastFlickerInt = flickerInt / 1.5f;
@@ -121,9 +130,11 @@ public class SprFunctions
 
         current.a = 1;
         sprite.color = current;
+        
+        onFinished?.Invoke();
     }
 
-    public static IEnumerator Flicker(Image sprite, float t)
+    public static IEnumerator Flicker(Image sprite, float t, Action onFinished = null)
     {
         float flickerInt = .15f;
         float fastFlickerInt = flickerInt / 1.5f;
@@ -151,5 +162,7 @@ public class SprFunctions
 
         current.a = 1;
         sprite.color = current;
+        
+        onFinished?.Invoke();
     }
 }

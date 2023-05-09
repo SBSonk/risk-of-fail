@@ -109,4 +109,11 @@ public class DiscordRPCManager : MonoBehaviour
         state = _state;
         imageName = _imageName;
     }
+
+    public void ChangeDiscordState(string _state)
+    {
+        state = _state;
+    }
+
+    public void ChangeDiscordDetails(string _details) => details = _details;
 }

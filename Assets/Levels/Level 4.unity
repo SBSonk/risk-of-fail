@@ -7512,9 +7512,45 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -2.750782
       objectReference: {fileID: 0}
+    - target: {fileID: 1911453344942738315, guid: 81e97e8796e7ca54d9257249e212c0c8, type: 3}
+      propertyPath: dialogue.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911453344942738315, guid: 81e97e8796e7ca54d9257249e212c0c8, type: 3}
+      propertyPath: dialogue.Array.data[0].text
+      value: First Line
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911453344942738315, guid: 81e97e8796e7ca54d9257249e212c0c8, type: 3}
+      propertyPath: dialogue.Array.data[1].text
+      value: Second Line
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911453344942738315, guid: 81e97e8796e7ca54d9257249e212c0c8, type: 3}
+      propertyPath: dialogue.Array.data[2].text
+      value: + Third Line
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911453344942738315, guid: 81e97e8796e7ca54d9257249e212c0c8, type: 3}
+      propertyPath: dialogue.Array.data[2].append
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911453344942738315, guid: 81e97e8796e7ca54d9257249e212c0c8, type: 3}
+      propertyPath: dialogue.Array.data[0].holdTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911453344942738315, guid: 81e97e8796e7ca54d9257249e212c0c8, type: 3}
+      propertyPath: dialogue.Array.data[1].holdTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911453344942738315, guid: 81e97e8796e7ca54d9257249e212c0c8, type: 3}
+      propertyPath: dialogue.Array.data[2].holdTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6358623570569928224, guid: 81e97e8796e7ca54d9257249e212c0c8, type: 3}
       propertyPath: m_Name
       value: LockedDoor Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6358623570569928224, guid: 81e97e8796e7ca54d9257249e212c0c8, type: 3}
+      propertyPath: m_TagString
+      value: CanBePenetrated
       objectReference: {fileID: 0}
     - target: {fileID: 6358623570569928227, guid: 81e97e8796e7ca54d9257249e212c0c8, type: 3}
       propertyPath: m_RootOrder
@@ -32819,7 +32855,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 800607393}
-  - component: {fileID: 800607392}
   - component: {fileID: 800607394}
   m_Layer: 0
   m_Name: UIManager
@@ -32828,18 +32863,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &800607392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 800607391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89cbabae19109124386d03064240a893, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &800607393
 Transform:
   m_ObjectHideFlags: 0
@@ -42300,7 +42323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9202055064893857657, guid: a7fab623e27b23d42865af17b15f6eda, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.07
+      value: 9.03
       objectReference: {fileID: 0}
     - target: {fileID: 9202055064893857657, guid: a7fab623e27b23d42865af17b15f6eda, type: 3}
       propertyPath: m_LocalPosition.y

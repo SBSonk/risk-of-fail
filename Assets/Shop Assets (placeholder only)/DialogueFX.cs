@@ -23,11 +23,11 @@ public class DialogueFX : MonoBehaviour
 
 	private void Start()
 	{
-		if (PlayOnStart) PlayText();
+		if (PlayOnStart) PlayText(_text.text);
 	}
 
 	// Use this for initialization
-	public void PlayText()
+	public void PlayText(String text, bool append = false, UnityAction callback = null)
 	{
 		StopAllCoroutines();
 		
@@ -36,24 +36,23 @@ public class DialogueFX : MonoBehaviour
 
 		if (_text != null)
 		{
-			writer = _text.text;
-			_text.text = "";
-
-			StartCoroutine("TypeWriterText");
+			writer = text;
+	
+			StartCoroutine(TypeWriterText(callback, append));
 		}
 
 		if (_tmpProText != null)
 		{
-			writer = _tmpProText.text;
-			_tmpProText.text = "";
+			writer = text;
 
-			StartCoroutine("TypeWriterTMP");
+			StartCoroutine(TypeWriterTMP(callback, append));
 		}
 	}
 	
-	IEnumerator TypeWriterText()
+	IEnumerator TypeWriterText(UnityAction callback = null, bool append = false)
 	{
-		_text.text = leadingCharBeforeDelay ? leadingChar : "";
+		if (append) _text.text += " ";
+		else _text.text = leadingCharBeforeDelay ? leadingChar : "";
 
 		yield return new WaitForSeconds(delayBeforeStart);
 
@@ -75,11 +74,14 @@ public class DialogueFX : MonoBehaviour
 		}
 
 		FinishedText?.Invoke();
+		
+		callback?.Invoke();
 	}
 
-	IEnumerator TypeWriterTMP()
+	IEnumerator TypeWriterTMP(UnityAction callback = null, bool append = false)
 	{
-		_tmpProText.text = leadingCharBeforeDelay ? leadingChar : "";
+		if (append) _tmpProText.text += " ";
+		else _tmpProText.text = leadingCharBeforeDelay ? leadingChar : "";
 
 		yield return new WaitForSeconds(delayBeforeStart);
 
@@ -101,5 +103,7 @@ public class DialogueFX : MonoBehaviour
 		}
 		
 		FinishedText?.Invoke();
+		
+		callback?.Invoke();
 	}
 }

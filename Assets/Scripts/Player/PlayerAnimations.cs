@@ -4,7 +4,9 @@ using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour
-{
+{ 
+    Vector2 playerOffset = new Vector2(0, 0.5f);
+    
     public bool canSwitchAnimation = true   ;
     [SerializeField] SpriteRenderer[] sprites;
 
@@ -68,12 +70,12 @@ public class PlayerAnimations : MonoBehaviour
         else if (followCursor) Invoke("StopCursorFollow", stopCursorFollowTime);
 
         // Orient player
-        dir = ((Vector3)InputManager.mousePosition - transform.position).normalized;
+        dir = ((Vector3)InputManager.mousePosition - (transform.position + (Vector3)playerOffset)).normalized;
 
         currentDir = VectorToDir(dir);
 
         // Orient weapon
-        Vector2 mousePos = ((Vector2)transform.position - InputManager.mousePosition).normalized;
+        Vector2 mousePos = ((Vector2)transform.position + playerOffset - InputManager.mousePosition).normalized;
         float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
 
         // Change weapon sorting order depending on if its in front or behind

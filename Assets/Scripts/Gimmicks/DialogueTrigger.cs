@@ -7,9 +7,9 @@ using UnityEngine.Serialization;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    [TextArea]
-    [SerializeField] string text;
+    [SerializeField] private DialogueText[] dialogue;
 
+    [SerializeField] private float reactivateDelay = 6;
     [SerializeField] private float hideDelay = 3;
 
     [SerializeField] private bool active = true;
@@ -28,10 +28,25 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (!col.CompareTag("Player") || !active) return;
         
-        DialogueManager.main.ShowText(text, hideDelay);
+        DialogueManager.main.ShowText(dialogue);
         
         if (disableOnTrigger) SetActive(false);
+        else
+        {
+            active = false;
+            Invoke(nameof(SetActive), reactivateDelay);
+        }
     }
 
     public void SetActive(bool val) => active = val;
+
+    public void SetActive() => active = true;
+}
+
+[System.Serializable]
+public struct DialogueText
+{
+    [TextArea] public string text;
+    public float holdTime;
+    public bool append;
 }

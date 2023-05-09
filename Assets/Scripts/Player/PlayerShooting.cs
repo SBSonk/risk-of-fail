@@ -7,6 +7,7 @@ using UnityEngine.Events;
 
 public class PlayerShooting : MonoBehaviour
 {
+    private Vector2 playerOffset = new Vector2(0, 0.5f);
     [SerializeField] Transform gunPivot, gunBarrel;
     public InventoryWeapon fallbackWep;
     List<InventoryWeapon> weaponPool;
@@ -47,7 +48,7 @@ public class PlayerShooting : MonoBehaviour
     private void Update()
     {
         // Get direction from cursor to player and make the player face it
-        Vector2 mousePos = ((Vector2) transform.position - InputManager.mousePosition).normalized;
+        Vector2 mousePos = ((Vector2) transform.position + playerOffset - InputManager.mousePosition).normalized;
         float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
         gunPivot.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 

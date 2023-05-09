@@ -13,9 +13,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private TextMeshPro tmp;
     Color defaultPanelColor, defaultTextColor;
-    
-    private float hideTime = 0.5f;
-    
+
     public UnityEvent OnDialogueTrigger;
     public UnityEvent OnDialogueFinish;
     
@@ -25,37 +23,65 @@ public class DialogueManager : MonoBehaviour
         defaultTextColor = tmp.color;
     }
 
-    public void ShowText(string text, float disappearTime = 0.5f)
+    public void ShowText(string text)
     {
         StopAllCoroutines();
         
         OnDialogueTrigger?.Invoke();
-        StartCoroutine(PanelAnimation(text, disappearTime));
+        StartCoroutine(PanelAnimation(text));
+    }
+    
+    public void ShowText(DialogueText[] dialogue)
+    {
+        StopAllCoroutines();
+        
+        OnDialogueTrigger?.Invoke();
+        StartCoroutine(PanelAnimation(dialogue));
     }
 
-    IEnumerator PanelAnimation(string text, float disappearTime = 0.5f)
+    IEnumerator PanelAnimation(string text, bool append = false, float disappearTime = 0.5f)
     {
         anim.Play("DialogueOpen");
         tmp.text = "";
 
         yield return new WaitForSeconds(0.5f);
         
-        // TODO: calculate size based on text length
+        bool finishedDisplaying = false;
         
-        tmp.text = text;
         tmp.color = defaultTextColor;
-        dialogueFx.PlayText();
-        hideTime = disappearTime;
+        dialogueFx.PlayText(text, append, () => { finishedDisplaying = true;});
+
+        while (!finishedDisplaying) yield return null;
+
+        yield return new WaitForSeconds(disappearTime);
+
+        HideText();
+    }
+    
+    IEnumerator PanelAnimation(DialogueText[] dialogue)
+    {
+        anim.Play("DialogueOpen");
+        tmp.text = "";
+
+        yield return new WaitForSeconds(0.5f);
+
+        foreach (var d in dialogue)
+        {
+            bool finishedDisplaying = false;
+            
+            tmp.color = defaultTextColor;
+            dialogueFx.PlayText(d.text, d.append, () => { finishedDisplaying = true;});
+
+            while (!finishedDisplaying) yield return null;
+
+            yield return new WaitForSeconds(d.holdTime);
+        }
+        
+        HideText();
     }
     
     public void HideText()
     {
-        StartCoroutine(HideTextDelay());
-    }
-
-    IEnumerator HideTextDelay()
-    {
-        yield return new WaitForSeconds(hideTime);
         StartCoroutine(SprFunctions.Fade(tmp, tmp.color, Color.clear, 0.25f));
 
         OnDialogueFinish?.Invoke();

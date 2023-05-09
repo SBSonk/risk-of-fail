@@ -1403,8 +1403,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7084871180147271412, guid: f6298abd249830b44a8a46a2df863ceb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7084871180147271412, guid: f6298abd249830b44a8a46a2df863ceb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7084871180147271412, guid: f6298abd249830b44a8a46a2df863ceb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchScene
       objectReference: {fileID: 0}
     - target: {fileID: 7084871180716814856, guid: f6298abd249830b44a8a46a2df863ceb, type: 3}
       propertyPath: m_Name

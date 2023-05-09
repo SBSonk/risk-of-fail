@@ -10,7 +10,6 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private DialogueText[] dialogue;
 
     [SerializeField] private float reactivateDelay = 6;
-    [SerializeField] private float hideDelay = 3;
 
     [SerializeField] private bool active = true;
     [SerializeField] private bool disableOnTrigger = true;

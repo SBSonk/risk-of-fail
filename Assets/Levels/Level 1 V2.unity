@@ -5342,6 +5342,30 @@ PrefabInstance:
       propertyPath: text
       value: The teachers lounge... It should be here somewhere...
       objectReference: {fileID: 0}
+    - target: {fileID: 1911453345709412634, guid: 6bca2e12a3915c94b8050b36c87d4828, type: 3}
+      propertyPath: dialogue.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911453345709412634, guid: 6bca2e12a3915c94b8050b36c87d4828, type: 3}
+      propertyPath: dialogue.Array.data[0].text
+      value: The teacher's office...
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911453345709412634, guid: 6bca2e12a3915c94b8050b36c87d4828, type: 3}
+      propertyPath: dialogue.Array.data[1].text
+      value: The key should be here somewhere...
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911453345709412634, guid: 6bca2e12a3915c94b8050b36c87d4828, type: 3}
+      propertyPath: dialogue.Array.data[1].append
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911453345709412634, guid: 6bca2e12a3915c94b8050b36c87d4828, type: 3}
+      propertyPath: dialogue.Array.data[0].holdTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911453345709412634, guid: 6bca2e12a3915c94b8050b36c87d4828, type: 3}
+      propertyPath: dialogue.Array.data[1].holdTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1911453345709412635, guid: 6bca2e12a3915c94b8050b36c87d4828, type: 3}
       propertyPath: m_Size.x
       value: 6.843048
@@ -8910,6 +8934,10 @@ PrefabInstance:
     - target: {fileID: 3563316494663652032, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
       propertyPath: m_Name
       value: ChairForwards Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506610746443301908, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
@@ -33966,6 +33994,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChairForwards Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5506610746443301908, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
 --- !u!1001 &581454406
@@ -35962,6 +35994,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChairForwards Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5506610746443301908, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
 --- !u!4 &680445586 stripped
@@ -37950,6 +37986,26 @@ PrefabInstance:
     - target: {fileID: 1911453345709412634, guid: 6bca2e12a3915c94b8050b36c87d4828, type: 3}
       propertyPath: text
       value: Maybe theres a key in the teacher's office???
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911453345709412634, guid: 6bca2e12a3915c94b8050b36c87d4828, type: 3}
+      propertyPath: dialogue.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911453345709412634, guid: 6bca2e12a3915c94b8050b36c87d4828, type: 3}
+      propertyPath: dialogue.Array.data[0].text
+      value: The gym door is locked...
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911453345709412634, guid: 6bca2e12a3915c94b8050b36c87d4828, type: 3}
+      propertyPath: dialogue.Array.data[1].text
+      value: Maybe the key is in the teacher's office???
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911453345709412634, guid: 6bca2e12a3915c94b8050b36c87d4828, type: 3}
+      propertyPath: dialogue.Array.data[0].holdTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911453345709412634, guid: 6bca2e12a3915c94b8050b36c87d4828, type: 3}
+      propertyPath: dialogue.Array.data[1].holdTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1911453345709412635, guid: 6bca2e12a3915c94b8050b36c87d4828, type: 3}
       propertyPath: m_Size.x
@@ -45234,6 +45290,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChairForwards Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5506610746443301908, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
 --- !u!1001 &1057261389
@@ -46415,6 +46475,10 @@ PrefabInstance:
     - target: {fileID: 3563316494663652032, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
       propertyPath: m_Name
       value: ChairForwards Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506610746443301908, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
@@ -50522,6 +50586,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChairForwards Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5506610746443301908, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
 --- !u!1001 &1245571374
@@ -53585,6 +53653,10 @@ PrefabInstance:
     - target: {fileID: 3563316494663652032, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
       propertyPath: m_Name
       value: ChairForwards Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506610746443301908, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
@@ -60050,6 +60122,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChairForwards Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5506610746443301908, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
 --- !u!1001 &1564984858
@@ -60604,6 +60680,10 @@ PrefabInstance:
     - target: {fileID: 3563316494663652032, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
       propertyPath: m_Name
       value: ChairForwards Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506610746443301908, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
@@ -66538,6 +66618,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChairForwards Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5506610746443301908, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
 --- !u!1 &1771885333
@@ -67749,6 +67833,10 @@ PrefabInstance:
     - target: {fileID: 3563316494663652032, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
       propertyPath: m_Name
       value: ChairForwards Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506610746443301908, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
@@ -71413,6 +71501,10 @@ PrefabInstance:
     - target: {fileID: 3563316494663652032, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
       propertyPath: m_Name
       value: ChairForwards Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506610746443301908, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e5e712c91a36aa459646ee325e63ae9, type: 3}
@@ -75940,6 +76032,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialogue1
       objectReference: {fileID: 0}
+    - target: {fileID: 1911453345709412634, guid: 6bca2e12a3915c94b8050b36c87d4828, type: 3}
+      propertyPath: dialogue.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911453345709412634, guid: 6bca2e12a3915c94b8050b36c87d4828, type: 3}
+      propertyPath: dialogue.Array.data[0].text
+      value: This is a weird looking school...
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911453345709412634, guid: 6bca2e12a3915c94b8050b36c87d4828, type: 3}
+      propertyPath: dialogue.Array.data[0].append
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911453345709412634, guid: 6bca2e12a3915c94b8050b36c87d4828, type: 3}
+      propertyPath: dialogue.Array.data[0].holdTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1911453345709412635, guid: 6bca2e12a3915c94b8050b36c87d4828, type: 3}
       propertyPath: m_Size.y
       value: 8.58984
@@ -76408,18 +76516,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI 3.0
       objectReference: {fileID: 0}
+    - target: {fileID: 5076152080358563056, guid: 0398c06001fd22246bd5858d2b82715b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076152080478110436, guid: 0398c06001fd22246bd5858d2b82715b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076152080671259778, guid: 0398c06001fd22246bd5858d2b82715b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5076152080715233871, guid: 0398c06001fd22246bd5858d2b82715b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 800607394}
+    - target: {fileID: 5076152080799405224, guid: 0398c06001fd22246bd5858d2b82715b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076152081166708127, guid: 0398c06001fd22246bd5858d2b82715b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5076152081471774421, guid: 0398c06001fd22246bd5858d2b82715b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 800607394}
+    - target: {fileID: 5076152081735974505, guid: 0398c06001fd22246bd5858d2b82715b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5076152081827240571, guid: 0398c06001fd22246bd5858d2b82715b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 800607394}
+    - target: {fileID: 8813586810006370933, guid: 0398c06001fd22246bd5858d2b82715b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0398c06001fd22246bd5858d2b82715b, type: 3}
 --- !u!1001 &3012420369632291775

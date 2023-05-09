@@ -5206,26 +5206,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d964bcf74fe8042b2d31a1f120569d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: {fileID: 11400000, guid: 78fc2fb1bd4029a4a898bcad4ee8393a, type: 2}
-  timeTillDamage: 0.7
-  speedMultiplier: 1.75
   triggerSound: {fileID: 0}
   damageSound: {fileID: 0}
   OnTrapTriggered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6908021882811348406}
-        m_TargetAssemblyTypeName: DamageTrap, Assembly-CSharp
-        m_MethodName: PlayAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  OnTrapLeft:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTrapStay:
+    m_PersistentCalls:
+      m_Calls: []
+  dmg: {fileID: 11400000, guid: 78fc2fb1bd4029a4a898bcad4ee8393a, type: 2}
+  timeTillDamage: 0.7
+  speedMultiplier: 1.75
   triggerShake: {fileID: 11400000, guid: 00182005e0d4abe46b329cb6b128950a, type: 2}
   animationName: LockerFall
   animator: {fileID: 369752598}

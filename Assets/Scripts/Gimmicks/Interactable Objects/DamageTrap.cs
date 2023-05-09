@@ -23,6 +23,7 @@ public class DamageTrap : WalkableTrap
     {
         base.OnTriggerEnter2D(collision);
         
+        PlayAnimation();
         Invoke("DoTrapDamage", timeTillDamage / speedMultiplier);
     }
 

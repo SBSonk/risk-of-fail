@@ -1,26 +1,24 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using IniParser;
 using IniParser.Model;
 
+
 public class SettingsManager : MonoBehaviour
 {
-    [SerializeField] private int resolutionIndex, fpsLimitIndex;
+    public static SettingsManager instance;
+    
+    [SerializeField] private int resolutionIndex;
     [SerializeField] private int resolutionWidth = 1920, resolutionHeight = 1080, fpsLimit = 60;
     [SerializeField] private bool fullscreen = true, vSync = true;
     [SerializeField] private float musicVolume = .5f, sfxVolume = .5f, masterVolume = .5f;
     
     private const string FILEPATH = "notes.ini";
 
-    [SerializeField] private TMP_Dropdown resolutionDropdown, fpsDropdown;
-
-    private void Start()
+    private void Awake()
     {
-        InitializeDropdowns();
-
+        if (!instance) instance = this;
+        
         try
         {
             LoadSettings();
@@ -32,27 +30,8 @@ public class SettingsManager : MonoBehaviour
             Console.WriteLine(e);
             throw;
         }
-        
     }
 
-    void InitializeDropdowns()
-    {
-        Resolution[] resolutions = Screen.resolutions;
-        List<String> resolutionStrings = new List<string>();
-        List<String> refreshRateStrings = new List<string>();
-        foreach (var res in resolutions)
-        {
-            resolutionStrings.Add(res.width + "x" + res.height);
-            refreshRateStrings.Add(res.refreshRate.ToString());
-        }
-        
-        resolutionDropdown.ClearOptions();
-        resolutionDropdown.AddOptions(resolutionStrings);
-        
-        fpsDropdown.ClearOptions();
-        fpsDropdown.AddOptions(refreshRateStrings);
-    }
-    
     public void SaveSettings()
     {
         IniData data = new IniData();
@@ -109,15 +88,20 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
-    public void ApplyDisplaySettings()
+    public void ApplySettings()
     {
+        resolutionWidth = Screen.resolutions[resolutionIndex].width;
+        resolutionHeight = Screen.resolutions[resolutionIndex].height;
+        
         Screen.SetResolution(resolutionWidth, resolutionHeight, Screen.fullScreen);
         Application.targetFrameRate = fpsLimit;
         Screen.fullScreen = fullscreen;
-        
-        // TODO: set vsync
-        
+
+        QualitySettings.vSyncCount = vSync ? 1 : 0;
+
         // TODO: Apply volume settings
+        
+        SaveSettings(); 
     }
     
     public int ResolutionWidth
@@ -174,9 +158,15 @@ public class SettingsManager : MonoBehaviour
         set => resolutionIndex = value;
     }
 
-    public int FPSLimitIndex
+    public void SetFPSLimit(string fpsString)
     {
-        get => fpsLimitIndex;
-        set => fpsLimitIndex = value;
+        try
+        {
+            FPSLimit = int.Parse(fpsString);
+        }
+        catch (Exception e)
+        {
+            
+        }
     }
 }

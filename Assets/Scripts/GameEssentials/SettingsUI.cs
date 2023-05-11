@@ -31,15 +31,18 @@ public class SettingsUI : MonoBehaviour
     {
         Resolution[] resolutions = Screen.resolutions;
         List<string> resolutionStrings = new List<string>();
+        int resolutionIndex = 0;
         for (int i = 0; i < resolutions.Length; i++)
         {
             if (Screen.width == resolutions[i].width && Screen.height == resolutions[i].height)
-                resolutionDropdown.value = i;
+                resolutionIndex = i;
             
-            resolutionStrings.Add(resolutions[i].width + "x" + resolutions[i].height);
+            resolutionStrings.Add(resolutions[i].width + "x" + resolutions[i].height + "@" + resolutions[i].refreshRate);
         }
         
         resolutionDropdown.ClearOptions();
         resolutionDropdown.AddOptions(resolutionStrings);
+        
+        resolutionDropdown.value = resolutionIndex;
     }
 }

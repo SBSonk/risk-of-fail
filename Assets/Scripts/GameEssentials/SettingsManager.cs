@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using IniParser;
 using IniParser.Model;
+using UnityEngine.Audio;
 
 
 public class SettingsManager : MonoBehaviour
@@ -12,7 +13,8 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private int resolutionWidth = 1920, resolutionHeight = 1080, fpsLimit = 60;
     [SerializeField] private bool fullscreen = true, vSync = true;
     [SerializeField] private float musicVolume = .5f, sfxVolume = .5f, masterVolume = .5f;
-    
+
+    [SerializeField] private AudioMixer mixer;
     private const string FILEPATH = "notes.ini";
 
     private void Awake()
@@ -22,11 +24,13 @@ public class SettingsManager : MonoBehaviour
         try
         {
             LoadSettings();
-            Debug.Log("Saved!");
+            ApplySettings();
+            Debug.Log("Loaded!");
         }
         catch (Exception e)
         {
-            Debug.Log("File not saved :(");
+            Debug.Log("File not loaded :(");
+            InitializeIniFile();
             Console.WriteLine(e);
             throw;
         }
@@ -65,6 +69,8 @@ public class SettingsManager : MonoBehaviour
 
         FileIniDataParser parser = new FileIniDataParser();
         parser.WriteFile(FILEPATH, data);
+        
+        LoadSettings();
     }
     
     public void LoadSettings()
@@ -92,15 +98,18 @@ public class SettingsManager : MonoBehaviour
     {
         resolutionWidth = Screen.resolutions[resolutionIndex].width;
         resolutionHeight = Screen.resolutions[resolutionIndex].height;
-        
-        Screen.SetResolution(resolutionWidth, resolutionHeight, Screen.fullScreen);
-        Application.targetFrameRate = fpsLimit;
+
+        Screen.SetResolution(resolutionWidth, resolutionHeight, Screen.fullScreen,
+            Screen.resolutions[resolutionIndex].refreshRate);
+        Application.targetFrameRate = fpsLimit; 
         Screen.fullScreen = fullscreen;
 
         QualitySettings.vSyncCount = vSync ? 1 : 0;
-
-        // TODO: Apply volume settings
         
+        mixer.SetFloat("Master", Mathf.Log10(masterVolume) * 20);
+        mixer.SetFloat("Music", Mathf.Log10(musicVolume) * 20);
+        mixer.SetFloat("Sfx", Mathf.Log10(sfxVolume) * 20);
+
         SaveSettings(); 
     }
     
@@ -137,19 +146,34 @@ public class SettingsManager : MonoBehaviour
     public float MusicVolume
     {
         get => musicVolume;
-        set => musicVolume = value;
+        set
+        {
+            musicVolume = value;
+            mixer.SetFloat("Music", Mathf.Log10(musicVolume) * 20);
+            SaveSettings(); 
+        }
     }
 
     public float SfxVolume
     {
         get => sfxVolume;
-        set => sfxVolume = value;
+        set
+        {
+            sfxVolume = value;
+            mixer.SetFloat("Sfx", Mathf.Log10(sfxVolume) * 20);
+            SaveSettings(); 
+        }
     }
 
     public float MasterVolume
     {
         get => masterVolume;
-        set => masterVolume = value;
+        set
+        {
+            masterVolume = value;
+            mixer.SetFloat("Master", Mathf.Log10(masterVolume) * 20);
+            SaveSettings(); 
+        }
     }
 
     public int ResolutionIndex

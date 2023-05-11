@@ -6,7 +6,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameData pData;
-    public Settings _settings;
 
     public static GameManager main;
 
@@ -16,19 +15,9 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        //Debug.LogError("s");
         // Destroy duplicates
         main = this;
-
-        // TODO: Create json file to store settings
-
-        // TODO: Load settings from json file // TODO MAKE SETTINGS FILE
-        _settings = new Settings(75);
-
-        LoadSettings(_settings);
-
-        // TODO: Save/load player
-
+        
         Enemy.globalEnemyHealthScale = 1;
     }
 
@@ -67,11 +56,5 @@ public class GameManager : MonoBehaviour
         }
         
         return false;
-    }
-
-    // TODO: 
-    public void LoadSettings(Settings settings)
-    {
-        Application.targetFrameRate = settings.targetFPS;
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class InputManager : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class InputManager : MonoBehaviour
     public static int swapWeapon;
     public static bool interact;
 
+    public void LoadInputs()
+    {
+        
+    }
+    
     private void Update()
     {
         mouseRawPosition = Input.mousePosition;
@@ -32,5 +38,22 @@ public class InputManager : MonoBehaviour
         else swapWeapon = 0;
 
         swapWeapon += (int) Input.GetAxisRaw("Mouse ScrollWheel");
+
+        foreach (KeyCode key in Enum.GetValues(typeof(KeyCode)))
+        {
+            if (Input.GetKeyDown(key))
+            {
+                print(key);
+                print((int) key);
+            }
+            else
+            {
+                print((KeyCode) 100);
+            }
+        }
     }
 }
+
+/*
+public enum 
+*/

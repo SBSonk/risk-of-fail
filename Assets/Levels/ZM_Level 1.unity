@@ -10170,7 +10170,7 @@ AudioSource:
   m_GameObject: {fileID: 627901465}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2226441571897678685, guid: 7497906a8a74ddc4a973290d1bbdc7b9, type: 2}
   m_audioClip: {fileID: 8300000, guid: a74284c72f989f54fbd2c674dd8fbe1a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.03
@@ -13751,7 +13751,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1064728525}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -31505,8 +31505,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2036032178}
   - {fileID: 828767559}
+  - {fileID: 2036032178}
   - {fileID: 1753621186}
   - {fileID: 26894026}
   m_Father: {fileID: 1176399761}
@@ -36115,7 +36115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8243665684318287682, guid: 11e9e92a6edee9344a661eee4674e4dd, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8243665684318287682, guid: 11e9e92a6edee9344a661eee4674e4dd, type: 3}
       propertyPath: m_AnchorMax.x
@@ -43248,6 +43248,10 @@ PrefabInstance:
       propertyPath: pointsMultiplier
       value: 1.25
       objectReference: {fileID: 0}
+    - target: {fileID: 1745457715, guid: 1cca7c2a59490234d8d90fe3f681be04, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 519002857919216409, guid: 7497906a8a74ddc4a973290d1bbdc7b9, type: 2}
     - target: {fileID: 8526067335399440032, guid: 1cca7c2a59490234d8d90fe3f681be04, type: 3}
       propertyPath: pData.weaponsOwned.Array.size
       value: 1
@@ -43436,7 +43440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6323761367838342529, guid: 1e246a9315af7ce488a6013a22ff2a4d, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6323761367838342529, guid: 1e246a9315af7ce488a6013a22ff2a4d, type: 3}
       propertyPath: m_AnchorMax.x

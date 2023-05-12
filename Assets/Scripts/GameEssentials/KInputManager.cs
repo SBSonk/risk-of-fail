@@ -20,7 +20,11 @@ public class KInputManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else Destroy(gameObject);
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
         
         InitializeKeys();
         SaveKeys(); 
@@ -108,7 +112,11 @@ public class KeyBind
     public void AddKey(KeyCode key)
     {
         if (primary == KeyCode.None) primary = key;
-        else if (secondary == KeyCode.None) secondary = key;
+        else if (secondary == KeyCode.None)
+        {
+            if (key == primary) return;
+            secondary = key;
+        }
         else
         {
             Reset();
@@ -117,7 +125,12 @@ public class KeyBind
     }
 
     public void SetPrimary(KeyCode key) => primary = key;
-    public void SetSecondary(KeyCode key) => secondary = key;
+
+    public void SetSecondary(KeyCode key)
+    {
+        if (key == primary) return;
+        secondary = key;
+    }
 
     public bool Pressed() => Input.GetKey(primary) || Input.GetKey(secondary);
     public bool PressedDown() => Input.GetKeyDown(primary) || Input.GetKeyDown(secondary);

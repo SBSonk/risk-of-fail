@@ -3,13 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEditor.U2D.Path.GUIFramework;
+using UnityEngine.Events;
 
 public class ControlsUI : MonoBehaviour
 {
     public GameObject setBindUI;
     public TextMeshProUGUI bindTimer;
 
-
+    public UnityEvent ControlBinded, BindCanceled;
+    
     private string keyChanging;
     private bool changingBind = false;
     public void ChangeBind(string keyName)
@@ -26,9 +29,13 @@ public class ControlsUI : MonoBehaviour
             {
                 if (Input.GetKeyDown(key))
                 {
+                    StopAllCoroutines();
+                    
                     KInputManager.GetKey(keyChanging).AddKey(key);
                     setBindUI.SetActive(false);
                     changingBind = false;
+                    
+                    ControlBinded?.Invoke();
                 }
             }
         }
@@ -40,14 +47,16 @@ public class ControlsUI : MonoBehaviour
         changingBind = true;
 
         int seconds = 5;
-        bindTimer.text = "Press a button. (5)";
         for (int i = seconds; i > 0; i--)
         {
-            yield return new WaitForSeconds(1);
             bindTimer.text = "Press a button. (" + i + ")";
+            yield return new WaitForSeconds(1);
+            
         }
 
         setBindUI.SetActive(false);
         changingBind = false;
+
+        BindCanceled?.Invoke();
     }
 }

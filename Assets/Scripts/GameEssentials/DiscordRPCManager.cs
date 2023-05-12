@@ -7,6 +7,8 @@ using Discord;
 
 public class DiscordRPCManager : MonoBehaviour
 {
+    public static DiscordRPCManager instance;
+
     const long applicationID = 1088485722706673734;
 
     [SerializeField] string details = "In the main menu.";
@@ -18,16 +20,14 @@ public class DiscordRPCManager : MonoBehaviour
     
     
     private Discord.Discord discordRPC;
-    public static DiscordRPCManager singleton;
-
     private void Awake()
     {
-        if (singleton) Destroy(gameObject);
-        else
+        if (!instance)
         {
-            singleton = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        else Destroy(gameObject);
     }
 
     private void Start()

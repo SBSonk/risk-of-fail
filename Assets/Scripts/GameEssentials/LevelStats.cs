@@ -34,9 +34,6 @@ public class LevelStats : MonoBehaviour
     public int sharpShooterBonus = 2000;
     public int noHitBonus = 5000;
 
-    [Header("Discord RPC")] public string details;
-    public string state = "Solo";
-
     private void Awake()
     {
         if (!main) main = this;
@@ -50,16 +47,7 @@ public class LevelStats : MonoBehaviour
             PlayerStatus.player.onHit.AddListener(ReceiveDamage);
             PlayerStatus.player.onHeal.AddListener(GiveHealth);
         }
-
-        try
-        {
-            DiscordRPCManager.singleton.ChangeDiscordState(details, state);
-        }
-        catch (Exception e)
-        {
-            Debug.LogWarning("Discord not detected...");
-        }
-
+        
         startTimeStamp = Time.time;
     }
 

@@ -33,14 +33,16 @@ public class PlayerMovement : MonoBehaviour
     // movement input
     void Update()
     {
-        moveDirection = InputManager.playerDirection;
+        Vector2 playerDirection = new Vector2(KeyBind.GetAxis(KInputManager.GetKey("Right"),
+            KInputManager.GetKey("Left")), KeyBind.GetAxis(KInputManager.GetKey("Up"), KInputManager.GetKey("Down")));
+        moveDirection = playerDirection;
 
         // Replenishes dodges
         if (dodges < maxDodges && startCooldown) dodges += Time.deltaTime / dodgeCooldown;
         canDodge = dodges >= 1;
 
         // Queue dodge if player can dodge and is moving.
-        if (canDodge && InputManager.dodge && moveDirection.magnitude > 0) dodgeQueued = true;
+        if (canDodge && KInputManager.GetKey("Dash").PressedDown() && moveDirection.magnitude > 0) dodgeQueued = true;
         if (dodgeQueued) Dodge(moveDirection);
     }
 

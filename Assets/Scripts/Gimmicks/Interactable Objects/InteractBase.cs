@@ -39,7 +39,7 @@ public abstract class InteractBase : MonoBehaviour
 
     private void Update()
     {
-        if (interactable && playerInRadius && InputManager.interact)
+        if (interactable && playerInRadius && KInputManager.GetKey("Interact").Pressed())
         {
             PlayerInteract();
         }

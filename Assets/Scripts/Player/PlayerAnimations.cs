@@ -60,9 +60,13 @@ public class PlayerAnimations : MonoBehaviour
 
     private void Update()
     {
-        input = InputManager.playerDirection;
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (InputManager.shootAuto || InputManager.shoot || InputManager.shove)
+        Vector2 playerDirection = new Vector2(KeyBind.GetAxis(KInputManager.GetKey("Right"),
+            KInputManager.GetKey("Left")), KeyBind.GetAxis(KInputManager.GetKey("Up"), KInputManager.GetKey("Down")));
+        input = playerDirection;
+
+        if (KInputManager.GetKey("Shoot").Pressed() || KInputManager.GetKey("Shoot").PressedDown() || KInputManager.GetKey("Shove").PressedDown())
         {
             followCursor = true;
             CancelInvoke();
@@ -70,12 +74,12 @@ public class PlayerAnimations : MonoBehaviour
         else if (followCursor) Invoke("StopCursorFollow", stopCursorFollowTime);
 
         // Orient player
-        dir = ((Vector3)InputManager.mousePosition - (transform.position + (Vector3)playerOffset)).normalized;
+        dir = ((Vector3) mousePosition - (transform.position + (Vector3)playerOffset)).normalized;
 
         currentDir = VectorToDir(dir);
 
         // Orient weapon
-        Vector2 mousePos = ((Vector2)transform.position + playerOffset - InputManager.mousePosition).normalized;
+        Vector2 mousePos = ((Vector2)transform.position + playerOffset - mousePosition).normalized;
         float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
 
         // Change weapon sorting order depending on if its in front or behind
@@ -99,7 +103,9 @@ public class PlayerAnimations : MonoBehaviour
 
         if (input.magnitude > 0 && rb.velocity.magnitude > 0)
         {
-            var inputDir = VectorToDir(InputManager.playerDirection);
+            Vector2 playerDirection = new Vector2(KeyBind.GetAxis(KInputManager.GetKey("Right"),
+                KInputManager.GetKey("Left")), KeyBind.GetAxis(KInputManager.GetKey("Up"), KInputManager.GetKey("Down")));
+            var inputDir = VectorToDir(playerDirection);
             
             switch (currentDir)
             {
@@ -249,7 +255,8 @@ public class PlayerAnimations : MonoBehaviour
         weaponAnimator = Instantiate(w.weapon.animatorController, transform.position + new Vector3(0, 1.25f) + w.weapon.weaponOffset, Quaternion.identity, sprite.transform);
         weaponAnimator.transform.localScale = w.weapon.weaponScale;
         
-        Vector2 mousePos = (InputManager.mousePosition - (Vector2)transform.position).normalized;
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePos = (mousePosition - (Vector2)transform.position).normalized;
         float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
 
         // Change weapon sorting order depending on if its in front or behind

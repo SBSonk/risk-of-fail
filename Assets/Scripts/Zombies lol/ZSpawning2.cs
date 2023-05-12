@@ -146,7 +146,7 @@ public class ZSpawning2 : MonoBehaviour
     {
         try
         {
-            DiscordRPCManager.singleton.ChangeDiscordState("Horde Mode - Round " + round, "Solo");
+            DiscordRPCManager.instance.ChangeDiscordState("Horde Mode - Round " + round, "Solo");
         }
         catch 
         {

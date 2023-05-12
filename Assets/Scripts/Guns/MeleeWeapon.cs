@@ -19,7 +19,8 @@ public class MeleeWeapon : Weapon
     {
         yield return new WaitForSeconds(swingDelay);
 
-        Vector3 hitVector = ((Vector3)InputManager.mousePosition - player.position).normalized;
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 hitVector = (mousePosition - player.position).normalized;
 
         // Attack check
         Collider2D[] col = Physics2D.OverlapCircleAll(player.position + hitVector * hitArea , hitArea);

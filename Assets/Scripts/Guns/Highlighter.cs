@@ -15,10 +15,11 @@ public class Highlighter : Weapon
 
     IEnumerator ShootSustain(Transform player, PlayerShooting shooting, float multiplier = 1)
     {
-        while (InputManager.shootAuto && shooting.GetHeldWeapon().clip > 0)
+        while (KInputManager.GetKey("Shoot").Pressed() && shooting.GetHeldWeapon().clip > 0)
         {
             // raycast
-            RaycastHit2D hit = Physics2D.Raycast(player.position, ((Vector3) InputManager.mousePosition - player.position).normalized, contactFilter.layerMask);
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(player.position, (mousePosition - player.position).normalized, contactFilter.layerMask);
             if (hit) {
                 // attach end of line to hit
 

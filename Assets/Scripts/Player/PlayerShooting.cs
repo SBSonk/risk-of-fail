@@ -48,7 +48,8 @@ public class PlayerShooting : MonoBehaviour
     private void Update()
     {
         // Get direction from cursor to player and make the player face it
-        Vector2 mousePos = ((Vector2) transform.position + playerOffset - InputManager.mousePosition).normalized;
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePos = ((Vector2) transform.position + playerOffset - mousePosition).normalized;
         float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
         gunPivot.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
@@ -78,26 +79,31 @@ public class PlayerShooting : MonoBehaviour
             shootEnableTime = Time.time + weapon.fireRate;
         }
 
-        if (InputManager.shove && CanShoot()) StartCoroutine(Shove());
+        if (KInputManager.GetKey("Shove").PressedDown() && CanShoot()) StartCoroutine(Shove());
 
         // Reloading
-        if (GetHeldWeapon().clip < GetHeldWeapon().weapon.clipSize && InputManager.reload && reloading == false) StartCoroutine(Reload());
+        if (GetHeldWeapon().clip < GetHeldWeapon().weapon.clipSize && KInputManager.GetKey("Reload").PressedDown() && reloading == false) StartCoroutine(Reload());
     }
 
     bool CanShoot() => Time.time >= shootEnableTime && canShoot;
     
     bool CheckIfPlayerShooting()
     {
-        if (GetHeldWeapon().weapon.auto) return InputManager.shootAuto;
-        else return InputManager.shoot;
+        if (GetHeldWeapon().weapon.auto) return KInputManager.GetKey("Shoot").Pressed();
+        else return KInputManager.GetKey("Shoot").PressedDown();
     }
 
     void WeaponSwitching()
     {
-        if (InputManager.swapWeapon == 0) return;
+
+        int swapDir = 0;
+        if (KInputManager.GetKey("PreviousWeapon").PressedDown()) swapDir = -1;
+        else if (KInputManager.GetKey("NextWeapon").PressedDown()) swapDir = 1;
+        
+        if (swapDir == 0) return;
 
         // Weapon swapping, Everything unfucked...
-        currentWeaponIndex += InputManager.swapWeapon;
+        currentWeaponIndex += swapDir;
 
         // Dont allow weapon index to go below or above weapon count
         currentWeaponIndex %= weaponPool.Count;
@@ -125,7 +131,8 @@ public class PlayerShooting : MonoBehaviour
     void Shoving()
     {
         // Check all objects in radius in front of shootpivot
-        Vector3 shoveDir = ((Vector3)InputManager.mousePosition - transform.position).normalized;
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 shoveDir = ((Vector3)mousePosition - transform.position).normalized;
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position + shoveDir * radius, radius);
         
         if (hits.Length == 0) return;

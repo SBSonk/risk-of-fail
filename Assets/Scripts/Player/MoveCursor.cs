@@ -34,7 +34,7 @@ public class MoveCursor : MonoBehaviour
     // Returns mouse input for this frame
     Vector3 GetMouseInput()
     {
-        return InputManager.mouseRawPosition;
+        return Input.mousePosition;
     }
 
     public void ChangeCrosshair(Crosshair c)

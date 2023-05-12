@@ -19,7 +19,12 @@ public class SettingsManager : MonoBehaviour
 
     private void Awake()
     {
-        if (!instance) instance = this;
+        if (!instance)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else Destroy(gameObject);
         
         try
         {
@@ -96,9 +101,6 @@ public class SettingsManager : MonoBehaviour
 
     public void ApplySettings()
     {
-        resolutionWidth = Screen.resolutions[resolutionIndex].width;
-        resolutionHeight = Screen.resolutions[resolutionIndex].height;
-
         Screen.SetResolution(resolutionWidth, resolutionHeight, Screen.fullScreen,
             Screen.resolutions[resolutionIndex].refreshRate);
         Application.targetFrameRate = fpsLimit; 
@@ -179,7 +181,12 @@ public class SettingsManager : MonoBehaviour
     public int ResolutionIndex
     {
         get => resolutionIndex;
-        set => resolutionIndex = value;
+        set
+        {
+            resolutionIndex = value;
+            resolutionWidth = Screen.resolutions[resolutionIndex].width;
+            resolutionHeight = Screen.resolutions[resolutionIndex].height;
+        }
     }
 
     public void SetFPSLimit(string fpsString)

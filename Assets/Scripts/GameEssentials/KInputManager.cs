@@ -27,7 +27,7 @@ public class KInputManager : MonoBehaviour
         }
         
         InitializeKeys();
-        SaveKeys(); 
+        LoadKeys();
     }
 
     public void ClearBinds()
@@ -54,17 +54,23 @@ public class KInputManager : MonoBehaviour
 
     void LoadKeys()
     {
-        /*if (!System.IO.File.Exists(FILEPATH)) InitializeIniFile();
+        if (!System.IO.File.Exists(FILEPATH)) SaveKeys();
         else
         {
             FileIniDataParser parser = new FileIniDataParser();
-            IniData data = parser.ReadFile(FILEPATH);;
-        }*/
+            IniData data = parser.ReadFile(FILEPATH);
+
+            foreach (SectionData key in data.Sections)
+            {
+                keyBindDictionary[key.SectionName].SetPrimary((KeyCode) int.Parse(key.Keys["Primary"]));
+                keyBindDictionary[key.SectionName].SetSecondary((KeyCode) int.Parse(key.Keys["Secondary"]));
+            }
+        }
         
         print("KeyBinds loaded.");
     }
 
-    void SaveKeys()
+    public void SaveKeys()
     {
         IniData data = new IniData();
         foreach (KeyValuePair<string,KeyBind> key in keyBindDictionary)

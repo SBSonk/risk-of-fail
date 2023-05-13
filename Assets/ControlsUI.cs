@@ -5,12 +5,14 @@ using UnityEngine;
 using TMPro;
 using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class ControlsUI : MonoBehaviour
 {
     public GameObject setBindUI;
     public TextMeshProUGUI bindTimer;
 
+    public Button clearButton, applyButton;
     public UnityEvent ControlBinded, BindCanceled;
     
     private string keyChanging;
@@ -19,6 +21,16 @@ public class ControlsUI : MonoBehaviour
     {
         keyChanging = keyName;
         StartCoroutine(WaitForBind());
+    }
+
+    private void Start()
+    {
+        clearButton.onClick.AddListener(() =>
+        {
+            KInputManager.instance.ClearBinds();
+            ControlBinded?.Invoke();
+        });
+        applyButton.onClick.AddListener(KInputManager.instance.SaveKeys);
     }
 
     private void Update()

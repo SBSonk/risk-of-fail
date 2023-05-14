@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine.Events;
 using UnityEngine.UI;
 

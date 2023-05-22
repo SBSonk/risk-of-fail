@@ -105,10 +105,9 @@ public class SettingsManager : MonoBehaviour
 
     public void ApplySettings()
     {
-        Screen.SetResolution(resolutionWidth, resolutionHeight, Screen.fullScreen,
+        Screen.SetResolution(resolutionWidth, resolutionHeight, fullscreen,
             Screen.resolutions[resolutionIndex].refreshRate);
-        Application.targetFrameRate = fpsLimit; 
-        Screen.fullScreen = fullscreen;
+        Application.targetFrameRate = fpsLimit;
 
         QualitySettings.vSyncCount = vSync ? 1 : 0;
         

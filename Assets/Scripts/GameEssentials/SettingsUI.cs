@@ -34,7 +34,7 @@ public class SettingsUI : MonoBehaviour
         int resolutionIndex = 0;
         for (int i = 0; i < resolutions.Length; i++)
         {
-            if (Screen.width == resolutions[i].width && Screen.height == resolutions[i].height)
+            if (SettingsManager.instance.ResolutionWidth == resolutions[i].width && SettingsManager.instance.ResolutionHeight == resolutions[i].height)
                 resolutionIndex = i;
             
             resolutionStrings.Add(resolutions[i].width + "x" + resolutions[i].height + "@" + resolutions[i].refreshRate);

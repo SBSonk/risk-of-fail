@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Vector2 playerDirection = new Vector2(KeyBind.GetAxis(KInputManager.GetKey("Right"),
-            KInputManager.GetKey("Left")), KeyBind.GetAxis(KInputManager.GetKey("Up"), KInputManager.GetKey("Down")));
+            KInputManager.GetKey("Left")), KeyBind.GetAxis(KInputManager.GetKey("Up"), KInputManager.GetKey("Down"))).normalized;
         moveDirection = playerDirection;
 
         // Replenishes dodges

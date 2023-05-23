@@ -21,6 +21,7 @@ public class DamageTrap : WalkableTrap
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!collision.CompareTag("Player")) return;
         base.OnTriggerEnter2D(collision);
         
         PlayAnimation();

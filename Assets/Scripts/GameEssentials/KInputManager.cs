@@ -134,7 +134,7 @@ public class KeyBind
 
     public void SetSecondary(KeyCode key)
     {
-        if (key == primary) return;
+        if (key == primary && key != KeyCode.None) return;
         secondary = key;
     }
 

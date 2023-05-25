@@ -35,7 +35,7 @@ public class Switch : MonoBehaviour
 
     private void Update()
     {
-        if (KInputManager.GetKey("Interact").Pressed() && playerInRadius)
+        if (KInputManager.GetKey("Interact").PressedDown() && playerInRadius)
         {
             Toggle();
 

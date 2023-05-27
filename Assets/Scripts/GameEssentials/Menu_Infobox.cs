@@ -7,10 +7,17 @@ using UnityEngine.UI;
 
 public class Menu_Infobox : MonoBehaviour
 {
-    [SerializeField] private GameObject info, tutorial;
+    [SerializeField] private GameObject info;
     
     [SerializeField] private Image levelPreview;
     [SerializeField] private TextMeshProUGUI levelDescription, highScore, bestTime;
+
+    [SerializeField] private LevelSelectItem defaultLevel;
+
+    private void Start()
+    {
+        SetLevel(defaultLevel);
+    }
 
     public void SetLevel(LevelSelectItem level)
     {
@@ -26,12 +33,10 @@ public class Menu_Infobox : MonoBehaviour
     public void ShowLevel()
     {
         info.SetActive(true);
-        tutorial.SetActive(false);
     }
 
     public void ShowTutorial()
     {
-        info.SetActive(false);
-        tutorial.SetActive(true);
+        info.SetActive(true);
     }
 }

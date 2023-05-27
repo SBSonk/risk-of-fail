@@ -32,9 +32,4 @@ public class LevelSelectButton : MonoBehaviour
         menuBox.SetLevel(level);
         menuBox.ShowLevel();
     }
-
-    public void MouseExit(BaseEventData b)
-    {
-        menuBox.ShowTutorial();
-    }
 }

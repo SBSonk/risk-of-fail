@@ -11,7 +11,7 @@ public class ResultsScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI enemiesKilled, passedText;
     [SerializeField] Image grade;
 
-    [SerializeField] private Animator anim;
+    [SerializeField] private Animator anim, avatarAnim;
 
     public void ShowResults() => ShowResults(KillFlag.LevelPassed);
     
@@ -34,10 +34,12 @@ public class ResultsScreen : MonoBehaviour
             }
 
             grade.sprite = stats.GetLevelScore(0);
+            avatarAnim.Play("LoseAvatar");
         }
         else
         {
             grade.sprite = stats.GetLevelScore(stats.points);
+            avatarAnim.Play("WinAvatar");
         }
         
 

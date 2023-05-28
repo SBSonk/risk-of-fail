@@ -5881,13 +5881,25 @@ MonoBehaviour:
       m_Calls: []
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   deathSound: {fileID: 2700227365419083299, guid: 8681d48ae7bf9be4fb3d6cdfae781137, type: 3}
   pMovement: {fileID: 0}
   pShooting: {fileID: 0}
   pAnimations: {fileID: 0}
   pSFXManager: {fileID: 0}
-  defaultSpeed: 5000
+  defaultSpeed: 5500
   deathParticles: {fileID: 944821671135324380}
 --- !u!114 &1425222227342113828
 MonoBehaviour:

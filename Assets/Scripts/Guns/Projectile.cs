@@ -35,7 +35,7 @@ public class Projectile : MonoBehaviour
         _wallHit = wallHit;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (!keepAligned) return;
         

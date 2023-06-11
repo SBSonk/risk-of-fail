@@ -70,6 +70,11 @@ public abstract class Alive : MonoBehaviour
         return damage;
     }
 
+    public float GiveDamage(DamageSource damageSource, KillFlag flag, StatusEffect statusEffect = null)
+    {
+        return GiveDamage(damageSource.damage, damageSource.stunTime, flag, statusEffect, damageSource.useRawDamage);
+    }
+
     public virtual float GiveHealth(float amount)
     {
         // Give health

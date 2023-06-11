@@ -66,6 +66,7 @@ public class PlayerStatus : Alive
     IEnumerator TakeStun(float duration)
     {
         pMovement.moveSpeed = defaultSpeed / 2;
+        stunned = true;
 
         // Disable switching animations
         pAnimations.canSwitchAnimation = false;
@@ -73,7 +74,8 @@ public class PlayerStatus : Alive
         yield return new WaitForSeconds(duration);
 
         pMovement.moveSpeed = defaultSpeed;
-
+        stunned = false;
+        
         // Reenable animation switching
         pAnimations.canSwitchAnimation = true;
 

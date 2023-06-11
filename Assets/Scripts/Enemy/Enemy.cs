@@ -48,13 +48,13 @@ public class Enemy : Alive
 
         // Randomize speed
         speed = Random.Range(minSpeed, maxSpeed);
-        pathAI.maxSpeed = speed;
+        if (pathAI) pathAI.maxSpeed = speed;
 
         // Keep track of lifetime
         spawnTime = Time.time;
 
         healthBarSprites = healthParent.GetComponentsInChildren<SpriteRenderer>();
-        attackScript.enabled = true;
+        if (attackScript) attackScript.enabled = true;
     }
 
     private void Update()
@@ -84,17 +84,20 @@ public class Enemy : Alive
     
     IEnumerator StunRecover(float time)
     {
-        float startSpeed = pathAI.maxSpeed;
-
-        float t = 0;
-        while (t < time)
+        if (pathAI)
         {
-            pathAI.maxSpeed = Mathf.Lerp(startSpeed, speed, t / time);
-            t += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
+            float startSpeed = pathAI.maxSpeed;
 
-        pathAI.maxSpeed = speed;
+            float t = 0;
+            while (t < time)
+            {
+                pathAI.maxSpeed = Mathf.Lerp(startSpeed, speed, t / time);
+                t += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+
+            pathAI.maxSpeed = speed;
+        }
     }
 
     IEnumerator HealthBarFade(float startOpacity, float finalOpacity, float t)
@@ -165,9 +168,14 @@ public class Enemy : Alive
 
         onStunned?.Invoke(duration);
         stunned = true;
-        pathAI.canMove = false;
-        pathAI.maxSpeed = 0;
-        attackScript.enabled = false;
+
+        if (pathAI)
+        {
+            pathAI.canMove = false;
+            pathAI.maxSpeed = 0;
+        }
+        
+        if (attackScript) attackScript.enabled = false;
 
         StartCoroutine(clearStun(duration));
     }
@@ -176,9 +184,9 @@ public class Enemy : Alive
     {
         yield return new WaitForSeconds(time);
         
-        pathAI.canMove = true;
+        if (pathAI) pathAI.canMove = true;
         stunned = false;
-        attackScript.enabled = true;
+        if (attackScript) attackScript.enabled = true;
 
         // Reset rigidbody velocities
         rb.velocity = Vector2.zero;

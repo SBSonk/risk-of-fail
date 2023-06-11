@@ -42,7 +42,7 @@ public class Drone : MonoBehaviour
             if (!col[i].GetComponent<Enemy>() || col[i].GetComponent<PlayerShooting>()) continue;
 
             if (nearest == null) 
-            {
+            {   
                 nearest = col[i].transform;
                 continue;
             }

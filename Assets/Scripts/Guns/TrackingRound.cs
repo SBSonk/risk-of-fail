@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class TrackingRound : Projectile
 {
-    public Transform target;
+    Transform target;
     [SerializeField] private float rotationSpeed = 50;
     [SerializeField] private float trackingSpeed = 50, propelSpeed = 50;
     [SerializeField] private float trackingTime = 5, waitTime = 1;
     private bool tracking = true, propelled;
 
+    public void SetTarget(Transform t) => target = t;
+    
     private void Start()
     {
         StartCoroutine(TrackingTimer());

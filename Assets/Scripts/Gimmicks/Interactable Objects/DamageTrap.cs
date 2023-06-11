@@ -48,6 +48,6 @@ public class DamageTrap : WalkableTrap
         if (damageSound) damageSound.PlaySFX();
         if (triggerShake) CameraShakerHandler.Shake(triggerShake);
         
-        AstarPath.active.UpdateGraphs(collider.bounds, 0.5f);  
+        AstarPath.active.UpdateGraphs(collider.bounds, 0.5f);
     }
 }    

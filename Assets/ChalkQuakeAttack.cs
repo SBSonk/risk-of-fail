@@ -6,6 +6,8 @@ using UnityEngine;
 public class ChalkQuakeAttack : BossAttack
 {
     [SerializeField] private ChalkQuakeSegment segmentPrefab;
+    [SerializeField] private int amountOfAttacks = 5;
+    [SerializeField] private float timeBetweenAttacks = 1;
     [SerializeField] private float distanceBetweenSegments = 1;
     [SerializeField] private int maxSegments = 10;
     [SerializeField] private float setOffTime = 0.5f;
@@ -14,20 +16,29 @@ public class ChalkQuakeAttack : BossAttack
     private void Start()
     {
         _collider = GetComponent<Collider2D>();
-        InvokeRepeating("UseAttack", 0, 1.5f);
     }
 
     public override void UseAttack()
     {
-        Vector3 playerPos = PlayerStatus.player.transform.position + new Vector3(0, 0.5f);
-        Vector3 closestPoint = _collider.bounds.ClosestPoint(playerPos);
-        Vector3 playerDir = (playerPos - closestPoint);
-        for (int i = 0; i < maxSegments; i++)
+        StartCoroutine(Attack());
+    }
+
+    IEnumerator Attack()
+    {
+        for (int i = 0; i < amountOfAttacks; i++)
         {
-            var chalk = Instantiate(segmentPrefab);
-            chalk.transform.position = closestPoint + (playerDir.normalized * 0.75f) + (playerDir.normalized * (distanceBetweenSegments * (i)));
-            chalk.transform.up = playerDir.normalized;
-            chalk.StartAttack(setOffTime * i);
+            Vector3 playerPos = PlayerStatus.player.transform.position + new Vector3(0, 0.5f);
+            Vector3 closestPoint = _collider.bounds.ClosestPoint(playerPos);
+            Vector3 playerDir = (playerPos - closestPoint);
+            for (int o = 0; o < maxSegments; o++)
+            {
+                var chalk = Instantiate(segmentPrefab);
+                chalk.transform.position = closestPoint + (playerDir.normalized * 0.75f) + (playerDir.normalized * (distanceBetweenSegments * (o)));
+                chalk.transform.up = playerDir.normalized;
+                chalk.StartAttack(setOffTime * o);
+            }
+
+            yield return new WaitForSeconds(timeBetweenAttacks);
         }
     }
 }

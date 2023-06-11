@@ -103,8 +103,8 @@ LineRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 539936533
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -214,6 +214,7 @@ MonoBehaviour:
   _damageSource: {fileID: 11400000, guid: 78fc2fb1bd4029a4a898bcad4ee8393a, type: 2}
   knockbackAmount: 20
   col: {fileID: 620405492}
+  lineLerp: 25
 --- !u!1 &797478426
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,8 +318,8 @@ LineRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 539936533
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -428,6 +429,7 @@ MonoBehaviour:
   _damageSource: {fileID: 11400000, guid: 78fc2fb1bd4029a4a898bcad4ee8393a, type: 2}
   knockbackAmount: 20
   col: {fileID: 1926846393}
+  lineLerp: 25
 --- !u!1 &2007036920
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,8 +575,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83bdaa10a6558b2499c69062fc65d886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1500
-  maxHealth: 1500
+  health: 2000
+  maxHealth: 2000
   damageCooldown: 0
   damageReduction: 4
   statusEffectTickrate: 1
@@ -674,14 +676,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ec6dd73b080f74c826a8161ba623cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCooldown: 5
-  maxCooldown: 7
+  minCooldown: 8
+  maxCooldown: 10
   segmentPrefab: {fileID: 5136894909949575710, guid: e9de70e4a23559840bb80dbc646ac34b, type: 3}
-  amountOfAttacks: 5
-  timeBetweenAttacks: 1
+  amountOfAttacks: 10
+  timeBetweenAttacks: 0.75
   distanceBetweenSegments: 1.5
   maxSegments: 20
-  setOffTime: 0.1
+  setOffTime: 0.05
 --- !u!114 &1714698917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,11 +733,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c4a4cdf521b8fb46a1fc639752530c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCooldown: 6
-  maxCooldown: 8
+  minCooldown: 12
+  maxCooldown: 14
   bulletPrefab: {fileID: 1202852401, guid: ae9e37d791816224b873cac2600c39f2, type: 3}
-  amountPerAttack: 10
-  timeBetweenBullets: 0.5
+  amountPerAttack: 15
+  timeBetweenBullets: 0.75
   leftTransform: {fileID: 797478427}
   rightTransform: {fileID: 2007036921}
 --- !u!114 &1714698933
@@ -765,11 +767,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7920bc558d3e6d84abc016b0bc8897ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCooldown: 14
-  maxCooldown: 16
-  beamTime: 14.4
+  minCooldown: 20
+  maxCooldown: 22
+  beamTime: 18
   beam: {fileID: 620405490}
-  beamRotateSpeed: 25
+  beamRotateSpeed: 40
   spawningAttack: {fileID: 1714698925}
 --- !u!114 &1714698938
 MonoBehaviour:
@@ -783,12 +785,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667288976de29bf46acb185bbc2ebb8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCooldown: 14
-  maxCooldown: 16
-  beamTime: 14.4
+  minCooldown: 26
+  maxCooldown: 28
+  beamTime: 24
   beamLeft: {fileID: 620405490}
   beamRight: {fileID: 1926846391}
-  beamRotateSpeed: 25
+  beamRotateSpeed: 30
   spawningAttack: {fileID: 1714698925}
 --- !u!114 &6313427100723194465
 MonoBehaviour:
@@ -819,13 +821,14 @@ MonoBehaviour:
   idleBufferTime: 1.5
   chooseBufferTime: 3
   postAttackBuffer: 1
+  preDamagePhaseLength: 30
   self: {fileID: 6313427100723194469}
-  damagePhaseHealth: 250
+  damagePhaseHealth: 500
   damagePhaseStartShake: {fileID: 11400000, guid: cfb5721468f522e4984b6e517151f6d8, type: 2}
   damagePhaseEndShake: {fileID: 11400000, guid: cfb5721468f522e4984b6e517151f6d8, type: 2}
   bossCirclePrefab: {fileID: 867601134318467063, guid: 2072a0e4b4733e048977b2ae088aa08b, type: 3}
   attacksBeforePreDamagePhase: 3
-  damagePhaseLength: 7.5
+  damagePhaseLength: 15
   postDamagePhaseCooldown: 5
   attacksDone: 0
   initialBossCircles: 3

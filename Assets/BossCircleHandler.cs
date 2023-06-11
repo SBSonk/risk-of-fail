@@ -9,7 +9,6 @@ public class BossCircleHandler : MonoBehaviour
     [SerializeField] private Alive bossCirclePrefab;
     [SerializeField] private Transform circleParent;
     [SerializeField] private float rotateSpeed;
-    [SerializeField] private float timeBetweenSpawns;
     private int circlesLeft;
     
     public UnityEvent OnCirclesDestroyed;
@@ -36,7 +35,7 @@ public class BossCircleHandler : MonoBehaviour
                 DestroyedCircle();
             }));
 
-            circle.transform.position = circleParent.transform.position + (Vector3.right * 9);
+            circle.transform.position = circleParent.transform.position + (Vector3.right * 8.5f);
 
             yield return new WaitForSeconds((360/rotateSpeed) / amountToSpawn);
         }

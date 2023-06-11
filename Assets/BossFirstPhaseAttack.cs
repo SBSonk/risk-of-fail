@@ -9,8 +9,9 @@ using Random = UnityEngine.Random;
 
 public class BossFirstPhaseAttack : MonoBehaviour
 {
-    [SerializeField] private Animator anim; 
-    
+    [SerializeField] private Animator anim;
+
+    [SerializeField] private Spawning2 roomSpawner;
     [SerializeField] private BossAttack spawner;
     [SerializeField] private BossAttack closeRangeAttack;
     [SerializeField] private BossAttack[] specialAttacks;
@@ -31,6 +32,9 @@ public class BossFirstPhaseAttack : MonoBehaviour
     [Header("Attacking")] private float nextAttackTime;
     [SerializeField] private float postAttackBuffer = 1;
 
+    [Header("PreDamagePhase")] [SerializeField]
+    private float preDamagePhaseLength = 10;
+    
     [Header("DamagePhase")] [SerializeField]
     private BossEnemy self;
 
@@ -49,6 +53,8 @@ public class BossFirstPhaseAttack : MonoBehaviour
     
     private float timer;
     private int attacksBeforeSpecial;
+
+    private BossCircleHandler handler;
 
     private void Update()
     {
@@ -156,13 +162,24 @@ public class BossFirstPhaseAttack : MonoBehaviour
         currentState = BossState.PreDamagePhase;
             
         // Spawn circles
-        BossCircleHandler handler = Instantiate(bossCirclePrefab, transform.position, quaternion.identity, transform);
+        handler = Instantiate(bossCirclePrefab, transform.position, quaternion.identity, transform);
         handler.Initialize(initialBossCircles);
         handler.OnCirclesDestroyed.AddListener(EnterDamagePhase);
+
+        Invoke("CancelPreDamagePhase", preDamagePhaseLength);
     }
 
+    void CancelPreDamagePhase()
+    {
+        Destroy(handler.gameObject);
+        handler = null;
+
+        SwitchState(BossState.AttackCooldown);
+    }
+    
     void EnterDamagePhase()
     {
+        CancelInvoke("CancelPreDamagePhase");
         SwitchState(BossState.DamagePhase);
         
         // screenshake
@@ -174,6 +191,8 @@ public class BossFirstPhaseAttack : MonoBehaviour
         Invoke("EndDamagePhase", damagePhaseLength);
 
         damagePhaseStartHealth = self.health;
+        
+        roomSpawner.StartSpawner();
     }
 
     void EndDamagePhase()
@@ -183,6 +202,8 @@ public class BossFirstPhaseAttack : MonoBehaviour
 
         SwitchState(BossState.AttackCooldown);
         nextAttackTime = postDamagePhaseCooldown;
+
+        roomSpawner.StopSpawner();
     }
     
     BossAttack ChooseAttack()

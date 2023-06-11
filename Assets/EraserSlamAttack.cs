@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class EraserSlamAttack : BossAttack
@@ -16,6 +17,7 @@ public class EraserSlamAttack : BossAttack
 
     public override void UseAttack()
     {
-        Instantiate(eraserPrefab).target = player;
+        var eraser = Instantiate(eraserPrefab, player.position, quaternion.identity);
+        eraser.target = player;
     }
 }

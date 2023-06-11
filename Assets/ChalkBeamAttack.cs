@@ -39,18 +39,21 @@ public class ChalkBeamAttack : BossAttack
         beam.rotation = Quaternion.Euler(0, 0, 180);
         
         anim.Play("ChalkBeam");
+        
+        yield return new WaitForSeconds(1);
+        
         tracking = true;
         
         Vector2 directionToPlayer = (player.position + new Vector3(0, 0.5f)) - transform.position;
         dir = Mathf.Sign(Vector2.Dot(transform.right, directionToPlayer));
 
-        spawningAttack.UseAttack();
-
-        yield return new WaitForSeconds(beamTime / 2);
+        int rotations = 2;
+        for (int i = 0; i < rotations * 2; i++)
+        {
+            spawningAttack.UseAttack();
         
-        spawningAttack.UseAttack();
-        
-        yield return new WaitForSeconds(beamTime / 2);
+            yield return new WaitForSeconds(beamTime / (rotations * 2));
+        }
         
         anim.Play("ChalkBeamRetract");
         tracking = false;

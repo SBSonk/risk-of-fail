@@ -27,7 +27,7 @@ public class DoubleChalkBeamAttack : BossAttack
         if (tracking)
         {
             beamLeft.Rotate(0, 0, beamRotateSpeed * dir * Time.deltaTime);
-            beamRight.Rotate(0, 0, -beamRotateSpeed * dir * Time.deltaTime);
+            beamRight.rotation = Quaternion.Euler(0, 0, -beamLeft.rotation.eulerAngles.z);
         }
     }
 
@@ -38,22 +38,25 @@ public class DoubleChalkBeamAttack : BossAttack
 
     IEnumerator Attack()
     {
-        beamLeft.rotation = quaternion.Euler(0, 0, -90);
-        beamRight.rotation = quaternion.Euler(0, 0, 90);
-        
+        beamLeft.rotation = Quaternion.Euler(0, 0, -90);
+        beamRight.rotation = Quaternion.Euler(0, 0, -beamLeft.rotation.eulerAngles.z);
+
         anim.Play("DoubleChalkBeam");
+        
+        yield return new WaitForSeconds(1);
+        
         tracking = true;
         
         Vector2 directionToPlayer = (player.position + new Vector3(0, 0.5f)) - transform.position;
         dir = Mathf.Sign(Vector2.Dot(transform.up, directionToPlayer));
-
-        spawningAttack.UseAttack();
-
-        yield return new WaitForSeconds(beamTime / 2);
         
-        spawningAttack.UseAttack();
+        int rotations = 2;
+        for (int i = 0; i < rotations * 2; i++)
+        {
+            spawningAttack.UseAttack();
         
-        yield return new WaitForSeconds(beamTime / 2);
+            yield return new WaitForSeconds(beamTime / (rotations * 2));
+        }
         
         anim.Play("DoubleChalkBeamRetract");
         tracking = false;

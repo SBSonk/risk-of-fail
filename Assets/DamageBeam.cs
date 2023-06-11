@@ -8,6 +8,7 @@ public class DamageBeam : MonoBehaviour
     [SerializeField] private DamageSource _damageSource;
     [SerializeField] private float knockbackAmount = 10;
     [SerializeField] private BoxCollider2D col;
+    [SerializeField] private float lineLerp = 25;
 
     private LineRenderer line;
 
@@ -22,7 +23,7 @@ public class DamageBeam : MonoBehaviour
 
         if (hit)
         {
-            line.SetPosition(1, new Vector3(0, transform.InverseTransformPoint(hit.point).y, 0));
+            line.SetPosition(1, Vector3.Lerp(line.GetPosition(1), new Vector3(0, transform.InverseTransformPoint(hit.point).y, 0), lineLerp * Time.deltaTime));
             print(hit.collider.name);
             
             // Calculate the collider size
@@ -32,7 +33,7 @@ public class DamageBeam : MonoBehaviour
         }
         else
         {
-            line.SetPosition(1, transform.position - new Vector3(0, -50));
+            line.SetPosition(1, Vector3.Lerp(line.GetPosition(1), transform.position - new Vector3(0, -50), lineLerp * Time.deltaTime));
             col.size = new Vector2(2.15f, 50f);
             col.offset = new Vector2(0, 25);
         }

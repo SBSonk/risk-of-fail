@@ -19,6 +19,8 @@ public class TrackingRound : Projectile
 
     protected override void Update()
     {
+        if (!active) return;
+        
         Vector3 targetDir = (target.position - transform.position + new Vector3(0, 0.5f)).normalized;
         
         if (tracking)

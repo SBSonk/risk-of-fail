@@ -53,8 +53,9 @@ public class Projectile : MonoBehaviour
 
         if (collision.GetComponent<Alive>())
         {
-            LevelStats.main.BulletHit(); // Should prolly use an event instead  
-
+            if (collision.GetComponent<Enemy>() || collision.GetComponent<BossEnemy>()) LevelStats.main.BulletHit(); // Should prolly use an event instead  
+            
+            
             // Screenshake
             if (bulletShake) CameraShakerHandler.Shake(bulletShake);
 

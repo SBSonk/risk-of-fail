@@ -13,7 +13,7 @@ public abstract class WalkableTrap : MonoBehaviour
 
     bool active = true;
 
-    private void Start()
+    private void Awake()
     {
         entitiesInsideArea = new List<Alive>();
     }

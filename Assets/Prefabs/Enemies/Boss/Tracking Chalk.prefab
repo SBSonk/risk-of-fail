@@ -382,7 +382,7 @@ MonoBehaviour:
   sprite: {fileID: 1748084048185207455}
   shooter: {fileID: 0}
   keepAligned: 0
-  damage: 25
+  damage: 15
   knockback: 10
   stunLength: 0
   pierces: 0
@@ -393,8 +393,8 @@ MonoBehaviour:
   _enemyHit: []
   _wallHit: []
   rotationSpeed: 25
-  trackingSpeed: 10
-  propelSpeed: 200
+  trackingSpeed: 9
+  propelSpeed: 150
   trackingTime: 2
   waitTime: 0
 --- !u!114 &1202852407
@@ -410,6 +410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToDestroy: 15
+  target: {fileID: 0}
 --- !u!1 &1748084048185207455 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7580254655124039528, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}

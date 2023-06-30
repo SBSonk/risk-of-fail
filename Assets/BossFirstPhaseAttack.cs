@@ -1,4 +1,4 @@
-using System;
+    using System;
 using System.Collections;
 using System.Collections.Generic;
 using FirstGearGames.SmoothCameraShaker;
@@ -56,6 +56,13 @@ public class BossFirstPhaseAttack : MonoBehaviour
 
     private BossCircleHandler handler;
 
+    [SerializeField] private BossDropSpawner[] itemSpawners;
+
+    private void Start()
+    {
+        attacksBeforeSpecial = Random.Range(minAmountForSpecial, maxAmountForSpecial);
+    }
+
     private void Update()
     {
         switch (currentState)
@@ -91,8 +98,8 @@ public class BossFirstPhaseAttack : MonoBehaviour
                     EndDamagePhase();
 
                     CameraShakerHandler.Shake(damagePhaseEndShake);
-
-                    // TODO: throw out health or ammo
+                    
+                    print("end");
                 }
                 break;
         }
@@ -101,7 +108,7 @@ public class BossFirstPhaseAttack : MonoBehaviour
 
         if (damagePhase)
         {
-            self.damageReduction = 1;
+            self.damageReduction = 2;
         }
         else
         {
@@ -167,6 +174,8 @@ public class BossFirstPhaseAttack : MonoBehaviour
         handler.OnCirclesDestroyed.AddListener(EnterDamagePhase);
 
         Invoke("CancelPreDamagePhase", preDamagePhaseLength);
+        
+        roomSpawner.StartSpawner();
     }
 
     void CancelPreDamagePhase()
@@ -175,10 +184,15 @@ public class BossFirstPhaseAttack : MonoBehaviour
         handler = null;
 
         SwitchState(BossState.AttackCooldown);
+        
+        roomSpawner.StopSpawner();
     }
     
     void EnterDamagePhase()
     {
+        Destroy(handler);
+        handler = null;
+        
         CancelInvoke("CancelPreDamagePhase");
         SwitchState(BossState.DamagePhase);
         
@@ -191,19 +205,24 @@ public class BossFirstPhaseAttack : MonoBehaviour
         Invoke("EndDamagePhase", damagePhaseLength);
 
         damagePhaseStartHealth = self.health;
-        
-        roomSpawner.StartSpawner();
     }
 
     void EndDamagePhase()
     {
+        CancelInvoke("EndDamagePhase");
+        
         damagePhase = false;
-        attacksDone = 0;
+        attacksDone = 0;    
 
         SwitchState(BossState.AttackCooldown);
         nextAttackTime = postDamagePhaseCooldown;
 
         roomSpawner.StopSpawner();
+        
+        for (int i = 0; i < itemSpawners.Length; i++)
+        {
+            itemSpawners[i].SpawnItems();
+        }
     }
     
     BossAttack ChooseAttack()

@@ -200,8 +200,24 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3864470140653814822, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3864470140653814822, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3864470140653814822, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3864470140653814822, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
       propertyPath: InheritVelocityModule.m_Curve.scalar
       value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3864470140653814822, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+      propertyPath: InitialModule.startColor.minMaxState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3864470140653814822, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
       propertyPath: UVModule.sprites.Array.data[0].sprite
@@ -363,6 +379,26 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9076594935915685230, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
   m_PrefabInstance: {fileID: 8174042516789677559}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &313028255998415089
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902553212625447065}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 34564cee2929cbd4c80a49743ae3adca, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &1202852401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,7 +418,7 @@ MonoBehaviour:
   sprite: {fileID: 1748084048185207455}
   shooter: {fileID: 0}
   keepAligned: 0
-  damage: 15
+  damage: 10
   knockback: 10
   stunLength: 0
   pierces: 0
@@ -393,10 +429,11 @@ MonoBehaviour:
   _enemyHit: []
   _wallHit: []
   rotationSpeed: 25
-  trackingSpeed: 9
+  trackingSpeed: 9.5
   propelSpeed: 150
-  trackingTime: 2
+  trackingTime: 1.5
   waitTime: 0
+  anim: {fileID: 313028255998415089}
 --- !u!114 &1202852407
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using Pathfinding;
 using System.Collections;
+using Unity.Mathematics;
+using Random = UnityEngine.Random;
 
 public class Enemy : Alive
 {
@@ -42,7 +44,7 @@ public class Enemy : Alive
         
         // Initialize AI
         pathAI = GetComponent<AIPath>();
-        healthParent = Instantiate(hBarPrefab);
+        healthParent = Instantiate(hBarPrefab, transform);
         healthBar = healthParent.transform.GetChild(0);
         rb = GetComponent<Rigidbody2D>();
 
@@ -71,6 +73,8 @@ public class Enemy : Alive
 
             // Healthbar animation  
             healthBar.transform.localScale = Vector3.Lerp(healthBar.transform.lossyScale, new Vector3(1 * (health / maxHealth), 1, 1), hbarLerp);
+
+            healthParent.transform.rotation = Quaternion.identity;
         }
     }
 

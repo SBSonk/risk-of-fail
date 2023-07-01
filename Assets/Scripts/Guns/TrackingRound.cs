@@ -8,6 +8,7 @@ public class TrackingRound : Projectile
     [SerializeField] private float rotationSpeed = 50;
     [SerializeField] private float trackingSpeed = 50, propelSpeed = 50;
     [SerializeField] private float trackingTime = 5, waitTime = 1;
+    [SerializeField] private Animator anim;
     private bool tracking = true, propelled;
 
     public void SetTarget(Transform t) => target = t;
@@ -38,9 +39,12 @@ public class TrackingRound : Projectile
 
     IEnumerator TrackingTimer()
     {
+        anim.Play("Tracking");
+        
         yield return new WaitForSeconds(trackingTime);
 
         tracking = false;
+        anim.Play("NonTracking");
 
         yield return new WaitForSeconds(waitTime);
 

@@ -10279,13 +10279,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 620405491, guid: 7f9727f46886b0b4f9eab0ba38415958, type: 3}
+      propertyPath: _damageSource
+      value: 
+      objectReference: {fileID: 11400000, guid: 51c261973acf9bf4c894969889949ba7, type: 2}
+    - target: {fileID: 620405492, guid: 7f9727f46886b0b4f9eab0ba38415958, type: 3}
+      propertyPath: m_Size.x
+      value: 3.1112447
+      objectReference: {fileID: 0}
+    - target: {fileID: 620405492, guid: 7f9727f46886b0b4f9eab0ba38415958, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1219776692, guid: 7f9727f46886b0b4f9eab0ba38415958, type: 3}
       propertyPath: maxSpawns
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1219776692, guid: 7f9727f46886b0b4f9eab0ba38415958, type: 3}
       propertyPath: minSpawns
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1714698909, guid: 7f9727f46886b0b4f9eab0ba38415958, type: 3}
       propertyPath: spawner
@@ -10311,13 +10323,41 @@ PrefabInstance:
       propertyPath: timeBetweenBullets
       value: 0.85
       objectReference: {fileID: 0}
+    - target: {fileID: 1714698938, guid: 7f9727f46886b0b4f9eab0ba38415958, type: 3}
+      propertyPath: beamTime
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1714698938, guid: 7f9727f46886b0b4f9eab0ba38415958, type: 3}
+      propertyPath: maxCooldown
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1714698938, guid: 7f9727f46886b0b4f9eab0ba38415958, type: 3}
+      propertyPath: minCooldown
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1714698938, guid: 7f9727f46886b0b4f9eab0ba38415958, type: 3}
+      propertyPath: beamRotateSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1919218483, guid: 7f9727f46886b0b4f9eab0ba38415958, type: 3}
       propertyPath: maxSpawns
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1919218483, guid: 7f9727f46886b0b4f9eab0ba38415958, type: 3}
       propertyPath: minSpawns
-      value: 4
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1926846392, guid: 7f9727f46886b0b4f9eab0ba38415958, type: 3}
+      propertyPath: _damageSource
+      value: 
+      objectReference: {fileID: 11400000, guid: 51c261973acf9bf4c894969889949ba7, type: 2}
+    - target: {fileID: 1926846393, guid: 7f9727f46886b0b4f9eab0ba38415958, type: 3}
+      propertyPath: m_Size.x
+      value: 3.086134
+      objectReference: {fileID: 0}
+    - target: {fileID: 1926846393, guid: 7f9727f46886b0b4f9eab0ba38415958, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6313427100723194465, guid: 7f9727f46886b0b4f9eab0ba38415958, type: 3}
       propertyPath: roomSpawner

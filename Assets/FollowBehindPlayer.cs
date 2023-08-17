@@ -11,12 +11,14 @@ public class FollowBehindPlayer : MonoBehaviour
     [SerializeField] private Vector3 directionOffset, playerOffset;
     [SerializeField] private float offsetMultiplier = 2f, lerpVal = 0.25f, rotateVal = 0.1f;
 
+    private bool collected;
     public UnityEvent ItemPickedUp;
     
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (!col.CompareTag("Player")) return;
+        if (!col.CompareTag("Player") || collected) return;
 
+        collected = true;
         ItemPickedUp?.Invoke();
         player = col.GetComponent<Rigidbody2D>();
     }

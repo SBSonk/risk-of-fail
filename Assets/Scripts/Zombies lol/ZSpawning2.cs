@@ -53,21 +53,25 @@ public class ZSpawning2 : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F12))
-        {
-            RoundComplete();
-            OnRoundStart?.Invoke();
-        }
+        #if UNITY_EDITOR
         
-        if (Input.GetKeyDown(KeyCode.F11))
-        {
-            LevelStats.main.GiveScore(1000);
-        }
+            if (Input.GetKeyDown(KeyCode.F12))
+            {
+                RoundComplete();
+                OnRoundStart?.Invoke();
+            }
+            
+            if (Input.GetKeyDown(KeyCode.F11))
+            {
+                LevelStats.main.GiveScore(1000);
+            }
+            
+            if (Input.GetKeyDown(KeyCode.F10))
+            {
+                PlayerStatus.player.health += 1000;
+            }
         
-        if (Input.GetKeyDown(KeyCode.F10))
-        {
-            PlayerStatus.player.health += 1000;
-        }
+        #endif
     }
 
     IEnumerator SpawnLoop()

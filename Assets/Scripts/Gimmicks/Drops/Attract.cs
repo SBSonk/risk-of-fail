@@ -7,7 +7,7 @@ public class Attract : MonoBehaviour
     [SerializeField] float attractStrength = 50f;
     Rigidbody2D rb;
     Transform target;
-    public Collider2D _collider;
+//    public Collider2D _collider;
 
     PickupBase pickup;
 
@@ -19,7 +19,7 @@ public class Attract : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (target) rb.AddForce((target.position - transform.position).normalized * attractStrength * Time.fixedDeltaTime);
+        if (target) rb.AddForce((target.position - transform.position).normalized * (attractStrength * Time.fixedDeltaTime));
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -27,7 +27,7 @@ public class Attract : MonoBehaviour
         if (collision.CompareTag("Player") && pickup.active)
         {
             target = collision.transform;
-            if (_collider) _collider.enabled = false;
+           // if (_collider) _collider.enabled = false;
         }
     }
 }

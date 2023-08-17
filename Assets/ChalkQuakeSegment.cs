@@ -9,8 +9,7 @@ public class ChalkQuakeSegment : MonoBehaviour
     [SerializeField] private float windUpTime = 3f, hideTime = 1f;
     [SerializeField] private DamageSource _damageSource;
     [SerializeField] private Transform spike;
-    [SerializeField] private Collider2D collider;
-    
+
     private Animator anim;
 
     private PlayerStatus player;
@@ -46,8 +45,6 @@ public class ChalkQuakeSegment : MonoBehaviour
 
         yield return new WaitForSeconds(windUpTime);
 
-        collider.enabled = true;
-        
         // do damage
         if (player)
             player.GiveDamage(_damageSource.damage, _damageSource.stunTime, KillFlag.AreaOfEffect, null,

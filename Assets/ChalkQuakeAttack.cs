@@ -13,6 +13,8 @@ public class ChalkQuakeAttack : BossAttack
     [SerializeField] private float setOffTime = 0.5f;
     private Collider2D _collider;
 
+    [SerializeField] private Spawning2 spawner;
+
     private void Start()
     {
         _collider = GetComponent<Collider2D>();
@@ -25,6 +27,8 @@ public class ChalkQuakeAttack : BossAttack
 
     IEnumerator Attack()
     {
+        spawner.StartSpawner();
+        
         for (int i = 0; i < amountOfAttacks; i++)
         {
             Vector3 playerPos = PlayerStatus.player.transform.position + new Vector3(0, 0.5f);
@@ -40,5 +44,7 @@ public class ChalkQuakeAttack : BossAttack
 
             yield return new WaitForSeconds(timeBetweenAttacks);
         }
+
+        spawner.StopSpawner();
     }
 }

@@ -9,6 +9,8 @@ public class BossEnemy : Alive
     public GameObject healthBarPrefab;
     Image healthBar;
 
+    [SerializeField] private ResultsScreen results;
+    
     private void Start()
     {
         InitializeHealthBar();
@@ -22,5 +24,12 @@ public class BossEnemy : Alive
     void InitializeHealthBar()
     {
         healthBar = Instantiate(healthBarPrefab).transform.Find("Health").GetComponent<Image>();
+    }
+
+    protected override void Death(KillFlag flag)
+    {
+        base.Death(flag);
+        
+        results.ShowResults();
     }
 }

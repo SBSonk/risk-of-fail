@@ -10,7 +10,8 @@ public class TrackingChalkAttack : BossAttack
     [SerializeField] private float timeBetweenBullets = 0.25f;
     [SerializeField] private Transform leftTransform;
     [SerializeField] private Transform rightTransform;
-
+    [SerializeField] private ChalkSpawnMinions minionSpawner;
+    
     private Transform player;
 
     private void Start()
@@ -26,6 +27,8 @@ public class TrackingChalkAttack : BossAttack
     IEnumerator Attack(int amount)
     {
         bool spawnOnLeft = true;
+        
+        // spawn on middle, stop 5s
 
         for (int i = 0; i < amount; i++)
         {
@@ -37,6 +40,17 @@ public class TrackingChalkAttack : BossAttack
             spawnOnLeft = !spawnOnLeft;
 
             yield return new WaitForSeconds(timeBetweenBullets);
+
+            if (i == amount / 2)
+            {
+                minionSpawner.UseAttack();
+
+                yield return new WaitForSeconds(2);
+                
+                minionSpawner.UseAttack();
+
+                yield return new WaitForSeconds(2);
+            }
         }
     }
 }

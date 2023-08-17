@@ -41,6 +41,8 @@ public class AmmoPickup : PickupBase
         var player = other.GetComponent<PlayerShooting>();
         int ammoToAdd = Random.Range(drop.min, drop.max);
 
+        ammoToAdd = Mathf.RoundToInt((float) ammoToAdd / drop.typeToGive.ammoPerShot) * drop.typeToGive.ammoPerShot;
+        
         player.GiveAmmo(player.GetWeaponFromInventory(drop.typeToGive), ammoToAdd);
 
         PlayPickupAnimation();

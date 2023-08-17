@@ -24,8 +24,7 @@ public class DamageBeam : MonoBehaviour
         if (hit)
         {
             line.SetPosition(1, Vector3.Lerp(line.GetPosition(1), new Vector3(0, transform.InverseTransformPoint(hit.point).y, 0), lineLerp * Time.deltaTime));
-            print(hit.collider.name);
-            
+
             // Calculate the collider size
             float colliderHeight = Vector3.Distance(transform.position, hit.point);
             col.size = new Vector2(col.size.x, colliderHeight);

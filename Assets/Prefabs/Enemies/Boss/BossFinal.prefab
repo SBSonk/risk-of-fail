@@ -103,9 +103,9 @@ LineRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 539936533
-  m_SortingLayer: 5
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1000
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: -50, z: 1}
@@ -139,19 +139,19 @@ LineRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
+      key1: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
+      key2: {r: 1, g: 1, b: 1, a: 0}
+      key3: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 0}
+      key4: {r: 1, g: 1, b: 1, a: 0}
+      key5: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
+      ctime1: 13107
+      ctime2: 26214
+      ctime3: 39321
+      ctime4: 52428
+      ctime5: 65535
       ctime6: 0
       ctime7: 0
       atime0: 0
@@ -163,7 +163,7 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_NumColorKeys: 2
+      m_NumColorKeys: 6
       m_NumAlphaKeys: 2
     numCornerVertices: 5
     numCapVertices: 5
@@ -246,6 +246,108 @@ Transform:
   m_Father: {fileID: 6313427100723194468}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1219776691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1219776693}
+  - component: {fileID: 1219776692}
+  m_Layer: 15
+  m_Name: Heal/AmmoSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1219776693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219776691}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6313427100723194468}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1219776692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219776691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7aae2ac78e8c747b4cfc406c9df3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoPrefab: {fileID: 2766738602563172788, guid: 199e6106dc5d9ed4ab23b16e75f75fc9, type: 3}
+  healthPrefab: {fileID: 7320771971551287578, guid: 8c4c0eeaa6b88654190d6079f806941d, type: 3}
+  minSpawns: 2
+  maxSpawns: 4
+  minImpulse: 3
+  maxImpulse: 6
+  direction: {x: -1, y: 1}
+--- !u!1 &1919218482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1919218484}
+  - component: {fileID: 1919218483}
+  m_Layer: 15
+  m_Name: Heal/AmmoSpawner (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1919218484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919218482}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6313427100723194468}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1919218483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919218482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7aae2ac78e8c747b4cfc406c9df3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoPrefab: {fileID: 2766738602563172788, guid: 199e6106dc5d9ed4ab23b16e75f75fc9, type: 3}
+  healthPrefab: {fileID: 7320771971551287578, guid: 8c4c0eeaa6b88654190d6079f806941d, type: 3}
+  minSpawns: 2
+  maxSpawns: 4
+  minImpulse: 3
+  maxImpulse: 6
+  direction: {x: 1, y: 1}
 --- !u!1 &1926846390
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,9 +420,9 @@ LineRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 539936533
-  m_SortingLayer: 5
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1000
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: -50, z: 1}
@@ -354,19 +456,19 @@ LineRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
+      key1: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
+      key2: {r: 1, g: 1, b: 1, a: 0}
+      key3: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 0}
+      key4: {r: 1, g: 1, b: 1, a: 0}
+      key5: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
+      ctime1: 13107
+      ctime2: 26214
+      ctime3: 39321
+      ctime4: 52428
+      ctime5: 65535
       ctime6: 0
       ctime7: 0
       atime0: 0
@@ -378,7 +480,7 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_NumColorKeys: 2
+      m_NumColorKeys: 6
       m_NumAlphaKeys: 2
     numCornerVertices: 5
     numCapVertices: 5
@@ -535,9 +637,10 @@ GameObject:
   - component: {fileID: 1714698934}
   - component: {fileID: 1714698938}
   - component: {fileID: 6313427100723194465}
+  - component: {fileID: 6313427102602681925}
   m_Layer: 15
   m_Name: BossFinal
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -560,6 +663,8 @@ Transform:
   - {fileID: 2007036921}
   - {fileID: 620405490}
   - {fileID: 1926846391}
+  - {fileID: 1219776693}
+  - {fileID: 1919218484}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -683,7 +788,7 @@ MonoBehaviour:
   timeBetweenAttacks: 0.75
   distanceBetweenSegments: 1.5
   maxSegments: 20
-  setOffTime: 0.05
+  setOffTime: 0.075
 --- !u!114 &1714698917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -718,8 +823,8 @@ MonoBehaviour:
   grenadePrefab: {fileID: 8772039902989828986, guid: 5eb74515fce26c84896719cb2b88c0ac, type: 3}
   leftSideTransform: {fileID: 797478427}
   rightSideTransform: {fileID: 2007036921}
-  minAmount: 3
-  maxAmount: 6
+  minAmount: 1
+  maxAmount: 4
   timeBetweenGrenades: 0.4
 --- !u!114 &1714698926
 MonoBehaviour:
@@ -752,8 +857,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62678fc3b270a6c459edda853f716a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCooldown: 5
-  maxCooldown: 7
+  minCooldown: 3
+  maxCooldown: 5
   eraserPrefab: {fileID: 8630550535648811096, guid: e3378c93ebc696b4e82a5f054cc46d66, type: 3}
 --- !u!114 &1714698934
 MonoBehaviour:
@@ -805,11 +910,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 6313427102602681913}
+  roomSpawner: {fileID: 0}
   spawner: {fileID: 1714698925}
   closeRangeAttack: {fileID: 1714698917}
   specialAttacks:
   - {fileID: 1714698934}
   - {fileID: 1714698938}
+  - {fileID: 6313427102602681925}
   randomAttacks:
   - {fileID: 1714698933}
   - {fileID: 1714698909}
@@ -820,7 +927,7 @@ MonoBehaviour:
   currentState: 6
   idleBufferTime: 1.5
   chooseBufferTime: 3
-  postAttackBuffer: 1
+  postAttackBuffer: 0.5
   preDamagePhaseLength: 30
   self: {fileID: 6313427100723194469}
   damagePhaseHealth: 500
@@ -832,6 +939,29 @@ MonoBehaviour:
   postDamagePhaseCooldown: 5
   attacksDone: 0
   initialBossCircles: 3
+  itemSpawners:
+  - {fileID: 1219776692}
+  - {fileID: 1919218483}
+--- !u!114 &6313427102602681925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6313427100723194470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edde8e383ba272c48bf90ec040c90ad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minCooldown: 2
+  maxCooldown: 3
+  gluePrefab: {fileID: 4468988419313491057, guid: a467dcfd105df674c946810a8c58fda9, type: 3}
+  checkRadius: 5
+  minSoawns: 3
+  maxSpawns: 7
+  minPos: {x: -20, y: -15}
+  maxPos: {x: 20, y: 15}
 --- !u!1 &6313427101254162019
 GameObject:
   m_ObjectHideFlags: 0

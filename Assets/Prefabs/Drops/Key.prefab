@@ -10085,9 +10085,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 539936533
-  m_SortingLayer: 5
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1731358240, guid: 9c79dfb6b781d504180710b442fa70b5, type: 3}
   m_Color: {r: 0.8584906, g: 0.63576895, b: 0.63576895, a: 1}
   m_FlipX: 0
@@ -10196,4 +10196,16 @@ MonoBehaviour:
   rotateVal: 0.1
   ItemPickedUp:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Spawning2, Assembly-CSharp
+        m_MethodName: TrySpawn
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

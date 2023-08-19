@@ -10,7 +10,7 @@ public class DropPrefab : MonoBehaviour
     [SerializeField] private Vector2 minSpawnScale, maxSpawnScale;
     [SerializeField] private float minAngle = 0, maxAngle = 360;
 
-    public void SpawnPrefab()
+    public void SpawnPrefab(Vector3 guidePosition)
     {
         for (int i = 0; i < Random.Range(minAmountToSpawn, maxAmountToSpawn + 1); i++)
         {

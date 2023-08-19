@@ -14,7 +14,7 @@ public class LockedDoor : Door
         if (!col.CompareTag("Player")) return;
         
         // Check if key is in area  
-        Collider2D[] c = Physics2D.OverlapCircleAll(col.transform.position, 3.5f);
+        Collider2D[] c = Physics2D.OverlapCircleAll(col.transform.position, 10f);
         foreach (var collider in c)
         {
             if (collider.TryGetComponent<Key>(out var key))

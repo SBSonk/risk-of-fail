@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPivot: {fileID: 1137415310964119778}
+  shootDelay: 1
   los:
     serializedVersion: 2
     m_Bits: 66240
@@ -231,14 +232,15 @@ MonoBehaviour:
   maxShots: 3
   minReposRadius: 4
   maxReposRadius: 8
+  isShooting: 0
   bulletSpawn: {fileID: 2945926502218911623}
   mode: 0
   OnShootStart:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1137415311057842534}
-        m_TargetAssemblyTypeName: QuizAnimator, Assembly-CSharp
-        m_MethodName: ShootAnimation
+      - m_Target: {fileID: 8879796521414392989}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -248,9 +250,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8879796521414392989}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+  WhileShooting:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1137415311057842534}
+        m_TargetAssemblyTypeName: QuizAnimator, Assembly-CSharp
+        m_MethodName: ShootAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

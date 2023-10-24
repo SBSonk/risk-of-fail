@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public abstract class InteractBase : MonoBehaviour
 {
     public bool interactable = true, playerInRadius = false;
+    public Transform playerTransform;
     public UnityEvent OnPlayerEnter, OnPlayerLeave;
     private Animator anim;
 
@@ -19,6 +20,7 @@ public abstract class InteractBase : MonoBehaviour
     {
         if (!collision.CompareTag("Player")) return;
         playerInRadius = true;
+        playerTransform = collision.transform;
 
         OnPlayerEnter?.Invoke();
         
@@ -30,6 +32,7 @@ public abstract class InteractBase : MonoBehaviour
     {
         if (!collision.CompareTag("Player")) return;
         playerInRadius = false;
+        playerTransform = null;
 
         OnPlayerLeave?.Invoke();
         

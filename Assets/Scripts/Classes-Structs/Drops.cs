@@ -25,10 +25,26 @@ public class Drops : ScriptableObject
             Vector3 randDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
             drops[i].GetComponent<Rigidbody2D>().AddForce(randDir * Random.Range(3f, 4f), ForceMode2D.Impulse);
         }
-
-        return;
     }
 
+    public void Spawn(Vector3 pos, out GameObject[] drops, Vector3 playerPosition)
+    {
+        drops = null;
+
+        if ((Random.value * 100) >= dropChance) return;
+
+        drops = new GameObject[Random.Range(minDropAmount, maxDropAmount+1)];
+        for (int i = 0; i < drops.Length; i++)
+        {
+            drops[i] = Instantiate(obj);
+            drops[i].transform.position = pos;
+
+            Vector3 randDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+            Vector3 dirToPlayer = playerPosition - pos;
+            drops[i].GetComponent<Rigidbody2D>().AddForce((randDir + dirToPlayer).normalized * Random.Range(3f, 4f), ForceMode2D.Impulse);
+        }
+    }
+    
     public void Spawn(Vector3 pos)
     {
         Spawn(pos, out _);

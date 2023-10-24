@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class QuizAI : MonoBehaviour
 {
     [Header("Shooting")] [SerializeField] private Transform bulletPivot;
+    public float shootDelay = 2;
     [SerializeField] LayerMask los;
     [SerializeField] Gun weapon;
 
@@ -33,7 +34,7 @@ public class QuizAI : MonoBehaviour
 
     Vector3 followDirection;
 
-    public UnityEvent OnShootStart;
+    public UnityEvent OnShootStart, WhileShooting;
 
     private void Start()
     {
@@ -79,11 +80,14 @@ public class QuizAI : MonoBehaviour
                 }
 
                 // Reposition every few shots of if player is too close
-                if (shotsTaken < shotsToReposition || playerDistance > 4f)
+                if (gunCanShoot)
                 {
-                    Shooting();
+                    if ((shotsTaken < shotsToReposition && playerDistance > 4f))
+                    {
+                        Shooting();
+                    }
+                    else switchState(AIMode.repositioning);
                 }
-                else switchState(AIMode.repositioning);
                 break;
 
             case AIMode.repositioning:
@@ -106,11 +110,17 @@ public class QuizAI : MonoBehaviour
                     // Look for nearest node thats walkable
                     NNConstraint constraint = NNConstraint.Default;
                     constraint.walkable = true;
-                    Vector3 node = AstarPath.active.GetNearest(newPos, constraint).position;
+                    GraphNode nodeFrom = AstarPath.active.GetNearest(transform.position, constraint).node;
+                    GraphNode nodeTo = AstarPath.active.GetNearest(newPos, constraint).node;
 
-                    // Go to it
-                    ai.destination = node;
-                    ai.canMove = true;
+                    
+                    if (PathUtilities.IsPathPossible(nodeFrom, nodeTo)) {
+                        // Go to it
+                        ai.destination = (Vector3) nodeTo.position;
+                        ai.canMove = true;
+                    }
+                    
+                    
                     break;
                 }
 
@@ -122,6 +132,8 @@ public class QuizAI : MonoBehaviour
 
     void Shooting()
     {
+        if (!gunCanShoot) return;
+
         // Check player position after 50ths of a second
         Vector3 predictedPlayerPos = player.position + (player.velocity / 3.5f);
 
@@ -135,15 +147,12 @@ public class QuizAI : MonoBehaviour
         bulletPivot.up = Vector3.Slerp(bulletPivot.up, predictedPlayerPos, .1f); // predict movement
 
         Debug.DrawLine(transform.position + transform.up, transform.position + (transform.up * 10), Color.red);
-
-        if (gunCanShoot)
+        
+        // Shoot at player
+        if (canShoot)
         {
-            // Shoot at player
-            if (canShoot)
-            {
-                OnShootStart?.Invoke();
-                StartCoroutine(ShootWithDelay());
-            }
+            OnShootStart?.Invoke();
+            StartCoroutine(ShootWithDelay());
         }
     }
 
@@ -152,7 +161,7 @@ public class QuizAI : MonoBehaviour
         // Apply firerate cooldown
         enableGunCooldown();
         
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(shootDelay);
         
         weapon.ShootWeapon(bulletSpawn);
         shotsTaken++;
@@ -217,7 +226,7 @@ public class QuizAI : MonoBehaviour
         CancelInvoke("EnableGun");
 
         gunCanShoot = false;
-        Invoke("EnableGun", weapon.fireRate);
+        Invoke("EnableGun", weapon.fireRate + shootDelay);
     }
 
     void switchState(AIMode state)

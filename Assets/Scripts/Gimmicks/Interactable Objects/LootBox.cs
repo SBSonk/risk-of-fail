@@ -11,7 +11,7 @@ public class LootBox : InteractBase
     {
         foreach (Drops d in drops)
         {
-            d.Spawn(transform.position);
+            d.Spawn(transform.position, out _, playerTransform.position);
         }
 
         LootboxOpen?.Invoke();

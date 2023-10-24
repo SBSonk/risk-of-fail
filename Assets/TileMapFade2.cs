@@ -13,17 +13,26 @@ public class TileMapFade2 : MonoBehaviour
     TilemapRenderer spriteRenderer;
     [SerializeField] Transform anchor;
 
+    public Transform playerTransform;
+
     private void Start()
     {
         sprite = GetComponent<Tilemap>();
         spriteRenderer = GetComponent<TilemapRenderer>();
+
+        playerTransform = PlayerStatus.player.transform;
     }
     
     private void FixedUpdate()
     {
         if (!ObjectFade.player) return;
+
         
-        if (ObjectFade.player.position.y > anchor.position.y)
+        Vector3 anchorFadePos = anchor.position;
+        anchorFadePos.x = playerTransform.position.x;
+        float distanceToPlayerFromEdge = Vector3.Distance(anchorFadePos, playerTransform.position);
+        Debug.DrawLine(anchorFadePos, playerTransform.position, Color.red);
+        if (ObjectFade.player.position.y > anchor.position.y && distanceToPlayerFromEdge <= 10)
         {
             targetOpacity = fullFadeOpacity;
             spriteRenderer.sortingOrder = fullSort;

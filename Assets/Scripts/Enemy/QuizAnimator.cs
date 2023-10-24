@@ -16,6 +16,8 @@ public class QuizAnimator : MonoBehaviour
     protected Directions dirFacing = Directions.down;
 
     public bool canSwitchAnimations = true;
+
+    private float currentAnimation = 0;
     
     protected virtual void Start()
     {
@@ -102,7 +104,7 @@ public class QuizAnimator : MonoBehaviour
         switch (dirFacing)
         {
             case Directions.up:
-                animator.Play("attack_u");
+                animator.Play("attack_u"s);
                 break;
 
             case Directions.right:
@@ -120,7 +122,7 @@ public class QuizAnimator : MonoBehaviour
 
         CancelInvoke("EnableAnimations");
         canSwitchAnimations = false;
-        Invoke("EnableAnimations", 0.5f);
+        Invoke("EnableAnimations", 1f);
     }
     
     public void DeathAnimation(EnemyType _)

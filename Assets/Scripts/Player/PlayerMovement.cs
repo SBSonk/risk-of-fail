@@ -18,9 +18,11 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody2D rb;
     Vector2 moveDirection;
-
+    private bool walking;
+    
     // EVENTS
     public UnityEvent OnDodge;
+    public UnityEvent OnWalkStart, OnWalkEnd;
 
     private void Start()
     {
@@ -36,6 +38,17 @@ public class PlayerMovement : MonoBehaviour
         Vector2 playerDirection = new Vector2(KeyBind.GetAxis(KInputManager.GetKey("Right"),
             KInputManager.GetKey("Left")), KeyBind.GetAxis(KInputManager.GetKey("Up"), KInputManager.GetKey("Down"))).normalized;
         moveDirection = playerDirection;
+
+        if (playerDirection.magnitude > 0 && !walking)
+        {
+            OnWalkStart?.Invoke();;
+            walking = true;
+        }
+        else if (playerDirection.magnitude == 0 && walking)
+        {
+            OnWalkEnd?.Invoke();
+            walking = false;
+        }
 
         // Replenishes dodges
         if (dodges < maxDodges && startCooldown) dodges += Time.deltaTime / dodgeCooldown;

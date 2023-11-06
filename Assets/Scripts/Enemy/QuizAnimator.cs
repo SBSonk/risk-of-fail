@@ -104,7 +104,7 @@ public class QuizAnimator : MonoBehaviour
         switch (dirFacing)
         {
             case Directions.up:
-                animator.Play("attack_u"s);
+                animator.Play("attack_u");
                 break;
 
             case Directions.right:

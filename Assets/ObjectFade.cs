@@ -19,24 +19,36 @@ public class ObjectFade : MonoBehaviour
     
     private void FixedUpdate()
     {
-        if (!anchor || !player) return;
-        
-        if (player.position.y > anchor.position.y)
-        {
-            targetOpacity = fullFadeOpacity;
-            sprite.sortingOrder = fullSort;
-        }
-        else
-        {
-            targetOpacity = 1;
-            sprite.sortingOrder = normalSort;
-        }
-
         Color c = sprite.color;
         c.a = Mathf.Lerp(c.a, targetOpacity, .25f);
 
         //c.a = Mathf.Lerp(0, targetOpacity, Mathf.Abs(vertDistanceToPlayer) / fullFadeDistance);
         sprite.color = Color.Lerp(sprite.color, c, 0.5f);
+        
+        if (!anchor || !player) return;
+        
+        if (player.position.y > anchor.position.y)
+        {
+            UnFade();
+        }
+        else
+        {
+            Fade();
+        }
 
+        
+
+    }
+
+    public void Fade()
+    {
+        targetOpacity = 1;
+        sprite.sortingOrder = normalSort;
+    }
+
+    public void UnFade()
+    {
+        targetOpacity = fullFadeOpacity;
+        sprite.sortingOrder = fullSort;
     }
 }

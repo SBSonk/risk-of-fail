@@ -3,15 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="1aa324cb-904c-4a96-91db-4000441e4156" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.risk-of-fail/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.risk-of-fail/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animations/SwapWeapon2.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Animations/SwapWeapon2.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animations/UI 3_0.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Animations/UI 3_0.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/In-game UI/Settings/settings.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/In-game UI/Settings/settings.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Levels/Walls.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Levels/Walls.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ControllableTilemapFade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ControllableTilemapFade.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Levels/Level 1 V2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levels/Level 1 V2.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Levels/Level 4 V2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levels/Level 4 V2.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Levels/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levels/Main Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Libraries/IniFileParser/INIFileParser.csproj.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI 3.0.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI 3.0.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ObjectFade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ObjectFade.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Levels/Assorted Lootbox Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Levels/Assorted Lootbox Variant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Levels/LootBox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Levels/LootBox.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PlayerCutscene.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PlayerCutscene.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,24 +48,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\sonki\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\sonki\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\sonki\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\sonik\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\sonik\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\sonik\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$USER_HOME$/Desktop/ROF TGIF 81823\Risk Of Fail.exe" />
@@ -257,6 +258,8 @@
       <workItem from="1699281479466" duration="136000" />
       <workItem from="1699289311228" duration="3095000" />
       <workItem from="1699316618057" duration="1548000" />
+      <workItem from="1699858719348" duration="496000" />
+      <workItem from="1700215323394" duration="2895000" />
     </task>
     <servers />
   </component>

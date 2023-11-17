@@ -8,6 +8,8 @@ public class ControllableTilemapFade : MonoBehaviour
     [SerializeField] private bool fadeOnStart = false;
     [SerializeField] private float fullFadeOpacity = 0.25f;
     [SerializeField] private int fullSort = 1, normalSort = 0;
+
+    [SerializeField] private ObjectFade[] objectsToFade;
     float targetOpacity = 1;
 
     Tilemap sprite;
@@ -38,11 +40,27 @@ public class ControllableTilemapFade : MonoBehaviour
     {
         targetOpacity = 1;
         spriteRenderer.sortingOrder = normalSort;
+
+        if (objectsToFade.Length > 0)
+        {
+            foreach (ObjectFade objectFade in objectsToFade)
+            {
+                objectFade.Fade();
+            }
+        }
     }
 
     public void FadeTiles()
     {
         targetOpacity = fullFadeOpacity;
         spriteRenderer.sortingOrder = fullSort;
+        
+        if (objectsToFade.Length > 0)
+        {
+            foreach (ObjectFade objectFade in objectsToFade)
+            {
+                objectFade.UnFade();
+            }
+        }
     }
 }

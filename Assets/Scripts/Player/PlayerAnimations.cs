@@ -276,29 +276,36 @@ public class PlayerAnimations : MonoBehaviour
         {
             case Directions.up:
                 dashExp.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                animator.Play("dash_u");
                 break;
 
             case Directions.right:
                 dashExp.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+                animator.Play("dash_r");
                 break;
 
             case Directions.down:
                 dashExp.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
+                animator.Play("dash_d");
                 break;
 
             case Directions.left:
                 dashExp.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 270));
+                animator.Play("dash_r");
                 break;
         }
 
 
         dashExp.Play();
-        StopCoroutine("DashTrail");
-        StartCoroutine(DashTrail());
+        /*StopCoroutine("DashTrail");
+        StartCoroutine(DashTrail());*/
 
         StopCursorFollow();
 
         CameraShakerHandler.Shake(dodgeScreenshake);
+        
+        canSwitchAnimation = false;
+        Invoke("EnableAnimations", 0.3f);
     }
 
     void DamageAnimation(float _)

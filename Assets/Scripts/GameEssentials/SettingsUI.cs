@@ -54,6 +54,8 @@ public class SettingsUI : MonoBehaviour
         SettingsManager.instance.SetFPSLimit(fpsInputField.text);
         SettingsManager.instance.Fullscreen = fullscreenToggle.isOn;
         SettingsManager.instance.VSync = vSyncToggle.isOn;
+
+        SettingsManager.instance.ResolutionIndex = resolutionDropdown.value;
     }
 
     void InitializeDropdowns()

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using IniParser;
 using IniParser.Model;
@@ -16,7 +17,7 @@ public class SettingsManager : MonoBehaviour
 
     [SerializeField] private AudioMixer mixer;
     private const string FILEPATH = "notes.ini";
-
+    
     private void Awake()
     {
         if (!instance)
@@ -49,7 +50,7 @@ public class SettingsManager : MonoBehaviour
     {
         SettingsUI.instance.InitializeSettings();
     }
-
+    
     public void SaveSettings()
     {
         try
@@ -120,7 +121,7 @@ public class SettingsManager : MonoBehaviour
 
     public void ApplySettings()
     {
-        Screen.SetResolution(resolutionWidth, resolutionHeight, fullscreen,
+        Screen.SetResolution(Screen.resolutions[resolutionIndex].width, Screen.resolutions[resolutionIndex].height, fullscreen,
             Screen.resolutions[resolutionIndex].refreshRate);
         Application.targetFrameRate = fpsLimit;
 

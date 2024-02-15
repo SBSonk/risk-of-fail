@@ -45,21 +45,36 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        SettingsUI.instance.InitializeSettings();
+    }
+
     public void SaveSettings()
     {
-        IniData data = new IniData();
-        data["Volume"]["master"] = masterVolume.ToString();
-        data["Volume"]["music"] = musicVolume.ToString();
-        data["Volume"]["sfx"] = sfxVolume.ToString();
+        try
+        {
+            print("appl");
+            IniData data = new IniData();
+            data["Volume"]["master"] = masterVolume.ToString();
+            data["Volume"]["music"] = musicVolume.ToString();
+            data["Volume"]["sfx"] = sfxVolume.ToString();
 
-        data["Display"]["width"] = resolutionWidth.ToString();
-        data["Display"]["height"] = resolutionHeight.ToString();
-        data["Display"]["fpsLimit"] = fpsLimit.ToString();
-        data["Display"]["fullscreen"] = fullscreen.ToString();
-        data["Display"]["vsync"] = vSync.ToString();
+            data["Display"]["width"] = resolutionWidth.ToString();
+            data["Display"]["height"] = resolutionHeight.ToString();
+            data["Display"]["fpsLimit"] = fpsLimit.ToString();
+            data["Display"]["fullscreen"] = fullscreen.ToString();
+            data["Display"]["vsync"] = vSync.ToString();
 
-        FileIniDataParser parser = new FileIniDataParser();
-        parser.WriteFile(FILEPATH, data);
+            FileIniDataParser parser = new FileIniDataParser();
+            parser.WriteFile(FILEPATH, data);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        
     }
 
     void InitializeIniFile()
@@ -89,7 +104,7 @@ public class SettingsManager : MonoBehaviour
         {
             print("exists");
             FileIniDataParser parser = new FileIniDataParser();
-            IniData data = parser.ReadFile(FILEPATH);;
+            IniData data = parser.ReadFile(FILEPATH);
 
             masterVolume = float.Parse(data["Volume"]["master"]);
             musicVolume = float.Parse(data["Volume"]["music"]);
@@ -115,7 +130,7 @@ public class SettingsManager : MonoBehaviour
         mixer.SetFloat("Music", Mathf.Log10(musicVolume) * 20);
         mixer.SetFloat("Sfx", Mathf.Log10(sfxVolume) * 20);
 
-        SaveSettings(); 
+        SaveSettings();
     }
     
     public int ResolutionWidth

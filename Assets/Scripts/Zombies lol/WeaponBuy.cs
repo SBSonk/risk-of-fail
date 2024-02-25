@@ -18,7 +18,8 @@ public class WeaponBuy : Buyable
 
     public void Purchase()
     {
-        if (GameManager.CheckIfWeaponOwned(weapon))
+        PlayerShooting shooting = PlayerStatus.player.pShooting;
+        if (shooting.CheckIfWeaponOwned(weapon))
         {
             if (weapon is Gun)
             { 
@@ -28,7 +29,18 @@ public class WeaponBuy : Buyable
             return;
             // give ammo
         }
-        GameManager.GiveWeaponZombies(weapon);
+        
+        if (!shooting.CheckIfWeaponOwned(weapon))
+        {
+            InventoryWeapon newWeapon = new InventoryWeapon(weapon, weapon.clipSize, weapon.defaultAmmoCount);
+            if (shooting.InventoryFull()) shooting.ReplaceWeapon(newWeapon, shooting.GetHeldIndex());
+            else shooting.GiveWeapon(newWeapon);
+        }
+        else
+        {
+            shooting.GiveAmmo(shooting.GetWeaponFromInventory(weapon), Mathf.FloorToInt(weapon.defaultAmmoCount/4f));
+        }
+        
         PlayerStatus.player.pAnimations.ChangeWeaponSprite(PlayerStatus.player.pShooting.GetHeldWeapon());
         HudManager4.hud.UpdateWeaponIcon(PlayerStatus.player.pShooting.GetHeldWeapon());
     }
@@ -36,7 +48,7 @@ public class WeaponBuy : Buyable
     protected override void PlayerInteract()
     {
         // Check for points
-        if (GameManager.CheckIfWeaponOwned(weapon) && weapon is MeleeWeapon)
+        if (PlayerStatus.player.pShooting.CheckIfWeaponOwned(weapon) && weapon is MeleeWeapon)
         {
             CancelPurchase?.Invoke();
             return;

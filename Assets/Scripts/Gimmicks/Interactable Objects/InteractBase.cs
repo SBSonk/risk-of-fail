@@ -8,7 +8,7 @@ public abstract class InteractBase : MonoBehaviour
 {
     public bool interactable = true, playerInRadius = false;
     public Transform playerTransform;
-    public UnityEvent OnPlayerEnter, OnPlayerLeave;
+    public UnityEvent OnPlayerEnter, OnPlayerLeave, OnPickup;
     private Animator anim;
 
     protected virtual void Start()
@@ -42,9 +42,10 @@ public abstract class InteractBase : MonoBehaviour
 
     private void Update()
     {
-        if (interactable && playerInRadius && KInputManager.GetKey("Interact").Pressed())
+        if (interactable && playerInRadius && KInputManager.GetKey("Interact").PressedDown())
         {
             PlayerInteract();
+            OnPickup?.Invoke();
         }
     }
 

@@ -1,20 +1,44 @@
 using UnityEngine;
-public class WeaponPickup : PickupBase
+public class WeaponPickup : InteractBase
 {
     public Weapon weaponToGive;
+    public InventoryWeapon inventoryWeapon;
 
-    protected override void OnTriggerStay2D(Collider2D other)
+    [SerializeField] private SpriteRenderer sprite;
+
+    protected override void Start()
     {
-        if (!active) return;
+        base.Start();
 
-        // Return if the player isnt the one who collected
-        if (!other.CompareTag("Player")) return;
-
-        // Don't give if already owned
-        if (!GameManager.CheckIfWeaponOwned(weaponToGive)) GameManager.GiveWeapon(weaponToGive);
-
-        PlayPickupAnimation();
-
-        active = false;
+        UpdateSprite();
+        inventoryWeapon = new InventoryWeapon(weaponToGive, weaponToGive.clipSize, weaponToGive.defaultAmmoCount);
     }
+
+    protected override void PlayerInteract()
+    {
+        PlayerShooting shooting = PlayerStatus.player.pShooting;
+
+        // Check if weapon owned
+        if (!shooting.CheckIfWeaponOwned(weaponToGive))
+        {
+            if (shooting.InventoryFull()) shooting.ReplaceWeapon(inventoryWeapon, shooting.GetHeldIndex());
+            else shooting.GiveWeapon(inventoryWeapon);
+        }
+        else
+        {
+            shooting.GiveAmmo(shooting.GetWeaponFromInventory(weaponToGive), Mathf.FloorToInt(weaponToGive.defaultAmmoCount/4f));
+        }
+
+        Destroy(gameObject);
+    }
+
+    public void SetWeapon(InventoryWeapon w)
+    {
+        weaponToGive = w.weapon;
+        inventoryWeapon = w;
+        
+        UpdateSprite();
+    }
+
+    void UpdateSprite() => sprite.sprite = weaponToGive.weaponSprite;
 }

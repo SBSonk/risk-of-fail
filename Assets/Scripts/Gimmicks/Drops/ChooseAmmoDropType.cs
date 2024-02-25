@@ -18,7 +18,7 @@ public class ChooseAmmoDropType : MonoBehaviour
         List<Gun> gunsOwned = new List<Gun>();
         foreach(Gun d in drops)
         {
-            if (GameManager.CheckIfWeaponOwned(d)) gunsOwned.Add(d);
+            if (PlayerStatus.player.pShooting.CheckIfWeaponOwned(d)) gunsOwned.Add(d);
         }
         
         // Choose drop to drop

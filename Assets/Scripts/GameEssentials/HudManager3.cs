@@ -52,7 +52,7 @@ public class HudManager3 : MonoBehaviour
         //PlayerStatus.onPlayerDamage += UpdateHealth;
         //PlayerStatus.onPlayerHeal += UpdateHealth;
         //GameManager.onEnemyKilled += UpdatePoints;
-        GameManager.onWeaponReceive += SwapWeapon;
+        //GameManager.onWeaponReceive += SwapWeapon;
         /*PlayerShooting.onPlayerShoot += UpdateAmmo;
         PlayerShooting.onReloadStart += StartReloadAnimation;
         PlayerShooting.onAmmoUpdate += UpdateAmmo;
@@ -71,7 +71,7 @@ public class HudManager3 : MonoBehaviour
         //PlayerStatus.onPlayerDamage -= UpdateHealth;
         //PlayerStatus.onPlayerHeal -= UpdateHealth;
         //GameManager.onEnemyKilled -= UpdatePoints;
-        GameManager.onWeaponReceive -= SwapWeapon;
+        //GameManager.onWeaponReceive -= SwapWeapon;
         /*PlayerShooting.onPlayerShoot -= UpdateAmmo;
         PlayerShooting.onReloadStart -= StartReloadAnimation;
         PlayerShooting.onAmmoUpdate -= UpdateAmmo;

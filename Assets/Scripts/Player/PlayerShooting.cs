@@ -2,16 +2,19 @@ using GameAudioScriptingEssentials;
 using System.Collections;
 using System.Collections.Generic;
 using FirstGearGames.SmoothCameraShaker;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class PlayerShooting : MonoBehaviour
 {
     private Vector2 playerOffset = new Vector2(0, 0.5f);
     [SerializeField] Transform gunPivot, gunBarrel;
     public InventoryWeapon fallbackWep;
-    List<InventoryWeapon> weaponPool;
-    int currentWeaponIndex = 0;
+    InventoryWeapon[] weaponPool;
+    [SerializeField] int currentWeaponIndex = 0;
+    [SerializeField] private WeaponPickup weaponPickupPrefab;
 
     public float reloadMultiplier = 1;
     public bool reloading;
@@ -26,7 +29,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] float radius;
     [SerializeField] private Projectile friendlyQuizBullet;
 
-    public UnityEvent<InventoryWeapon> OnWeaponSwitch, OnAmmoUpdate;
+    public UnityEvent<InventoryWeapon> OnWeaponSwitch, OnAmmoUpdate, OnWeaponPickup;
     public UnityEvent OnShoot;
     public UnityEvent<float> OnReloadStart;
     public UnityEvent OnMelee, OnShove, OnParry;
@@ -36,25 +39,21 @@ public class PlayerShooting : MonoBehaviour
     public void Initialize()
     {
         // Grab inventory from playerData
-        weaponPool = GameManager.main.pData.weaponsOwned;
-
-        // Initialize inventory
-        for (int i = 0; i < weaponPool.Count; i++)
-        {
-            weaponPool[i].Initialize();
-        }
+        weaponPool = LoadoutManager.instance.InitializeWeaponPool();
     }
 
     private void Update()
     {
+        if (Time.timeScale == 0) return;
+
         // Get direction from cursor to player and make the player face it
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 mousePos = ((Vector2) transform.position + playerOffset - mousePosition).normalized;
         float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
         gunPivot.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-        if (weaponPool.Count > 1) WeaponSwitching();
-        else if (weaponPool.Count == 0) return;
+        if (weaponPool.Length > 1) WeaponSwitching();
+        else if (weaponPool.Length == 0) return;
 
         if (CheckIfPlayerShooting() && CanShoot())
         {
@@ -101,14 +100,17 @@ public class PlayerShooting : MonoBehaviour
         else if (KInputManager.GetKey("NextWeapon").PressedDown()) swapDir = 1;
         
         if (swapDir == 0) return;
+        
+        // If slot is empty skip to the next
+        do
+        {
+            currentWeaponIndex += swapDir;
 
-        // Weapon swapping, Everything unfucked...
-        currentWeaponIndex += swapDir;
-
-        // Dont allow weapon index to go below or above weapon count
-        currentWeaponIndex %= weaponPool.Count;
-        if (Mathf.Sign(currentWeaponIndex) < 0) currentWeaponIndex = weaponPool.Count - 1;
-
+            // Dont allow weapon index to go below or above weapon count
+            currentWeaponIndex %= weaponPool.Length;
+            if (Mathf.Sign(currentWeaponIndex) < 0) currentWeaponIndex = weaponPool.Length - 1;
+        } while (weaponPool[currentWeaponIndex] == null);
+        
         // Disable reloading
         canShoot = true;
         reloading = false;
@@ -361,8 +363,71 @@ public class PlayerShooting : MonoBehaviour
 
     public InventoryWeapon GetHeldWeapon()
     {
-        if (weaponPool == null || weaponPool.Count == 0) return fallbackWep;
+        if (weaponPool == null || weaponPool.Length == 0) return fallbackWep;
 
         return weaponPool[currentWeaponIndex];
+    }
+
+    public bool InventoryFull()
+    {
+        // Find first empty slot
+        int count = 0;
+
+        for (int i = 0; i < weaponPool.Length; i++)
+        {
+            if (weaponPool[i] != null) count++;
+        }
+
+        return count == weaponPool.Length;
+    }
+
+    public int GetHeldIndex() => currentWeaponIndex;
+    
+    public void GiveWeapon(InventoryWeapon w)
+    {
+        // Find first empty slot
+        int index = 0;
+
+        for (int i = 0; i < weaponPool.Length; i++)
+        {
+            if (weaponPool[i] != null) continue;
+
+            index = i;
+            break;
+        }
+
+        weaponPool[index] = w;
+
+        currentWeaponIndex = index;
+        OnWeaponPickup?.Invoke(weaponPool[index]);
+        OnWeaponSwitch?.Invoke(weaponPool[index]);
+    }
+
+    public void ReplaceWeapon(InventoryWeapon w, int weaponIndex)
+    {
+        InventoryWeapon weaponInSlot = weaponPool[weaponIndex];
+        
+        // Create pickup
+        var newWeapon = Instantiate(weaponPickupPrefab, transform.position, quaternion.identity);
+        newWeapon.SetWeapon(weaponInSlot);
+        
+        Vector3 randDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+        newWeapon.GetComponent<Rigidbody2D>().AddForce(randDir * Random.Range(3f, 4f), ForceMode2D.Impulse);
+        
+        // Replace weapon in inventory
+        weaponPool[weaponIndex] = null;
+        GiveWeapon(w);
+    }
+    
+    public bool CheckIfWeaponOwned(Weapon type)
+    {
+        for (int i = 0; i < weaponPool.Length; i++)
+        {
+            if (weaponPool[i] == null) continue;
+
+            if (weaponPool[i].weapon.name == type.name) return true;
+        }
+        
+        return false;
     }
 }

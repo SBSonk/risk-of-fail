@@ -41,6 +41,7 @@ public class SettingsManager : MonoBehaviour
         {
             Debug.Log("File not loaded :(");
             InitializeIniFile();
+            resolutionIndex = Screen.resolutions.Length - 1;
             Console.WriteLine(e);
             throw;
         }
@@ -60,7 +61,8 @@ public class SettingsManager : MonoBehaviour
             data["Volume"]["master"] = masterVolume.ToString();
             data["Volume"]["music"] = musicVolume.ToString();
             data["Volume"]["sfx"] = sfxVolume.ToString();
-
+            
+            data["Display"]["index"] = resolutionIndex.ToString();
             data["Display"]["width"] = resolutionWidth.ToString();
             data["Display"]["height"] = resolutionHeight.ToString();
             data["Display"]["fpsLimit"] = fpsLimit.ToString();
@@ -85,7 +87,7 @@ public class SettingsManager : MonoBehaviour
         data["Volume"]["music"] = "0.5";
         data["Volume"]["sfx"] = "0.5";
 
-        Resolution currentResolution = Screen.currentResolution;
+        Resolution currentResolution = Screen.resolutions[^1];
         data["Display"]["width"] = currentResolution.width.ToString();
         data["Display"]["height"] = currentResolution.height.ToString();
         data["Display"]["fpsLimit"] = currentResolution.refreshRate.ToString();
@@ -111,6 +113,7 @@ public class SettingsManager : MonoBehaviour
             musicVolume = float.Parse(data["Volume"]["music"]);
             sfxVolume = float.Parse(data["Volume"]["sfx"]);
 
+            resolutionIndex = int.Parse(data["Display"]["index"]);
             resolutionWidth = int.Parse(data["Display"]["width"]);
             resolutionHeight = int.Parse(data["Display"]["height"]);
             fpsLimit = int.Parse(data["Display"]["fpsLimit"]);

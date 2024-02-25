@@ -36,13 +36,7 @@ public class PlayerShooting : MonoBehaviour
     public void Initialize()
     {
         // Grab inventory from playerData
-        weaponPool = GameManager.main.pData.weaponsOwned;
-
-        // Initialize inventory
-        for (int i = 0; i < weaponPool.Count; i++)
-        {
-            weaponPool[i].Initialize();
-        }
+        weaponPool = LoadoutManager.instance.InitializeWeaponPool();
     }
 
     private void Update()

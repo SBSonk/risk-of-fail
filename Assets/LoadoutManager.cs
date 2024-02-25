@@ -47,18 +47,20 @@ public class LoadoutManager : MonoBehaviour
         return contains;
     }
     
-    public List<InventoryWeapon> InitializeWeaponPool()
+    public InventoryWeapon[] InitializeWeaponPool()
     {
-        List<InventoryWeapon> pool = new List<InventoryWeapon>();
+        InventoryWeapon[] pool = new InventoryWeapon[slots.Length];
 
-        foreach (var weapon in slots)
+        int weapons = 0;
+        for (int i = 0; i < slots.Length; i++)
         {
-            if (!weapon) continue;
-            
-            pool.Add(new InventoryWeapon(weapon, weapon.clipSize, weapon.defaultAmmoCount));
-        }
+            if (slots[i] == null) continue;
 
-        if (pool.Count == 0) pool.Add(new InventoryWeapon(fallbackWeapon, fallbackWeapon.clipSize, fallbackWeapon.defaultAmmoCount));
+            pool[i] = new InventoryWeapon(slots[i], slots[i].clipSize, slots[i].defaultAmmoCount);
+            weapons++;
+        }
+        
+        if (weapons == 0) pool[0] = new InventoryWeapon(fallbackWeapon, fallbackWeapon.clipSize, fallbackWeapon.defaultAmmoCount);
         
         return pool;
     }

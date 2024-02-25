@@ -20,4 +20,8 @@ public class InventoryWeapon
         clip = weapon.clipSize;
         pool = weapon.defaultAmmoCount;
     }
+
+    public void SetClip(int amount) => clip = amount;
+
+    public void SetPool(int amount) => pool = amount;
 }

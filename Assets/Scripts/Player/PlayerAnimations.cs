@@ -60,6 +60,8 @@ public class PlayerAnimations : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0) return;
+        
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         Vector2 playerDirection = new Vector2(KeyBind.GetAxis(KInputManager.GetKey("Right"),

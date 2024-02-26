@@ -54,6 +54,8 @@ public class PlayerShooting : MonoBehaviour
 
         if (weaponPool.Length > 1) WeaponSwitching();
         else if (weaponPool.Length == 0) return;
+        
+        KeybindSwitching();
 
         if (CheckIfPlayerShooting() && CanShoot())
         {
@@ -94,7 +96,6 @@ public class PlayerShooting : MonoBehaviour
 
     void WeaponSwitching()
     {
-
         int swapDir = 0;
         if (KInputManager.GetKey("PreviousWeapon").PressedDown()) swapDir = -1;
         else if (KInputManager.GetKey("NextWeapon").PressedDown()) swapDir = 1;
@@ -121,6 +122,48 @@ public class PlayerShooting : MonoBehaviour
         OnWeaponSwitch?.Invoke(GetHeldWeapon());
     }
 
+    void KeybindSwitching()
+    {
+        // Keybind Swapping
+        bool changed = false;
+        if (KInputManager.GetKey("WeaponA").PressedDown() && currentWeaponIndex != 0)
+        {
+            if (weaponPool[0] != null)
+            {
+                currentWeaponIndex = 0;
+
+                changed = true;
+            }
+        } else if (KInputManager.GetKey("WeaponB").PressedDown() && currentWeaponIndex != 1)
+        {
+            if (weaponPool[1] != null)
+            {
+                currentWeaponIndex = 1;
+
+                changed = true;
+            }
+        } else if (KInputManager.GetKey("WeaponC").PressedDown() && currentWeaponIndex != 2)
+        {
+            if (weaponPool[2] != null)
+            {
+                currentWeaponIndex = 2;
+
+                changed = true;
+            }
+        }
+
+        if (!changed) return;
+        
+        // Disable reloading
+        canShoot = true;
+        reloading = false;
+
+        // Switch cooldown
+        shootEnableTime = Time.time + 0.1f;
+        
+        OnWeaponSwitch?.Invoke(GetHeldWeapon());
+    }
+    
     IEnumerator Shove()
     {
         sfxManager.PlayShoveSound();

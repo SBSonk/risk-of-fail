@@ -44,8 +44,8 @@ public abstract class InteractBase : MonoBehaviour
     {
         if (interactable && playerInRadius && KInputManager.GetKey("Interact").PressedDown())
         {
-            PlayerInteract();
             OnPickup?.Invoke();
+            PlayerInteract();
         }
     }
 

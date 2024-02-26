@@ -149,6 +149,8 @@ public enum EnemyType
 {
     WrittenWorks,
     Quiz,
+    Notebook,
+    TripleQuiz,
     QuarterlyAssessment,
     Healer,
     Boss

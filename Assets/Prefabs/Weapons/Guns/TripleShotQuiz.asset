@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8118bb953fa63e9469862453a8fbc52b, type: 3}
+  m_Name: TripleShotQuiz
+  m_EditorClassIdentifier: 
+  shopData:
+    weaponDescription: 
+    weaponCost: 0
+    weaponStrength: 0
+    weaponFireRate: 0
+    weaponPiercing: 0
+  hud:
+    sprite: {fileID: -819839473, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
+    offset: {x: 0, y: 0}
+    crossHair:
+      sprite: {fileID: 21300000, guid: 91a27f21dd1f6844197adda4c80a7828, type: 3}
+      rotationSpeed: 0
+  weaponSprite: {fileID: -2059183097, guid: e3c15e47d68fcd541b90052911096172, type: 3}
+  baseDamage: 5
+  bulletSpread: 0
+  knockbackAmount: 5
+  stunLength: 0.25
+  defaultAmmoCount: 48
+  ammoPerShot: 2
+  clipSize: 8
+  reloadLength: 1.15
+  fireRate: 0.4
+  auto: 0
+  shootShake: {fileID: 11400000, guid: 6caba7f04f154e947b688247456a3713, type: 2}
+  hitScreenShake: {fileID: 11400000, guid: 6caba7f04f154e947b688247456a3713, type: 2}
+  effects:
+    shootSounds: []
+    reloadSounds: []
+    shoveSounds: []
+    enemyHitSounds: []
+    wallHitSounds: []
+  weaponScale: {x: 1, y: 1, z: 1}
+  weaponOffset: {x: 0, y: 0, z: 0}
+  animatorController: {fileID: 2440456455680981631, guid: 36da119b84a762a4c9583dab9a2a1f51, type: 3}
+  rigidbodyVariant: {fileID: 0}
+  bulletVelocity: 0.75
+  pierceAmount: 0
+  bullet: {fileID: 1577635671258600914, guid: 21730faa123642c4bb8538d949db0558, type: 3}
+  ammoDrop: {fileID: 11400000, guid: 1454c324b063cca40bfc9a6fa8673cea, type: 2}
+  pelletCount: 2
+  pelletSpread: 16
+  perBulletDelay: 0.025
+  shootDelay: 0

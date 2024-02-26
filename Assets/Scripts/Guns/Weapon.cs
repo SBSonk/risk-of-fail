@@ -35,6 +35,11 @@ public abstract class Weapon : ScriptableObject
     {
         return;
     }
+    
+    public virtual void ShootSpecial(Transform player, float multiplier = 1)
+    {
+        return;
+    }
 }   
 
 [System.Serializable]

@@ -88,6 +88,7 @@ public class SettingsManager : MonoBehaviour
         data["Volume"]["sfx"] = "0.5";
 
         Resolution currentResolution = Screen.resolutions[^1];
+        data["Display"]["index"] = (Screen.resolutions.Length - 1).ToString();
         data["Display"]["width"] = currentResolution.width.ToString();
         data["Display"]["height"] = currentResolution.height.ToString();
         data["Display"]["fpsLimit"] = currentResolution.refreshRate.ToString();
@@ -105,20 +106,29 @@ public class SettingsManager : MonoBehaviour
         if (!System.IO.File.Exists(FILEPATH)) InitializeIniFile();
         else
         {
-            print("exists");
-            FileIniDataParser parser = new FileIniDataParser();
-            IniData data = parser.ReadFile(FILEPATH);
+            try
+            {
+                print("exists");
+                FileIniDataParser parser = new FileIniDataParser();
+                IniData data = parser.ReadFile(FILEPATH);
 
-            masterVolume = float.Parse(data["Volume"]["master"]);
-            musicVolume = float.Parse(data["Volume"]["music"]);
-            sfxVolume = float.Parse(data["Volume"]["sfx"]);
+                masterVolume = float.Parse(data["Volume"]["master"]);
+                musicVolume = float.Parse(data["Volume"]["music"]);
+                sfxVolume = float.Parse(data["Volume"]["sfx"]);
 
-            resolutionIndex = int.Parse(data["Display"]["index"]);
-            resolutionWidth = int.Parse(data["Display"]["width"]);
-            resolutionHeight = int.Parse(data["Display"]["height"]);
-            fpsLimit = int.Parse(data["Display"]["fpsLimit"]);
-            fullscreen = bool.Parse(data["Display"]["fullscreen"]);
-            vSync = bool.Parse(data["Display"]["vsync"]);
+                resolutionIndex = int.Parse(data["Display"]["index"]);
+                resolutionWidth = int.Parse(data["Display"]["width"]);
+                resolutionHeight = int.Parse(data["Display"]["height"]);
+                fpsLimit = int.Parse(data["Display"]["fpsLimit"]);
+                fullscreen = bool.Parse(data["Display"]["fullscreen"]);
+                vSync = bool.Parse(data["Display"]["vsync"]);
+            }
+            catch
+            {
+                Debug.LogError("Settings file mismatch.");
+                
+                InitializeIniFile();
+            }
         }
     }
 

@@ -70157,9 +70157,9 @@ PrefabInstance:
       propertyPath: m_Transitions.m_BlendHint
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6869182811297893632, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
-      propertyPath: m_IgnoreTimeScale
-      value: 1
+    - target: {fileID: 6869182811297893633, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
+      propertyPath: m_Antialiasing
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893635, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -70174,6 +70174,14 @@ PrefabInstance:
       value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893639, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869182811297893639, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
+      propertyPath: orthographic size
+      value: 11.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869182811297893639, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_BackGroundColor.b
       value: 0.101960786
       objectReference: {fileID: 0}
@@ -70184,6 +70192,10 @@ PrefabInstance:
     - target: {fileID: 6869182811297893639, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_BackGroundColor.r
       value: 0.101960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869182811297893639, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
+      propertyPath: m_AllowDynamicResolution
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}

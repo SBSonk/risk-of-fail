@@ -37,9 +37,16 @@ public class DiscordRPCManager : MonoBehaviour
     private void Start()
     {
         // Initialize RPC Connection
-        discordRPC = new Discord.Discord(applicationID, (System.UInt64)Discord.CreateFlags.NoRequireDiscord);
+        try
+        {
+            discordRPC = new Discord.Discord(applicationID, (System.UInt64)Discord.CreateFlags.NoRequireDiscord);
         
-        launchTimestamp = System.DateTimeOffset.Now.ToUnixTimeMilliseconds();
+            launchTimestamp = System.DateTimeOffset.Now.ToUnixTimeMilliseconds();
+        }
+        catch
+        {
+            Debug.LogWarning("Discord not detected.");
+        }
     }
 
     private void Update()

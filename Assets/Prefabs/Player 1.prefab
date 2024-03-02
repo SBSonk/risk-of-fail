@@ -352,7 +352,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 1
   m_FalloffIntensity: 0.396
   m_Color: {r: 0, g: 1, b: 1, a: 1}
-  m_Intensity: 0.05
+  m_Intensity: 0.025
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 000000009f9640c04573ce29b91c36cdcbf159bc15c72e20
@@ -5977,6 +5977,8 @@ MonoBehaviour:
     weapon: {fileID: 11400000, guid: 124a9b1f205ce7e4c986a97c4682f93e, type: 2}
     clip: 0
     pool: 0
+  currentWeaponIndex: 0
+  weaponPickupPrefab: {fileID: 0}
   reloadMultiplier: 1
   reloading: 0
   canShoot: 1
@@ -5991,6 +5993,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnAmmoUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWeaponPickup:
     m_PersistentCalls:
       m_Calls: []
   OnShoot:
@@ -8093,7 +8098,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
+          value: 0.5
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -8101,17 +8106,8 @@ ParticleSystem:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.3962873
-          value: 1
-          inSlope: -0.76725805
-          outSlope: -0.76725805
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        - serializedVersion: 3
           time: 1
-          value: 0
+          value: 1
           inSlope: -2
           outSlope: -2
           tangentMode: 0
@@ -8418,13 +8414,13 @@ ParticleSystem:
     enabled: 1
     gradient:
       serializedVersion: 2
-      minMaxState: 3
+      minMaxState: 1
       minColor: {r: 1, g: 1, b: 1, a: 1}
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.64328945, g: 0.94526756, b: 0.9811321, a: 1}
-        key1: {r: 0.8349056, g: 0.9827227, b: 1, a: 1}
+        key0: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 1, g: 1, b: 1, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -9195,8 +9191,8 @@ ParticleSystem:
     m_Curve:
       serializedVersion: 2
       minMaxState: 3
-      scalar: -0.4
-      minScalar: -0.2
+      scalar: -0.2
+      minScalar: -0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -9798,7 +9794,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   NoiseModule:
-    enabled: 0
+    enabled: 1
     strength:
       serializedVersion: 2
       minMaxState: 0

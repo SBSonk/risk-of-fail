@@ -15,7 +15,7 @@ public class MeleeWeapon : Weapon
 
     public AudioClipRandomizer soundPrefab;
 
-    public IEnumerator SwingWeapon(Transform player, float multiplier = 1)
+    public virtual IEnumerator SwingWeapon(Transform player, float multiplier = 1)
     {
         yield return new WaitForSeconds(swingDelay);
 

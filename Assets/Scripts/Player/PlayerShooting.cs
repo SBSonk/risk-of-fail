@@ -70,7 +70,7 @@ public class PlayerShooting : MonoBehaviour
                     // Add reload to melee
                     MeleeBehavior(m);
                     break;
-                
+
                 case Highlighter h:
                     HighlighterBehavior(h);
                     break;

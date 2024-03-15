@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 520a509457374ad4e84309512ed392b6, type: 3}
-  m_Name: Eraser
+  m_Script: {fileID: 11500000, guid: a7978624c9a915b42854b10b4b6e8deb, type: 3}
+  m_Name: Stapler
   m_EditorClassIdentifier: 
   shopData:
     weaponDescription: 
@@ -19,15 +19,15 @@ MonoBehaviour:
     weaponFireRate: 0
     weaponPiercing: 0
   hud:
-    sprite: {fileID: -896163793, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
-    offset: {x: 60, y: 0}
+    sprite: {fileID: -1750601356, guid: 6ba7b478b5b5b114eb7426493a54a34c, type: 3}
+    offset: {x: 0, y: 0}
     crossHair:
-      sprite: {fileID: 21300000, guid: c044f041ba1579d46af06ec60c6ee0be, type: 3}
+      sprite: {fileID: -1961095014, guid: ac1cb1997c2bb9c47a38e95b1219b296, type: 3}
       rotationSpeed: 0
-  weaponSprite: {fileID: 1004503787, guid: e3c15e47d68fcd541b90052911096172, type: 3}
+  weaponSprite: {fileID: 21300000, guid: 61ac40b257b3a994f841856ad38b2b6b, type: 3}
   baseDamage: 35
   bulletSpread: 0
-  knockbackAmount: 15
+  knockbackAmount: 5
   stunLength: 0.2
   defaultAmmoCount: 100
   ammoPerShot: 1
@@ -38,15 +38,9 @@ MonoBehaviour:
   shootShake: {fileID: 11400000, guid: c182fb5cc6ba4cf43b41ad856b62f48f, type: 2}
   hitScreenShake: {fileID: 0}
   effects:
-    shootSounds:
-    - {fileID: 8300000, guid: 9b3e9a67de983a249a9d2991f067c8ae, type: 3}
-    - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
-    - {fileID: 8300000, guid: a966d22bc9b693943bbe2b87359c1550, type: 3}
-    - {fileID: 8300000, guid: 631e48f507d9c9d49a5cc81238e4b8f3, type: 3}
+    shootSounds: []
     reloadSounds: []
-    shoveSounds:
-    - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
-    - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
+    shoveSounds: []
     enemyHitSounds: []
     wallHitSounds: []
   weaponScale: {x: 1, y: 1, z: 1}
@@ -64,9 +58,12 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 512
+      m_Bits: 0
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
   soundPrefab: {fileID: 0}
+  bulletVelocity: 4
+  pierceAmount: 1
+  bullet: {fileID: 4519855712770121969, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}

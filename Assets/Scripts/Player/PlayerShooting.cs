@@ -48,7 +48,7 @@ public class PlayerShooting : MonoBehaviour
 
         // Get direction from cursor to player and make the player face it
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 mousePos = ((Vector2) transform.position + playerOffset - mousePosition).normalized;
+        Vector2 mousePos = ((Vector2) Camera.main.transform.position + playerOffset - mousePosition).normalized;
         float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
         gunPivot.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 

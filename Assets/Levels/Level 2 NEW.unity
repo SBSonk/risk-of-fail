@@ -105080,7 +105080,7 @@ PrefabInstance:
     - target: {fileID: 1103552165010391015, guid: 669e045132461254b9c8acf15694a075, type: 3}
       propertyPath: slots.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 406c8aba66bb16848b26dc506ca1736e, type: 2}
+      objectReference: {fileID: 11400000, guid: 093d3060ca93f9b42b46cf294c74ea3c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 669e045132461254b9c8acf15694a075, type: 3}
 --- !u!1001 &2603249502013079757
@@ -105478,38 +105478,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 944821669961328545, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: _mixerGroup
-      value: 
-      objectReference: {fileID: -2226441571897678685, guid: 7497906a8a74ddc4a973290d1bbdc7b9, type: 2}
-    - target: {fileID: 944821669961328546, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: -2226441571897678685, guid: 7497906a8a74ddc4a973290d1bbdc7b9, type: 2}
-    - target: {fileID: 944821670972070348, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: -2226441571897678685, guid: 7497906a8a74ddc4a973290d1bbdc7b9, type: 2}
-    - target: {fileID: 944821670972070349, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: _mixerGroup
-      value: 
-      objectReference: {fileID: -2226441571897678685, guid: 7497906a8a74ddc4a973290d1bbdc7b9, type: 2}
-    - target: {fileID: 944821671287411728, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: -2226441571897678685, guid: 7497906a8a74ddc4a973290d1bbdc7b9, type: 2}
-    - target: {fileID: 944821671287411735, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: _mixerGroup
-      value: 
-      objectReference: {fileID: -2226441571897678685, guid: 7497906a8a74ddc4a973290d1bbdc7b9, type: 2}
-    - target: {fileID: 944821671871353364, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: _mixerGroup
-      value: 
-      objectReference: {fileID: -2226441571897678685, guid: 7497906a8a74ddc4a973290d1bbdc7b9, type: 2}
-    - target: {fileID: 944821671871353365, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: -2226441571897678685, guid: 7497906a8a74ddc4a973290d1bbdc7b9, type: 2}
     - target: {fileID: 1425222227342113825, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -105559,62 +105527,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 932164225}
     - target: {fileID: 1425222227342113831, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: defaultSpeed
-      value: 7000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1425222227342113831, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1897636180}
     - target: {fileID: 1425222227342113836, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1425222227342113837, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: weaponPickupPrefab
-      value: 
-      objectReference: {fileID: 7519241639553075597, guid: c4c36b15bc4ca574888bb7f3faf31040, type: 3}
-    - target: {fileID: 6351469507471764861, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: m_text
-      value: This is a weird looking school...This is a weird looking school...This
-        is a weird looking school...This is a weird looking school...This is a weird
-        looking school...
-      objectReference: {fileID: 0}
-    - target: {fileID: 6351469507471764861, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: m_fontSize
-      value: 5.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6351469507471764861, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: m_lineSpacing
-      value: -30
-      objectReference: {fileID: 0}
-    - target: {fileID: 6351469507471764861, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 5.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6351469507471764861, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6351469508594216628, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6351469508799400225, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: fontSizes.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6351469508799400225, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: fontSizes.Array.data[0]
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6351469508799400225, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: fontSizes.Array.data[1]
-      value: 3.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6351469508799400225, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: fontSizes.Array.data[2]
-      value: 5.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4459aceedd52014cac48ced1e01565c, type: 3}

@@ -17,7 +17,7 @@ public class Room : MonoBehaviour
     public bool active = false;
     bool unEntered = true;
 
-    public float timeToRegisterInside = 0.25f;
+    public float timeToRegisterInside = 0;
     float timeInside;
 
     private void Awake()

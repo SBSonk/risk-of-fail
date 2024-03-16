@@ -7,7 +7,7 @@ public class ControllableTilemapFade : MonoBehaviour
 {
     [SerializeField] private bool fadeOnStart = false;
     [SerializeField] private float fullFadeOpacity = 0.25f;
-    [SerializeField] private int fullSort = 1, normalSort = 0;
+    [SerializeField] private int fullSort = 0, normalSort = 0;
 
     [SerializeField] private ObjectFade[] objectsToFade;
     float targetOpacity = 1;

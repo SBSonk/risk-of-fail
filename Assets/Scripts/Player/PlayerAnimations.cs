@@ -71,6 +71,7 @@ public class PlayerAnimations : MonoBehaviour
         if (KInputManager.GetKey("Shoot").Pressed() || KInputManager.GetKey("Shoot").PressedDown() || KInputManager.GetKey("Shove").PressedDown())
         {
             followCursor = true;
+            canSwitchAnimation = true;
             CancelInvoke();
         }
         else if (followCursor) Invoke("StopCursorFollow", stopCursorFollowTime);

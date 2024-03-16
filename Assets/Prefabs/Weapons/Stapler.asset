@@ -25,8 +25,8 @@ MonoBehaviour:
       sprite: {fileID: -1961095014, guid: ac1cb1997c2bb9c47a38e95b1219b296, type: 3}
       rotationSpeed: 0
   weaponSprite: {fileID: 21300000, guid: 61ac40b257b3a994f841856ad38b2b6b, type: 3}
-  baseDamage: 35
-  bulletSpread: 0
+  baseDamage: 25
+  bulletSpread: 0.75
   knockbackAmount: 5
   stunLength: 0.2
   defaultAmmoCount: 100
@@ -64,6 +64,10 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   soundPrefab: {fileID: 0}
-  bulletVelocity: 4
+  bulletDamage: 7.5
+  bulletOffset: {x: 0, y: 1, z: 0}
+  amountOfBullets: 3
+  timeBetweenBullets: 0.1
+  bulletVelocity: 3
   pierceAmount: 1
   bullet: {fileID: 4519855712770121969, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}

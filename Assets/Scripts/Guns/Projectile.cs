@@ -55,7 +55,6 @@ public class Projectile : MonoBehaviour
         {
             if (collision.GetComponent<Enemy>() || collision.GetComponent<BossEnemy>()) LevelStats.main.BulletHit(); // Should prolly use an event instead  
             
-            
             // Screenshake
             if (bulletShake) CameraShakerHandler.Shake(bulletShake);
 
@@ -67,10 +66,18 @@ public class Projectile : MonoBehaviour
             if (isPlayerBullet) LevelStats.main.GiveDamage(damage);
         }
 
+        // Reduce damage every pierce
         hitmarker.Play();
+        damage /= 1.25f;
 
+        if (collision.CompareTag("Alive")) pierces--;
+
+        if (paintPrefab) Instantiate(paintPrefab, transform.position, Quaternion.identity);
+        audioRandomizer.SetAudioClips(collision.CompareTag("Wall") ? _wallHit : _enemyHit);
+        if (audioRandomizer.HasAudioClips()) audioRandomizer.PlaySFX();
+        
         // Piercing
-        if (pierces == 0 || collision.CompareTag("Wall"))
+        if (pierces <= 0 || collision.CompareTag("Wall"))
         {
             rb.velocity = Vector2.zero;
             if (!collision.CompareTag("Wall")) sprite.SetActive(false);
@@ -80,14 +87,5 @@ public class Projectile : MonoBehaviour
             active = false;
             Destroy(gameObject, 1f);
         }
-
-        // Reduce damage every pierce
-        damage /= 1.25f;
-
-        if (collision.CompareTag("Alive")) pierces--;
-
-        if (paintPrefab) Instantiate(paintPrefab, transform.position, Quaternion.identity);
-        audioRandomizer.SetAudioClips(collision.CompareTag("Wall") ? _wallHit : _enemyHit);
-        if (audioRandomizer.HasAudioClips()) audioRandomizer.PlaySFX();
     }
 }

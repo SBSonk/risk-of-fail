@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2ce9d97f3c6db14e9874ba3e6605c0e, type: 3}
+  m_Name: Smart Pencil
+  m_EditorClassIdentifier: 
+  shopData:
+    weaponDescription: 
+    weaponCost: 0
+    weaponStrength: 0
+    weaponFireRate: 0
+    weaponPiercing: 0
+  hud:
+    sprite: {fileID: 1909206577, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
+    offset: {x: 0, y: 0}
+    crossHair:
+      sprite: {fileID: 21300000, guid: 356967556be0e904c8c4e72af6a40310, type: 3}
+      rotationSpeed: 0
+  weaponSprite: {fileID: -1336718240, guid: e3c15e47d68fcd541b90052911096172, type: 3}
+  baseDamage: 15
+  bulletSpread: 0.5
+  knockbackAmount: 3
+  stunLength: 0.1
+  defaultAmmoCount: 32
+  ammoPerShot: 1
+  clipSize: 8
+  reloadLength: 0.75
+  fireRate: 0.15
+  auto: 0
+  shootShake: {fileID: 11400000, guid: 6caba7f04f154e947b688247456a3713, type: 2}
+  hitScreenShake: {fileID: 0}
+  effects:
+    shootSounds:
+    - {fileID: 8300000, guid: 3686c0fbeeb9ff146b41d1344aae942a, type: 3}
+    - {fileID: 8300000, guid: 3686c0fbeeb9ff146b41d1344aae942a, type: 3}
+    reloadSounds:
+    - {fileID: 8300000, guid: e8fb72ae3d354be40840114c4ba47210, type: 3}
+    - {fileID: 8300000, guid: e8fb72ae3d354be40840114c4ba47210, type: 3}
+    shoveSounds:
+    - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
+    - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
+    enemyHitSounds:
+    - {fileID: 8300000, guid: 094e9f8f5f44384499ecb24c89440042, type: 3}
+    - {fileID: 8300000, guid: 094e9f8f5f44384499ecb24c89440042, type: 3}
+    wallHitSounds:
+    - {fileID: 8300000, guid: 3cb087bc9a806ac4a947713641f8badb, type: 3}
+    - {fileID: 8300000, guid: 3cb087bc9a806ac4a947713641f8badb, type: 3}
+  weaponScale: {x: 1, y: 1, z: 1}
+  weaponOffset: {x: 0, y: 0, z: 0}
+  animatorController: {fileID: 3547711302689169352, guid: 4b2b07a63c1552f40a9d69fd08d36701, type: 3}
+  rigidbodyVariant: {fileID: 1313665015591399849, guid: 64e44dbde740a934f983afe9899e0c63, type: 3}
+  bulletVelocity: 3
+  pierceAmount: 0
+  bullet: {fileID: -439154292212520704, guid: 8ac13da2255923c418dbf35082934715, type: 3}
+  ammoDrop: {fileID: 11400000, guid: f302226df0edca742ad2b2e731745e51, type: 2}

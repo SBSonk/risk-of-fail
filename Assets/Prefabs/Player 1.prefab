@@ -151,7 +151,7 @@ AudioSource:
   m_GameObject: {fileID: 944821669961328551}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2226441571897678685, guid: 7497906a8a74ddc4a973290d1bbdc7b9, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -482,7 +482,7 @@ AudioSource:
   m_GameObject: {fileID: 944821670972070354}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2226441571897678685, guid: 7497906a8a74ddc4a973290d1bbdc7b9, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -5507,7 +5507,7 @@ AudioSource:
   m_GameObject: {fileID: 944821671287411733}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2226441571897678685, guid: 7497906a8a74ddc4a973290d1bbdc7b9, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -5698,7 +5698,7 @@ AudioSource:
   m_GameObject: {fileID: 944821671871353370}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2226441571897678685, guid: 7497906a8a74ddc4a973290d1bbdc7b9, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -5903,7 +5903,7 @@ MonoBehaviour:
   pShooting: {fileID: 0}
   pAnimations: {fileID: 0}
   pSFXManager: {fileID: 0}
-  defaultSpeed: 6000
+  defaultSpeed: 7000
   deathParticles: {fileID: 944821671135324380}
 --- !u!114 &1425222227342113828
 MonoBehaviour:
@@ -5978,7 +5978,7 @@ MonoBehaviour:
     clip: 0
     pool: 0
   currentWeaponIndex: 0
-  weaponPickupPrefab: {fileID: 0}
+  weaponPickupPrefab: {fileID: 7519241639553075597, guid: c4c36b15bc4ca574888bb7f3faf31040, type: 3}
   reloadMultiplier: 1
   reloading: 0
   canShoot: 1
@@ -12064,6 +12064,24 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 3083872952344397177, guid: 8ddd295aba8ac5043940079e7c864dfd, type: 3}
       propertyPath: FinishedText.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083872952344397183, guid: 8ddd295aba8ac5043940079e7c864dfd, type: 3}
+      propertyPath: m_text
+      value: This is a weird looking school...This is a weird looking school...This
+        is a weird looking school...This is a weird looking school...This is a weird
+        looking school...
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083872952344397183, guid: 8ddd295aba8ac5043940079e7c864dfd, type: 3}
+      propertyPath: m_lineSpacing
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083872952344397183, guid: 8ddd295aba8ac5043940079e7c864dfd, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 5.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083872952344397183, guid: 8ddd295aba8ac5043940079e7c864dfd, type: 3}
+      propertyPath: m_enableAutoSizing
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

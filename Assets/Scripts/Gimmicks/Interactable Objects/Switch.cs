@@ -12,12 +12,16 @@ public class Switch : MonoBehaviour
 
     public bool isActive, interactable = true, playerInRadius = false, disableOnUse;
 
+    public ShowInteractBuyable interactIcon;
+    
     public UnityEvent OnSwitchOn, OnSwitchToggled, OnSwitchOff;
     [SerializeField] private ShakeData useShake;
 
     private void Start()
     {
         light.color = isActive ? Color.green : Color.red;
+        
+        interactIcon = GetComponent<ShowInteractBuyable>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -43,6 +47,8 @@ public class Switch : MonoBehaviour
             {
                 interactable = false;
                 playerInRadius = false;
+                
+                interactIcon.Hide();
             }
         }
     }

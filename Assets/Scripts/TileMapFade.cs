@@ -10,6 +10,8 @@ public class TileMapFade : MonoBehaviour
     [SerializeField] private int fullSort = 2, normalSort = 0;
     float targetOpacity = 1;
 
+    [SerializeField] private ObjectFade[] objectsToFade;
+    
     Tilemap sprite;
     TilemapRenderer spriteRenderer;
     [SerializeField] float yPos;
@@ -30,11 +32,27 @@ public class TileMapFade : MonoBehaviour
         {
             targetOpacity = fullFadeOpacity;
             spriteRenderer.sortingOrder = fullSort;
+            
+            if (objectsToFade.Length > 0)
+            {
+                foreach (ObjectFade objectFade in objectsToFade)
+                {
+                    objectFade.UnFade();
+                }
+            }
         }
         else
         {
             targetOpacity = 1;
             spriteRenderer.sortingOrder = normalSort;
+            
+            if (objectsToFade.Length > 0)
+            {
+                foreach (ObjectFade objectFade in objectsToFade)
+                {
+                    objectFade.Fade();
+                }
+            }
         }
 
         Color c = sprite.color;

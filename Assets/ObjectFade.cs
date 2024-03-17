@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectFade : MonoBehaviour
 {
     [SerializeField] Transform anchor;
-    [SerializeField] private int fullSort = 3, normalSort = 0;
+    [SerializeField] private int fullSort = 0, normalSort = 0;
     [SerializeField] private float fullFadeOpacity = 0.25f;
     float targetOpacity = 1;
 

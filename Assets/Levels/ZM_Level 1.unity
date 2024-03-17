@@ -1549,6 +1549,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8616443848107018363, guid: fbdf08d59c78e164eb27fa2c99c08ab7, type: 3}
   m_PrefabInstance: {fileID: 1198295972}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &155916689 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2212759715113277058, guid: 231c7f9677a5ddf4381496353ffd097d, type: 3}
+  m_PrefabInstance: {fileID: 352148291}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b1c667efc21a04b876bd9e68511478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &157712058
 GameObject:
   m_ObjectHideFlags: 0
@@ -1772,6 +1783,10 @@ PrefabInstance:
     - target: {fileID: 6869182811297893639, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: field of view
       value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869182811297893639, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
+      propertyPath: orthographic size
+      value: 11.25
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893639, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_OcclusionCulling
@@ -3425,6 +3440,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78480f95aac2c5843a9797f75be4e23d, type: 3}
+--- !u!114 &325389835 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 526461168702200167, guid: 78480f95aac2c5843a9797f75be4e23d, type: 3}
+  m_PrefabInstance: {fileID: 325389834}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b1c667efc21a04b876bd9e68511478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &327129832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13890,6 +13916,9 @@ MonoBehaviour:
   fullFadeOpacity: 0.2
   fullSort: 0
   normalSort: 0
+  objectsToFade:
+  - {fileID: 7284414544990017392}
+  - {fileID: 325389835}
   yPos: -8.999
 --- !u!483693784 &843086745
 TilemapRenderer:
@@ -29606,6 +29635,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78480f95aac2c5843a9797f75be4e23d, type: 3}
+--- !u!114 &969324011 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 526461168702200167, guid: 78480f95aac2c5843a9797f75be4e23d, type: 3}
+  m_PrefabInstance: {fileID: 969324010}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b1c667efc21a04b876bd9e68511478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &971426923
 GameObject:
   m_ObjectHideFlags: 0
@@ -33604,6 +33644,8 @@ MonoBehaviour:
   fullFadeOpacity: 0.2
   fullSort: 0
   normalSort: 0
+  objectsToFade:
+  - {fileID: 969324011}
   yPos: 21.98899
 --- !u!483693784 &1227001764
 TilemapRenderer:
@@ -39665,6 +39707,8 @@ MonoBehaviour:
   fullFadeOpacity: 0.2
   fullSort: 0
   normalSort: 0
+  objectsToFade:
+  - {fileID: 155916689}
   yPos: 14.9925
 --- !u!483693784 &1605714117
 TilemapRenderer:
@@ -44034,6 +44078,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78480f95aac2c5843a9797f75be4e23d, type: 3}
+--- !u!114 &1955873059 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 526461168702200167, guid: 78480f95aac2c5843a9797f75be4e23d, type: 3}
+  m_PrefabInstance: {fileID: 1955873058}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b1c667efc21a04b876bd9e68511478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1956001796 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 523044153453226642, guid: 091332177bfd60241b157083e8dac37a, type: 3}
@@ -46902,6 +46957,8 @@ MonoBehaviour:
   fullFadeOpacity: 0.2
   fullSort: 0
   normalSort: 0
+  objectsToFade:
+  - {fileID: 1955873059}
   yPos: 14
 --- !u!483693784 &2127003613
 TilemapRenderer:
@@ -47871,3 +47928,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78480f95aac2c5843a9797f75be4e23d, type: 3}
+--- !u!114 &7284414544990017392 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 526461168702200167, guid: 78480f95aac2c5843a9797f75be4e23d, type: 3}
+  m_PrefabInstance: {fileID: 7284414544990017391}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b1c667efc21a04b876bd9e68511478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

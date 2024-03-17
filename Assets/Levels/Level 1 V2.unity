@@ -3133,6 +3133,9 @@ MonoBehaviour:
   fullFadeOpacity: 0.2
   fullSort: 2
   normalSort: 0
+  objectsToFade:
+  - {fileID: 1229910089}
+  - {fileID: 1054494661}
   yPos: -8.745626
 --- !u!483693784 &100090271
 TilemapRenderer:
@@ -11232,6 +11235,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 231c7f9677a5ddf4381496353ffd097d, type: 3}
+--- !u!114 &485633028 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2212759715113277058, guid: 231c7f9677a5ddf4381496353ffd097d, type: 3}
+  m_PrefabInstance: {fileID: 485633027}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b1c667efc21a04b876bd9e68511478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &485747171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3560765825850647133, guid: a351d1e0f0c8f5049be78034be11163a, type: 3}
@@ -33394,6 +33408,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1336718240, guid: e3c15e47d68fcd541b90052911096172, type: 3}
+    - target: {fileID: 2219022232220137925, guid: c4c36b15bc4ca574888bb7f3faf31040, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2219022232220137926, guid: c4c36b15bc4ca574888bb7f3faf31040, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
@@ -33872,6 +33890,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5447055851916335713, guid: 3e40ade8b5fc64741894e84566504f2a, type: 3}
   m_PrefabInstance: {fileID: 979022348}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &545568127 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6163108856718666048, guid: b0ff0aa1c1aacf64b8ccc40b0a5ed933, type: 3}
+  m_PrefabInstance: {fileID: 2513185346825215727}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b1c667efc21a04b876bd9e68511478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &546664065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35641,7 +35670,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.5625, y: 2.5, z: 0}
+  m_ChunkCullingBounds: {x: 0.5624999, y: 2.5, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -38332,6 +38361,17 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1131439224, guid: 502db2d1007d3344781de0f3c503d619, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 502db2d1007d3344781de0f3c503d619, type: 3}
+--- !u!114 &778956436 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6163108856718666048, guid: b0ff0aa1c1aacf64b8ccc40b0a5ed933, type: 3}
+  m_PrefabInstance: {fileID: 677752893}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b1c667efc21a04b876bd9e68511478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &780982175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41665,6 +41705,7 @@ MonoBehaviour:
   fullFadeOpacity: 0.2
   fullSort: 0
   normalSort: 0
+  objectsToFade: []
   yPos: -5.247375
 --- !u!483693784 &943181194
 TilemapRenderer:
@@ -45459,6 +45500,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1791a618b386bb04cb6926739f19c93c, type: 3}
+--- !u!114 &1054494661 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5280942353967720004, guid: 2dd9200aa221a904887fa8d8ada30939, type: 3}
+  m_PrefabInstance: {fileID: 613317903}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b1c667efc21a04b876bd9e68511478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1054848743 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2007897067529035550, guid: ab82b844073d0a24c9a8d2168a442644, type: 3}
@@ -46478,6 +46530,8 @@ MonoBehaviour:
   fullFadeOpacity: 0.2
   fullSort: 0
   normalSort: 0
+  objectsToFade:
+  - {fileID: 545568127}
   yPos: -8.745626
 --- !u!4 &1076202580 stripped
 Transform:
@@ -50030,6 +50084,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2374199567593871621, guid: b5bd6412a1502c74d89a6ce4b7894617, type: 3}
   m_PrefabInstance: {fileID: 1190309235}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1229910089 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5280942353967720004, guid: 2dd9200aa221a904887fa8d8ada30939, type: 3}
+  m_PrefabInstance: {fileID: 2075719404829509150}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b1c667efc21a04b876bd9e68511478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1230882583 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5481737921148401669, guid: d1ae793bce4864f48ac4f9c30b2c5114, type: 3}
@@ -56482,6 +56547,9 @@ MonoBehaviour:
   fullFadeOpacity: 0.2
   fullSort: 0
   normalSort: 0
+  objectsToFade:
+  - {fileID: 1729878189}
+  - {fileID: 485633028}
   yPos: -8.745626
 --- !u!483693784 &1396784211
 TilemapRenderer:
@@ -57356,6 +57424,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1791a618b386bb04cb6926739f19c93c, type: 3}
+--- !u!114 &1440460041 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6163108856718666048, guid: b0ff0aa1c1aacf64b8ccc40b0a5ed933, type: 3}
+  m_PrefabInstance: {fileID: 530987368}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b1c667efc21a04b876bd9e68511478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1440464512 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 663411022572738282, guid: 55f6d607a448c164fa9bcc6045aa8e37, type: 3}
@@ -66522,6 +66601,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 231c7f9677a5ddf4381496353ffd097d, type: 3}
+--- !u!114 &1729878189 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2212759715113277058, guid: 231c7f9677a5ddf4381496353ffd097d, type: 3}
+  m_PrefabInstance: {fileID: 1729878188}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b1c667efc21a04b876bd9e68511478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1731140622 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 823429097417159256, guid: a22e635d01e38cb4abd43151c70fa279, type: 3}
@@ -68351,6 +68441,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cb2c3b95d0e44544b0a968f8b5fac3c, type: 3}
+--- !u!114 &1827378665 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6163108856718666048, guid: b0ff0aa1c1aacf64b8ccc40b0a5ed933, type: 3}
+  m_PrefabInstance: {fileID: 760048248}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b1c667efc21a04b876bd9e68511478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1827497580 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4086233318403599455, guid: 1771f753e5739e945a76945e90cb3ac1, type: 3}
@@ -70476,6 +70577,8 @@ MonoBehaviour:
   fullFadeOpacity: 0.25
   fullSort: 0
   normalSort: 0
+  objectsToFade:
+  - {fileID: 778956436}
   yPos: 10
 --- !u!483693784 &1917677461
 TilemapRenderer:
@@ -75187,6 +75290,8 @@ MonoBehaviour:
   fullFadeOpacity: 0.2
   fullSort: 0
   normalSort: 0
+  objectsToFade:
+  - {fileID: 1827378665}
   yPos: -5.247375
 --- !u!483693784 &2109245996
 TilemapRenderer:
@@ -76022,6 +76127,8 @@ MonoBehaviour:
   fullFadeOpacity: 0.25
   fullSort: 2
   normalSort: 0
+  objectsToFade:
+  - {fileID: 1440460041}
   yPos: 15.992
 --- !u!483693784 &2143671258
 TilemapRenderer:
@@ -76440,6 +76547,10 @@ PrefabInstance:
     - target: {fileID: 2074068552669241245, guid: 38ce9bf347e7acc43a1de852088e90a6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2074068552981686017, guid: 38ce9bf347e7acc43a1de852088e90a6, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38ce9bf347e7acc43a1de852088e90a6, type: 3}
@@ -76965,7 +77076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5352588403476070934, guid: f4c99eb1adab1104c928f5788ebcbda1, type: 3}
       propertyPath: m_Offset.y
-      value: -2.0385146
+      value: -2.68
       objectReference: {fileID: 0}
     - target: {fileID: 5352588403476070935, guid: f4c99eb1adab1104c928f5788ebcbda1, type: 3}
       propertyPath: m_RootOrder

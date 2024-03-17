@@ -64,4 +64,16 @@ public class LoadoutManager : MonoBehaviour
         
         return pool;
     }
+    
+    public bool CheckIfWeaponOwned(Weapon type)
+    {
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i] == null) continue;
+
+            if (slots[i].name == type.name) return true;
+        }
+        
+        return false;
+    }
 }

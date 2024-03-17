@@ -6,7 +6,7 @@ public class AmmoPickup : PickupBase
 
     protected override void Start()
     {
-        if (GameManager.main.pData.weaponsOwned.Count == 1)
+        if (PlayerStatus.player.pShooting.GetWeaponCount() == 1)
         {
             Destroy(transform.parent.gameObject);
             return;

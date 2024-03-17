@@ -20,14 +20,13 @@ public class DialogueTrigger : MonoBehaviour
     private void Start()
     {
         DialogueManager.main.OnDialogueTrigger.AddListener(() => this.OnDialogueTrigger?.Invoke());
-        DialogueManager.main.OnDialogueFinish.AddListener(() => this.OnDialogueFinish?.Invoke());
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (!col.CompareTag("Player") || !active) return;
         
-        DialogueManager.main.ShowText(dialogue);
+        DialogueManager.main.ShowText(dialogue, OnDialogueFinish);
         
         if (disableOnTrigger) SetActive(false);
         else

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +8,8 @@ public class RoomKillCounter : MonoBehaviour
     public int killsNeeded = 10;
     public bool active = true;
 
+    public TextMeshPro text;
+    
     public void AddKill()
     {
         if (!active) return;
@@ -17,6 +20,8 @@ public class RoomKillCounter : MonoBehaviour
         {
             FinishCounter();
         }
+
+        if (text)text.text = killsNeeded.ToString();
     }
 
     public void FinishCounter()

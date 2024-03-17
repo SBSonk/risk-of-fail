@@ -31,15 +31,15 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(PanelAnimation(text));
     }
     
-    public void ShowText(DialogueText[] dialogue)
+    public void ShowText(DialogueText[] dialogue, UnityEvent callback)
     {
         StopAllCoroutines();
         
         OnDialogueTrigger?.Invoke();
-        StartCoroutine(PanelAnimation(dialogue));
+        StartCoroutine(PanelAnimation(dialogue, callback));
     }
 
-    IEnumerator PanelAnimation(string text, bool append = false, float disappearTime = 0.5f)
+    IEnumerator PanelAnimation(string text, UnityEvent callback = null, bool append = false, float disappearTime = 0.5f)
     {
         anim.Play("DialogueOpen");
         tmp.text = "";
@@ -55,10 +55,12 @@ public class DialogueManager : MonoBehaviour
 
         yield return new WaitForSeconds(disappearTime);
 
+        callback?.Invoke();
+        
         HideText();
     }
     
-    IEnumerator PanelAnimation(DialogueText[] dialogue)
+    IEnumerator PanelAnimation(DialogueText[] dialogue, UnityEvent callback = null)
     {
         anim.Play("DialogueOpen");
         tmp.text = "";
@@ -76,6 +78,8 @@ public class DialogueManager : MonoBehaviour
 
             yield return new WaitForSeconds(d.holdTime);
         }
+        
+        callback?.Invoke();
         
         HideText();
     }

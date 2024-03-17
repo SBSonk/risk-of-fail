@@ -45988,6 +45988,7 @@ MonoBehaviour:
         m_CallState: 2
   killsNeeded: 15
   active: 1
+  text: {fileID: 0}
 --- !u!114 &1059757356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68726,6 +68727,7 @@ MonoBehaviour:
         m_CallState: 2
   killsNeeded: 30
   active: 1
+  text: {fileID: 0}
 --- !u!1001 &1832480762
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76676,6 +76678,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Loadout Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 1103552165010391015, guid: 669e045132461254b9c8acf15694a075, type: 3}
+      propertyPath: slots.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 669e045132461254b9c8acf15694a075, type: 3}
 --- !u!1001 &1264615434974004284
@@ -78218,34 +78224,6 @@ PrefabInstance:
     - target: {fileID: 5949847264606639965, guid: ee452e7ace570014eb658f5ad2722b2e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5949847264606639966, guid: ee452e7ace570014eb658f5ad2722b2e, type: 3}
-      propertyPath: keyBinds.Array.size
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 5949847264606639966, guid: ee452e7ace570014eb658f5ad2722b2e, type: 3}
-      propertyPath: keyBinds.Array.data[11].name
-      value: WeaponA
-      objectReference: {fileID: 0}
-    - target: {fileID: 5949847264606639966, guid: ee452e7ace570014eb658f5ad2722b2e, type: 3}
-      propertyPath: keyBinds.Array.data[12].name
-      value: WeaponB
-      objectReference: {fileID: 0}
-    - target: {fileID: 5949847264606639966, guid: ee452e7ace570014eb658f5ad2722b2e, type: 3}
-      propertyPath: keyBinds.Array.data[13].name
-      value: WeaponC
-      objectReference: {fileID: 0}
-    - target: {fileID: 5949847264606639966, guid: ee452e7ace570014eb658f5ad2722b2e, type: 3}
-      propertyPath: keyBinds.Array.data[11].primary
-      value: 49
-      objectReference: {fileID: 0}
-    - target: {fileID: 5949847264606639966, guid: ee452e7ace570014eb658f5ad2722b2e, type: 3}
-      propertyPath: keyBinds.Array.data[12].primary
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5949847264606639966, guid: ee452e7ace570014eb658f5ad2722b2e, type: 3}
-      propertyPath: keyBinds.Array.data[13].primary
-      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 5949847264606639967, guid: ee452e7ace570014eb658f5ad2722b2e, type: 3}
       propertyPath: m_Name

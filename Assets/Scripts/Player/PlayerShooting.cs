@@ -466,11 +466,21 @@ public class PlayerShooting : MonoBehaviour
     {
         for (int i = 0; i < weaponPool.Length; i++)
         {
-            if (weaponPool[i] == null) continue;
-
+            if (weaponPool[i] == null || weaponPool[i].weapon == null) continue;
             if (weaponPool[i].weapon.name == type.name) return true;
         }
         
         return false;
+    }
+
+    public int GetWeaponCount()
+    {
+        int count = 0;
+        foreach (var slot in weaponPool)
+        {
+            if (slot.weapon != null) count++;
+        }
+
+        return count;
     }
 }

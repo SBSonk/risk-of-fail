@@ -14,8 +14,7 @@ public class RubberDucky : InteractBase
     public bool riding;
     protected override void PlayerInteract()
     {
-        if (riding && canExit) riding = false;
-        riding = true;
+        riding = !riding;
     }
 
     private void FixedUpdate()

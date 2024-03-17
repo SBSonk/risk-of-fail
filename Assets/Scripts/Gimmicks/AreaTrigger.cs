@@ -10,7 +10,7 @@ public class AreaTrigger : MonoBehaviour
     public bool interactable = true, disableOnUse = true;
     bool unEntered = true;
     
-    public float timeToRegisterInside = 1;
+    public float timeToRegisterInside = 0;
     float timeInside;
     
     private void OnTriggerEnter2D(Collider2D collision)

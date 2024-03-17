@@ -130,7 +130,7 @@ public class ZSpawning2 : MonoBehaviour
     {
         spawns.Add(new ZSpawnPoint() {position = spawnLocation});
     }
-
+    
     void DetermineActiveSpawns()
     {
         for (int i = 0; i < spawns.Count; i++)

@@ -10,6 +10,19 @@ public class KillArea : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D col)
     {
-        throw new NotImplementedException();
+        if (col.TryGetComponent(out Enemy e))
+        {
+            e.onEnemyDeath.AddListener(KillEvent);
+        }
     }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.TryGetComponent(out Enemy e))
+        {
+            e.onEnemyDeath.RemoveListener(KillEvent);
+        }
+    }
+
+    void KillEvent(EnemyType _) => OnKill?.Invoke();
 }

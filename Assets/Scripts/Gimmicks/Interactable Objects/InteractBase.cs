@@ -9,14 +9,14 @@ public abstract class InteractBase : MonoBehaviour
     public bool interactable = true, playerInRadius = false;
     public Transform playerTransform;
     public UnityEvent OnPlayerEnter, OnPlayerLeave, OnPickup;
-    private Animator anim;
+    protected Animator anim;
 
     protected virtual void Start()
     {
         anim = GetComponent<Animator>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
         playerInRadius = true;
@@ -28,7 +28,7 @@ public abstract class InteractBase : MonoBehaviour
             anim.Play("InRange");
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    protected virtual void OnTriggerExit2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
         playerInRadius = false;

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 412042312470844635}
   - component: {fileID: 412042312470844632}
-  - component: {fileID: 1070368153296095290}
   - component: {fileID: 2075398298}
   m_Layer: 9
   m_Name: Bookshelf
@@ -61,26 +60,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.231963, y: 1.2701283}
   m_EdgeRadius: 0
---- !u!114 &1070368153296095290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 412042312470844634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73ead1c0bc7937a47be1fcdc6a13978d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: -1253438058, guid: e0de8608e44fc234cbcd044c10c21cdf, type: 3}
-  - {fileID: -2073243459, guid: e0de8608e44fc234cbcd044c10c21cdf, type: 3}
-  - {fileID: -1998955912, guid: e0de8608e44fc234cbcd044c10c21cdf, type: 3}
-  - {fileID: -1577809856, guid: e0de8608e44fc234cbcd044c10c21cdf, type: 3}
-  - {fileID: -1372814891, guid: e0de8608e44fc234cbcd044c10c21cdf, type: 3}
-  - {fileID: 1181257701, guid: e0de8608e44fc234cbcd044c10c21cdf, type: 3}
-  spriteRenderer: {fileID: 402934275592317122}
 --- !u!114 &2075398298
 MonoBehaviour:
   m_ObjectHideFlags: 0

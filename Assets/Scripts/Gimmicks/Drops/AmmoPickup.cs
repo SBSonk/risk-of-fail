@@ -8,7 +8,8 @@ public class AmmoPickup : PickupBase
     {
         if (PlayerStatus.player.pShooting.GetWeaponCount() == 1)
         {
-            Destroy(transform.parent.gameObject);
+            print("destroy weapon");
+            Destroy(transform.parent.gameObject, 1f);
             return;
         }
 
@@ -37,6 +38,8 @@ public class AmmoPickup : PickupBase
 
         // Return if the player isnt the one who collected
         if (!other.CompareTag("Player")) return;
+
+        print("ammo picked up");
 
         var player = other.GetComponent<PlayerShooting>();
         int ammoToAdd = Random.Range(drop.min, drop.max);

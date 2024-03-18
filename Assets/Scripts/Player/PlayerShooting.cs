@@ -480,7 +480,7 @@ public class PlayerShooting : MonoBehaviour
         {
             if (slot.weapon != null) count++;
         }
-
+        print(count);
         return count;
     }
 }

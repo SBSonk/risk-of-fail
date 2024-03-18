@@ -8738,6 +8738,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1325088061899140315, guid: 40feff07a434ba54a9bb6960c38c8c0f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5717008275970273195, guid: 40feff07a434ba54a9bb6960c38c8c0f, type: 3}
       propertyPath: m_Name
       value: MediumPlate Variant
@@ -10510,7 +10514,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8129244631866247620, guid: 421dce19deff14041afb4a93224b6f28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -24.12
+      value: -32.25
       objectReference: {fileID: 0}
     - target: {fileID: 8129244631866247620, guid: 421dce19deff14041afb4a93224b6f28, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11340,8 +11344,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2033638112}
-  - {fileID: 1956001796}
   - {fileID: 1399112112}
+  - {fileID: 1956001796}
   - {fileID: 1726060604}
   - {fileID: 1147272767}
   - {fileID: 180514689}
@@ -16287,7 +16291,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.5, y: 2.5, z: 0}
   m_MaxChunkCount: 16
@@ -42550,7 +42554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6708647436901284214, guid: e4bd73cc1226467429033ef94c5e6632, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.919617
+      value: 54.26
       objectReference: {fileID: 0}
     - target: {fileID: 6708647436901284214, guid: e4bd73cc1226467429033ef94c5e6632, type: 3}
       propertyPath: m_LocalPosition.y
@@ -46320,7 +46324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5714695387182545302, guid: 326962bf76efcfd4296bb4de2692d332, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5714695387182545303, guid: 326962bf76efcfd4296bb4de2692d332, type: 3}
       propertyPath: m_RootOrder
@@ -46588,7 +46592,7 @@ PrefabInstance:
       objectReference: {fileID: -1336718240, guid: e3c15e47d68fcd541b90052911096172, type: 3}
     - target: {fileID: 7436926441814096414, guid: 421dce19deff14041afb4a93224b6f28, type: 3}
       propertyPath: price
-      value: 0
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7436926441814096414, guid: 421dce19deff14041afb4a93224b6f28, type: 3}
       propertyPath: weapon
@@ -47620,7 +47624,7 @@ Transform:
   - {fileID: 684707551}
   - {fileID: 1573297796}
   m_Father: {fileID: 560032323}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1402225324
 PrefabInstance:
@@ -49774,7 +49778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 523044153453226642, guid: 091332177bfd60241b157083e8dac37a, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 523044153453226642, guid: 091332177bfd60241b157083e8dac37a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -59793,7 +59797,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.328
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.8
+  m_Intensity: 0.2
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000

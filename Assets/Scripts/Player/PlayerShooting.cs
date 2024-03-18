@@ -110,7 +110,7 @@ public class PlayerShooting : MonoBehaviour
             // Dont allow weapon index to go below or above weapon count
             currentWeaponIndex %= weaponPool.Length;
             if (Mathf.Sign(currentWeaponIndex) < 0) currentWeaponIndex = weaponPool.Length - 1;
-        } while (weaponPool[currentWeaponIndex] == null);
+        } while (weaponPool[currentWeaponIndex] == null || weaponPool[currentWeaponIndex].weapon == null);
         
         // Disable reloading
         canShoot = true;
@@ -418,7 +418,7 @@ public class PlayerShooting : MonoBehaviour
 
         for (int i = 0; i < weaponPool.Length; i++)
         {
-            if (weaponPool[i] != null) count++;
+            if (weaponPool[i].weapon != null) count++;
         }
 
         return count == weaponPool.Length;
@@ -433,7 +433,7 @@ public class PlayerShooting : MonoBehaviour
 
         for (int i = 0; i < weaponPool.Length; i++)
         {
-            if (weaponPool[i] != null) continue;
+            if (weaponPool[i].weapon != null) continue;
 
             index = i;
             break;
@@ -466,8 +466,11 @@ public class PlayerShooting : MonoBehaviour
     {
         for (int i = 0; i < weaponPool.Length; i++)
         {
-            if (weaponPool[i] == null || weaponPool[i].weapon == null) continue;
-            if (weaponPool[i].weapon.name == type.name) return true;
+            if (!weaponPool[i].weapon) continue;
+            if (weaponPool[i].weapon.name == type.name)
+            {
+                return true;
+            }
         }
         
         return false;
@@ -480,7 +483,22 @@ public class PlayerShooting : MonoBehaviour
         {
             if (slot.weapon != null) count++;
         }
-        print(count);
+
         return count;
+    }
+
+    public bool HasGunTypeWeapon()
+    {
+        bool found = false;
+        foreach (var slot in weaponPool)
+        {
+            if (slot.weapon is Gun) 
+            {
+                found = true;
+                break;
+            }
+        }
+
+        return found;
     }
 }

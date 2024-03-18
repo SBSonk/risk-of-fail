@@ -4,19 +4,19 @@ public class AmmoPickup : PickupBase
 {
     public AmmoDrops drop;
 
-    protected override void Start()
+    protected override void Awake()
     {
-        if (PlayerStatus.player.pShooting.GetWeaponCount() == 1)
+        base.Awake();
+        if (!PlayerStatus.player.pShooting.HasGunTypeWeapon())
         {
-            print("destroy weapon");
+            print("no ammo weapon");
             Destroy(transform.parent.gameObject, 1f);
             return;
         }
-
+        
         try
         {
             GetComponent<ChooseAmmoDropType>().InitializeAmmo();
-            
             if (particles) particles.startColor = drop.backgroundColor;
             _light.color = drop.backgroundColor;
 
@@ -32,6 +32,11 @@ public class AmmoPickup : PickupBase
         }
     }
 
+    protected override void Start()
+    {
+        base.Start();
+    }
+
     protected override void OnTriggerStay2D(Collider2D other)
     {
         if (!active) return;
@@ -39,9 +44,7 @@ public class AmmoPickup : PickupBase
         // Return if the player isnt the one who collected
         if (!other.CompareTag("Player")) return;
 
-        print("ammo picked up");
-
-        var player = other.GetComponent<PlayerShooting>();
+        var player = PlayerStatus.player.pShooting;
         int ammoToAdd = Random.Range(drop.min, drop.max);
 
         ammoToAdd = Mathf.RoundToInt((float) ammoToAdd / drop.typeToGive.ammoPerShot) * drop.typeToGive.ammoPerShot;

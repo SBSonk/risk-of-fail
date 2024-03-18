@@ -54,7 +54,11 @@ public class LoadoutManager : MonoBehaviour
         int weapons = 0;
         for (int i = 0; i < slots.Length; i++)
         {
-            if (slots[i] == null) continue;
+            if (slots[i] == null)
+            {
+                pool[i] = new InventoryWeapon(null, 0, 0);
+                continue;
+            }
 
             pool[i] = new InventoryWeapon(slots[i], slots[i].clipSize, slots[i].defaultAmmoCount);
             weapons++;

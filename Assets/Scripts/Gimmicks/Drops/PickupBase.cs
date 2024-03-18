@@ -19,7 +19,7 @@ public class PickupBase : MonoBehaviour
 
     Attract attract;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         attract = GetComponentInParent<Attract>();
     }

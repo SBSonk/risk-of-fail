@@ -14,7 +14,6 @@ public class ChooseAmmoDropType : MonoBehaviour
     {
         pickup = GetComponent<AmmoPickup>();
 
-        print("initialized ammo");
         // Remove drops that the player doesn't own
         List<Gun> gunsOwned = new List<Gun>();
         foreach(Gun d in drops)

@@ -8,6 +8,7 @@ public class CenterCameraOnObject : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera objectCamera;
     [SerializeField] float holdTime = 1;
+    [SerializeField] private bool unPauseOnCenter;
     
     public UnityEvent OnCenterStart, OnCentered, OnRetract;
 
@@ -28,6 +29,8 @@ public class CenterCameraOnObject : MonoBehaviour
         // wait to arrive destination
         yield return new WaitForSecondsRealtime(1.5f);
         OnCentered?.Invoke();
+
+        if (unPauseOnCenter) Time.timeScale = 1;
         
         yield return new WaitForSecondsRealtime(holdTime);
         

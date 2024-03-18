@@ -21,7 +21,7 @@ public class RoomKillCounter : MonoBehaviour
             FinishCounter();
         }
 
-        if (text)text.text = killsNeeded.ToString();
+        if (text)text.text = (killsNeeded/2).ToString();
     }
 
     public void FinishCounter()

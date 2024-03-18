@@ -12,7 +12,7 @@ public class KillArea : MonoBehaviour
     {
         if (col.TryGetComponent(out Enemy e))
         {
-            e.onEnemyDeath.AddListener(KillEvent);
+            e.onDeath.AddListener(KillEvent);
         }
     }
 
@@ -20,9 +20,9 @@ public class KillArea : MonoBehaviour
     {
         if (other.TryGetComponent(out Enemy e))
         {
-            e.onEnemyDeath.RemoveListener(KillEvent);
+            e.onDeath.RemoveListener(KillEvent);
         }
     }
 
-    void KillEvent(EnemyType _) => OnKill?.Invoke();
+    void KillEvent(KillFlag _) => OnKill?.Invoke();
 }

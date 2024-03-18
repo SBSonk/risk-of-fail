@@ -11064,12 +11064,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1227001766}
+        m_TargetAssemblyTypeName: ControllableTilemapFade, Assembly-CSharp
+        m_MethodName: FadeTiles
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnRoomLeave:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1605714119}
         m_TargetAssemblyTypeName: ControllableTilemapFade, Assembly-CSharp
         m_MethodName: FadeTiles
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1227001766}
+        m_TargetAssemblyTypeName: ControllableTilemapFade, Assembly-CSharp
+        m_MethodName: UnfadeTiles
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14357,12 +14381,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2073629312}
+        m_TargetAssemblyTypeName: ControllableTilemapFade, Assembly-CSharp
+        m_MethodName: FadeTiles
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnRoomLeave:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1227001766}
         m_TargetAssemblyTypeName: ControllableTilemapFade, Assembly-CSharp
         m_MethodName: FadeTiles
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2073629312}
+        m_TargetAssemblyTypeName: ControllableTilemapFade, Assembly-CSharp
+        m_MethodName: UnfadeTiles
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15189,15 +15237,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4085214406198382074, guid: 78480f95aac2c5843a9797f75be4e23d, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4085214406198382074, guid: 78480f95aac2c5843a9797f75be4e23d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 91.95
+      value: 91.955
       objectReference: {fileID: 0}
     - target: {fileID: 4085214406198382074, guid: 78480f95aac2c5843a9797f75be4e23d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 41.595
+      value: 41.61
       objectReference: {fileID: 0}
     - target: {fileID: 4085214406198382074, guid: 78480f95aac2c5843a9797f75be4e23d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -41979,7 +42027,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 795037593}
         m_TargetAssemblyTypeName: ControllableTilemapFade, Assembly-CSharp
-        m_MethodName: UnfadeTiles
+        m_MethodName: FadeTiles
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1227001766}
+        m_TargetAssemblyTypeName: ControllableTilemapFade, Assembly-CSharp
+        m_MethodName: FadeTiles
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -41994,7 +42054,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 795037593}
         m_TargetAssemblyTypeName: ControllableTilemapFade, Assembly-CSharp
-        m_MethodName: FadeTiles
+        m_MethodName: UnfadeTiles
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1227001766}
+        m_TargetAssemblyTypeName: ControllableTilemapFade, Assembly-CSharp
+        m_MethodName: UnfadeTiles
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -44609,15 +44681,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4085214406198382074, guid: 78480f95aac2c5843a9797f75be4e23d, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4085214406198382074, guid: 78480f95aac2c5843a9797f75be4e23d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 75.95
+      value: 75.965
       objectReference: {fileID: 0}
     - target: {fileID: 4085214406198382074, guid: 78480f95aac2c5843a9797f75be4e23d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 41.595
+      value: 41.61
       objectReference: {fileID: 0}
     - target: {fileID: 4085214406198382074, guid: 78480f95aac2c5843a9797f75be4e23d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -45138,11 +45210,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1425222227342113825, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.21000004
+      value: -4.69
       objectReference: {fileID: 0}
     - target: {fileID: 1425222227342113825, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.3999996
+      value: -2.88
       objectReference: {fileID: 0}
     - target: {fileID: 1425222227342113825, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -48397,6 +48469,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2021140401}
     m_Modifications:
     - target: {fileID: 2585788594012457418, guid: 60cc031e2969c4e44b2206556244d59a, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2585788594012457418, guid: 60cc031e2969c4e44b2206556244d59a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
@@ -49437,11 +49513,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811045854846, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.21000004
+      value: -4.69
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811045854846, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.39999962
+      value: -1.8800001
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811045854847, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_Follow
@@ -49461,11 +49537,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893635, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.21000004
+      value: -4.69
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893635, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.39999962
+      value: -1.8800001
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893635, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -49473,7 +49549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893639, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: orthographic size
-      value: 11
+      value: 11.25
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893639, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_BackGroundColor.b
@@ -49784,7 +49860,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 26.356392, y: -27.044012}
+  m_Offset: {x: 83.95715, y: 50.167076}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -49795,7 +49871,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.060272, y: 18.215435}
+  m_Size: {x: 22.84848, y: 19.88617}
   m_EdgeRadius: 0
 --- !u!114 &1508767355
 MonoBehaviour:
@@ -49820,10 +49896,34 @@ MonoBehaviour:
       m_Calls: []
   OnRoomEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1159393439}
+        m_TargetAssemblyTypeName: ControllableTilemapFade, Assembly-CSharp
+        m_MethodName: FadeTiles
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnRoomLeave:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1159393439}
+        m_TargetAssemblyTypeName: ControllableTilemapFade, Assembly-CSharp
+        m_MethodName: UnfadeTiles
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   active: 0
   timeToRegisterInside: 0.25
 --- !u!1001 &1518321399
@@ -50935,6 +51035,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2021140401}
     m_Modifications:
+    - target: {fileID: 2585788594012457418, guid: 60cc031e2969c4e44b2206556244d59a, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 2585788594012457418, guid: 60cc031e2969c4e44b2206556244d59a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

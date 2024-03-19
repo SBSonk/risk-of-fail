@@ -16,6 +16,11 @@ public class WeaponPickup : InteractBase
 
     protected override void PlayerInteract()
     {
+        // empty to move logic to player
+    }
+
+    public void PickupWeapon()
+    {
         PlayerShooting shooting = PlayerStatus.player.pShooting;
 
         // Check if weapon owned
@@ -29,7 +34,24 @@ public class WeaponPickup : InteractBase
             shooting.GiveAmmo(shooting.GetWeaponFromInventory(weaponToGive), Mathf.FloorToInt(weaponToGive.defaultAmmoCount/4f));
         }
 
+        PlayerStatus.player.pShooting.weaponsInArea.Remove(this);
         Destroy(gameObject);
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Player")) return;
+        base.OnTriggerEnter2D(collision);
+
+        PlayerStatus.player.pShooting.weaponsInArea.Add(this);
+    }
+
+    protected override void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Player")) return;
+        base.OnTriggerExit2D(collision);
+        
+        PlayerStatus.player.pShooting.weaponsInArea.Remove(this);
     }
 
     public void SetWeapon(InventoryWeapon w)

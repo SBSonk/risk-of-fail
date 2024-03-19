@@ -35,6 +35,7 @@ public class PlayerShooting : MonoBehaviour
     public UnityEvent OnMelee, OnShove, OnParry;
 
     public PlayerSFXManager sfxManager;
+    public List<WeaponPickup> weaponsInArea;
 
     public void Initialize()
     {
@@ -81,9 +82,41 @@ public class PlayerShooting : MonoBehaviour
         }
 
         if (KInputManager.GetKey("Shove").PressedDown() && CanShoot()) StartCoroutine(Shove());
+        if (KInputManager.GetKey("Interact").PressedDown()) WeaponPickups();
 
         // Reloading
         if (GetHeldWeapon().clip < GetHeldWeapon().weapon.clipSize && KInputManager.GetKey("Reload").PressedDown() && reloading == false) StartCoroutine(Reload());
+    }
+
+    void WeaponPickups()
+    {
+        // check list of weapons around player
+        
+        // get nearest
+
+        // pickup
+
+        if (weaponsInArea.Count == 0) return;
+        
+        int nearestIndex = 0;
+        float nearestDistance = 0;
+        for (int i = 0; i < weaponsInArea.Count; i++)
+        {
+            if (i == 0)
+            {
+                nearestDistance = Vector2.Distance(transform.position, weaponsInArea[i].transform.position);
+                continue;
+            }
+
+            float dist = Vector2.Distance(transform.position, weaponsInArea[i].transform.position);
+            if (dist < nearestDistance)
+            {
+                nearestDistance = dist;
+                nearestIndex = i;
+            }
+        }
+        
+        weaponsInArea[nearestIndex].PickupWeapon();
     }
 
     bool CanShoot() => Time.time >= shootEnableTime && canShoot;
@@ -96,6 +129,7 @@ public class PlayerShooting : MonoBehaviour
 
     void WeaponSwitching()
     {
+        int startIndex = currentWeaponIndex;
         int swapDir = 0;
         if (KInputManager.GetKey("PreviousWeapon").PressedDown()) swapDir = -1;
         else if (KInputManager.GetKey("NextWeapon").PressedDown()) swapDir = 1;
@@ -119,7 +153,7 @@ public class PlayerShooting : MonoBehaviour
         // Switch cooldown
         shootEnableTime = Time.time + 0.1f;
         
-        OnWeaponSwitch?.Invoke(GetHeldWeapon());
+        if (currentWeaponIndex != startIndex) OnWeaponSwitch?.Invoke(GetHeldWeapon());
     }
 
     void KeybindSwitching()
@@ -128,7 +162,7 @@ public class PlayerShooting : MonoBehaviour
         bool changed = false;
         if (KInputManager.GetKey("WeaponA").PressedDown() && currentWeaponIndex != 0)
         {
-            if (weaponPool[0] != null)
+            if (weaponPool[0].weapon != null)
             {
                 currentWeaponIndex = 0;
 
@@ -136,7 +170,7 @@ public class PlayerShooting : MonoBehaviour
             }
         } else if (KInputManager.GetKey("WeaponB").PressedDown() && currentWeaponIndex != 1)
         {
-            if (weaponPool[1] != null)
+            if (weaponPool[1].weapon != null)
             {
                 currentWeaponIndex = 1;
 
@@ -144,7 +178,7 @@ public class PlayerShooting : MonoBehaviour
             }
         } else if (KInputManager.GetKey("WeaponC").PressedDown() && currentWeaponIndex != 2)
         {
-            if (weaponPool[2] != null)
+            if (weaponPool[2].weapon != null)
             {
                 currentWeaponIndex = 2;
 
@@ -458,7 +492,7 @@ public class PlayerShooting : MonoBehaviour
         newWeapon.GetComponent<Rigidbody2D>().AddForce(randDir * Random.Range(3f, 4f), ForceMode2D.Impulse);
         
         // Replace weapon in inventory
-        weaponPool[weaponIndex] = null;
+        weaponPool[weaponIndex].weapon = null;
         GiveWeapon(w);
     }
     

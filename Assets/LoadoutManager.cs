@@ -14,16 +14,7 @@ public class LoadoutManager : MonoBehaviour
 
     private void Awake()
     {
-        if (!instance)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+        instance = this;
     }
 
     public Weapon[] GetAllSlots() => slots;

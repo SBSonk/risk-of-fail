@@ -3741,8 +3741,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueFx: {fileID: 1749338151}
-  panel: {fileID: 184053152}
-  tmp: {fileID: 1749338152}
+  anim: {fileID: 0}
+  tmp: {fileID: 0}
+  OnDialogueTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDialogueFinish:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &465696987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5331,6 +5337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d32d721270798e4aaf5863725c1b798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roundStart: {fileID: 0}
   minRespawnWaveTime: 1
   maxRespawnWaveTime: 2
   minSpawnsPerWave: 1
@@ -5378,6 +5385,10 @@ MonoBehaviour:
   enemiesKilled: 0
   round: 1
   spawnEnableDistance: 25
+  spawnDisableDistance: 10
+  healthIncreaseScale: 1.1
+  maxHealthScale: 4
+  maxEnemiesInRound: 255
 --- !u!1 &628817362
 GameObject:
   m_ObjectHideFlags: 0
@@ -6931,6 +6942,7 @@ MonoBehaviour:
   fullFadeOpacity: 0.2
   fullSort: 2
   normalSort: 0
+  objectsToFade: []
   yPos: -8.745626
 --- !u!483693784 &795037591
 TilemapRenderer:
@@ -8268,6 +8280,7 @@ MonoBehaviour:
   fullFadeOpacity: 0.2
   fullSort: 2
   normalSort: 0
+  objectsToFade: []
   yPos: -8.745626
 --- !u!483693784 &843086745
 TilemapRenderer:
@@ -23422,7 +23435,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.0625, y: 0.0625, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -25772,6 +25785,7 @@ MonoBehaviour:
   fullFadeOpacity: 0.2
   fullSort: 2
   normalSort: 0
+  objectsToFade: []
   yPos: -8.745626
 --- !u!483693784 &1227001764
 TilemapRenderer:
@@ -29278,6 +29292,7 @@ MonoBehaviour:
   fullFadeOpacity: 0.2
   fullSort: 2
   normalSort: 0
+  objectsToFade: []
   yPos: -8.745626
 --- !u!483693784 &1605714117
 TilemapRenderer:
@@ -30188,6 +30203,7 @@ MonoBehaviour:
   fullFadeOpacity: 0.2
   fullSort: 2
   normalSort: 0
+  objectsToFade: []
   yPos: -8.745626
 --- !u!483693784 &1625969558
 TilemapRenderer:
@@ -33095,6 +33111,7 @@ MonoBehaviour:
   fullFadeOpacity: 0.2
   fullSort: 2
   normalSort: 0
+  objectsToFade: []
   yPos: -8.745626
 --- !u!483693784 &2073629310
 TilemapRenderer:
@@ -33989,6 +34006,7 @@ MonoBehaviour:
   fullFadeOpacity: 0.2
   fullSort: 2
   normalSort: 0
+  objectsToFade: []
   yPos: -8.745626
 --- !u!483693784 &2127003613
 TilemapRenderer:

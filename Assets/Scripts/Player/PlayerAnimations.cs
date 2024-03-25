@@ -275,7 +275,8 @@ public class PlayerAnimations : MonoBehaviour
 
     void DodgeAnimation()
     {
-        switch (VectorToDir(input))
+        Directions dir = VectorToDir(input);
+        switch (dir)
         {
             case Directions.up:
                 dashExp.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
@@ -297,6 +298,8 @@ public class PlayerAnimations : MonoBehaviour
                 animator.Play("dash_r");
                 break;
         }
+        
+        sprite.flipX = dir == Directions.left || currentDir == Directions.upperLeft || currentDir == Directions.bottomLeft;
 
 
         dashExp.Play();

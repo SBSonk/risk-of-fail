@@ -26,7 +26,7 @@ public class PlayerAnimations : MonoBehaviour
     Vector2 input, dir;
     Transform cursor;
     MoveCursor cursorScript;
-    bool followCursor;
+    bool followCursor = true;
 
     [Header("Weapon")] [SerializeField] private WeaponAnimator weaponAnimator;
     [SerializeField] float weaponLerp = 0.5f;
@@ -34,6 +34,8 @@ public class PlayerAnimations : MonoBehaviour
 
     [SerializeField] ResultsScreen results;
     private Rigidbody2D rb;
+
+    private float angle = 0;
 
     public void Initialize(PlayerShooting shooting, PlayerMovement movement, PlayerStatus status)
     {
@@ -81,19 +83,22 @@ public class PlayerAnimations : MonoBehaviour
 
         currentDir = VectorToDir(dir);
 
-        // Orient weapon
-        Vector2 mousePos = ((Vector2)transform.position + playerOffset - mousePosition).normalized;
-        float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
-
         // Change weapon sorting order depending on if its in front or behind
-        if (weaponAnimator.sprite)
+        if (weaponAnimator.sprite && canSwitchAnimation)
         {
             if (currentDir == Directions.down) weaponAnimator.sprite.sortingOrder = 1;
             else weaponAnimator.sprite.sortingOrder = 0;
             
-            weaponAnimator.transform.rotation = Quaternion.Euler(new Vector3(0, 0,
-                Mathf.LerpAngle(weaponAnimator.transform.rotation.eulerAngles.z, angle, weaponLerp)));
+            // Orient weapon
+            if (followCursor)
+            {
+                Vector2 mousePos = ((Vector2)transform.position + playerOffset - mousePosition).normalized;
+                angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
+            }
         }
+        
+        weaponAnimator.transform.rotation = Quaternion.Euler(new Vector3(0, 0,
+            Mathf.LerpAngle(weaponAnimator.transform.rotation.eulerAngles.z, angle, weaponLerp)));
     }
 
     private void FixedUpdate()
@@ -309,8 +314,17 @@ public class PlayerAnimations : MonoBehaviour
         StopCursorFollow();
 
         CameraShakerHandler.Shake(dodgeScreenshake);
+
+        followCursor = false;
+        
+        Vector2 dirInput = (input).normalized;
+        angle = Mathf.Atan2(dirInput.y, dirInput.x) * Mathf.Rad2Deg;
+        
+        if (dir == Directions.down) weaponAnimator.sprite.sortingOrder = 1;
+        else weaponAnimator.sprite.sortingOrder = 0;
         
         canSwitchAnimation = false;
+        CancelInvoke();
         Invoke("EnableAnimations", 0.3f);
     }
 
@@ -372,7 +386,10 @@ public class PlayerAnimations : MonoBehaviour
         followCursor = false;
     }
 
-    void EnableAnimations() { canSwitchAnimation = true; }
+    void EnableAnimations()
+    {
+        followCursor = true; canSwitchAnimation = true;
+    }
 }
 
 [System.Serializable]

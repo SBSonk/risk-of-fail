@@ -10,7 +10,7 @@ public class AmmoPickup : PickupBase
         if (!PlayerStatus.player.pShooting.HasGunTypeWeapon())
         {
             print("no ammo weapon");
-            Destroy(transform.parent.gameObject, 1f);
+            Destroy(transform.parent.gameObject);
             return;
         }
         
@@ -30,11 +30,6 @@ public class AmmoPickup : PickupBase
         {
             Destroy(transform.parent.gameObject);
         }
-    }
-
-    protected override void Start()
-    {
-        base.Start();
     }
 
     protected override void OnTriggerStay2D(Collider2D other)

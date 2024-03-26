@@ -12,7 +12,7 @@ public class ObjectFade : MonoBehaviour
     SpriteRenderer sprite;
     public static Transform player;
 
-    private void Start()
+    private void Awake()
     {
         sprite = GetComponentInChildren<SpriteRenderer>();
     }

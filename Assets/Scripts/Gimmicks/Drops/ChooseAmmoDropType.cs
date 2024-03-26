@@ -22,6 +22,8 @@ public class ChooseAmmoDropType : MonoBehaviour
         }
         
         // Choose drop to drop
+        print(gunsOwned);
+        
         if (gunsOwned.Count == 1)
         {
             pickup.drop = gunsOwned[0].ammoDrop;

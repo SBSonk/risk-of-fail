@@ -80,7 +80,7 @@ public class Projectile : MonoBehaviour
         if (pierces <= 0 || collision.CompareTag("Wall"))
         {
             rb.velocity = Vector2.zero;
-            if (!collision.CompareTag("Wall")) sprite.SetActive(false);
+            /*if (!collision.CompareTag("Wall"))*/ sprite.SetActive(false);
             _light.intensity = 0;
 
             // Destroy bullet

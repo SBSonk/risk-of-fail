@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class FootstepManager : MonoBehaviour
 {
+    public static FootstepManager instance;
     [SerializeField] private PlayerMovement controller;
     
     [SerializeField] private AudioSource left, right;
@@ -13,6 +14,12 @@ public class FootstepManager : MonoBehaviour
 
     [SerializeField] private float walkTime = 0.5f;
     private int currentFoot = 1;
+    private FloorType floorType = FloorType.Tile;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -26,23 +33,20 @@ public class FootstepManager : MonoBehaviour
         {
             AudioClip[] floorClips = tileSounds;
             // Check floor type
-            /*if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 0.5f, LayerMask.GetMask("Environment")))
+            switch (floorType)
             {
-                switch (hit.collider.tag)
-                {
-                    case "Tile":
-                        floorClips = tileSounds;
-                        break;
-                    
-                    case "Wood":
-                        floorClips = woodSounds;
-                        break;
-                    
-                    case "Grass":
-                        floorClips = grassSounds;
-                        break;
-                }
-            }*/
+                case FloorType.Tile:
+                    floorClips = tileSounds;
+                    break;
+                
+                case FloorType.Wood:
+                    floorClips = woodSounds;
+                    break;
+                
+                case FloorType.Grass:
+                    floorClips = grassSounds;
+                    break;
+            }
 
             left.clip = floorClips[Random.Range(0, floorClips.Length - 1)];
             right.clip = floorClips[Random.Range(0, floorClips.Length - 1)];
@@ -55,4 +59,13 @@ public class FootstepManager : MonoBehaviour
             currentFoot = -currentFoot;
         }
     }
+
+    public void SetFloor(FloorType f) => floorType = f;
+
+    public void ResetFloor() => floorType = FloorType.Tile;
+}
+
+public enum FloorType
+{
+    Tile, Wood, Grass
 }

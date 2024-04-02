@@ -32,17 +32,25 @@ MonoBehaviour:
   defaultAmmoCount: 100
   ammoPerShot: 1
   clipSize: 1
-  reloadLength: 0.5
+  reloadLength: 0.9
   fireRate: 0
   auto: 0
   shootShake: {fileID: 11400000, guid: c182fb5cc6ba4cf43b41ad856b62f48f, type: 2}
   hitScreenShake: {fileID: 0}
   effects:
-    shootSounds: []
+    shootSounds:
+    - {fileID: 8300000, guid: 2377f977c55693f4a80f6af7eb4549a1, type: 3}
+    - {fileID: 8300000, guid: 2377f977c55693f4a80f6af7eb4549a1, type: 3}
     reloadSounds: []
-    shoveSounds: []
-    enemyHitSounds: []
-    wallHitSounds: []
+    shoveSounds:
+    - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
+    - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
+    enemyHitSounds:
+    - {fileID: 8300000, guid: acd59a27f7dea1d4caa4fe67245255f2, type: 3}
+    - {fileID: 8300000, guid: acd59a27f7dea1d4caa4fe67245255f2, type: 3}
+    wallHitSounds:
+    - {fileID: 8300000, guid: acd59a27f7dea1d4caa4fe67245255f2, type: 3}
+    - {fileID: 8300000, guid: acd59a27f7dea1d4caa4fe67245255f2, type: 3}
   weaponScale: {x: 1, y: 1, z: 1}
   weaponOffset: {x: 0, y: 0, z: 0}
   animatorController: {fileID: 6172952387920931437, guid: 170bc48896fa21946b3a770580ee7c6e, type: 3}
@@ -67,7 +75,7 @@ MonoBehaviour:
   bulletDamage: 6
   bulletOffset: {x: 0, y: 1, z: 0}
   amountOfBullets: 4
-  timeBetweenBullets: 0.025
+  timeBetweenBullets: 0.05
   bulletVelocity: 3
   pierceAmount: 1
   bullet: {fileID: 4519855712770121969, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}

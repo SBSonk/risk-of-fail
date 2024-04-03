@@ -46,6 +46,7 @@ public class PlayerAnimations : MonoBehaviour
         shooting.OnWeaponSwitch.AddListener(ChangeWeaponSprite);
         shooting.OnShove.AddListener(ShoveAnimation);
         shooting.OnMelee.AddListener(ShootAnimation);
+        shooting.OnReloadStart.AddListener(ReloadAnimation);
 
         movement.OnDodge.AddListener(DodgeAnimation);
 
@@ -241,6 +242,12 @@ public class PlayerAnimations : MonoBehaviour
     {
         weaponAnimator.PlayShootAnimation();
     }
+
+    void ReloadAnimation(float _)   
+    {
+        weaponAnimator.PlayReloadAnimation();
+    }
+    
     void ShoveAnimation()
     {
         weaponAnimator.PlayShoveAnimation();

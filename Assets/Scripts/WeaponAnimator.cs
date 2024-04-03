@@ -13,7 +13,12 @@ public class WeaponAnimator : MonoBehaviour
         sprite = GetComponentInChildren<SpriteRenderer>();    
         anim = GetComponent<Animator>();
         
-        PlayHoldAnimation();
+        PlayEquipAnimation();
+    }
+
+    public virtual void PlayEquipAnimation()
+    {
+        anim.CrossFade("Equip", .1f, 0, 0f);
     }
     
     public virtual void PlayShootAnimation()
@@ -21,6 +26,12 @@ public class WeaponAnimator : MonoBehaviour
         anim.CrossFade("Shoot", .1f, 0, 0f);
     }
 
+    public virtual void PlayReloadAnimation()
+    {
+        anim.CrossFade("Reload", .1f, 0, 0f);
+    }
+
+    
     public virtual void PlayShoveAnimation()
     {
         anim.CrossFade("Shove", .1f, 0, 0);

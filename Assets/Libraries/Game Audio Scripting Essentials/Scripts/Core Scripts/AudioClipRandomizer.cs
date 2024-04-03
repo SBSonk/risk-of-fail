@@ -50,6 +50,8 @@ namespace GameAudioScriptingEssentials
         bool _initVolumeOverwritten = false;
         bool _isRunningCheck = false;
 
+        private bool usesPreInstance = false;
+
         void Start()
         {
             DoesArcObjExist();
@@ -117,7 +119,17 @@ namespace GameAudioScriptingEssentials
 
             _lastIndex = _index;
 
-            AudioSource _newAudioSource = gameObject.AddComponent<AudioSource>();
+            AudioSource _newAudioSource;
+            if (TryGetComponent(out AudioSource s))
+            {
+                _newAudioSource = s;
+                usesPreInstance = true;
+            }
+            else
+            {
+                _newAudioSource = gameObject.AddComponent<AudioSource>();
+            }
+            
             _newAudioSource.clip = _clip;
             _newAudioSource.pitch = _pitch;
             _newAudioSource.volume = _volume;
@@ -125,12 +137,12 @@ namespace GameAudioScriptingEssentials
             _newAudioSource.loop = _loop;
             _newAudioSource.priority = _priority;
             _newAudioSource.panStereo = _stereoPan;
-            _newAudioSource.spatialBlend = _spatialBlend;
+            /*_newAudioSource.spatialBlend = _spatialBlend;*/
             _newAudioSource.Play();
 
             if (!_loop)
             {
-                Destroy(_newAudioSource, _clip.length + 0.2f);
+                if (!usesPreInstance) Destroy(_newAudioSource, _clip.length + 0.2f);
             }
             else if (_loop && _arcObjExists && !_isRunningCheck)
             {
@@ -155,7 +167,7 @@ namespace GameAudioScriptingEssentials
             {
                 yield return null;
             }
-            Destroy(GetComponent<AudioSource>(), GetSFXLength());
+            if (!usesPreInstance) Destroy(GetComponent<AudioSource>(), GetSFXLength());
             PlaySFX();
 
             _isRunningCheck = false;

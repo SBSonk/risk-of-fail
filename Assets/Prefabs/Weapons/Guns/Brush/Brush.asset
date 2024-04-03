@@ -38,17 +38,19 @@ MonoBehaviour:
   shootShake: {fileID: 11400000, guid: 6caba7f04f154e947b688247456a3713, type: 2}
   hitScreenShake: {fileID: 0}
   effects:
-    shootSounds: []
+    shootSounds:
+    - {fileID: 8300000, guid: 62f8c3db7dcf11148b201975de4240be, type: 3}
+    - {fileID: 8300000, guid: 62f8c3db7dcf11148b201975de4240be, type: 3}
     reloadSounds: []
     shoveSounds:
     - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
     - {fileID: 8300000, guid: f17a3b1964096d74db40359d03ec201e, type: 3}
     enemyHitSounds:
-    - {fileID: 8300000, guid: 094e9f8f5f44384499ecb24c89440042, type: 3}
-    - {fileID: 8300000, guid: 094e9f8f5f44384499ecb24c89440042, type: 3}
+    - {fileID: 8300000, guid: 92ec51edb73a209418fce735fb702956, type: 3}
+    - {fileID: 8300000, guid: 92ec51edb73a209418fce735fb702956, type: 3}
     wallHitSounds:
-    - {fileID: 8300000, guid: 3cb087bc9a806ac4a947713641f8badb, type: 3}
-    - {fileID: 8300000, guid: 3cb087bc9a806ac4a947713641f8badb, type: 3}
+    - {fileID: 8300000, guid: 92ec51edb73a209418fce735fb702956, type: 3}
+    - {fileID: 8300000, guid: 92ec51edb73a209418fce735fb702956, type: 3}
   weaponScale: {x: 1, y: 1, z: 1}
   weaponOffset: {x: 0, y: 0, z: 0}
   animatorController: {fileID: 2440456455680981631, guid: 36da119b84a762a4c9583dab9a2a1f51, type: 3}

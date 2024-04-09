@@ -83,24 +83,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colors:
-  - {r: 0.8235294, g: 0.27450982, b: 0.4862745, a: 1}
-  - {r: 1, g: 0.43529412, b: 0.70980394, a: 1}
-  - {r: 0.67058825, g: 0.27450982, b: 0.8235294, a: 1}
-  - {r: 0.33333334, g: 0.84705883, b: 0.75686276, a: 1}
-  - {r: 0.9882353, g: 0.9647059, b: 0.6117647, a: 1}
-  - {r: 0.7946078, g: 0.9882353, b: 0.6117647, a: 1}
+  - color: {r: 0.4784314, g: 0.9803922, b: 1, a: 1}
+    hitmarkerPrefab: {fileID: 6721679066862259553, guid: 83c4fa2a12db74146a8d19a4624c8516, type: 3}
+  - color: {r: 0.8862746, g: 0.61960787, b: 1, a: 1}
+    hitmarkerPrefab: {fileID: 607316702191836720, guid: 253ed9c84f1ca7e4e94f977dba0ebc88, type: 3}
+  - color: {r: 0.69803923, g: 0.97647065, b: 0.4431373, a: 1}
+    hitmarkerPrefab: {fileID: 5866419194258635560, guid: 44e3008d1baedbf448e96bae3daf366a, type: 3}
+  - color: {r: 1, g: 0.8000001, b: 0.18823531, a: 1}
+    hitmarkerPrefab: {fileID: 7453221761116914182, guid: 6c520352395c53e4d9a7ad9b1a77395e, type: 3}
+  - color: {r: 1, g: 0, b: 0.58431375, a: 1}
+    hitmarkerPrefab: {fileID: 8795919487054299311, guid: 9f8b8764bb6d36740982c2cc35bcaffc, type: 3}
   sprite: {fileID: 5510135994458179715}
   trail: {fileID: 6877871846152579016}
-  hitmarker: {fileID: 5991986619984139877}
+  hitmarker: {fileID: 0}
   _light: {fileID: 9112149652271705136}
 --- !u!212 &5510135994458179715 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3023861404400901020, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
-  m_PrefabInstance: {fileID: 7314134499037696799}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &5991986619984139877 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3938070796565349754, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
   m_PrefabInstance: {fileID: 7314134499037696799}
   m_PrefabAsset: {fileID: 0}
 --- !u!96 &6877871846152579016 stripped

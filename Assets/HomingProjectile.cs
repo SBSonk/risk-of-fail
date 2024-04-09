@@ -37,10 +37,10 @@ public class HomingProjectile : Projectile
         if (lockedEnemy)
         {
             // go towards
-            Vector2 dirTowards = (lockedEnemy.position - transform.position).normalized;
-
             rb.velocity = transform.right * homingStrength;
-            transform.right = Vector3.Lerp(transform.right, dirTowards, Time.deltaTime * homingStrength);
         }
+        
+        Vector2 dirTowards = (transform.position + (Vector3) rb.velocity - transform.position).normalized;
+        transform.right = Vector3.Lerp(transform.right, dirTowards, Time.deltaTime * homingStrength);
     }
 }

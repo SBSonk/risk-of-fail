@@ -6,11 +6,13 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Serialization;
 
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private bool isPlayerBullet = false;
-    [SerializeField] ParticleSystem hitmarker;
+    [SerializeField] private Transform hitmarkerOrigin;
+    [FormerlySerializedAs("hitmarker")] public GameObject hitmarkerPrefab;
     [SerializeField] Light2D _light;
     public Rigidbody2D rb;
     public GameObject sprite, shooter;
@@ -67,7 +69,7 @@ public class Projectile : MonoBehaviour
         }
 
         // Reduce damage every pierce
-        hitmarker.Play();
+        Instantiate(hitmarkerPrefab, hitmarkerOrigin.position, hitmarkerOrigin.rotation);
         damage /= 1.25f;
 
         if (collision.CompareTag("Alive")) pierces--;

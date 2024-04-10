@@ -79236,6 +79236,7 @@ GameObject:
   - component: {fileID: 962135195}
   - component: {fileID: 962135197}
   - component: {fileID: 962135196}
+  - component: {fileID: 962135198}
   m_Layer: 0
   m_Name: Classroom B
   m_TagString: CanBePenetrated
@@ -79338,6 +79339,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 962135198}
+        m_TargetAssemblyTypeName: SetFloorType, Assembly-CSharp
+        m_MethodName: SetFloor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnRoomLeave:
     m_PersistentCalls:
       m_Calls:
@@ -79365,8 +79378,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 962135198}
+        m_TargetAssemblyTypeName: SetFloorType, Assembly-CSharp
+        m_MethodName: ResetFloor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   active: 0
   timeToRegisterInside: 0
+--- !u!114 &962135198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962135194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defa52546b4c5554a97ac26ee6a6ae1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileType: 1
 --- !u!1001 &962360212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97464,6 +97502,7 @@ GameObject:
   - component: {fileID: 1339066950}
   - component: {fileID: 1339066952}
   - component: {fileID: 1339066953}
+  - component: {fileID: 1339066954}
   m_Layer: 0
   m_Name: Classroom A
   m_TagString: CanBePenetrated
@@ -97567,6 +97606,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1339066954}
+        m_TargetAssemblyTypeName: SetFloorType, Assembly-CSharp
+        m_MethodName: SetFloor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnRoomLeave:
     m_PersistentCalls:
       m_Calls:
@@ -97585,6 +97636,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1326258002}
         m_TargetAssemblyTypeName: ControllableTilemapFade, Assembly-CSharp
         m_MethodName: UnfadeTiles
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1339066954}
+        m_TargetAssemblyTypeName: SetFloorType, Assembly-CSharp
+        m_MethodName: ResetFloor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -97703,6 +97766,19 @@ MonoBehaviour:
   killsNeeded: 20
   active: 1
   text: {fileID: 0}
+--- !u!114 &1339066954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339066948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defa52546b4c5554a97ac26ee6a6ae1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileType: 1
 --- !u!1001 &1339518835
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -112779,6 +112855,158 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5632f912b3569124c9ac6417d02ec300, type: 3}
+--- !u!1001 &1641051037
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2079619149}
+    m_Modifications:
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960341, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_Name
+      value: FloorTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960342, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_Size.x
+      value: 31.322811
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960342, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_Size.y
+      value: 18.890005
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960342, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_Offset.x
+      value: 11.141539
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960342, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_Offset.y
+      value: -6.1945677
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomEnter.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomLeave.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomLeave.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1641051040}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomLeave.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1641051040}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomEnter.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomLeave.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetFloor
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomLeave.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetFloor
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomEnter.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SetFloorType, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomLeave.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SetFloorType, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomLeave.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+--- !u!4 &1641051038 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+  m_PrefabInstance: {fileID: 1641051037}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1641051039 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7901820364308960341, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+  m_PrefabInstance: {fileID: 1641051037}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1641051040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641051039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defa52546b4c5554a97ac26ee6a6ae1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileType: 1
 --- !u!1001 &1641146197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -124952,11 +125180,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893635, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -69.51895
+      value: -65.630066
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893635, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.79919
+      value: -13.7984495
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893635, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -124964,7 +125192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893639, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: orthographic size
-      value: 11
+      value: 13.1875
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893639, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_BackGroundColor.b
@@ -132146,6 +132374,7 @@ Transform:
   - {fileID: 568124417}
   - {fileID: 1771367914}
   - {fileID: 1302788223}
+  - {fileID: 1641051038}
   m_Father: {fileID: 113238816}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

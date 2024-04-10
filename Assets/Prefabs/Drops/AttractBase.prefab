@@ -5092,13 +5092,13 @@ MonoBehaviour:
   _arcObj: {fileID: 0}
   _audioClips:
   - {fileID: 8300000, guid: 3b068ad08b81bea4ea521f351a1c21ff, type: 3}
-  _mixerGroup: {fileID: 0}
+  _mixerGroup: {fileID: -2226441571897678685, guid: 7497906a8a74ddc4a973290d1bbdc7b9, type: 2}
   _overrideArcSettings: 1
   _noRepeats: 1
   _randomPitch: 1
   _minPitch: 0.5
   _maxPitch: 1.5
-  _volume: 1
+  _volume: 0.5
   _loop: 0
   _priority: 128
   _stereoPan: 0
@@ -5115,18 +5115,18 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -2226441571897678685, guid: 7497906a8a74ddc4a973290d1bbdc7b9, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 30
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -5159,7 +5159,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

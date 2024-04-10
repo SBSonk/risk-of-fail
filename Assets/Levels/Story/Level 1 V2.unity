@@ -6401,7 +6401,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 88957344}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &209507636
 SpriteRenderer:
@@ -10787,17 +10787,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da2e58e0fd3d70a45aba5c2eb1bdc656, type: 3}
---- !u!114 &452218858 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8461471668361743549, guid: 231c7f9677a5ddf4381496353ffd097d, type: 3}
-  m_PrefabInstance: {fileID: 1729878188}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &454898886 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4086233318403599455, guid: 1771f753e5739e945a76945e90cb3ac1, type: 3}
@@ -35842,6 +35831,7 @@ GameObject:
   - component: {fileID: 654051649}
   - component: {fileID: 654051650}
   - component: {fileID: 654051651}
+  - component: {fileID: 654051652}
   m_Layer: 0
   m_Name: Keionbu Room
   m_TagString: CanBePenetrated
@@ -35892,10 +35882,34 @@ MonoBehaviour:
       m_Calls: []
   OnRoomEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 654051652}
+        m_TargetAssemblyTypeName: SetFloorType, Assembly-CSharp
+        m_MethodName: SetFloor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnRoomLeave:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 654051652}
+        m_TargetAssemblyTypeName: SetFloorType, Assembly-CSharp
+        m_MethodName: ResetFloor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   active: 0
   timeToRegisterInside: 0.25
 --- !u!61 &654051651
@@ -35924,6 +35938,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 37.770264, y: 27.104605}
   m_EdgeRadius: 0
+--- !u!114 &654051652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654051648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defa52546b4c5554a97ac26ee6a6ae1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileType: 1
 --- !u!4 &656661399 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3428277881347656140, guid: afd9d8a28e0bacd4f890315f70241e81, type: 3}
@@ -45512,6 +45539,7 @@ GameObject:
   - component: {fileID: 1022070053}
   - component: {fileID: 1022070054}
   - component: {fileID: 1022070055}
+  - component: {fileID: 1022070056}
   m_Layer: 0
   m_Name: Stationary Room
   m_TagString: CanBePenetrated
@@ -45565,10 +45593,34 @@ MonoBehaviour:
       m_Calls: []
   OnRoomEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1022070056}
+        m_TargetAssemblyTypeName: SetFloorType, Assembly-CSharp
+        m_MethodName: SetFloor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnRoomLeave:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1022070056}
+        m_TargetAssemblyTypeName: SetFloorType, Assembly-CSharp
+        m_MethodName: ResetFloor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   active: 0
   timeToRegisterInside: 0.25
 --- !u!61 &1022070055
@@ -45597,6 +45649,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 23.968374, y: 10.772209}
   m_EdgeRadius: 0
+--- !u!114 &1022070056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022070052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defa52546b4c5554a97ac26ee6a6ae1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileType: 1
 --- !u!1001 &1022314872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46306,6 +46371,7 @@ GameObject:
   - component: {fileID: 1059757353}
   - component: {fileID: 1059757356}
   - component: {fileID: 1059757355}
+  - component: {fileID: 1059757357}
   m_Layer: 0
   m_Name: Classroom
   m_TagString: CanBePenetrated
@@ -46382,10 +46448,34 @@ MonoBehaviour:
       m_Calls: []
   OnRoomEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1059757357}
+        m_TargetAssemblyTypeName: SetFloorType, Assembly-CSharp
+        m_MethodName: SetFloor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnRoomLeave:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1059757357}
+        m_TargetAssemblyTypeName: SetFloorType, Assembly-CSharp
+        m_MethodName: ResetFloor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   active: 0
   timeToRegisterInside: 0.25
 --- !u!114 &1059757355
@@ -46489,6 +46579,19 @@ MonoBehaviour:
   OnEnemySpawn:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1059757357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059757351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defa52546b4c5554a97ac26ee6a6ae1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileType: 1
 --- !u!1001 &1060374494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62977,6 +63080,268 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4106509977474110351, guid: 27ad0f5a422d9a444bd2e4838b3c94fa, type: 3}
   m_PrefabInstance: {fileID: 303791980}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1658671926
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1831245109}
+    m_Modifications:
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -27.141401
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.512707
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960341, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_Name
+      value: GymFloorTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960342, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_Size.x
+      value: 42.684494
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960342, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_Size.y
+      value: 29.241081
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960342, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_Offset.x
+      value: -8.651712
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960342, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.9862137
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960342, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: m_UsedByComposite
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomEnter.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomLeave.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomLeave.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1658671933}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomLeave.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1658671933}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomEnter.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomLeave.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetFloor
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomLeave.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetFloor
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomEnter.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SetFloorType, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomLeave.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SetFloorType, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901820364308960343, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+      propertyPath: OnRoomLeave.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+--- !u!4 &1658671927 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7901820364308960340, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+  m_PrefabInstance: {fileID: 1658671926}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1658671928 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7901820364308960341, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+  m_PrefabInstance: {fileID: 1658671926}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1658671929 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7901820364308960342, guid: 0b39b2d28187408478c169719d2bff8e, type: 3}
+  m_PrefabInstance: {fileID: 1658671926}
+  m_PrefabAsset: {fileID: 0}
+--- !u!66 &1658671930
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658671928}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 1658671929}
+    m_ColliderPaths:
+    - - X: 126905344
+        Y: 156067536
+      - X: -299939584
+        Y: 156067536
+      - X: -299939584
+        Y: -136343264
+      - X: 126905344
+        Y: -136343264
+  - m_Collider: {fileID: 1658671932}
+    m_ColliderPaths:
+    - - X: 124327376
+        Y: 238244736
+      - X: -148069168
+        Y: 238244736
+      - X: -148069168
+        Y: -238244736
+      - X: 124327376
+        Y: -238244736
+  m_CompositePaths:
+    m_Paths:
+    - - {x: 12.432708, y: -23.824474}
+      - {x: 12.432767, y: -13.634327}
+      - {x: 12.690535, y: -13.634297}
+      - {x: 12.690505, y: 15.606753}
+      - {x: 12.432737, y: 15.606783}
+      - {x: 12.432708, y: 23.824474}
+      - {x: -14.806917, y: 23.824446}
+      - {x: -14.806946, y: 15.606753}
+      - {x: -29.99396, y: 15.606725}
+      - {x: -29.99393, y: -13.634327}
+      - {x: -14.806917, y: -13.634356}
+      - {x: -14.806889, y: -23.824474}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
+--- !u!50 &1658671931
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658671928}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &1658671932
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658671928}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 1
+  m_Offset: {x: -1.1870899, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 27.239655, y: 47.64895}
+  m_EdgeRadius: 0
+--- !u!114 &1658671933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658671928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defa52546b4c5554a97ac26ee6a6ae1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileType: 1
 --- !u!4 &1658698334 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2368033471186396239, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
@@ -66929,7 +67294,7 @@ PrefabInstance:
     - target: {fileID: 6748336955732884986, guid: 231c7f9677a5ddf4381496353ffd097d, type: 3}
       propertyPath: passThroughLight
       value: 
-      objectReference: {fileID: 452218858}
+      objectReference: {fileID: 0}
     - target: {fileID: 8461471668361743549, guid: 231c7f9677a5ddf4381496353ffd097d, type: 3}
       propertyPath: m_LightOrder
       value: 2
@@ -69030,6 +69395,7 @@ Transform:
   - {fileID: 21795681}
   - {fileID: 1820014495}
   - {fileID: 670930039}
+  - {fileID: 1658671927}
   m_Father: {fileID: 113238816}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -70290,11 +70656,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893635, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -54.659916
+      value: -52.548824
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893635, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.80029
+      value: -13.80032
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893635, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -70306,7 +70672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893639, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: orthographic size
-      value: 11.25
+      value: 13.1875
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893639, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_BackGroundColor.b

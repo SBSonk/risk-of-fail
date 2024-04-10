@@ -8,31 +8,37 @@ using Random = UnityEngine.Random;
 public class SpriteColorRandomizer : MonoBehaviour
 {
     [SerializeField] BrushColor[] colors;
-    [SerializeField] SpriteRenderer sprite;
+    [SerializeField] Animator anim;
     [SerializeField] TrailRenderer trail;
-    [SerializeField] ParticleSystem hitmarker;
     [SerializeField] Light2D _light;
-
+    [SerializeField] private ParticleSystem ps;
+    
     private Projectile p;
 
     private void Awake()
     {
         p = GetComponent<Projectile>();
+        anim = GetComponent<Animator>();
     }
 
     private void Start()
     {
         int color = Random.Range(0, colors.Length - 1);
-        sprite.color = colors[color].color;
+        anim.Play(colors[color].animationName);
         trail.startColor = colors[color].color;
+        trail.endColor = colors[color].color;
         p.hitmarkerPrefab = colors[color].hitmarkerPrefab; 
         _light.color = colors[color].color;
+
+        var ps = this.ps.main;
+        ps.startColor = colors[color].color;
     }
     
     [System.Serializable]
     struct BrushColor
     {
         public Color color;
+        public string animationName;
         public GameObject hitmarkerPrefab;
     }
 }

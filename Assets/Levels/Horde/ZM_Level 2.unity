@@ -10962,6 +10962,7 @@ GameObject:
   - component: {fileID: 560032323}
   - component: {fileID: 560032325}
   - component: {fileID: 560032324}
+  - component: {fileID: 560032326}
   m_Layer: 0
   m_Name: Science Lab
   m_TagString: CanBePenetrated
@@ -11076,6 +11077,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 560032326}
+        m_TargetAssemblyTypeName: SetFloorType, Assembly-CSharp
+        m_MethodName: SetFloor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnRoomLeave:
     m_PersistentCalls:
       m_Calls:
@@ -11103,8 +11116,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 560032326}
+        m_TargetAssemblyTypeName: SetFloorType, Assembly-CSharp
+        m_MethodName: ResetFloor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   active: 0
   timeToRegisterInside: 0
+--- !u!114 &560032326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560032322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defa52546b4c5554a97ac26ee6a6ae1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileType: 1
 --- !u!1001 &560388902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12946,6 +12984,7 @@ GameObject:
   - component: {fileID: 627901472}
   - component: {fileID: 627901473}
   - component: {fileID: 627901474}
+  - component: {fileID: 627901475}
   m_Layer: 0
   m_Name: Classroom
   m_TagString: CanBePenetrated
@@ -13197,6 +13236,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 627901475}
+        m_TargetAssemblyTypeName: SetFloorType, Assembly-CSharp
+        m_MethodName: SetFloor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnRoomLeave:
     m_PersistentCalls:
       m_Calls:
@@ -13212,8 +13263,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 627901475}
+        m_TargetAssemblyTypeName: SetFloorType, Assembly-CSharp
+        m_MethodName: ResetFloor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   active: 0
   timeToRegisterInside: 0
+--- !u!114 &627901475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627901465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defa52546b4c5554a97ac26ee6a6ae1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileType: 1
 --- !u!1 &628817362
 GameObject:
   m_ObjectHideFlags: 0
@@ -41975,6 +42051,7 @@ GameObject:
   - component: {fileID: 1117781640}
   - component: {fileID: 1117781641}
   - component: {fileID: 1117781642}
+  - component: {fileID: 1117781643}
   m_Layer: 0
   m_Name: Classroom2
   m_TagString: CanBePenetrated
@@ -42049,6 +42126,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1117781643}
+        m_TargetAssemblyTypeName: SetFloorType, Assembly-CSharp
+        m_MethodName: SetFloor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnRoomLeave:
     m_PersistentCalls:
       m_Calls:
@@ -42067,6 +42156,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1227001766}
         m_TargetAssemblyTypeName: ControllableTilemapFade, Assembly-CSharp
         m_MethodName: UnfadeTiles
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1117781643}
+        m_TargetAssemblyTypeName: SetFloorType, Assembly-CSharp
+        m_MethodName: ResetFloor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -42104,6 +42205,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 26.707, y: 40.734604}
   m_EdgeRadius: 0
+--- !u!114 &1117781643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117781639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defa52546b4c5554a97ac26ee6a6ae1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileType: 1
 --- !u!1 &1119218800
 GameObject:
   m_ObjectHideFlags: 0
@@ -49537,11 +49651,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893635, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.69
+      value: -1.0595477
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893635, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8800001
+      value: -1.01621
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893635, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -49549,7 +49663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893639, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: orthographic size
-      value: 11.25
+      value: 13.1875
       objectReference: {fileID: 0}
     - target: {fileID: 6869182811297893639, guid: 408d51502da58cf45bc4bca85006a98f, type: 3}
       propertyPath: m_BackGroundColor.b

@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 174331811955817907, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
@@ -155,5 +156,92 @@ PrefabInstance:
       propertyPath: m_Name
       value: BFG Bullet
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4519855712770121969, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9076594935915685230, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8050422940981281994}
   m_SourcePrefab: {fileID: 100100000, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+--- !u!1 &915215754825643127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7580254655124039528, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+  m_PrefabInstance: {fileID: 7314134499037696799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1763033438212814449 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9076594935915685230, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+  m_PrefabInstance: {fileID: 7314134499037696799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8050422940981281994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763033438212814449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4106535c16e0d14e9354827e7412ea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerBullet: 1
+  hitmarkerOrigin: {fileID: 5404598798549626912}
+  hitmarkerPrefab: {fileID: 7453221761116914182, guid: 6c520352395c53e4d9a7ad9b1a77395e, type: 3}
+  _light: {fileID: 9112149652271705136}
+  rb: {fileID: 5785728282139457849}
+  sprite: {fileID: 915215754825643127}
+  shooter: {fileID: 0}
+  keepAligned: 0
+  damage: 100
+  knockback: 10
+  stunLength: 0
+  pierces: 0
+  bulletShake: {fileID: 0}
+  paintPrefab: {fileID: 0}
+  active: 1
+  audioRandomizer: {fileID: 7955387482182798984}
+  _enemyHit: []
+  _wallHit: []
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 2326528
+  environmentLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  explosionRadius: 5
+  explosionKnockback: 7.5
+--- !u!4 &5404598798549626912 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3351236038405120831, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+  m_PrefabInstance: {fileID: 7314134499037696799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &5785728282139457849 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 3875927629597518374, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+  m_PrefabInstance: {fileID: 7314134499037696799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7955387482182798984 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 857425902714887575, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+  m_PrefabInstance: {fileID: 7314134499037696799}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d582541dd1aa69c459a6a8f1cae8ff08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9112149652271705136 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2014759708372041519, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+  m_PrefabInstance: {fileID: 7314134499037696799}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

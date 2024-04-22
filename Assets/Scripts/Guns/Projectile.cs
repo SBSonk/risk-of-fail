@@ -44,7 +44,7 @@ public class Projectile : MonoBehaviour
         sprite.transform.rotation = quaternion.identity;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (!active || objectsHit.Contains(collision.gameObject.GetInstanceID())) return;
 

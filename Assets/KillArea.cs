@@ -6,13 +6,27 @@ using UnityEngine.Events;
 
 public class KillArea : MonoBehaviour
 {
-    public UnityEvent OnKill;   
-    
+    public SpriteRenderer areaSprite;
+    public Color inside, outside;
+    public float colorLerp = 0.25f;
+    public UnityEvent OnKill;
+
+    private Color targetColor;
+    private bool inArea;
+
+    private void Update()
+    {
+        targetColor = Color.Lerp(targetColor, inArea ? inside : outside, colorLerp);
+        
+        if (areaSprite) areaSprite.color = targetColor;
+    }
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.TryGetComponent(out Enemy e))
         {
             e.onDeath.AddListener(KillEvent);
+            inArea = true;
         }
     }
 
@@ -21,6 +35,7 @@ public class KillArea : MonoBehaviour
         if (other.TryGetComponent(out Enemy e))
         {
             e.onDeath.RemoveListener(KillEvent);
+            inArea = false;
         }
     }
 

@@ -45,7 +45,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeScale == 0) return;
+        if (Time.timeScale == 0 || !PlayerStatus.player.GetComponent<Renderer>().isVisible) return;
 
         // Get direction from cursor to player and make the player face it
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

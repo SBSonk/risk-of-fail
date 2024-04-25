@@ -63,7 +63,8 @@ public class PlayerAnimations : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeScale == 0) return;
+        // VERY BAD
+        if (Time.timeScale == 0 || !PlayerStatus.player.GetComponent<Renderer>().isVisible) return;
         
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -85,17 +86,20 @@ public class PlayerAnimations : MonoBehaviour
         currentDir = VectorToDir(dir);
 
         // Change weapon sorting order depending on if its in front or behind
-        if (weaponAnimator.sprite && canSwitchAnimation)
+        if (canSwitchAnimation)
         {
-            if (currentDir == Directions.down) weaponAnimator.sprite.sortingOrder = 1;
-            else weaponAnimator.sprite.sortingOrder = 0;
+            /*if (currentDir == Directions.down) weaponAnimator.sprite.sortingOrder = 1;
+            else weaponAnimator.sprite.sortingOrder = 0;*/
             
             // Orient weapon
-            if (followCursor)
+            /*if (followCursor)
             {
                 Vector2 mousePos = ((Vector2)transform.position + playerOffset - mousePosition).normalized;
                 angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
-            }
+            }*/
+            
+            Vector2 mousePos = ((Vector2)transform.position + playerOffset - mousePosition).normalized;
+            angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
         }
         
         weaponAnimator.transform.rotation = Quaternion.Euler(new Vector3(0, 0,
@@ -270,6 +274,7 @@ public class PlayerAnimations : MonoBehaviour
         weaponAnimator = Instantiate(w.weapon.animatorController, transform.position + new Vector3(0, 1.25f) + w.weapon.weaponOffset, Quaternion.identity, sprite.transform);
         weaponAnimator.transform.localScale = w.weapon.weaponScale;
         
+        if (Time.timeScale == 0 || !PlayerStatus.player.GetComponent<Renderer>().isVisible) return;
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 mousePos = (mousePosition - (Vector2)transform.position).normalized;
         float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,7 +10,12 @@ public class RoomKillCounter : MonoBehaviour
     public bool active = true;
 
     public TextMeshPro text;
-    
+
+    private void Start()
+    {
+        UpdateText();
+    }
+
     public void AddKill()
     {
         if (!active) return;
@@ -21,14 +27,17 @@ public class RoomKillCounter : MonoBehaviour
             FinishCounter();
         }
 
-        if (text)text.text = (killsNeeded/2).ToString();
+        UpdateText();
+    }
+
+    private void UpdateText()
+    {
+        if (text) text.text = (killsNeeded).ToString();
     }
 
     public void FinishCounter()
     {
         OnCounterComplete?.Invoke();
         active = false;
-        
-        print("f");
     }
 }

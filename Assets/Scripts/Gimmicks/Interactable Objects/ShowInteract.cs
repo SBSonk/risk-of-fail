@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShowInteract : MonoBehaviour
 {
+    public bool active = true;
+    
     public float fadeTime = 0.1f;
     public SpriteRenderer outline, interactIcon;
 

@@ -18,7 +18,7 @@ public class QuarterlyAssessment : Enemy
         // Reduce alive enemies for the spawner`
         onEnemyDeath?.Invoke(type);
 
-        LevelStats.main.EnemyKilled(flag); // Should use an event probably
+        LevelStats.main.EnemyKill(flag); // Should use an event probably
         
         dead = true; 
         onDeath?.Invoke(flag);

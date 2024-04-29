@@ -42,5 +42,7 @@ public class HomingProjectile : Projectile
         
         Vector2 dirTowards = (transform.position + (Vector3) rb.velocity - transform.position).normalized;
         transform.right = Vector3.Lerp(transform.right, dirTowards, Time.deltaTime * homingStrength);
+        
+        print(lockedEnemy.name);
     }
 }

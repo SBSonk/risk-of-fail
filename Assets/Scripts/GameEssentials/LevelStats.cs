@@ -34,6 +34,8 @@ public class LevelStats : MonoBehaviour
     public int sharpShooterBonus = 2000;
     public int noHitBonus = 5000;
 
+    public UnityEvent EnemyKilled;
+
     private void Awake()
     {
         if (!main) main = this;
@@ -139,7 +141,7 @@ public class LevelStats : MonoBehaviour
     {
         bulletsHit++;
     }
-    public void EnemyKilled(KillFlag flag)
+    public void EnemyKill(KillFlag flag)
     {
         enemiesKilled++;
 
@@ -147,6 +149,8 @@ public class LevelStats : MonoBehaviour
         {
             
         }
+        
+        EnemyKilled?.Invoke();
     }
 
     public static int GetHighScore(int buildIndex) => PlayerPrefs.GetInt(buildIndex + "Score", 0);

@@ -160,7 +160,7 @@ public class Enemy : Alive
         // Reduce alive enemies for the spawner
         onEnemyDeath?.Invoke(type);
 
-        LevelStats.main.EnemyKilled(flag); // Should use an event probably
+        LevelStats.main.EnemyKill(flag); // Should use an event probably
 
         base.Death(flag);
     }

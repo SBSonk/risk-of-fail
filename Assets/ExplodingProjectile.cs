@@ -13,6 +13,8 @@ public class ExplodingProjectile : Projectile
     {
         base.OnTriggerEnter2D(collision);
 
+        if (collision.CompareTag("CanBePenetrated")) return;
+
         Collider2D[] hit = Physics2D.OverlapCircleAll(transform.position, explosionRadius, enemyLayer);
         List<Alive> exploded = new List<Alive>();
         if (hit.Length > 0)

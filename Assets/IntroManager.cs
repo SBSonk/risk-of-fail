@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class IntroManager : MonoBehaviour
 {
     public GameObject introVideo;
     public GameObject uiCanvas;
-
+    public VideoPlayer video;
+    
     public bool seenOpening;
 
     private void Awake()
@@ -34,12 +36,29 @@ public class IntroManager : MonoBehaviour
         else
         {
             introVideo.SetActive(true);
-            seenOpening = true;
-
-            PlayerPrefs.SetInt("LaunchedBefore", 1);
+            StartCoroutine(WaitForIntro());
+            SaveOpeningSeen();
         }
+    }
+
+    private void SaveOpeningSeen()
+    {
+        seenOpening = true;
+
+        PlayerPrefs.SetInt("LaunchedBefore", 1);
+    }
+
+    IEnumerator WaitForIntro()
+    {
+        yield return new WaitForSeconds((float)video.length);
+        
+        uiCanvas.SetActive(true);
+        introVideo.SetActive(false);
     }
 
     [ContextMenu("ResetCheck")]
     void ResetCheck() => PlayerPrefs.SetInt("LaunchedBefore", 0);
+    
+    [ContextMenu("PassCheck")]
+    void PassCheck() => PlayerPrefs.SetInt("LaunchedBefore", 1);
 }

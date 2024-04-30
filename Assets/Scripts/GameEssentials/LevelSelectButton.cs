@@ -16,11 +16,17 @@ public class LevelSelectButton : MonoBehaviour
     void Start()
     {
         name.SetText(level.name);
-        
-        GetComponent<Button>().onClick.AddListener(() =>
+   
+        LoadoutSelectManager.instance.startButton.onClick.RemoveAllListeners();
+        LoadoutSelectManager.instance.startButton.onClick.AddListener(() =>
         {
             LevelFade.FadeIn(() =>
             {
+                if (!level.followLoadout)
+                {
+                    Destroy(LoadoutManager.instance.gameObject);
+                }
+            
                 SceneManager.LoadScene(level.buildIndex);
                 LevelFade.FadeOut();
             });

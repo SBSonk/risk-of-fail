@@ -10,4 +10,5 @@ public class LevelSelectItem : ScriptableObject
     [TextArea] public string description;
 
     public Sprite preview;
+    public bool followLoadout;
 }

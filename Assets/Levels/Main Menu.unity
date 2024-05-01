@@ -2526,11 +2526,11 @@ RectTransform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1816143612}
+  m_Father: {fileID: 1235348885}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 104.8, y: -83.9}
+  m_AnchoredPosition: {x: 71.57759, y: -74.67991}
   m_SizeDelta: {x: 286.3102, y: 256.0325}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &152239712
@@ -2598,19 +2598,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: SettingsToMain
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1816143611}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: LoadoutToLevelSelect
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &152239713
@@ -5462,16 +5450,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365166455}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1816143612}
+  m_Father: {fileID: 1235348885}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 502.40527, y: 124.48682}
+  m_AnchoredPosition: {x: 501.88867, y: 84.38025}
   m_SizeDelta: {x: 850.8107, y: 812.5861}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &365166457
@@ -5860,17 +5848,29 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1816143611}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 85944062}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
+          m_StringArgument: LevelSelectToLoadout
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1045940831}
+        m_TargetAssemblyTypeName: DiscordRPCManager, Assembly-CSharp
+        m_MethodName: ChangeDiscordDetails
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Choosing a loadout.
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &371429213
 MonoBehaviour:
@@ -7456,11 +7456,11 @@ RectTransform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1816143612}
+  m_Father: {fileID: 1235348885}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 102.13742, y: -377.74304}
+  m_AnchoredPosition: {x: 101.62094, y: -417.8496}
   m_SizeDelta: {x: 685.1795, y: 291.295}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &463914110
@@ -13721,7 +13721,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 575892277}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13729,11 +13729,11 @@ RectTransform:
   - {fileID: 1593275485}
   - {fileID: 594286316}
   - {fileID: 137350226}
-  m_Father: {fileID: 1816143612}
+  m_Father: {fileID: 1235348885}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 471.90527, y: 345.48682}
+  m_AnchoredPosition: {x: 471.38867, y: 305.38025}
   m_SizeDelta: {x: 724, y: 176.0144}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &575892279
@@ -13767,7 +13767,7 @@ MonoBehaviour:
     range: {fileID: 2057768418}
     spread: {fileID: 1332620227}
     piercing: {fileID: 710395897}
-  startButton: {fileID: 0}
+  startButton: {fileID: 463914110}
   selIndex: 0
 --- !u!1 &582496309
 GameObject:
@@ -14181,17 +14181,29 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1816143611}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 85944062}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
+          m_StringArgument: LevelSelectToLoadout
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1045940831}
+        m_TargetAssemblyTypeName: DiscordRPCManager, Assembly-CSharp
+        m_MethodName: ChangeDiscordDetails
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Choosing a loadout.
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &599528092
 MonoBehaviour:
@@ -16841,17 +16853,29 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1816143611}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 85944062}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
+          m_StringArgument: LevelSelectToLoadout
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1045940831}
+        m_TargetAssemblyTypeName: DiscordRPCManager, Assembly-CSharp
+        m_MethodName: ChangeDiscordDetails
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Choosing a loadout.
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &781795972
 MonoBehaviour:
@@ -23561,6 +23585,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226155316}
   m_CullTransparentMesh: 1
+--- !u!1 &1235348884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1235348885}
+  m_Layer: 5
+  m_Name: Parent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1235348885
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235348884}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1404407977}
+  - {fileID: 365166456}
+  - {fileID: 575892278}
+  - {fileID: 152239711}
+  - {fileID: 463914109}
+  m_Father: {fileID: 1816143612}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 2188, y: 40.106552}
+  m_SizeDelta: {x: 1854.5883, y: 981.3467}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1237334278
 GameObject:
   m_ObjectHideFlags: 0
@@ -25334,81 +25398,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377825816}
   m_CullTransparentMesh: 1
---- !u!1 &1378646594
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1378646595}
-  - component: {fileID: 1378646597}
-  - component: {fileID: 1378646596}
-  m_Layer: 5
-  m_Name: test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1378646595
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1378646594}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1816143612}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1378646596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1378646594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.15686275}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9f93cffbb509db34d90e2b5ce173a627, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1378646597
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1378646594}
-  m_CullTransparentMesh: 1
 --- !u!1 &1380719182
 GameObject:
   m_ObjectHideFlags: 0
@@ -25569,17 +25558,29 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1816143611}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 85944062}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
+          m_StringArgument: LevelSelectToLoadout
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1045940831}
+        m_TargetAssemblyTypeName: DiscordRPCManager, Assembly-CSharp
+        m_MethodName: ChangeDiscordDetails
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Choosing a loadout.
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1381982940
 MonoBehaviour:
@@ -25785,11 +25786,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 435048009}
-  m_Father: {fileID: 1816143612}
+  m_Father: {fileID: 1235348885}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 279.79993, y: 41}
+  m_AnchoredPosition: {x: 279.28345, y: 0.8934326}
   m_SizeDelta: {x: 405.6, y: 812.5861}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1404407978
@@ -26463,17 +26464,29 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1816143611}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 85944062}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
+          m_StringArgument: LevelSelectToLoadout
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1045940831}
+        m_TargetAssemblyTypeName: DiscordRPCManager, Assembly-CSharp
+        m_MethodName: ChangeDiscordDetails
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Choosing a loadout.
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1424223633
 MonoBehaviour:
@@ -26658,17 +26671,29 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1816143611}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 85944062}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
+          m_StringArgument: LevelSelectToLoadout
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1045940831}
+        m_TargetAssemblyTypeName: DiscordRPCManager, Assembly-CSharp
+        m_MethodName: ChangeDiscordDetails
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Choosing a loadout.
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1454758688
 MonoBehaviour:
@@ -40698,7 +40723,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 285894121}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 0.9999998
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -41016,12 +41041,7 @@ RectTransform:
   m_Children:
   - {fileID: 647345611}
   - {fileID: 946556056}
-  - {fileID: 1404407977}
-  - {fileID: 365166456}
-  - {fileID: 575892278}
-  - {fileID: 1378646595}
-  - {fileID: 152239711}
-  - {fileID: 463914109}
+  - {fileID: 1235348885}
   m_Father: {fileID: 85944060}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

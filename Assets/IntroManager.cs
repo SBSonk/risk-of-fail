@@ -32,9 +32,11 @@ public class IntroManager : MonoBehaviour
         if (seenOpening)
         {
             uiCanvas.SetActive(true);
+            introVideo.SetActive(false);
         }
         else
         {
+            uiCanvas.SetActive(false);
             introVideo.SetActive(true);
             StartCoroutine(WaitForIntro());
             SaveOpeningSeen();

@@ -49,6 +49,7 @@ public class Projectile : MonoBehaviour
         if (!active || objectsHit.Contains(collision.gameObject.GetInstanceID())) return;
 
         if (collision.CompareTag("CanBePenetrated")) return;
+        if (collision.isTrigger) return;
 
         objectsHit.Add(collision.gameObject.GetInstanceID());
         if (collision.CompareTag("Projectile") || ReferenceEquals(collision.gameObject, shooter)) return;

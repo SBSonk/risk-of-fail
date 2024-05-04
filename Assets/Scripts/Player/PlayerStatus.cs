@@ -17,6 +17,8 @@ public class PlayerStatus : Alive
     public float defaultSpeed = 10;
     public ParticleSystem deathParticles;
 
+    public string normalLayer, immuneLayer;
+
     private void Awake()
     {
         player = this;
@@ -41,7 +43,12 @@ public class PlayerStatus : Alive
         HudManager4.hud.SetPlayer(this);
         //CameraFollow.cam.SetPlayer(GetComponent<Rigidbody2D>());
     }
-    
+
+    private void Update()
+    {
+        gameObject.layer = canBeDamaged ? LayerMask.NameToLayer(normalLayer) : LayerMask.NameToLayer(immuneLayer);
+    }
+
     protected override void Death(KillFlag flag)
     {
         dead = true;

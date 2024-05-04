@@ -195,7 +195,13 @@ public class PlayerAnimations : MonoBehaviour
     }
 
     [ContextMenu("kYS")]
-    void DeathAnimation(KillFlag deathType) => StartCoroutine(DeathAnim(deathType));
+    void DeathAnimation(KillFlag deathType)
+    {
+        StopAllCoroutines();
+        sprite.color = Color.white;
+        
+        StartCoroutine(DeathAnim(deathType));
+    }
 
     IEnumerator DeathAnim(KillFlag deathType)
     {
@@ -363,6 +369,8 @@ public class PlayerAnimations : MonoBehaviour
                 break;
         }
         Invoke("EnableAnimations", 0.5f);
+        
+        StartCoroutine(SprFunctions.Flicker(sprite, 1, () => sprite.color = Color.white));
     }
 
     IEnumerator DashTrail()

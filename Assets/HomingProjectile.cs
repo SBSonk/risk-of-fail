@@ -25,7 +25,7 @@ public class HomingProjectile : Projectile
 
             foreach (Collider2D c in col)
             {
-                if (c.TryGetComponent(out Enemy e))
+                if (c.TryGetComponent(out Enemy e) || c.TryGetComponent(out BossEnemy b))
                 {
                     lockedEnemy = c.transform;
                     locked = true;
@@ -38,12 +38,8 @@ public class HomingProjectile : Projectile
         if (lockedEnemy)
         {
             // go towards
+            transform.right = Vector3.Lerp(transform.right, (lockedEnemy.position - transform.position).normalized, Time.deltaTime * homingStrength);
             rb.velocity = transform.right * homingStrength;
         }
-        
-        Vector2 dirTowards = (transform.position + (Vector3) rb.velocity - transform.position).normalized;
-        transform.right = Vector3.Lerp(transform.right, dirTowards, Time.deltaTime * homingStrength);
-        
-        print(lockedEnemy.name);
     }
 }

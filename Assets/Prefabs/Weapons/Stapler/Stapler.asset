@@ -25,7 +25,7 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: 1750bb5ded5b30d4db197733c4259edc, type: 3}
       rotationSpeed: 0
   weaponSprite: {fileID: -1027325106, guid: 073de776e7eb8cb43ac2642dc4fc85d9, type: 3}
-  baseDamage: 25
+  baseDamage: 35
   bulletSpread: 0.75
   knockbackAmount: 5
   stunLength: 0.2
@@ -55,8 +55,9 @@ MonoBehaviour:
   weaponOffset: {x: 0, y: 0, z: 0}
   animatorController: {fileID: 6172952387920931437, guid: 170bc48896fa21946b3a770580ee7c6e, type: 3}
   rigidbodyVariant: {fileID: 5659249942310486113, guid: f758b44fbe09ebb41806498655fefa50, type: 3}
-  swingDelay: 0.1
-  hitArea: 1.3
+  swingDelay: 0.125
+  hitArea: 1.5
+  hitDistanceMultiplier: 1
   hitFilter:
     useTriggers: 0
     useLayerMask: 0

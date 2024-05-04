@@ -11,6 +11,7 @@ public class MeleeWeapon : Weapon
 {
     public float swingDelay = 0.1f;
     public float hitArea = 2;
+    public float hitDistanceMultiplier = 1f;
     public ContactFilter2D hitFilter;
 
     public AudioClipRandomizer soundPrefab;
@@ -23,7 +24,7 @@ public class MeleeWeapon : Weapon
         Vector3 hitVector = (mousePosition - player.position).normalized;
 
         // Attack check
-        Collider2D[] col = Physics2D.OverlapCircleAll(player.position + hitVector * hitArea , hitArea);
+        Collider2D[] col = Physics2D.OverlapCircleAll(player.position + (hitVector * hitDistanceMultiplier) + Vector3.up , hitArea);
         List<Alive> hit = new List<Alive>();
         foreach(Collider2D c in col)
         {
@@ -35,7 +36,7 @@ public class MeleeWeapon : Weapon
                 a.GiveDamage(baseDamage * multiplier, stunLength, KillFlag.Melee);
                 if (a.TryGetComponent(out Rigidbody2D rb))
                 {
-                    rb.AddForce(hitVector * knockbackAmount, ForceMode2D.Impulse);
+                    rb.AddForce(hitVector.normalized * knockbackAmount, ForceMode2D.Impulse);
                 }
 
                 hit.Add(a);

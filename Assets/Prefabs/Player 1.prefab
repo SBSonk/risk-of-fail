@@ -5864,7 +5864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
-  damageCooldown: 0.5
+  damageCooldown: 1
   damageReduction: 1
   statusEffectTickrate: 3
   statuses: []
@@ -5901,6 +5901,8 @@ MonoBehaviour:
   pSFXManager: {fileID: 0}
   defaultSpeed: 7000
   deathParticles: {fileID: 944821671135324380}
+  normalLayer: Player
+  immuneLayer: PlayerImmune
 --- !u!114 &1425222227342113828
 MonoBehaviour:
   m_ObjectHideFlags: 0

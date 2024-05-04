@@ -16,7 +16,7 @@ public abstract class Alive : MonoBehaviour
     public GameObject damageIndicatorPrefab;
 
     public bool stunned;
-    bool canBeDamaged = true;
+    protected bool canBeDamaged = true;
     protected bool dead;
 
     public UnityEvent<float> onHit, onStunned, onHeal;

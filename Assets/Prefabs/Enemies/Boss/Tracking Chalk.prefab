@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 174331811955817907, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
@@ -165,6 +166,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3023861404400901020, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023861404400901020, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+      propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3023861404400901020, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
@@ -373,6 +378,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4519855712770121969, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9076594935915685230, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 313028255998415089}
+    - targetCorrespondingSourceObject: {fileID: 9076594935915685230, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1202852401}
+    - targetCorrespondingSourceObject: {fileID: 9076594935915685230, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1202852407}
   m_SourcePrefab: {fileID: 100100000, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
 --- !u!1 &902553212625447065 stripped
 GameObject:
@@ -399,6 +416,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1202852401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,7 +430,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerBullet: 0
-  hitmarker: {fileID: 5176569850158270605}
+  hitmarkerOrigin: {fileID: 6913574323419590344}
+  hitmarkerPrefab: {fileID: 2194163080042598108, guid: eb6621d90d5beea4bb95780b820c162b, type: 3}
   _light: {fileID: 7675775455176733400}
   rb: {fileID: 4952279504958023633}
   sprite: {fileID: 1748084048185207455}
@@ -458,9 +477,9 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 3875927629597518374, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
   m_PrefabInstance: {fileID: 8174042516789677559}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &5176569850158270605 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3938070796565349754, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+--- !u!4 &6913574323419590344 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3351236038405120831, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
   m_PrefabInstance: {fileID: 8174042516789677559}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7675775455176733400 stripped

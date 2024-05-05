@@ -38,15 +38,19 @@ MonoBehaviour:
   shootShake: {fileID: 0}
   hitScreenShake: {fileID: 11400000, guid: 6caba7f04f154e947b688247456a3713, type: 2}
   effects:
-    animType: 0
     shootSounds: []
     reloadSounds: []
     shoveSounds: []
     enemyHitSounds: []
     wallHitSounds: []
+  weaponScale: {x: 1, y: 1, z: 1}
+  weaponOffset: {x: 0, y: 0, z: 0}
+  animatorController: {fileID: 0}
+  rigidbodyVariant: {fileID: 0}
   bulletVelocity: 2.5
   pierceAmount: 0
   bullet: {fileID: 1577635671258600914, guid: edbc435772d2add44ac90a03ecdd0cab, type: 3}
+  ammoDrop: {fileID: 0}
   minDamage: 2
   lowColor: {r: 0.00126791, g: 1, b: 0, a: 1}
   highColor: {r: 1, g: 0, b: 0, a: 1}

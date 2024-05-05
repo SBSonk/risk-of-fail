@@ -2,6 +2,7 @@ using FirstGearGames.SmoothCameraShaker;
 using System.Collections;
 using System.Collections.Generic;
 using GameAudioScriptingEssentials;
+using Unity.Mathematics;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -9,6 +10,8 @@ using UnityEngine.Rendering;
 [CreateAssetMenu(fileName = "New Melee", menuName = "Weapons/Melee")]
 public class MeleeWeapon : Weapon
 {
+    public Projectile friendlyQuizBullet;
+    
     public float swingDelay = 0.1f;
     public float hitArea = 2;
     public float hitDistanceMultiplier = 1f;
@@ -24,7 +27,7 @@ public class MeleeWeapon : Weapon
         Vector3 hitVector = (mousePosition - player.position).normalized;
 
         // Attack check
-        Collider2D[] col = Physics2D.OverlapCircleAll(player.position + (hitVector * hitDistanceMultiplier) + Vector3.up , hitArea);
+        Collider2D[] col = Physics2D.OverlapCircleAll(player.position + (hitVector * hitDistanceMultiplier) + Vector3.up, hitArea);
         List<Alive> hit = new List<Alive>();
         foreach(Collider2D c in col)
         {
@@ -48,6 +51,24 @@ public class MeleeWeapon : Weapon
             }
         }
 
+        // PARRY
+        Collider2D[] parryHits = Physics2D.OverlapCircleAll(player.position + hitVector, hitArea * 1.25f);
+        foreach(Collider2D c in parryHits)
+        {
+            if (c.TryGetComponent(out Rigidbody2D _rb) && c.TryGetComponent(out Projectile p) && p.active)
+            {
+                // Spawn Bullet
+                Projectile bullet = Instantiate(friendlyQuizBullet, player.position + hitVector, quaternion.identity);
+                bullet.transform.right = hitVector;
+
+                bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right.normalized * 30;
+
+                // Delete Bullet
+                Destroy(_rb.gameObject);
+            }
+        }
+        
+        
         if (shootShake) CameraShakerHandler.Shake(shootShake);
         if (hit.Count > 0)
         {

@@ -26,8 +26,6 @@ public abstract class Alive : MonoBehaviour
     // Applies damage and returns damage taken
     public float GiveDamage(float amount, float stunLength, KillFlag flag, StatusEffect effect = null, bool giveRawDamage = false)
     {
-        onHit?.Invoke(amount);
-
         // Return if can't be damaged
         if (!canBeDamaged || dead) return 0;
 
@@ -67,6 +65,7 @@ public abstract class Alive : MonoBehaviour
             Invoke("AllowDamage", damageCooldown);
         }
 
+        onHit?.Invoke(damage);
         return damage;
     }
 
@@ -113,7 +112,7 @@ public abstract class Alive : MonoBehaviour
         dead = true; 
         onDeath?.Invoke(flag);
         
-        if (deathSound) Instantiate(deathSound);
+        if (deathSound) Instantiate(deathSound, transform.position, transform.rotation);
         Destroy(gameObject); 
     }
 

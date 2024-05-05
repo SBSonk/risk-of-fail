@@ -4,54 +4,125 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using DG.Tweening;
+using FirstGearGames.SmoothCameraShaker;
+using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class BossRoomRunPhase : MonoBehaviour
 {
     public BossEnemy boss;
 
+    [Header("Damage Phase")] public ShakeData damagePhaseShake;
+    public float damagePhaseTimer = 30;
+    public float normalDamageReduc = 8;
+    public float damagePhaseReduc = 1;
+    public bool damagePhase = false;
+    public int healthSegments = 4;
 
-    [Header("Tracking Chalk")] 
-    public float boardWidth = 7;
-    public float boardHeight = 2;
-    public float bulletDistance = .1f;
-    public int bulletAmount = 4;
-    public float timeBetweenBullets = .25f;
-    public float hoverTime = 2f;
-    public float spawningTime = 2f;
-    public TrackingRound bulletPrefab;
+    [Header("Attack Timer")] public float attackChoosingTimer = 2f;
+    public float minAttackTimer = 2.5f;
+    public float maxAttackTimer = 5f;
 
+    public BossAttackV2[] randomAttacks;
+    public BossEnemySpawner enemySpawner;
 
+    private List<BossAttackV2> attackBag;
+    private Coroutine currentAttack, damagePhaseTimerCoroutine;
+    private float damagePhaseEndHealth, maxDamagePhaseDamage;
+
+    public UnityEvent OnChooseAttack, OnAttack, OnDamagePhaseStart, OnDamagePhaseEnd, OnSpawnEnemy;
+    
     private void Start()
     {
-        StartCoroutine(TrackingChalkAttack());
+        ResetAttackBag();
+
+        StartCoroutine(AttackLoop());
+
+        maxDamagePhaseDamage = boss.maxHealth / healthSegments;
     }
 
-    IEnumerator TrackingChalkAttack()
+    IEnumerator AttackLoop()
     {
-        List<TrackingRound> bullets = new List<TrackingRound>();
-        bool left = false;
-        int index = 1;
-        for (int i = 0; i < bulletAmount; i++)
+        while (true)
         {
-            // Spawn bullet on one of the transforms alternating
-            TrackingRound b = Instantiate(bulletPrefab, transform.position + new Vector3(0, boardHeight), quaternion.identity);
-            b.SetTarget(PlayerStatus.player.transform);
-            float dir = (left ? -1 : 1);
-            b.transform.DOMoveX(transform.position.x + (boardWidth * dir) + (bulletDistance * (bulletAmount-i) * dir), spawningTime / bulletAmount * index);
-
-            bullets.Add(b);
-            if (!left) index++;
-            left = !left;
+            OnChooseAttack?.Invoke();
+            BossAttackV2 nextAttack = ChooseAttack();
+            // Throw Enemies Half the time
+            if (Random.Range(0, 2) == 1)
+            {
+                OnSpawnEnemy?.Invoke();
+                StartCoroutine(enemySpawner.Attack());
+            }
             
+            yield return new WaitForSeconds(attackChoosingTimer);
+
+            OnAttack?.Invoke();
+            currentAttack = StartCoroutine(nextAttack.Attack());
+
+            yield return new WaitForSeconds(Random.Range(minAttackTimer, maxAttackTimer));
         }
+    }
+    
+    void ResetAttackBag()
+    {
+        attackBag = new List<BossAttackV2>();
 
-        yield return new WaitForSeconds(hoverTime);
-
-        foreach (var b in bullets)
+        foreach (var attack in randomAttacks)
         {
-            b.StartTimer();
-
-            yield return new WaitForSeconds(timeBetweenBullets);
+            attackBag.Add(attack);
         }
+    }
+    
+    public BossAttackV2 ChooseAttack()
+    {
+        BossAttackV2 attackChosen = attackBag[Random.Range(0, attackBag.Count)];
+        attackBag.Remove(attackChosen);
+        
+        if (attackBag.Count == 0) ResetAttackBag();
+
+        return attackChosen;
+    }
+    
+    public void OnCanisterKill()
+    {
+        OnSpawnEnemy?.Invoke();
+        StartCoroutine(enemySpawner.Attack());
+    }
+    
+    public void StartDamagePhase()
+    {
+        OnDamagePhaseStart?.Invoke();
+        CameraShakerHandler.Shake(damagePhaseShake);
+        
+        damagePhase = true;
+        boss.damageReduction = damagePhaseReduc;
+        
+        damagePhaseEndHealth = boss.health - boss.maxHealth/healthSegments;
+        boss.onHit.AddListener(TrackHitDamage);
+        
+        damagePhaseTimerCoroutine = StartCoroutine(DamagePhaseTimer());
+    }
+
+    void TrackHitDamage(float _)
+    {
+        // Cancel if reached threshhold
+        if (boss.health <= damagePhaseEndHealth) EndDamagePhase();
+    }
+    
+    IEnumerator DamagePhaseTimer()
+    {
+        yield return new WaitForSeconds(damagePhaseTimer);
+
+        EndDamagePhase();
+    }
+
+    void EndDamagePhase()
+    {
+        OnDamagePhaseEnd?.Invoke();
+        
+        if (damagePhaseTimerCoroutine != null) StopCoroutine(damagePhaseTimerCoroutine);
+        
+        damagePhase = false;
+        boss.damageReduction = normalDamageReduc;
     }
 }

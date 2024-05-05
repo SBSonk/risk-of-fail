@@ -35,7 +35,6 @@ public class WrittenWorksAttack : MonoBehaviour
     {
         ai = GetComponent<AIPath>();
         self = GetComponent<Enemy>();
-        player = GameObject.Find("Player").GetComponent<Rigidbody2D>();
     }
 
     protected virtual void Start()
@@ -48,6 +47,8 @@ public class WrittenWorksAttack : MonoBehaviour
 
         //self.onStunned.AddListener(CancelDash);
         self.onStunned.AddListener(DisableAttack);
+
+        player = PlayerStatus.player.GetComponent<Rigidbody2D>();
     }
 
     protected virtual void FixedUpdate()

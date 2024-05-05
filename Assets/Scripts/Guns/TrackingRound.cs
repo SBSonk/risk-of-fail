@@ -30,10 +30,11 @@ public class TrackingRound : Projectile
 
     protected override void Update()
     {
-        if (target)
+        if (target && !propelled)
         {
             Vector3 targetDir = (target.position - transform.position + new Vector3(0, 0.5f)).normalized;
-            transform.right = Vector3.Lerp(transform.right, targetDir, Time.deltaTime * rotationSpeed);
+            float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
         if (!active || !attackPlayer) return;

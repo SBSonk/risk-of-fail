@@ -37,7 +37,7 @@ public class Enemy : Alive
 
     SpriteRenderer[] healthBarSprites;
 
-    protected void Start()
+    protected void Awake()
     {
         health *= globalEnemyHealthScale;
         maxHealth *= globalEnemyHealthScale;

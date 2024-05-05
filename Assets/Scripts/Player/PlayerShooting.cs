@@ -235,8 +235,7 @@ public class PlayerShooting : MonoBehaviour
                         // Spawn Bullet
                         Projectile bullet = Instantiate(friendlyQuizBullet, gunBarrel.position, gunBarrel.rotation);
 
-                        bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.right.normalized * 3, ForceMode2D.Impulse);
-
+                        bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right.normalized * 30;
                         // Delete Bullet
                         Destroy(_rb.gameObject);
                     }

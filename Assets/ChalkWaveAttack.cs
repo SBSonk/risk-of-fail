@@ -14,9 +14,9 @@ public class ChalkWaveAttack : BossAttackV2
     public Vector3 attackScale = new Vector3(4, 4, 1);
 
     [Header("Choosing Phase")] public float windUpTime = 2;
-    public int choosingPhaseFakes = 2;
+    //public int choosingPhaseFakes = 2;
     public float choosingPhaseTime = 3;
-    public float choosingPhaseHoverTime = 3;
+    //public float choosingPhaseHoverTime = 3;
 
     [Header("Attack")]
     public int waves = 4;
@@ -26,11 +26,6 @@ public class ChalkWaveAttack : BossAttackV2
     public Rigidbody2D wavePrefab;
 
     private float startX;
-
-    private void Start()
-    {
-        StartCoroutine(Attack());
-    }
 
     public override IEnumerator Attack()
     {

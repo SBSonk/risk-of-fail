@@ -27,7 +27,7 @@ public class BossRoomRunPhase : MonoBehaviour
     public BossEnemySpawner enemySpawner;
 
     private List<BossAttackV2> attackBag;
-    private Coroutine currentAttack, damagePhaseTimerCoroutine;
+    private Coroutine attackLoop, currentAttack, damagePhaseTimerCoroutine;
     private float damagePhaseEndHealth, maxDamagePhaseDamage;
 
     public UnityEvent OnChooseAttack, OnAttack, OnDamagePhaseStart, OnDamagePhaseEnd, OnSpawnEnemy;
@@ -36,7 +36,7 @@ public class BossRoomRunPhase : MonoBehaviour
     {
         ResetAttackBag();
 
-        StartCoroutine(AttackLoop());
+        attackLoop = StartCoroutine(AttackLoop());
 
         maxDamagePhaseDamage = boss.maxHealth / healthSegments;
     }
@@ -101,6 +101,8 @@ public class BossRoomRunPhase : MonoBehaviour
         boss.onHit.AddListener(TrackHitDamage);
         
         damagePhaseTimerCoroutine = StartCoroutine(DamagePhaseTimer());
+        StopCoroutine(currentAttack);
+        StopCoroutine(attackLoop);
     }
 
     void TrackHitDamage(float _)
@@ -124,5 +126,6 @@ public class BossRoomRunPhase : MonoBehaviour
         
         damagePhase = false;
         boss.damageReduction = normalDamageReduc;
+        attackLoop = StartCoroutine(AttackLoop());
     }
 }

@@ -59,11 +59,12 @@ public class EraserSlamV2 : MonoBehaviour
         OnSlam?.Invoke();
         CheckHit();
 
-        yield return new WaitForSeconds(disappearTime);
-
-        
-        eraserSprite.DOColor(whiteTrans, fadeTime);
-        shadowSprite.DOColor(whiteTrans, fadeTime);
+        if (disappearTime > 0)
+        {
+            yield return new WaitForSeconds(disappearTime);
+            eraserSprite.DOColor(whiteTrans, fadeTime);
+            shadowSprite.DOColor(whiteTrans, fadeTime);
+        }
     }
 
     void CheckHit()

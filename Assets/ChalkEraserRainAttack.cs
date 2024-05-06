@@ -24,11 +24,6 @@ public class ChalkEraserRainAttack : BossAttackV2
     public float minTimeBetweenFloats = .25f;
     public float maxTimeBetweenFloats = .5f;
 
-    private void Start()
-    {
-        StartCoroutine(Attack());
-    }
-
     public override IEnumerator Attack()
     {
         int range = Random.Range(minSpawns, maxSpawns);

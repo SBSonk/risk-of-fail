@@ -36,6 +36,8 @@ public class WeaponPickup : InteractBase
 
         PlayerStatus.player.pShooting.weaponsInArea.Remove(this);
         Destroy(gameObject);
+        
+        
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

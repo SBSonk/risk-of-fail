@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 986840169310017381, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
@@ -91,13 +92,22 @@ PrefabInstance:
     - {fileID: 4457631718284635906, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
     - {fileID: 7390816378070057440, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
     - {fileID: 1346883671706680403, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 986840170020990974, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1131439224}
+    - targetCorrespondingSourceObject: {fileID: 6287767084360916326, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1446080375002256045}
   m_SourcePrefab: {fileID: 100100000, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
 --- !u!1 &2026887349552727747 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6287767084360916326, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}
   m_PrefabInstance: {fileID: 5431993810893347749}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &392073915343663117
+--- !u!114 &1446080375002256045
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,11 +116,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2026887349552727747}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 240fc20ffea856440be0e7214bbb57c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 85b34bc2dec92b740b15fc30ba99129a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pickupPoints: 250
-  lifetime: 1000
+  lifetime: 0
   particles: {fileID: 2315525172783144950}
   _light: {fileID: 4790779475466647292}
   sprite: {fileID: 5103603606328986817}
@@ -118,19 +128,8 @@ MonoBehaviour:
   active: 1
   OnPickupCollect:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1131439224}
-        m_TargetAssemblyTypeName: HealthIncrease, Assembly-CSharp
-        m_MethodName: Purchase
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  transparentColor: {r: 1, g: 1, b: 1, a: 0.25}
 --- !u!198 &2315525172783144950 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7728234647084975187, guid: bb047597ea6b62044ac59ef3a2d7375d, type: 3}

@@ -47,6 +47,9 @@ public class ChalkEraserRainAttack : BossAttackV2
             
             yield return new WaitForSeconds(timeBetweenSpawns);
         }
+        
+        print("test");
+        OnAttackEnd?.Invoke();
     }
 
     public Vector3 ChooseSpawnPoint()

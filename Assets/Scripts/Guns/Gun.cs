@@ -14,7 +14,6 @@ public class Gun : Weapon
     public override void ShootWeapon(Transform player, float multiplier = 1)
     {
         // Spawn projectile
-        Debug.Log(player.transform.right);
         lastBulletShot = SpawnBullet(player, multiplier);
         Rigidbody2D bulletShot = lastBulletShot.GetComponent<Rigidbody2D>();
 

@@ -22,6 +22,7 @@ public class BossRoomRunPhase : MonoBehaviour
     [Header("Attack Timer")] public float attackChoosingTimer = 2f;
     public float minAttackTimer = 2.5f;
     public float maxAttackTimer = 5f;
+    public float restTime = 10;
 
     public BossAttackV2[] randomAttacks;
     public BossEnemySpawner enemySpawner;
@@ -30,8 +31,9 @@ public class BossRoomRunPhase : MonoBehaviour
     private Coroutine attackLoop, currentAttack, damagePhaseTimerCoroutine;
     private float damagePhaseEndHealth, maxDamagePhaseDamage;
 
-    public UnityEvent OnChooseAttack, OnAttack, OnDamagePhaseStart, OnDamagePhaseEnd, OnSpawnEnemy;
-    
+    public UnityEvent OnChooseAttack, OnAttack, OnDamagePhaseStart, OnDamagePhaseEnd, OnSpawnEnemy, OnRest;
+
+    private bool canAttack = true;
     private void Start()
     {
         ResetAttackBag();
@@ -39,27 +41,47 @@ public class BossRoomRunPhase : MonoBehaviour
         attackLoop = StartCoroutine(AttackLoop());
 
         maxDamagePhaseDamage = boss.maxHealth / healthSegments;
+
+        for (int i = 0; i < randomAttacks.Length; i++)
+        {
+            randomAttacks[i].OnAttackEnd.AddListener(() =>
+            {
+                print("test");
+                StartCoroutine(EnableAttack());
+            });
+        }
     }
 
+    IEnumerator EnableAttack()
+    {
+        yield return new WaitForSeconds(Random.Range(minAttackTimer, maxAttackTimer));
+        canAttack = true;
+    }
+    
     IEnumerator AttackLoop()
     {
         while (true)
         {
-            OnChooseAttack?.Invoke();
-            BossAttackV2 nextAttack = ChooseAttack();
-            // Throw Enemies Half the time
-            if (Random.Range(0, 2) == 1)
+            if (canAttack)
             {
-                OnSpawnEnemy?.Invoke();
-                StartCoroutine(enemySpawner.Attack());
-            }
+                OnChooseAttack?.Invoke();
+                BossAttackV2 nextAttack = ChooseAttack();
+                // Throw Enemies Half the time
+                if (Random.Range(0, 2) == 1)
+                {
+                    OnSpawnEnemy?.Invoke();
+                    StartCoroutine(enemySpawner.Attack());
+                }
             
-            yield return new WaitForSeconds(attackChoosingTimer);
+                yield return new WaitForSeconds(attackChoosingTimer);
 
-            OnAttack?.Invoke();
-            currentAttack = StartCoroutine(nextAttack.Attack());
+                OnAttack?.Invoke();
+                currentAttack = StartCoroutine(nextAttack.Attack());
 
-            yield return new WaitForSeconds(Random.Range(minAttackTimer, maxAttackTimer));
+                canAttack = false;
+            }
+
+            yield return new WaitForEndOfFrame();
         }
     }
     

@@ -48,6 +48,7 @@ public class ChalkWaveAttack : BossAttackV2
         transform.DOMoveX(startX, choosingPhaseTime);
         yield return new WaitForSeconds(choosingPhaseTime);
         transform.DOScale(normalScale, windUpTime);
-        
+        print("test");
+        OnAttackEnd?.Invoke();
     }
 }

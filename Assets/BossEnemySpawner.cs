@@ -35,6 +35,8 @@ public class BossEnemySpawner : BossAttackV2
 
             yield return new WaitForSeconds(timeBetweenSpawns);
         }
+        
+        OnAttackEnd?.Invoke();
     }
     
     Alive ChooseEnemy()

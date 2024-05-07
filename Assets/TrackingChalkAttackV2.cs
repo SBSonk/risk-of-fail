@@ -41,5 +41,7 @@ public class TrackingChalkAttackV2 : BossAttackV2
 
             yield return new WaitForSeconds(timeBetweenBullets);
         }
+        print("test");
+        OnAttackEnd?.Invoke();
     }
 }

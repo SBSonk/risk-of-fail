@@ -14,9 +14,10 @@ public class TrackingChalkAttackV2 : BossAttackV2
     public float spawningTime = 2f;
     public TrackingRound bulletPrefab;
 
+    private List<TrackingRound> bullets;
     public override IEnumerator Attack()
     {
-        List<TrackingRound> bullets = new List<TrackingRound>();
+        bullets = new List<TrackingRound>();
         bool left = false;
         int index = 1;
         for (int i = 0; i < bulletAmount; i++)
@@ -43,5 +44,15 @@ public class TrackingChalkAttackV2 : BossAttackV2
         }
         print("test");
         OnAttackEnd?.Invoke();
+    }
+
+    public override void CancelAttack()
+    {
+        if (bullets.Count == 0) return;
+        
+        for (int i = bullets.Count-1; i < 0; i++)
+        {
+            Destroy(bullets[i].gameObject);
+        }
     }
 }

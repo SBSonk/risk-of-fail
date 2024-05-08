@@ -11,4 +11,6 @@ public abstract class BossAttackV2 : MonoBehaviour
     public UnityEvent OnAttackEnd;
 
     public abstract IEnumerator Attack();
+
+    public virtual void CancelAttack() {}
 }

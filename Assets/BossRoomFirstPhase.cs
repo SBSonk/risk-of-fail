@@ -8,10 +8,12 @@ using FirstGearGames.SmoothCameraShaker;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
-public class BossRoomRunPhase : MonoBehaviour
+public class BossRoomFirstPhase : MonoBehaviour
 {
     public BossEnemy boss;
 
+    [Header("Phase End")] public float phaseEndThreshold = 500;
+    
     [Header("Damage Phase")] public ShakeData damagePhaseShake;
     public float damagePhaseTimer = 30;
     public float normalDamageReduc = 8;
@@ -22,16 +24,17 @@ public class BossRoomRunPhase : MonoBehaviour
     [Header("Attack Timer")] public float attackChoosingTimer = 2f;
     public float minAttackTimer = 2.5f;
     public float maxAttackTimer = 5f;
-    public float restTime = 10;
 
     public BossAttackV2[] randomAttacks;
     public BossEnemySpawner enemySpawner;
+
+    private BossAttackV2 currentAttackScript;
 
     private List<BossAttackV2> attackBag;
     private Coroutine attackLoop, currentAttack, damagePhaseTimerCoroutine;
     private float damagePhaseEndHealth, maxDamagePhaseDamage;
 
-    public UnityEvent OnChooseAttack, OnAttack, OnDamagePhaseStart, OnDamagePhaseEnd, OnSpawnEnemy, OnRest;
+    public UnityEvent OnChooseAttack, OnAttack, OnDamagePhaseStart, OnDamagePhaseEnd, OnSpawnEnemy, OnPhaseEnd;
 
     private bool canAttack = true;
     private void Start()
@@ -50,6 +53,8 @@ public class BossRoomRunPhase : MonoBehaviour
                 StartCoroutine(EnableAttack());
             });
         }
+        
+        boss.onHit.AddListener(TrackHitDamage);
     }
 
     IEnumerator EnableAttack()
@@ -77,6 +82,7 @@ public class BossRoomRunPhase : MonoBehaviour
 
                 OnAttack?.Invoke();
                 currentAttack = StartCoroutine(nextAttack.Attack());
+                currentAttackScript = nextAttack;
 
                 canAttack = false;
             }
@@ -119,18 +125,23 @@ public class BossRoomRunPhase : MonoBehaviour
         damagePhase = true;
         boss.damageReduction = damagePhaseReduc;
         
-        damagePhaseEndHealth = boss.health - boss.maxHealth/healthSegments;
-        boss.onHit.AddListener(TrackHitDamage);
-        
+        damagePhaseEndHealth = boss.health - maxDamagePhaseDamage;
+
         damagePhaseTimerCoroutine = StartCoroutine(DamagePhaseTimer());
         StopCoroutine(currentAttack);
+        currentAttackScript.CancelAttack();
         StopCoroutine(attackLoop);
     }
 
     void TrackHitDamage(float _)
     {
         // Cancel if reached threshhold
-        if (boss.health <= damagePhaseEndHealth) EndDamagePhase();
+        if (damagePhase)
+        {
+            if (boss.health <= damagePhaseEndHealth) EndDamagePhase();
+        }
+
+        if (boss.health <= phaseEndThreshold) OnPhaseEnd?.Invoke();
     }
     
     IEnumerator DamagePhaseTimer()

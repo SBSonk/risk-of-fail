@@ -45,6 +45,11 @@ GameObject:
   - component: {fileID: 5073392060903608290}
   - component: {fileID: 5734163092603604715}
   - component: {fileID: 3377380132821768752}
+  - component: {fileID: 8502801921374455553}
+  - component: {fileID: 2547833044252191527}
+  - component: {fileID: 7744845256603501915}
+  - component: {fileID: 7374812044941339076}
+  - component: {fileID: 8247217475536179665}
   m_Layer: 15
   m_Name: Blackboard
   m_TagString: Alive
@@ -63,7 +68,7 @@ Transform:
   m_LocalRotation: {x: -0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -73.97, y: -1.10931, z: -0.5303302}
   m_LocalScale: {x: 2, y: 2, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3794132300008006602}
   - {fileID: 8985741853943921297}
@@ -208,7 +213,7 @@ MonoBehaviour:
   health: 1000
   maxHealth: 1000
   damageCooldown: 0
-  damageReduction: 2
+  damageReduction: 8
   statusEffectTickrate: 1
   statuses: []
   damageIndicatorPrefab: {fileID: 5454792722737808766, guid: ffe96b4ed14b8d74aaa0085dca50470a, type: 3}
@@ -241,14 +246,220 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 5734163092603604715}
+  damagePhaseShake: {fileID: 11400000, guid: 362e36dec953f234ab51ab35ddfbc29e, type: 2}
+  damagePhaseTimer: 30
+  normalDamageReduc: 8
+  damagePhaseReduc: 4
+  damagePhase: 0
+  healthSegments: 4
+  attackChoosingTimer: 5
+  minAttackTimer: 2.5
+  maxAttackTimer: 5
+  restTime: 10
+  randomAttacks:
+  - {fileID: 8502801921374455553}
+  - {fileID: 7744845256603501915}
+  - {fileID: 7374812044941339076}
+  enemySpawner: {fileID: 2547833044252191527}
+  OnChooseAttack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8247217475536179665}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Choosing
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnAttack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8247217475536179665}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Angry
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDamagePhaseStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8247217475536179665}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: DamagePhased
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDamagePhaseEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8247217475536179665}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Idle
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnSpawnEnemy:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRest:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8502801921374455553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9144164159480552023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d8a33533b02b0a4eb963f8a587da5e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnAttackEnd:
+    m_PersistentCalls:
+      m_Calls: []
   boardWidth: 10
   boardHeight: 3
   bulletDistance: 0.75
   bulletAmount: 6
-  timeBetweenBullets: 0.2
+  timeBetweenBullets: 0.5
   hoverTime: 1
   spawningTime: 2
   bulletPrefab: {fileID: 1202852401, guid: ae9e37d791816224b873cac2600c39f2, type: 3}
+--- !u!114 &2547833044252191527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9144164159480552023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18912dbba582f8844b29be4ed0646947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnAttackEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  enemies:
+  - enemyPrefab: {fileID: 2368033471186396241, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+    spawnWeight: 2
+  - enemyPrefab: {fileID: 2549413287710925551, guid: 0b4e134ceb53b0d4898b105ba8c9c96f, type: 3}
+    spawnWeight: 3
+  minEnemiesPerWave: 2
+  maxEnemiesPerWave: 4
+  timeBetweenSpawns: 0.25
+  globalMaxEnemies: 6
+--- !u!114 &7744845256603501915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9144164159480552023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc7a5b90e14b6d049a0677c8341814fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnAttackEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  maxX: 16.5
+  normalScale: {x: 2, y: 2, z: 1}
+  attackScale: {x: 3, y: 3, z: 1}
+  windUpTime: 2
+  choosingPhaseTime: 1
+  waves: 6
+  waveSpeed: 20
+  timeBetweenWaves: 0.5
+  waveOffset: {x: 0, y: 0, z: 0}
+  wavePrefab: {fileID: 8158035906224375257, guid: 4ac685df6609359418f64fcfb864d6f9, type: 3}
+--- !u!114 &7374812044941339076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9144164159480552023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6801d7ebe1fbeae4e8fea6a236b75cbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnAttackEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  spawnArea:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  prefabs:
+  - {fileID: 1648533671472126296, guid: 6d879b14d00f5ac4982a303e325beca9, type: 3}
+  - {fileID: 2067879318546716882, guid: 501de84f10cc9ac4e879f0d66596a579, type: 3}
+  padding: 0
+  minSpawns: 4
+  maxSpawns: 8
+  timeBetweenSpawns: 0.5
+  hoverTime: 8
+  staticPrefab: {fileID: 6631380180062519758, guid: 161bb565218140144a7e282590cf2ccb, type: 3}
+  maxX: 20
+  minFloatTime: 2
+  maxFloatTime: 4
+  minTimeBetweenFloats: 0.25
+  maxTimeBetweenFloats: 0.5
+--- !u!95 &8247217475536179665
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9144164159480552023}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b0199bdf00bb64243ba84f591fb6eaf5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &9180371209787746234
 PrefabInstance:
   m_ObjectHideFlags: 0

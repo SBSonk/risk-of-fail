@@ -13,7 +13,7 @@ public class GlueHealer : MonoBehaviour
     Enemy self;
     private AIPath ai;
     private AIMode currentMode = AIMode.pathing;
-    public Enemy target;
+    public Alive target;
 
     public float healRadius = 10f;
     public float healFactor = 2;
@@ -43,10 +43,14 @@ public class GlueHealer : MonoBehaviour
             case AIMode.pathing:
                 // Go to random position near player
                 Collider2D[] raycastHit = Physics2D.OverlapCircleAll(transform.position, healRadius);
-                List<Enemy> nearby = new List<Enemy>();
+                List<Alive> nearby = new List<Alive>();
                 foreach (var e in raycastHit)
                 {
-                    if (e.TryGetComponent<Enemy>(out var enemy))
+                    if (e.TryGetComponent<BossEnemy>(out var boss))
+                    {
+                        nearby.Add(boss);
+                    }
+                    else if (e.TryGetComponent<Enemy>(out var enemy))
                     {
                         if (enemy != self && !enemy.TryGetComponent<GlueHealer>(out _)) nearby.Add(enemy);
                     }

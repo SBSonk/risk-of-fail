@@ -51,4 +51,10 @@ public class ChalkWaveAttack : BossAttackV2
         print("test");
         OnAttackEnd?.Invoke();
     }
+
+    public override void CancelAttack()
+    {
+        transform.DOMoveX(startX, choosingPhaseTime);
+        transform.DOScale(normalScale, windUpTime);
+    }
 }

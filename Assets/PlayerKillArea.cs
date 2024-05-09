@@ -8,7 +8,7 @@ public class PlayerKillArea : MonoBehaviour
     public SpriteRenderer areaSprite;
     public Color inside, outside;
     public float colorLerp = 0.25f;
-    public UnityEvent OnKill;
+    public UnityEvent OnKill, OnEnterArea, OnLeaveArea;
 
     private Color targetColor;
     private bool inArea;
@@ -26,6 +26,8 @@ public class PlayerKillArea : MonoBehaviour
         {
             LevelStats.main.EnemyKilled.AddListener(KillEvent);
             inArea = true;
+            
+            OnEnterArea?.Invoke();
         }
     }
 
@@ -35,6 +37,8 @@ public class PlayerKillArea : MonoBehaviour
         {
             LevelStats.main.EnemyKilled.RemoveListener(KillEvent);
             inArea = false;
+            
+            OnLeaveArea?.Invoke();
         }
     }
 

@@ -1,3 +1,4 @@
+using System;
 using GameAudioScriptingEssentials;
 using System.Collections;
 using System.Collections.Generic;
@@ -36,6 +37,12 @@ public class PlayerShooting : MonoBehaviour
 
     public PlayerSFXManager sfxManager;
     public List<WeaponPickup> weaponsInArea;
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(gunPivot.position, transform.position + (gunPivot.right.normalized * 2));
+    }
 
     public void Initialize()
     {

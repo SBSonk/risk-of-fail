@@ -37,6 +37,7 @@ public class ChalkEraserRainAttack : BossAttackV2
             yield return new WaitForSeconds(Random.Range(minTimeBetweenFloats, maxTimeBetweenFloats));
         }
         
+        OnAttackEnd?.Invoke();
         yield return new WaitForSeconds(hoverTime);
         
         // Spawn Attacks 
@@ -47,9 +48,6 @@ public class ChalkEraserRainAttack : BossAttackV2
             
             yield return new WaitForSeconds(timeBetweenSpawns);
         }
-        
-        print("test");
-        OnAttackEnd?.Invoke();
     }
 
     public Vector3 ChooseSpawnPoint()

@@ -62,7 +62,13 @@ public class BossRoomFirstPhase : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(minAttackTimer, maxAttackTimer));
         canAttack = true;
     }
-    
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        canAttack = false;
+    }
+
     IEnumerator AttackLoop()
     {
         while (true)

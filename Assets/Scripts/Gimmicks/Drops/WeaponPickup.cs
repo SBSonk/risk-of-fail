@@ -21,6 +21,8 @@ public class WeaponPickup : InteractBase
 
     public void PickupWeapon()
     {
+        OnPickup?.Invoke();
+        
         PlayerShooting shooting = PlayerStatus.player.pShooting;
 
         // Check if weapon owned

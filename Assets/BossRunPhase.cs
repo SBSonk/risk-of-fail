@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Dreamteck.Splines;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class BossRunPhase : MonoBehaviour
@@ -16,9 +18,12 @@ public class BossRunPhase : MonoBehaviour
     public float timeBetweenEnemies = .25f;
     public float minTimeBetweenWaves = 2.5f, maxTimeBetweenWaves = 5f;
 
-    public float normalSpeed = 12, spawnSpeed = 6f;
+    public float normalSpeed = 12;
+    [FormerlySerializedAs("spawnSpeed")] public float fastSpeed = 6f;
     public float slowTime = 6f;
 
+    public UnityEvent OnPhaseStart;
+    
     private float targetSpeed;
     
     private void Start()
@@ -32,6 +37,8 @@ public class BossRunPhase : MonoBehaviour
         follower.followSpeed = normalSpeed;
         firstPhase.enabled = false;
         StartCoroutine(SpawnLoop());
+        
+        OnPhaseStart?.Invoke();
     }
 
     private void OnDestroy()
@@ -69,14 +76,10 @@ public class BossRunPhase : MonoBehaviour
             
                 yield return new WaitForSeconds(timeBetweenEnemies);
             }
-        
-            SlowDown();
-            yield return new WaitForSeconds(slowTime);
-            SpeedUp();
         }
     }
 
-    void SpeedUp() => targetSpeed = normalSpeed;
+    public void SpeedUp() => targetSpeed = fastSpeed;
 
-    void SlowDown() => targetSpeed = spawnSpeed;
+    public void SlowDown() => targetSpeed = normalSpeed;
 }

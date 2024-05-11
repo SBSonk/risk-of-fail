@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Dreamteck.Splines;
 using Unity.Mathematics;
 using UnityEngine;
@@ -12,6 +13,9 @@ public class BossRunPhase : MonoBehaviour
 {
     public SplineFollower follower;
     public BossRoomFirstPhase firstPhase;
+
+    public CinemachineVirtualCamera vcam;
+    public Collider2D phaseCameraBounds;
     
     public Enemy[] enemyPrefabs;
     public int minEnemiesPerWave = 2, maxEnemiesPerWave = 4;
@@ -25,11 +29,19 @@ public class BossRunPhase : MonoBehaviour
     public UnityEvent OnPhaseStart;
     
     private float targetSpeed;
-    
+
+    private int index = 0;
+
+    public UnityEvent OnReachFirstWall;
+
     private void Start()
     {
-        follower.onEndReached += StopLoop;
+        follower.enabled = true;
+        follower.onEndReached += ReachedEnd;
         targetSpeed = normalSpeed;
+
+        vcam.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = phaseCameraBounds;
+        vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset = new Vector3(0, 2);
     }
 
     private void OnEnable()
@@ -43,12 +55,12 @@ public class BossRunPhase : MonoBehaviour
 
     private void OnDestroy()
     {
-        StopLoop(0);
+        StopLoop();
     }
 
     private void OnDisable()
     {
-        StopLoop(0);
+        StopLoop();
     }
 
     private void FixedUpdate()
@@ -56,7 +68,15 @@ public class BossRunPhase : MonoBehaviour
         follower.followSpeed = Mathf.Lerp(follower.followSpeed, targetSpeed, .25f);
     }
 
-    void StopLoop(Double _)
+    void ReachedEnd(double _)
+    {
+        if (index == 0) OnReachFirstWall?.Invoke();
+        index++;
+        
+        StopLoop();
+    }
+    
+    void StopLoop()
     {
         StopAllCoroutines();
     }

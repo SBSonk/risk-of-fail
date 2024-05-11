@@ -31,7 +31,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 260154117909147655}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -197,6 +196,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5454792722737808766}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -204,7 +204,6 @@ Transform:
   m_Children:
   - {fileID: 260154117909147655}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5454792722737808760
 MonoBehaviour:
@@ -220,6 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   negative: {r: 1, g: 0.2971698, b: 0.2971698, a: 1}
   positive: {r: 0.44984382, g: 0.9716981, b: 0.35292807, a: 1}
+  immune: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 1}
   lifetime: 1
   damageNumber: {fileID: 2981346896842855493}
   animator: {fileID: 5454792722737808761}
@@ -243,6 +243,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &9003643748705682013
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,6 +267,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9003643748705682013}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -273,5 +275,4 @@ Transform:
   m_Children:
   - {fileID: 7335678978085618328}
   m_Father: {fileID: 8503910181864363587}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -48,7 +48,7 @@ public class EraserSlamV2 : MonoBehaviour
 
         eraserSprite.transform.localPosition = Vector3.up * startYOffset;
         eraserSprite.transform.DOMoveY(transform.position.y, fallLength).SetEase(Ease.InBack);
-        shadowSprite.DOColor(endShadowColor, fallLength).SetEase(Ease.InBack);
+        if (shadowSprite) shadowSprite.DOColor(endShadowColor, fallLength).SetEase(Ease.InBack);
         
         eraserSprite.sortingOrder = 10;
         

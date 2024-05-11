@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,12 +11,16 @@ public class RoomKillCounter : MonoBehaviour
     public bool active = true;
 
     public TextMeshPro text;
+    private int startKillsAmountNeeded;
 
     private void Start()
     {
         UpdateText();
+
+        startKillsAmountNeeded = killsNeeded;
     }
 
+    [ContextMenu("AddKill")]
     public void AddKill()
     {
         if (!active) return;
@@ -37,7 +42,13 @@ public class RoomKillCounter : MonoBehaviour
 
     public void FinishCounter()
     {
-        OnCounterComplete?.Invoke();
         active = false;
+        OnCounterComplete?.Invoke();
+    }
+
+    public void Reset()
+    {
+        killsNeeded = startKillsAmountNeeded;
+        active = true;
     }
 }

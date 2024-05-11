@@ -17,9 +17,9 @@ public class Attract : MonoBehaviour
         pickup = GetComponentInChildren<PickupBase>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (target) rb.AddForce((target.position - transform.position).normalized * (attractStrength * Time.fixedDeltaTime));
+        if (target) rb.AddForce((target.position - transform.position).normalized * (attractStrength * Time.deltaTime));
     }
 
     private void OnTriggerStay2D(Collider2D collision)

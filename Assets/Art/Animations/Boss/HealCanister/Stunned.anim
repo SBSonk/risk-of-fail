@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: InteractIcon
+  m_Name: Stunned
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 888383002, guid: 0e3bf826afb81b74394bc67eae34e729, type: 3}
-    - time: 0.6666667
-      value: {fileID: 912950275, guid: 0e3bf826afb81b74394bc67eae34e729, type: 3}
-    - time: 1.3333334
-      value: {fileID: 888383002, guid: 0e3bf826afb81b74394bc67eae34e729, type: 3}
+      value: {fileID: -516226621, guid: 8089412fd31d9ca49bd0dcaf776bcb82, type: 3}
     attribute: m_Sprite
-    path: 
+    path: Sprite/dhealing
     classID: 212
     script: {fileID: 0}
     flags: 2
@@ -39,7 +35,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 0
+      path: 3887817881
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -48,15 +44,13 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 888383002, guid: 0e3bf826afb81b74394bc67eae34e729, type: 3}
-    - {fileID: 912950275, guid: 0e3bf826afb81b74394bc67eae34e729, type: 3}
-    - {fileID: 888383002, guid: 0e3bf826afb81b74394bc67eae34e729, type: 3}
+    - {fileID: -516226621, guid: 8089412fd31d9ca49bd0dcaf776bcb82, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.35
+    m_StopTime: 0.016666668
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

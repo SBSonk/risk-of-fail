@@ -11,6 +11,7 @@ using Random = UnityEngine.Random;
 public class BossRoomFirstPhase : MonoBehaviour
 {
     public BossEnemy boss;
+    public SpawnHealCanisters healSpawner;
 
     [Header("Phase End")] public float phaseEndThreshold = 500;
     
@@ -55,6 +56,8 @@ public class BossRoomFirstPhase : MonoBehaviour
         }
         
         boss.onHit.AddListener(TrackHitDamage);
+        
+        healSpawner.StartSpawnProcessIntro();
     }
 
     IEnumerator EnableAttack()
@@ -147,7 +150,11 @@ public class BossRoomFirstPhase : MonoBehaviour
             if (boss.health <= damagePhaseEndHealth) EndDamagePhase();
         }
 
-        if (boss.health <= phaseEndThreshold) OnPhaseEnd?.Invoke();
+        if (boss.health <= phaseEndThreshold)
+        {
+            if (damagePhase) EndDamagePhase();
+            OnPhaseEnd?.Invoke();
+        }
     }
     
     IEnumerator DamagePhaseTimer()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -10,25 +11,21 @@ public class BossDropSpawner : MonoBehaviour
     [SerializeField] private int minSpawns, maxSpawns;
     [SerializeField] private float minImpulse, maxImpulse;
 
-    [SerializeField] private Vector2 direction = Vector2.left;
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, minImpulse);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, maxImpulse);
+    }
 
     public void SpawnItems()
     {
-        print("spawned");
-        
         for (int i = 0; i < Random.Range(minSpawns, maxSpawns); i++)
         {
-            Vector3 direction = this.direction;
-            direction.y *= Random.Range(-1, 1);
-            
-            direction.Normalize();
-            
-            // choose what to spawn
-            // spawn more ammo than health
-
             Rigidbody2D spawnedObject;
             
-            if (Random.value > .6f)
+            if (Random.Range(0, 4) != 0)
             {
                 spawnedObject = Instantiate(ammoPrefab, transform.position, quaternion.identity);
             }
@@ -37,7 +34,8 @@ public class BossDropSpawner : MonoBehaviour
                 spawnedObject = Instantiate(healthPrefab, transform.position, quaternion.identity);
             }
             
-            spawnedObject.AddForce(direction * Random.Range(minImpulse, maxImpulse), ForceMode2D.Impulse);
+            Vector3 force = Random.insideUnitCircle * Random.Range(minImpulse, maxImpulse);
+            spawnedObject.AddForce(force, ForceMode2D.Impulse);
         }
     }
 }

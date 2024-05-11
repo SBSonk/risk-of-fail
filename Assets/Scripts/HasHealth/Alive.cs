@@ -8,6 +8,7 @@ public abstract class Alive : MonoBehaviour
     [Header("Stats")]
     public float health = 100;
     public float maxHealth = 100;
+    public bool immune = false;
     public float damageCooldown = 0; // Dictates how long before you can take damage again
     public float damageReduction = 1;
     public float statusEffectTickrate = 1f; // How often a status effect ticks in seconds
@@ -42,6 +43,8 @@ public abstract class Alive : MonoBehaviour
         // Calculate damage
         float damage = giveRawDamage ? -amount : -amount / damageReduction;
 
+        if (immune) damage = 0;
+        
         // Give damage
         if (health + damage <= 0) 
         { 
@@ -92,19 +95,16 @@ public abstract class Alive : MonoBehaviour
     protected virtual void OnDamage(float damage) 
     {
         // Player damage indicator
-        if (damage != 0)
-        {
-            // Offset position
-            Vector3 pos = transform.position;
-            pos += Vector3.up * Random.Range(-2f, 2f);
-            pos += Vector3.right * (Random.Range(-3f, 3f) * Mathf.PerlinNoise(transform.position.x * Time.time, transform.position.y * Time.time));
+         // Offset position
+        Vector3 pos = transform.position;
+        pos += Vector3.up * Random.Range(-2f, 2f);
+        pos += Vector3.right * (Random.Range(-3f, 3f) * Mathf.PerlinNoise(transform.position.x * Time.time, transform.position.y * Time.time));
 
-            // Spawn indicator
-            DamageIndicator indicator = Instantiate(original: damageIndicatorPrefab,
-            position: pos, rotation: Quaternion.identity    ).GetComponent<DamageIndicator>();
+        // Spawn indicator
+        DamageIndicator indicator = Instantiate(original: damageIndicatorPrefab,
+        position: pos, rotation: Quaternion.identity    ).GetComponent<DamageIndicator>();
 
-            indicator.Initialize(damage);
-        }
+        indicator.Initialize(damage);
     }
 
     protected virtual void Death(KillFlag flag) 

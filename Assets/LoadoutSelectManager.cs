@@ -16,7 +16,10 @@ public class LoadoutSelectManager : MonoBehaviour
 
     public Button startButton;
 
-    public int selIndex;
+    public GameObject slotASel, slotBSel;
+
+    public void ToggleSlotA() => slotASel.SetActive(!slotASel.activeInHierarchy);
+    public void ToggleSlotB() => slotBSel.SetActive(!slotBSel.activeInHierarchy);
 
     public void IsSelectingLoadout(bool b) => isSelectingLoadout = b;
     
@@ -33,7 +36,7 @@ public class LoadoutSelectManager : MonoBehaviour
         }
     }
 
-    public void SetWeapon(Weapon w)
+    public void SetWeapon(int selIndex, Weapon w)
     {
         loadoutContainers[selIndex].selected = w;
         
@@ -56,11 +59,21 @@ public class LoadoutSelectManager : MonoBehaviour
         container.sprite.sprite = wep.hud.sprite;
         container.name.SetText(wep.name);
         container.description.SetText(wep.shopData.weaponDescription);
-    }
 
-    public void SetSelection(int i)
-    {
-        selIndex = i;
+        if (wep.shopData.weaponStrength > 0) container.strength.fillAmount = wep.shopData.weaponStrength / 3f;
+        else container.strength.fillAmount = 0;
+        
+        if (wep.shopData.weaponFireRate > 0) container.firerate.fillAmount = wep.shopData.weaponFireRate / 3f;
+        else container.firerate.fillAmount = 0;
+        
+        if (wep.shopData.range > 0) container.range.fillAmount = wep.shopData.range / 3f;
+        else container.range.fillAmount = 0;
+        
+        if (wep.shopData.spread > 0) container.spread.fillAmount = wep.shopData.spread / 3f;
+        else container.spread.fillAmount = 0;
+        
+        if (wep.shopData.weaponPiercing > 0) container.piercing.fillAmount = wep.shopData.weaponPiercing / 3f;
+        else container.piercing.fillAmount = 0;
     }
 
     [System.Serializable]

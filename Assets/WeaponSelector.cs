@@ -10,6 +10,7 @@ public class WeaponSelector : MonoBehaviour
     public Weapon[] weapons;
     public Transform parent;
     public Button prefabTemplate;
+    public int selIndex = 0;
 
     public LoadoutSelectManager loadoutSelector;
 
@@ -26,7 +27,7 @@ public class WeaponSelector : MonoBehaviour
             var weapon = weapons[i];
             slot.transform.GetChild(0).GetComponent<Image>().sprite = weapon.hud.sprite;
             
-            slot.onClick.AddListener(() => {  loadoutSelector.SetWeapon(weapon);});
+            slot.onClick.AddListener(() => {  loadoutSelector.SetWeapon(selIndex, weapon);});
         }
         
         gameObject.SetActive(false);

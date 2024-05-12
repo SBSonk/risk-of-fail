@@ -56,9 +56,11 @@ public struct ShopMetadata
 {
     public string weaponDescription;
     public int weaponCost;
-    [Range(0, 4)] public int weaponStrength;
-    [Range(0, 4)] public int weaponFireRate;
-    [Range(0, 4)] public int weaponPiercing;
+    [Range(0, 3)] public int weaponStrength;
+    [Range(0, 3)] public int weaponFireRate;
+    [Range(0, 3)] public int weaponPiercing;
+    [Range(0, 3)] public int spread;
+    [Range(0, 3)] public int range;
 }
 
 [System.Serializable]

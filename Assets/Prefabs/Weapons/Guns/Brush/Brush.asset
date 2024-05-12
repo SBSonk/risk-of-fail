@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: Brush
   m_EditorClassIdentifier: 
   shopData:
-    weaponDescription: 
+    weaponDescription: A brush covered in paint??? Hopefully this doesn't drip onto
+      your uniform.
     weaponCost: 0
-    weaponStrength: 0
-    weaponFireRate: 0
+    weaponStrength: 3
+    weaponFireRate: 1
     weaponPiercing: 0
+    spread: 3
+    range: 1
   hud:
     sprite: {fileID: -819839473, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
     offset: {x: 0, y: 0}

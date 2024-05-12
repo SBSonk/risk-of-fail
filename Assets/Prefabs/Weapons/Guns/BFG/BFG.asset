@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: BFG
   m_EditorClassIdentifier: 
   shopData:
-    weaponDescription: 
+    weaponDescription: A book strapped with explosives... Is this allowed in the
+      school?
     weaponCost: 0
-    weaponStrength: 0
+    weaponStrength: 3
     weaponFireRate: 0
-    weaponPiercing: 0
+    weaponPiercing: 3
+    spread: 3
+    range: 1
   hud:
     sprite: {fileID: -797842033, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
     offset: {x: 0, y: 0}

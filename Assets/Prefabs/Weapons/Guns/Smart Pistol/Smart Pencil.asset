@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: Smart Pencil
   m_EditorClassIdentifier: 
   shopData:
-    weaponDescription: 
+    weaponDescription: A handy mechanical pencil! This pencil will surely lead the
+      way towards your assignments.
     weaponCost: 0
-    weaponStrength: 0
-    weaponFireRate: 0
+    weaponStrength: 1
+    weaponFireRate: 2
     weaponPiercing: 0
+    spread: 3
+    range: 3
   hud:
     sprite: {fileID: -692363068, guid: 4ff4b73da3eaae84f8ca8cdc65a26e99, type: 3}
     offset: {x: 0, y: 0}

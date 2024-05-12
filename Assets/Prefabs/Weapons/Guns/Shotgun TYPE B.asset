@@ -18,6 +18,8 @@ MonoBehaviour:
     weaponStrength: 0
     weaponFireRate: 0
     weaponPiercing: 0
+    spread: 0
+    range: 0
   hud:
     sprite: {fileID: 0}
     offset: {x: 0, y: 0}
@@ -38,14 +40,20 @@ MonoBehaviour:
   shootShake: {fileID: 0}
   hitScreenShake: {fileID: 0}
   effects:
-    animType: 65
     shootSounds: []
     reloadSounds: []
     shoveSounds: []
     enemyHitSounds: []
     wallHitSounds: []
+  weaponScale: {x: 1, y: 1, z: 1}
+  weaponOffset: {x: 0, y: 0, z: 0}
+  animatorController: {fileID: 0}
+  rigidbodyVariant: {fileID: 0}
   bulletVelocity: 4
   pierceAmount: 2
-  bullet: {fileID: 9076594935915685230, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+  bullet: {fileID: 4519855712770121969, guid: a6a6bdbae022b2c4fbf2f81fe3bd5356, type: 3}
+  ammoDrop: {fileID: 0}
   pelletCount: 3
   pelletSpread: 2.5
+  perBulletDelay: 0
+  shootDelay: 0

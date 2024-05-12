@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: Stylus
   m_EditorClassIdentifier: 
   shopData:
-    weaponDescription: 
+    weaponDescription: Perfect for digital art, Although you won't be using it for
+      that here. It's razor sharp and can pierce through anything though!
     weaponCost: 0
-    weaponStrength: 0
-    weaponFireRate: 0
-    weaponPiercing: 0
+    weaponStrength: 3
+    weaponFireRate: 1
+    weaponPiercing: 3
+    spread: 3
+    range: 3
   hud:
     sprite: {fileID: -203641607, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
     offset: {x: 0, y: 0}

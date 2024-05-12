@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Eraser
   m_EditorClassIdentifier: 
   shopData:
-    weaponDescription: 
+    weaponDescription: A short two sided eraser. Perfect for erasing mistakes.
     weaponCost: 0
-    weaponStrength: 0
-    weaponFireRate: 0
+    weaponStrength: 2
+    weaponFireRate: 1
     weaponPiercing: 0
+    spread: 3
+    range: 0
   hud:
     sprite: {fileID: -896163793, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
     offset: {x: 60, y: 0}

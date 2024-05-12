@@ -69,6 +69,7 @@ public class BossRoomFirstPhase : MonoBehaviour
     private void OnDisable()
     {
         StopAllCoroutines();
+        if (currentAttack != null) currentAttackScript.CancelAttack();
         canAttack = false;
     }
 

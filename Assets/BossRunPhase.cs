@@ -32,7 +32,7 @@ public class BossRunPhase : MonoBehaviour
 
     private int index = 0;
 
-    public UnityEvent OnReachFirstWall;
+    public UnityEvent OnReachFirstWall, OnReachSecondWall;
 
     private void Start()
     {
@@ -53,6 +53,8 @@ public class BossRunPhase : MonoBehaviour
         OnPhaseStart?.Invoke();
     }
 
+    public void ResetSplinePosition() => follower.SetPercent(0);
+    
     private void OnDestroy()
     {
         StopLoop();
@@ -71,6 +73,7 @@ public class BossRunPhase : MonoBehaviour
     void ReachedEnd(double _)
     {
         if (index == 0) OnReachFirstWall?.Invoke();
+        if (index == 1) OnReachSecondWall?.Invoke();
         index++;
         
         StopLoop();

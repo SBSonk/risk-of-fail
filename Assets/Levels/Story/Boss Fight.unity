@@ -51116,7 +51116,7 @@ Transform:
   m_GameObject: {fileID: 711550933}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.75, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -93843,6 +93843,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1582199571738614598, guid: e1e453b45d88654478745bfc782c7692, type: 3}
+      propertyPath: OnReachSecondWall.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582199571738614598, guid: e1e453b45d88654478745bfc782c7692, type: 3}
       propertyPath: OnPhaseStart.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 5
       objectReference: {fileID: 0}
@@ -93883,6 +93887,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1582199571738614598, guid: e1e453b45d88654478745bfc782c7692, type: 3}
+      propertyPath: OnReachSecondWall.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582199571738614598, guid: e1e453b45d88654478745bfc782c7692, type: 3}
       propertyPath: OnPhaseStart.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: Play
       objectReference: {fileID: 0}
@@ -93903,6 +93911,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1510350859}
     - target: {fileID: 1582199571738614598, guid: e1e453b45d88654478745bfc782c7692, type: 3}
+      propertyPath: OnReachSecondWall.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5458448236976067640}
+    - target: {fileID: 1582199571738614598, guid: e1e453b45d88654478745bfc782c7692, type: 3}
       propertyPath: OnReachFirstWall.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -93917,6 +93929,14 @@ PrefabInstance:
     - target: {fileID: 1582199571738614598, guid: e1e453b45d88654478745bfc782c7692, type: 3}
       propertyPath: OnReachFirstWall.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: StartClock
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582199571738614598, guid: e1e453b45d88654478745bfc782c7692, type: 3}
+      propertyPath: OnReachSecondWall.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582199571738614598, guid: e1e453b45d88654478745bfc782c7692, type: 3}
+      propertyPath: OnReachSecondWall.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Play
       objectReference: {fileID: 0}
     - target: {fileID: 1582199571738614598, guid: e1e453b45d88654478745bfc782c7692, type: 3}
       propertyPath: OnPhaseStart.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -93963,6 +93983,10 @@ PrefabInstance:
       value: DeskClock, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1582199571738614598, guid: e1e453b45d88654478745bfc782c7692, type: 3}
+      propertyPath: OnReachSecondWall.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582199571738614598, guid: e1e453b45d88654478745bfc782c7692, type: 3}
       propertyPath: OnReachFirstWall.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Sleeping
       objectReference: {fileID: 0}
@@ -93984,6 +94008,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1582199571738614598, guid: e1e453b45d88654478745bfc782c7692, type: 3}
       propertyPath: OnReachFirstWall.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582199571738614598, guid: e1e453b45d88654478745bfc782c7692, type: 3}
+      propertyPath: OnReachSecondWall.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2547833044252191527, guid: e1e453b45d88654478745bfc782c7692, type: 3}
@@ -94136,7 +94164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4420140123201968942, guid: e1e453b45d88654478745bfc782c7692, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4420140123201968942, guid: e1e453b45d88654478745bfc782c7692, type: 3}
       propertyPath: m_LocalPosition.y
@@ -94224,7 +94252,7 @@ PrefabInstance:
       objectReference: {fileID: 1929164315}
     - target: {fileID: 8746887209964150894, guid: e1e453b45d88654478745bfc782c7692, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8746887209964150894, guid: e1e453b45d88654478745bfc782c7692, type: 3}
       propertyPath: _result.size
@@ -94434,7 +94462,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 4778966714412536578}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 131204197}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ddc1a2536715a24095c464a2c394d5d, type: 3}
   m_Name: 

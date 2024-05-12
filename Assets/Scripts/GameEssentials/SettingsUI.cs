@@ -18,7 +18,10 @@ public class SettingsUI : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        
+    }
+
+    private void Start()
+    {
         if (SettingsManager.instance) InitializeSettings();
     }
 

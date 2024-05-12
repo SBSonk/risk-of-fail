@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: Pen
   m_EditorClassIdentifier: 
   shopData:
-    weaponDescription: 
+    weaponDescription: Its your everyday writing utensil. This pen will allow you
+      to sling ink faster than any old pencil could.
     weaponCost: 0
-    weaponStrength: 0
-    weaponFireRate: 0
+    weaponStrength: 1
+    weaponFireRate: 3
     weaponPiercing: 0
+    spread: 2
+    range: 1
   hud:
     sprite: {fileID: -797842033, guid: ca975c0df5d4b0c48b290d42f0babeaf, type: 3}
     offset: {x: 0, y: 0}

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,14 +13,23 @@ public class LevelSelectButton : MonoBehaviour
     [SerializeField] private Menu_Infobox menuBox;
     [SerializeField] private LevelSelectItem level;
     [SerializeField] private TextMeshProUGUI name;
+    public RectTransform selectorSprite;
     
     void Start()
     {
         name.SetText(level.name);
-   
+
+        GetComponent<Button>().onClick.AddListener(EnterLoadoutSelect);
+    }
+
+    void EnterLoadoutSelect()
+    {
+        LoadoutSelectManager.instance.isSelectingLoadout = true;
+
         LoadoutSelectManager.instance.startButton.onClick.RemoveAllListeners();
         LoadoutSelectManager.instance.startButton.onClick.AddListener(() =>
         {
+            LoadoutSelectManager.instance.startButton.onClick.RemoveAllListeners();
             LevelFade.FadeIn(() =>
             {
                 if (!level.followLoadout)
@@ -35,7 +45,17 @@ public class LevelSelectButton : MonoBehaviour
 
     public void MouseEnter(BaseEventData b)
     {
+        if (LoadoutSelectManager.instance.isSelectingLoadout) return;
+        
+        SelectLevel(.1f);
+    }
+
+    public void SelectLevel(float t)
+    {
         menuBox.SetLevel(level);
         menuBox.ShowLevel();
+
+        selectorSprite.DOMove(transform.position, t);
     }
+
 }

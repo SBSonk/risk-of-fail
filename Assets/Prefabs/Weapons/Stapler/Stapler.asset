@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: Stapler
   m_EditorClassIdentifier: 
   shopData:
-    weaponDescription: 
+    weaponDescription: This stapler comes in a cool red color! It has a small issue
+      though, when you smack it against something it shoots.
     weaponCost: 0
-    weaponStrength: 0
-    weaponFireRate: 0
+    weaponStrength: 1
+    weaponFireRate: 1
     weaponPiercing: 0
+    spread: 3
+    range: 3
   hud:
     sprite: {fileID: 527964517, guid: 4ff4b73da3eaae84f8ca8cdc65a26e99, type: 3}
     offset: {x: 0, y: 0}

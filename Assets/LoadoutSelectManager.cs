@@ -9,6 +9,8 @@ using UnityEngine.UI;
 public class LoadoutSelectManager : MonoBehaviour
 {
     public static LoadoutSelectManager instance;
+
+    public bool isSelectingLoadout;
     
     public LoadoutContainer[] loadoutContainers;
 
@@ -16,6 +18,8 @@ public class LoadoutSelectManager : MonoBehaviour
 
     public int selIndex;
 
+    public void IsSelectingLoadout(bool b) => isSelectingLoadout = b;
+    
     private void Awake()
     {
         instance = this;
@@ -54,8 +58,11 @@ public class LoadoutSelectManager : MonoBehaviour
         container.description.SetText(wep.shopData.weaponDescription);
     }
 
-    public void SetSelection(int i) => selIndex = i;
-    
+    public void SetSelection(int i)
+    {
+        selIndex = i;
+    }
+
     [System.Serializable]
     public struct LoadoutContainer
     {

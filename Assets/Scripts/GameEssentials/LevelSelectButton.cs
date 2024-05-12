@@ -18,10 +18,18 @@ public class LevelSelectButton : MonoBehaviour
     void Start()
     {
         name.SetText(level.name);
-   
+
+        GetComponent<Button>().onClick.AddListener(EnterLoadoutSelect);
+    }
+
+    void EnterLoadoutSelect()
+    {
+        LoadoutSelectManager.instance.isSelectingLoadout = true;
+
         LoadoutSelectManager.instance.startButton.onClick.RemoveAllListeners();
         LoadoutSelectManager.instance.startButton.onClick.AddListener(() =>
         {
+            LoadoutSelectManager.instance.startButton.onClick.RemoveAllListeners();
             LevelFade.FadeIn(() =>
             {
                 if (!level.followLoadout)
@@ -37,6 +45,8 @@ public class LevelSelectButton : MonoBehaviour
 
     public void MouseEnter(BaseEventData b)
     {
+        if (LoadoutSelectManager.instance.isSelectingLoadout) return;
+        
         SelectLevel(.1f);
     }
 

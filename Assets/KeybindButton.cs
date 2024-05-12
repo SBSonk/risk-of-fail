@@ -18,7 +18,7 @@ public class KeybindButton : MonoBehaviour
         ui.ControlBinded.AddListener(UpdateKeyUI);
     }
 
-    void UpdateKeyUI()
+    public void UpdateKeyUI()
     {
         KeyBind key = KInputManager.GetKey(keyToChange);
         buttonText.text = key.primary.ToString();

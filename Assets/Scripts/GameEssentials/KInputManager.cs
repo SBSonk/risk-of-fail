@@ -10,6 +10,24 @@ public class KInputManager : MonoBehaviour
     
     public static Dictionary<string, KeyBind> keyBindDictionary;
     [SerializeField] KeyBind[] keyBinds;
+    KeyBind[] defaultBinds = new []
+    {
+        new KeyBind("Up", KeyCode.W, KeyCode.UpArrow),
+        new KeyBind("Down", KeyCode.S, KeyCode.DownArrow),
+        new KeyBind("Right", KeyCode.D, KeyCode.RightArrow),
+        new KeyBind("Left", KeyCode.A, KeyCode.LeftArrow),
+        new KeyBind("Dash", KeyCode.LeftShift, KeyCode.Space),
+        new KeyBind("Shoot", KeyCode.Mouse0, KeyCode.None),
+        new KeyBind("Shove", KeyCode.Mouse1, KeyCode.V),
+        new KeyBind("Reload", KeyCode.R, KeyCode.None),
+        new KeyBind("Interact", KeyCode.F, KeyCode.None),
+        new KeyBind("PreviousWeapon", KeyCode.Q, KeyCode.None),
+        new KeyBind("NextWeapon", KeyCode.E, KeyCode.None),
+        new KeyBind("WeaponA", KeyCode.Alpha1, KeyCode.None),
+        new KeyBind("WeaponB", KeyCode.Alpha2, KeyCode.None),
+        new KeyBind("WeaponC", KeyCode.Alpha3, KeyCode.None),
+        new KeyBind("SpecialShoot", KeyCode.None, KeyCode.None),
+    };
 
     private static string FILEPATH = "controls.ini";
     
@@ -30,6 +48,18 @@ public class KInputManager : MonoBehaviour
         LoadKeys();
     }
 
+    public void ResetBinds()
+    {
+        keyBindDictionary = new Dictionary<string, KeyBind>();
+        
+        foreach (var keybind in defaultBinds)
+        {
+            keyBindDictionary.Add(keybind.name, keybind);
+        }
+        
+        print("KeyBinds Reset.");
+    }
+    
     public void ClearBinds()
     {
         foreach (KeyValuePair<string,KeyBind> key in keyBindDictionary)

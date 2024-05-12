@@ -13,9 +13,20 @@ public class ControlsUI : MonoBehaviour
 
     public Button clearButton, applyButton;
     public UnityEvent ControlBinded, BindCanceled;
+
+    public KeybindButton[] allButtons;
     
     private string keyChanging;
     private bool changingBind = false;
+
+    public void UpdateAllBinds()
+    {
+        foreach (var keybindButton in allButtons)
+        {
+            keybindButton.UpdateKeyUI();
+        }
+    }
+    
     public void ChangeBind(string keyName)
     {
         keyChanging = keyName;
@@ -26,7 +37,7 @@ public class ControlsUI : MonoBehaviour
     {
         clearButton.onClick.AddListener(() =>
         {
-            KInputManager.instance.ClearBinds();
+            KInputManager.instance.ResetBinds();
             ControlBinded?.Invoke();
         });
         applyButton.onClick.AddListener(KInputManager.instance.SaveKeys);

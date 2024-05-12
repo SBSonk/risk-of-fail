@@ -22,6 +22,9 @@ public class WeaponPickup : InteractBase
     public void PickupWeapon()
     {
         OnPickup?.Invoke();
+
+        // Save Weapon
+        WeaponSelector.SetWeaponOwned(weaponToGive.name);
         
         PlayerShooting shooting = PlayerStatus.player.pShooting;
 
@@ -38,8 +41,6 @@ public class WeaponPickup : InteractBase
 
         PlayerStatus.player.pShooting.weaponsInArea.Remove(this);
         Destroy(gameObject);
-        
-        
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

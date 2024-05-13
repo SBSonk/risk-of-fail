@@ -3223,6 +3223,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8651544426577923373, guid: 3961eba42c7cd194eb98075746211e9c, type: 3}
   m_PrefabInstance: {fileID: 517625307}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &145434718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 145434719}
+  m_Layer: 15
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &145434719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145434718}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.7352941, y: -9.191176, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5458448236976067599}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &146974179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7540,91 +7571,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1240798313}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &319867017
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1315895693}
-    m_Modifications:
-    - target: {fileID: 826865479554043875, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_Name
-      value: Boss Rush Attack
-      objectReference: {fileID: 0}
-    - target: {fileID: 2021194906732454168, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: speed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2021194906732454168, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2021194906732454168, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: amountToMove.x
-      value: -60
-      objectReference: {fileID: 0}
-    - target: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
---- !u!114 &319867018 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2021194906732454168, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-  m_PrefabInstance: {fileID: 319867017}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 757d5494f1a76584781e3cefdd81c7f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &319867019 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-  m_PrefabInstance: {fileID: 319867017}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &321606768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36354,68 +36300,6 @@ MonoBehaviour:
   OnSlam:
     m_PersistentCalls:
       m_Calls: []
---- !u!1001 &1182556162
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1315895693}
-    m_Modifications:
-    - target: {fileID: 826865479554043875, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_Name
-      value: Boss Rush Attack (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -13
-      objectReference: {fileID: 0}
-    - target: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
---- !u!4 &1182556163 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6321623454514311254, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-  m_PrefabInstance: {fileID: 1182556162}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1190723723
 GameObject:
   m_ObjectHideFlags: 0
@@ -39202,17 +39086,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1049834677}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1276519514 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2021194906732454168, guid: 2e906a342e8e2d74ab637e098b74aeda, type: 3}
-  m_PrefabInstance: {fileID: 1182556162}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 757d5494f1a76584781e3cefdd81c7f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1276537697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41164,84 +41037,6 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!1 &1315895691
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1315895693}
-  - component: {fileID: 1315895692}
-  m_Layer: 0
-  m_Name: Boss RTL
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1315895692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1315895691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1683a96a4fc389439a30d3f9c6c4cbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playOnAwake: 1
-  timerSeconds: 0
-  OnTimerStart:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 319867018}
-        m_TargetAssemblyTypeName: BossRush, Assembly-CSharp
-        m_MethodName: StartMove
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnTimerEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1276519514}
-        m_TargetAssemblyTypeName: BossRush, Assembly-CSharp
-        m_MethodName: StartMove
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!4 &1315895693
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1315895691}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.29730034, y: 183.59203, z: -4.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 319867019}
-  - {fileID: 1182556163}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1318997150 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 412042312470844635, guid: 4f4149cba74467f4a80f4385852cf08c, type: 3}
@@ -111046,7 +110841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4420140123201968942, guid: e1e453b45d88654478745bfc782c7692, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 43.9
+      value: 45.202347
       objectReference: {fileID: 0}
     - target: {fileID: 4420140123201968942, guid: e1e453b45d88654478745bfc782c7692, type: 3}
       propertyPath: m_LocalPosition.y
@@ -111310,7 +111105,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4420140123201968942, guid: e1e453b45d88654478745bfc782c7692, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 145434719}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9144164159480552023, guid: e1e453b45d88654478745bfc782c7692, type: 3}
       insertIndex: 4
@@ -111509,7 +111307,9 @@ MonoBehaviour:
   OnAttackEnd:
     m_PersistentCalls:
       m_Calls: []
-  bossRushPrefab: {fileID: 0}
+  sideAttackPrefabs:
+  - {fileID: 4040326773626701337, guid: 2b1b1b57284372546a5409db52847f1b, type: 3}
+  - {fileID: 4040326773626701337, guid: 2d1fecf63ff83e747a9f6e69f6a0f708, type: 3}
   minAmount: 2
   maxAmount: 4
   rushSpeed: 10
@@ -112018,4 +111818,3 @@ SceneRoots:
   - {fileID: 491983837}
   - {fileID: 1950324354}
   - {fileID: 2074052434}
-  - {fileID: 1315895693}

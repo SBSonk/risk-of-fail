@@ -7,9 +7,8 @@ using Random = UnityEngine.Random;
 
 public class BossRushSpecialAttack : BossAttackV2
 {
-    public Transform bossRushPrefab;
+    public BossRush prefab;
     public int minAmount = 2, maxAmount = 4;
-    
     
     public float rushSpeed = 10;
 
@@ -23,12 +22,15 @@ public class BossRushSpecialAttack : BossAttackV2
         Gizmos.DrawWireCube(transform.position + centerOffset, new Vector3(stageWidth, stageHeight));
     }
 
+    private void Start()
+    {
+        StartCoroutine(Attack());
+    }
+
     public override IEnumerator Attack()
     {
-        for (int i = 0; i < Random.Range(minAmount,maxAmount); i++)
-        {
-            Transform rush = Instantiate(bossRushPrefab, transform.position + centerOffset, quaternion.identity);
-        }
+        //Instantiate(sideAttackPrefabs[Random.Range(0, sideAttackPrefabs.Length)], transform.position + centerOffset,
+          //  quaternion.identity);
 
         yield return null;
     }

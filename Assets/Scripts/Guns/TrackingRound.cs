@@ -55,6 +55,10 @@ public class TrackingRound : Projectile
     {
         anim.Play("Tracking");
         
+        yield return new WaitForSeconds(0.25f);
+
+        col.enabled = true;
+        
         yield return new WaitForSeconds(trackingTime);
 
         tracking = false;
@@ -63,9 +67,5 @@ public class TrackingRound : Projectile
         yield return new WaitForSeconds(waitTime);
         
         propelled = true;
-
-        yield return new WaitForSeconds(0.25f);
-
-        col.enabled = true;
     }
 }

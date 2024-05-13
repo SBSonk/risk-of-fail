@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class ChalkWaveAttack : BossAttackV2
 {
+    public Transform boss;
     public float maxX = 20;
 
     [Header("Scaling")] 
@@ -27,34 +28,39 @@ public class ChalkWaveAttack : BossAttackV2
 
     private float startX;
 
+    private void Start()
+    {
+        if (!boss) boss = transform;
+    }
+
     public override IEnumerator Attack()
     {
-        startX = transform.position.x;
+        startX = boss.position.x;
 
-        transform.DOScale(attackScale, windUpTime);
+        boss.DOScale(attackScale, windUpTime);
         yield return new WaitForSeconds(windUpTime);
         
         // Attack
         for (int i = 0; i < waves; i++)
         {
-            transform.DOMoveX(startX + Random.Range(-maxX, maxX), choosingPhaseTime);
+            boss.DOMoveX(startX + Random.Range(-maxX, maxX), choosingPhaseTime);
             yield return new WaitForSeconds(choosingPhaseTime);
             
-            Rigidbody2D wave = Instantiate(wavePrefab, transform.position + waveOffset, transform.rotation);
+            Rigidbody2D wave = Instantiate(wavePrefab, boss.position + waveOffset, transform.rotation);
             wave.velocity = -wave.transform.up.normalized * waveSpeed;
             yield return new WaitForSeconds(timeBetweenWaves);
         }
 
-        transform.DOMoveX(startX, choosingPhaseTime);
+        boss.DOMoveX(startX, choosingPhaseTime);
         yield return new WaitForSeconds(choosingPhaseTime);
-        transform.DOScale(normalScale, windUpTime);
+        boss.DOScale(normalScale, windUpTime);
         print("test");
         OnAttackEnd?.Invoke();
     }
 
     public override void CancelAttack()
     {
-        transform.DOMoveX(startX, choosingPhaseTime);
-        transform.DOScale(normalScale, windUpTime);
+        boss.DOMoveX(startX, choosingPhaseTime);
+        boss.DOScale(normalScale, windUpTime);
     }
 }

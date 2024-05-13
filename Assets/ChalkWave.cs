@@ -12,7 +12,7 @@ public class ChalkWave : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.attachedRigidbody)
+        if (col.attachedRigidbody && col.TryGetComponent(out Alive a))
         {
             col.attachedRigidbody.AddForce((col.attachedRigidbody.transform.position-transform.position).normalized * knockBack, ForceMode2D.Impulse);
         }

@@ -15,7 +15,7 @@ public class BossRunPhase : MonoBehaviour
     public BossRoomFirstPhase firstPhase;
 
     public CinemachineVirtualCamera vcam;
-    public Collider2D phaseCameraBounds;
+    public Collider2D phaseCameraBounds, lastPhaseBounds;
     
     public Enemy[] enemyPrefabs;
     public int minEnemiesPerWave = 2, maxEnemiesPerWave = 4;
@@ -73,7 +73,12 @@ public class BossRunPhase : MonoBehaviour
     void ReachedEnd(double _)
     {
         if (index == 0) OnReachFirstWall?.Invoke();
-        if (index == 1) OnReachSecondWall?.Invoke();
+        if (index == 1)
+        {
+            OnReachSecondWall?.Invoke();
+            vcam.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = lastPhaseBounds;
+            vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset = new Vector3(0, 2);
+        }
         index++;
         
         StopLoop();

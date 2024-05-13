@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1996329252, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
@@ -119,9 +120,16 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 2368033471186396241, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
+      propertyPath: deathFlingPrefab
+      value: 
+      objectReference: {fileID: 7445738913783620763, guid: c2977c39f9586f84ca57c7227670d780, type: 3}
     - target: {fileID: 2368033471186396242, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}
       propertyPath: m_Name
       value: Notebook Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78d166313e0e23e40b52fdcda41c16af, type: 3}

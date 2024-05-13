@@ -192,11 +192,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 60
   maxHealth: 60
+  immune: 0
   damageCooldown: 0
   damageReduction: 1
   statusEffectTickrate: 1
   statuses: []
   damageIndicatorPrefab: {fileID: 5454792722737808766, guid: ffe96b4ed14b8d74aaa0085dca50470a, type: 3}
+  deathFlingPrefab: {fileID: 7445738913783620763, guid: 5512a8381aa644f44897195f36d9bbac, type: 3}
   stunned: 0
   onHit:
     m_PersistentCalls:

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 // This script is only meant to be inherited by other objects (players, anything that has health)
 public abstract class Alive : MonoBehaviour
@@ -15,6 +17,8 @@ public abstract class Alive : MonoBehaviour
 
     public List<StatusEffect> statuses;
     public GameObject damageIndicatorPrefab;
+
+    public Rigidbody2D deathFlingPrefab;
 
     public bool stunned;
     protected bool canBeDamaged = true;
@@ -111,6 +115,14 @@ public abstract class Alive : MonoBehaviour
     {
         dead = true; 
         onDeath?.Invoke(flag);
+
+        if (deathFlingPrefab)
+        {
+            var rb = Instantiate(deathFlingPrefab, transform.position, quaternion.identity);
+            
+            rb.AddForce(new Vector3(Random.Range(1, -1f) * Random.Range(5, 10f),  Random.Range(2.5f, 10f)), ForceMode2D.Impulse);
+            rb.AddTorque(-Mathf.Sign(rb.velocity.x) * Random.Range(5, 10f), ForceMode2D.Impulse);
+        }
         
         if (deathSound) Instantiate(deathSound, transform.position, transform.rotation);
         Destroy(gameObject); 

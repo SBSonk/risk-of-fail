@@ -11535,6 +11535,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1159393439}
+        m_TargetAssemblyTypeName: ControllableTilemapFade, Assembly-CSharp
+        m_MethodName: FadeTiles
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2127003615}
+        m_TargetAssemblyTypeName: ControllableTilemapFade, Assembly-CSharp
+        m_MethodName: FadeTiles
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnRoomLeave:
     m_PersistentCalls:
       m_Calls:
@@ -11565,6 +11589,30 @@ MonoBehaviour:
       - m_Target: {fileID: 560032326}
         m_TargetAssemblyTypeName: SetFloorType, Assembly-CSharp
         m_MethodName: ResetFloor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1159393439}
+        m_TargetAssemblyTypeName: ControllableTilemapFade, Assembly-CSharp
+        m_MethodName: UnfadeTiles
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2127003615}
+        m_TargetAssemblyTypeName: ControllableTilemapFade, Assembly-CSharp
+        m_MethodName: UnfadeTiles
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13480,6 +13528,10 @@ MonoBehaviour:
     prefab: {fileID: 814991883, guid: 8022204033a01364cad9e4f4e512e011, type: 3}
   - spawnWeight: 0
     prefab: {fileID: 228771267715844757, guid: 2489d6ecd06b11848a45ccd3973939d4, type: 3}
+  - spawnWeight: 0
+    prefab: {fileID: 2549413287710925551, guid: 0b4e134ceb53b0d4898b105ba8c9c96f, type: 3}
+  - spawnWeight: 0
+    prefab: {fileID: 1932060192480274504, guid: 8e27261c91cdd454faa258b791fd06ca, type: 3}
   OnEnemyKilled:
     m_PersistentCalls:
       m_Calls: []
@@ -13501,7 +13553,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  roundBufferTime: 5
+  roundBufferTime: 3
   enemiesInRound: 6
   enemiesAlive: 0
   maxEnemiesSpawnedIn: 12
@@ -39616,7 +39668,6 @@ GameObject:
   - component: {fileID: 983092770}
   - component: {fileID: 983092773}
   - component: {fileID: 983092772}
-  - component: {fileID: 983092771}
   - component: {fileID: 983092774}
   m_Layer: 0
   m_Name: WallTopRoom
@@ -39640,23 +39691,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1497922872}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &983092771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 983092769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 437fc6898e8179f42b5290e39f02a713, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fullFadeOpacity: 0.2
-  fullSort: 0
-  normalSort: 0
-  objectsToFade: []
-  yPos: -8.999
 --- !u!483693784 &983092772
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -46174,16 +46208,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1753621185}
     - target: {fileID: 1425222227342113831, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: health
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 1425222227342113831, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
       propertyPath: m_Enabled
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1425222227342113831, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
-      propertyPath: maxHealth
-      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 1425222227342113831, guid: c4459aceedd52014cac48ced1e01565c, type: 3}
       propertyPath: statuses.Array.size
@@ -62009,7 +62035,6 @@ GameObject:
   - component: {fileID: 2127003611}
   - component: {fileID: 2127003614}
   - component: {fileID: 2127003613}
-  - component: {fileID: 2127003612}
   - component: {fileID: 2127003615}
   m_Layer: 0
   m_Name: WallTopLocker
@@ -62033,23 +62058,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1549579826}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2127003612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2127003610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 437fc6898e8179f42b5290e39f02a713, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fullFadeOpacity: 0.2
-  fullSort: 0
-  normalSort: 0
-  objectsToFade: []
-  yPos: 14
 --- !u!483693784 &2127003613
 TilemapRenderer:
   m_ObjectHideFlags: 0

@@ -18,12 +18,12 @@ public class BossEnemy : Alive
 
     private void Update()
     {
-        if (healthBar) healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, health / maxHealth, Time.deltaTime * 50);
+        if (healthBar) healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, health / maxHealth, .25f);
     }
 
     void InitializeHealthBar()
     {
-        healthBar = Instantiate(healthBarPrefab).transform.GetChild(0).GetChild(2).GetComponent<Image>();
+        healthBar = Instantiate(healthBarPrefab).transform.GetChild(0).Find("Health").GetComponent<Image>();
     }
 
     protected override void Death(KillFlag flag)

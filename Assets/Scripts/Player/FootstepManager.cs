@@ -25,6 +25,7 @@ public class FootstepManager : MonoBehaviour
     {
         controller.OnWalkStart.AddListener(() => StartCoroutine(StepLoop()));
         controller.OnWalkEnd.AddListener(() => StopAllCoroutines());
+        PlayerStatus.player.onDeath.AddListener((_) => StopAllCoroutines());
     }
 
     public IEnumerator StepLoop()

@@ -182,18 +182,42 @@ public class ZSpawning2 : MonoBehaviour
                 healthIncreaseScale += .13f;
                 break;
             
-            case 10: // unlock healer
+            // unlock dogs
+            case 10:
+                enemies[4].spawnWeight = 2;
+                break;
+            
+            case 12: // unlock triple quiz
+                enemies[5].spawnWeight = 1;
+                break;
+            
+            
+            
+            case 16: // unlock healer
                 enemies[3].spawnWeight = 1;
                 break;
             
             case 13: // increase max count
                 maxEnemiesSpawnedIn = 18;
+                minSpawnsPerWave = 2;
                 maxSpawnsPerWave = 3;
                 break;
             
             case 18: // make spawns faster
                 minRespawnWaveTime = 1f;
                 maxRespawnWaveTime = 1.5f;
+                break;
+            
+            case 20:
+                maxEnemiesSpawnedIn = 20;
+                break;
+            
+            case 24:
+                maxEnemiesSpawnedIn = 22;
+                break;
+            
+            case 28: 
+                maxEnemiesSpawnedIn = 24;
                 break;
         }
         

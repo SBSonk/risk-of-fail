@@ -43,12 +43,16 @@ public class ObjectFade : MonoBehaviour
     public void Fade()
     {
         targetOpacity = 1;
+
+        if (!sprite) return;
         sprite.sortingOrder = normalSort;
     }
 
     public void UnFade()
     {
         targetOpacity = fullFadeOpacity;
+
+        if (!sprite) return; 
         sprite.sortingOrder = fullSort;
     }
 }

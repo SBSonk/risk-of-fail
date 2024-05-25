@@ -26,7 +26,11 @@ public class TileMapFade : MonoBehaviour
     
     private void FixedUpdate()
     {
-        if (!ObjectFade.player) return;
+        if (!ObjectFade.player)
+        {
+            Debug.LogWarning("Object Fade Failed");
+            return;
+        }
         
         if (ObjectFade.player.position.y > yPos)
         {

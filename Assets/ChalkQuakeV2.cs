@@ -46,7 +46,7 @@ public class ChalkQuakeV2 : BossAttackV2
 
             /* Now spawn */
             var quake = Instantiate(quakePrefab, spawnPos + offset, quaternion.Euler(0, 0, radians));
-            quake.velocity = spawnDir.normalized * quakeSpeed;
+            quake.linearVelocity = spawnDir.normalized * quakeSpeed;
         }
     }
 

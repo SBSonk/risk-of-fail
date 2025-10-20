@@ -1,21 +1,663 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="1aa324cb-904c-4a96-91db-4000441e4156" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.risk-of-fail/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.risk-of-fail/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.risk-of-fail/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.risk-of-fail/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Examples.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/PlaymakerActions.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/TMPro.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Levels/Story/Boss Fight.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levels/Story/Boss Fight.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Levels/Story/Level 4 V2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levels/Story/Level 4 V2.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Libraries/IniFileParser/INIFileParser.csproj.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ObjectFade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ObjectFade.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TileMapFade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TileMapFade.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/In-game UI/Level End/PIXEL CRAFT SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/In-game UI/Level End/PIXEL CRAFT SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Renderer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Ball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ball.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BossRush.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BossRush.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ChalkQuakeV2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChalkQuakeV2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ChalkQuakeV2Ball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChalkQuakeV2Ball.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ChalkWaveAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChalkWaveAttack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/BlankUser.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/BlankUser.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/EdgeColliderGenerator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/EdgeColliderGenerator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/EdgeColliderGenerator.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/EdgeColliderGenerator.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/LengthCalculator.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/LengthCalculator.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/NodeIcon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/NodeIcon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/ObjectBender.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/ObjectBender.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/ObjectController.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/ObjectController.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/ObjectControllerCustomRule.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/ObjectControllerCustomRule.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/ParticleController.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/ParticleController.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/PathGenerator.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/PathGenerator.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/PolygonColliderGenerator.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/PolygonColliderGenerator.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/SplineComputer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/SplineComputer.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/SplineFollower.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/SplineFollower.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/SplineMesh.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/SplineMesh.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/SplineMorph.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/SplineMorph.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/SplinePositioner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/SplinePositioner.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/SplineProjector.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/SplineProjector.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/SplineRenderer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/SplineRenderer.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/SplineUser.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/SplineUser.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/SurfaceGenerator.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/SurfaceGenerator.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/TubeGenerator.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/TubeGenerator.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/WaveformGenerator.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Icons/WaveformGenerator.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/LengthCalculator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/LengthCalculator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/MeshGenerator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/MeshGenerator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Node.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Node.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/ObjectBender.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/ObjectBender.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/ObjectController CustomRules.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/ObjectController CustomRules/Classes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/ObjectController CustomRules/Classes/ObjectControllerCustomRuleBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/ObjectController CustomRules/Classes/ObjectControllerCustomRuleBase.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/ObjectController CustomRules/Classes/ObjectControllerSineRule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/ObjectController CustomRules/Classes/ObjectControllerSineRule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/ObjectController CustomRules/Classes/ObjectControllerSpiralRule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/ObjectController CustomRules/Classes/ObjectControllerSpiralRule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/ObjectController CustomRules/Sine Rule.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/ObjectController CustomRules/Sine Rule.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/ObjectController CustomRules/Spiral Rule.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/ObjectController CustomRules/Spiral Rule.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/ObjectController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/ObjectController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/ParticleController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/ParticleController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/PathGenerator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/PathGenerator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/PolygonColliderGenerator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/PolygonColliderGenerator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Sample Modifiers.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Sample Modifiers/ColorModifier.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Sample Modifiers/ColorModifier.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Sample Modifiers/FollowerSpeedModifier.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Sample Modifiers/FollowerSpeedModifier.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Sample Modifiers/MeshScaleModifier.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Sample Modifiers/MeshScaleModifier.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Sample Modifiers/OffsetModifier.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Sample Modifiers/OffsetModifier.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Sample Modifiers/RotationModifier.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Sample Modifiers/RotationModifier.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Sample Modifiers/SizeModifier.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Sample Modifiers/SizeModifier.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Sample Modifiers/SplineSampleModifier.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/Sample Modifiers/SplineSampleModifier.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SplineComputer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SplineComputer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SplineFollower.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SplineFollower.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SplineMesh.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SplineMesh.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SplineMeshChannel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SplineMeshChannel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SplineMorph.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SplineMorph.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SplinePositioner.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SplinePositioner.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SplineProjector.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SplineProjector.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SplineRenderer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SplineRenderer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SplineTracer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SplineTracer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SplineUser.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SplineUser.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SurfaceGenerator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/SurfaceGenerator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/TubeGenerator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/TubeGenerator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/WaveformGenerator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Components/WaveformGenerator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/IO.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/IO/CSV.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/IO/CSV.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/IO/SVG.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/IO/SVG.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/IO/SplineParser.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/IO/SplineParser.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/ObjectSequence.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/ObjectSequence.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Primitives.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Primitives/Capsule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Primitives/Capsule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Primitives/Ellipse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Primitives/Ellipse.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Primitives/Line.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Primitives/Line.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Primitives/Ngon.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Primitives/Ngon.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Primitives/Rectangle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Primitives/Rectangle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Primitives/RoundedRectangle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Primitives/RoundedRectangle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Primitives/Spiral.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Primitives/Spiral.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Primitives/SplinePrimitive.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Primitives/SplinePrimitive.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Primitives/Star.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Primitives/Star.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/SampleCollection.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/SampleCollection.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Spline.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/Spline.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/SplinePoint.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/SplinePoint.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/SplinePrefs.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/SplinePrefs.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/SplineSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/SplineSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/SplineThreading.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/SplineThreading.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/SplineTrigger.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/SplineTrigger.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/SplineUtility.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/SplineUtility.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/TransformModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Core/TransformModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Dreamteck.Splines.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Dreamteck.Splines.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/BakeMeshWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/BakeMeshWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/EdgeColliderGeneratorEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/EdgeColliderGeneratorEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/LengthCalculatorEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/LengthCalculatorEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/MeshGenEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/MeshGenEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/NodeEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/NodeEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/ObjectBenderEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/ObjectBenderEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/ObjectControllerEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/ObjectControllerEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/ParticleControllerEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/ParticleControllerEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/PathGeneratorEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/PathGeneratorEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/PolygonColliderGenEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/PolygonColliderGenEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SetClipRangeWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SetClipRangeWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SetDistanceWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SetDistanceWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SplineFollowerEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SplineFollowerEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SplineMeshEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SplineMeshEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SplineMorphEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SplineMorphEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SplinePositionerEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SplinePositionerEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SplineProjectorEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SplineProjectorEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SplineRendererEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SplineRendererEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SplineTracerEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SplineTracerEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SplineUserEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SplineUserEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SplineUserSubEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SplineUserSubEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SurfaceGeneratorEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/SurfaceGeneratorEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/TubeGeneratorEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/TubeGeneratorEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/WaveformGeneratorEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Components/WaveformGeneratorEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/ComputerSplitModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/ComputerSplitModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/DSSplineDrawer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/DSSplineDrawer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Dreamteck.Splines.Editor.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Dreamteck.Splines.Editor.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/add.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/add.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/add_dark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/add_dark.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/add_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/add_on.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/add_on_dark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/add_on_dark.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/edit_cursor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/edit_cursor.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/forever.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/forever.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/merge.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/merge.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/merge_dark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/merge_dark.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/merge_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/merge_on.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/merge_on_dark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/merge_on_dark.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/mirror.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/mirror.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/mirror_dark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/mirror_dark.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/mirror_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/mirror_on.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/mirror_on_dark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/mirror_on_dark.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/normal_dark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/normal_dark.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/normal_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/normal_on.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/normal_on_dark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/normal_on_dark.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/plugin_header.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/plugin_header.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/primitives.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/primitives.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/primitives_dark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/primitives_dark.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/primitives_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/primitives_on.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/primitives_on_dark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/primitives_on_dark.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/remove.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/remove.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/remove_dark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/remove_dark.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/remove_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/remove_on.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/remove_on_dark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/remove_on_dark.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/split.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/split.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/split_dark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/split_dark.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/split_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/split_on.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/split_on_dark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Icons/split_on_dark.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Primitives.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Primitives/CapsuleEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Primitives/CapsuleEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Primitives/EllipseEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Primitives/EllipseEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Primitives/LineEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Primitives/LineEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Primitives/NgonEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Primitives/NgonEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Primitives/PrimitiveEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Primitives/PrimitiveEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Primitives/RectangleEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Primitives/RectangleEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Primitives/RoundedRectangleEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Primitives/RoundedRectangleEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Primitives/SpiralEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Primitives/SpiralEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Primitives/StarEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Primitives/StarEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Sample Modifiers.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Sample Modifiers/ColorModifierEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Sample Modifiers/ColorModifierEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Sample Modifiers/FollowerSpeedModifierEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Sample Modifiers/FollowerSpeedModifierEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Sample Modifiers/MeshScaleModifierEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Sample Modifiers/MeshScaleModifierEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Sample Modifiers/OffsetModifierEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Sample Modifiers/OffsetModifierEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Sample Modifiers/RotationModifierEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Sample Modifiers/RotationModifierEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Sample Modifiers/SizeModifierEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Sample Modifiers/SizeModifierEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Sample Modifiers/SplineSampleModifierEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Sample Modifiers/SplineSampleModifierEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SerializedSplinePoint.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SerializedSplinePoint.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineComputerEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineComputerEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineComputerEditorHandles.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineComputerEditorHandles.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineDrawer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineDrawer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/DS Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/DS Editor/ComputerEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/DS Editor/ComputerEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/DS Editor/ComputerEditorModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/DS Editor/ComputerEditorModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/DS Editor/ComputerMergeModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/DS Editor/ComputerMergeModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/DS Editor/DSCreatePointModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/DS Editor/DSCreatePointModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/DS Editor/DreamteckSplinesEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/DS Editor/DreamteckSplinesEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/DS Editor/PrimitivesModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/DS Editor/PrimitivesModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/DS Editor/SplineComputerDebugEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/DS Editor/SplineComputerDebugEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/DS Editor/SplineTriggersEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/DS Editor/SplineTriggersEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/EditorModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/EditorModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules/CreatePointModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules/CreatePointModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules/DeletePointModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules/DeletePointModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules/MainPointModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules/MainPointModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules/PointMirrorModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules/PointMirrorModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules/PointModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules/PointModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules/PointMoveModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules/PointMoveModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules/PointNormalModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules/PointNormalModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules/PointRotateModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules/PointRotateModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules/PointScaleModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules/PointScaleModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules/PointTransformModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/Point Modules/PointTransformModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/SplineEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/SplineEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/SplineEditorBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditor/SplineEditorBase.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditorGUI.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditorGUI.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditorHandles.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditorHandles.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditorWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplineEditorWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplinePreset.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/SplinePreset.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Tools.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Tools/BakeTool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Tools/BakeTool.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Tools/CatenaryTool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Tools/CatenaryTool.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Tools/Explorer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Tools/Explorer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Tools/ImportTool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Tools/ImportTool.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Tools/LevelTerrainTool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Tools/LevelTerrainTool.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Tools/ObjectSpawnTool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Tools/ObjectSpawnTool.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Tools/SplineTool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Tools/SplineTool.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Tools/SplineToolsWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Tools/SplineToolsWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Tools/UpdateTool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/Tools/UpdateTool.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/TransformModuleEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/TransformModuleEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/WelcomeScreen.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/WelcomeScreen.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/changelog.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Editor/changelog.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Presets.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Presets/heart.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Presets/heart.jsp.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/User Manual.url" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/User Manual.url.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/ArrayUtility.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/ArrayUtility.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/DMath.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/DMath.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Dreamteck.Utilities.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Dreamteck.Utilities.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/DuplicateUtility.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/DuplicateUtility.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Dreamteck.Utilities.Editor.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Dreamteck.Utilities.Editor.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/DreamteckEditorGUI.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/DreamteckEditorGUI.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/EditorGUIEvents.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/EditorGUIEvents.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/FindDerivedClasses.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/FindDerivedClasses.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/changelog.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/changelog.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/discord.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/discord.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/examples.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/examples.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/get_started.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/get_started.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/manual.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/manual.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/pdf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/pdf.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/playmaker.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/playmaker.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/rate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/rate.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/support.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/support.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/tmpro.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/tmpro.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/tutorials.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/tutorials.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/youtube.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Images/youtube.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/ModuleInstaller.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/ModuleInstaller.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/ResourceUtility.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/ResourceUtility.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/ScriptingDefineUtility.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/ScriptingDefineUtility.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Toolbar.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/Toolbar.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/WelcomeWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/Editor/WelcomeWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/LinearAlgebraUtility.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/LinearAlgebraUtility.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/MeshUtility.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/MeshUtility.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/TS_Bounds.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/TS_Bounds.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/TS_Mesh.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/TS_Mesh.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/TS_Transform.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/TS_Transform.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/TransformUtility.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Utilities/TransformUtility.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FadeAfterSeconds.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FadeAfterSeconds.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FollowBehindPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FollowBehindPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HomingProjectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HomingProjectile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/PermaLock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/PermaLock.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/Question.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/Question.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/QuestionSmall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/QuestionSmall.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/RoundCorners.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/RoundCorners.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/RoundCornersWithBorder.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/RoundCornersWithBorder.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/SFLogoDark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/SFLogoDark.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/SFLogoLight.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/SFLogoLight.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/SceneFusionDark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/SceneFusionDark.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/SceneFusionLight.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/SceneFusionLight.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/SmileyBase.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/SmileyBase.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/SmileyFace.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/SmileyFace.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/Spinner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/Spinner.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/Tail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/Tail.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/TerrainBrush.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/TerrainBrush.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/TerrainBrushOff.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/TerrainBrushOff.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/Thumb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/Thumb.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/Unlocked.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/Unlocked.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/Warning.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/Warning.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/Warning16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/Warning16.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/WarningLarge.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KinematicSoup/SceneFusion/Textures/WarningLarge.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/mine_bot.FBX.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/mine_bot.FBX.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/FirstGearGames/SmoothCameraShaker/Scripts/Shakables/ShakableRigidbody.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/FirstGearGames/SmoothCameraShaker/Scripts/Shakables/ShakableRigidbody.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/FirstGearGames/SmoothCameraShaker/Scripts/Shakables/ShakableRigidbody2D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/FirstGearGames/SmoothCameraShaker/Scripts/Shakables/ShakableRigidbody2D.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Fonts.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Fonts.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Fonts/LiberationSans - OFL.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Fonts/LiberationSans - OFL.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Fonts/LiberationSans - OFL.txt.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Fonts/LiberationSans - OFL.txt.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Fonts/LiberationSans.ttf.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Fonts/LiberationSans.ttf.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Fonts &amp; Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Fonts &amp; Materials.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/LineBreaking Following Characters.txt.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/LineBreaking Following Characters.txt.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/LineBreaking Leading Characters.txt.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/LineBreaking Leading Characters.txt.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Sprite Assets.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Sprite Assets.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Style Sheets.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Style Sheets.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/TMP Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/TMP Settings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/TMP Settings.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Resources/TMP Settings.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_Bitmap.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_Bitmap.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_Bitmap.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_Bitmap.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF Overlay.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF Overlay.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF SSD.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF SSD.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF SSD.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF SSD.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Surface.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF-Surface.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_SDF.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_Sprite.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_Sprite.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_Sprite.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMP_Sprite.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMPro.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMPro.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMPro.cginc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMPro.cginc.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMPro_Mobile.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMPro_Mobile.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMPro_Mobile.cginc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMPro_Mobile.cginc.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMPro_Properties.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMPro_Properties.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMPro_Properties.cginc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMPro_Properties.cginc.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMPro_Surface.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMPro_Surface.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMPro_Surface.cginc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Shaders/TMPro_Surface.cginc.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Sprites.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Sprites.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Sprites/EmojiOne Attribution.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Sprites/EmojiOne Attribution.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Sprites/EmojiOne Attribution.txt.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Sprites/EmojiOne Attribution.txt.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Sprites/EmojiOne.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Sprites/EmojiOne.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Sprites/EmojiOne.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Sprites/EmojiOne.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Sprites/EmojiOne.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Libraries/TextMesh Pro/Sprites/EmojiOne.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Heal Enemy Rigidbody.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Heal Enemy Rigidbody.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Notebook Rigidbody.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Notebook Rigidbody.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Quiz Rigidbody.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Quiz Rigidbody.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/TripleShot Quiz Rigidbody.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/TripleShot Quiz Rigidbody.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Written Works Rigidbody Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Written Works Rigidbody Variant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Input Manager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Input Manager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Renderer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Renderer_Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Renderer_Renderer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RubberDucky.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RubberDucky.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraFollow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameraFollow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Classes-Structs/SprFunctions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Classes-Structs/HelperFunctions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Classes-Structs/SprFunctions.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Classes-Structs/HelperFunctions.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/QuizAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/QuizAI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/WrittenWorksAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/WrittenWorksAttack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameEssentials/PauseMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameEssentials/PauseMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameEssentials/ResultsScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameEssentials/ResultsScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gimmicks/DialogueManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gimmicks/DialogueManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gimmicks/Drops/PickupBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gimmicks/Drops/PickupBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gimmicks/Interactable Objects/ShowInteract.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gimmicks/Interactable Objects/ShowInteract.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Guns/MeleeWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Guns/MeleeWeapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Guns/Projectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Guns/Projectile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Guns/TrackingRound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Guns/TrackingRound.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/HasHealth/Alive.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HasHealth/Alive.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PaintSplatter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PaintSplatter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/MoveCursor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/MoveCursor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAnimations.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAnimations.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerShooting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerShooting.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReloadBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ReloadBar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WrittenWorksAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WrittenWorksAnimator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Zombies lol/ShowInteractBuyable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Zombies lol/ShowInteractBuyable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controls.ini" beforeDir="false" afterPath="$PROJECT_DIR$/controls.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes.ini" beforeDir="false" afterPath="$PROJECT_DIR$/notes.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/BossRunPhase.cs" root0="FORCE_HIGHLIGHTING" />
@@ -28,6 +670,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
   <component name="ProjectId" id="2L20BrycE4F9Mf26hKR4oLTvco8" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -38,17 +683,18 @@
     "Discover.Launch.Via.Unity": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "sonky",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
-  },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\sonki\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\sonki\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\sonki\\AppData\\Local\\Symbols\\src"
-    ]
   }
 }]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -58,14 +704,34 @@
       <option name="WORKING_DIRECTORY" value="C:\Users\sonik\Desktop\risk of fail v0b8" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.25f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="E:\Unity\6000.1.8f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\sonik\Desktop\cs\risk-of-fail-git\risk-of-fail -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\sonik\Desktop\cs\risk-of-fail-git\risk-of-fail" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="E:\Unity\6000.1.8f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath E:\risk-of-fail -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="E:\risk-of-fail" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
@@ -74,6 +740,10 @@
       <option name="WORKING_DIRECTORY" value="C:\Users\sonik\Desktop\cs\risk-of-fail-git\risk-of-fail" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -81,9 +751,13 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
       <option name="selectedOptions">
         <list />
       </option>
+      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -91,9 +765,16 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
       <option name="selectedOptions">
         <list />
       </option>
+      <option name="useMixedMode" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Device" type="UnityDevicePlayer" factoryName="UnityAttachToDevicePlayer">
       <method v="2" />
     </configuration>
   </component>
@@ -300,6 +981,7 @@
       <workItem from="1715713619306" duration="1668000" />
       <workItem from="1715717152919" duration="2188000" />
       <workItem from="1715742723414" duration="1268000" />
+      <workItem from="1760943568703" duration="6254000" />
     </task>
     <servers />
   </component>
@@ -307,6 +989,11 @@
     <option name="version" value="3" />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityProjectDiscoverer">
+    <option name="hasUnityReference" value="true" />
+    <option name="unityProject" value="true" />
+    <option name="unityProjectFolder" value="true" />
+  </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
@@ -315,17 +1002,30 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerShooting.cs</url>
-          <line>268</line>
-          <properties documentPath="D:\Documents\cs\risk-of-fail\Assets\Scripts\Player\PlayerShooting.cs" initialLine="229" containingFunctionPresentation="method 'GunBehavior'" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/GameEssentials/LevelStats.cs</url>
           <line>124</line>
-          <properties documentPath="D:\Documents\cs\risk-of-fail\Assets\Scripts\GameEssentials\LevelStats.cs" initialLine="122" containingFunctionPresentation="method 'GiveScore'" />
+          <properties documentPath="D:\Documents\cs\risk-of-fail\Assets\Scripts\GameEssentials\LevelStats.cs" containingFunctionPresentation="Method 'GiveScore'">
+            <startOffsets>
+              <option value="3266" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3324" />
+            </endOffsets>
+          </properties>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="4" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="5" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="6" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

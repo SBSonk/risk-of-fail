@@ -22,21 +22,21 @@ public class ShowInteractBuyable : ShowInteract
         base.OnTriggerEnter2D(collision);
         if (!collision.CompareTag("Player")) return;
         priceText.text = buyable.price.ToString();
-        StartCoroutine(SprFunctions.Fade(priceText, priceText.color, Color.white, fadeTime));
+        StartCoroutine(HelperFunctions.Fade(priceText, priceText.color, Color.white, fadeTime));
     }
 
     protected override void OnTriggerExit2D(Collider2D collision)
     {
         base.OnTriggerExit2D(collision);
         if (!collision.CompareTag("Player")) return;
-        StartCoroutine(SprFunctions.Fade(priceText, priceText.color, Color.clear, fadeTime));
+        StartCoroutine(HelperFunctions.Fade(priceText, priceText.color, Color.clear, fadeTime));
     }
 
     public void Hide()
     {
         StopAllCoroutines();
-        StartCoroutine(SprFunctions.Fade(priceText, priceText.color, Color.clear, fadeTime));
-        StartCoroutine(SprFunctions.Fade(interactIcon, interactIcon.color, Color.clear, fadeTime));
+        StartCoroutine(HelperFunctions.Fade(priceText, priceText.color, Color.clear, fadeTime));
+        StartCoroutine(HelperFunctions.Fade(interactIcon, interactIcon.color, Color.clear, fadeTime));
 
         active = false;
     }

@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 public class PlayerShooting : MonoBehaviour
 {
     private Vector2 playerOffset = new Vector2(0, 0.5f);
-    [SerializeField] Transform gunPivot, gunBarrel;
+    [SerializeField] Transform gunBarrel;
     public InventoryWeapon fallbackWep;
     InventoryWeapon[] weaponPool;
     [SerializeField] int currentWeaponIndex = 0;
@@ -38,10 +38,10 @@ public class PlayerShooting : MonoBehaviour
     public PlayerSFXManager sfxManager;
     public List<WeaponPickup> weaponsInArea;
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(gunPivot.position, transform.position + (gunPivot.right.normalized * 2));
+        Gizmos.DrawLine(gunBarrel.position, transform.position + (gunBarrel.right.normalized * 2));
     }
 
     public void Initialize()
@@ -53,12 +53,6 @@ public class PlayerShooting : MonoBehaviour
     private void Update()
     {
         if (Time.timeScale == 0 || !PlayerStatus.player.GetComponent<Renderer>().isVisible) return;
-
-        // Get direction from cursor to player and make the player face it
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 mousePos = ((Vector2) transform.position + playerOffset - mousePosition).normalized;
-        float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
-        gunPivot.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
         if (weaponPool.Length > 1) WeaponSwitching();
         else if (weaponPool.Length == 0) return;
@@ -242,7 +236,7 @@ public class PlayerShooting : MonoBehaviour
                         // Spawn Bullet
                         Projectile bullet = Instantiate(friendlyQuizBullet, gunBarrel.position, gunBarrel.rotation);
 
-                        bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right.normalized * 30;
+                        bullet.GetComponent<Rigidbody2D>().linearVelocity = bullet.transform.right.normalized * 30;
                         // Delete Bullet
                         Destroy(_rb.gameObject);
                     }

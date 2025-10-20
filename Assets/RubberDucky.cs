@@ -28,7 +28,7 @@ public class RubberDucky : InteractBase
 
             playerTransform.position = transform.position + new Vector3(offset.x * (sprite.flipX ? -1 : 1), offset.y);
 
-            sprite.flipX = !(rb.velocity.x < 0);
+            sprite.flipX = !(rb.linearVelocity.x < 0);
         }
     }
 }

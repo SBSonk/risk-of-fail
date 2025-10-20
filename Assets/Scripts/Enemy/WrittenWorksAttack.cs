@@ -43,7 +43,7 @@ public class WrittenWorksAttack : MonoBehaviour
 
         // Determine follow direction
         followDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
-        originalDrag = self.rb.drag;
+        originalDrag = self.rb.linearDamping;
 
         //self.onStunned.AddListener(CancelDash);
         self.onStunned.AddListener(DisableAttack);
@@ -170,7 +170,7 @@ public class WrittenWorksAttack : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
             t += Time.deltaTime;
-            dashDir = ((player.position + ((Vector3) PlayerStatus.player.GetComponent<Rigidbody2D>().velocity * 0.2f)) - transform.position).normalized;
+            dashDir = ((player.position + ((Vector3) PlayerStatus.player.GetComponent<Rigidbody2D>().linearVelocity * 0.2f)) - transform.position).normalized;
             transform.up = Vector3.Lerp(transform.up, dashDir, Mathf.Lerp(0.5f, 0, t / 0.8f));
 
             if (!self.canSeePlayer)
@@ -190,7 +190,7 @@ public class WrittenWorksAttack : MonoBehaviour
         print("dash");
 
         // Dash into player
-        self.rb.drag = originalDrag * 0.4f;
+        self.rb.linearDamping = originalDrag * 0.4f;
         self.rb.AddForce(transform.up * 25f, ForceMode2D.Impulse);
 
         OnDashStart?.Invoke();
@@ -200,7 +200,7 @@ public class WrittenWorksAttack : MonoBehaviour
 
 
         yield return new WaitForSeconds(0.5f);
-        self.rb.drag = originalDrag;
+        self.rb.linearDamping = originalDrag;
         ai.canMove = true;
         attacking = false;  
         dashing = false;
@@ -221,7 +221,7 @@ public class WrittenWorksAttack : MonoBehaviour
         
         attacking = false;
         ai.canMove = true;
-        self.rb.drag = originalDrag;
+        self.rb.linearDamping = originalDrag;
         gameObject.layer = LayerMask.NameToLayer("WrittenWorks");
 
         StopAllCoroutines();

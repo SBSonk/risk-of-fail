@@ -16,5 +16,5 @@ public class FadeAfterSeconds : MonoBehaviour
         Invoke("StartFade", timeToFade);
     }
 
-    void StartFade() => StartCoroutine(SprFunctions.Fade(sprite, sprite.color, fadeColor, fadeTime));
+    void StartFade() => StartCoroutine(HelperFunctions.Fade(sprite, sprite.color, fadeColor, fadeTime));
 }

@@ -146,20 +146,20 @@ public class WrittenWorksAnimator : MonoBehaviour
 
     void DashAnimation()
     {
-        StartCoroutine(SprFunctions.Fade(dashIndicator, Color.clear, Color.white, 0.1f));
+        StartCoroutine(HelperFunctions.Fade(dashIndicator, Color.clear, Color.white, 0.1f));
 
-        StartCoroutine(SprFunctions.Fade(arrowIndicator[0], Color.clear, Color.white, 0.1f));;
-        StartCoroutine(SprFunctions.Fade(arrowIndicator[1], Color.clear, Color.white, 1.05f));
+        StartCoroutine(HelperFunctions.Fade(arrowIndicator[0], Color.clear, Color.white, 0.1f));;
+        StartCoroutine(HelperFunctions.Fade(arrowIndicator[1], Color.clear, Color.white, 1.05f));
 
         dashParticles.Play();
     }
 
     void DashStart()
     {
-        StartCoroutine(SprFunctions.Fade(dashIndicator, Color.white, Color.clear, 0.1f));
+        StartCoroutine(HelperFunctions.Fade(dashIndicator, Color.white, Color.clear, 0.1f));
         foreach (SpriteRenderer s in arrowIndicator)
         {
-            StartCoroutine(SprFunctions.Fade(s, Color.white, Color.clear, 0.1f));
+            StartCoroutine(HelperFunctions.Fade(s, Color.white, Color.clear, 0.1f));
         }
     }
 
@@ -174,10 +174,10 @@ public class WrittenWorksAnimator : MonoBehaviour
 
         if (dashIndicator.color != Color.clear)
         {
-            StartCoroutine(SprFunctions.Fade(dashIndicator, Color.white, Color.clear, 0.1f));
+            StartCoroutine(HelperFunctions.Fade(dashIndicator, Color.white, Color.clear, 0.1f));
             foreach (SpriteRenderer s in arrowIndicator)
             {
-                StartCoroutine(SprFunctions.Fade(s, Color.white, Color.clear, 0.1f));
+                StartCoroutine(HelperFunctions.Fade(s, Color.white, Color.clear, 0.1f));
             }
         }
 

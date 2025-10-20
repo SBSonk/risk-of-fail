@@ -27,9 +27,9 @@ public class FollowBehindPlayer : MonoBehaviour
     {
         if (!player) return;
         
-        if (player.velocity.magnitude > 0.5f)
+        if (player.linearVelocity.magnitude > 0.5f)
         {
-            switch (VectorToDir(player.velocity))
+            switch (VectorToDir(player.linearVelocity))
             {
                 case Directions.up:
                     directionOffset = Vector3.Slerp(directionOffset, new Vector3(0, -1), rotateVal);

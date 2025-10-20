@@ -66,8 +66,8 @@ public class CameraFollow : MonoBehaviour
         desiredPos += offset + Vector3.back;
 
         /*if (player.velocity.magnitude > 0) lastPlayerVel = Vector3.Lerp(lastPlayerVel, player.velocity.normalized, lValue);*/
-        var xPlayerVel = KeyBind.GetAxis(KInputManager.GetKey("Right"), KInputManager.GetKey("Left")) != 0 ? player.velocity.x : lastPlayerVel.x;
-        var yPlayerVel = KeyBind.GetAxis(KInputManager.GetKey("Up"), KInputManager.GetKey("Down")) != 0 ? player.velocity.y : lastPlayerVel.y;
+        var xPlayerVel = KeyBind.GetAxis(KInputManager.GetKey("Right"), KInputManager.GetKey("Left")) != 0 ? player.linearVelocity.x : lastPlayerVel.x;
+        var yPlayerVel = KeyBind.GetAxis(KInputManager.GetKey("Up"), KInputManager.GetKey("Down")) != 0 ? player.linearVelocity.y : lastPlayerVel.y;
 
         lastPlayerVel = Vector3.Lerp(lastPlayerVel, new Vector3(xPlayerVel, yPlayerVel), 0.005f);
         lastPlayerVel.x = Mathf.Clamp(lastPlayerVel.x, -maxCameraPredict, maxCameraPredict);

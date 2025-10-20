@@ -61,7 +61,7 @@ public class MeleeWeapon : Weapon
                 Projectile bullet = Instantiate(friendlyQuizBullet, player.position + hitVector, quaternion.identity);
                 bullet.transform.right = hitVector;
 
-                bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right.normalized * 30;
+                bullet.GetComponent<Rigidbody2D>().linearVelocity = bullet.transform.right.normalized * 30;
 
                 // Delete Bullet
                 Destroy(_rb.gameObject);

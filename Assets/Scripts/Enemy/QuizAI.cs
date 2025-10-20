@@ -54,7 +54,7 @@ public class QuizAI : MonoBehaviour
 
         // Set destination to player
         if (mode != AIMode.repositioning)
-            ai.destination = (Vector3) player.position + (followDirection * (player.velocity.magnitude / 2));
+            ai.destination = (Vector3) player.position + (followDirection * (player.linearVelocity.magnitude / 2));
 
         // Get player distance
         float playerDistance = Vector3.Distance(transform.position, player.position);
@@ -135,7 +135,7 @@ public class QuizAI : MonoBehaviour
         if (!gunCanShoot) return;
 
         // Check player position after 50ths of a second
-        Vector3 predictedPlayerPos = player.position + (player.velocity / 3.5f);
+        Vector3 predictedPlayerPos = player.position + (player.linearVelocity / 3.5f);
 
         // Get distance from me to the player
         float distance = Vector3.Distance(bulletSpawn.position, predictedPlayerPos);
@@ -182,7 +182,7 @@ public class QuizAI : MonoBehaviour
 
         // Check how long till the bullet hits me
         float distance = Vector3.Distance(transform.position, incomingBullet.transform.position);
-        float travelTime = (distance / (incomingBullet.GetComponent<Rigidbody2D>().velocity.magnitude));
+        float travelTime = (distance / (incomingBullet.GetComponent<Rigidbody2D>().linearVelocity.magnitude));
 
         // Invoke dodge .1s before bullet hits me
         Invoke("Dodge", (float) System.Math.Round(travelTime - 0.1f, 4));

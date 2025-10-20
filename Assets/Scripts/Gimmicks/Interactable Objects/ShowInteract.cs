@@ -15,15 +15,15 @@ public class ShowInteract : MonoBehaviour
         
         outline.sprite = interactIcon.sprite;
         StopAllCoroutines();
-        StartCoroutine(SprFunctions.Fade(outline, outline.color, Color.white, fadeTime));
-        StartCoroutine(SprFunctions.Fade(interactIcon, interactIcon.color, Color.white, fadeTime));
+        StartCoroutine(HelperFunctions.Fade(outline, outline.color, Color.white, fadeTime));
+        StartCoroutine(HelperFunctions.Fade(interactIcon, interactIcon.color, Color.white, fadeTime));
     }
 
     protected virtual void OnTriggerExit2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
         StopAllCoroutines();
-        StartCoroutine(SprFunctions.Fade(outline, outline.color, Color.clear, fadeTime));
-        StartCoroutine(SprFunctions.Fade(interactIcon, interactIcon.color, Color.clear, fadeTime));
+        StartCoroutine(HelperFunctions.Fade(outline, outline.color, Color.clear, fadeTime));
+        StartCoroutine(HelperFunctions.Fade(interactIcon, interactIcon.color, Color.clear, fadeTime));
     }
 }

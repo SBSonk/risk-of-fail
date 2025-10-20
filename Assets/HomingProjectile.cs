@@ -39,7 +39,7 @@ public class HomingProjectile : Projectile
         {
             // go towards
             transform.right = Vector3.Lerp(transform.right, (lockedEnemy.position - transform.position).normalized, Time.deltaTime * homingStrength);
-            rb.velocity = transform.right * homingStrength;
+            rb.linearVelocity = transform.right * homingStrength;
         }
     }
 }

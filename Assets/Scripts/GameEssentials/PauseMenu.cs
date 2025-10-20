@@ -23,7 +23,6 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {                     
-            
             if (settings)
             {
                 Back();
@@ -32,13 +31,13 @@ public class PauseMenu : MonoBehaviour
             {
                 Resume();
 
-                MoveCursor.main.LeaveMenu();
+                MoveCursor.instance.LeaveMenu();
             }
             else
             {
                 Pause();
 
-                MoveCursor.main.EnterMenu();
+                MoveCursor.instance.EnterMenu();
             }
         }
     }

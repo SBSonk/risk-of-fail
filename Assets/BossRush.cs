@@ -29,7 +29,7 @@ public class BossRush : MonoBehaviour
 
     public void StartMove()
     {
-        StartCoroutine(SprFunctions.Flicker(warningSprite, warningTime, () => transform.DOMove(transform.position + amountToMove, speed).SetSpeedBased(true)));
+        StartCoroutine(HelperFunctions.Flicker(warningSprite, warningTime, () => transform.DOMove(transform.position + amountToMove, speed).SetSpeedBased(true)));
     }
 
   
@@ -43,7 +43,7 @@ public class BossRush : MonoBehaviour
             
             if (c[i].attachedRigidbody)
             {
-                c[i].attachedRigidbody.velocity = Vector2.zero;
+                c[i].attachedRigidbody.linearVelocity = Vector2.zero;
                 c[i].attachedRigidbody.AddForce((c[i].transform.position - (transform.position + offset)).normalized * knockbackStrength, ForceMode2D.Impulse);
             }
 

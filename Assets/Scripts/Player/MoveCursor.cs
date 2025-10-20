@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MoveCursor : MonoBehaviour
 {
-    public static MoveCursor main;
+    public static MoveCursor instance;
 
     Image cursor;
     [SerializeField] float rotationDegrees = 1, lerpPos = 0.5f;
@@ -14,8 +15,13 @@ public class MoveCursor : MonoBehaviour
 
     private void Awake()
     {
-        main = this;
+        instance = this;
         cursor = GetComponentInChildren<Image>();
+    }
+
+    private void OnDestroy()
+    {
+        if (instance == this) instance = null;
     }
 
     private void Start()

@@ -14,6 +14,6 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
-        rb.rotation += 40 * Time.deltaTime * rb.velocity.magnitude;
+        rb.rotation += 40 * Time.deltaTime * rb.linearVelocity.magnitude;
     }
 }

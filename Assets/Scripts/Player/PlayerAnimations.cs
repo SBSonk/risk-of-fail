@@ -2,15 +2,15 @@ using FirstGearGames.SmoothCameraShaker;
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.Serialization;
 
 public class PlayerAnimations : MonoBehaviour
 { 
-    Vector2 playerOffset = new Vector2(0, 0.5f);
-    
-    public bool canSwitchAnimation = true   ;
+    public bool canSwitchAnimation = true;
     [SerializeField] SpriteRenderer[] sprites;
 
-    [SerializeField] ParticleSystem dashExp;
+    [FormerlySerializedAs("dashExp")] [SerializeField] ParticleSystem dashExplosion;
     [SerializeField] Animator animator;
 
     [Header("Dodge")]
@@ -21,37 +21,29 @@ public class PlayerAnimations : MonoBehaviour
 
     [Header("Player Sprite")]
     [SerializeField] SpriteRenderer sprite;
-    [SerializeField] float stopCursorFollowTime = 3f;
     Directions currentDir = Directions.down;
-    Vector2 input, dir;
-    Transform cursor;
-    MoveCursor cursorScript;
-    bool followCursor = true;
+    Vector2 input;
 
-    [Header("Weapon")] [SerializeField] private WeaponAnimator weaponAnimator;
+    [Header("Weapon")] [SerializeField] private Transform weaponPivot;
+    [SerializeField] private WeaponAnimator weaponAnimator;
     [SerializeField] float weaponLerp = 0.5f;
     public ShakeData shoveShake;
 
-    [SerializeField] ResultsScreen results;
     private Rigidbody2D rb;
 
-    private float angle = 0;
 
     public void Initialize(PlayerShooting shooting, PlayerMovement movement, PlayerStatus status)
     {
-        cursor = GameObject.Find("PlayerCursor").transform;
-        cursorScript = cursor.GetComponent<MoveCursor>();
- 
-        shooting.OnShoot.AddListener(ShootAnimation);
+        shooting.OnShoot.AddListener(PlayShootAnimation);
         shooting.OnWeaponSwitch.AddListener(ChangeWeaponSprite);
-        shooting.OnShove.AddListener(ShoveAnimation);
-        shooting.OnMelee.AddListener(ShootAnimation);
-        shooting.OnReloadStart.AddListener(ReloadAnimation);
+        shooting.OnShove.AddListener(PlayShoveAnimation);
+        shooting.OnMelee.AddListener(PlayShootAnimation);
+        shooting.OnReloadStart.AddListener(PlayReloadAnimation);
 
-        movement.OnDodge.AddListener(DodgeAnimation);
+        movement.OnDodge.AddListener(PlayDodgeAnimation);
 
-        status.onHit.AddListener(DamageAnimation);
-        status.onDeath.AddListener(DeathAnimation);
+        status.onHit.AddListener(PlayDamageAnimation);
+        status.onDeath.AddListener(PlayDeathAnimation);
 
         ChangeWeaponSprite(shooting.GetHeldWeapon());
 
@@ -63,139 +55,79 @@ public class PlayerAnimations : MonoBehaviour
 
     private void Update()
     {
-        // VERY BAD
-        if (Time.timeScale == 0 || !PlayerStatus.player.GetComponent<Renderer>().isVisible) return;
+        if (PauseMenu.paused) return;
         
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        Vector2 playerDirection = new Vector2(KeyBind.GetAxis(KInputManager.GetKey("Right"),
-            KInputManager.GetKey("Left")), KeyBind.GetAxis(KInputManager.GetKey("Up"), KInputManager.GetKey("Down")));
-        input = playerDirection;
-
-        if (KInputManager.GetKey("Shoot").Pressed() || KInputManager.GetKey("Shoot").PressedDown() || KInputManager.GetKey("Shove").PressedDown())
-        {
-            followCursor = true;
-            canSwitchAnimation = true;
-            CancelInvoke();
-        }
-        else if (followCursor) Invoke("StopCursorFollow", stopCursorFollowTime);
-
-        // Orient player
-        dir = ((Vector3) mousePosition - (transform.position + (Vector3)playerOffset)).normalized;
-
-        currentDir = VectorToDir(dir);
-
-        // Change weapon sorting order depending on if its in front or behind
-        if (canSwitchAnimation)
-        {
-            /*if (currentDir == Directions.down) weaponAnimator.sprite.sortingOrder = 1;
-            else weaponAnimator.sprite.sortingOrder = 0;*/
-            
-            // Orient weapon
-            /*if (followCursor)
-            {
-                Vector2 mousePos = ((Vector2)transform.position + playerOffset - mousePosition).normalized;
-                angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
-            }*/
-            
-            Vector2 mousePos = ((Vector2)transform.position + playerOffset - mousePosition).normalized;
-            angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
-        }
-        
-        weaponAnimator.transform.rotation = Quaternion.Euler(new Vector3(0, 0,
-            Mathf.LerpAngle(weaponAnimator.transform.rotation.eulerAngles.z, angle, weaponLerp)));
+        GetInputs();
     }
 
     private void FixedUpdate()
     {
         // Choose animations
-        if (!canSwitchAnimation) return;
+        if (!canSwitchAnimation || PauseMenu.paused) return;
 
-        // Flip if going left
-        sprite.flipX = currentDir == Directions.left || currentDir == Directions.upperLeft || currentDir == Directions.bottomLeft;
-
-        if (input.magnitude > 0 && rb.velocity.magnitude > 0)
+        if (input.magnitude > 0.25)
         {
-            Vector2 playerDirection = new Vector2(KeyBind.GetAxis(KInputManager.GetKey("Right"),
-                KInputManager.GetKey("Left")), KeyBind.GetAxis(KInputManager.GetKey("Up"), KInputManager.GetKey("Down")));
-            var inputDir = VectorToDir(playerDirection);
+            OrientPlayer();
+            OrientWeapon(weaponLerp);
             
-            switch (currentDir)
+            if (rb.linearVelocity.magnitude > 0)
             {
-                case Directions.up:
-                    animator.Play("walk_u");
-                    break;
-
-                /*case Directions.upperRight:
-                    animator.Play("walk_ur");
-                    break;
-
-                case Directions.upperLeft:
-                    animator.Play("walk_ur");
-                    break;*/
-
-                case Directions.right:
-                    animator.Play("walk_r");
-                    break;
-
-                /*case Directions.bottomRight:
-                    animator.Play("walk_dr");
-                    break;
-
-                case Directions.bottomLeft:
-                    animator.Play("walk_dr");
-                    break;*/
-
-                case Directions.down:
-                    animator.Play("walk_d");
-                    break;
-
-                case Directions.left:
-                    animator.Play("walk_r");
-                    break;
+                PlayDirectionalAnimation("walk", currentDir);
             }
-        }
+        } 
         else
         {
-            switch (currentDir)
-            {
-                case Directions.up:
-                    animator.Play("stand_u");
-                    break;
-
-                case Directions.upperRight:
-                    animator.Play("stand_ur");
-                    break;
-
-                case Directions.upperLeft:
-                    animator.Play("stand_ur");
-                    break;
-
-                case Directions.right:
-                    animator.Play("stand_r");
-                    break;
-
-                case Directions.bottomRight:
-                    animator.Play("stand_dr");
-                    break;
-
-                case Directions.bottomLeft:
-                    animator.Play("stand_dr");
-                    break;
-
-                case Directions.down:
-                    animator.Play("stand_d");
-                    break;
-
-                case Directions.left:
-                    animator.Play("stand_r");
-                    break;
-            }
+            PlayDirectionalAnimation("stand", currentDir);
         }
+        
+    }
+    
+    private void GetInputs()
+    {
+        Vector2 playerDirection = new Vector2(KeyBind.GetAxis(KInputManager.GetKey("Right"),
+            KInputManager.GetKey("Left")), KeyBind.GetAxis(KInputManager.GetKey("Up"), KInputManager.GetKey("Down")));
+        input = playerDirection;
     }
 
-    [ContextMenu("kYS")]
-    void DeathAnimation(KillFlag deathType)
+    void OrientPlayer()
+    {
+        currentDir = HelperFunctions.VectorToDir(input);
+    }
+    
+    private void OrientWeapon(float lerp)
+    {
+        if (input.magnitude < 0.25f) return;
+        
+        float angle = HelperFunctions.VectorToAngle(input);
+
+        Vector3 targetRotation = new Vector3(0, 0, angle);
+        weaponAnimator.transform.rotation = Quaternion.Euler(new Vector3(0, 0,
+            Mathf.LerpAngle(weaponAnimator.transform.rotation.eulerAngles.z, targetRotation.z, lerp)));
+
+        weaponPivot.rotation = Quaternion.Euler(targetRotation);
+        
+        // Adjust Sorting Order
+        if (weaponAnimator.sprite) weaponAnimator.sprite.sortingOrder = currentDir == Directions.down ? 1 : 0;
+    }
+
+    string BuildAnimationClipName(string[] args)
+    {
+        return string.Join("_", args);
+    }
+    
+    void PlayDirectionalAnimation(string baseClipName, Directions direction)
+    {
+        sprite.flipX = direction == Directions.left;
+        
+        // force right since they use the same animation
+        if (direction == Directions.left) direction = Directions.right;
+        
+        string directionSuffix = direction.ToString()[0].ToString();
+        
+        animator.Play(BuildAnimationClipName(new []{baseClipName, directionSuffix}));
+    }
+
+    void PlayDeathAnimation(KillFlag deathType)
     {
         StopAllCoroutines();
         sprite.color = Color.white;
@@ -211,9 +143,9 @@ public class PlayerAnimations : MonoBehaviour
         
         GetComponent<Collider2D>().enabled = false;
         
-        rb.drag = 0.01f;
+        rb.linearDamping = 0.01f;
         rb.gravityScale = 3;
-        rb.AddForce(new Vector3(Mathf.Sign(rb.velocity.x) * 10, 20), ForceMode2D.Impulse);
+        rb.AddForce(new Vector3(Mathf.Sign(rb.linearVelocity.x) * 10, 20), ForceMode2D.Impulse);
 
         if (weaponAnimator)
         {
@@ -221,8 +153,8 @@ public class PlayerAnimations : MonoBehaviour
 
             var weaponRb = Instantiate(PlayerStatus.player.pShooting.GetHeldWeapon().weapon.rigidbodyVariant,
                 transform.position, transform.rotation);
-            weaponRb.AddForce(new Vector3(-Mathf.Sign(rb.velocity.x) * 10, 20), ForceMode2D.Impulse);
-            weaponRb.AddTorque(-Mathf.Sign(rb.velocity.x) * 10f, ForceMode2D.Impulse);
+            weaponRb.AddForce(new Vector3(-Mathf.Sign(rb.linearVelocity.x) * 10, 20), ForceMode2D.Impulse);
+            weaponRb.AddTorque(-Mathf.Sign(rb.linearVelocity.x) * 10f, ForceMode2D.Impulse);
         }
 
         float t = 0;
@@ -244,21 +176,21 @@ public class PlayerAnimations : MonoBehaviour
             t += Time.deltaTime;
         }
         Time.timeScale = 1;
-
-        results.ShowResults(deathType);
+        
+        ResultsScreen.instance.ShowResults(deathType);
     }
     
-    void ShootAnimation()
+    void PlayShootAnimation()
     {
         weaponAnimator.PlayShootAnimation();
     }
 
-    void ReloadAnimation(float _)   
+    void PlayReloadAnimation(float _)   
     {
         weaponAnimator.PlayReloadAnimation();
     }
     
-    void ShoveAnimation()
+    void PlayShoveAnimation()
     {
         weaponAnimator.PlayShoveAnimation();
         
@@ -273,107 +205,45 @@ public class PlayerAnimations : MonoBehaviour
 
     public void ChangeWeaponSprite(InventoryWeapon w)
     {
-        cursorScript.ChangeCrosshair(w.weapon.hud.crossHair);
+        MoveCursor.instance.ChangeCrosshair(w.weapon.hud.crossHair);
 
         // Replace weapon object
         Destroy(weaponAnimator.gameObject);
         weaponAnimator = Instantiate(w.weapon.animatorController, transform.position + new Vector3(0, 1.25f) + w.weapon.weaponOffset, Quaternion.identity, sprite.transform);
         weaponAnimator.transform.localScale = w.weapon.weaponScale;
         
-        if (Time.timeScale == 0 || !PlayerStatus.player.GetComponent<Renderer>().isVisible) return;
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 mousePos = (mousePosition - (Vector2)transform.position).normalized;
-        float angle = Mathf.Atan2(-mousePos.y, -mousePos.x) * Mathf.Rad2Deg;
-
-        // Change weapon sorting order depending on if its in front or behind
-        if (weaponAnimator.sprite)
-        {
-            if (currentDir == Directions.down) weaponAnimator.sprite.sortingOrder = 1;
-            else weaponAnimator.sprite.sortingOrder = 0;
-        }
-        
-        weaponAnimator.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -angle));
+        OrientWeapon(1);
     }
     
-
-    void DodgeAnimation()
+    void PlayDamageAnimation(float _)
     {
-        Directions dir = VectorToDir(input);
-        switch (dir)
-        {
-            case Directions.up:
-                dashExp.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-                animator.Play("dash_u");
-                break;
+        canSwitchAnimation = false;
 
-            case Directions.right:
-                dashExp.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
-                animator.Play("dash_r");
-                break;
-
-            case Directions.down:
-                dashExp.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
-                animator.Play("dash_d");
-                break;
-
-            case Directions.left:
-                dashExp.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 270));
-                animator.Play("dash_r");
-                break;
-        }
+        PlayDirectionalAnimation("hurt", currentDir);
         
-        sprite.flipX = dir == Directions.left || currentDir == Directions.upperLeft || currentDir == Directions.bottomLeft;
+        Invoke("EnableAnimations", 0.5f);
+        
+        StartCoroutine(HelperFunctions.Flicker(sprite, 1, () => sprite.color = Color.white));
+    }
+    
+    void PlayDodgeAnimation()
+    {
+        PlayDirectionalAnimation("dash", currentDir);
 
-
-        dashExp.Play();
-        /*StopCoroutine("DashTrail");
-        StartCoroutine(DashTrail());*/
-
-        StopCursorFollow();
+        dashExplosion.Play();
+        StopCoroutine("DodgeTrail");
+        StartCoroutine(DodgeTrail());
 
         CameraShakerHandler.Shake(dodgeScreenshake);
-
-        followCursor = false;
         
-        Vector2 dirInput = (input).normalized;
-        angle = Mathf.Atan2(dirInput.y, dirInput.x) * Mathf.Rad2Deg;
-        
-        if (dir == Directions.down) weaponAnimator.sprite.sortingOrder = 1;
-        else weaponAnimator.sprite.sortingOrder = 0;
+        OrientWeapon(.75f);
         
         canSwitchAnimation = false;
         CancelInvoke();
         Invoke("EnableAnimations", 0.3f);
     }
 
-    void DamageAnimation(float _)
-    {
-        canSwitchAnimation = false;
-        
-        switch (currentDir)
-        {
-            case Directions.up:
-                animator.Play("hurt_u");
-                break;
-
-            case Directions.right:
-                animator.Play("hurt_r");
-                break;
-
-            case Directions.down:
-                animator.Play("hurt_d");
-                break;
-
-            case Directions.left:
-                animator.Play("hurt_r");
-                break;
-        }
-        Invoke("EnableAnimations", 0.5f);
-        
-        StartCoroutine(SprFunctions.Flicker(sprite, 1, () => sprite.color = Color.white));
-    }
-
-    IEnumerator DashTrail()
+    IEnumerator DodgeTrail()
     {
         // Enable trail
         trail.time = trailTime;
@@ -390,30 +260,10 @@ public class PlayerAnimations : MonoBehaviour
         trail.emitting = false;
     }
 
-    Directions VectorToDir(Vector2 input)
-    {
-        Directions final = currentDir;
-        if (input.x > 0.5f) final = Directions.right;
-        else if (input.x < -0.5f) final = Directions.left;
-        else if (input.y > 0.5f) final = Directions.up;
-        else if (input.y < -0.5f) final = Directions.down;
-
-        return final;
-    }   
-
-    void StopCursorFollow()
-    {
-        followCursor = false;
-    }
-
     void EnableAnimations()
-    {
-        followCursor = true; canSwitchAnimation = true;
+    { 
+        canSwitchAnimation = true;
     }
-}
 
-[System.Serializable]
-public enum Directions
-{
-    up, right, down, left, bottomRight, bottomLeft, upperRight, upperLeft
+    public Directions GetCurrentDir() => currentDir;
 }

@@ -31,7 +31,7 @@ public class PaintSplatter : MonoBehaviour
 
     void FadeOut()
     {
-        StartCoroutine(SprFunctions.Fade(spr, spr.color, Color.clear, 3f));
+        StartCoroutine(HelperFunctions.Fade(spr, spr.color, Color.clear, 3f));
         Destroy(gameObject, 3f);
     }
 }

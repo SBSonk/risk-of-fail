@@ -38,7 +38,7 @@ public class PickupBase : MonoBehaviour
 
     void StartFlicker()
     {
-        StartCoroutine(SprFunctions.Flicker(sprite.GetComponent<SpriteRenderer>(), 3));
+        StartCoroutine(HelperFunctions.Flicker(sprite.GetComponent<SpriteRenderer>(), 3));
     }
 
     protected virtual void OnTriggerStay2D(Collider2D other)

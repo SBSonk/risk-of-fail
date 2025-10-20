@@ -193,7 +193,7 @@ public class Enemy : Alive
         if (attackScript) attackScript.enabled = true;
 
         // Reset rigidbody velocities
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0;
 
         StartCoroutine(StunRecover(StunRecoverTime));

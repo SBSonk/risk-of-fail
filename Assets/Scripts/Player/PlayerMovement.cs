@@ -77,8 +77,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.AddForce(dir * moveSpeed * Time.fixedDeltaTime);
 
-        if (dir.magnitude == 0 && !PlayerStatus.player.stunned) rb.drag = 20;
-        else rb.drag = 11;
+        if (dir.magnitude == 0 && !PlayerStatus.player.stunned) rb.linearDamping = 20;
+        else rb.linearDamping = 11;
     }
 
     void Dodge(Vector2 direction)

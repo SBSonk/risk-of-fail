@@ -82,7 +82,7 @@ public class Projectile : MonoBehaviour
         // Piercing
         if (pierces <= 0 || collision.CompareTag("Wall"))
         {
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
             /*if (!collision.CompareTag("Wall"))*/ sprite.SetActive(false);
             _light.intensity = 0;
 

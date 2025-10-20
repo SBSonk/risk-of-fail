@@ -86,7 +86,7 @@ public class DialogueManager : MonoBehaviour
     
     public void HideText()
     {
-        StartCoroutine(SprFunctions.Fade(tmp, tmp.color, Color.clear, 0.25f));
+        StartCoroutine(HelperFunctions.Fade(tmp, tmp.color, Color.clear, 0.25f));
 
         OnDialogueFinish?.Invoke();
         anim.Play("DialogueClose");

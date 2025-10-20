@@ -31,7 +31,7 @@ public class ChalkQuakeV2Ball : MonoBehaviour
             
             if (c[i].attachedRigidbody)
             {
-                c[i].attachedRigidbody.velocity = Vector2.zero;
+                c[i].attachedRigidbody.linearVelocity = Vector2.zero;
                 c[i].attachedRigidbody.AddForce((c[i].transform.position - transform.position).normalized * knockbackStrength, ForceMode2D.Impulse);
             }
 

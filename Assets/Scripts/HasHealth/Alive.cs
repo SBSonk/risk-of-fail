@@ -121,7 +121,7 @@ public abstract class Alive : MonoBehaviour
             var rb = Instantiate(deathFlingPrefab, transform.position, quaternion.identity);
             
             rb.AddForce(new Vector3(Random.Range(1, -1f) * Random.Range(5, 10f),  Random.Range(2.5f, 10f)), ForceMode2D.Impulse);
-            rb.AddTorque(-Mathf.Sign(rb.velocity.x) * Random.Range(5, 10f), ForceMode2D.Impulse);
+            rb.AddTorque(-Mathf.Sign(rb.linearVelocity.x) * Random.Range(5, 10f), ForceMode2D.Impulse);
         }
         
         if (deathSound) Instantiate(deathSound, transform.position, transform.rotation);

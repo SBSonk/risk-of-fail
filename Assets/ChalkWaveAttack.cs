@@ -47,7 +47,7 @@ public class ChalkWaveAttack : BossAttackV2
             yield return new WaitForSeconds(choosingPhaseTime);
             
             Rigidbody2D wave = Instantiate(wavePrefab, boss.position + waveOffset, transform.rotation);
-            wave.velocity = -wave.transform.up.normalized * waveSpeed;
+            wave.linearVelocity = -wave.transform.up.normalized * waveSpeed;
             yield return new WaitForSeconds(timeBetweenWaves);
         }
 

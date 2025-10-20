@@ -7,11 +7,24 @@ using UnityEngine.UI;
 
 public class ResultsScreen : MonoBehaviour
 {
+    public static ResultsScreen instance;
+    
     [SerializeField] private TextMeshProUGUI score, bulletsShot, bulletsHit, accuracy, time, damageTaken, damageGiven, healthRestored;
     [SerializeField] private TextMeshProUGUI enemiesKilled, passedText;
     [SerializeField] Image grade;
 
     [SerializeField] private Animator anim, avatarAnim;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+    
+    private void OnDestroy()
+    {
+        if (instance == this)
+            instance = null;
+    }
 
     public void ShowResults() => ShowResults(KillFlag.LevelPassed);
     

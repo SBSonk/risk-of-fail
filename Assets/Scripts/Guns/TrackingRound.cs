@@ -42,7 +42,7 @@ public class TrackingRound : Projectile
         if (tracking)
         {
             /*rb.AddForce(transform.right * (trackingSpeed * Time.deltaTime));*/
-            rb.velocity = transform.right * trackingSpeed;
+            rb.linearVelocity = transform.right * trackingSpeed;
         }
 
         if (propelled)

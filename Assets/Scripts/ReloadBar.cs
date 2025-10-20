@@ -61,7 +61,7 @@ public class ReloadBar : MonoBehaviour
         // Fade out
         for (int i = 0; i < sprites.Length; i++)
         {
-            StartCoroutine(SprFunctions.Fade(sprites[i], sprites[i].color, Color.clear, 0.25f));
+            StartCoroutine(HelperFunctions.Fade(sprites[i], sprites[i].color, Color.clear, 0.25f));
         }
 
         yield return new WaitForSeconds(0.25f);

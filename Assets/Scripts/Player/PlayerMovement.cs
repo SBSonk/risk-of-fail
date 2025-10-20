@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
         if (dir.magnitude == 0 && !PlayerStatus.player.stunned) rb.linearDamping = 20;
         else rb.linearDamping = 11;
     }
-
+ 
     void Dodge(Vector2 direction)
     {
         rb.AddForce(direction * dodgeForce, ForceMode2D.Impulse);

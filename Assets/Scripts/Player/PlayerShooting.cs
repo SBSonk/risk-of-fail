@@ -41,7 +41,10 @@ public class PlayerShooting : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(gunBarrel.position, transform.position + (gunBarrel.right.normalized * 2));
+        Gizmos.DrawLine(gunBarrel.position, gunBarrel.position + (gunBarrel.right.normalized * 2));
+        
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(gunBarrel.position, gunBarrel.position + (MoveCursor.instance.GetMousePlayerDirection() * 2));
     }
 
     public void Initialize()
@@ -52,13 +55,15 @@ public class PlayerShooting : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeScale == 0 || !PlayerStatus.player.GetComponent<Renderer>().isVisible) return;
+        if (PauseMenu.paused || !PlayerStatus.player.GetComponent<Renderer>().isVisible) return;
 
-        if (weaponPool.Length > 1) WeaponSwitching();
+        if (weaponPool.Length > 1)
+        {
+            WeaponSwitching();
+            KeybindSwitching();
+        }
         else if (weaponPool.Length == 0) return;
         
-        KeybindSwitching();
-
         if (CheckIfPlayerShooting() && CanShoot())
         {
             var weapon = GetHeldWeapon().weapon;

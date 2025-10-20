@@ -6,7 +6,8 @@ using UnityEngine.Audio;
 using UnityEngine.Serialization;
 
 public class PlayerAnimations : MonoBehaviour
-{ 
+{
+    public bool followCursor = false;
     public bool canSwitchAnimation = true;
     [SerializeField] SpriteRenderer[] sprites;
 
@@ -30,8 +31,8 @@ public class PlayerAnimations : MonoBehaviour
     public ShakeData shoveShake;
 
     private Rigidbody2D rb;
-
-
+    private PlayerShooting pShooting;
+    
     public void Initialize(PlayerShooting shooting, PlayerMovement movement, PlayerStatus status)
     {
         shooting.OnShoot.AddListener(PlayShootAnimation);
@@ -51,6 +52,7 @@ public class PlayerAnimations : MonoBehaviour
         trail.time = 0;
 
         rb = GetComponent<Rigidbody2D>();
+        pShooting = shooting;
     }
 
     private void Update()
@@ -62,24 +64,23 @@ public class PlayerAnimations : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Choose animations
         if (!canSwitchAnimation || PauseMenu.paused) return;
 
-        if (input.magnitude > 0.25)
+        if (followCursor || input.magnitude > 0.25f)
         {
             OrientPlayer();
             OrientWeapon(weaponLerp);
-            
-            if (rb.linearVelocity.magnitude > 0)
-            {
-                PlayDirectionalAnimation("walk", currentDir);
-            }
-        } 
+        }
+
+        // Choose animations
+        if (input.magnitude > 0.25f)
+        {
+            PlayDirectionalAnimation("walk", currentDir);
+        }
         else
         {
             PlayDirectionalAnimation("stand", currentDir);
         }
-        
     }
     
     private void GetInputs()
@@ -89,16 +90,24 @@ public class PlayerAnimations : MonoBehaviour
         input = playerDirection;
     }
 
+    void DetermineAimMode(Weapon w)
+    {
+        followCursor = w is Gun;
+        MoveCursor.instance.SetVisibility(followCursor);
+    }
+    
     void OrientPlayer()
     {
-        currentDir = HelperFunctions.VectorToDir(input);
+        Vector2 dir = followCursor ? MoveCursor.instance.GetMousePlayerDirection() : input;
+        
+        currentDir = HelperFunctions.VectorToDir(dir);
     }
     
     private void OrientWeapon(float lerp)
     {
-        if (input.magnitude < 0.25f) return;
+        if (input.magnitude < 0.25f && !followCursor) return;
         
-        float angle = HelperFunctions.VectorToAngle(input);
+        float angle = HelperFunctions.VectorToAngle(followCursor ? MoveCursor.instance.GetMousePlayerDirection() : input);
 
         Vector3 targetRotation = new Vector3(0, 0, angle);
         weaponAnimator.transform.rotation = Quaternion.Euler(new Vector3(0, 0,
@@ -213,6 +222,8 @@ public class PlayerAnimations : MonoBehaviour
         weaponAnimator.transform.localScale = w.weapon.weaponScale;
         
         OrientWeapon(1);
+        
+        DetermineAimMode(w.weapon);
     }
     
     void PlayDamageAnimation(float _)

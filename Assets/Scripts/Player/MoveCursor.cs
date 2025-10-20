@@ -6,17 +6,24 @@ public class MoveCursor : MonoBehaviour
 {
     public static MoveCursor instance;
 
-    Image cursor;
+    public bool visible = true;
+    
+    [Header("Visual Settings")]
     [SerializeField] float rotationDegrees = 1, lerpPos = 0.5f;
-    Vector3 mousePos;
 
     [SerializeField] Crosshair menuCrosshair;
     Crosshair lastCrosshair;
+
+    private Camera cam;
+    private Transform player;
+    Image cursor;
 
     private void Awake()
     {
         instance = this;
         cursor = GetComponentInChildren<Image>();
+        
+        cam = Camera.main;
     }
 
     private void OnDestroy()
@@ -26,21 +33,27 @@ public class MoveCursor : MonoBehaviour
 
     private void Start()
     {
+        player = PlayerStatus.player.transform;
+        
         // Hide mouse
         Cursor.visible = false;
     }
 
     void Update()
     {
-        mousePos = GetMouseInput();
-
-        transform.SetPositionAndRotation(Vector3.Lerp(transform.position, mousePos, lerpPos), Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + (rotationDegrees * Time.deltaTime)));
+        transform.SetPositionAndRotation(Vector3.Lerp(transform.position, GetMousePosition(), lerpPos), Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + (rotationDegrees * Time.deltaTime)));
     }
 
-    // Returns mouse input for this frame
-    Vector3 GetMouseInput()
+    Vector3 GetMousePosition()
     {
         return Input.mousePosition;
+    }
+
+    public Vector3 GetMousePlayerDirection()
+    {
+        Vector3 mouseWorldPos = cam.ScreenToWorldPoint(GetMousePosition());
+        mouseWorldPos.z = 0;
+        return (mouseWorldPos - player.position).normalized;
     }
 
     public void ChangeCrosshair(Crosshair c)
@@ -61,5 +74,14 @@ public class MoveCursor : MonoBehaviour
     {
         ChangeCrosshair(lastCrosshair);
     }
+
+    public void SetVisibility(bool val)
+    {
+        visible = val;
+        
+        cursor.enabled = visible;
+    }
+
+    public bool GetVisibility() => visible;
 }
 

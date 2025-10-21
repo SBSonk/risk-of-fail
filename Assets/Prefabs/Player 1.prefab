@@ -5929,21 +5929,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c18ad47c78168b428a4936f39827e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followCursor: 0
   canSwitchAnimation: 1
   sprites:
   - {fileID: 1425222227697381013}
-  dashExp: {fileID: 9075388481170040465}
+  dashExplosion: {fileID: 9075388481170040465}
   animator: {fileID: 37731129591966012}
   trail: {fileID: 1425222228954331943}
   trailLifetime: 0.75
   dodgeScreenshake: {fileID: 11400000, guid: 8751c99bb03fa494a9af2153de950fc8, type: 2}
   sprite: {fileID: 1425222227697381013}
-  stopCursorFollowTime: 0
   weaponPivot: {fileID: 944821670489408412}
   weaponAnimator: {fileID: 612386701163638200}
   weaponLerp: 0.25
   shoveShake: {fileID: 11400000, guid: c182fb5cc6ba4cf43b41ad856b62f48f, type: 2}
-  results: {fileID: 0}
 --- !u!114 &1425222227342113826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5956,11 +5955,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54c8d2fde5cc6a4d87b310d8ca6d010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   moveSpeed: 6000
   baseSpeed: 0
-  dodgeForce: 40
-  dodgeCooldown: 1
+  dodgeForce: 30
+  dodgeCooldown: 0.75
   dodgeResetStartTime: 0.25
+  dodgeIFrames: 0.25
   maxDodges: 2
   dodges: 2
   OnDodge:
@@ -5984,7 +5985,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c98a35236b0fbdf49b653277f56752fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunPivot: {fileID: 8595313808324617705}
   gunBarrel: {fileID: 944821670489408412}
   fallbackWep:
     weapon: {fileID: 11400000, guid: 124a9b1f205ce7e4c986a97c4682f93e, type: 2}

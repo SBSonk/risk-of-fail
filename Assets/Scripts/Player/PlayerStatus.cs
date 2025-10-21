@@ -46,7 +46,7 @@ public class PlayerStatus : Alive
 
     private void Update()
     {
-        gameObject.layer = canBeDamaged ? LayerMask.NameToLayer(normalLayer) : LayerMask.NameToLayer(immuneLayer);
+        gameObject.layer = immune ? LayerMask.NameToLayer(immuneLayer) : LayerMask.NameToLayer(normalLayer);
     }
 
     protected override void Death(KillFlag flag)

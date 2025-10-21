@@ -96,12 +96,6 @@ public class PlayerShooting : MonoBehaviour
 
     void WeaponPickups()
     {
-        // check list of weapons around player
-        
-        // get nearest
-
-        // pickup
-
         if (weaponsInArea.Count == 0) return;
         
         int nearestIndex = 0;

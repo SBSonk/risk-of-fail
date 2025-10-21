@@ -21,7 +21,6 @@ public abstract class Alive : MonoBehaviour
     public Rigidbody2D deathFlingPrefab;
 
     public bool stunned;
-    protected bool canBeDamaged = true;
     protected bool dead;
 
     public UnityEvent<float> onHit, onStunned, onHeal;
@@ -32,7 +31,7 @@ public abstract class Alive : MonoBehaviour
     public float GiveDamage(float amount, float stunLength, KillFlag flag, StatusEffect effect = null, bool giveRawDamage = false)
     {
         // Return if can't be damaged
-        if (!canBeDamaged || dead) return 0;
+        if (immune || dead) return 0;
 
         // Give effect, if any
         if (effect)
@@ -46,8 +45,6 @@ public abstract class Alive : MonoBehaviour
 
         // Calculate damage
         float damage = giveRawDamage ? -amount : -amount / damageReduction;
-
-        if (immune) damage = 0;
         
         // Give damage
         if (health + damage <= 0) 
@@ -68,7 +65,7 @@ public abstract class Alive : MonoBehaviour
         // Damage cooldown
         if (damageCooldown > 0)
         {
-            canBeDamaged = false;
+            immune = false;
             Invoke("AllowDamage", damageCooldown);
         }
 
@@ -146,6 +143,6 @@ public abstract class Alive : MonoBehaviour
 
     void AllowDamage()
     {
-        canBeDamaged = true;
+        immune = true;
     }
 }

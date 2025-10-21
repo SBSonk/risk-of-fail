@@ -7,12 +7,14 @@ using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public PlayerStates state = PlayerStates.CanMove;
+    
     public float moveSpeed = 10f;
     public float baseSpeed;
 
     bool dodgeQueued, startCooldown, canDodge = true;
     public float dodgeForce = 100f;
-    public float dodgeCooldown = 0.25f, dodgeResetStartTime = 0.1f;
+    public float dodgeCooldown = 0.25f, dodgeResetStartTime = 0.1f, dodgeIFrames = .5f;
     public int maxDodges = 2;
     public float dodges;
 
@@ -83,6 +85,8 @@ public class PlayerMovement : MonoBehaviour
  
     void Dodge(Vector2 direction)
     {
+        StartCoroutine(DodgeIFrames());
+        
         rb.AddForce(direction * dodgeForce, ForceMode2D.Impulse);
         dodgeQueued = false;
 
@@ -95,8 +99,27 @@ public class PlayerMovement : MonoBehaviour
         OnDodge.Invoke();
     }
 
+    void SetIFrame(bool val)
+    {
+        PlayerStatus.player.immune = val;
+    }
+
+    IEnumerator DodgeIFrames()
+    {
+        SetIFrame(true);
+        
+        yield return new WaitForSeconds(dodgeIFrames);
+        
+        SetIFrame(false);
+    }
+
     void StartDodgeCooldown()
     {
         startCooldown = true;
+    }
+    
+    public enum PlayerStates
+    {
+        CanMove, Dashing, Stuck
     }
 }

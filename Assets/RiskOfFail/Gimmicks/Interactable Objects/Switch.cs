@@ -1,0 +1,68 @@
+using FirstGearGames.SmoothCameraShaker;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Rendering.Universal;
+
+public class Switch : MonoBehaviour
+{
+    public SpriteRenderer sprite;
+    public Sprite active, disabled;
+    public Light2D light;
+
+    public bool isActive, interactable = true, playerInRadius, disableOnUse;
+
+    public ShowInteractBuyable interactIcon;
+
+    public UnityEvent OnSwitchOn, OnSwitchToggled, OnSwitchOff;
+    [SerializeField] private ShakeData useShake;
+
+    private void Start()
+    {
+        light.color = isActive ? Color.green : Color.red;
+
+        interactIcon = GetComponent<ShowInteractBuyable>();
+    }
+
+    private void Update()
+    {
+        if (KInputManager.GetKey("Interact").PressedDown() && playerInRadius)
+        {
+            Toggle();
+
+            if (disableOnUse)
+            {
+                interactable = false;
+                playerInRadius = false;
+
+                interactIcon.Hide();
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Player") || !interactable) return;
+
+        playerInRadius = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Player") || !interactable) return;
+        playerInRadius = false;
+    }
+
+    private void Toggle()
+    {
+        OnSwitchToggled?.Invoke();
+
+        isActive = !isActive;
+        light.color = isActive ? Color.green : Color.red;
+
+        if (isActive) OnSwitchOn?.Invoke();
+        else OnSwitchOff?.Invoke();
+
+        sprite.sprite = isActive ? active : disabled;
+        if (useShake) CameraShakerHandler.Shake(useShake);
+    }
+}

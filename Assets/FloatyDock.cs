@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using RiskOfFail.Combat;
 using UnityEngine;
 
 public class FloatyDock : InteractBase

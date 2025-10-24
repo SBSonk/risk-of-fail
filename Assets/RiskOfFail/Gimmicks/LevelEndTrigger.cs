@@ -1,0 +1,17 @@
+using RiskOfFail.Combat;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class LevelEndTrigger : MonoBehaviour
+{
+    public UnityEvent OnLevelEnd;
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Player")) return;
+
+        OnLevelEnd?.Invoke();
+
+        PlayerStatus.player.gameObject.SetActive(false);
+    }
+}

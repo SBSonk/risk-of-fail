@@ -1,5 +1,6 @@
 using Pathfinding;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 
 namespace RiskOfFail.AI.Animators
@@ -129,7 +130,7 @@ namespace RiskOfFail.AI.Animators
             deathParticles.Play();
         }
 
-        private void StunAnimation(float duration)
+        private void StunAnimation(float duration, DamageTypeFlag _)
         {
             if (!canSwitchAnimations) return;
 

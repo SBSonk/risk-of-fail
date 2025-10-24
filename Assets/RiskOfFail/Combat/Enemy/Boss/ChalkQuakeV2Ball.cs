@@ -1,11 +1,12 @@
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 
 public class ChalkQuakeV2Ball : MonoBehaviour
 {
     [Header("Attack")] public float damageAmount = 15;
     public float stunLength = 1;
-    public KillFlag killFlag = KillFlag.AreaOfEffect;
+    public DamageTypeFlag killFlag = DamageTypeFlag.AreaOfEffect;
     public float damageRadius = .25f;
 
     public float knockbackStrength = 25f;

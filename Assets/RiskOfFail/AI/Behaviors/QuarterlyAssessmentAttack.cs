@@ -1,6 +1,7 @@
 using System.Collections;
 using FirstGearGames.SmoothCameraShaker;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -67,7 +68,7 @@ namespace RiskOfFail.AI.Behaviors
                 if (objectHit && objectHit.collider.CompareTag("Wall")) continue;
 
                 var alive = r.GetComponent<Alive>();
-                if (alive) alive.GiveDamage(dmg, stn, KillFlag.AreaOfEffect);
+                if (alive) alive.GiveDamage(dmg, stn, DamageTypeFlag.AreaOfEffect);
             }
 
             Instantiate(explosionParticles, transform.position, Quaternion.identity);

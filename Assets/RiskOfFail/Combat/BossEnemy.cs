@@ -1,3 +1,4 @@
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,7 +26,7 @@ namespace RiskOfFail.Combat
             healthBar = Instantiate(healthBarPrefab).transform.GetChild(0).Find("Health").GetComponent<Image>();
         }
 
-        protected override void Death(KillFlag flag)
+        protected override void Death(DamageTypeFlag flag)
         {
             base.Death(flag);
 

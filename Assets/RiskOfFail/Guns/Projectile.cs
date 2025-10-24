@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using FirstGearGames.SmoothCameraShaker;
 using GameAudioScriptingEssentials;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -56,7 +57,7 @@ public class Projectile : MonoBehaviour
             if (bulletShake) CameraShakerHandler.Shake(bulletShake);
 
             // Give damage and stun
-            collision.GetComponent<Alive>().GiveDamage(damage, stunLength, KillFlag.Ranged);
+            collision.GetComponent<Alive>().GiveDamage(damage, stunLength, DamageTypeFlag.Ranged);
 
             collision.GetComponent<Rigidbody2D>().AddForceAtPosition(transform.right * knockback,
                 collision.ClosestPoint(transform.position), ForceMode2D.Impulse);

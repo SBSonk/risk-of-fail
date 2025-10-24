@@ -1,6 +1,7 @@
 using Pathfinding;
 using RiskOfFail.AI.Behaviors;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 
 namespace RiskOfFail.AI.Animators
@@ -90,7 +91,7 @@ namespace RiskOfFail.AI.Animators
             return final;
         }
 
-        private void StunAnimation(float duration)
+        private void StunAnimation(float duration, DamageTypeFlag _)
         {
             switch (dirFacing)
             {

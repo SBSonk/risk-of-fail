@@ -1,4 +1,5 @@
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 
 public class HealthPickup : PickupBase
@@ -20,7 +21,7 @@ public class HealthPickup : PickupBase
         {
             var finalAmount = Random.Range(minAmount, amount);
 
-            player.GiveHealth(finalAmount);
+            player.GiveHealth(finalAmount, DamageTypeFlag.Self);
         }
 
         PlayPickupAnimation();

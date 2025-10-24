@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using GameAudioScriptingEssentials;
 using Pathfinding;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -92,7 +93,7 @@ namespace RiskOfFail.AI.Behaviors
                 yield return new WaitForSeconds(.5f);
 
                 if (target && target.health < target.maxHealth && ai.reachedDestination)
-                    target.GiveHealth(Math.Min(target.maxHealth * healFactor, healCap));
+                    target.GiveHealth(Math.Min(target.maxHealth * healFactor, healCap), DamageTypeFlag.Ranged);
             }
         }
 

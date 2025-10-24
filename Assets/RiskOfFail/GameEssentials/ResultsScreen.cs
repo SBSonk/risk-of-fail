@@ -1,4 +1,5 @@
 using System;
+using RiskOfFail.Combat.Enums;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -29,10 +30,10 @@ public class ResultsScreen : MonoBehaviour
 
     public void ShowResults()
     {
-        ShowResults(KillFlag.LevelPassed);
+        ShowResults(DamageTypeFlag.LevelPassed);
     }
 
-    public void ShowResults(KillFlag flag = KillFlag.LevelPassed)
+    public void ShowResults(DamageTypeFlag flag = DamageTypeFlag.LevelPassed)
     {
         gameObject.SetActive(true);
 
@@ -42,7 +43,7 @@ public class ResultsScreen : MonoBehaviour
         anim.Play("ResultsShow");
 
 
-        if (flag != KillFlag.LevelPassed)
+        if (flag != DamageTypeFlag.LevelPassed)
         {
             // TODO: Switch Sprites
             switch (flag)
@@ -78,7 +79,7 @@ public class ResultsScreen : MonoBehaviour
         damageGiven.text = stats.damageGiven.ToString();
         healthRestored.text = stats.healthRestored.ToString();
 
-        passedText.text = flag == KillFlag.LevelPassed ? "PASSED" : "FAILED";
+        passedText.text = flag == DamageTypeFlag.LevelPassed ? "PASSED" : "FAILED";
 
         // Set High Scores
         var sceneIndex = SceneManager.GetActiveScene().buildIndex;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 
 public class ExplodingProjectile : Projectile
@@ -28,7 +29,7 @@ public class ExplodingProjectile : Projectile
                     if (exploded.Contains(a)) continue;
                     if (Physics2D.Linecast(transform.position, a.transform.position, environmentLayer)) continue;
 
-                    a.GiveDamage(damage, stunLength, KillFlag.Ranged);
+                    a.GiveDamage(damage, stunLength, DamageTypeFlag.Ranged);
                     a.GetComponent<Rigidbody2D>().AddForce((a.transform.position - transform.position).normalized * explosionKnockback, ForceMode2D.Impulse);
                     LevelStats.main.GiveDamage(damage);
 

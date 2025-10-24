@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 
 public class DamageBeam : MonoBehaviour
@@ -45,7 +46,7 @@ public class DamageBeam : MonoBehaviour
         {
             var player = col.GetComponent<PlayerStatus>();
             
-            player.GiveDamage(_damageSource, KillFlag.AreaOfEffect);
+            player.GiveDamage(_damageSource, DamageTypeFlag.AreaOfEffect);
             player.GetComponent<Rigidbody2D>().AddForce(-(col.bounds.ClosestPoint(player.transform.position) - player.transform.position).normalized * knockbackAmount, ForceMode2D.Impulse);
         }
     }

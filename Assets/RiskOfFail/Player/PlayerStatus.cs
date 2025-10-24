@@ -1,4 +1,5 @@
 using System.Collections;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 
 namespace RiskOfFail.Combat
@@ -13,7 +14,6 @@ namespace RiskOfFail.Combat
         public PlayerSFXManager pSFXManager;
 
         public float defaultSpeed = 10;
-        public ParticleSystem deathParticles;
 
         public string normalLayer, immuneLayer;
         public static bool IsAlive { get; private set; }
@@ -45,10 +45,11 @@ namespace RiskOfFail.Combat
 
         private void Update()
         {
-            gameObject.layer = immune ? LayerMask.NameToLayer(immuneLayer) : LayerMask.NameToLayer(normalLayer);
+            //gameObject.layer = immune ? LayerMask.NameToLayer(immuneLayer) : LayerMask.NameToLayer(normalLayer);
         }
 
-        protected override void Death(KillFlag flag)
+        protected override void Death(
+            DamageTypeFlag flag)
         {
             dead = true;
             IsAlive = false;
@@ -58,10 +59,6 @@ namespace RiskOfFail.Combat
             pAnimations.enabled = false;
 
             onDeath?.Invoke(flag);
-            deathParticles.transform.parent = null;
-            deathParticles.Play();
-
-            Instantiate(deathSound);
         }
 
         public override void Stun(float duration)

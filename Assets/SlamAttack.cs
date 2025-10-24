@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 
     public class SlamAttack : BossAttack
@@ -36,7 +37,7 @@ using UnityEngine;
             {
                 if (player.CompareTag("Player"))
                 {
-                    player.GetComponent<Alive>().GiveDamage(damageSource, KillFlag.AreaOfEffect);
+                    player.GetComponent<Alive>().GiveDamage(damageSource, DamageTypeFlag.AreaOfEffect);
                     player.GetComponent<Rigidbody2D>().AddForce(-(col.bounds.ClosestPoint(player.transform.position) - player.transform.position).normalized * knockbackAmount, ForceMode2D.Impulse);
                 }
             }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using FirstGearGames.SmoothCameraShaker;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -37,7 +38,7 @@ public class DamageTrap : WalkableTrap
     {
         // Check if entities are still inside the trap
         for (var i = 0; i < entitiesInsideArea.Count; i++)
-            entitiesInsideArea[i].GiveDamage(dmg.damage, dmg.stunTime, KillFlag.AreaOfEffect);
+            entitiesInsideArea[i].GiveDamage(dmg.damage, dmg.stunTime, DamageTypeFlag.AreaOfEffect);
 
         TrapDamage?.Invoke();
         //OnTrapDamage?.Invoke(entitiesInsideArea);

@@ -1,10 +1,11 @@
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 
 namespace RiskOfFail.Combat
 {
     public class QuarterlyAssessment : Enemy
     {
-        protected override void Death(KillFlag flag)
+        protected override void Death(DamageTypeFlag flag)
         {
             // Drop drops
             var drop = GetComponent<DropObject>();
@@ -22,14 +23,13 @@ namespace RiskOfFail.Combat
             dead = true;
             onDeath?.Invoke(flag);
 
-            Instantiate(deathSound);
             Destroy(healthParent);
             StopAllCoroutines();
         }
 
         public void TriggerDeath()
         {
-            Death(KillFlag.Self);
+            Death(DamageTypeFlag.Self);
         }
     }
 }

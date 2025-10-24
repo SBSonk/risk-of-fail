@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using FirstGearGames.SmoothCameraShaker;
 using GameAudioScriptingEssentials;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -34,7 +35,7 @@ public class MeleeWeapon : Weapon
                 var objectHit = Physics2D.Linecast(player.position, a.transform.position, hitFilter.layerMask);
                 if (objectHit && objectHit.collider.CompareTag("Wall")) continue;
 
-                a.GiveDamage(baseDamage * multiplier, stunLength, KillFlag.Melee);
+                a.GiveDamage(baseDamage * multiplier, stunLength, DamageTypeFlag.Melee);
                 if (a.TryGetComponent(out Rigidbody2D rb))
                     rb.AddForce(hitVector.normalized * knockbackAmount, ForceMode2D.Impulse);
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -40,5 +41,5 @@ public class KillArea : MonoBehaviour
         }
     }
 
-    void KillEvent(KillFlag _) => OnKill?.Invoke();
+    void KillEvent(DamageTypeFlag _) => OnKill?.Invoke();
 }

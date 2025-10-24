@@ -1,6 +1,7 @@
 using System.Collections;
 using DG.Tweening;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,7 +9,7 @@ public class EraserSlamV2 : MonoBehaviour
 {
     [Header("Attack")] public float damageAmount = 15;
     public float stunLength = 1;
-    public KillFlag killFlag = KillFlag.AreaOfEffect;
+    public DamageTypeFlag killFlag = DamageTypeFlag.AreaOfEffect;
     public float startYOffset = 10;
     public float fallLength = 5;
 

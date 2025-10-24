@@ -1,4 +1,5 @@
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 
 public class ChalkWave : MonoBehaviour
@@ -6,7 +7,7 @@ public class ChalkWave : MonoBehaviour
     public float damageAmount = 10;
     public float stunTime = 10;
     public float knockBack = 10;
-    public KillFlag flag = KillFlag.AreaOfEffect;
+    public DamageTypeFlag flag = DamageTypeFlag.AreaOfEffect;
 
     private void OnTriggerEnter2D(Collider2D col)
     {

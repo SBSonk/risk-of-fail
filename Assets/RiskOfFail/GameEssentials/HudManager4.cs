@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -49,7 +50,7 @@ public class HudManager4 : MonoBehaviour
     }
 
     // Handle Player Avatar
-    private void PlayerAvatarAnimation(float amount)
+    private void PlayerAvatarAnimation(float amount, DamageTypeFlag _)
     {
         // Choose image to display
         for (var i = 0; i < AvatarImages.Length; i++)
@@ -58,7 +59,7 @@ public class HudManager4 : MonoBehaviour
                 avatarImage.sprite = AvatarImages[i].image;
     }
 
-    private void PlayerAvatarJump(float _)
+    private void PlayerAvatarJump(float _, DamageTypeFlag __)
     {
         avatarAnim.CrossFade("AvatarJump", 0.1f, 0, 0);
 

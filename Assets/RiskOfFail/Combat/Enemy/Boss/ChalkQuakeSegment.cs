@@ -1,5 +1,6 @@
 using System.Collections;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -49,7 +50,7 @@ public class ChalkQuakeSegment : MonoBehaviour
 
         // do damage
         if (player)
-            player.GiveDamage(_damageSource.damage, _damageSource.stunTime, KillFlag.AreaOfEffect);
+            player.GiveDamage(_damageSource.damage, _damageSource.stunTime, DamageTypeFlag.AreaOfEffect);
 
         // play hideAnim
         anim.Play("Hide");

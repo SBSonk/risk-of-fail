@@ -1,5 +1,6 @@
 using DG.Tweening;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 
 public class BossRush : MonoBehaviour
@@ -9,7 +10,7 @@ public class BossRush : MonoBehaviour
 
     [Header("Attack")] public float damageAmount = 15;
     public float stunLength = 1;
-    public KillFlag killFlag = KillFlag.AreaOfEffect;
+    public DamageTypeFlag killFlag = DamageTypeFlag.AreaOfEffect;
     public Vector3 offset, size;
 
     public float knockbackStrength = 25f;

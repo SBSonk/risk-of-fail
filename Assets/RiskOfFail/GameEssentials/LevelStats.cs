@@ -1,4 +1,5 @@
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -91,10 +92,10 @@ public class LevelStats : MonoBehaviour
         }
     }
 
-    public void GiveScore(int baseAmount, float secondsBeforeDeath, KillFlag flag)
+    public void GiveScore(int baseAmount, float secondsBeforeDeath, DamageTypeFlag flag)
     {
         points += Mathf.RoundToInt(baseAmount * pointsMultiplier);
-        if (flag == KillFlag.Melee) points += Mathf.RoundToInt(meleeBonusPoints);
+        if (flag == DamageTypeFlag.Melee) points += Mathf.RoundToInt(meleeBonusPoints);
 
         // Bonus points for killing early
         if (secondsBeforeDeath <= bonusKillTime) points += bonusPoints;
@@ -128,7 +129,7 @@ public class LevelStats : MonoBehaviour
         points = amount;
     }
 
-    private void ReceiveDamage(float damage)
+    private void ReceiveDamage(float damage, DamageTypeFlag flag)
     {
         damageTaken += damage;
     }
@@ -138,7 +139,7 @@ public class LevelStats : MonoBehaviour
         damageGiven += damage;
     }
 
-    public void GiveHealth(float health)
+    public void GiveHealth(float health, DamageTypeFlag flag)
     {
         healthRestored += health;
     }
@@ -154,7 +155,7 @@ public class LevelStats : MonoBehaviour
         bulletsHit++;
     }
 
-    public void EnemyKill(KillFlag flag)
+    public void EnemyKill(DamageTypeFlag flag)
     {
         enemiesKilled++;
 
@@ -184,13 +185,4 @@ public class LevelStats : MonoBehaviour
     {
         PlayerPrefs.SetFloat(buildIndex + "Time", time);
     }
-}
-
-public enum KillFlag
-{
-    Melee,
-    Ranged,
-    Self,
-    AreaOfEffect,
-    LevelPassed
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Highlighter", menuName = "Weapons/Highlighter")]
@@ -25,7 +26,7 @@ public class Highlighter : Weapon
                 // attach end of line to hit
                 // if enemy, damage
                 if (hit.collider.TryGetComponent<Enemy>(out var enemy))
-                    enemy.GiveDamage(baseDamage * multiplier, stunLength, KillFlag.Ranged);
+                    enemy.GiveDamage(baseDamage * multiplier, stunLength, DamageTypeFlag.Ranged);
 
             shooting.GetHeldWeapon().clip--;
             shooting.OnShoot.Invoke();

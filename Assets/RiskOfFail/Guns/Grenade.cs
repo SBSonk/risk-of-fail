@@ -1,4 +1,5 @@
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 
 public class Grenade : Throwable
@@ -12,6 +13,6 @@ public class Grenade : Throwable
         var raycastHit = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         foreach (var r in raycastHit)
             if (r.TryGetComponent<Enemy>(out var enemy))
-                enemy.GiveDamage(baseDamage, stunTime, KillFlag.AreaOfEffect);
+                enemy.GiveDamage(baseDamage, stunTime, DamageTypeFlag.AreaOfEffect);
     }
 }

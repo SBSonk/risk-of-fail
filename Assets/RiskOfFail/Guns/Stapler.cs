@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using FirstGearGames.SmoothCameraShaker;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Stapler", menuName = "Weapons/Stapler")]
@@ -31,7 +32,7 @@ public class Stapler : MeleeWeapon
                 var objectHit = Physics2D.Linecast(player.position, a.transform.position, hitFilter.layerMask);
                 if (objectHit && objectHit.collider.CompareTag("Wall")) continue;
 
-                a.GiveDamage(baseDamage * multiplier, stunLength, KillFlag.Melee);
+                a.GiveDamage(baseDamage * multiplier, stunLength, DamageTypeFlag.Melee);
                 if (a.TryGetComponent(out Rigidbody2D rb))
                     rb.AddForce(hitVector * knockbackAmount, ForceMode2D.Impulse);
 

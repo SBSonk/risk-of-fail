@@ -1,6 +1,7 @@
 using System.Collections;
 using FirstGearGames.SmoothCameraShaker;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -134,7 +135,7 @@ public class PlayerAnimations : MonoBehaviour
         animator.Play(BuildAnimationClipName(new[] { baseClipName, directionSuffix }));
     }
 
-    private void PlayDeathAnimation(KillFlag deathType)
+    private void PlayDeathAnimation(DamageTypeFlag deathType)
     {
         StopAllCoroutines();
         sprite.color = Color.white;
@@ -142,7 +143,7 @@ public class PlayerAnimations : MonoBehaviour
         StartCoroutine(DeathAnim(deathType));
     }
 
-    private IEnumerator DeathAnim(KillFlag deathType)
+    private IEnumerator DeathAnim(DamageTypeFlag deathType)
     {
         canSwitchAnimation = false;
         sprite.sortingOrder = 100;
@@ -227,7 +228,7 @@ public class PlayerAnimations : MonoBehaviour
         DetermineAimMode(w.weapon);
     }
 
-    private void PlayDamageAnimation(float _)
+    private void PlayDamageAnimation(float _, DamageTypeFlag __)
     {
         canSwitchAnimation = false;
 

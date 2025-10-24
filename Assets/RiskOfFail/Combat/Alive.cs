@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using RiskOfFail.Combat.Enums;
+using RiskOfFail.Combat.Interfaces;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,27 +14,37 @@ namespace RiskOfFail.Combat
     {
         [Header("Stats")] public float health = 100;
         public float maxHealth = 100;
-        public bool immune;
-        public float damageCooldown; // Dictates how long before you can take damage again
+        
         public float damageReduction = 1;
 
         public HashSet<StatusEffect> activeStatusEffects = new HashSet<StatusEffect>();
         public GameObject damageIndicatorPrefab;
-
-        public Rigidbody2D deathFlingPrefab;
-
         public bool stunned;
 
-        public UnityEvent<float> onHit, onStunned, onHeal;
-        public UnityEvent<KillFlag> onDeath;
-        public AudioSource deathSound;
+        public UnityEvent<float, DamageTypeFlag> onHit, onHeal;
+        public UnityEvent<DamageTypeFlag> onDeath;
         protected bool dead;
 
+        private void OnEnable()
+        {
+            // Register Events
+            foreach (var deathEvents in GetComponents<IOnDeath>())
+            {
+                onDeath.AddListener(deathEvents.OnDeath);
+            }
+        }
+
+        private void OnDisable()
+        {
+            // Unsubscribe Events
+            onDeath.RemoveAllListeners();
+        }
+
         // Applies damage and returns damage taken
-        public float GiveDamage(float amount, float stunLength, KillFlag flag, StatusEffect effect = null)
+        public float GiveDamage(float amount, float stunLength, DamageTypeFlag damageFlag, StatusEffect effect = null)
         {
             // Return if can't be damaged
-            if (immune || dead) return 0;
+            if (dead) return 0;
 
             // Give effect, if any
             if (effect)
@@ -48,7 +61,7 @@ namespace RiskOfFail.Combat
             if (health + damage <= 0)
             {
                 OnDamage(damage);
-                Death(flag);
+                Death(damageFlag);
                 return damage;
             }
 
@@ -60,23 +73,16 @@ namespace RiskOfFail.Combat
             // Trigger animation, effects, etc
             OnDamage(damage);
 
-            // Damage cooldown
-            if (damageCooldown > 0)
-            {
-                immune = false;
-                Invoke("AllowDamage", damageCooldown);
-            }
-
-            onHit?.Invoke(damage);
+            onHit?.Invoke(damage, damageFlag);
             return damage;
         }
 
-        public float GiveDamage(DamageSource damageSource, KillFlag flag, StatusEffect statusEffect = null)
+        public float GiveDamage(DamageSource damageSource, DamageTypeFlag flag, StatusEffect statusEffect = null)
         {
             return GiveDamage(damageSource.damage, damageSource.stunTime, flag, statusEffect);
         }
 
-        public virtual float GiveHealth(float amount)
+        public virtual float GiveHealth(float amount, DamageTypeFlag damageFlag)
         {
             // Give health
             health += amount;
@@ -85,12 +91,13 @@ namespace RiskOfFail.Combat
             health = Mathf.Clamp(health, 0, maxHealth);
 
             OnDamage(amount);
-            onHeal?.Invoke(health);
+            onHeal?.Invoke(health, damageFlag);
             return amount;
         }
 
         public virtual void Stun(float duration)
         {
+            
         }
 
         protected virtual void OnDamage(float damage)
@@ -110,21 +117,11 @@ namespace RiskOfFail.Combat
             indicator.Initialize(damage);
         }
 
-        protected virtual void Death(KillFlag flag)
+        protected virtual void Death(DamageTypeFlag flag)
         {
             dead = true;
             onDeath?.Invoke(flag);
 
-            if (deathFlingPrefab)
-            {
-                var rb = Instantiate(deathFlingPrefab, transform.position, quaternion.identity);
-
-                rb.AddForce(new Vector3(Random.Range(1, -1f) * Random.Range(5, 10f), Random.Range(2.5f, 10f)),
-                    ForceMode2D.Impulse);
-                rb.AddTorque(-Mathf.Sign(rb.linearVelocity.x) * Random.Range(5, 10f), ForceMode2D.Impulse);
-            }
-
-            if (deathSound) Instantiate(deathSound, transform.position, transform.rotation);
             Destroy(gameObject);
         }
 
@@ -139,11 +136,6 @@ namespace RiskOfFail.Combat
             }
 
             foreach (var s in activeStatusEffects) s.OnStatusTick(this);
-        }
-
-        private void AllowDamage()
-        {
-            immune = true;
         }
     }
 }

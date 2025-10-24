@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -22,14 +23,14 @@ public class HealBoss : MonoBehaviour
 
     public void DisableHeal()
     {
-        self.immune = true;
+        //self.immune = true;
         canHeal = false;
         OnHealDisabled?.Invoke();
     }
 
     public void EnableHeal()
     {
-        self.immune = false;
+        //self.immune = false;
         canHeal = true;
         OnHealEnabled?.Invoke();
     }
@@ -42,7 +43,7 @@ public class HealBoss : MonoBehaviour
         {
             if (!target) break;
             
-            if (canHeal) target.GiveHealth(healAmount);
+            if (canHeal) target.GiveHealth(healAmount, DamageTypeFlag.Self);
             OnHealTarget?.Invoke();
 
             yield return new WaitForSeconds(healInterval);

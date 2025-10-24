@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using FirstGearGames.SmoothCameraShaker;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
@@ -133,7 +134,7 @@ public class BossRoomSecondPhase : MonoBehaviour
         StopCoroutine(attackLoop);
     }
 
-    private void TrackHitDamage(float _)
+    private void TrackHitDamage(float _, DamageTypeFlag __) 
     {
         // Cancel if reached threshhold
         if (damagePhase)

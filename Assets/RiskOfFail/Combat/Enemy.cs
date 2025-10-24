@@ -1,5 +1,6 @@
 using System.Collections;
 using Pathfinding;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
@@ -142,7 +143,7 @@ namespace RiskOfFail.Combat
                 Invoke("HideHealthBar", 2.5f);
             }
 
-            onHit?.Invoke(damage);
+            onHit?.Invoke(damage, DamageTypeFlag.Melee);
         }
 
         private void HideHealthBar()
@@ -150,7 +151,7 @@ namespace RiskOfFail.Combat
             StartCoroutine(HealthBarFade(1, 0, 0.3f));
         }
 
-        protected override void Death(KillFlag flag)
+        protected override void Death(DamageTypeFlag flag)
         {
             // Destroy health bar
             Destroy(healthParent);
@@ -176,7 +177,6 @@ namespace RiskOfFail.Combat
             // Can't get stunned twice
             if (stunned) return;
 
-            onStunned?.Invoke(duration);
             stunned = true;
 
             if (pathAI)

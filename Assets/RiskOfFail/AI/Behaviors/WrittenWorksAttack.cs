@@ -1,6 +1,7 @@
 using System.Collections;
 using Pathfinding;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -48,7 +49,7 @@ namespace RiskOfFail.AI.Behaviors
             originalDrag = self.rb.linearDamping;
 
             //self.onStunned.AddListener(CancelDash);
-            self.onStunned.AddListener(DisableAttack);
+            //self.onStunned.AddListener(DisableAttack);
 
             player = PlayerStatus.player.GetComponent<Rigidbody2D>();
         }
@@ -269,7 +270,7 @@ namespace RiskOfFail.AI.Behaviors
             var kb = dashing ? knockbackAmount * 2.5f : knockbackAmount;
             playerRb.AddForce(transform.up.normalized * kb, ForceMode2D.Impulse);
 
-            collision.GetComponent<PlayerStatus>().GiveDamage(damage, stunLength, KillFlag.Melee);
+            collision.GetComponent<PlayerStatus>().GiveDamage(damage, stunLength, DamageTypeFlag.Melee);
 
             // Knock self back
             self.rb.AddForce(-transform.up.normalized * (knockbackAmount / 3), ForceMode2D.Impulse);

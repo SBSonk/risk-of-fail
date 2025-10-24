@@ -112,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void SetIFrame(bool val)
     {
-        PlayerStatus.player.immune = val;
+        //PlayerStatus.player.immune = val;
     }
 
     private IEnumerator DodgeIFrames()

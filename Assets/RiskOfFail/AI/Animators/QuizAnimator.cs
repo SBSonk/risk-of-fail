@@ -26,7 +26,7 @@ namespace RiskOfFail.AI.Animators
             enemy = GetComponent<Enemy>();
             pathing = GetComponent<AIPath>();
 
-            enemy.onHit.AddListener(StunAnimation);
+            //enemy.onHit.AddListener(StunAnimation);
             enemy.onEnemyDeath.AddListener(DeathAnimation);
         }
 

@@ -137,8 +137,8 @@ public class HudManager4 : MonoBehaviour
     // Handle Dodge Cooldown
     private void UpdateDodge()
     {
-        dodgeBar.fillAmount = Mathf.Lerp(dodgeBar.fillAmount, player.pMovement.dodges / player.pMovement.maxDodges,
-            barLerp);
+        /*dodgeBar.fillAmount = Mathf.Lerp(dodgeBar.fillAmount, player.pMovement.dodges / player.pMovement.maxDodges,
+            barLerp);*/
     }
 
     private void SetFudgePoints()
@@ -155,9 +155,9 @@ public class HudManager4 : MonoBehaviour
         shooting.OnAmmoUpdate.AddListener(UpdateAmmoDisplay);
         shooting.OnWeaponSwitch.AddListener(UpdateAmmoDisplay);
 
-        player.onHeal.AddListener(PlayerAvatarAnimation);
+        /*player.onHeal.AddListener(PlayerAvatarAnimation);
         player.onHit.AddListener(PlayerAvatarAnimation);
-        player.onHit.AddListener(PlayerAvatarJump);
+        player.onHit.AddListener(PlayerAvatarJump);*/
 
         UpdateWeaponIcon(shooting.GetHeldWeapon());
     }

@@ -233,7 +233,7 @@ public class PlayerShooting : MonoBehaviour
         foreach (var h in hits)
             if (h.TryGetComponent(out Enemy enemy))
             {
-                enemy.Stun(shoveStunTime);
+                //enemy.Stun(shoveStunTime);
                 if (enemy.TryGetComponent(out Rigidbody2D rb))
                     rb.AddForce(shoveDir * shoveStrength, ForceMode2D.Impulse);
             }

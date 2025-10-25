@@ -17,6 +17,6 @@ public class HealthIncrease : MonoBehaviour
     protected virtual void Effect()
     {
         PlayerStatus.player.maxHealth += 25;
-        PlayerStatus.player.health = PlayerStatus.player.maxHealth;
+        //PlayerStatus.player.health = PlayerStatus.player.maxHealth;
     }
 }

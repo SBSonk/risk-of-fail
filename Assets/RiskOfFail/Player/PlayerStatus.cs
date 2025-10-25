@@ -60,27 +60,5 @@ namespace RiskOfFail.Combat
 
             onDeath?.Invoke(flag);
         }
-
-        public override void Stun(float duration)
-        {
-            StartCoroutine(TakeStun(duration));
-        }
-
-        private IEnumerator TakeStun(float duration)
-        {
-            pMovement.moveSpeed = defaultSpeed / 2;
-            stunned = true;
-
-            // Disable switching animations
-            pAnimations.canSwitchAnimation = false;
-
-            yield return new WaitForSeconds(duration);
-
-            pMovement.moveSpeed = defaultSpeed;
-            stunned = false;
-
-            // Reenable animation switching
-            pAnimations.canSwitchAnimation = true;
-        }
     }
 }

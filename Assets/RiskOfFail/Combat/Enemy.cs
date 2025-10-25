@@ -131,21 +131,6 @@ namespace RiskOfFail.Combat
             }
         }
 
-        protected override void OnDamage(float damage)
-        {
-            base.OnDamage(damage);
-
-            if (healthParent && healthBar)
-            {
-                CancelInvoke("HideHealthBar");
-                healthParent.SetActive(true);
-                StartCoroutine(HealthBarFade(0, 1, 0.3f));
-                Invoke("HideHealthBar", 2.5f);
-            }
-
-            onHit?.Invoke(damage, DamageTypeFlag.Melee);
-        }
-
         private void HideHealthBar()
         {
             StartCoroutine(HealthBarFade(1, 0, 0.3f));
@@ -170,39 +155,6 @@ namespace RiskOfFail.Combat
             LevelStats.main.EnemyKill(flag); // Should use an event probably
 
             base.Death(flag);
-        }
-
-        public override void Stun(float duration)
-        {
-            // Can't get stunned twice
-            if (stunned) return;
-
-            stunned = true;
-
-            if (pathAI)
-            {
-                pathAI.canMove = false;
-                pathAI.maxSpeed = 0;
-            }
-
-            if (attackScript) attackScript.enabled = false;
-
-            StartCoroutine(clearStun(duration));
-        }
-
-        protected IEnumerator clearStun(float time)
-        {
-            yield return new WaitForSeconds(time);
-
-            if (pathAI) pathAI.canMove = true;
-            stunned = false;
-            if (attackScript) attackScript.enabled = true;
-
-            // Reset rigidbody velocities
-            rb.linearVelocity = Vector2.zero;
-            rb.angularVelocity = 0;
-
-            StartCoroutine(StunRecover(StunRecoverTime));
         }
     }
 }

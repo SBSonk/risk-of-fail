@@ -53,7 +53,7 @@ public class BossRoomFirstPhase : MonoBehaviour
                 StartCoroutine(EnableAttack());
             });
 
-        boss.onHit.AddListener(TrackHitDamage);
+        //boss.onHit.AddListener(TrackHitDamage);
 
         healSpawner.StartSpawnProcessIntro();
     }

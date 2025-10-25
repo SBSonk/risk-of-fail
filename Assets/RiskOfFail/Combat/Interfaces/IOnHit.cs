@@ -4,6 +4,6 @@ namespace RiskOfFail.Combat.Interfaces
 {
 	public interface IOnHit
 	{
-		public void OnHit(DamageTypeFlag killFlag);
+		public void OnHit(float damage, float stunTime, DamageTypeFlag killFlag);
 	}
 }

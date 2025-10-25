@@ -32,7 +32,7 @@ namespace RiskOfFail.AI.Animators
 
         private void Start()
         {
-            enemy.onHit.AddListener(StunAnimation);
+            //enemy.onHit.AddListener(StunAnimation);
             enemyAttack.OnSwipeAttack.AddListener(SwipeAnimation);
             enemy.onEnemyDeath.AddListener(DeathAnimation);
             //enemyAttack.OnDashAttack.AddListener(DashAnimation);

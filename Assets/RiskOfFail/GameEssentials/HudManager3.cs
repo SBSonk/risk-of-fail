@@ -182,6 +182,6 @@ public class HudManager3 : MonoBehaviour
 
     public void UpdateDodges()
     {
-        dodgeText.text = $"DODGES: {player.pMovement.dodges}";
+        //dodgeText.text = $"DODGES: {player.pMovement.dodges}";
     }
 }

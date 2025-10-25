@@ -49,7 +49,7 @@ public class LevelStats : MonoBehaviour
         if (PlayerStatus.player)
         {
             PlayerStatus.player.pShooting.OnShoot.AddListener(BulletShot);
-            PlayerStatus.player.onHit.AddListener(ReceiveDamage);
+            //PlayerStatus.player.onHit.AddListener(ReceiveDamage);
             PlayerStatus.player.onHeal.AddListener(GiveHealth);
         }
 

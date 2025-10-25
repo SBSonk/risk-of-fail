@@ -61,7 +61,7 @@ public class ZSpawning2 : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F11)) LevelStats.main.GiveScore(1000);
 
-        if (Input.GetKeyDown(KeyCode.F10)) PlayerStatus.player.health += 1000;
+        //if (Input.GetKeyDown(KeyCode.F10)) PlayerStatus.player.health += 1000;
 
 #endif
     }

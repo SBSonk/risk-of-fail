@@ -276,7 +276,7 @@ namespace RiskOfFail.AI.Behaviors
             self.rb.AddForce(-transform.up.normalized * (knockbackAmount / 3), ForceMode2D.Impulse);
 
             // Stop moving for awhile
-            self.Stun(reboundLength);
+            //self.Stun(reboundLength);
         }
 
         private void EnableDash()

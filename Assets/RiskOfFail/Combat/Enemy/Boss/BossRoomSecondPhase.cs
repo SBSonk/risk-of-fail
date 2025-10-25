@@ -51,7 +51,7 @@ public class BossRoomSecondPhase : MonoBehaviour
         for (var i = 0; i < randomAttacks.Length; i++)
             randomAttacks[i].OnAttackEnd.AddListener(() => { StartCoroutine(EnableAttack()); });
 
-        boss.onHit.AddListener(TrackHitDamage);
+        //boss.onHit.AddListener(TrackHitDamage);
     }
 
     private void OnDisable()

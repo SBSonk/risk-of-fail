@@ -1,6 +1,7 @@
 using System.Collections;
 using FirstGearGames.SmoothCameraShaker;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Effects;
 using RiskOfFail.Combat.Enums;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -228,7 +229,7 @@ public class PlayerAnimations : MonoBehaviour
         DetermineAimMode(w.weapon);
     }
 
-    private void PlayDamageAnimation(float _, DamageTypeFlag __)
+    private void PlayDamageAnimation(float _, float ___, DamageTypeFlag __)
     {
         canSwitchAnimation = false;
 

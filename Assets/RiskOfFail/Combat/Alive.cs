@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using RiskOfFail.Combat.Classes;
 using RiskOfFail.Combat.Enums;
 using RiskOfFail.Combat.Interfaces;
+using RiskOfFail.Combat.ScriptableObjects;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,47 +14,74 @@ namespace RiskOfFail.Combat
     // This script is only meant to be inherited by other objects (players, anything that has health)
     public abstract class Alive : MonoBehaviour
     {
-        [Header("Stats")] public float health = 100;
+        [Header("Stats")] 
         public float maxHealth = 100;
+        public float health { get; protected set; }
         
         public float damageReduction = 1;
 
-        public HashSet<StatusEffect> activeStatusEffects = new HashSet<StatusEffect>();
-        public GameObject damageIndicatorPrefab;
-        public bool stunned;
+        List<ActiveStatusEffect> activeStatusEffects = new List<ActiveStatusEffect>();
 
-        public UnityEvent<float, DamageTypeFlag> onHit, onHeal;
+        [Header("Events")] 
+        public UnityEvent<float, float, DamageTypeFlag> onHit;
+        public UnityEvent<float, DamageTypeFlag> onHeal;
         public UnityEvent<DamageTypeFlag> onDeath;
         protected bool dead;
 
         private void OnEnable()
         {
+            Initialize();
+        }
+
+        private void OnDisable()
+        {
+            Deactivate();
+        }
+
+        protected virtual void Initialize()
+        {
+            dead = false;
+            
+            health = maxHealth;
+            
             // Register Events
             foreach (var deathEvents in GetComponents<IOnDeath>())
             {
                 onDeath.AddListener(deathEvents.OnDeath);
             }
+
+            foreach (var hitEvents in GetComponents<IOnHit>())
+            {
+                onHit.AddListener(hitEvents.OnHit);
+            }
+            
+            foreach (var healEvents in GetComponents<IOnHeal>())
+            {
+                onHeal.AddListener(healEvents.OnHeal);
+            }
+            
+            // Start status effect tick
+            InvokeRepeating("StatusEffectTick", 1, 1);
         }
 
-        private void OnDisable()
+        protected virtual void Deactivate()
         {
             // Unsubscribe Events
             onDeath.RemoveAllListeners();
+            onHit.RemoveAllListeners();
+            onHeal.RemoveAllListeners();
+            
+            // Turn off status effect tick
+            CancelInvoke("StatusEffectTick");
         }
-
+        
         // Applies damage and returns damage taken
-        public float GiveDamage(float amount, float stunLength, DamageTypeFlag damageFlag, StatusEffect effect = null)
+        public float GiveDamage(float amount, float stunTime, DamageTypeFlag damageFlag, StatusEffectBase effectBase = null)
         {
-            // Return if can't be damaged
             if (dead) return 0;
 
             // Give effect, if any
-            if (effect)
-                if (effect.inflictChance > Random.value)
-                {
-                    activeStatusEffects.Add(effect);
-                    InvokeRepeating("StatusEffectTick", 1, 1);
-                }
+            if (effectBase) TryApplyStatusEffect(effectBase);
 
             // Calculate damage
             var damage = -amount / damageReduction;
@@ -60,29 +89,22 @@ namespace RiskOfFail.Combat
             // Give damage
             if (health + damage <= 0)
             {
-                OnDamage(damage);
                 Death(damageFlag);
                 return damage;
             }
 
             health += damage;
 
-            // Apply stun
-            Stun(stunLength);
-
-            // Trigger animation, effects, etc
-            OnDamage(damage);
-
-            onHit?.Invoke(damage, damageFlag);
+            onHit?.Invoke(damage, stunTime, damageFlag);
             return damage;
         }
 
-        public float GiveDamage(DamageSource damageSource, DamageTypeFlag flag, StatusEffect statusEffect = null)
+        public float GiveDamage(DamageSource damageSource, DamageTypeFlag flag, StatusEffectBase statusEffectBase = null)
         {
-            return GiveDamage(damageSource.damage, damageSource.stunTime, flag, statusEffect);
+            return GiveDamage(damageSource.damage, damageSource.stunTime, flag, statusEffectBase);
         }
 
-        public virtual float GiveHealth(float amount, DamageTypeFlag damageFlag)
+        public float GiveHealth(float amount, DamageTypeFlag damageFlag)
         {
             // Give health
             health += amount;
@@ -90,33 +112,20 @@ namespace RiskOfFail.Combat
             // Clamp health to normal values
             health = Mathf.Clamp(health, 0, maxHealth);
 
-            OnDamage(amount);
             onHeal?.Invoke(health, damageFlag);
             return amount;
         }
 
-        public virtual void Stun(float duration)
+        void TryApplyStatusEffect(StatusEffectBase statusEffectBase)
         {
-            
+            if (statusEffectBase.inflictChance > Random.value)
+            {
+                activeStatusEffects.Add(new ActiveStatusEffect(statusEffectBase));
+ 
+                statusEffectBase.OnApply(this);
+            }
         }
-
-        protected virtual void OnDamage(float damage)
-        {
-            // Player damage indicator
-            // Offset position
-            var pos = transform.position;
-            pos += Vector3.up * Random.Range(-2f, 2f);
-            pos += Vector3.right * (Random.Range(-3f, 3f) *
-                                    Mathf.PerlinNoise(transform.position.x * Time.time,
-                                        transform.position.y * Time.time));
-
-            // Spawn indicator
-            var indicator = Instantiate(damageIndicatorPrefab,
-                pos, Quaternion.identity).GetComponent<DamageIndicator>();
-
-            indicator.Initialize(damage);
-        }
-
+        
         protected virtual void Death(DamageTypeFlag flag)
         {
             dead = true;
@@ -125,17 +134,20 @@ namespace RiskOfFail.Combat
             Destroy(gameObject);
         }
 
-        // TODO: Make the status tick an event to subscribe in the game manager to optimize
         protected void StatusEffectTick()
         {
-            // Stop repeating the status tick
-            if (activeStatusEffects.Count == 0)
+            for (int i = 0; i < activeStatusEffects.Count; i++)
             {
-                CancelInvoke("StatusEffectTick");
-                return;
-            }
+                activeStatusEffects[i].secondsLeft -= 1;
 
-            foreach (var s in activeStatusEffects) s.OnStatusTick(this);
+                activeStatusEffects[i].effect.OnStatusTick(this);
+
+                if (activeStatusEffects[i].secondsLeft <= 0)
+                {
+                    activeStatusEffects[i].effect.OnClear(this);
+                    activeStatusEffects.Remove(activeStatusEffects[i]);
+                }
+            }
         }
     }
 }

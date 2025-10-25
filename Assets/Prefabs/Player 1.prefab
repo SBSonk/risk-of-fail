@@ -5806,6 +5806,9 @@ GameObject:
   - component: {fileID: 4803607932167722930}
   - component: {fileID: 6351469507247768522}
   - component: {fileID: 7075841624896342988}
+  - component: {fileID: 2625516984514535108}
+  - component: {fileID: 666625490464222781}
+  - component: {fileID: 9143774861964197435}
   m_Layer: 6
   m_Name: Player 1
   m_TagString: Player
@@ -5874,20 +5877,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed50694315626d40ba49f53530860f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
-  immune: 0
-  damageCooldown: 1
   damageReduction: 1
-  statusEffectTickrate: 3
-  statuses: []
-  damageIndicatorPrefab: {fileID: 5454792722737808766, guid: ffe96b4ed14b8d74aaa0085dca50470a, type: 3}
-  deathFlingPrefab: {fileID: 0}
-  stunned: 0
   onHit:
-    m_PersistentCalls:
-      m_Calls: []
-  onStunned:
     m_PersistentCalls:
       m_Calls: []
   onHeal:
@@ -5908,15 +5899,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  deathSound: {fileID: 2700227365419083299, guid: 8681d48ae7bf9be4fb3d6cdfae781137, type: 3}
   pMovement: {fileID: 0}
   pShooting: {fileID: 0}
   pAnimations: {fileID: 0}
   pSFXManager: {fileID: 0}
-  defaultSpeed: 7000
-  deathParticles: {fileID: 944821671135324380}
-  normalLayer: Player
-  immuneLayer: PlayerImmune
 --- !u!114 &1425222227342113828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5929,7 +5915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c18ad47c78168b428a4936f39827e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followCursor: 0
+  followCursor: 1
   canSwitchAnimation: 1
   sprites:
   - {fileID: 1425222227697381013}
@@ -5956,14 +5942,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  moveSpeed: 6000
-  baseSpeed: 0
-  dodgeForce: 30
+  baseSpeed: 13
+  moveSpeed: 13
+  stunSpeedMultiplier: 0.25
+  movementSmoothing: 0.005
+  dodgeForce: 50
+  dodgeDuration: 0.25
   dodgeCooldown: 0.75
   dodgeResetStartTime: 0.25
-  dodgeIFrames: 0.25
+  dodgeInvincibilityTime: 0.5
+  dodgeBufferTime: 0.15
   maxDodges: 2
-  dodges: 2
   OnDodge:
     m_PersistentCalls:
       m_Calls: []
@@ -6208,6 +6197,45 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &2625516984514535108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425222227342113836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 104ef2883c0749649bfb72667d5f795e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &666625490464222781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425222227342113836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e80947725e1ea2c4f8794ff0067b4170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathFlingPrefab: {fileID: 0}
+--- !u!114 &9143774861964197435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425222227342113836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf9b0d6a6bad1a4c9711e6d4ac184e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSound: {fileID: 0}
+  deathParticles: {fileID: 0}
 --- !u!1 &1425222227697381015
 GameObject:
   m_ObjectHideFlags: 0

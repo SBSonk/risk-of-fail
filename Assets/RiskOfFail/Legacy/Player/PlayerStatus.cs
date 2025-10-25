@@ -12,10 +12,7 @@ namespace RiskOfFail.Combat
         public PlayerShooting pShooting;
         public PlayerAnimations pAnimations;
         public PlayerSFXManager pSFXManager;
-
-        public float defaultSpeed = 10;
-
-        public string normalLayer, immuneLayer;
+        
         public static bool IsAlive { get; private set; }
 
         private void Awake()
@@ -27,9 +24,6 @@ namespace RiskOfFail.Combat
             pShooting = GetComponent<PlayerShooting>();
             pAnimations = GetComponent<PlayerAnimations>();
             pSFXManager = GetComponent<PlayerSFXManager>();
-
-            pMovement.moveSpeed = defaultSpeed;
-            pMovement.baseSpeed = defaultSpeed;
         }
 
         private void Start()
@@ -43,13 +37,7 @@ namespace RiskOfFail.Combat
             //CameraFollow.cam.SetPlayer(GetComponent<Rigidbody2D>());
         }
 
-        private void Update()
-        {
-            //gameObject.layer = immune ? LayerMask.NameToLayer(immuneLayer) : LayerMask.NameToLayer(normalLayer);
-        }
-
-        protected override void Death(
-            DamageTypeFlag flag)
+        protected override void Death(DamageTypeFlag flag)
         {
             dead = true;
             IsAlive = false;

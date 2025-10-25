@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
@@ -105,14 +106,14 @@ public class Spawning2 : MonoBehaviour
         var _enemy = Instantiate(enemy.prefab, enabledSpawns[point].position,
             Quaternion.identity, transform).GetComponent<Enemy>();
 
-        _enemy.onEnemyDeath.AddListener(enemyDeath);
+        _enemy.onDeath.AddListener(enemyDeath);
         OnEnemySpawn?.Invoke();
     }
 
     // Reduce enemy count when an enemy dies
-    private void enemyDeath(EnemyType type)
+    private void enemyDeath(DamageTypeFlag type)
     {
-        // Get types
+        /*// Get types
         for (var i = 0; i < enemies.Length; i++)
             if (enemies[i].type == type)
             {
@@ -120,7 +121,7 @@ public class Spawning2 : MonoBehaviour
                 enemiesKilled++;
                 OnEnemyKilled?.Invoke();
                 return;
-            }
+            }*/
     }
 }
 

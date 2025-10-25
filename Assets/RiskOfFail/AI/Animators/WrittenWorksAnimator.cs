@@ -34,7 +34,7 @@ namespace RiskOfFail.AI.Animators
         {
             //enemy.onHit.AddListener(StunAnimation);
             enemyAttack.OnSwipeAttack.AddListener(SwipeAnimation);
-            enemy.onEnemyDeath.AddListener(DeathAnimation);
+            enemy.onDeath.AddListener(DeathAnimation);
             //enemyAttack.OnDashAttack.AddListener(DashAnimation);
             //enemyAttack.OnDashStart.AddListener(DashStart);
             //enemyAttack.OnDashEnd.AddListener(DashFinish);
@@ -52,10 +52,10 @@ namespace RiskOfFail.AI.Animators
 
             if (!canSwitchAnimations) return;
 
-            if (enemy.canSeePlayer)
+            /*if (enemy.canSeePlayer)
                 dirFacing = VectorToDir((pathing.destination - transform.position).normalized);
-            else
-                dirFacing = VectorToDir(pathing.velocity.normalized);
+            else*/
+            dirFacing = VectorToDir(pathing.velocity.normalized);
 
             spriteRenderer.flipX = dirFacing == Directions.left;
 
@@ -187,7 +187,7 @@ namespace RiskOfFail.AI.Animators
             canSwitchAnimations = true;
         }
 
-        public void DeathAnimation(EnemyType _)
+        public void DeathAnimation(DamageTypeFlag _)
         {
             deathParticles.transform.SetParent(null);
             Destroy(deathParticles.gameObject, 2f);

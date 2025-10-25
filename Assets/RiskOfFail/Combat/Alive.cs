@@ -15,7 +15,7 @@ namespace RiskOfFail.Combat
     public abstract class Alive : MonoBehaviour
     {
         [Header("Stats")] 
-        public float maxHealth = 100;
+        public float maxHealth { get; protected set; } = 100;
         public float health { get; protected set; }
         
         public float damageReduction = 1;

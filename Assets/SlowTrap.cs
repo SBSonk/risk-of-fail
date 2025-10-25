@@ -27,7 +27,7 @@ public class SlowTrap : WalkableTrap
             if (!enemiesInside.Contains(e))
             {
                 enemiesInside.Add(e);
-                e.SetSpeedMultiplier(speedPenaltyMultiplier);
+                //e.SetSpeedMultiplier(speedPenaltyMultiplier);
             }
         }
     }
@@ -41,7 +41,7 @@ public class SlowTrap : WalkableTrap
             playersInside.Remove(p);
         } else if (collision.TryGetComponent<Enemy>(out var e))
         {
-            e.ResetSpeed();
+            //e.ResetSpeed();
             enemiesInside.Remove(e);
         }
         
@@ -57,7 +57,7 @@ public class SlowTrap : WalkableTrap
 
         for (int i = 0; i < enemiesInside.Count; i++)
         {
-            enemiesInside[i].ResetSpeed();
+            //enemiesInside[i].ResetSpeed();
         }
     }
 

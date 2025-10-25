@@ -40,6 +40,7 @@ PolygonCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6869182809983744420}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -63,7 +64,8 @@ PolygonCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -343,6 +345,7 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 6869182809983744442}
   m_Damping: 1
   m_MaxWindowSize: -1
+  m_Padding: 0
 --- !u!114 &7949150272275140949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,7 +443,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 95
-  orthographic: 1
+  orthographic: 0
   orthographic size: 13
   m_Depth: 0
   m_CullingMask:

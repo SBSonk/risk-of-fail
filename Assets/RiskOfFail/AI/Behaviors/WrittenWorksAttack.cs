@@ -46,7 +46,8 @@ namespace RiskOfFail.AI.Behaviors
 
             // Determine follow direction
             followDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
-            originalDrag = self.rb.linearDamping;
+            //originalDrag = self.rb.linearDamping;
+            originalDrag = 1;
 
             //self.onStunned.AddListener(CancelDash);
             //self.onStunned.AddListener(DisableAttack);
@@ -177,7 +178,7 @@ namespace RiskOfFail.AI.Behaviors
                     .normalized;
                 transform.up = Vector3.Lerp(transform.up, dashDir, Mathf.Lerp(0.5f, 0, t / 0.8f));
 
-                if (!self.canSeePlayer) CancelDash(0);
+                /*if (!self.canSeePlayer) CancelDash(0);*/
             }
 
             // target player for a few seconds
@@ -191,8 +192,8 @@ namespace RiskOfFail.AI.Behaviors
             print("dash");
 
             // Dash into player
-            self.rb.linearDamping = originalDrag * 0.4f;
-            self.rb.AddForce(transform.up * 25f, ForceMode2D.Impulse);
+            /*self.rb.linearDamping = originalDrag * 0.4f;
+            self.rb.AddForce(transform.up * 25f, ForceMode2D.Impulse);*/
 
             OnDashStart?.Invoke();
 
@@ -200,7 +201,7 @@ namespace RiskOfFail.AI.Behaviors
 
 
             yield return new WaitForSeconds(0.5f);
-            self.rb.linearDamping = originalDrag;
+            //self.rb.linearDamping = originalDrag;
             ai.canMove = true;
             attacking = false;
             dashing = false;
@@ -221,7 +222,7 @@ namespace RiskOfFail.AI.Behaviors
 
             attacking = false;
             ai.canMove = true;
-            self.rb.linearDamping = originalDrag;
+            //self.rb.linearDamping = originalDrag;
             gameObject.layer = LayerMask.NameToLayer("WrittenWorks");
 
             StopAllCoroutines();
@@ -273,7 +274,7 @@ namespace RiskOfFail.AI.Behaviors
             collision.GetComponent<PlayerStatus>().GiveDamage(damage, stunLength, DamageTypeFlag.Melee);
 
             // Knock self back
-            self.rb.AddForce(-transform.up.normalized * (knockbackAmount / 3), ForceMode2D.Impulse);
+            //self.rb.AddForce(-transform.up.normalized * (knockbackAmount / 3), ForceMode2D.Impulse);
 
             // Stop moving for awhile
             //self.Stun(reboundLength);

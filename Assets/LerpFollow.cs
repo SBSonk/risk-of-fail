@@ -11,6 +11,7 @@ public class LerpFollow : MonoBehaviour
 
     private void Update()
     {
+        if (!target) return;
         transform.position = Vector3.Lerp(transform.position, target.position + offset, Time.deltaTime * followSpeed);
     }
 }

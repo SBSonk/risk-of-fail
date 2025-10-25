@@ -1,10 +1,12 @@
+using System;
+using NaughtyAttributes;
 using RiskOfFail.Combat.Enums;
 using RiskOfFail.Combat.Interfaces;
 using UnityEngine;
 
 namespace RiskOfFail.Combat.Effects
 {
-	public class Stunnable : MonoBehaviour, IOnHit
+	public class HasStun : MonoBehaviour, IOnHit
 	{
 		public bool isStunned { get; private set; }
 		
@@ -15,7 +17,10 @@ namespace RiskOfFail.Combat.Effects
 			if (isStunned)
 			{
 				stunTimer -= Time.deltaTime;
-				if (stunTimer <= 0) isStunned = false;
+				if (stunTimer <= 0)
+				{
+					isStunned = false;
+				}
 			}
 		}
 

@@ -27,7 +27,7 @@ namespace RiskOfFail.AI.Animators
             pathing = GetComponent<AIPath>();
 
             //enemy.onHit.AddListener(StunAnimation);
-            enemy.onEnemyDeath.AddListener(DeathAnimation);
+            //enemy.onEnemyDeath.AddListener(DeathAnimation);
         }
 
         protected virtual void Update()
@@ -38,10 +38,10 @@ namespace RiskOfFail.AI.Animators
 
             if (!canSwitchAnimations) return;
 
-            if (enemy.canSeePlayer)
+            /*if (enemy.canSeePlayer)
                 dirFacing = VectorToDir((pathing.destination - transform.position).normalized);
             else
-                dirFacing = VectorToDir(pathing.velocity.normalized);
+                dirFacing = VectorToDir(pathing.velocity.normalized);*/
 
             if (pathing.velocity.magnitude > 0) WalkAnimation();
             else StandAnimation();

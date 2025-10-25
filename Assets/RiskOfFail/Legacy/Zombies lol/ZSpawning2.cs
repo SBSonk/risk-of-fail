@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using RiskOfFail.Combat;
+using RiskOfFail.Combat.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -232,7 +233,7 @@ public class ZSpawning2 : MonoBehaviour
         var _enemy = Instantiate(enemy, point,
             Quaternion.identity, transform);
 
-        _enemy.onEnemyDeath.AddListener(enemyDeath);
+        _enemy.onDeath.AddListener(enemyDeath);
         OnEnemySpawn?.Invoke();
 
         enemiesAlive++;
@@ -250,7 +251,7 @@ public class ZSpawning2 : MonoBehaviour
         return enemyChosen;
     }
 
-    private void enemyDeath(EnemyType _)
+    private void enemyDeath(DamageTypeFlag _)
     {
         enemiesKilled++;
         enemiesAlive--;

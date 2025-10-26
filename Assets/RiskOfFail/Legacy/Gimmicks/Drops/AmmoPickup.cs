@@ -9,7 +9,7 @@ public class AmmoPickup : PickupBase
     {
         base.Awake();
         
-        if (!PlayerStatus.player.pShooting.HasGunTypeWeapon())
+        if (!PlayerStatus.instance.shooting.HasGunTypeWeapon())
         {
             print("no ammo weapon");
             Destroy(transform.parent.gameObject);
@@ -41,7 +41,7 @@ public class AmmoPickup : PickupBase
         // Return if the player isnt the one who collected
         if (!other.CompareTag("Player")) return;
 
-        var player = PlayerStatus.player.pShooting;
+        var player = PlayerStatus.instance.shooting;
         var ammoToAdd = Random.Range(drop.min, drop.max);
 
         ammoToAdd = Mathf.RoundToInt((float)ammoToAdd / drop.typeToGive.ammoPerShot) * drop.typeToGive.ammoPerShot;

@@ -16,12 +16,12 @@ public class WeaponBuy : Buyable
 
     public void Purchase()
     {
-        PlayerShooting shooting = PlayerStatus.player.pShooting;
+        PlayerShooting shooting = PlayerStatus.instance.shooting;
         if (shooting.CheckIfWeaponOwned(weapon))
         {
             if (weapon is Gun)
-                PlayerStatus.player.pShooting.GiveAmmo(PlayerStatus.player.pShooting.GetWeaponFromInventory(weapon),
-                    PlayerStatus.player.pShooting.GetHeldWeapon().weapon.defaultAmmoCount);
+                PlayerStatus.instance.shooting.GiveAmmo(PlayerStatus.instance.shooting.GetWeaponFromInventory(weapon),
+                    PlayerStatus.instance.shooting.GetHeldWeapon().weapon.defaultAmmoCount);
 
             return;
             // give ammo
@@ -38,14 +38,14 @@ public class WeaponBuy : Buyable
             shooting.GiveAmmo(shooting.GetWeaponFromInventory(weapon), Mathf.FloorToInt(weapon.defaultAmmoCount / 4f));
         }
 
-        PlayerStatus.player.pAnimations.ChangeWeaponSprite(PlayerStatus.player.pShooting.GetHeldWeapon());
-        HudManager4.hud.UpdateWeaponIcon(PlayerStatus.player.pShooting.GetHeldWeapon());
+        PlayerStatus.instance.animations.ChangeWeaponSprite(PlayerStatus.instance.shooting.GetHeldWeapon());
+        HudManager4.hud.UpdateWeaponIcon(PlayerStatus.instance.shooting.GetHeldWeapon());
     }
 
     protected override void PlayerInteract()
     {
         // Check for points
-        if (PlayerStatus.player.pShooting.CheckIfWeaponOwned(weapon) && weapon is MeleeWeapon)
+        if (PlayerStatus.instance.shooting.CheckIfWeaponOwned(weapon) && weapon is MeleeWeapon)
         {
             CancelPurchase?.Invoke();
             return;

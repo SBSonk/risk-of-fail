@@ -46,7 +46,7 @@ namespace RiskOfFail.AI.Behaviors
             player = GameObject.Find("Player").GetComponent<Rigidbody2D>();
             rb = GetComponent<Rigidbody2D>();
 
-            PlayerStatus.player.pShooting.OnShoot.AddListener(tryDodge);
+            PlayerStatus.instance.shooting.OnShoot.AddListener(tryDodge);
 
             // Determine follow direction
             followDirection = new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f)) * followDistanceMultiplier;
@@ -54,7 +54,7 @@ namespace RiskOfFail.AI.Behaviors
 
         private void FixedUpdate()
         {
-            if (!PlayerStatus.IsAlive) return;
+            if (!PlayerStatus.instance) return;
 
             // Set destination to player
             if (mode != AIMode.repositioning)

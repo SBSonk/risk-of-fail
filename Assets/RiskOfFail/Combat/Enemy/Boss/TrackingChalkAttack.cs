@@ -15,7 +15,7 @@ public class TrackingChalkAttack : BossAttack
 
     private void Start()
     {
-        player = PlayerStatus.player.transform;
+        player = PlayerStatus.instance.transform;
     }
 
     public override void UseAttack()

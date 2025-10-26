@@ -10119,14 +10119,14 @@ GameObject:
   - component: {fileID: 2368033471186396235}
   - component: {fileID: 2368033471186396240}
   - component: {fileID: 4569185689618396685}
+  - component: {fileID: 1757831470}
+  - component: {fileID: 1313777699329341204}
   - component: {fileID: 2368033471186396236}
   - component: {fileID: 2368033471186396237}
   - component: {fileID: 1100099867230741786}
   - component: {fileID: 2368033471186396241}
   - component: {fileID: 1996329252}
   - component: {fileID: 1050790986060347319}
-  - component: {fileID: 1757831470}
-  - component: {fileID: 1313777699329341204}
   - component: {fileID: 2851299454210430755}
   m_Layer: 15
   m_Name: Written Works
@@ -10257,6 +10257,49 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0141711235, y: 0.54864144}
   m_Size: {x: 1.1741552, y: 1.3972831}
   m_Direction: 0
+--- !u!95 &1757831470
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368033471186396242}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4024ce642ad882244b756970b1d2333a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1313777699329341204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368033471186396242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7f76cbc22ca344ab7b3314b92df531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 2368033471053587657}
+  animator: {fileID: 1757831470}
+  deathParticles: {fileID: 7745119301078835927}
+  dashParticles: {fileID: 118843627}
+  dashIndicator: {fileID: 313543552}
+  arrowIndicator:
+  - {fileID: 1286162187}
+  - {fileID: 1311772192}
+  canSwitchAnimations: 1
 --- !u!114 &2368033471186396236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10364,21 +10407,6 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-  canSeePlayer: 0
-  type: 0
-  killScore: 75
-  hBarPrefab: {fileID: 2682529488675642673, guid: b078b5e28f550784191ec80b78e48c6a, type: 3}
-  hbarOffset: {x: 0, y: 1.25, z: 0}
-  minSpeed: 5
-  maxSpeed: 8
-  speed: 6
-  hbarLerp: 0.5
-  StunRecoverTime: 0.3
-  attackScript: {fileID: 1996329252}
-  rb: {fileID: 0}
-  onEnemyDeath:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1996329252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10448,49 +10476,6 @@ MonoBehaviour:
   drops:
   - {fileID: 11400000, guid: 75d5d56cd57261c45b4434d95d2221fd, type: 2}
   - {fileID: 11400000, guid: fb2535e6ba6eb324e9c1d1da51b4f8a6, type: 2}
---- !u!95 &1757831470
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368033471186396242}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4024ce642ad882244b756970b1d2333a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1313777699329341204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368033471186396242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7f76cbc22ca344ab7b3314b92df531, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 2368033471053587657}
-  animator: {fileID: 1757831470}
-  deathParticles: {fileID: 7745119301078835927}
-  dashParticles: {fileID: 118843627}
-  dashIndicator: {fileID: 313543552}
-  arrowIndicator:
-  - {fileID: 1286162187}
-  - {fileID: 1311772192}
-  canSwitchAnimations: 1
 --- !u!114 &2851299454210430755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10505,6 +10490,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarPrefab: {fileID: 2852334436692877194, guid: b078b5e28f550784191ec80b78e48c6a, type: 3}
   topYPadding: 0.25
+  fadeTime: 0.25
+  fadeEase: 13
+  healthbarSprites: []
 --- !u!1 &5242064442408062899
 GameObject:
   m_ObjectHideFlags: 0

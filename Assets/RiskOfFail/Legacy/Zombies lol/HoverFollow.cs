@@ -18,7 +18,7 @@ public class HoverFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!PlayerStatus.IsAlive) return;
+        if (!PlayerStatus.instance) return;
 
         var distanceToPlayer = Vector3.Distance(transform.position, target.position);
         if (distanceToPlayer <= minAvoid)

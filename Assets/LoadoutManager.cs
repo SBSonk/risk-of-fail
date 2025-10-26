@@ -21,6 +21,11 @@ public class LoadoutManager : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        instance = null;
+    }
+
     public Weapon[] GetAllSlots() => slots;
 
     public Weapon GetWeapon(int index) => slots[index];

@@ -46,11 +46,11 @@ public class LevelStats : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerStatus.player)
+        if (PlayerStatus.instance)
         {
-            PlayerStatus.player.pShooting.OnShoot.AddListener(BulletShot);
+            PlayerStatus.instance.shooting.OnShoot.AddListener(BulletShot);
             //PlayerStatus.player.onHit.AddListener(ReceiveDamage);
-            PlayerStatus.player.onHeal.AddListener(GiveHealth);
+            PlayerStatus.instance.onHeal.AddListener(GiveHealth);
         }
 
         startTimeStamp = Time.time;

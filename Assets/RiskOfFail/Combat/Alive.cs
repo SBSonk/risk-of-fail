@@ -115,6 +115,14 @@ namespace RiskOfFail.Combat
             onHeal?.Invoke(health, damageFlag);
             return amount;
         }
+        
+        protected virtual void Death(DamageTypeFlag flag)
+        {
+            dead = true;
+            onDeath?.Invoke(flag);
+
+            Destroy(gameObject);
+        }
 
         void TryApplyStatusEffect(StatusEffectBase statusEffectBase)
         {
@@ -124,14 +132,6 @@ namespace RiskOfFail.Combat
  
                 statusEffectBase.OnApply(this);
             }
-        }
-        
-        protected virtual void Death(DamageTypeFlag flag)
-        {
-            dead = true;
-            onDeath?.Invoke(flag);
-
-            Destroy(gameObject);
         }
 
         protected void StatusEffectTick()

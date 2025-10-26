@@ -21,7 +21,7 @@ public class WeaponPickup : InteractBase
         if (!collision.CompareTag("Player")) return;
         base.OnTriggerEnter2D(collision);
 
-        PlayerStatus.player.pShooting.weaponsInArea.Add(this);
+        PlayerStatus.instance.shooting.weaponsInArea.Add(this);
     }
 
     protected override void OnTriggerExit2D(Collider2D collision)
@@ -29,7 +29,7 @@ public class WeaponPickup : InteractBase
         if (!collision.CompareTag("Player")) return;
         base.OnTriggerExit2D(collision);
 
-        PlayerStatus.player.pShooting.weaponsInArea.Remove(this);
+        PlayerStatus.instance.shooting.weaponsInArea.Remove(this);
     }
 
     protected override void PlayerInteract()
@@ -44,7 +44,7 @@ public class WeaponPickup : InteractBase
         // Save Weapon
         WeaponSelector.SetWeaponOwned(weaponToGive.name);
 
-        PlayerShooting shooting = PlayerStatus.player.pShooting;
+        PlayerShooting shooting = PlayerStatus.instance.shooting;
 
         // Check if weapon owned
         if (!shooting.CheckIfWeaponOwned(weaponToGive))
@@ -58,7 +58,7 @@ public class WeaponPickup : InteractBase
                 Mathf.FloorToInt(weaponToGive.defaultAmmoCount / 4f));
         }
 
-        PlayerStatus.player.pShooting.weaponsInArea.Remove(this);
+        PlayerStatus.instance.shooting.weaponsInArea.Remove(this);
         Destroy(gameObject);
     }
 

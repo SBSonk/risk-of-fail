@@ -47,7 +47,7 @@ public class CameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!PlayerStatus.IsAlive) return;
+        if (!PlayerStatus.instance) return;
         if (!cameraControl) return;
         if (!player) return;
 

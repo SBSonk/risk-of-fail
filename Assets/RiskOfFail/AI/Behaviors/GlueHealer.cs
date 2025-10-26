@@ -39,7 +39,7 @@ namespace RiskOfFail.AI.Behaviors
 
         private void Update()
         {
-            if (!PlayerStatus.IsAlive) return;
+            if (!PlayerStatus.instance) return;
 
             switch (currentMode)
             {

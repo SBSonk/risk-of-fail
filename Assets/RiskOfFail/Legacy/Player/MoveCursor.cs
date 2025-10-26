@@ -28,7 +28,7 @@ public class MoveCursor : MonoBehaviour
 
     private void Start()
     {
-        player = PlayerStatus.player.transform;
+        player = PlayerStatus.instance.transform;
 
         // Hide mouse
         Cursor.visible = false;

@@ -52,12 +52,12 @@ namespace RiskOfFail.AI.Behaviors
             //self.onStunned.AddListener(CancelDash);
             //self.onStunned.AddListener(DisableAttack);
 
-            player = PlayerStatus.player.GetComponent<Rigidbody2D>();
+            player = PlayerStatus.instance.GetComponent<Rigidbody2D>();
         }
 
         protected virtual void FixedUpdate()
         {
-            if (!PlayerStatus.IsAlive) return;
+            if (!PlayerStatus.instance) return;
 
             // Get distance to player
             distanceToPlayer = Vector2.Distance(transform.position, player.position);
@@ -160,7 +160,7 @@ namespace RiskOfFail.AI.Behaviors
             attacking = true;
             canDash = false;
 
-            var player = PlayerStatus.player.transform;
+            var player = PlayerStatus.instance.transform;
             var dashDir = Vector2.one;
             ai.canMove = false;
 
@@ -173,7 +173,7 @@ namespace RiskOfFail.AI.Behaviors
                 yield return new WaitForEndOfFrame();
                 t += Time.deltaTime;
                 dashDir = (player.position +
-                           (Vector3)PlayerStatus.player.GetComponent<Rigidbody2D>().linearVelocity * 0.2f -
+                           (Vector3)PlayerStatus.instance.GetComponent<Rigidbody2D>().linearVelocity * 0.2f -
                            transform.position)
                     .normalized;
                 transform.up = Vector3.Lerp(transform.up, dashDir, Mathf.Lerp(0.5f, 0, t / 0.8f));

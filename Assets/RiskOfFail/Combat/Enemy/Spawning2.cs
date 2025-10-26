@@ -31,7 +31,7 @@ public class Spawning2 : MonoBehaviour
 
     private void Update()
     {
-        if (!PlayerStatus.IsAlive) return;
+        if (!PlayerStatus.instance) return;
 
         UpdateSpawnerDistances();
     }
@@ -40,7 +40,7 @@ public class Spawning2 : MonoBehaviour
     {
         for (var i = 0; i < spawnPoints.Count; i++)
             spawnPoints[i].DistanceToPlayer =
-                Vector3.Distance(spawnPoints[i].position, PlayerStatus.player.transform.position);
+                Vector3.Distance(spawnPoints[i].position, PlayerStatus.instance.transform.position);
     }
 
     private void SetValidSpawns()

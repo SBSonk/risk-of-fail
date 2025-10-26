@@ -12,7 +12,7 @@ public class Shotgun : Gun
 
     public override void ShootWeapon(Transform player, float multiplier = 1)
     {
-        PlayerStatus.player.pShooting.StartCoroutine(ShootPerBullet(player, multiplier));
+        PlayerStatus.instance.shooting.StartCoroutine(ShootPerBullet(player, multiplier));
     }
 
     private IEnumerator ShootPerBullet(Transform player, float multiplier = 1)

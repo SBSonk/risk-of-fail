@@ -12,6 +12,6 @@ public class LevelEndTrigger : MonoBehaviour
 
         OnLevelEnd?.Invoke();
 
-        PlayerStatus.player.gameObject.SetActive(false);
+        PlayerStatus.instance.gameObject.SetActive(false);
     }
 }

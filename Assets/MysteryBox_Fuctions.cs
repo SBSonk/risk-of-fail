@@ -11,7 +11,7 @@ public class MysteryBox_Fuctions : MonoBehaviour
     {
         animator.Play("BoxOpen", 0, 0);
 
-        PlayerShooting shooting = PlayerStatus.player.pShooting;
+        PlayerShooting shooting = PlayerStatus.instance.shooting;
         List<Weapon> list = new List<Weapon>();
         for(int i = 0; i < MgaWeapon.Length; i++)
         {

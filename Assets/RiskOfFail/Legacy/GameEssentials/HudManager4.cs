@@ -128,7 +128,7 @@ public class HudManager4 : MonoBehaviour
 
     private void UpdateHealth()
     {
-        if (PlayerStatus.IsAlive)
+        if (PlayerStatus.instance)
             healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, player.health / player.maxHealth, barLerp);
         else
             healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, 0, barLerp);
@@ -150,7 +150,7 @@ public class HudManager4 : MonoBehaviour
     {
         player = _player;
 
-        var shooting = player.pShooting;
+        var shooting = player.shooting;
         shooting.OnWeaponSwitch.AddListener(UpdateWeaponIcon);
         shooting.OnAmmoUpdate.AddListener(UpdateAmmoDisplay);
         shooting.OnWeaponSwitch.AddListener(UpdateAmmoDisplay);

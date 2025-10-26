@@ -17,7 +17,7 @@ public class FloatyDock : InteractBase
             if (duck.riding)
             {
                 duck.riding = false;
-                PlayerStatus.player.transform.position = spawnPoint.position;
+                PlayerStatus.instance.transform.position = spawnPoint.position;
             }
         }
     }

@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using NaughtyAttributes;
 using RiskOfFail.Combat.Enums;
 using UnityEngine;
 
@@ -6,47 +8,56 @@ namespace RiskOfFail.Combat
 {
     public class PlayerStatus : Alive
     {
-        public static PlayerStatus player;
+        public static PlayerStatus instance;
 
-        public PlayerMovement pMovement;
-        public PlayerShooting pShooting;
-        public PlayerAnimations pAnimations;
-        public PlayerSFXManager pSFXManager;
-        
-        public static bool IsAlive { get; private set; }
-
-        private void Awake()
-        {
-            player = this;
-            IsAlive = true;
-
-            pMovement = GetComponent<PlayerMovement>();
-            pShooting = GetComponent<PlayerShooting>();
-            pAnimations = GetComponent<PlayerAnimations>();
-            pSFXManager = GetComponent<PlayerSFXManager>();
-        }
+        public PlayerMovement movement { private set; get; }
+        public PlayerShooting shooting { private set; get; }
+        public PlayerAnimations animations { private set; get; }
+        public PlayerSFXManager sfx { private set; get; }
 
         private void Start()
         {
-            pShooting.Initialize();
-            pAnimations.Initialize(pShooting, pMovement, this);
-            pSFXManager.Initialize(pShooting, pMovement);
+            instance = this;
+        }
 
+        private void OnDestroy()
+        {
+            instance = null;
+        }
+
+        protected override void Initialize()
+        {
+            base.Initialize();
+            
+            movement = GetComponent<PlayerMovement>();
+            shooting = GetComponent<PlayerShooting>();
+            animations = GetComponent<PlayerAnimations>();
+            sfx = GetComponent<PlayerSFXManager>();
+            
+            shooting.Initialize();
+            animations.Initialize(shooting, movement, this);
+            sfx.Initialize(shooting, movement);
+            
+            // Legacy HUD / WALLS
             ObjectFade.player = transform;
             HudManager4.hud.SetPlayer(this);
-            //CameraFollow.cam.SetPlayer(GetComponent<Rigidbody2D>());
         }
 
         protected override void Death(DamageTypeFlag flag)
         {
-            dead = true;
-            IsAlive = false;
-
-            pMovement.enabled = false;
-            pShooting.enabled = false;
-            pAnimations.enabled = false;
-
-            onDeath?.Invoke(flag);
+            movement.enabled = false;
+            shooting.enabled = false;
+            animations.enabled = false;
+            sfx.enabled = false;
+            
+            base.Death(flag);
         }
+        
+        #if UNITY_EDITOR
+
+        [Button("Do 10 Damage")]
+        void DEBUG_Do10Damage() => GiveDamage(10f, .5f, DamageTypeFlag.Self);
+
+        #endif
     }
 }

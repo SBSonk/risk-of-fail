@@ -17,7 +17,7 @@ public class ChalkBeamAttack : BossAttack
     private void Start()
     {
         anim = GetComponent<Animator>();
-        player = PlayerStatus.player.transform;
+        player = PlayerStatus.instance.transform;
     }
 
     private void Update()

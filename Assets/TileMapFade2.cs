@@ -21,7 +21,7 @@ public class TileMapFade2 : MonoBehaviour
         sprite = GetComponent<Tilemap>();
         spriteRenderer = GetComponent<TilemapRenderer>();
 
-        playerTransform = PlayerStatus.player.transform;
+        playerTransform = PlayerStatus.instance.transform;
     }
     
     private void FixedUpdate()

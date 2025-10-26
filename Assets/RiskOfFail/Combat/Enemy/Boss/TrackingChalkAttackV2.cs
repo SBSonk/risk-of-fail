@@ -26,7 +26,7 @@ public class TrackingChalkAttackV2 : BossAttackV2
         {
             // Spawn bullet on one of the transforms alternating
             var b = Instantiate(bulletPrefab, transform.position + new Vector3(0, boardHeight), Quaternion.identity);
-            b.SetTarget(PlayerStatus.player.transform);
+            b.SetTarget(PlayerStatus.instance.transform);
             float dir = left ? -1 : 1;
             b.transform.DOMoveX(transform.position.x + boardWidth * dir + bulletDistance * (bulletAmount - i) * dir,
                 spawningTime / bulletAmount * index);

@@ -16,7 +16,7 @@ public class ChooseAmmoDropType : MonoBehaviour
         // Remove drops that the player doesn't own
         var gunsOwned = new List<Gun>();
         foreach (var d in drops)
-            if (PlayerStatus.player.pShooting.CheckIfWeaponOwned(d))
+            if (PlayerStatus.instance.shooting.CheckIfWeaponOwned(d))
                 gunsOwned.Add(d);
 
         // Choose drop to drop

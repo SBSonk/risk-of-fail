@@ -160,7 +160,7 @@ public class PlayerAnimations : MonoBehaviour
         {
             weaponAnimator.gameObject.SetActive(false);
 
-            var weaponRb = Instantiate(PlayerStatus.player.pShooting.GetHeldWeapon().weapon.rigidbodyVariant,
+            var weaponRb = Instantiate(PlayerStatus.instance.shooting.GetHeldWeapon().weapon.rigidbodyVariant,
                 transform.position, transform.rotation);
             weaponRb.AddForce(new Vector3(-Mathf.Sign(rb.linearVelocity.x) * 10, 20), ForceMode2D.Impulse);
             weaponRb.AddTorque(-Mathf.Sign(rb.linearVelocity.x) * 10f, ForceMode2D.Impulse);

@@ -38,7 +38,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void Update()
     {
-        if (PauseMenu.paused || !PlayerStatus.player.GetComponent<Renderer>().isVisible) return;
+        if (PauseMenu.paused) return;
 
         if (weaponPool.Length > 1)
         {

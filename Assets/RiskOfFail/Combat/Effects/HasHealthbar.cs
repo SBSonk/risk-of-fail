@@ -16,12 +16,11 @@ namespace RiskOfFail.Combat.Effects
 	{
 		public WorldHudBar healthBarPrefab;
 		
-
 		[Header("Visuals")]
 		public float topYPadding = .25f;
 		public float fadeTime = .25f;
 		public Ease fadeEase = Ease.InOutQuart;
-		public SpriteRenderer[] healthbarSprites;
+		SpriteRenderer[] healthbarSprites;
 		
 		private float stayTime = 3f;
 		private float lastHitTime;
@@ -35,26 +34,14 @@ namespace RiskOfFail.Combat.Effects
 			trackedAlive = GetComponent<Alive>();
 		}
 
-		private void OnEnable()
+		private void Start()
 		{
-			activeHealthBar = GetHealthBar();
-			LerpFollow lerpFollow = activeHealthBar.GetComponent<LerpFollow>();
-			lerpFollow.target = trackedAlive.transform;
-			lerpFollow.offset = GetPositionOffset();
-
-			healthbarSprites = activeHealthBar.GetComponentsInChildren<SpriteRenderer>();
-			
-			shown = false;
-			FadeOut();
+			InitializeHealthBar();
 		}
-
-		private void OnDisable()
-		{
-			ReturnHealthBar();
-		}
-
 		private void Update()
 		{
+			if (!activeHealthBar) return;
+			
 			if (shown && lastHitTime + stayTime < Time.time)
 			{
 				shown = false;
@@ -79,7 +66,7 @@ namespace RiskOfFail.Combat.Effects
 			
 			lastHitTime = Time.time;
 		}
-
+		
 		WorldHudBar GetHealthBar() => Instantiate(healthBarPrefab, transform.position, Quaternion.identity);
 
 		Vector2 GetPositionOffset()
@@ -94,9 +81,23 @@ namespace RiskOfFail.Combat.Effects
 			return new Vector2(0, topY + topYPadding);
 		}
 
+		private void InitializeHealthBar()
+		{
+			activeHealthBar = GetHealthBar();
+			LerpFollow lerpFollow = activeHealthBar.GetComponent<LerpFollow>();
+			lerpFollow.target = trackedAlive.transform;
+			lerpFollow.offset = GetPositionOffset();
+
+			healthbarSprites = activeHealthBar.GetComponentsInChildren<SpriteRenderer>();
+			
+			shown = false;
+			FadeOut();
+		}
+		
 		void ReturnHealthBar()
 		{
 			Destroy(activeHealthBar.gameObject);
+			activeHealthBar = null;
 		}
 
 		void FadeOut()

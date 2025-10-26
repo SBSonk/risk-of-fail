@@ -30,7 +30,7 @@ public class ChalkQuakeAttack : BossAttack
 
         for (var i = 0; i < amountOfAttacks; i++)
         {
-            var playerPos = PlayerStatus.player.transform.position + new Vector3(0, 0.5f);
+            var playerPos = PlayerStatus.instance.transform.position + new Vector3(0, 0.5f);
             var closestPoint = _collider.bounds.ClosestPoint(playerPos);
             var playerDir = playerPos - closestPoint;
             for (var o = 0; o < maxSegments; o++)

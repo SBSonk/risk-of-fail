@@ -28,19 +28,6 @@ namespace RiskOfFail.Combat
         protected override void Initialize()
         {
             base.Initialize();
-            
-            movement = GetComponent<PlayerMovement>();
-            shooting = GetComponent<PlayerShooting>();
-            animations = GetComponent<PlayerAnimations>();
-            sfx = GetComponent<PlayerSFXManager>();
-            
-            shooting.Initialize();
-            animations.Initialize(shooting, movement, this);
-            sfx.Initialize(shooting, movement);
-            
-            // Legacy HUD / WALLS
-            ObjectFade.player = transform;
-            HudManager4.hud.SetPlayer(this);
         }
 
         protected override void Death(DamageTypeFlag flag)

@@ -36,7 +36,12 @@ public class MoveCursor : MonoBehaviour
 
     private void Update()
     {
-        transform.SetPositionAndRotation(Vector3.Lerp(transform.position, GetMousePosition(), lerpPos),
+        // Clamp mouse to game
+        Vector3 targetPosition = GetMousePosition();
+        targetPosition.x = Mathf.Clamp(targetPosition.x, 0, Screen.width);
+        targetPosition.y = Mathf.Clamp(targetPosition.y, 0, Screen.height);
+        
+        transform.SetPositionAndRotation(Vector3.Lerp(transform.position, targetPosition, lerpPos),
             Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + rotationDegrees * Time.deltaTime));
     }
 

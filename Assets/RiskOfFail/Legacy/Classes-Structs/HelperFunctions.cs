@@ -237,12 +237,12 @@ public class HelperFunctions
 [Serializable]
 public enum Directions
 {
-    up,
-    right,
-    down,
-    left,
-    bottomRight,
-    bottomLeft,
-    upperRight,
-    upperLeft
+    up = 0,
+    right = 1,
+    down = 2,
+    left = 3,
+    bottomRight = 4,
+    bottomLeft = 5,
+    upperRight = 6,
+    upperLeft = 7
 }

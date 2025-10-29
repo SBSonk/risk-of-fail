@@ -15,7 +15,7 @@ namespace RiskOfFail.Combat
         public PlayerAnimations animations { private set; get; }
         public PlayerSFXManager sfx { private set; get; }
 
-        private void Start()
+        private void Awake()
         {
             instance = this;
         }
@@ -23,11 +23,6 @@ namespace RiskOfFail.Combat
         private void OnDestroy()
         {
             instance = null;
-        }
-
-        protected override void Initialize()
-        {
-            base.Initialize();
         }
 
         protected override void Death(DamageTypeFlag flag)
@@ -43,7 +38,7 @@ namespace RiskOfFail.Combat
         #if UNITY_EDITOR
 
         [Button("Do 10 Damage")]
-        void DEBUG_Do10Damage() => GiveDamage(10f, .5f, DamageTypeFlag.Self);
+        void DEBUG_Do10Damage() => GiveDamage(10f, 1f, DamageTypeFlag.Self);
 
         #endif
     }

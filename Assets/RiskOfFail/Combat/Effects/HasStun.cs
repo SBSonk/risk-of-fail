@@ -26,6 +26,11 @@ namespace RiskOfFail.Combat.Effects
 
 		public void OnHit(float damage, float stunLength, DamageTypeFlag killFlag)
 		{
+			DoStun(stunLength);
+		}
+
+		void DoStun(float stunLength)
+		{
 			isStunned = true;
 
 			stunTimer = stunLength;
